@@ -44,7 +44,28 @@ function pack(chain: StudyConcept[], id: string) {
   };
 }
 
+/** Concepts that borrow a 2D chart from sims/labs. Only used when the concept has none of its own. */
+const simFor: Record<string, string> = {
+  "infer-intro": "sample", samples: "sample", "samp-use": "sample", "samp-types": "sample-bias",
+  permut: "count-p", "math-perm": "count-p", combin: "count-c", "math-comb": "count-c",
+  "prob-def": "prob", "no-exp": "prob", "math-p": "prob", "math-kind": "prob",
+  events: "venn-events", "math-disj": "venn-events", "add-rule": "venn-or", "math-or": "venn-or",
+  "mul-rule": "venn-and", "math-and": "venn-and", joint: "venn-joint",
+  rv: "dice-rv", ev: "dice-ev", bayes: "bayes", "ml-what": "ml", "slr-assume": "assume",
+  "mlr-why": "mlrwhy", "mlr-coef": "mlrheld", "mlr-vif": "vif", "mlr-dummy": "dummy", "mlr-select": "select",
+  "logit-why": "logwhy", "logit-rest": "ovr", "clus-why": "scale",
+  "nlp-tok": "tok", "nlp-bow": "bow", "nlp-tfidf": "tfidf", "nlp-edit": "edit",
+  "math-ls": "regression", "math-part": "partial", "math-crit": "slope",
+  "ts-ses": "smooth", "ga-temp": "temperature", "rag-emb": "rag", "or-sens": "or", "st-board": "story",
+};
+
 export function getStudy(id: string): StudyConcept | null {
+  const found = lookupStudy(id);
+  const sim = simFor[id];
+  return found && sim && !found.sim ? { ...found, sim } : found;
+}
+
+function lookupStudy(id: string): StudyConcept | null {
   return (
     getConcept(id) ??
     getRestConcept(id) ??
