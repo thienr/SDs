@@ -1,10 +1,10 @@
 import { o as __toESM } from "../_runtime.mjs";
 import { J as require_react, S as require_jsx_runtime, b as Link } from "../_libs/@tanstack/react-router+[...].mjs";
-import { A as studyCopy, B as subscribeRaw, F as getRawVersion, I as getServerRawVersion, M as studyNeighbors, O as subscribeProgress, b as getServerProgress, j as studyListTitle, k as getStudy, r as Route$1, y as getProgress } from "./router-CGxXTrc_.mjs";
-import { n as Range, r as Sim, t as Lab } from "./labs-6LixJhgP.mjs";
+import { A as studyCopy, B as subscribeRaw, F as getRawVersion, I as getServerRawVersion, M as studyNeighbors, O as subscribeProgress, b as getServerProgress, j as studyListTitle, k as getStudy, r as Route$1, y as getProgress } from "./router-BQTkODUb.mjs";
+import { n as Range, r as Sim, t as Lab } from "./labs-o_JKy24n.mjs";
 import { t as Tex } from "./tex-t3KOuum9.mjs";
-import { o as relatedOf } from "./map-CVAaVDM3.mjs";
-//#region node_modules/.nitro/vite/services/ssr/assets/khai-niem._conceptId-It199oP9.js
+import { o as relatedOf } from "./map-BcZ7aO81.mjs";
+//#region node_modules/.nitro/vite/services/ssr/assets/khai-niem._conceptId-BBkNAgAh.js
 var import_react = /* @__PURE__ */ __toESM(require_react());
 var import_jsx_runtime = require_jsx_runtime();
 var ui$1 = {
@@ -10557,7 +10557,7 @@ var pilotWalks = {
 	}
 };
 /** C0: hiểu việc, giải quyết vấn đề, Excel. Tháng 1 ở Lotus Spa. */
-var base$1 = {
+var base$3 = {
 	"c0-order": {
 		vi: {
 			story: "Tháng 1, Lotus Spa (3 chi nhánh: Quận 1, Quận 3, Thủ Đức). Chị Lan, chủ chuỗi, gọi bạn vào phòng: «Form đặt hẹn tháng 12 giảm, em xem giúp chị.» Đây là việc đầu tiên của bạn, và cả năm tới bạn sẽ đi cùng câu chuyện này.",
@@ -11195,7 +11195,7 @@ var base$1 = {
 		}
 	}
 };
-var visuals$1 = {
+var visuals$3 = {
 	"c0-order": {
 		kind: "bars",
 		title: ["Form theo tháng", "Forms by month"],
@@ -11474,12 +11474,12 @@ var visuals$1 = {
 		note: ["Mã 25 không có: tìm gần đúng lấy dòng mã 20.", "Code 25 is missing: approximate match takes the code 20 row."]
 	}
 };
-var c0Walks = Object.fromEntries(Object.entries(base$1).map(([id, w]) => [id, visuals$1[id] ? {
+var c0Walks = Object.fromEntries(Object.entries(base$3).map(([id, w]) => [id, visuals$3[id] ? {
 	...w,
-	visual: visuals$1[id]
+	visual: visuals$3[id]
 } : w]));
 /** C1: Python cho khoa học dữ liệu. Tháng 2 ở Lotus Spa. */
-var base = {
+var base$2 = {
 	"py-run": {
 		vi: {
 			story: "Tháng 2. Excel đã cho bạn thấy hạn chế: file 12 tuần × 3 kênh quá nhiều để làm tay. Bạn mở notebook Python đầu tiên và tính lại CPA tuần này (chi 15 triệu, 50 form).",
@@ -12103,7 +12103,7 @@ var base = {
 		}
 	}
 };
-var visuals = {
+var visuals$2 = {
 	"py-run": {
 		kind: "table",
 		title: ["Notebook sau khi sửa forms nhưng chưa chạy lại ô 2", "Notebook after editing forms but not re-running cell 2"],
@@ -12306,14 +12306,1470 @@ var visuals = {
 		note: ["Tổng 151 form, cùng tổng với 50 + 50 + 51 theo tuần.", "Total 151 forms, the same as 50 + 50 + 51 by week."]
 	}
 };
-var c1Walks = Object.fromEntries(Object.entries(base).map(([id, w]) => [id, visuals[id] ? {
+var c1Walks = Object.fromEntries(Object.entries(base$2).map(([id, w]) => [id, visuals$2[id] ? {
+	...w,
+	visual: visuals$2[id]
+} : w]));
+/** Toán cho khoa học dữ liệu. Tháng 3 ở Lotus Spa: mọi phép toán đều tính trên số form, chi phí, giá gói của spa. */
+var base$1 = {
+	"math-vec": {
+		vi: {
+			story: "Tháng 3. Chị Lan hỏi: «Em hay nói tới mô hình, mà bên trong nó là gì?» Bạn bắt đầu từ khối nhỏ nhất: một dãy số có thứ tự, chính là số form tuần này theo ba kênh.",
+			words: [["Véctơ", "Một danh sách số có thứ tự. Vị trí có nghĩa: ô đầu là GDN, ô hai là Meta, ô ba là TikTok."], ["Chiều", "Số ô của véctơ. Véctơ ba ô có chiều 3."]],
+			problem: "Tuần này form theo kênh là GDN 18, Meta 20, TikTok 12. Viết thành véctơ, đọc từng ô, và cho biết nếu đảo thứ tự hai ô đầu thì điều gì xảy ra.",
+			steps: [
+				["Viết véctơ", "f = (18, 20, 12). Chiều là 3 vì có ba kênh."],
+				["Đọc từng ô", "Ô thứ hai là 20, tức Meta. Vị trí gắn với kênh."],
+				["Đảo hai ô đầu", "(20, 18, 12) là một véctơ khác: bây giờ GDN trông như có 20 form."],
+				["Tổng các ô", "18 + 20 + 12 = 50, bằng số form mỗi tuần của spa."]
+			],
+			say: "Véctơ không phải một nhóm số lộn xộn: thứ tự là một phần của nó. Đảo hai ô là đổi ý nghĩa, và máy sẽ không báo lỗi. Mọi dòng dữ liệu của mô hình về sau đều là một véctơ như vậy.",
+			check: ["(18, 20) và (18, 20, 12) có phải cùng một véctơ không?", "Không. Chiều khác nhau (2 và 3). Hai véctơ chỉ bằng nhau khi cùng chiều và từng ô bằng nhau."]
+		},
+		en: {
+			story: "March. Ms. Lan asks: “You keep saying model, but what is inside it?” You start from the smallest block: an ordered list of numbers, namely this week's forms by channel.",
+			words: [["Vector", "An ordered list of numbers. Position carries meaning: first slot is GDN, second is Meta, third is TikTok."], ["Dimension", "The number of slots in the vector. A three-slot vector has dimension 3."]],
+			problem: "This week's forms by channel are GDN 18, Meta 20, TikTok 12. Write it as a vector, read each slot, and say what happens if you swap the first two slots.",
+			steps: [
+				["Write the vector", "f = (18, 20, 12). The dimension is 3 because there are three channels."],
+				["Read each slot", "The second slot is 20, i.e. Meta. Position ties to channel."],
+				["Swap the first two slots", "(20, 18, 12) is a different vector: now GDN looks as if it had 20 forms."],
+				["Sum the slots", "18 + 20 + 12 = 50, equal to the spa's weekly forms."]
+			],
+			say: "A vector is not a jumble of numbers: order is part of it. Swapping two slots changes the meaning, and the machine will not warn you. Every data row a model sees later is a vector like this.",
+			check: ["Are (18, 20) and (18, 20, 12) the same vector?", "No. Their dimensions differ (2 and 3). Two vectors are equal only when they have the same dimension and every slot is equal."]
+		}
+	},
+	"math-add": {
+		vi: {
+			story: "Bạn có form tuần 1 và tuần 2 của ba kênh và cần gộp chúng, chính là phép gom mà pivot Excel đã làm ở tháng 1, nhưng bây giờ thấy nó là phép cộng véctơ.",
+			words: [["Cộng véctơ", "Cộng từng ô cùng vị trí."], ["Nhân với một số", "Nhân mọi ô với số đó."]],
+			problem: "Tuần 1: (18, 20, 12). Tuần 2: (17, 21, 12). Tính tổng hai tuần, và tính cả tháng nếu 4 tuần đều giống tuần 1 (nhân 4).",
+			steps: [
+				["Cộng từng ô", "(18+17, 20+21, 12+12) = (35, 41, 24)."],
+				["Đối chiếu pivot", "35, 41, 24 chính là tổng form theo kênh bạn đã có ở Excel."],
+				["Nhân tuần 1 với 4", "4 × (18, 20, 12) = (72, 80, 48)."],
+				["Kiểm tra tổng", "72 + 80 + 48 = 200 = 4 × 50."]
+			],
+			say: "Cộng véctơ chỉ ghép cùng vị trí: GDN cộng GDN. Không có phép cộng ô GDN với ô Meta. Nhân với một số là phóng to cả véctơ, nên tỷ lệ giữa các kênh không đổi (vẫn 18:20:12).",
+			check: ["Có cộng được (18, 20, 12) với (17, 21) không?", "Không. Hai véctơ khác chiều nên không có cách ghép từng ô. Thiếu một kênh trong tuần 2 phải bổ sung trước."]
+		},
+		en: {
+			story: "You have week 1 and week 2 forms for three channels and need to combine them, the same grouping Excel's pivot did in January, but now you see it as vector addition.",
+			words: [["Vector addition", "Add the slots in the same position."], ["Scalar multiplication", "Multiply every slot by that number."]],
+			problem: "Week 1: (18, 20, 12). Week 2: (17, 21, 12). Compute the two-week total, and the month if all 4 weeks looked like week 1 (multiply by 4).",
+			steps: [
+				["Add slot by slot", "(18+17, 20+21, 12+12) = (35, 41, 24)."],
+				["Match the pivot", "35, 41, 24 are exactly the forms-by-channel totals you had in Excel."],
+				["Multiply week 1 by 4", "4 × (18, 20, 12) = (72, 80, 48)."],
+				["Check the total", "72 + 80 + 48 = 200 = 4 × 50."]
+			],
+			say: "Vector addition pairs the same position only: GDN with GDN. There is no adding GDN's slot to Meta's. Multiplying by a number scales the whole vector, so the ratio between channels does not change (still 18:20:12).",
+			check: ["Can you add (18, 20, 12) to (17, 21)?", "No. The vectors have different dimensions so there is no slot-by-slot pairing. The channel missing from week 2 must be supplied first."]
+		}
+	},
+	"math-dot": {
+		vi: {
+			story: "Chị Lan hỏi: «Tổng 15 triệu chi quảng cáo ra từ đâu?» Bạn chứng minh bằng tích vô hướng: form mỗi kênh nhân CPA mỗi kênh rồi cộng lại phải về 15 triệu.",
+			words: [["Tích vô hướng", "Nhân từng cặp ô cùng vị trí rồi cộng tất cả lại, kết quả là một con số."]],
+			problem: "Form: (18, 20, 12). CPA (triệu mỗi form): (1/3, 1/4, 1/3), tức 333 nghìn, 250 nghìn, 333 nghìn. Tính tích vô hướng và giải thích ý nghĩa.",
+			steps: [
+				["Nhân từng cặp", "18 × 1/3 = 6; 20 × 1/4 = 5; 12 × 1/3 = 4."],
+				["Cộng lại", "6 + 5 + 4 = 15."],
+				["Đọc kết quả", "15 triệu, đúng bằng tổng chi mỗi tuần. Mỗi số hạng (6, 5, 4) là chi phí của một kênh."],
+				["Thử đổi hướng", "Với form (0, 0, 50) (toàn bộ dồn cho TikTok) ta được 50 × 1/3 ≈ 16,7."]
+			],
+			say: "Tích vô hướng cho một con số: tổng của «số lượng nhân giá». Khi hai véctơ cùng hướng thì con số lớn, ví dụ dồn form vào kênh đắt thì tổng chi lên 16,7. Phép này sẽ quay lại trong mọi mô hình dưới dạng «trọng số nhân đặc trưng».",
+			check: ["Tích vô hướng của (18, 20, 12) với (1, 1, 1) là gì?", "18 + 20 + 12 = 50. Nhân với 1 ở mọi ô thì chỉ còn cộng, cho tổng form."]
+		},
+		en: {
+			story: "Ms. Lan asks: “Where does the 15 million ad spend come from?” You show it with a dot product: each channel's forms times its CPA, summed, must come back to 15 million.",
+			words: [["Dot product", "Multiply each pair of slots in the same position, then add everything up; the result is a single number."]],
+			problem: "Forms: (18, 20, 12). CPA (million per form): (1/3, 1/4, 1/3), i.e. 333 thousand, 250 thousand, 333 thousand. Compute the dot product and explain its meaning.",
+			steps: [
+				["Multiply each pair", "18 × 1/3 = 6; 20 × 1/4 = 5; 12 × 1/3 = 4."],
+				["Add up", "6 + 5 + 4 = 15."],
+				["Read the result", "15 million, exactly the weekly spend. Each term (6, 5, 4) is one channel's cost."],
+				["Try changing direction", "With forms (0, 0, 50) (everything piled on TikTok) we get 50 × 1/3 ≈ 16.7."]
+			],
+			say: "A dot product gives one number: the sum of “quantity times price”. When two vectors point the same way the number is big, for example piling forms onto the expensive channel lifts total spend to 16.7. This operation returns in every model as “weight times feature”.",
+			check: ["What is the dot product of (18, 20, 12) with (1, 1, 1)?", "18 + 20 + 12 = 50. Multiplying by 1 in every slot leaves only the addition, giving total forms."]
+		}
+	},
+	"math-mat": {
+		vi: {
+			story: "Bạn muốn một «máy» nhận véctơ form theo kênh và trả hai thứ cùng lúc: tổng form và tổng chi. Máy đó là một ma trận.",
+			words: [["Ma trận", "Bảng số có hàng và cột. Nhân nó với một véctơ để ra một véctơ mới."], ["Kích thước", "Số hàng × số cột, ví dụ 2 × 3."]],
+			problem: "Ma trận M có hai hàng: hàng 1 là (1, 1, 1), hàng 2 là (1/3, 1/4, 1/3). Nhân M với form f = (18, 20, 12).",
+			steps: [
+				["Kiểm tra kích thước", "M là 2 × 3, f có 3 ô. Số cột của M (3) khớp số ô của f (3) nên nhân được."],
+				["Hàng 1 nhân f", "1×18 + 1×20 + 1×12 = 50 (tổng form)."],
+				["Hàng 2 nhân f", "18/3 + 20/4 + 12/3 = 6 + 5 + 4 = 15 (tổng chi, triệu)."],
+				["Đọc đầu ra", "Mf = (50, 15): từ ba số vào ra hai số, một ma trận đã đổi véctơ ba chiều thành véctơ hai chiều."]
+			],
+			say: "Mỗi hàng của ma trận là một «câu hỏi» đặt cho véctơ đầu vào, và đáp án là một ô của đầu ra. Ma trận 2 × 3 biến véctơ ba chiều thành hai chiều. Nếu số cột và số ô không khớp thì phép nhân không tồn tại.",
+			check: ["Có nhân được M (2×3) với véctơ hai ô không?", "Không. Số cột của M là 3 còn véctơ có 2 ô, không khớp. Phải đủ 3 ô, một cho mỗi kênh."]
+		},
+		en: {
+			story: "You want a “machine” that takes the forms-by-channel vector and returns two things at once: total forms and total spend. That machine is a matrix.",
+			words: [["Matrix", "A table of numbers with rows and columns. Multiply it by a vector to get a new vector."], ["Size", "Rows × columns, for example 2 × 3."]],
+			problem: "Matrix M has two rows: row 1 is (1, 1, 1), row 2 is (1/3, 1/4, 1/3). Multiply M by the forms f = (18, 20, 12).",
+			steps: [
+				["Check the size", "M is 2 × 3, f has 3 slots. M's columns (3) match f's slots (3), so you can multiply."],
+				["Row 1 times f", "1×18 + 1×20 + 1×12 = 50 (total forms)."],
+				["Row 2 times f", "18/3 + 20/4 + 12/3 = 6 + 5 + 4 = 15 (total spend, million)."],
+				["Read the output", "Mf = (50, 15): three numbers in, two out, one matrix turning a three-dimensional vector into a two-dimensional one."]
+			],
+			say: "Each row of the matrix is a “question” put to the input vector, and the answer is one slot of the output. A 2 × 3 matrix turns a three-dimensional vector into a two-dimensional one. If the columns and slots do not match, the product does not exist.",
+			check: ["Can you multiply M (2×3) by a vector with two slots?", "No. M has 3 columns while the vector has 2 slots, which do not match. It needs 3 slots, one per channel."]
+		}
+	},
+	"math-mul": {
+		vi: {
+			story: "Bạn muốn làm cho hai tuần một lần: bảng form hai tuần nhân với ma trận (tổng form, tổng chi). Hai bước ma trận gộp thành một.",
+			words: [["Nhân ma trận", "Ô (i, j) của kết quả là hàng i của ma trận trái nhân vô hướng với cột j của ma trận phải."], ["Quy tắc kích thước", "(m × n) nhân (n × p) cho (m × p)."]],
+			problem: "A (2×3) là form hai tuần: hàng 1 (18, 20, 12), hàng 2 (17, 21, 12). B (3×2) có cột 1 là (1, 1, 1) và cột 2 là CPA (1/3, 1/4, 1/3). Tính AB.",
+			steps: [
+				["Kích thước", "(2×3)(3×2) cho (2×2): khớp vì 3 = 3."],
+				["Ô (1,1)", "Hàng 1 của A với cột 1 của B: 18+20+12 = 50."],
+				["Ô (1,2)", "Hàng 1 với cột 2: 18/3 + 20/4 + 12/3 = 15."],
+				["Ô (2,1) và (2,2)", "Hàng 2: 17+21+12 = 50; 17/3 + 21/4 + 12/3 ≈ 5,67 + 5,25 + 4 = 14,92."],
+				["Kết quả", "AB = [[50, 15], [50, 14,92]]: mỗi tuần có tổng form và chi phí dự kiến theo CPA cũ."]
+			],
+			say: "Kết quả 2×2 trả lời cả hai tuần và cả hai câu hỏi trong một lần. Tuần 2 chi 14,92 (dự kiến) so với 15 thật, một chênh lệch nhỏ nhưng đáng xem lại. Thứ tự quan trọng: BA có kích thước (3×3) và nghĩa khác.",
+			check: ["AB và BA có bằng nhau không?", "Không. AB là 2×2 còn BA là 3×3, kích thước đã khác. Nhân ma trận nói chung không giao hoán."]
+		},
+		en: {
+			story: "You want to do two weeks at once: the two-week forms table multiplied by the matrix (total forms, total spend). Two matrix steps merge into one.",
+			words: [["Matrix product", "Cell (i, j) of the result is row i of the left matrix dotted with column j of the right matrix."], ["Size rule", "(m × n) times (n × p) gives (m × p)."]],
+			problem: "A (2×3) is the two-week forms: row 1 (18, 20, 12), row 2 (17, 21, 12). B (3×2) has column 1 = (1, 1, 1) and column 2 = CPA (1/3, 1/4, 1/3). Compute AB.",
+			steps: [
+				["Sizes", "(2×3)(3×2) gives (2×2): it matches because 3 = 3."],
+				["Cell (1,1)", "Row 1 of A with column 1 of B: 18+20+12 = 50."],
+				["Cell (1,2)", "Row 1 with column 2: 18/3 + 20/4 + 12/3 = 15."],
+				["Cells (2,1) and (2,2)", "Row 2: 17+21+12 = 50; 17/3 + 21/4 + 12/3 ≈ 5.67 + 5.25 + 4 = 14.92."],
+				["Result", "AB = [[50, 15], [50, 14.92]]: each week gets total forms and the spend expected at the old CPA."]
+			],
+			say: "The 2×2 result answers both weeks and both questions in one go. Week 2 expects 14.92 spend against 15 actual, a small gap but worth a look. Order matters: BA has size (3×3) and a different meaning.",
+			check: ["Are AB and BA equal?", "No. AB is 2×2 while BA is 3×3, already different sizes. Matrix multiplication is generally not commutative."]
+		}
+	},
+	"math-det": {
+		vi: {
+			story: "Một thử nghiệm cho thấy form TikTok luôn bằng đúng 2/3 form GDN mỗi tuần. Bạn muốn biết hai kênh này còn mang hai thông tin hay chỉ một. Định thức trả lời.",
+			words: [["Định thức", "Một con số của ma trận vuông cho biết nó phóng to hay thu nhỏ diện tích bao nhiêu lần. Bằng 0 là ép dẹp."], ["Ép dẹp", "Hai hướng độc lập bị dồn về một đường, không còn đảo ngược được."]],
+			problem: "Hai tuần, hai kênh GDN và TikTok. Trường hợp 1: [[18, 12], [27, 18]] (TikTok luôn 2/3 GDN). Trường hợp 2: [[18, 12], [17, 12]]. Tính định thức ad − bc cho từng trường hợp.",
+			steps: [
+				["Công thức", "Với [[a, b], [c, d]], định thức = a×d − b×c."],
+				["Trường hợp 1", "18×18 − 12×27 = 324 − 324 = 0."],
+				["Trường hợp 2", "18×12 − 12×17 = 216 − 204 = 12."],
+				["Đọc kết quả", "0 nghĩa là hai cột tỷ lệ: biết GDN thì biết luôn TikTok, ma trận không đảo ngược được. 12 khác 0 nên hai kênh còn độc lập."]
+			],
+			say: "Định thức bằng 0 là cảnh báo cho bạn biết hai cột chỉ là một thông tin được viết hai lần. Đưa cả hai vào mô hình hồi quy sẽ làm hệ số bất ổn. Ở bài hồi quy sau này bạn sẽ gặp lại đúng vấn đề này dưới tên đa cộng tuyến.",
+			check: ["Nếu định thức bằng 0, hệ phương trình có đúng một nghiệm không?", "Không. Hoặc vô nghiệm hoặc vô số nghiệm, vì không còn đảo ngược ma trận để suy ra nghiệm duy nhất."]
+		},
+		en: {
+			story: "An experiment shows TikTok forms are always exactly 2/3 of GDN's each week. You want to know whether these two channels still carry two pieces of information or just one. The determinant answers.",
+			words: [["Determinant", "A number from a square matrix saying how many times it scales area. Zero means flattened."], ["Flattened", "Two independent directions are squashed onto one line and can no longer be reversed."]],
+			problem: "Two weeks, two channels GDN and TikTok. Case 1: [[18, 12], [27, 18]] (TikTok always 2/3 of GDN). Case 2: [[18, 12], [17, 12]]. Compute the determinant ad − bc for each.",
+			steps: [
+				["Formula", "For [[a, b], [c, d]], determinant = a×d − b×c."],
+				["Case 1", "18×18 − 12×27 = 324 − 324 = 0."],
+				["Case 2", "18×12 − 12×17 = 216 − 204 = 12."],
+				["Read the result", "0 means the two columns are proportional: know GDN and you know TikTok, and the matrix cannot be reversed. 12 is not 0 so the two channels are still independent."]
+			],
+			say: "A determinant of 0 warns you that two columns are one piece of information written twice. Feeding both into a regression makes coefficients unstable. You will meet exactly this problem later in regression under the name multicollinearity.",
+			check: ["If the determinant is 0, does the system of equations have exactly one solution?", "No. Either none or infinitely many, because the matrix can no longer be reversed to deduce a single solution."]
+		}
+	},
+	"math-sys": {
+		vi: {
+			story: "Chị Lan quên giá hai gói. Bạn chỉ có doanh thu của hai ngày ở Quận 1 và số gói bán ra, và phải suy ngược giá. Đó là hệ hai phương trình.",
+			words: [["Hệ phương trình tuyến tính", "Nhiều phương trình cùng lúc, tìm giá trị biến thỏa tất cả."], ["Khử", "Nhân và trừ để mất một biến, còn lại một biến."]],
+			problem: "Ngày A bán 10 gói 60 phút (giá x) và 5 gói 90 phút (giá y), thu 5.500 nghìn. Ngày B bán 8 gói 60 phút và 10 gói 90 phút, thu 7.400 nghìn. Tìm x và y.",
+			steps: [
+				["Viết hệ", "10x + 5y = 5500 và 8x + 10y = 7400."],
+				["Nhân phương trình 1 với 2", "20x + 10y = 11000."],
+				["Trừ phương trình 2", "(20x + 10y) − (8x + 10y) = 11000 − 7400 nên 12x = 3600, x = 300."],
+				["Thế vào phương trình 1", "10 × 300 + 5y = 5500 nên 5y = 2500, y = 500."],
+				["Kiểm tra bằng phương trình 2", "8 × 300 + 10 × 500 = 2400 + 5000 = 7400 ✓."]
+			],
+			say: "Giá gói 60 phút là 300 nghìn, gói 90 phút là 500 nghìn. Hai phương trình cho đúng một điểm giao. Kiểm tra bằng phương trình còn lại là bước không được bỏ, vì tính nhầm một bước vẫn cho một đáp án trông hợp lý.",
+			check: ["Nếu ngày B bán 20 gói 60 phút và 10 gói 90 phút (gấp đôi ngày A) thì hệ có nghiệm duy nhất không?", "Không. Phương trình B là gấp đôi phương trình A, cho cùng thông tin nên không tìm được giá riêng từng gói (định thức bằng 0)."]
+		},
+		en: {
+			story: "Ms. Lan forgot the prices of two packages. You only have revenue for two days at District 1 and packages sold, and must work the prices backwards. That is a system of two equations.",
+			words: [["System of linear equations", "Several equations at once; find values of the unknowns that satisfy all."], ["Elimination", "Multiply and subtract to remove one unknown, leaving one."]],
+			problem: "Day A sold 10 packages of 60 minutes (price x) and 5 of 90 minutes (price y), taking 5,500 thousand. Day B sold 8 of 60 minutes and 10 of 90 minutes, taking 7,400 thousand. Find x and y.",
+			steps: [
+				["Write the system", "10x + 5y = 5500 and 8x + 10y = 7400."],
+				["Multiply equation 1 by 2", "20x + 10y = 11000."],
+				["Subtract equation 2", "(20x + 10y) − (8x + 10y) = 11000 − 7400 so 12x = 3600, x = 300."],
+				["Substitute into equation 1", "10 × 300 + 5y = 5500 so 5y = 2500, y = 500."],
+				["Check with equation 2", "8 × 300 + 10 × 500 = 2400 + 5000 = 7400 ✓."]
+			],
+			say: "The 60-minute package costs 300 thousand, the 90-minute 500 thousand. The two equations give exactly one intersection. Checking with the other equation is a step you must not skip, because one slip still gives a plausible-looking answer.",
+			check: ["If day B sold 20 packages of 60 minutes and 10 of 90 (double day A), is there a unique solution?", "No. Equation B is twice equation A, giving the same information so the individual prices cannot be found (determinant is 0)."]
+		}
+	},
+	"math-ls": {
+		vi: {
+			story: "Thử nghiệm TikTok ba mức ngân sách cho ra ba điểm (3, 10), (4, 12), (5, 13): triệu đồng và form. Ba điểm không nằm trên một đường thẳng, nên hệ vô nghiệm. Bạn chọn đường lệch ít nhất.",
+			words: [["Phần dư", "Chênh lệch giữa điểm thật và điểm trên đường."], ["Bình phương tối thiểu", "Chọn đường làm tổng bình phương phần dư nhỏ nhất."]],
+			problem: "Ba điểm (3, 10), (4, 12), (5, 13). Tìm đường thẳng y = a + bx lệch ít nhất và tính các phần dư.",
+			steps: [
+				["Trung bình", "x̄ = (3+4+5)/3 = 4; ȳ = (10+12+13)/3 = 35/3 ≈ 11,67."],
+				["Độ dốc b", "Σ(x−4)(y−ȳ) = (−1)(−1,67) + 0 + (1)(1,33) = 3; Σ(x−4)² = 2; b = 3/2 = 1,5."],
+				["Hệ số chặn a", "a = ȳ − b×x̄ = 11,67 − 6 = 5,67."],
+				["Dự đoán và phần dư", "x=3: 10,17 (dư −0,17). x=4: 11,67 (dư +0,33). x=5: 13,17 (dư −0,17)."],
+				["Kiểm tra", "Tổng phần dư = −0,17 + 0,33 − 0,17 = 0 ✓; tổng bình phương ≈ 0,03 + 0,11 + 0,03 = 0,17."]
+			],
+			say: "Mỗi triệu thêm cho TikTok cho trung bình 1,5 form thêm. Không đường nào đi qua cả ba điểm, và đường này nhỏ nhất ở nghĩa tổng bình phương lệch. Tổng phần dư luôn bằng 0 là dấu hiệu bạn tính đúng. Đây chính là hồi quy tuyến tính ở C3.",
+			check: ["Nếu bạn dùng tổng phần dư (không bình phương) làm tiêu chí thì có vấn đề gì?", "Phần dư dương và âm triệt tiêu nhau, nên nhiều đường khác nhau đều có tổng 0. Bình phương làm mọi sai lệch cùng dấu và chỉ ra một đường duy nhất."]
+		},
+		en: {
+			story: "A TikTok test at three budget levels gives three points (3, 10), (4, 12), (5, 13): million dong and forms. The three points do not lie on one line, so the system has no solution. You pick the line that misses least.",
+			words: [["Residual", "The difference between a real point and the point on the line."], ["Least squares", "Choose the line that makes the sum of squared residuals smallest."]],
+			problem: "Three points (3, 10), (4, 12), (5, 13). Find the line y = a + bx that misses least and compute the residuals.",
+			steps: [
+				["Means", "x̄ = (3+4+5)/3 = 4; ȳ = (10+12+13)/3 = 35/3 ≈ 11.67."],
+				["Slope b", "Σ(x−4)(y−ȳ) = (−1)(−1.67) + 0 + (1)(1.33) = 3; Σ(x−4)² = 2; b = 3/2 = 1.5."],
+				["Intercept a", "a = ȳ − b×x̄ = 11.67 − 6 = 5.67."],
+				["Predictions and residuals", "x=3: 10.17 (residual −0.17). x=4: 11.67 (+0.33). x=5: 13.17 (−0.17)."],
+				["Check", "Sum of residuals = −0.17 + 0.33 − 0.17 = 0 ✓; sum of squares ≈ 0.03 + 0.11 + 0.03 = 0.17."]
+			],
+			say: "Each extra million for TikTok gives on average 1.5 more forms. No line passes through all three points, and this line is smallest in the sense of total squared miss. A residual sum of exactly 0 is a sign you computed correctly. This is exactly linear regression in C3.",
+			check: ["What goes wrong if you use the sum of residuals (not squared) as the criterion?", "Positive and negative residuals cancel, so many different lines have a sum of 0. Squaring makes every miss the same sign and points to a single line."]
+		}
+	},
+	"math-eig": {
+		vi: {
+			story: "Bạn thấy hai kênh GDN và Meta ảnh hưởng lẫn nhau: tăng một bên kéo bên kia. Bạn tìm hướng mà phép biến đổi chỉ kéo giãn mà không xoay.",
+			words: [["Vectơ riêng", "Hướng không bị xoay khi nhân với ma trận, chỉ bị kéo giãn."], ["Trị riêng", "Hệ số kéo giãn tương ứng."]],
+			problem: "Ma trận A = [[2, 1], [1, 2]] mô tả hai kênh ảnh hưởng lẫn nhau. Thử véctơ (1, 1) và (1, −1), và tìm trị riêng.",
+			steps: [
+				["Nhân A với (1, 1)", "(2×1 + 1×1, 1×1 + 2×1) = (3, 3) = 3 × (1, 1)."],
+				["Đọc", "Cùng hướng với (1, 1), chỉ lớn gấp 3. Vậy (1, 1) là vectơ riêng, trị riêng 3."],
+				["Nhân A với (1, −1)", "(2×1 + 1×(−1), 1×1 + 2×(−1)) = (1, −1) = 1 × (1, −1)."],
+				["Đọc", "(1, −1) cũng là vectơ riêng, trị riêng 1."],
+				["Thử một hướng khác", "A(1, 0) = (2, 1), không cùng hướng với (1, 0): hướng này bị xoay, nên không phải vectơ riêng."]
+			],
+			say: "Hai hướng đặc biệt: cả hai kênh cùng tăng (kéo giãn gấp 3) và hai kênh ngược chiều (giữ nguyên). Mọi hướng khác là sự pha trộn của hai hướng này. Ý tưởng này nằm sau PCA ở khóa sau.",
+			check: ["Nếu trị riêng của một hướng là 0 thì ma trận làm gì với hướng đó?", "Ép nó thành véctơ không, tức là dẹp bỏ hoàn toàn hướng đó (cũng là lúc định thức bằng 0)."]
+		},
+		en: {
+			story: "You notice GDN and Meta influence each other: raising one pulls the other. You look for the direction in which the transformation only stretches and does not rotate.",
+			words: [["Eigenvector", "A direction that is not rotated when multiplied by the matrix, only stretched."], ["Eigenvalue", "The corresponding stretch factor."]],
+			problem: "Matrix A = [[2, 1], [1, 2]] describes two channels influencing each other. Try the vectors (1, 1) and (1, −1), and find the eigenvalues.",
+			steps: [
+				["Multiply A by (1, 1)", "(2×1 + 1×1, 1×1 + 2×1) = (3, 3) = 3 × (1, 1)."],
+				["Read", "Same direction as (1, 1), just 3 times as large. So (1, 1) is an eigenvector with eigenvalue 3."],
+				["Multiply A by (1, −1)", "(2×1 + 1×(−1), 1×1 + 2×(−1)) = (1, −1) = 1 × (1, −1)."],
+				["Read", "(1, −1) is also an eigenvector, eigenvalue 1."],
+				["Try another direction", "A(1, 0) = (2, 1), not the same direction as (1, 0): this direction is rotated, so it is not an eigenvector."]
+			],
+			say: "Two special directions: both channels rising together (stretched 3 times) and the two channels moving opposite (unchanged). Every other direction is a blend of these two. This idea sits behind PCA in a later course.",
+			check: ["If an eigenvalue is 0, what does the matrix do to that direction?", "It crushes it to the zero vector, i.e. removes that direction entirely (which is also when the determinant is 0)."]
+		}
+	},
+	"math-deriv": {
+		vi: {
+			story: "Chị Lan hỏi: «Cứ thêm tiền TikTok thì có thêm form mãi không?» Bạn mô hình hóa form theo ngân sách bằng f(x) = −0,5x² + 5x (x là triệu), khớp với f(4) = 12 hiện tại.",
+			words: [["Đạo hàm", "Độ dốc của đường tại một điểm: thêm một chút đầu vào thì đầu ra đổi bao nhiêu."], ["Tiếp tuyến", "Đường thẳng chạm đường cong tại đúng một điểm với cùng độ dốc."]],
+			problem: "f(x) = −0,5x² + 5x. Tính f(4) rồi đạo hàm f'(x) = −x + 5 tại x = 3, 4, 5 và đọc ý nghĩa.",
+			steps: [
+				["Giá trị tại 4", "f(4) = −0,5×16 + 20 = 12 form, đúng với thực tế."],
+				["Độ dốc tại 3", "f'(3) = −3 + 5 = 2: thêm 1 triệu cho thêm khoảng 2 form."],
+				["Độ dốc tại 4", "f'(4) = −4 + 5 = 1: thêm 1 triệu chỉ thêm khoảng 1 form."],
+				["Độ dốc tại 5", "f'(5) = −5 + 5 = 0: đã đến chỗ phẳng, thêm tiền gần như không thêm form."],
+				["Kiểm tra bằng số thật", "f(5) − f(4) = 12,5 − 12 = 0,5, nhỏ hơn 1, hợp lý vì độ dốc đang giảm dần."]
+			],
+			say: "Độ dốc không cố định: càng chi nhiều thì mỗi triệu thêm càng ít hiệu quả (2, rồi 1, rồi 0). Đây là quy luật lợi ích giảm dần. Một con số trung bình (12 form chia 4 triệu = 3) không cho biết điều này, đạo hàm thì có.",
+			check: ["Đạo hàm của f tại x = 6 là bao nhiêu và nghĩa là gì?", "f'(6) = −6 + 5 = −1: thêm tiền ở mức này làm form giảm đi (khoảng 1 mỗi triệu). Vượt quá điểm bão hòa thì chi thêm là phí."]
+		},
+		en: {
+			story: "Ms. Lan asks: “Does adding TikTok money keep adding forms forever?” You model forms against budget as f(x) = −0.5x² + 5x (x in million), matching today's f(4) = 12.",
+			words: [["Derivative", "The slope of the curve at a point: if you add a little input, how much does the output change."], ["Tangent", "A straight line touching the curve at exactly one point with the same slope."]],
+			problem: "f(x) = −0.5x² + 5x. Compute f(4), then the derivative f'(x) = −x + 5 at x = 3, 4, 5 and read the meaning.",
+			steps: [
+				["Value at 4", "f(4) = −0.5×16 + 20 = 12 forms, matching reality."],
+				["Slope at 3", "f'(3) = −3 + 5 = 2: one more million adds about 2 forms."],
+				["Slope at 4", "f'(4) = −4 + 5 = 1: one more million adds only about 1 form."],
+				["Slope at 5", "f'(5) = −5 + 5 = 0: a flat spot, more money adds almost no forms."],
+				["Check against real numbers", "f(5) − f(4) = 12.5 − 12 = 0.5, less than 1, reasonable because the slope is shrinking."]
+			],
+			say: "The slope is not fixed: the more you spend, the less each extra million does (2, then 1, then 0). This is the law of diminishing returns. An average (12 forms divided by 4 million = 3) does not reveal this, the derivative does.",
+			check: ["What is the derivative of f at x = 6 and what does it mean?", "f'(6) = −6 + 5 = −1: adding money at this level reduces forms (about 1 per million). Beyond the saturation point, extra spending is waste."]
+		}
+	},
+	"math-crit": {
+		vi: {
+			story: "Từ hàm f(x) = −0,5x² + 5x, độ dốc bằng 0 ở x = 5. Bạn phải xác định đó là đỉnh (ngân sách tối ưu) chứ không phải đáy hay một chỗ phẳng giả.",
+			words: [["Điểm tới hạn", "Chỗ đạo hàm bằng 0."], ["Đạo hàm bậc hai", "Độ dốc của độ dốc. Âm nghĩa là cong xuống (đỉnh), dương nghĩa là cong lên (đáy)."]],
+			problem: "Tìm điểm tới hạn của f(x) = −0,5x² + 5x và phân loại. Sau đó so với g(x) = x³ tại x = 0.",
+			steps: [
+				["Đặt đạo hàm bằng 0", "f'(x) = −x + 5 = 0 nên x = 5."],
+				["Đạo hàm bậc hai", "f''(x) = −1, luôn âm."],
+				["Phân loại", "Âm nghĩa là cong xuống, nên x = 5 là đỉnh. f(5) = −12,5 + 25 = 12,5 form."],
+				["Thử g(x) = x³", "g'(x) = 3x² = 0 tại x = 0, nhưng g(−1) = −1 và g(1) = 1: hai bên khác phía."],
+				["Đọc", "x = 0 là điểm tới hạn nhưng không phải đỉnh hay đáy. Độ dốc bằng 0 chưa đủ để kết luận."]
+			],
+			say: "Với hàm form, ngân sách TikTok tối ưu là 5 triệu, cho tối đa 12,5 form. Chi hơn 5 triệu không thêm form nào. Và phải kiểm tra đạo hàm bậc hai: x³ cho thấy độ dốc 0 có thể là chỗ phẳng chứ không phải đỉnh.",
+			check: ["Nếu f''(x) = +2 tại một điểm tới hạn, đó là đỉnh hay đáy?", "Đáy (cực tiểu): dương nghĩa là cong lên. Ví dụ hàm chi phí đạt nhỏ nhất ở điểm đó."]
+		},
+		en: {
+			story: "From f(x) = −0.5x² + 5x the slope is 0 at x = 5. You must decide whether that is a peak (the optimal budget) rather than a trough or a false flat spot.",
+			words: [["Critical point", "A place where the derivative is 0."], ["Second derivative", "The slope of the slope. Negative means curving down (peak), positive means curving up (trough)."]],
+			problem: "Find the critical point of f(x) = −0.5x² + 5x and classify it. Then compare with g(x) = x³ at x = 0.",
+			steps: [
+				["Set the derivative to 0", "f'(x) = −x + 5 = 0 so x = 5."],
+				["Second derivative", "f''(x) = −1, always negative."],
+				["Classify", "Negative means curving down, so x = 5 is a peak. f(5) = −12.5 + 25 = 12.5 forms."],
+				["Try g(x) = x³", "g'(x) = 3x² = 0 at x = 0, but g(−1) = −1 and g(1) = 1: the two sides differ."],
+				["Read", "x = 0 is a critical point but not a peak or trough. A slope of 0 is not enough to conclude."]
+			],
+			say: "For the forms function, the optimal TikTok budget is 5 million, giving at most 12.5 forms. Spending beyond 5 million adds no forms. And you must check the second derivative: x³ shows a slope of 0 can be a flat spot, not a peak.",
+			check: ["If f''(x) = +2 at a critical point, is it a peak or a trough?", "A trough (minimum): positive means curving up. For example a cost function is smallest at that point."]
+		}
+	},
+	"math-part": {
+		vi: {
+			story: "Form TikTok phụ thuộc vào hai thứ: số click c và tỷ lệ form r (theo %). Sau khi sửa trang đích, bạn muốn biết cái nào đáng tăng hơn.",
+			words: [["Đạo hàm riêng", "Đổi một biến, giữ nguyên các biến còn lại, xem đầu ra đổi bao nhiêu."]],
+			problem: "F(c, r) = c × r / 100, với c = 800 click và r = 1,5 (%), cho F = 12 form. Tính độ nhạy của F theo c và theo r.",
+			steps: [
+				["Kiểm tra giá trị", "F(800, 1,5) = 800 × 1,5 / 100 = 12 ✓."],
+				["Đạo hàm riêng theo c (giữ r)", "∂F/∂c = r/100 = 0,015: mỗi click thêm cho 0,015 form."],
+				["Đạo hàm riêng theo r (giữ c)", "∂F/∂r = c/100 = 8: mỗi điểm phần trăm thêm cho 8 form."],
+				["Kiểm tra bằng số", "r từ 1,5 lên 2,5: F = 800 × 2,5 / 100 = 20, tăng 8 ✓. c từ 800 lên 900: F = 13,5, tăng 1,5, bằng 100 × 0,015 ✓."]
+			],
+			say: "Thêm 100 click chỉ thêm 1,5 form, còn thêm 1 điểm phần trăm cho thêm 8 form. Điều này nói rằng sửa trang đích (tăng r) đáng giá hơn mua thêm click, trong khoảng 800 click này. Mỗi đạo hàm riêng chỉ đúng khi biến còn lại đứng yên.",
+			check: ["Nếu c tăng gấp đôi lên 1600 thì ∂F/∂r đổi thế nào?", "∂F/∂r = c/100 = 16, gấp đôi. Giá trị của việc cải thiện tỷ lệ form tăng khi lưu lượng lớn hơn."]
+		},
+		en: {
+			story: "TikTok's forms depend on two things: clicks c and the form rate r (in %). After fixing the landing page, you want to know which is more worth raising.",
+			words: [["Partial derivative", "Change one variable, hold the others, and see how much the output changes."]],
+			problem: "F(c, r) = c × r / 100, with c = 800 clicks and r = 1.5 (%), giving F = 12 forms. Compute the sensitivity of F to c and to r.",
+			steps: [
+				["Check the value", "F(800, 1.5) = 800 × 1.5 / 100 = 12 ✓."],
+				["Partial derivative in c (hold r)", "∂F/∂c = r/100 = 0.015: each extra click gives 0.015 forms."],
+				["Partial derivative in r (hold c)", "∂F/∂r = c/100 = 8: each extra percentage point gives 8 forms."],
+				["Check with numbers", "r from 1.5 to 2.5: F = 800 × 2.5 / 100 = 20, up 8 ✓. c from 800 to 900: F = 13.5, up 1.5, equal to 100 × 0.015 ✓."]
+			],
+			say: "Adding 100 clicks adds only 1.5 forms, while adding 1 percentage point adds 8. This says fixing the landing page (raising r) is worth more than buying clicks, within this 800-click range. Each partial derivative is only right while the other variable stands still.",
+			check: ["If c doubles to 1600, how does ∂F/∂r change?", "∂F/∂r = c/100 = 16, doubled. The value of improving the form rate rises with more traffic."]
+		}
+	},
+	"math-grad": {
+		vi: {
+			story: "Có hai nút để vặn: tăng click hoặc tăng tỷ lệ form. Gradient gom hai đạo hàm riêng vào một véctơ để chỉ hướng tăng nhanh nhất.",
+			words: [["Gradient", "Véctơ các đạo hàm riêng. Chỉ hướng làm hàm tăng nhanh nhất."]],
+			problem: "F(c, r) = c × r / 100 tại (c, r) = (800, 1,5). Tính gradient và đọc hướng.",
+			steps: [
+				["Gom đạo hàm riêng", "∇F = (∂F/∂c, ∂F/∂r) = (0,015; 8)."],
+				["Đọc", "Thành phần theo r (8) lớn hơn nhiều so với theo c (0,015)."],
+				["Bước nhỏ theo gradient", "Đi một bước (Δc, Δr) = (0,015; 8) × 0,1 = (0,0015; 0,8), F tăng xấp xỉ 0,015×0,0015 + 8×0,8 ≈ 6,4."],
+				["Cẩn thận về đơn vị", "c đo bằng click, r bằng phần trăm; so hai thành phần chỉ có nghĩa khi hiểu đơn vị."]
+			],
+			say: "Gradient nói «vặn nút r thì F tăng nhanh nhất» trong đơn vị đang dùng. Đây là hướng mà gradient descent sẽ đi theo ngược lại để giảm sai số trong C3. Hiểu nó như la bàn chỉ lên dốc, đi ngược là xuống dốc.",
+			check: ["Nếu muốn giảm F nhanh nhất, đi theo hướng nào?", "Hướng ngược gradient: −(0,015; 8). Đây chính là ý của gradient descent."]
+		},
+		en: {
+			story: "There are two knobs to turn: more clicks or a higher form rate. The gradient gathers the two partial derivatives into one vector that points to the fastest rise.",
+			words: [["Gradient", "The vector of partial derivatives. It points in the direction in which the function rises fastest."]],
+			problem: "F(c, r) = c × r / 100 at (c, r) = (800, 1.5). Compute the gradient and read the direction.",
+			steps: [
+				["Gather partial derivatives", "∇F = (∂F/∂c, ∂F/∂r) = (0.015; 8)."],
+				["Read", "The r component (8) is far larger than the c component (0.015)."],
+				["A small step along the gradient", "Take a step (Δc, Δr) = (0.015; 8) × 0.1 = (0.0015; 0.8); F rises by about 0.015×0.0015 + 8×0.8 ≈ 6.4."],
+				["Mind the units", "c is in clicks, r in percent; comparing the two components only makes sense once you understand the units."]
+			],
+			say: "The gradient says “turn the r knob and F rises fastest” in the units in use. This is the direction gradient descent follows in reverse to reduce error in C3. Think of it as a compass pointing uphill; the opposite is downhill.",
+			check: ["To lower F fastest, which direction do you go?", "Opposite the gradient: −(0.015; 8). That is exactly the idea of gradient descent."]
+		}
+	},
+	"math-jac": {
+		vi: {
+			story: "Bây giờ có hai kết quả cùng lúc phụ thuộc vào hai nút: số form F và chi phí S (nghìn đồng, với 5 nghìn mỗi click). Đạo hàm của chúng gom lại thành một bảng.",
+			words: [["Jacobian", "Ma trận đạo hàm riêng của nhiều đầu ra theo nhiều đầu vào: mỗi hàng là gradient của một đầu ra."]],
+			problem: "F = c × r / 100 và S = 5c (chi phí, nghìn đồng), theo (c, r). Viết Jacobian tại (800, 1,5).",
+			steps: [
+				["Hàng cho F", "(∂F/∂c, ∂F/∂r) = (r/100, c/100) = (0,015; 8)."],
+				["Hàng cho S", "(∂S/∂c, ∂S/∂r) = (5, 0), vì chi phí không phụ thuộc r."],
+				["Gom thành ma trận", "J = [[0,015; 8], [5; 0]] (hai hàng, hai cột)."],
+				["Dùng J để dự báo", "c +100 và r +0,5 cho F ≈ 0,015×100 + 8×0,5 = 5,5 và S ≈ 5×100 + 0 = 500."]
+			],
+			say: "Một bảng trả lời cùng lúc hai câu: thêm 100 click và nâng r thêm 0,5 điểm sẽ thêm khoảng 5,5 form và tốn thêm 500 nghìn. Khi hàm có nhiều đầu ra (như mạng nơ-ron), Jacobian là đạo hàm của cả hệ.",
+			check: ["Vì sao ô (S, r) bằng 0?", "Vì chi phí S = 5c chỉ phụ thuộc số click, không phụ thuộc tỷ lệ form r. Đạo hàm theo r là 0."]
+		},
+		en: {
+			story: "Now two results depend on the two knobs at once: forms F and cost S (thousand dong, at 5 thousand per click). Their derivatives gather into one table.",
+			words: [["Jacobian", "The matrix of partial derivatives of several outputs with respect to several inputs: each row is one output's gradient."]],
+			problem: "F = c × r / 100 and S = 5c (cost, thousand dong), in (c, r). Write the Jacobian at (800, 1.5).",
+			steps: [
+				["Row for F", "(∂F/∂c, ∂F/∂r) = (r/100, c/100) = (0.015; 8)."],
+				["Row for S", "(∂S/∂c, ∂S/∂r) = (5, 0), because cost does not depend on r."],
+				["Gather into a matrix", "J = [[0.015; 8], [5; 0]] (two rows, two columns)."],
+				["Use J to forecast", "c +100 and r +0.5 gives F ≈ 0.015×100 + 8×0.5 = 5.5 and S ≈ 5×100 + 0 = 500."]
+			],
+			say: "One table answers two questions at once: adding 100 clicks and raising r by 0.5 points adds about 5.5 forms and costs 500 thousand more. When a function has many outputs (like a neural network), the Jacobian is the derivative of the whole system.",
+			check: ["Why is the (S, r) cell 0?", "Because cost S = 5c depends only on clicks, not on the form rate r. The derivative with respect to r is 0."]
+		}
+	},
+	"math-hess": {
+		vi: {
+			story: "Ở bài bình phương tối thiểu, hàm sai lệch J(a, b) phụ thuộc hai tham số. Hessian cho biết điểm tìm được là đáy thật hay yên ngựa.",
+			words: [["Hessian", "Ma trận các đạo hàm bậc hai. Cho biết đường cong hướng nào cong lên hay xuống."], ["Yên ngựa", "Điểm cong lên theo một hướng và cong xuống theo hướng khác."]],
+			problem: "Với ba điểm x = 3, 4, 5, hàm sai lệch J(a, b) = Σ(y − a − bx)² có Hessian [[2n, 2Σx], [2Σx, 2Σx²]]. Tính Hessian rồi kiểm tra có phải đáy.",
+			steps: [
+				["Các tổng", "n = 3; Σx = 12; Σx² = 9 + 16 + 25 = 50."],
+				["Hessian", "[[6, 24], [24, 100]]."],
+				["Định thức", "6×100 − 24×24 = 600 − 576 = 24, dương."],
+				["Dấu của ô đầu", "6 > 0."],
+				["Kết luận", "Định thức dương và ô đầu dương: cong lên theo mọi hướng, nên điểm tìm được là đáy chứ không phải yên ngựa."]
+			],
+			say: "Với bình phương tối thiểu, Hessian luôn cho đáy nên đường tìm được là tốt nhất thật. Nếu định thức âm thì đó là yên ngựa: một hướng đi xuống tiếp, nghĩa là chưa ở đáy. Phần này giải thích vì sao gradient descent ở C3 dùng được với hàm sai số bình phương.",
+			check: ["Hessian [[2, 0], [0, −2]] là đáy, đỉnh hay yên ngựa?", "Yên ngựa: một hướng cong lên (+2), một hướng cong xuống (−2). Định thức −4 là âm."]
+		},
+		en: {
+			story: "In the least-squares lesson, the error function J(a, b) depends on two parameters. The Hessian tells you whether the point you found is a real trough or a saddle.",
+			words: [["Hessian", "The matrix of second derivatives. It says in which directions the surface curves up or down."], ["Saddle", "A point that curves up in one direction and down in another."]],
+			problem: "With three points x = 3, 4, 5 the error function J(a, b) = Σ(y − a − bx)² has Hessian [[2n, 2Σx], [2Σx, 2Σx²]]. Compute the Hessian and check whether it is a trough.",
+			steps: [
+				["The sums", "n = 3; Σx = 12; Σx² = 9 + 16 + 25 = 50."],
+				["Hessian", "[[6, 24], [24, 100]]."],
+				["Determinant", "6×100 − 24×24 = 600 − 576 = 24, positive."],
+				["Sign of the first entry", "6 > 0."],
+				["Conclusion", "Positive determinant and positive first entry: it curves up in every direction, so the found point is a trough, not a saddle."]
+			],
+			say: "With least squares the Hessian always gives a trough, so the line found really is the best. If the determinant were negative it would be a saddle: one direction still goes downhill, meaning you are not at the bottom. This explains why gradient descent in C3 works for the squared-error function.",
+			check: ["Is the Hessian [[2, 0], [0, −2]] a trough, peak or saddle?", "A saddle: one direction curves up (+2), one curves down (−2). The determinant −4 is negative."]
+		}
+	},
+	"math-taylor": {
+		vi: {
+			story: "Chị Lan hỏi: «Em có dùng được độ dốc để ước lượng cho 4,5 triệu không?» Bạn dùng xấp xỉ tuyến tính quanh x = 4 và kiểm tra nó sai bao nhiêu.",
+			words: [["Xấp xỉ tuyến tính", "Gần một điểm, thay đường cong bằng tiếp tuyến: f(x) ≈ f(a) + f'(a)(x − a)."], ["Sai số xấp xỉ", "Khoảng cách giữa giá trị thật và giá trị ước lượng."]],
+			problem: "f(x) = −0,5x² + 5x quanh a = 4, với f(4) = 12 và f'(4) = 1. Ước lượng f(4,5) và f(6) rồi so với giá trị thật.",
+			steps: [
+				["Công thức", "f(x) ≈ 12 + 1 × (x − 4)."],
+				["Ước lượng f(4,5)", "12 + 0,5 = 12,5. Giá trị thật: −0,5×20,25 + 22,5 = 12,375. Sai 0,125."],
+				["Ước lượng f(6)", "12 + 2 = 14. Giá trị thật: −18 + 30 = 12. Sai 2."],
+				["So sánh", "Sai số 0,125 so với 2: xa 4 càng nhiều thì tiếp tuyến càng lệch."]
+			],
+			say: "Dùng độ dốc để ước lượng gần điểm đang đứng thì tốt (sai 0,125), còn kéo xa 2 triệu thì lệch hẳn (đoán 14 form nhưng thật là 12). Quy tắc nhớ: xấp xỉ tuyến tính chỉ tin được gần điểm gốc.",
+			check: ["Với f(4) = 12 và f'(4) = 1, ước lượng tuyến tính của f(3,8) là bao nhiêu?", "12 + 1 × (3,8 − 4) = 11,8. Giá trị thật là 11,78, rất sát vì chỉ cách 0,2."]
+		},
+		en: {
+			story: "Ms. Lan asks: “Can you use the slope to estimate for 4.5 million?” You use a linear approximation around x = 4 and check how wrong it is.",
+			words: [["Linear approximation", "Near a point, replace the curve with its tangent: f(x) ≈ f(a) + f'(a)(x − a)."], ["Approximation error", "The distance between the real value and the estimate."]],
+			problem: "f(x) = −0.5x² + 5x around a = 4, with f(4) = 12 and f'(4) = 1. Estimate f(4.5) and f(6) and compare with the real values.",
+			steps: [
+				["Formula", "f(x) ≈ 12 + 1 × (x − 4)."],
+				["Estimate f(4.5)", "12 + 0.5 = 12.5. Real value: −0.5×20.25 + 22.5 = 12.375. Error 0.125."],
+				["Estimate f(6)", "12 + 2 = 14. Real value: −18 + 30 = 12. Error 2."],
+				["Compare", "Error 0.125 versus 2: the farther from 4, the more the tangent drifts."]
+			],
+			say: "Using the slope to estimate near where you stand works well (error 0.125), but stretching 2 million away is clearly off (guess 14 forms but the truth is 12). Rule to remember: a linear approximation is only trustworthy near its base point.",
+			check: ["With f(4) = 12 and f'(4) = 1, what is the linear estimate of f(3.8)?", "12 + 1 × (3.8 − 4) = 11.8. The real value is 11.78, very close because it is only 0.2 away."]
+		}
+	},
+	"math-p": {
+		vi: {
+			story: "Chị Lan hỏi: «Khách vào website có bao nhiêu phần đặt hẹn?» Bạn bắt đầu bằng định nghĩa: xác suất là một phần của cả tập đang xét.",
+			words: [["Xác suất", "Phần của cả tập đang xét: số trường hợp thuận lợi chia số trường hợp có thể."], ["Không gian mẫu", "Toàn bộ tập đang xét, mẫu số của xác suất."]],
+			problem: "Mỗi tuần có 4.500 lượt truy cập và 50 form. Tính xác suất một lượt truy cập bất kỳ gửi form. Rồi tính xác suất một hội viên sắp rời nếu 50 trong 1000 hội viên sắp rời.",
+			steps: [
+				["Xác định tập đang xét", "4.500 lượt truy cập là cả tập; 50 là phần thuận lợi."],
+				["Xác suất gửi form", "50 ÷ 4500 ≈ 0,0111, tức khoảng 1,1%."],
+				["Xác suất hội viên sắp rời", "Tập đang xét là 1000 hội viên: 50 ÷ 1000 = 0,05, tức 5%."],
+				["Kiểm tra", "Xác suất luôn nằm trong khoảng từ 0 đến 1. 0,011 và 0,05 đều hợp lệ."]
+			],
+			say: "Hai xác suất dùng hai tập khác nhau: 1,1% tính trên lượt truy cập, 5% tính trên hội viên. Đổi tập đang xét thì xác suất đổi. Câu «bao nhiêu phần trăm» luôn phải hỏi lại «phần trăm của cái gì».",
+			check: ["Nếu chỉ tính 3.000 lượt truy cập có click vào form (thay vì 4.500), xác suất gửi form là bao nhiêu?", "50 ÷ 3000 ≈ 1,7%. Mẫu số đổi nên xác suất đổi, dù tử số vẫn là 50."]
+		},
+		en: {
+			story: "Ms. Lan asks: “What share of website visitors book?” You start from the definition: probability is a part of the whole set under consideration.",
+			words: [["Probability", "A part of the whole set under consideration: favourable cases divided by possible cases."], ["Sample space", "The whole set under consideration, the denominator of the probability."]],
+			problem: "Each week has 4,500 visits and 50 forms. Compute the probability that a random visit submits a form. Then the probability a member is about to leave if 50 of 1,000 members are.",
+			steps: [
+				["Identify the set", "4,500 visits is the whole set; 50 is the favourable part."],
+				["Probability of submitting", "50 ÷ 4500 ≈ 0.0111, about 1.1%."],
+				["Probability a member is about to leave", "The set is 1,000 members: 50 ÷ 1000 = 0.05, i.e. 5%."],
+				["Check", "A probability always lies between 0 and 1. 0.011 and 0.05 are both valid."]
+			],
+			say: "The two probabilities use two different sets: 1.1% is over visits, 5% over members. Change the set and the probability changes. Whenever someone says “what percent”, always ask “percent of what”.",
+			check: ["If you count only the 3,000 visits that clicked into the form (instead of 4,500), what is the submit probability?", "50 ÷ 3000 ≈ 1.7%. The denominator changed so the probability changed, though the numerator is still 50."]
+		}
+	},
+	"math-or": {
+		vi: {
+			story: "Chị Lan muốn gửi ưu đãi cho hội viên đã dùng gói 60 phút hoặc ghế massage. Đếm cộng hai nhóm sẽ đếm đôi những người dùng cả hai.",
+			words: [["Quy tắc cộng", "P(A hoặc B) = P(A) + P(B) − P(A và B)."], ["Phần chồng", "Những người thuộc cả hai nhóm, bị đếm hai lần nếu chỉ cộng."]],
+			problem: "Trong 1000 hội viên: 400 dùng gói 60 phút, 250 dùng ghế massage, 100 dùng cả hai. Có bao nhiêu hội viên dùng ít nhất một trong hai?",
+			steps: [
+				["Xác suất mỗi nhóm", "P(60 phút) = 400/1000 = 0,40; P(ghế) = 250/1000 = 0,25."],
+				["Phần chồng", "P(cả hai) = 100/1000 = 0,10."],
+				["Cộng rồi trừ phần chồng", "0,40 + 0,25 − 0,10 = 0,55."],
+				["Đổi ra người", "0,55 × 1000 = 550 hội viên."],
+				["Kiểm tra bằng đếm trực tiếp", "Chỉ 60 phút: 300; chỉ ghế: 150; cả hai: 100. 300 + 150 + 100 = 550 ✓."]
+			],
+			say: "Nếu quên trừ 100, bạn đếm ra 650 và gửi ưu đãi cho 100 người nhận đôi. Cộng hai nhóm mà không trừ phần chồng là lỗi phổ biến nhất của quy tắc này, và cách kiểm tra là đếm trực tiếp từng phần.",
+			check: ["Nếu hai nhóm không có ai chung, P(A hoặc B) là gì?", "P(A) + P(B), vì phần chồng bằng 0. Hai nhóm như vậy gọi là rời nhau."]
+		},
+		en: {
+			story: "Ms. Lan wants to send an offer to members who used the 60-minute package or the massage chair. Adding two groups double-counts those who used both.",
+			words: [["Addition rule", "P(A or B) = P(A) + P(B) − P(A and B)."], ["Overlap", "People in both groups, counted twice if you just add."]],
+			problem: "Among 1,000 members: 400 used the 60-minute package, 250 used the massage chair, 100 used both. How many members used at least one of the two?",
+			steps: [
+				["Probability of each group", "P(60 min) = 400/1000 = 0.40; P(chair) = 250/1000 = 0.25."],
+				["The overlap", "P(both) = 100/1000 = 0.10."],
+				["Add, then subtract the overlap", "0.40 + 0.25 − 0.10 = 0.55."],
+				["Convert to people", "0.55 × 1000 = 550 members."],
+				["Check by direct count", "Only 60 min: 300; only chair: 150; both: 100. 300 + 150 + 100 = 550 ✓."]
+			],
+			say: "If you forget to subtract 100, you count 650 and send the offer to 100 people twice. Adding two groups without subtracting the overlap is the most common error of this rule, and the check is to count each piece directly.",
+			check: ["If the two groups have nobody in common, what is P(A or B)?", "P(A) + P(B), because the overlap is 0. Such groups are called disjoint."]
+		}
+	},
+	"math-and": {
+		vi: {
+			story: "Bạn quay lại công cụ cảnh báo hội viên sắp rời: 5% hội viên sắp rời và công cụ bắt đúng 90% số đó. Cả hai điều cùng xảy ra với bao nhiêu hội viên?",
+			words: [["Quy tắc nhân", "P(A và B) = P(A) × P(B | A): xác suất A, rồi xác suất B khi A đã xảy ra."], ["Xác suất có điều kiện", "Xác suất B khi biết A đã xảy ra."]],
+			problem: "Một hội viên bất kỳ có 5% sắp rời. Nếu họ sắp rời, công cụ gắn cờ đúng 90%. Tính xác suất một hội viên bất kỳ vừa sắp rời vừa bị gắn cờ, và đổi ra số người trong 1000.",
+			steps: [
+				["Xác suất sắp rời", "P(rời) = 0,05."],
+				["Xác suất gắn cờ khi sắp rời", "P(cờ | rời) = 0,90."],
+				["Nhân", "0,05 × 0,90 = 0,045."],
+				["Đổi ra người", "0,045 × 1000 = 45 hội viên."],
+				["Kiểm tra bằng đếm", "50 người sắp rời, 90% của 50 = 45 ✓."]
+			],
+			say: "45 người là «sắp rời và bị gắn cờ». Đây chính là 45 cảnh báo đúng bạn sẽ dùng khi tính Bayes ở C2. Phép nhân chỉ dùng được vì xác suất thứ hai được tính trong nhóm đã sắp rời, không phải trong cả 1000 người.",
+			check: ["Nếu bạn nhân 0,05 × 0,08 (tỷ lệ báo nhầm) thì được con số nào?", "0,004, tức 4 người, nhưng sai nhóm: 8% báo nhầm áp dụng cho người ở lại (95%), nên số báo nhầm đúng là 0,95 × 0,08 = 0,076, tức 76 người."]
+		},
+		en: {
+			story: "You return to the member-departure alert tool: 5% of members are about to leave and the tool catches 90% of them. For how many members do both things happen?",
+			words: [["Multiplication rule", "P(A and B) = P(A) × P(B | A): the probability of A, then the probability of B once A has happened."], ["Conditional probability", "The probability of B knowing A has happened."]],
+			problem: "A random member has a 5% chance of being about to leave. If they are, the tool flags them 90% of the time. Compute the probability that a random member is both about to leave and flagged, and convert to people out of 1,000.",
+			steps: [
+				["Probability of leaving", "P(leave) = 0.05."],
+				["Probability of flag given leaving", "P(flag | leave) = 0.90."],
+				["Multiply", "0.05 × 0.90 = 0.045."],
+				["Convert to people", "0.045 × 1000 = 45 members."],
+				["Check by counting", "50 people about to leave, 90% of 50 = 45 ✓."]
+			],
+			say: "45 people are “about to leave and flagged”. These are exactly the 45 correct alerts you will use in the Bayes calculation in C2. Multiplying only works because the second probability is computed inside the group already leaving, not in all 1,000 people.",
+			check: ["If you multiply 0.05 × 0.08 (the false-alarm rate), what number do you get?", "0.004, i.e. 4 people, but the wrong group: the 8% false alarm applies to those who stay (95%), so the correct false-alarm count is 0.95 × 0.08 = 0.076, i.e. 76 people."]
+		}
+	},
+	"math-perm": {
+		vi: {
+			story: "Thảo muốn xếp thứ tự ưu tiên ngân sách cho ba kênh trong tháng. Thứ tự khác là một phương án khác. Bạn đếm có bao nhiêu phương án.",
+			words: [["Hoán vị", "Một cách xếp có thứ tự. Đổi chỗ là cách khác."], ["Giai thừa n!", "n × (n−1) × … × 1, số cách xếp n vật."]],
+			problem: "Xếp ba kênh GDN, Meta, TikTok theo thứ tự ưu tiên. Có bao nhiêu cách? Và nếu chỉ chọn hai kênh đứng đầu theo thứ tự (hạng 1, hạng 2)?",
+			steps: [
+				["Vị trí đầu", "Có 3 lựa chọn."],
+				["Vị trí hai", "Còn 2 lựa chọn."],
+				["Vị trí ba", "Còn 1."],
+				["Nhân lại", "3 × 2 × 1 = 3! = 6 cách xếp đủ ba kênh."],
+				["Chọn hai kênh đứng đầu", "3 × 2 = 6 cách (hạng 1 có 3 lựa chọn, hạng 2 còn 2)."]
+			],
+			say: "GDN trước Meta khác Meta trước GDN, nên mỗi thứ tự là một phương án, tổng 6. Số cách tăng rất nhanh: với 6 kênh là 6! = 720. Hoán vị dùng khi thứ tự có nghĩa, ví dụ bảng xếp hạng.",
+			check: ["Có bao nhiêu cách xếp 4 kênh theo thứ tự?", "4! = 4 × 3 × 2 × 1 = 24 cách."]
+		},
+		en: {
+			story: "Thao wants to rank the three channels by budget priority for the month. A different order is a different plan. You count how many plans there are.",
+			words: [["Permutation", "An ordered arrangement. Swapping places gives a different one."], ["Factorial n!", "n × (n−1) × … × 1, the number of ways to arrange n things."]],
+			problem: "Rank the three channels GDN, Meta, TikTok by priority. How many ways? And if you only pick the top two in order (rank 1, rank 2)?",
+			steps: [
+				["First position", "3 choices."],
+				["Second position", "2 choices left."],
+				["Third position", "1 left."],
+				["Multiply", "3 × 2 × 1 = 3! = 6 ways to arrange all three channels."],
+				["Pick the top two", "3 × 2 = 6 ways (rank 1 has 3 choices, rank 2 has 2 left)."]
+			],
+			say: "GDN before Meta differs from Meta before GDN, so each order is a plan, 6 in total. The count grows very fast: with 6 channels it is 6! = 720. Use permutations when order carries meaning, for example a ranking.",
+			check: ["How many ways to order 4 channels?", "4! = 4 × 3 × 2 × 1 = 24 ways."]
+		}
+	},
+	"math-comb": {
+		vi: {
+			story: "Thảo muốn chạy thử nghiệm A/B với hai trong ba kênh, thứ tự không quan trọng. Và chị Lan muốn khảo sát 3 trong 10 hội viên. Bạn đếm số cách chọn.",
+			words: [["Tổ hợp", "Chọn k phần tử từ n mà không quan tâm thứ tự."], ["C(n, k)", "n! chia cho k! và (n−k)!."]],
+			problem: "Chọn 2 kênh từ 3 để thử nghiệm. Rồi chọn 3 hội viên từ 10 để khảo sát.",
+			steps: [
+				["Đếm theo hoán vị", "Chọn 2 kênh từ 3 có thứ tự: 3 × 2 = 6 cách."],
+				["Bỏ thứ tự", "Mỗi cặp bị đếm 2! = 2 lần (GDN-Meta và Meta-GDN là một cặp). 6 ÷ 2 = 3 cách."],
+				["Liệt kê kiểm tra", "{GDN, Meta}, {GDN, TikTok}, {Meta, TikTok}: đúng 3."],
+				["Chọn 3 từ 10", "C(10, 3) = 10×9×8 ÷ (3×2×1) = 720 ÷ 6 = 120 cách."]
+			],
+			say: "Tổ hợp là hoán vị chia cho số cách xếp thứ tự bên trong nhóm. Với 3 từ 10: có 720 cách xếp thứ tự nhưng chỉ 120 nhóm khác nhau vì mỗi nhóm bị đếm 6 lần. Dùng tổ hợp khi chỉ quan tâm ai có mặt, không quan tâm thứ tự.",
+			check: ["C(3, 2) và C(3, 1) bằng nhau không, vì sao?", "Cùng bằng 3: chọn 2 kênh để giữ cũng là chọn 1 kênh để bỏ. C(n, k) = C(n, n−k)."]
+		},
+		en: {
+			story: "Thao wants to run an A/B test with two of the three channels, order irrelevant. And Ms. Lan wants to survey 3 of 10 members. You count the ways to choose.",
+			words: [["Combination", "Choosing k items from n without caring about order."], ["C(n, k)", "n! divided by k! and (n−k)!."]],
+			problem: "Choose 2 channels from 3 for a test. Then choose 3 members from 10 for a survey.",
+			steps: [
+				["Count by permutations", "Choosing 2 channels from 3 with order: 3 × 2 = 6 ways."],
+				["Drop the order", "Each pair is counted 2! = 2 times (GDN-Meta and Meta-GDN are one pair). 6 ÷ 2 = 3 ways."],
+				["List to check", "{GDN, Meta}, {GDN, TikTok}, {Meta, TikTok}: exactly 3."],
+				["Choose 3 from 10", "C(10, 3) = 10×9×8 ÷ (3×2×1) = 720 ÷ 6 = 120 ways."]
+			],
+			say: "A combination is a permutation divided by the number of orderings inside the group. For 3 from 10: there are 720 ordered arrangements but only 120 different groups because each group is counted 6 times. Use combinations when you only care who is present, not the order.",
+			check: ["Are C(3, 2) and C(3, 1) equal, and why?", "Both are 3: choosing 2 channels to keep is the same as choosing 1 to drop. C(n, k) = C(n, n−k)."]
+		}
+	},
+	"math-disj": {
+		vi: {
+			story: "Một khách chỉ ghé một chi nhánh mỗi ngày. Bạn hỏi: «Ghé Quận 1» và «ghé Quận 3» có độc lập không? Chúng rời nhau, nhưng điều đó khác với độc lập.",
+			words: [["Rời nhau", "Hai biến cố không thể cùng xảy ra: P(A và B) = 0."], ["Độc lập", "Biết A xảy ra không làm đổi xác suất của B: P(A và B) = P(A) × P(B)."]],
+			problem: "Trong một ngày, P(ghé Quận 1) = 0,4 và P(ghé Quận 3) = 0,3, và không ai ghé cả hai. Hai biến cố này rời nhau hay độc lập?",
+			steps: [
+				["Kiểm tra rời nhau", "P(Q1 và Q3) = 0, nên rời nhau."],
+				["Kiểm tra độc lập", "Nếu độc lập, P(Q1 và Q3) = 0,4 × 0,3 = 0,12."],
+				["So sánh", "0 khác 0,12, nên không độc lập."],
+				["Đọc ý nghĩa", "Biết khách đã ghé Q1 thì chắc chắn không ghé Q3: xác suất Q3 từ 0,3 rơi xuống 0. Biết A làm đổi B nên phụ thuộc."]
+			],
+			say: "Rời nhau là mối quan hệ rất mạnh: chúng loại trừ nhau, nên biết cái này thì biết chắc cái kia không xảy ra. Độc lập là biết cái này không cho biết gì về cái kia. Hai thứ gần như đối lập, và nhầm hai thứ này sẽ làm công thức nhân sai.",
+			check: ["Hai biến cố rời nhau và cùng có xác suất khác 0 có thể độc lập không?", "Không. Rời nhau cho P(A và B) = 0, còn độc lập cần P(A) × P(B) > 0. Hai điều không thể cùng đúng."]
+		},
+		en: {
+			story: "A customer visits only one branch per day. You ask: are “visits District 1” and “visits District 3” independent? They are disjoint, but that is different from independent.",
+			words: [["Disjoint", "Two events that cannot both happen: P(A and B) = 0."], ["Independent", "Knowing A happened does not change B's probability: P(A and B) = P(A) × P(B)."]],
+			problem: "On a given day, P(visits District 1) = 0.4 and P(visits District 3) = 0.3, and nobody visits both. Are these two events disjoint or independent?",
+			steps: [
+				["Test disjoint", "P(D1 and D3) = 0, so they are disjoint."],
+				["Test independent", "If independent, P(D1 and D3) = 0.4 × 0.3 = 0.12."],
+				["Compare", "0 is not 0.12, so they are not independent."],
+				["Read the meaning", "Knowing the customer visited D1 means for sure they did not visit D3: the probability of D3 drops from 0.3 to 0. Knowing A changes B, so they are dependent."]
+			],
+			say: "Disjoint is a very strong relationship: they exclude each other, so knowing one tells you for sure the other did not happen. Independent means knowing one tells you nothing about the other. The two are almost opposites, and confusing them makes the multiplication formula wrong.",
+			check: ["Can two disjoint events with non-zero probabilities be independent?", "No. Disjoint gives P(A and B) = 0, while independence needs P(A) × P(B) > 0. Both cannot be true."]
+		}
+	},
+	"math-kind": {
+		vi: {
+			story: "Ba người trong cuộc họp cùng nói «xác suất» nhưng mỗi người hiểu một nghĩa. Bạn phân biệt ba cách hiểu để biết họ đang cãi nhau về điều gì.",
+			words: [
+				["Cổ điển", "Các kết quả đều khả năng như nhau, đếm trường hợp: 1/6 cho một mặt xúc xắc."],
+				["Tần suất", "Lặp lại nhiều lần rồi xem tỷ lệ: 50/4500 lượt truy cập gửi form."],
+				["Mức độ tin", "Mức tin cá nhân vào một điều dựa trên thông tin hiện có."]
+			],
+			problem: "Ba câu: (a) «Xác suất ra mặt 6 là 1/6.» (b) «Xác suất một lượt truy cập gửi form là 1,1%.» (c) «Tôi tin 70% là TikTok đạt 15 form mỗi tuần vào 31/1.» Mỗi câu thuộc cách hiểu nào?",
+			steps: [
+				["Câu (a)", "Sáu mặt như nhau, đếm 1 trên 6: cách hiểu cổ điển."],
+				["Câu (b)", "50 form trên 4500 lượt trong dữ liệu đã quan sát: cách hiểu tần suất. 50 ÷ 4500 ≈ 1,1%."],
+				["Câu (c)", "Sự kiện chỉ xảy ra một lần, không lặp lại được hàng nghìn lần: mức độ tin."],
+				["Đọc", "Cùng chữ «xác suất» nhưng ba nguồn khác nhau: đếm, quan sát lặp lại, và niềm tin."]
+			],
+			say: "Câu (b) mạnh nhất vì dựa trên dữ liệu, câu (c) mềm nhất vì là niềm tin cá nhân và thay đổi khi có thông tin mới. Khi ai đó nói «xác suất», hãy hỏi nó đến từ đâu. Đây cũng là lý do Bayes ở C2 xử lý niềm tin được cập nhật theo bằng chứng.",
+			check: ["«70% khả năng mưa ngày mai» thuộc cách hiểu nào?", "Thường là mức độ tin (hoặc tần suất của những ngày giống hôm nay mà sau đó có mưa). Ngày mai chỉ xảy ra một lần."]
+		},
+		en: {
+			story: "Three people in a meeting all say “probability” but each means something different. You separate three readings so you know what they are actually arguing about.",
+			words: [
+				["Classical", "All outcomes equally likely, count cases: 1/6 for one face of a die."],
+				["Frequency", "Repeat many times and see the proportion: 50/4500 visits submitting a form."],
+				["Degree of belief", "A personal level of confidence in something given the information at hand."]
+			],
+			problem: "Three sentences: (a) “The probability of rolling a 6 is 1/6.” (b) “The probability a visit submits a form is 1.1%.” (c) “I believe there is a 70% chance TikTok hits 15 forms a week by 31 January.” Which reading does each belong to?",
+			steps: [
+				["Sentence (a)", "Six equal faces, count 1 in 6: the classical reading."],
+				["Sentence (b)", "50 forms in 4,500 visits in observed data: the frequency reading. 50 ÷ 4500 ≈ 1.1%."],
+				["Sentence (c)", "The event happens only once and cannot be repeated thousands of times: degree of belief."],
+				["Read", "The same word “probability” but three sources: counting, repeated observation, and belief."]
+			],
+			say: "Sentence (b) is strongest because it rests on data, sentence (c) is softest because it is a personal belief that changes with new information. When someone says “probability”, ask where it comes from. This is also why Bayes in C2 handles beliefs updated by evidence.",
+			check: ["Which reading is “70% chance of rain tomorrow”?", "Usually degree of belief (or the frequency of days like today that then had rain). Tomorrow happens only once."]
+		}
+	}
+};
+var visuals$1 = {
+	"math-vec": {
+		kind: "bars",
+		title: ["Véctơ form tuần này f = (18, 20, 12)", "This week's forms vector f = (18, 20, 12)"],
+		items: [
+			{
+				label: ["GDN", "GDN"],
+				value: 18
+			},
+			{
+				label: ["Meta", "Meta"],
+				value: 20
+			},
+			{
+				label: ["TikTok", "TikTok"],
+				value: 12
+			}
+		]
+	},
+	"math-add": {
+		kind: "table",
+		title: ["Cộng hai véctơ form từng ô", "Adding two form vectors slot by slot"],
+		head: [
+			["Kênh", "Channel"],
+			["Tuần 1", "Week 1"],
+			["Tuần 2", "Week 2"],
+			["Tổng", "Total"]
+		],
+		rows: [
+			[
+				"GDN",
+				18,
+				17,
+				35
+			],
+			[
+				"Meta",
+				20,
+				21,
+				41
+			],
+			[
+				"TikTok",
+				12,
+				12,
+				24
+			]
+		],
+		mark: [
+			[0, 3],
+			[1, 3],
+			[2, 3]
+		]
+	},
+	"math-dot": {
+		kind: "table",
+		title: ["Tích vô hướng: form × CPA", "Dot product: forms × CPA"],
+		head: [
+			["Kênh", "Channel"],
+			["Form", "Forms"],
+			["CPA (triệu)", "CPA (million)"],
+			["Form × CPA", "Forms × CPA"]
+		],
+		rows: [
+			[
+				"GDN",
+				18,
+				"1/3",
+				6
+			],
+			[
+				"Meta",
+				20,
+				"1/4",
+				5
+			],
+			[
+				"TikTok",
+				12,
+				"1/3",
+				4
+			],
+			[
+				"Tổng / Total",
+				"",
+				"",
+				15
+			]
+		],
+		mark: [[3, 3]]
+	},
+	"math-mul": {
+		kind: "table",
+		title: ["AB = (2×3)(3×2) = 2×2", "AB = (2×3)(3×2) = 2×2"],
+		head: [
+			["", ""],
+			["Tổng form", "Total forms"],
+			["Chi dự kiến", "Expected spend"]
+		],
+		rows: [[
+			"Tuần 1 / Wk 1",
+			50,
+			15
+		], [
+			"Tuần 2 / Wk 2",
+			50,
+			14.92
+		]],
+		mark: [[1, 2]]
+	},
+	"math-sys": {
+		kind: "table",
+		title: ["Doanh thu hai ngày (nghìn đồng)", "Revenue on two days (thousand dong)"],
+		head: [
+			["Ngày", "Day"],
+			["Gói 60'", "60' pkgs"],
+			["Gói 90'", "90' pkgs"],
+			["Thu", "Revenue"]
+		],
+		rows: [[
+			"A",
+			10,
+			5,
+			5500
+		], [
+			"B",
+			8,
+			10,
+			7400
+		]],
+		note: ["Giải ra: gói 60 phút 300, gói 90 phút 500.", "Solved: 60-minute package 300, 90-minute 500."]
+	},
+	"math-ls": {
+		kind: "line",
+		title: ["Form theo ngân sách TikTok (triệu)", "Forms by TikTok budget (million)"],
+		xs: [
+			"3",
+			"4",
+			"5"
+		],
+		ys: [
+			10,
+			12,
+			13
+		],
+		note: ["Đường lệch ít nhất: y = 5,67 + 1,5x.", "Best-fit line: y = 5.67 + 1.5x."]
+	},
+	"math-deriv": {
+		kind: "line",
+		title: ["f(x) = −0,5x² + 5x: form theo ngân sách (triệu)", "f(x) = −0.5x² + 5x: forms by budget (million)"],
+		xs: [
+			"1",
+			"2",
+			"3",
+			"4",
+			"5",
+			"6",
+			"7"
+		],
+		ys: [
+			4.5,
+			8,
+			10.5,
+			12,
+			12.5,
+			12,
+			10.5
+		],
+		note: ["Độ dốc giảm dần rồi về 0 ở x = 5.", "The slope shrinks and reaches 0 at x = 5."]
+	},
+	"math-crit": {
+		kind: "line",
+		title: ["Đỉnh của f ở x = 5 (12,5 form)", "The peak of f is at x = 5 (12.5 forms)"],
+		xs: [
+			"3",
+			"4",
+			"5",
+			"6",
+			"7"
+		],
+		ys: [
+			10.5,
+			12,
+			12.5,
+			12,
+			10.5
+		]
+	},
+	"math-or": {
+		kind: "table",
+		title: ["1000 hội viên: hai nhóm chồng nhau", "1,000 members: two overlapping groups"],
+		head: [["Nhóm", "Group"], ["Số người", "People"]],
+		rows: [
+			["Chỉ 60 phút / 60 min only", 300],
+			["Chỉ ghế / Chair only", 150],
+			["Cả hai / Both", 100],
+			["Ít nhất một / At least one", 550]
+		],
+		mark: [[3, 1]]
+	},
+	"math-perm": {
+		kind: "bars",
+		title: ["Số cách xếp n kênh theo thứ tự (n!)", "Ways to order n channels (n!)"],
+		items: [
+			{
+				label: ["n=2", "n=2"],
+				value: 2
+			},
+			{
+				label: ["n=3", "n=3"],
+				value: 6
+			},
+			{
+				label: ["n=4", "n=4"],
+				value: 24
+			},
+			{
+				label: ["n=5", "n=5"],
+				value: 120
+			}
+		]
+	},
+	"math-taylor": {
+		kind: "table",
+		title: ["Tiếp tuyến tại x = 4 so với giá trị thật", "Tangent at x = 4 versus the real value"],
+		head: [
+			["x", "x"],
+			["Ước lượng", "Estimate"],
+			["Thật", "Real"],
+			["Sai số", "Error"]
+		],
+		rows: [[
+			4.5,
+			12.5,
+			12.375,
+			.125
+		], [
+			6,
+			14,
+			12,
+			2
+		]],
+		mark: [[1, 3]]
+	}
+};
+var mathWalks = Object.fromEntries(Object.entries(base$1).map(([id, w]) => [id, visuals$1[id] ? {
+	...w,
+	visual: visuals$1[id]
+} : w]));
+/** Thống kê mô tả. Tháng 3 ở Lotus Spa. Dãy chính D: form 9 tuần gần đây, tuần cuối có đợt khuyến mãi. */
+var base = {
+	"ds-type": {
+		vi: {
+			story: "Tháng 3. Thảo gửi bảng khảo sát hội viên. Trước khi tính gì, bạn gọi tên kiểu của từng cột, vì kiểu quyết định phép tính nào có nghĩa.",
+			words: [
+				["Định danh", "Chữ để phân loại, không có thứ tự: kênh, chi nhánh."],
+				["Thứ bậc", "Có thứ tự nhưng khoảng cách không đều: thấp, vừa, cao."],
+				["Số", "Đo được, tính được trung bình: số form, số tiền."]
+			],
+			problem: "Bảng có 4 cột: kenh (GDN, Meta, TikTok), form (18, 20, 12), hai_long (thấp, vừa, cao), ma_cn (1, 2, 3 cho Quận 1, Quận 3, Thủ Đức). Cột nào thuộc kiểu nào, và có tính trung bình được không?",
+			steps: [
+				["kenh", "Chữ, không có thứ tự: định danh. Không tính trung bình, chỉ đếm."],
+				["form", "Số đo được: tính trung bình được. (18 + 20 + 12) ÷ 3 ≈ 16,7."],
+				["hai_long", "Có thứ tự thấp < vừa < cao nhưng khoảng cách không đều: thứ bậc. Dùng trung vị và đếm, không dùng trung bình."],
+				["ma_cn", "Trông là số (1, 2, 3) nhưng là nhãn: định danh. Trung bình 2 không có nghĩa gì."]
+			],
+			say: "Cột ma_cn là cái bẫy: tính trung bình mã chi nhánh ra 2 và 2 không phải chi nhánh nào cả. Hỏi một câu «có hợp lý khi cộng hai giá trị này không?» là cách nhanh nhất để phân loại.",
+			check: ["Trung bình của «thấp, vừa, cao» khi đổi thành 1, 2, 3 có đáng tin không?", "Không hẳn. Khoảng cách từ thấp sang vừa chưa chắc bằng từ vừa sang cao. Với thứ bậc, dùng trung vị hoặc mode."]
+		},
+		en: {
+			story: "March. Thao sends a member survey table. Before calculating anything, you name each column's type, because the type decides which calculations make sense.",
+			words: [
+				["Nominal", "Text used to classify, with no order: channel, branch."],
+				["Ordinal", "Has an order but uneven gaps: low, medium, high."],
+				["Numeric", "Measurable and averageable: number of forms, amounts of money."]
+			],
+			problem: "The table has 4 columns: channel (GDN, Meta, TikTok), forms (18, 20, 12), satisfaction (low, medium, high), branch_code (1, 2, 3 for District 1, District 3, Thu Duc). What type is each column, and can you average it?",
+			steps: [
+				["channel", "Text, no order: nominal. No average, only counts."],
+				["forms", "Measured number: averageable. (18 + 20 + 12) ÷ 3 ≈ 16.7."],
+				["satisfaction", "Ordered low < medium < high but uneven gaps: ordinal. Use the median and counts, not the mean."],
+				["branch_code", "Looks like a number (1, 2, 3) but is a label: nominal. An average of 2 means nothing."]
+			],
+			say: "The branch_code column is the trap: averaging branch codes gives 2 and 2 is no branch at all. Asking “does it make sense to add two of these values?” is the fastest way to classify.",
+			check: ["Is the average of “low, medium, high” recoded as 1, 2, 3 trustworthy?", "Not really. The gap from low to medium need not equal that from medium to high. For ordinal data use the median or mode."]
+		}
+	},
+	"ds-center": {
+		vi: {
+			story: "Chị Lan hỏi «form mỗi tuần thường là bao nhiêu?» Dữ liệu 9 tuần gần đây có một tuần khuyến mãi bất thường. Con số nào là câu trả lời công bằng?",
+			words: [["Trung bình", "Tổng chia số lượng. Bị giá trị cực đoan kéo đi."], ["Trung vị", "Giá trị đứng giữa khi đã sắp xếp. Không bị cực đoan kéo."]],
+			problem: "Form 9 tuần: 44, 46, 48, 50, 50, 51, 53, 54, 104 (tuần cuối có khuyến mãi). Tính trung bình và trung vị, rồi so sánh khi bỏ tuần 104.",
+			steps: [
+				["Tổng", "44 + 46 + 48 + 50 + 50 + 51 + 53 + 54 + 104 = 500."],
+				["Trung bình", "500 ÷ 9 ≈ 55,6."],
+				["Trung vị", "Đã sắp xếp, 9 giá trị nên lấy giá trị thứ 5: 50."],
+				["Bỏ tuần 104", "Tổng còn 396 chia 8 = 49,5. Trung vị còn (50 + 50) ÷ 2 = 50."],
+				["So sánh", "Một tuần cực đoan kéo trung bình từ 49,5 lên 55,6 (tăng 6,1), trong khi trung vị gần như đứng yên (50)."]
+			],
+			say: "Nếu báo «form mỗi tuần trung bình 55,6» thì chị Lan sẽ lập kế hoạch cho mức mà 8 trong 9 tuần không đạt. Trung vị 50 mô tả tuần điển hình trung thực hơn khi có tuần cực đoan. Nhớ báo cả hai khi hai số lệch nhau.",
+			check: ["Khi nào trung bình và trung vị gần bằng nhau?", "Khi dữ liệu cân đối, không có giá trị cực đoan một phía. Ở dãy này bỏ tuần 104 thì 49,5 và 50 gần như bằng nhau."]
+		},
+		en: {
+			story: "Ms. Lan asks “how many forms do we usually get a week?” The latest 9 weeks include one unusual promotion week. Which number is the fair answer?",
+			words: [["Mean", "Total divided by count. Pulled by extreme values."], ["Median", "The middle value once sorted. Not pulled by extremes."]],
+			problem: "Forms over 9 weeks: 44, 46, 48, 50, 50, 51, 53, 54, 104 (the last week had a promotion). Compute the mean and median, then compare once the 104 is dropped.",
+			steps: [
+				["Total", "44 + 46 + 48 + 50 + 50 + 51 + 53 + 54 + 104 = 500."],
+				["Mean", "500 ÷ 9 ≈ 55.6."],
+				["Median", "Sorted, 9 values so take the 5th: 50."],
+				["Drop week 104", "The total becomes 396 divided by 8 = 49.5. The median becomes (50 + 50) ÷ 2 = 50."],
+				["Compare", "One extreme week pulls the mean from 49.5 to 55.6 (up 6.1), while the median barely moves (50)."]
+			],
+			say: "If you report “55.6 forms a week on average”, Ms. Lan will plan for a level that 8 of the 9 weeks did not reach. The median 50 describes the typical week more honestly when there is an extreme week. Report both when the two differ.",
+			check: ["When are the mean and median close?", "When the data is balanced with no extreme value on one side. In this series, once 104 is dropped, 49.5 and 50 are nearly equal."]
+		}
+	},
+	"ds-mode": {
+		vi: {
+			story: "Bạn muốn biết kênh nào xuất hiện nhiều nhất trong cột utm_source, và tuần có số form nào hay gặp nhất.",
+			words: [["Mode", "Giá trị xuất hiện nhiều lần nhất. Dùng được cho cả chữ."]],
+			problem: "Cột utm_source của 6 form: Meta, GDN, TikTok, Meta, Meta, GDN. Và dãy form 9 tuần 44, 46, 48, 50, 50, 51, 53, 54, 104. Tìm mode của từng cái.",
+			steps: [
+				["Đếm utm_source", "Meta 3, GDN 2, TikTok 1."],
+				["Mode của utm_source", "Meta (3 lần). Không tính được trung bình cho chữ nhưng mode thì có."],
+				["Đếm dãy form", "50 xuất hiện 2 lần, các giá trị khác 1 lần."],
+				["Mode của dãy form", "50."],
+				["Trường hợp hòa", "Nếu hai giá trị cùng xuất hiện 3 lần thì có hai mode, và nên nói rõ cả hai."]
+			],
+			say: "Mode là đáp án cho câu hỏi «cái nào hay gặp nhất», nhất là với dữ liệu chữ như kênh. Với số, mode ít đáng tin hơn vì chỉ cần một giá trị lặp 2 lần như 50 là thắng, không nói gì về trung tâm thật.",
+			check: ["Dãy 18, 20, 12 có mode không?", "Không có giá trị nào lặp lại, nên không có mode đáng nói (hoặc cả ba cùng mode). Đây là trường hợp mode không hữu ích."]
+		},
+		en: {
+			story: "You want to know which channel appears most in the utm_source column, and which weekly form count is most common.",
+			words: [["Mode", "The value that appears most often. Works for text too."]],
+			problem: "The utm_source column of 6 forms: Meta, GDN, TikTok, Meta, Meta, GDN. And the 9-week forms series 44, 46, 48, 50, 50, 51, 53, 54, 104. Find the mode of each.",
+			steps: [
+				["Count utm_source", "Meta 3, GDN 2, TikTok 1."],
+				["Mode of utm_source", "Meta (3 times). You cannot average text but you can take a mode."],
+				["Count the forms series", "50 appears 2 times, every other value once."],
+				["Mode of the forms series", "50."],
+				["A tie", "If two values each appear 3 times there are two modes, and you should say both."]
+			],
+			say: "The mode answers “which is seen most”, especially for text data such as channels. For numbers the mode is less trustworthy because one value repeating twice like 50 wins, saying nothing about the true centre.",
+			check: ["Does the series 18, 20, 12 have a mode?", "No value repeats, so there is no meaningful mode (or all three are modes). This is a case where the mode is not useful."]
+		}
+	},
+	"ds-q": {
+		vi: {
+			story: "Chị Lan hỏi «tuần nào là tuần bất thường?» Bạn chia 9 tuần thành bốn phần bằng tứ phân vị và đặt hàng rào để nhận ra tuần lạ.",
+			words: [
+				["Tứ phân vị", "Ba điểm Q1, Q2, Q3 cắt dãy đã sắp thành bốn phần."],
+				["IQR", "Q3 trừ Q1: độ rộng của nửa giữa dãy."],
+				["Hàng rào", "Q3 + 1,5 × IQR ở trên và Q1 − 1,5 × IQR ở dưới. Ngoài hàng rào là điểm lạ."]
+			],
+			problem: "Dãy đã sắp: 44, 46, 48, 50, 50, 51, 53, 54, 104. Tìm Q1, Q2, Q3, IQR và hàng rào trên. Tuần 104 có lạ không?",
+			steps: [
+				["Q2 (trung vị)", "9 giá trị, giá trị thứ 5: 50."],
+				["Q1", "Nửa dưới (4 giá trị trước trung vị): 44, 46, 48, 50. Trung vị nửa này: (46 + 48) ÷ 2 = 47."],
+				["Q3", "Nửa trên: 51, 53, 54, 104. Trung vị: (53 + 54) ÷ 2 = 53,5."],
+				["IQR", "53,5 − 47 = 6,5."],
+				["Hàng rào trên", "53,5 + 1,5 × 6,5 = 53,5 + 9,75 = 63,25."],
+				["Kết luận", "104 > 63,25 nên là điểm lạ. Hàng rào dưới là 47 − 9,75 = 37,25, và 44 nằm trong."]
+			],
+			say: "Tứ phân vị cho thấy nửa giữa của các tuần chỉ trải từ 47 đến 53,5, rất hẹp (IQR 6,5). Một tuần 104 nằm quá xa hàng rào nên chắc chắn là đợt khuyến mãi chứ không phải biến động bình thường. Điểm lạ phải được hỏi lý do, không phải xóa.",
+			check: ["Nếu tuần khuyến mãi chỉ là 60 thì có lạ không?", "Không: 60 < 63,25 nên vẫn nằm trong hàng rào. Chỉ khi vượt 63,25 mới đáng ngờ."]
+		},
+		en: {
+			story: "Ms. Lan asks “which week is unusual?” You split the 9 weeks into four parts using quartiles and set fences to spot the odd week.",
+			words: [
+				["Quartiles", "Three points Q1, Q2, Q3 that cut the sorted series into four parts."],
+				["IQR", "Q3 minus Q1: the width of the middle half of the series."],
+				["Fence", "Q3 + 1.5 × IQR above and Q1 − 1.5 × IQR below. Outside the fence is an odd point."]
+			],
+			problem: "The sorted series: 44, 46, 48, 50, 50, 51, 53, 54, 104. Find Q1, Q2, Q3, the IQR and the upper fence. Is week 104 odd?",
+			steps: [
+				["Q2 (median)", "9 values, the 5th value: 50."],
+				["Q1", "Lower half (the 4 values before the median): 44, 46, 48, 50. Median of this half: (46 + 48) ÷ 2 = 47."],
+				["Q3", "Upper half: 51, 53, 54, 104. Median: (53 + 54) ÷ 2 = 53.5."],
+				["IQR", "53.5 − 47 = 6.5."],
+				["Upper fence", "53.5 + 1.5 × 6.5 = 53.5 + 9.75 = 63.25."],
+				["Conclusion", "104 > 63.25 so it is an odd point. The lower fence is 47 − 9.75 = 37.25, and 44 is inside."]
+			],
+			say: "The quartiles show the middle half of weeks spans only 47 to 53.5, very narrow (IQR 6.5). A 104 week sits far past the fence so it is surely the promotion and not normal wobble. An odd point must be asked about, not deleted.",
+			check: ["If the promotion week were only 60, would it be odd?", "No: 60 < 63.25 so it is still inside the fence. Only past 63.25 does it become suspicious."]
+		}
+	},
+	"ds-pct": {
+		vi: {
+			story: "Thảo hỏi «tuần 54 form thì thuộc nhóm nào?» Bạn dùng phân vị để nói tuần đó nằm ở vị trí nào trong 9 tuần.",
+			words: [["Phân vị", "Phần trăm giá trị trong dãy nằm dưới một mức."], ["Vị trí p%", "p/100 × (n + 1) trong dãy đã sắp. Nếu ra số lẻ thì lấy giữa hai giá trị kề."]],
+			problem: "Dãy đã sắp: 44, 46, 48, 50, 50, 51, 53, 54, 104. Tìm phân vị của giá trị 54, và giá trị ở phân vị 75 và 25.",
+			steps: [
+				["Phân vị của 54", "Có 7 giá trị nhỏ hơn 54 (44, 46, 48, 50, 50, 51, 53). 7 ÷ 9 ≈ 77,8%."],
+				["Vị trí phân vị 75", "0,75 × (9 + 1) = 7,5: nằm giữa giá trị thứ 7 (53) và thứ 8 (54)."],
+				["Giá trị phân vị 75", "(53 + 54) ÷ 2 = 53,5, trùng với Q3 ở thẻ trước."],
+				["Vị trí phân vị 25", "0,25 × 10 = 2,5: giữa giá trị thứ 2 (46) và thứ 3 (48) = 47, trùng với Q1."]
+			],
+			say: "Tuần 54 form tốt hơn khoảng 78% số tuần, nghĩa là khá cao nhưng chưa phải đỉnh. Phân vị là một vị trí trong dãy đã sắp xếp chứ không phải một phần trăm của giá trị. Tứ phân vị chỉ là phân vị 25, 50, 75.",
+			check: ["Phân vị 50 của dãy này là bao nhiêu?", "0,5 × 10 = 5: giá trị thứ 5 là 50. Trùng với trung vị."]
+		},
+		en: {
+			story: "Thao asks “which group does a 54-form week belong to?” You use percentiles to say where that week stands among the 9 weeks.",
+			words: [["Percentile", "The percentage of values in the series that lie below a level."], ["Position p%", "p/100 × (n + 1) in the sorted series. If it is fractional take the midpoint of the two neighbours."]],
+			problem: "The sorted series: 44, 46, 48, 50, 50, 51, 53, 54, 104. Find the percentile of the value 54, and the values at the 75th and 25th percentiles.",
+			steps: [
+				["Percentile of 54", "7 values lie below 54 (44, 46, 48, 50, 50, 51, 53). 7 ÷ 9 ≈ 77.8%."],
+				["Position of the 75th", "0.75 × (9 + 1) = 7.5: between the 7th value (53) and the 8th (54)."],
+				["Value at the 75th", "(53 + 54) ÷ 2 = 53.5, equal to Q3 from the previous card."],
+				["Position of the 25th", "0.25 × 10 = 2.5: between the 2nd (46) and 3rd (48) = 47, equal to Q1."]
+			],
+			say: "A 54-form week beats about 78% of weeks, fairly high but not the peak. A percentile is a position in the sorted series, not a percentage of the value. Quartiles are simply the 25th, 50th and 75th percentiles.",
+			check: ["What is the 50th percentile of this series?", "0.5 × 10 = 5: the 5th value is 50. It equals the median."]
+		}
+	},
+	"ds-var": {
+		vi: {
+			story: "Thảo hỏi «form mỗi tuần dao động nhiều không?» Bạn lấy 5 tuần ổn định và đo độ phân tán bằng phương sai, chú ý chia n hay n − 1.",
+			words: [["Phương sai", "Trung bình của bình phương độ lệch so với trung bình."], ["n − 1", "Với mẫu, chia cho n − 1 chứ không chia n, để không đánh giá thấp độ phân tán của tổng thể."]],
+			problem: "5 tuần ổn định: 46, 48, 50, 52, 54. Tính trung bình, các độ lệch, phương sai mẫu (chia n − 1) và phương sai tổng thể (chia n).",
+			steps: [
+				["Trung bình", "(46 + 48 + 50 + 52 + 54) ÷ 5 = 250 ÷ 5 = 50."],
+				["Độ lệch", "−4, −2, 0, +2, +4. Tổng bằng 0, nên phải bình phương."],
+				["Bình phương rồi cộng", "16 + 4 + 0 + 4 + 16 = 40."],
+				["Phương sai mẫu", "40 ÷ (5 − 1) = 10."],
+				["Phương sai tổng thể", "40 ÷ 5 = 8."]
+			],
+			say: "Chia 4 cho 10, chia 5 cho 8: khác nhau 25%. Với mẫu nhỏ chia n − 1 để bù cho việc trung bình mẫu đã nằm sẵn giữa dữ liệu. Nếu 5 tuần này chỉ là mẫu của một năm 52 tuần thì dùng 10, không phải 8.",
+			check: ["Vì sao phải bình phương độ lệch thay vì cộng trực tiếp?", "Vì tổng độ lệch quanh trung bình luôn bằng 0 (−4−2+0+2+4 = 0), nên không đo được gì. Bình phương làm mọi độ lệch dương."]
+		},
+		en: {
+			story: "Thao asks “do weekly forms swing a lot?” You take 5 steady weeks and measure spread with variance, taking care whether to divide by n or n − 1.",
+			words: [["Variance", "The average of squared deviations from the mean."], ["n − 1", "For a sample, divide by n − 1 rather than n, so as not to underestimate the population's spread."]],
+			problem: "5 steady weeks: 46, 48, 50, 52, 54. Compute the mean, the deviations, the sample variance (divide by n − 1) and the population variance (divide by n).",
+			steps: [
+				["Mean", "(46 + 48 + 50 + 52 + 54) ÷ 5 = 250 ÷ 5 = 50."],
+				["Deviations", "−4, −2, 0, +2, +4. They sum to 0, so they must be squared."],
+				["Square then add", "16 + 4 + 0 + 4 + 16 = 40."],
+				["Sample variance", "40 ÷ (5 − 1) = 10."],
+				["Population variance", "40 ÷ 5 = 8."]
+			],
+			say: "Dividing by 4 gives 10, dividing by 5 gives 8: a 25% difference. For a small sample divide by n − 1 to make up for the sample mean already sitting inside the data. If these 5 weeks are just a sample of a 52-week year, use 10, not 8.",
+			check: ["Why square the deviations instead of adding them directly?", "Because deviations around the mean always sum to 0 (−4−2+0+2+4 = 0), measuring nothing. Squaring makes every deviation positive."]
+		}
+	},
+	"ds-sd": {
+		vi: {
+			story: "Phương sai 10 có đơn vị «form bình phương», chị Lan không đọc được. Bạn lấy căn để quay về form, rồi so với dãy có tuần khuyến mãi.",
+			words: [["Độ lệch chuẩn", "Căn bậc hai của phương sai. Cùng đơn vị với dữ liệu."]],
+			problem: "5 tuần ổn định (46, 48, 50, 52, 54) có phương sai mẫu 10. Tính độ lệch chuẩn. Rồi so với 9 tuần có tuần 104, có phương sai mẫu ≈ 340.",
+			steps: [
+				["Độ lệch chuẩn của 5 tuần", "√10 ≈ 3,16 form."],
+				["Đọc", "Một tuần thường lệch khoảng 3 form so với 50."],
+				["Với 9 tuần có tuần 104", "√340 ≈ 18,4 form (phương sai mẫu 2720,2 ÷ 8 ≈ 340)."],
+				["So sánh", "18,4 so với 3,16: một tuần 104 đã làm độ lệch chuẩn tăng gần 6 lần."],
+				["Khoảng thường gặp", "Với 5 tuần ổn định, 50 ± 2 × 3,16 ≈ 43,7 đến 56,3: 104 nằm rất xa ngoài khoảng này."]
+			],
+			say: "Độ lệch chuẩn 3,16 form là một đơn vị chị Lan hiểu. Và so hai độ lệch chuẩn (3,16 so với 18,4) cho thấy tuần khuyến mãi phá vỡ mức dao động bình thường. Độ lệch chuẩn nhạy với giá trị cực đoan, giống trung bình.",
+			check: ["Nếu mọi form đều tăng thêm 10, độ lệch chuẩn đổi thế nào?", "Không đổi: cộng cùng một số vào mọi giá trị chỉ dịch dãy sang phải, không đổi độ phân tán."]
+		},
+		en: {
+			story: "A variance of 10 has units of “forms squared”, which Ms. Lan cannot read. You take the root to return to forms, then compare with the series containing the promotion week.",
+			words: [["Standard deviation", "The square root of the variance. Same unit as the data."]],
+			problem: "The 5 steady weeks (46, 48, 50, 52, 54) have sample variance 10. Compute the standard deviation. Then compare with the 9 weeks including week 104, whose sample variance is about 340.",
+			steps: [
+				["SD of the 5 weeks", "√10 ≈ 3.16 forms."],
+				["Read", "A typical week differs from 50 by about 3 forms."],
+				["With the 9 weeks including 104", "√340 ≈ 18.4 forms (sample variance 2720.2 ÷ 8 ≈ 340)."],
+				["Compare", "18.4 versus 3.16: a single 104 week raised the standard deviation almost 6 times."],
+				["Usual range", "For the 5 steady weeks, 50 ± 2 × 3.16 ≈ 43.7 to 56.3: 104 lies far outside it."]
+			],
+			say: "A standard deviation of 3.16 forms is a unit Ms. Lan understands. And comparing two standard deviations (3.16 versus 18.4) shows the promotion week breaks the normal level of wobble. The standard deviation is sensitive to extreme values, like the mean.",
+			check: ["If every form count rises by 10, how does the standard deviation change?", "It does not: adding the same number to every value just shifts the series right, leaving the spread unchanged."]
+		}
+	},
+	"ds-range": {
+		vi: {
+			story: "Một cách nhanh nhất để nói «form dao động trong khoảng nào»: lấy giá trị lớn nhất trừ nhỏ nhất. Bạn xem cách khoảng này phản ứng với tuần khuyến mãi.",
+			words: [["Khoảng biến thiên", "Giá trị lớn nhất trừ giá trị nhỏ nhất. Chỉ nhìn hai đầu."]],
+			problem: "Dãy 9 tuần: 44, 46, 48, 50, 50, 51, 53, 54, 104. Tính khoảng biến thiên có và không có tuần 104, và so với IQR 6,5.",
+			steps: [
+				["Có tuần 104", "104 − 44 = 60."],
+				["Bỏ tuần 104", "Lớn nhất còn 54: 54 − 44 = 10."],
+				["So sánh IQR", "IQR (tứ phân vị) là 6,5, không đổi khi bỏ tuần cực đoan."],
+				["Đọc", "Một tuần làm khoảng nhảy từ 10 lên 60, gấp 6 lần, còn IQR vẫn là 6,5."]
+			],
+			say: "Khoảng biến thiên chỉ dựa vào hai giá trị, nên một tuần lạ làm nó nhảy vọt: 10 thành 60. IQR ổn định hơn vì nó nhìn nửa giữa dãy. Dùng khoảng để có cái nhìn nhanh, dùng IQR hoặc độ lệch chuẩn khi có thể có tuần lạ.",
+			check: ["Hai dãy khác nhau hoàn toàn có thể có cùng khoảng biến thiên không?", "Có. Chỉ cần cùng giá trị lớn nhất và nhỏ nhất, ví dụ (44, 50, 54) và (44, 45, 54): cùng khoảng 10 nhưng phân bố khác nhau."]
+		},
+		en: {
+			story: "The quickest way to say “what range do forms swing in”: take the largest minus the smallest. You see how this range reacts to the promotion week.",
+			words: [["Range", "The largest value minus the smallest. It looks only at the two ends."]],
+			problem: "The 9-week series: 44, 46, 48, 50, 50, 51, 53, 54, 104. Compute the range with and without week 104, and compare with the IQR of 6.5.",
+			steps: [
+				["With week 104", "104 − 44 = 60."],
+				["Without week 104", "The largest becomes 54: 54 − 44 = 10."],
+				["Compare the IQR", "The IQR (from quartiles) is 6.5, unchanged when the extreme week is dropped."],
+				["Read", "One week made the range jump from 10 to 60, 6 times as much, while the IQR stayed 6.5."]
+			],
+			say: "The range depends on only two values, so one odd week makes it leap: 10 becomes 60. The IQR is steadier because it looks at the middle half. Use the range for a quick look, and the IQR or standard deviation when odd weeks are possible.",
+			check: ["Can two completely different series have the same range?", "Yes. They only need the same largest and smallest values, for example (44, 50, 54) and (44, 45, 54): same range of 10 but different distributions."]
+		}
+	},
+	"ds-mad": {
+		vi: {
+			story: "Thảo hỏi «có cách nào tính độ phân tán mà không cần bình phương?» Bạn tính độ lệch tuyệt đối trung bình (MAD) cho 5 tuần ổn định và so với độ lệch chuẩn.",
+			words: [["MAD", "Trung bình của trị tuyệt đối độ lệch so với trung bình."]],
+			problem: "5 tuần: 46, 48, 50, 52, 54 (trung bình 50, độ lệch chuẩn mẫu 3,16). Tính MAD và so sánh.",
+			steps: [
+				["Độ lệch", "−4, −2, 0, +2, +4."],
+				["Trị tuyệt đối", "4, 2, 0, 2, 4."],
+				["Cộng", "4 + 2 + 0 + 2 + 4 = 12."],
+				["Chia số lượng", "12 ÷ 5 = 2,4."],
+				["So sánh với độ lệch chuẩn", "2,4 so với 3,16 (mẫu) hoặc √8 ≈ 2,83 (tổng thể). MAD luôn nhỏ hơn hoặc bằng độ lệch chuẩn."]
+			],
+			say: "MAD dễ giải thích: «một tuần trung bình lệch 2,4 form so với 50». Nhưng nó không phải độ lệch chuẩn, hai con số khác nhau và không thể dùng thay cho nhau trong công thức. MAD phạt các tuần xa trung bình nhẹ hơn.",
+			check: ["Vì sao độ lệch chuẩn thường lớn hơn MAD?", "Vì bình phương phóng đại các độ lệch lớn (4 thành 16) rồi căn lại, nên đẩy kết quả lên. MAD đối xử mọi độ lệch như nhau."]
+		},
+		en: {
+			story: "Thao asks “is there a way to measure spread without squaring?” You compute the mean absolute deviation (MAD) for the 5 steady weeks and compare with the standard deviation.",
+			words: [["MAD", "The average of the absolute values of deviations from the mean."]],
+			problem: "5 weeks: 46, 48, 50, 52, 54 (mean 50, sample standard deviation 3.16). Compute the MAD and compare.",
+			steps: [
+				["Deviations", "−4, −2, 0, +2, +4."],
+				["Absolute values", "4, 2, 0, 2, 4."],
+				["Add", "4 + 2 + 0 + 2 + 4 = 12."],
+				["Divide by count", "12 ÷ 5 = 2.4."],
+				["Compare with the standard deviation", "2.4 versus 3.16 (sample) or √8 ≈ 2.83 (population). MAD is always at most the standard deviation."]
+			],
+			say: "MAD is easy to explain: “a typical week is 2.4 forms from 50”. But it is not the standard deviation; the two numbers differ and cannot stand in for each other in formulas. MAD penalises weeks far from the mean more gently.",
+			check: ["Why is the standard deviation usually bigger than MAD?", "Because squaring magnifies large deviations (4 becomes 16) before the root brings it back, pushing the result up. MAD treats every deviation equally."]
+		}
+	},
+	"ds-cov": {
+		vi: {
+			story: "Thử nghiệm TikTok có ba mức ngân sách (3, 4, 5 triệu) và ba kết quả (10, 12, 13 form). Bạn muốn biết ngân sách và form có cùng đi lên không.",
+			words: [["Hiệp phương sai", "Trung bình của tích hai độ lệch. Dương khi hai cột cùng phía trung bình, âm khi ngược."]],
+			problem: "Ngân sách x = 3, 4, 5 (trung bình 4) và form y = 10, 12, 13 (trung bình ≈ 11,67). Tính hiệp phương sai mẫu.",
+			steps: [
+				["Độ lệch của x", "−1, 0, +1."],
+				["Độ lệch của y", "10 − 11,67 = −1,67; 12 − 11,67 = +0,33; 13 − 11,67 = +1,33."],
+				["Tích từng cặp", "(−1)(−1,67) = 1,67; 0 × 0,33 = 0; (+1)(+1,33) = 1,33."],
+				["Cộng", "1,67 + 0 + 1,33 = 3."],
+				["Chia n − 1", "3 ÷ 2 = 1,5. Dương: ngân sách và form cùng đi lên."]
+			],
+			say: "Dấu dương cho biết hướng: khi ngân sách trên trung bình thì form cũng trên trung bình. Nhưng độ lớn 1,5 phụ thuộc đơn vị (triệu và form), không so được với cặp biến khác. Muốn so được cần chuẩn hóa, và đó là hệ số tương quan.",
+			check: ["Nếu form là 13, 12, 10 (ngược thứ tự) thì dấu của hiệp phương sai là gì?", "Âm: ngân sách tăng thì form giảm, tích mỗi cặp đổi dấu thành âm."]
+		},
+		en: {
+			story: "The TikTok test has three budget levels (3, 4, 5 million) and three results (10, 12, 13 forms). You want to know whether budget and forms rise together.",
+			words: [["Covariance", "The average of the products of two deviations. Positive when two columns are on the same side of their means, negative when opposite."]],
+			problem: "Budget x = 3, 4, 5 (mean 4) and forms y = 10, 12, 13 (mean ≈ 11.67). Compute the sample covariance.",
+			steps: [
+				["Deviations of x", "−1, 0, +1."],
+				["Deviations of y", "10 − 11.67 = −1.67; 12 − 11.67 = +0.33; 13 − 11.67 = +1.33."],
+				["Product of each pair", "(−1)(−1.67) = 1.67; 0 × 0.33 = 0; (+1)(+1.33) = 1.33."],
+				["Add", "1.67 + 0 + 1.33 = 3."],
+				["Divide by n − 1", "3 ÷ 2 = 1.5. Positive: budget and forms rise together."]
+			],
+			say: "A positive sign tells the direction: when budget is above its mean, forms are above theirs too. But the size 1.5 depends on the units (million and forms) and cannot be compared with another pair. To compare you need to standardise, which is the correlation coefficient.",
+			check: ["If forms were 13, 12, 10 (reverse order), what is the covariance's sign?", "Negative: when budget rises, forms fall, so each pair's product flips to negative."]
+		}
+	},
+	"ds-corr": {
+		vi: {
+			story: "Chị Lan hỏi «ngân sách TikTok và form liên quan chặt đến đâu?» Bạn chuẩn hóa hiệp phương sai thành hệ số tương quan, một con số từ −1 đến 1.",
+			words: [["Hệ số tương quan r", "Hiệp phương sai chia tích hai độ lệch chuẩn. Luôn từ −1 đến 1, không có đơn vị."], ["Tương quan khác nguyên nhân", "Hai cột đi cùng nhau không có nghĩa cột này gây ra cột kia."]],
+			problem: "x = 3, 4, 5 và y = 10, 12, 13. Σ(x − x̄)(y − ȳ) = 3, Σ(x − x̄)² = 2, Σ(y − ȳ)² ≈ 4,67. Tính r và đọc kết quả.",
+			steps: [
+				["Công thức", "r = Σ(x − x̄)(y − ȳ) ÷ √[Σ(x − x̄)² × Σ(y − ȳ)²]."],
+				["Mẫu số", "√(2 × 4,67) = √9,33 ≈ 3,06."],
+				["Tính r", "3 ÷ 3,06 ≈ 0,98."],
+				["Đọc", "Gần 1: gần như một đường thẳng đi lên. Ngân sách tăng thì form tăng đều."],
+				["Kiểm tra giới hạn", "0,98 nằm trong khoảng −1 đến 1, hợp lệ."]
+			],
+			say: "r = 0,98 rất cao, nhưng chỉ có 3 điểm nên dễ ngẫu nhiên. Và dù cao, nó chỉ nói ngân sách và form đi cùng nhau, không nói tăng ngân sách là nguyên nhân: có thể ba tuần đó trùng với dịp Tết nhiều khách. Muốn kết luận nguyên nhân cần thử nghiệm có kiểm soát.",
+			check: ["Nếu tính form theo đơn vị «chục form» (chia 10) thay vì từng form, r có đổi không?", "Không. r không có đơn vị và không đổi khi nhân hay cộng cùng một số vào một cột. Đây là lợi thế so với hiệp phương sai."]
+		},
+		en: {
+			story: "Ms. Lan asks “how tightly are TikTok budget and forms related?” You standardise the covariance into a correlation coefficient, a number from −1 to 1.",
+			words: [["Correlation coefficient r", "Covariance divided by the product of the two standard deviations. Always between −1 and 1, with no unit."], ["Correlation is not causation", "Two columns moving together does not mean one causes the other."]],
+			problem: "x = 3, 4, 5 and y = 10, 12, 13. Σ(x − x̄)(y − ȳ) = 3, Σ(x − x̄)² = 2, Σ(y − ȳ)² ≈ 4.67. Compute r and read the result.",
+			steps: [
+				["Formula", "r = Σ(x − x̄)(y − ȳ) ÷ √[Σ(x − x̄)² × Σ(y − ȳ)²]."],
+				["Denominator", "√(2 × 4.67) = √9.33 ≈ 3.06."],
+				["Compute r", "3 ÷ 3.06 ≈ 0.98."],
+				["Read", "Close to 1: almost a straight line going up. Budget up, forms up steadily."],
+				["Check the bounds", "0.98 lies between −1 and 1, valid."]
+			],
+			say: "r = 0.98 is very high, but with only 3 points it could easily be chance. And even if high, it only says budget and forms move together, not that raising budget is the cause: those three weeks may coincide with a busy holiday. Concluding cause needs a controlled experiment.",
+			check: ["If you count forms in “tens of forms” (divide by 10) instead of single forms, does r change?", "No. r has no unit and does not change when you multiply or add the same number to a column. This is its advantage over covariance."]
+		}
+	}
+};
+var visuals = {
+	"ds-type": {
+		kind: "table",
+		title: ["Bốn cột, ba kiểu", "Four columns, three types"],
+		head: [
+			["Cột", "Column"],
+			["Kiểu", "Type"],
+			["Tính trung bình?", "Averageable?"]
+		],
+		rows: [
+			[
+				"kenh / channel",
+				"định danh / nominal",
+				"không / no"
+			],
+			[
+				"form / forms",
+				"số / numeric",
+				"có / yes"
+			],
+			[
+				"hai_long / satisfaction",
+				"thứ bậc / ordinal",
+				"không / no"
+			],
+			[
+				"ma_cn / branch_code",
+				"định danh / nominal",
+				"không / no"
+			]
+		],
+		mark: [[3, 1]]
+	},
+	"ds-center": {
+		kind: "bars",
+		title: ["Form 9 tuần (tuần cuối có khuyến mãi)", "Forms over 9 weeks (last week had a promotion)"],
+		items: [
+			{
+				label: ["T1", "W1"],
+				value: 44
+			},
+			{
+				label: ["T2", "W2"],
+				value: 46
+			},
+			{
+				label: ["T3", "W3"],
+				value: 48
+			},
+			{
+				label: ["T4", "W4"],
+				value: 50
+			},
+			{
+				label: ["T5", "W5"],
+				value: 50
+			},
+			{
+				label: ["T6", "W6"],
+				value: 51
+			},
+			{
+				label: ["T7", "W7"],
+				value: 53
+			},
+			{
+				label: ["T8", "W8"],
+				value: 54
+			},
+			{
+				label: ["T9", "W9"],
+				value: 104
+			}
+		],
+		note: ["Trung bình 55,6; trung vị 50.", "Mean 55.6; median 50."]
+	},
+	"ds-q": {
+		kind: "table",
+		title: ["Tứ phân vị và hàng rào của dãy 9 tuần", "Quartiles and fences of the 9-week series"],
+		head: [["Chỉ số", "Measure"], ["Giá trị", "Value"]],
+		rows: [
+			["Q1", 47],
+			["Q2 (median)", 50],
+			["Q3", 53.5],
+			["IQR", 6.5],
+			["Hàng rào trên / upper fence", 63.25]
+		],
+		mark: [[4, 1]],
+		note: ["104 vượt hàng rào trên 63,25.", "104 is beyond the upper fence of 63.25."]
+	},
+	"ds-range": {
+		kind: "table",
+		title: ["Một tuần lạ làm khoảng nhảy vọt, IQR thì không", "One odd week makes the range leap, the IQR does not"],
+		head: [
+			["Dãy", "Series"],
+			["Khoảng biến thiên", "Range"],
+			["IQR", "IQR"]
+		],
+		rows: [[
+			"Có tuần 104 / with 104",
+			60,
+			6.5
+		], [
+			"Bỏ tuần 104 / without 104",
+			10,
+			6.5
+		]],
+		mark: [[0, 1]]
+	},
+	"ds-var": {
+		kind: "table",
+		title: ["Độ lệch quanh trung bình 50", "Deviations around the mean 50"],
+		head: [
+			["Form", "Forms"],
+			["Độ lệch", "Deviation"],
+			["Bình phương", "Squared"]
+		],
+		rows: [
+			[
+				46,
+				-4,
+				16
+			],
+			[
+				48,
+				-2,
+				4
+			],
+			[
+				50,
+				0,
+				0
+			],
+			[
+				52,
+				2,
+				4
+			],
+			[
+				54,
+				4,
+				16
+			],
+			[
+				"Tổng / Sum",
+				0,
+				40
+			]
+		],
+		mark: [[5, 2]],
+		note: ["Mẫu: 40 ÷ 4 = 10. Tổng thể: 40 ÷ 5 = 8.", "Sample: 40 ÷ 4 = 10. Population: 40 ÷ 5 = 8."]
+	},
+	"ds-cov": {
+		kind: "line",
+		title: ["Form theo ngân sách TikTok (triệu)", "Forms by TikTok budget (million)"],
+		xs: [
+			"3",
+			"4",
+			"5"
+		],
+		ys: [
+			10,
+			12,
+			13
+		]
+	},
+	"ds-corr": {
+		kind: "line",
+		title: ["r ≈ 0,98: gần như một đường thẳng đi lên", "r ≈ 0.98: almost a straight line going up"],
+		xs: [
+			"3",
+			"4",
+			"5"
+		],
+		ys: [
+			10,
+			12,
+			13
+		]
+	}
+};
+var dsWalks = Object.fromEntries(Object.entries(base).map(([id, w]) => [id, visuals[id] ? {
 	...w,
 	visual: visuals[id]
 } : w]));
 var walks = {
 	...pilotWalks,
 	...c0Walks,
-	...c1Walks
+	...c1Walks,
+	...mathWalks,
+	...dsWalks
 };
 /** Hình minh họa trong mục «Làm từng bước»: bảng tính, biểu đồ cột, biểu đồ đường. Dùng màu từ token của app. */
 function WalkVisual({ v, lang }) {
