@@ -755,7 +755,17 @@ export const asg: Assignment = {
     ],
     "code": "df = pd.DataFrame()\nfor file_name in file_list:\n    month = pd.read_parquet(file_path)\n    month['date'] = month['tpep_pickup_datetime'].dt.date\n    month['hour'] = month['tpep_pickup_datetime'].dt.hour\n    parts = []\n    for (d, h), grp in month.groupby(['date', 'hour']):\n        parts.append(grp.sample(frac=0.05, random_state=42))\n    df = pd.concat([df] + parts)\ndf = df.drop(columns=['date', 'hour'])",
     "lotus": "Sổ booking Lotus Spa có 12 tháng. Lấy 5% theo từng ngày và từng giờ giữ được cả giờ vắng lẫn giờ đông. Nếu chỉ lấy 5% theo giờ chung cho cả năm, giờ nào của ngày nào cũng bị trộn lẫn.",
-    "trap": "Lấy mẫu theo giờ mà không theo ngày sẽ làm lệch các ngày ít xe. Ghi lại sample_fraction vì bài 3.2.3 cần nó để nhân lên."
+    "trap": "Lấy mẫu theo giờ mà không theo ngày sẽ làm lệch các ngày ít xe. Ghi lại sample_fraction vì bài 3.2.3 cần nó để nhân lên.",
+    "read": [
+     "Mỗi dòng là một file tháng: số chuyến gốc → số chuyến trong mẫu 5%.",
+     "Dòng cuối là tổng cả năm và số dòng của mẫu."
+    ],
+    "remark": "Cả năm 2023 có 38.310.226 chuyến; mẫu 5% mỗi giờ mỗi ngày lấy khoảng 1,9 triệu dòng, vẫn giữ nhịp theo từng tháng (mỗi tháng 141–176 nghìn dòng).",
+    "howRemark": [
+     "Nêu tổng chuyến cả năm và cỡ mẫu.",
+     "Kiểm tỷ lệ lấy mẫu ≈ 5% mỗi tháng.",
+     "Nói vì sao lấy mẫu theo giờ và ngày."
+    ]
    },
    "en": {
     "think": "Each monthly file has millions of rows. You do not load everything; you take 5% of every hour of every day so the sample keeps the real rhythm of the whole year.",
@@ -768,7 +778,17 @@ export const asg: Assignment = {
     ],
     "code": "df = pd.DataFrame()\nfor file_name in file_list:\n    month = pd.read_parquet(file_path)\n    month['date'] = month['tpep_pickup_datetime'].dt.date\n    month['hour'] = month['tpep_pickup_datetime'].dt.hour\n    parts = []\n    for (d, h), grp in month.groupby(['date', 'hour']):\n        parts.append(grp.sample(frac=0.05, random_state=42))\n    df = pd.concat([df] + parts)\ndf = df.drop(columns=['date', 'hour'])",
     "lotus": "The Lotus Spa booking log covers 12 months. Taking 5% by each day and each hour keeps both quiet and busy hours. Taking 5% by hour across the whole year would blend every day together.",
-    "trap": "Sampling by hour without the date skews quiet days. Record sample_fraction because task 3.2.3 needs it to scale up."
+    "trap": "Sampling by hour without the date skews quiet days. Record sample_fraction because task 3.2.3 needs it to scale up.",
+    "read": [
+     "Each line is a monthly file: original trips → trips in the 5% sample.",
+     "The last line is the yearly total and the sample size."
+    ],
+    "remark": "2023 has 38,310,226 trips; the 5% per hour per day sample keeps about 1.9 million rows, preserving each month's rhythm (141–176 thousand rows per month).",
+    "howRemark": [
+     "State the yearly total and sample size.",
+     "Check the sampling rate ≈ 5% each month.",
+     "Say why sample by hour and day."
+    ]
    }
   },
   "2.1.1": {
@@ -781,7 +801,18 @@ export const asg: Assignment = {
     ],
     "code": "df = df.reset_index(drop=True)\n# drop columns you will not use, with a reason for each\ndf = df.drop(columns=['store_and_fwd_flag'])",
     "lotus": "Bảng booking có cột «mã in phiếu» không dùng cho câu hỏi nào. Bỏ nó đi và ghi lý do, để tháng sau mở lại không phải đoán.",
-    "trap": "Đừng bỏ cột chỉ vì không hiểu nó. Bỏ vì biết mình không cần."
+    "trap": "Đừng bỏ cột chỉ vì không hiểu nó. Bỏ vì biết mình không cần.",
+    "read": [
+     "Mỗi dòng là một cột: tên, kiểu dữ liệu.",
+     "Tổng 1.915.510 dòng và 20 cột sau khi nối 12 tháng.",
+     "datetime64 là thời điểm; float64 là số thập phân."
+    ],
+    "remark": "Bảng gộp có 1.915.510 dòng × 20 cột; hai cột giờ đã đúng kiểu thời gian nên tính được thời lượng chuyến.",
+    "howRemark": [
+     "Báo hình dạng.",
+     "Kiểm kiểu dữ liệu cột giờ.",
+     "Nêu cột bỏ hoặc đổi."
+    ]
    },
    "en": {
     "think": "After combining and re-reading, the table may carry a leftover index column. You reset the index and drop columns that do not serve the question.",
@@ -792,7 +823,18 @@ export const asg: Assignment = {
     ],
     "code": "df = df.reset_index(drop=True)\n# drop columns you will not use, with a reason for each\ndf = df.drop(columns=['store_and_fwd_flag'])",
     "lotus": "The booking table has a “receipt print code” column no question uses. Drop it and note why, so reopening next month needs no guessing.",
-    "trap": "Do not drop a column because you do not understand it. Drop it because you know you do not need it."
+    "trap": "Do not drop a column because you do not understand it. Drop it because you know you do not need it.",
+    "read": [
+     "Each row is a column: name and data type.",
+     "1,915,510 rows and 20 columns after joining 12 months.",
+     "datetime64 is a timestamp; float64 a decimal number."
+    ],
+    "remark": "The merged table has 1,915,510 rows × 20 columns; the two time columns have the right type so trip duration can be computed.",
+    "howRemark": [
+     "Report the shape.",
+     "Check the time columns' types.",
+     "State columns dropped or converted."
+    ]
    }
   },
   "2.1.2": {
@@ -806,7 +848,17 @@ export const asg: Assignment = {
     ],
     "code": "print(df[['Airport_fee', 'airport_fee']].notna().sum())\nboth = df['Airport_fee'].notna() & df['airport_fee'].notna()\nprint(both.sum())  # expect 0\ndf['airport_fee'] = df['airport_fee'].combine_first(df['Airport_fee'])\ndf = df.drop(columns=['Airport_fee'])",
     "lotus": "Chi nhánh Quận 1 ghi «Khu_vực», chi nhánh Thủ Đức ghi «khu_vuc». Nối hai sổ lại ra hai cột nửa rỗng. Gộp thành một cột trước khi đếm.",
-    "trap": "Nếu hai cột cùng có giá trị trên một dòng thì không được gộp bằng combine_first mà không xem lại."
+    "trap": "Nếu hai cột cùng có giá trị trên một dòng thì không được gộp bằng combine_first mà không xem lại.",
+    "read": [
+     "Dòng đầu là hai tên cột trùng nghĩa: airport_fee và Airport_fee.",
+     "Bảng describe là cột đã gộp: min −1,75, max 1,75."
+    ],
+    "remark": "Hai tên cột chỉ khác chữ hoa nhưng cùng một phí; đã gộp thành một cột airport_fee (trung bình 0,14, giá trị từ −1,75 đến 1,75).",
+    "howRemark": [
+     "Nêu hai tên và vì sao nên gộp.",
+     "Kiểm cột gộp có đủ dòng.",
+     "Nhắc giá trị âm xử lý ở 2.1.3."
+    ]
    },
    "en": {
     "think": "The same column is spelled two ways: Airport_fee and airport_fee. One month uses one name, another month the other, so concatenation creates two complementary columns.",
@@ -818,7 +870,17 @@ export const asg: Assignment = {
     ],
     "code": "print(df[['Airport_fee', 'airport_fee']].notna().sum())\nboth = df['Airport_fee'].notna() & df['airport_fee'].notna()\nprint(both.sum())  # expect 0\ndf['airport_fee'] = df['airport_fee'].combine_first(df['Airport_fee'])\ndf = df.drop(columns=['Airport_fee'])",
     "lotus": "District 1 writes “Khu_vuc”, Thu Duc writes “khu_vuc”. Joining the two logs gives two half-empty columns. Merge into one before counting.",
-    "trap": "If both columns hold a value on one row, do not merge with combine_first without looking again."
+    "trap": "If both columns hold a value on one row, do not merge with combine_first without looking again.",
+    "read": [
+     "First line shows two same-meaning names: airport_fee and Airport_fee.",
+     "The describe table is the merged column: min −1.75, max 1.75."
+    ],
+    "remark": "The two names differ only by case but are the same fee; merged into one airport_fee column (mean 0.14, values from −1.75 to 1.75).",
+    "howRemark": [
+     "State both names and why to merge.",
+     "Check the merged column has all rows.",
+     "Remind negatives are handled in 2.1.3."
+    ]
    }
   },
   "2.1.3": {
@@ -832,7 +894,18 @@ export const asg: Assignment = {
     ],
     "code": "money = ['fare_amount','extra','mta_tax','tip_amount','tolls_amount','improvement_surcharge','total_amount','congestion_surcharge','airport_fee']\nprint((df[money] < 0).sum())\nneg = df[df['fare_amount'] < 0]\nprint(neg['RatecodeID'].value_counts(dropna=False))\nprint(neg['payment_type'].value_counts())\ndf[money] = df[money].abs()",
     "lotus": "Một dòng booking ghi -650 nghìn. Đó là hoàn tiền gói A12, không phải spa trả tiền cho khách. Hiểu nó là hoàn tiền thì mới chọn lấy trị tuyệt đối hoặc giữ riêng.",
-    "trap": "Sửa dấu hàng loạt mà không nhìn các dòng đó là gì có thể che mất một nhóm giao dịch hoàn tiền."
+    "trap": "Sửa dấu hàng loạt mà không nhìn các dòng đó là gì có thể che mất một nhóm giao dịch hoàn tiền.",
+    "read": [
+     "Bảng đầu: số dòng âm ở mỗi cột tiền; fare_amount có 19.059 dòng âm.",
+     "Bảng sau: số chuyến theo RatecodeID, mã 1 là giá chuẩn.",
+     "Dòng âm thường là hoàn tiền hoặc tranh chấp."
+    ],
+    "remark": "Có hàng chục nghìn dòng tiền âm (fare_amount 19.059, total_amount 18.801), chủ yếu là hoàn tiền hoặc tranh chấp, nên xử lý bằng quy tắc rõ ràng thay vì sửa tùy ý.",
+    "howRemark": [
+     "Nêu cột có nhiều dòng âm.",
+     "Giải thích nguyên nhân có thể.",
+     "Nói quyết định: bỏ hay đổi dấu, và vì sao."
+    ]
    },
    "en": {
     "think": "Some rows carry negative money. Before fixing, ask what they are: usually refunds or disputes, not truly negative prices.",
@@ -844,7 +917,18 @@ export const asg: Assignment = {
     ],
     "code": "money = ['fare_amount','extra','mta_tax','tip_amount','tolls_amount','improvement_surcharge','total_amount','congestion_surcharge','airport_fee']\nprint((df[money] < 0).sum())\nneg = df[df['fare_amount'] < 0]\nprint(neg['RatecodeID'].value_counts(dropna=False))\nprint(neg['payment_type'].value_counts())\ndf[money] = df[money].abs()",
     "lotus": "One booking row shows -650 thousand. It is a refund of package A12, not the spa paying the customer. Knowing it is a refund is what lets you choose absolute value or keeping it apart.",
-    "trap": "Flipping signs in bulk without looking at what those rows are can hide a whole group of refund transactions."
+    "trap": "Flipping signs in bulk without looking at what those rows are can hide a whole group of refund transactions.",
+    "read": [
+     "First table: negative rows per money column; fare_amount has 19,059.",
+     "Second table: trips per RatecodeID, code 1 is the standard fare.",
+     "Negative rows are usually refunds or disputes."
+    ],
+    "remark": "There are tens of thousands of negative money rows (fare_amount 19,059, total_amount 18,801), mostly refunds or disputes, so handle them by a clear rule rather than ad hoc fixes.",
+    "howRemark": [
+     "Name the columns with many negatives.",
+     "Explain the likely cause.",
+     "State the decision: drop or flip sign, and why."
+    ]
    }
   },
   "2.2.1": {
@@ -857,7 +941,17 @@ export const asg: Assignment = {
     ],
     "code": "miss = (df.isnull().mean() * 100).sort_values(ascending=False)\nprint(miss[miss > 0])\n# do the same rows miss several columns?\ncols = ['passenger_count','RatecodeID','congestion_surcharge','airport_fee']\nprint(df[cols].isnull().all(axis=1).mean())",
     "lotus": "Trong bảng booking, nếu «số khách», «mã gói» và «phụ phí» cùng trống trên cùng các dòng thì đó là một nguồn nhập thiếu, không phải ba lỗi riêng.",
-    "trap": "Điền từng cột riêng lẻ trước khi biết chúng thiếu cùng nhau hay không là điền khi chưa hiểu."
+    "trap": "Điền từng cột riêng lẻ trước khi biết chúng thiếu cùng nhau hay không là điền khi chưa hiểu.",
+    "read": [
+     "Mỗi dòng là % thiếu của một cột; cả năm cột cùng 3,43%.",
+     "Cùng tỷ lệ nghĩa là thiếu theo cả dòng, không rải rác."
+    ],
+    "remark": "Năm cột cùng thiếu 3,43%: các dòng này thiếu nguyên một khối thông tin, nên có thể cùng một nguyên nhân và xử lý chung.",
+    "howRemark": [
+     "Báo % từng cột.",
+     "Nhận ra các tỷ lệ giống nhau.",
+     "Nêu cách xử lý chung."
+    ]
    },
    "en": {
     "think": "Before filling blanks, count blanks: which column misses what percentage.",
@@ -868,7 +962,17 @@ export const asg: Assignment = {
     ],
     "code": "miss = (df.isnull().mean() * 100).sort_values(ascending=False)\nprint(miss[miss > 0])\n# do the same rows miss several columns?\ncols = ['passenger_count','RatecodeID','congestion_surcharge','airport_fee']\nprint(df[cols].isnull().all(axis=1).mean())",
     "lotus": "In the booking table, if “guests”, “package code” and “surcharge” are blank on the same rows, that is one source of missing entry, not three separate faults.",
-    "trap": "Filling each column on its own before knowing whether they are missing together is filling without understanding."
+    "trap": "Filling each column on its own before knowing whether they are missing together is filling without understanding.",
+    "read": [
+     "Each line is a column's % missing; all five at 3.43%.",
+     "The same rate means whole rows are missing, not scattered cells."
+    ],
+    "remark": "Five columns share the same 3.43% missing: those rows lack a whole block of info, likely one cause and handled together.",
+    "howRemark": [
+     "Report each column's %.",
+     "Notice the identical rates.",
+     "State a joint treatment."
+    ]
    }
   },
   "2.2.2": {
@@ -881,7 +985,17 @@ export const asg: Assignment = {
     ],
     "code": "print(df['passenger_count'].value_counts(dropna=False).sort_index())\ndf['passenger_count'] = df['passenger_count'].replace(0, np.nan)\ndf['passenger_count'] = df['passenger_count'].fillna(df['passenger_count'].mode()[0])",
     "lotus": "Một booking ghi 0 khách thì chắc chắn nhập thiếu. Điền bằng 1 (giá trị thường gặp nhất) tốt hơn điền bằng trung bình 1,4 vì khách là số nguyên.",
-    "trap": "Điền trung bình sẽ ra 1,37 hành khách: một số không tồn tại ở đời thực."
+    "trap": "Điền trung bình sẽ ra 1,37 hành khách: một số không tồn tại ở đời thực.",
+    "read": [
+     "Bảng đếm số chuyến theo số khách; có 0 khách (28.990) và thiếu (65.735).",
+     "7, 8, 9 khách rất ít, có thể là lỗi."
+    ],
+    "remark": "Đa số chuyến 1 khách (1.390.732); 28.990 dòng 0 khách là vô lý và 65.735 dòng thiếu, nên coi 0 như thiếu rồi xử lý chung.",
+    "howRemark": [
+     "Nêu giá trị bất thường.",
+     "Giải thích vì sao 0 là thiếu.",
+     "Chọn cách điền và lý do."
+    ]
    },
    "en": {
     "think": "passenger_count has blanks and also zeros. Zero passengers has no meaning, so treat it as missing.",
@@ -892,7 +1006,17 @@ export const asg: Assignment = {
     ],
     "code": "print(df['passenger_count'].value_counts(dropna=False).sort_index())\ndf['passenger_count'] = df['passenger_count'].replace(0, np.nan)\ndf['passenger_count'] = df['passenger_count'].fillna(df['passenger_count'].mode()[0])",
     "lotus": "A booking with 0 guests was surely entered wrongly. Filling with 1 (the most common) beats filling with a mean of 1.4 because guests are whole numbers.",
-    "trap": "Filling with the mean gives 1.37 passengers: a number that does not exist in real life."
+    "trap": "Filling with the mean gives 1.37 passengers: a number that does not exist in real life.",
+    "read": [
+     "The table counts trips by passenger number; zero (28,990) and missing (65,735).",
+     "7, 8, 9 passengers are very few, maybe errors."
+    ],
+    "remark": "Most trips carry 1 passenger (1,390,732); 28,990 zero-passenger rows are meaningless and 65,735 are missing, so treat 0 as missing and handle together.",
+    "howRemark": [
+     "Name the abnormal values.",
+     "Explain why 0 is missing.",
+     "Choose the fill and the reason."
+    ]
    }
   },
   "2.2.3": {
@@ -905,7 +1029,17 @@ export const asg: Assignment = {
     ],
     "code": "print(df['RatecodeID'].value_counts(dropna=False))\ndf['RatecodeID'] = df['RatecodeID'].fillna(df['RatecodeID'].mode()[0])",
     "lotus": "Mã gói là A12, B07, C03: không có «trung bình của A12 và B07». Chỉ điền bằng mã hay gặp nhất.",
-    "trap": "Trung bình của một mã vô nghĩa. Dùng mode cho cột mã."
+    "trap": "Trung bình của một mã vô nghĩa. Dùng mode cho cột mã.",
+    "read": [
+     "Bảng đếm RatecodeID: mã 1 áp đảo (1.744.049), có mã 99 (10.649) và thiếu (65.735).",
+     "Mã 99 không có trong từ điển dữ liệu."
+    ],
+    "remark": "RatecodeID mã 1 chiếm áp đảo nên điền chỗ thiếu bằng mã 1 (mốt); mã 99 là giá trị lạ cần chú ý.",
+    "howRemark": [
+     "Nêu mã phổ biến nhất.",
+     "Giải thích vì sao dùng mốt, không dùng trung bình.",
+     "Ghi chú mã 99."
+    ]
    },
    "en": {
     "think": "RatecodeID is a code, not a number to average. Fill with the most common code.",
@@ -916,7 +1050,17 @@ export const asg: Assignment = {
     ],
     "code": "print(df['RatecodeID'].value_counts(dropna=False))\ndf['RatecodeID'] = df['RatecodeID'].fillna(df['RatecodeID'].mode()[0])",
     "lotus": "Package codes are A12, B07, C03: there is no “average of A12 and B07”. Fill only with the most common code.",
-    "trap": "The average of a code is meaningless. Use the mode for code columns."
+    "trap": "The average of a code is meaningless. Use the mode for code columns.",
+    "read": [
+     "Counts of RatecodeID: code 1 dominates (1,744,049), with 99 (10,649) and missing (65,735).",
+     "Code 99 is not in the data dictionary."
+    ],
+    "remark": "RatecodeID code 1 dominates, so fill missing with 1 (the mode); code 99 is an odd value to note.",
+    "howRemark": [
+     "Name the most common code.",
+     "Explain why mode, not mean.",
+     "Note code 99."
+    ]
    }
   },
   "2.2.4": {
@@ -929,7 +1073,17 @@ export const asg: Assignment = {
     ],
     "code": "print(df['congestion_surcharge'].value_counts(dropna=False))\ndf['congestion_surcharge'] = df['congestion_surcharge'].fillna(df['congestion_surcharge'].mode()[0])",
     "lotus": "Phụ phí ngoài giờ chỉ áp dụng ở vài khung giờ. Dòng thiếu phụ phí có thể là «không áp dụng» (0) hay «quên ghi» (mức thường). Hai cách điền cho ra hai tổng doanh thu khác nhau.",
-    "trap": "Chọn mode hay 0 đổi tổng phụ phí. Nói rõ mình đã chọn gì và vì sao."
+    "trap": "Chọn mode hay 0 đổi tổng phụ phí. Nói rõ mình đã chọn gì và vì sao.",
+    "read": [
+     "Bảng đếm congestion_surcharge: 2,5 (1.705.676), 0 (144.099), thiếu (65.735).",
+     "Dòng cuối: 65.735 ô trống còn lại để xử lý."
+    ],
+    "remark": "Phí chỉ có hai giá trị là 2,5 và 0; 0 là có nghĩa (chuyến không phải trả), nên chỗ thiếu được điền 0 và còn lại 65.735 ô trống cần quyết định.",
+    "howRemark": [
+     "Nêu các giá trị thật.",
+     "Giải thích 0 là giá trị hợp lệ.",
+     "Nêu số ô trống còn lại."
+    ]
    },
    "en": {
     "think": "congestion_surcharge has gaps. This fee applies only to some trips, so 0 is a meaningful value, not a lazy fill.",
@@ -940,7 +1094,17 @@ export const asg: Assignment = {
     ],
     "code": "print(df['congestion_surcharge'].value_counts(dropna=False))\ndf['congestion_surcharge'] = df['congestion_surcharge'].fillna(df['congestion_surcharge'].mode()[0])",
     "lotus": "The off-peak surcharge applies in only a few time windows. A row missing it may mean “not applicable” (0) or “forgot to record” (the usual rate). The two fills give different total revenue.",
-    "trap": "Choosing mode or 0 changes the surcharge total. State what you chose and why."
+    "trap": "Choosing mode or 0 changes the surcharge total. State what you chose and why.",
+    "read": [
+     "Counts of congestion_surcharge: 2.5 (1,705,676), 0 (144,099), missing (65,735).",
+     "Last line: 65,735 blanks left to handle."
+    ],
+    "remark": "The fee has only two values, 2.5 and 0; 0 is meaningful (trip not charged), so fill gaps with 0, leaving 65,735 blanks to decide.",
+    "howRemark": [
+     "Name the real values.",
+     "Explain why 0 is valid.",
+     "State the blanks left."
+    ]
    }
   },
   "2.3.1": {
@@ -956,7 +1120,17 @@ export const asg: Assignment = {
     ],
     "code": "print(df.describe().T)\nn0 = len(df)\ndf = df[~((df['trip_distance'] < 0.1) & (df['fare_amount'] > 300))]\ndf = df[~((df['trip_distance'] == 0) & (df['fare_amount'] == 0) & (df['PULocationID'] != df['DOLocationID']))]\ndf = df[df['trip_distance'] <= 250]\ndf = df[df['payment_type'] != 0]\ndf = df[df['passenger_count'] <= 6]\nprint(n0 - len(df), 'rows removed')",
     "lotus": "Booking ghi giá 65.000 nghìn cho 5 phút ghế massage là lỗi nhập thêm hai số 0. Bỏ nó. Booking giá 0 nhưng chi nhánh vào và ra khác nhau cũng không hợp lệ.",
-    "trap": "Bỏ quá tay làm mẫu mất thật. Ghi số dòng bỏ ở mỗi quy tắc để thấy quy tắc nào xóa nhiều."
+    "trap": "Bỏ quá tay làm mẫu mất thật. Ghi số dòng bỏ ở mỗi quy tắc để thấy quy tắc nào xóa nhiều.",
+    "read": [
+     "Bảng describe: trip_distance, fare_amount, tip_amount, total_amount, trip_duration.",
+     "Chú ý std rất lớn (199 cho quãng đường) và min âm của thời lượng (−58,6)."
+    ],
+    "remark": "Quãng đường trung bình 4,0 dặm nhưng độ lệch chuẩn 199 và thời lượng có giá trị âm (−58,6 phút): còn nhiều điểm xa và lỗi dữ liệu cần xử lý trước khi phân tích.",
+    "howRemark": [
+     "Nêu cột có std quá lớn hoặc giá trị âm.",
+     "Mỗi quy tắc lọc cần lý do.",
+     "Quyết định bỏ hay thay giá trị."
+    ]
    },
    "en": {
     "think": "Analyse the distribution first, then remove. Each hint in the brief is a rule, and each rule needs a decision: drop the row or replace the value.",
@@ -970,7 +1144,17 @@ export const asg: Assignment = {
     ],
     "code": "print(df.describe().T)\nn0 = len(df)\ndf = df[~((df['trip_distance'] < 0.1) & (df['fare_amount'] > 300))]\ndf = df[~((df['trip_distance'] == 0) & (df['fare_amount'] == 0) & (df['PULocationID'] != df['DOLocationID']))]\ndf = df[df['trip_distance'] <= 250]\ndf = df[df['payment_type'] != 0]\ndf = df[df['passenger_count'] <= 6]\nprint(n0 - len(df), 'rows removed')",
     "lotus": "A booking priced 65,000 thousand for 5 minutes of massage chair is a typing slip with two extra zeros. Drop it. A booking priced 0 whose start and end branch differ is also invalid.",
-    "trap": "Over-removing loses real data. Record rows removed at each rule to see which rule deletes the most."
+    "trap": "Over-removing loses real data. Record rows removed at each rule to see which rule deletes the most.",
+    "read": [
+     "describe table: trip_distance, fare_amount, tip_amount, total_amount, trip_duration.",
+     "Note the huge std (199 for distance) and the negative duration min (−58.6)."
+    ],
+    "remark": "Mean distance is 4.0 miles but std is 199 and duration has negatives (−58.6 min): many outliers and data errors need handling before analysis.",
+    "howRemark": [
+     "Name the columns with huge std or negatives.",
+     "Each filter rule needs a reason.",
+     "Decide drop or replace."
+    ]
    }
   },
   "3.1.1": {
@@ -984,7 +1168,17 @@ export const asg: Assignment = {
     ],
     "code": "numerical = ['passenger_count','trip_distance','pickup_hour','trip_duration']\ncategorical = ['VendorID','RatecodeID','PULocationID','DOLocationID','payment_type']\n# money columns: numerical",
     "lotus": "Mã gói A12 hay mã chi nhánh 1, 2, 3 là nhóm. Giá 650 nghìn là số. Lấy trung bình của «mã chi nhánh» không cho ra điều gì có nghĩa.",
-    "trap": "Một cột chứa số không tự động là biến số. Hỏi xem trung bình có nghĩa không."
+    "trap": "Một cột chứa số không tự động là biến số. Hỏi xem trung bình có nghĩa không.",
+    "read": [
+     "Hai danh sách: categorical (VendorID, RatecodeID, PULocationID, DOLocationID, payment_type) và numerical.",
+     "Mã trông như số nhưng là nhóm."
+    ],
+    "remark": "VendorID, RatecodeID, mã vùng và payment_type là nhóm dù là số; passenger_count, quãng đường, thời lượng và các cột tiền là số.",
+    "howRemark": [
+     "Giải thích các mã là nhóm.",
+     "Chia hai danh sách.",
+     "Nhắc không tính trung bình mã."
+    ]
    },
    "en": {
     "think": "Classify variables before plotting: numerical (measurable, with distances) or categorical (labels). Code numbers like VendorID look numeric but are categories.",
@@ -996,7 +1190,17 @@ export const asg: Assignment = {
     ],
     "code": "numerical = ['passenger_count','trip_distance','pickup_hour','trip_duration']\ncategorical = ['VendorID','RatecodeID','PULocationID','DOLocationID','payment_type']\n# money columns: numerical",
     "lotus": "Package code A12 or branch code 1, 2, 3 are categories. A price of 650 thousand is numerical. The average of a “branch code” means nothing.",
-    "trap": "A column holding numbers is not automatically a numerical variable. Ask whether the average means something."
+    "trap": "A column holding numbers is not automatically a numerical variable. Ask whether the average means something.",
+    "read": [
+     "Two lists: categorical (VendorID, RatecodeID, PULocationID, DOLocationID, payment_type) and numerical.",
+     "Codes look numeric but are categories."
+    ],
+    "remark": "VendorID, RatecodeID, zone ids and payment_type are categories though numeric; passenger_count, distance, duration and money columns are numerical.",
+    "howRemark": [
+     "Explain why the codes are categories.",
+     "Split the two lists.",
+     "Remind not to average codes."
+    ]
    }
   },
   "3.1.2": {
@@ -1009,7 +1213,17 @@ export const asg: Assignment = {
     ],
     "code": "df['pickup_hour'] = df['tpep_pickup_datetime'].dt.hour\ndf['pickup_day'] = df['tpep_pickup_datetime'].dt.day_name()\ndf['pickup_month'] = df['tpep_pickup_datetime'].dt.month\ndays = ['Monday','Tuesday','Wednesday','Thursday','Friday','Saturday','Sunday']\ndf.groupby('pickup_hour').size().plot(kind='bar')\ndf['pickup_day'].value_counts().reindex(days).plot(kind='bar')\ndf.groupby('pickup_month').size().plot(kind='bar')",
     "lotus": "Đếm booking Lotus Spa theo giờ cho thấy đỉnh ở 18:00 đến 20:00. Theo thứ cho thấy cuối tuần đông. Theo tháng cho thấy tháng 12 xuống (180 form so với 220), một câu hỏi để đào tiếp, không phải kết luận.",
-    "trap": "Thứ trong tuần mà không đặt thứ tự sẽ xếp theo bảng chữ cái: Friday đứng đầu."
+    "trap": "Thứ trong tuần mà không đặt thứ tự sẽ xếp theo bảng chữ cái: Friday đứng đầu.",
+    "read": [
+     "Dòng chữ: giờ, thứ và tháng đông nhất.",
+     "Biểu đồ: ba lát cắt thời gian cạnh nhau."
+    ],
+    "remark": "Đông nhất lúc 18h, vào thứ Năm và tháng 5: nhu cầu cao nhất là giờ tan tầm cuối tuần làm việc và mùa xuân.",
+    "howRemark": [
+     "Nêu ba đỉnh.",
+     "Giải thích bằng nhịp sinh hoạt.",
+     "Nhắc mẫu 5% giữ hình dạng, không giữ số tuyệt đối."
+    ]
    },
    "en": {
     "think": "Three time cuts: by hour, by weekday, by month. Each cut is a new column and a groupby.",
@@ -1020,7 +1234,17 @@ export const asg: Assignment = {
     ],
     "code": "df['pickup_hour'] = df['tpep_pickup_datetime'].dt.hour\ndf['pickup_day'] = df['tpep_pickup_datetime'].dt.day_name()\ndf['pickup_month'] = df['tpep_pickup_datetime'].dt.month\ndays = ['Monday','Tuesday','Wednesday','Thursday','Friday','Saturday','Sunday']\ndf.groupby('pickup_hour').size().plot(kind='bar')\ndf['pickup_day'].value_counts().reindex(days).plot(kind='bar')\ndf.groupby('pickup_month').size().plot(kind='bar')",
     "lotus": "Counting Lotus Spa bookings by hour shows a peak at 18:00 to 20:00. By weekday it shows busy weekends. By month it shows December down (180 forms versus 220), a question to dig into, not a conclusion.",
-    "trap": "Weekdays without an order sort alphabetically: Friday comes first."
+    "trap": "Weekdays without an order sort alphabetically: Friday comes first.",
+    "read": [
+     "Text: the busiest hour, weekday and month.",
+     "Chart: three time slices side by side."
+    ],
+    "remark": "Busiest at 18h, on Thursdays and in May: peak demand is the evening rush of a working weekday in spring.",
+    "howRemark": [
+     "Name the three peaks.",
+     "Explain with daily rhythm.",
+     "Remind the 5% sample keeps shape, not absolute counts."
+    ]
    }
   },
   "3.1.3": {
@@ -1034,7 +1258,17 @@ export const asg: Assignment = {
     ],
     "code": "cols = ['fare_amount','tip_amount','total_amount','trip_distance']\nprint((df[cols] <= 0).sum())\ndf_nz = df[(df['fare_amount'] > 0) & (df['total_amount'] > 0)].copy()\n# trip_distance == 0 may be same-zone trips: inspect before dropping\nprint(((df['trip_distance'] == 0) & (df['PULocationID'] == df['DOLocationID'])).sum())",
     "lotus": "Booking giá 0 là tặng thử, không phải lỗi. Booking thời lượng 0 phút ở một chi nhánh có thể là hủy. Xem rồi mới quyết định bỏ hay giữ.",
-    "trap": "Bỏ mọi số 0 thì mất cả chuyến cùng vùng, một nhóm chuyến thật."
+    "trap": "Bỏ mọi số 0 thì mất cả chuyến cùng vùng, một nhóm chuyến thật.",
+    "read": [
+     "Bảng đếm số dòng bằng 0 ở từng cột: quãng đường 0 có 23.540 dòng.",
+     "Dòng cuối: 1.848.971 → 1.848.395, tức bỏ 576 dòng fare bằng 0."
+    ],
+    "remark": "23.540 chuyến cách 0 dặm (có thể là đón và trả cùng vùng, không hẳn lỗi), còn 576 chuyến cước 0 bị bỏ vì vô nghĩa.",
+    "howRemark": [
+     "Nêu số dòng 0 mỗi cột.",
+     "Phân biệt 0 hợp lệ và 0 là lỗi.",
+     "Báo số dòng đã bỏ."
+    ]
    },
    "en": {
     "think": "Before filtering zeros, look at how many there are and what they are. Distance 0 may be a trip within one zone, not an error.",
@@ -1046,7 +1280,17 @@ export const asg: Assignment = {
     ],
     "code": "cols = ['fare_amount','tip_amount','total_amount','trip_distance']\nprint((df[cols] <= 0).sum())\ndf_nz = df[(df['fare_amount'] > 0) & (df['total_amount'] > 0)].copy()\n# trip_distance == 0 may be same-zone trips: inspect before dropping\nprint(((df['trip_distance'] == 0) & (df['PULocationID'] == df['DOLocationID'])).sum())",
     "lotus": "A booking priced 0 is a free trial, not an error. A 0-minute booking at one branch may be a cancellation. Look, then decide to drop or keep.",
-    "trap": "Dropping every zero loses same-zone trips, a real group."
+    "trap": "Dropping every zero loses same-zone trips, a real group.",
+    "read": [
+     "Table counts rows equal to 0 per column: distance 0 has 23,540 rows.",
+     "Last line: 1,848,971 → 1,848,395, i.e. 576 zero-fare rows dropped."
+    ],
+    "remark": "23,540 trips have 0 miles (maybe pickup and drop in the same zone, not always an error), while 576 zero-fare trips are dropped as meaningless.",
+    "howRemark": [
+     "State the zero counts per column.",
+     "Distinguish valid zero from error.",
+     "Report rows dropped."
+    ]
    }
   },
   "3.1.4": {
@@ -1059,7 +1303,17 @@ export const asg: Assignment = {
     ],
     "code": "monthly = df.groupby('pickup_month')['total_amount'].sum()\nmonthly.plot(kind='line', marker='o')\nprint(monthly.idxmax(), monthly.idxmin())",
     "lotus": "Doanh thu Lotus Spa theo tháng cho thấy tháng 12 thấp hơn tháng 11. Hỏi trước khi kết luận: tháng 12 có đủ ngày không, có đợt khuyến mãi nào không.",
-    "trap": "Đọc doanh thu mẫu như doanh thu thật. Mẫu 5% chỉ cho xu hướng, và con số thật cần nhân lên ở bài 3.2.3."
+    "trap": "Đọc doanh thu mẫu như doanh thu thật. Mẫu 5% chỉ cho xu hướng, và con số thật cần nhân lên ở bài 3.2.3.",
+    "read": [
+     "Bảng: doanh thu từng tháng (số tương đối vì là mẫu 5%).",
+     "Đọc xu hướng: tháng 5 và 10 cao nhất (100,2), tháng 2 thấp nhất (77,4)."
+    ],
+    "remark": "Doanh thu đỉnh ở tháng 5 và 10 (100,2) và thấp nhất tháng 2 (77,4) và tháng 8 (79,9). Số tuyệt đối thấp vì là mẫu; nên đọc xu hướng.",
+    "howRemark": [
+     "Nêu tháng cao nhất và thấp nhất.",
+     "Tính chênh phần trăm.",
+     "Nhắc mẫu 5%."
+    ]
    },
    "en": {
     "think": "Monthly revenue is the sum of total_amount by month. Remember this is a 5% sample, so absolute numbers are low; the trend is what you read.",
@@ -1070,7 +1324,17 @@ export const asg: Assignment = {
     ],
     "code": "monthly = df.groupby('pickup_month')['total_amount'].sum()\nmonthly.plot(kind='line', marker='o')\nprint(monthly.idxmax(), monthly.idxmin())",
     "lotus": "Lotus Spa monthly revenue shows December below November. Ask before concluding: does December have all its days, was there a promotion.",
-    "trap": "Reading sample revenue as real revenue. A 5% sample gives only the trend, and the real figure needs scaling in task 3.2.3."
+    "trap": "Reading sample revenue as real revenue. A 5% sample gives only the trend, and the real figure needs scaling in task 3.2.3.",
+    "read": [
+     "Table: revenue per month (relative since a 5% sample).",
+     "Read the trend: May and October highest (100.2), February lowest (77.4)."
+    ],
+    "remark": "Revenue peaks in May and October (100.2) and is lowest in February (77.4) and August (79.9). Absolute numbers are small because of the sample; read the trend.",
+    "howRemark": [
+     "Name the highest and lowest months.",
+     "Compute the percentage gap.",
+     "Remind the 5% sample."
+    ]
    }
   },
   "3.1.5": {
@@ -1083,7 +1347,16 @@ export const asg: Assignment = {
     ],
     "code": "df['quarter'] = df['tpep_pickup_datetime'].dt.quarter\nq = df.groupby('quarter')['total_amount'].sum()\nshare = q / q.sum()\nprint(share.round(3), share.sum())\nshare.plot(kind='bar')",
     "lotus": "Doanh thu quý 1 là 80, quý 2 là 100, quý 3 là 90, quý 4 là 130 (triệu): tổng 400, tỷ trọng 20%, 25%, 22,5%, 32,5%. Cộng lại luôn 100%.",
-    "trap": "Quên kiểm tra tổng các tỷ trọng bằng 1 là cách dễ để chia nhầm mẫu số."
+    "trap": "Quên kiểm tra tổng các tỷ trọng bằng 1 là cách dễ để chia nhầm mẫu số.",
+    "read": [
+     "Bốn số là tỷ trọng doanh thu của bốn quý, cộng lại 100%."
+    ],
+    "remark": "Quý 4 (26,8%) và quý 2 (26,7%) dẫn đầu, quý 3 thấp nhất (22,8%): chênh chỉ 4 điểm phần trăm nên doanh thu khá đều quanh năm.",
+    "howRemark": [
+     "Nêu quý cao nhất và thấp nhất.",
+     "Đo chênh bằng điểm phần trăm.",
+     "Kết luận về tính mùa vụ."
+    ]
    },
    "en": {
     "think": "Each quarter's share is quarter revenue divided by whole-year revenue. The four numbers sum to 100%.",
@@ -1094,7 +1367,16 @@ export const asg: Assignment = {
     ],
     "code": "df['quarter'] = df['tpep_pickup_datetime'].dt.quarter\nq = df.groupby('quarter')['total_amount'].sum()\nshare = q / q.sum()\nprint(share.round(3), share.sum())\nshare.plot(kind='bar')",
     "lotus": "Quarterly revenue is 80, 100, 90, 130 (million): total 400, shares 20%, 25%, 22.5%, 32.5%. They always add up to 100%.",
-    "trap": "Forgetting to check that shares sum to 1 is an easy way to divide by the wrong denominator."
+    "trap": "Forgetting to check that shares sum to 1 is an easy way to divide by the wrong denominator.",
+    "read": [
+     "Four numbers are the revenue shares of the four quarters, summing to 100%."
+    ],
+    "remark": "Q4 (26.8%) and Q2 (26.7%) lead, Q3 is lowest (22.8%): only 4 points apart, so revenue is fairly even through the year.",
+    "howRemark": [
+     "Name the highest and lowest quarters.",
+     "Measure the gap in points.",
+     "Conclude on seasonality."
+    ]
    }
   },
   "3.1.6": {
@@ -1107,7 +1389,17 @@ export const asg: Assignment = {
     ],
     "code": "d = df[df['trip_distance'] > 0]\nsns.scatterplot(data=d.sample(5000, random_state=42), x='trip_distance', y='fare_amount', alpha=0.3)\nprint(d[['trip_distance','fare_amount']].corr())",
     "lotus": "Thời lượng liệu trình và giá: 60 phút 650 nghìn, 90 phút 950 nghìn. Các điểm gần một đường thẳng nên tương quan cao, nhưng không có nghĩa thời lượng là nguyên nhân của giá, vì giá được đặt theo bảng giá.",
-    "trap": "Tương quan cao không phải nguyên nhân. Giá cước tính theo quãng đường theo công thức, nên tương quan ở đây là hệ quả của công thức."
+    "trap": "Tương quan cao không phải nguyên nhân. Giá cước tính theo quãng đường theo công thức, nên tương quan ở đây là hệ quả của công thức.",
+    "read": [
+     "Dòng chữ: tương quan 0,944.",
+     "Biểu đồ phân tán: đám điểm dốc lên gần một đường thẳng."
+    ],
+    "remark": "Tương quan quãng đường – cước là 0,944, rất mạnh: đi xa hơn thì cước tăng gần như tuyến tính, nên quãng đường là biến giải thích chính.",
+    "howRemark": [
+     "Báo hệ số.",
+     "Nói mạnh hay yếu.",
+     "Chỉ ra điểm lệch khỏi đường nếu có."
+    ]
    },
    "en": {
     "think": "Relationship between distance and fare: plot points and measure correlation. Drop 0-mile trips as hinted.",
@@ -1118,7 +1410,17 @@ export const asg: Assignment = {
     ],
     "code": "d = df[df['trip_distance'] > 0]\nsns.scatterplot(data=d.sample(5000, random_state=42), x='trip_distance', y='fare_amount', alpha=0.3)\nprint(d[['trip_distance','fare_amount']].corr())",
     "lotus": "Session length and price: 60 minutes 650 thousand, 90 minutes 950 thousand. The points sit near a line so correlation is high, but length does not cause price, because price is set from a price list.",
-    "trap": "High correlation is not cause. Fares are computed from distance by a formula, so correlation here is a consequence of the formula."
+    "trap": "High correlation is not cause. Fares are computed from distance by a formula, so correlation here is a consequence of the formula.",
+    "read": [
+     "Text: correlation 0.944.",
+     "Scatter: the cloud rises close to a straight line."
+    ],
+    "remark": "Distance–fare correlation is 0.944, very strong: longer trips cost almost linearly more, so distance is the main driver.",
+    "howRemark": [
+     "Report the coefficient.",
+     "Say strong or weak.",
+     "Point out departures from the line if any."
+    ]
    }
   },
   "3.1.7": {
@@ -1132,7 +1434,17 @@ export const asg: Assignment = {
     ],
     "code": "df['trip_duration'] = (df['tpep_dropoff_datetime'] - df['tpep_pickup_datetime']).dt.total_seconds() / 60\nd = df[(df['trip_duration'] > 0) & (df['trip_duration'] < 180)]\nprint(d[['fare_amount','trip_duration']].corr())\nprint(d[['fare_amount','passenger_count']].corr())\nprint(d[['tip_amount','trip_distance']].corr())",
     "lotus": "Giá liệu trình theo số khách trong một booking: hai khách không trả gấp đôi. Tương quan thấp ở đây nói rằng số khách không quyết định giá, không nói rằng số khách vô nghĩa.",
-    "trap": "Trip_duration âm hoặc quá lớn là lỗi giờ. Lọc trước khi tính tương quan."
+    "trap": "Trip_duration âm hoặc quá lớn là lỗi giờ. Lọc trước khi tính tương quan.",
+    "read": [
+     "Ba hệ số: cước–thời lượng 0,271; cước–số khách 0,047; boa–quãng đường 0,568.",
+     "Gần 0 là không liên quan."
+    ],
+    "remark": "Cước chỉ liên quan yếu đến thời lượng (0,271) và gần như không liên quan đến số khách (0,047); tiền boa tăng theo quãng đường (0,568).",
+    "howRemark": [
+     "Xếp ba quan hệ theo độ mạnh.",
+     "Diễn giải từng cái bằng một câu.",
+     "Nhớ tương quan chưa là nhân quả."
+    ]
    },
    "en": {
     "think": "Three relationships need correlation and a picture: fare with trip duration, fare with passenger count, tip with distance.",
@@ -1144,7 +1456,17 @@ export const asg: Assignment = {
     ],
     "code": "df['trip_duration'] = (df['tpep_dropoff_datetime'] - df['tpep_pickup_datetime']).dt.total_seconds() / 60\nd = df[(df['trip_duration'] > 0) & (df['trip_duration'] < 180)]\nprint(d[['fare_amount','trip_duration']].corr())\nprint(d[['fare_amount','passenger_count']].corr())\nprint(d[['tip_amount','trip_distance']].corr())",
     "lotus": "Session price by number of guests in one booking: two guests do not pay double. Low correlation here says guest count does not set price, not that guest count is meaningless.",
-    "trap": "A negative or huge trip_duration is a time error. Filter before computing correlation."
+    "trap": "A negative or huge trip_duration is a time error. Filter before computing correlation.",
+    "read": [
+     "Three coefficients: fare–duration 0.271; fare–passengers 0.047; tip–distance 0.568.",
+     "Near 0 means unrelated."
+    ],
+    "remark": "Fare relates only weakly to duration (0.271) and hardly to passengers (0.047); tips rise with distance (0.568).",
+    "howRemark": [
+     "Rank the three relationships by strength.",
+     "Interpret each in one sentence.",
+     "Remember correlation is not causation."
+    ]
    }
   },
   "3.1.8": {
@@ -1157,7 +1479,16 @@ export const asg: Assignment = {
     ],
     "code": "labels = {1:'Credit card', 2:'Cash', 3:'No charge', 4:'Dispute'}\npt = df['payment_type'].map(labels).value_counts(normalize=True)\nprint(pt.round(3))\npt.plot(kind='bar')",
     "lotus": "Lotus Spa: 70% thanh toán thẻ, 25% chuyển khoản, 5% tiền mặt. Cột tiền boa chỉ phản ánh phần thẻ và chuyển khoản.",
-    "trap": "Quên rằng cột boa không tính tiền mặt sẽ làm tỷ lệ boa thật bị thấp đi."
+    "trap": "Quên rằng cột boa không tính tiền mặt sẽ làm tỷ lệ boa thật bị thấp đi.",
+    "read": [
+     "Bảng % theo loại thanh toán, cộng lại 100%."
+    ],
+    "remark": "Thẻ tín dụng chiếm 80,7%, tiền mặt 17,3%, tranh chấp 1,3% và miễn phí 0,7%: gần như mọi chuyến thanh toán bằng thẻ.",
+    "howRemark": [
+     "Nêu loại dẫn đầu và cuối.",
+     "Chú ý tỷ lệ tranh chấp.",
+     "Nói hệ quả cho phân tích tiền boa (chỉ thẻ ghi được)."
+    ]
    },
    "en": {
     "think": "The payment-type distribution is counting each type and dividing by the total. Code 1 card, 2 cash, 3 no charge, 4 dispute.",
@@ -1168,7 +1499,16 @@ export const asg: Assignment = {
     ],
     "code": "labels = {1:'Credit card', 2:'Cash', 3:'No charge', 4:'Dispute'}\npt = df['payment_type'].map(labels).value_counts(normalize=True)\nprint(pt.round(3))\npt.plot(kind='bar')",
     "lotus": "Lotus Spa: 70% card, 25% transfer, 5% cash. The tip column reflects only the card and transfer share.",
-    "trap": "Forgetting that the tip column omits cash makes the real tip rate look lower."
+    "trap": "Forgetting that the tip column omits cash makes the real tip rate look lower.",
+    "read": [
+     "A table of % by payment type, summing to 100%."
+    ],
+    "remark": "Credit card is 80.7%, cash 17.3%, disputes 1.3% and free 0.7%: almost every trip is paid by card.",
+    "howRemark": [
+     "Name the top and bottom type.",
+     "Note the dispute rate.",
+     "State the effect on tip analysis (only cards are recorded)."
+    ]
    }
   },
   "3.1.9": {
@@ -1181,7 +1521,16 @@ export const asg: Assignment = {
     ],
     "code": "import geopandas as gpd\nzones = gpd.read_file('taxi_zones/taxi_zones.shp')\nzones.head()\nzones.plot()",
     "lotus": "Ba chi nhánh Quận 1, Quận 3 và Thủ Đức là ba vùng trên một bản đồ. Bảng vùng cho tên và mã, còn hình dạng nằm trong cột geometry.",
-    "trap": "Chuyển file .shp ra khỏi thư mục sẽ làm hỏng, vì các file đi kèm (.shx, .dbf) phải nằm cùng chỗ."
+    "trap": "Chuyển file .shp ra khỏi thư mục sẽ làm hỏng, vì các file đi kèm (.shx, .dbf) phải nằm cùng chỗ.",
+    "read": [
+     "Bảng mẫu bảng vùng: mỗi dòng là một vùng với tên, quận và mã LocationID.",
+     "Biểu đồ là bản đồ các vùng taxi."
+    ],
+    "remark": "File shapefile có các vùng taxi của New York kèm tên và quận, ví dụ Newark Airport (mã 1) và Jamaica Bay (mã 2); mã LocationID dùng để nối với bảng chuyến.",
+    "howRemark": [
+     "Nêu cột quan trọng (LocationID, zone, borough).",
+     "Nói mục đích nối bảng."
+    ]
    },
    "en": {
     "think": "The zone map lives in a shapefile. Read it with geopandas and keep the taxi_zones folder structure unchanged.",
@@ -1192,7 +1541,16 @@ export const asg: Assignment = {
     ],
     "code": "import geopandas as gpd\nzones = gpd.read_file('taxi_zones/taxi_zones.shp')\nzones.head()\nzones.plot()",
     "lotus": "The three branches District 1, District 3 and Thu Duc are three zones on one map. The zone table gives names and codes, and the shape sits in the geometry column.",
-    "trap": "Moving the .shp out of its folder breaks it, since the companion files (.shx, .dbf) must sit alongside."
+    "trap": "Moving the .shp out of its folder breaks it, since the companion files (.shx, .dbf) must sit alongside.",
+    "read": [
+     "Sample of the zone table: each row is a zone with name, borough and LocationID.",
+     "The chart is the map of taxi zones."
+    ],
+    "remark": "The shapefile holds New York's taxi zones with names and boroughs, e.g. Newark Airport (id 1) and Jamaica Bay (id 2); LocationID is the key to join to trips.",
+    "howRemark": [
+     "Name the key columns (LocationID, zone, borough).",
+     "State the purpose of joining."
+    ]
    }
   },
   "3.1.10": {
@@ -1205,7 +1563,15 @@ export const asg: Assignment = {
     ],
     "code": "n = len(df)\ndf = df.merge(zones[['LocationID','zone','borough']], left_on='PULocationID', right_on='LocationID', how='left')\nprint(n, len(df))  # must match",
     "lotus": "Bảng booking có mã chi nhánh 1 đến 3. Bảng chi nhánh cho tên đầy đủ. Nối theo mã, giữ mọi booking.",
-    "trap": "Nếu số dòng sau nối khác số dòng trước, mã vùng trong bảng vùng bị trùng và bạn đã nhân bản chuyến."
+    "trap": "Nếu số dòng sau nối khác số dòng trước, mã vùng trong bảng vùng bị trùng và bạn đã nhân bản chuyến.",
+    "read": [
+     "Bảng mẫu sau khi nối: mã vùng đón kèm tên vùng và quận."
+    ],
+    "remark": "Sau khi nối, mỗi chuyến có tên vùng và quận đón (ví dụ 68 là East Chelsea, Manhattan), nên có thể đọc kết quả theo tên thay vì theo mã.",
+    "howRemark": [
+     "Kiểm tên đã khớp mã.",
+     "Kiểm số dòng không đổi."
+    ]
    },
    "en": {
     "think": "Join the zone table to the trip table by zone code: LocationID on the zone side, PULocationID on the trip side.",
@@ -1216,7 +1582,15 @@ export const asg: Assignment = {
     ],
     "code": "n = len(df)\ndf = df.merge(zones[['LocationID','zone','borough']], left_on='PULocationID', right_on='LocationID', how='left')\nprint(n, len(df))  # must match",
     "lotus": "The booking table has branch codes 1 to 3. The branch table gives full names. Join on the code, keep every booking.",
-    "trap": "If the row count differs after the join, a zone code is duplicated in the zone table and you cloned trips."
+    "trap": "If the row count differs after the join, a zone code is duplicated in the zone table and you cloned trips.",
+    "read": [
+     "Sample after the join: pickup zone code with zone name and borough."
+    ],
+    "remark": "After the join each trip has a pickup zone name and borough (e.g. 68 is East Chelsea, Manhattan), so results read by name instead of code.",
+    "howRemark": [
+     "Check names match the codes.",
+     "Check the row count is unchanged."
+    ]
    }
   },
   "3.1.11": {
@@ -1229,7 +1603,16 @@ export const asg: Assignment = {
     ],
     "code": "trips = df.groupby('PULocationID').size().reset_index(name='trips')\ntrips.sort_values('trips', ascending=False).head(10)",
     "lotus": "Quận 1: 480 lượt, Quận 3: 300, Thủ Đức: 220 trong một tuần. Chi nhánh đông nhất không nhất thiết đem lại doanh thu cao nhất.",
-    "trap": "Đếm số chuyến khác với cộng doanh thu. Chọn đúng thứ bạn muốn đo."
+    "trap": "Đếm số chuyến khác với cộng doanh thu. Chọn đúng thứ bạn muốn đo.",
+    "read": [
+     "Bảng đếm số chuyến theo mã vùng, sắp giảm dần.",
+     "Mã 132 đứng đầu với 99.363 chuyến."
+    ],
+    "remark": "Mã vùng 132 có nhiều chuyến đón nhất (99.363), kế đến 237 (87.916) và 161 (86.783); đây là mã, chưa phải tên.",
+    "howRemark": [
+     "Nêu ba mã đầu kèm số.",
+     "Nhắc cần đổi sang tên ở bước sau."
+    ]
    },
    "en": {
     "think": "Trips per zone code is one groupby that counts rows.",
@@ -1240,7 +1623,16 @@ export const asg: Assignment = {
     ],
     "code": "trips = df.groupby('PULocationID').size().reset_index(name='trips')\ntrips.sort_values('trips', ascending=False).head(10)",
     "lotus": "District 1: 480 visits, District 3: 300, Thu Duc: 220 in one week. The busiest branch does not necessarily bring the highest revenue.",
-    "trap": "Counting trips differs from summing revenue. Choose exactly what you want to measure."
+    "trap": "Counting trips differs from summing revenue. Choose exactly what you want to measure.",
+    "read": [
+     "Table of trips per zone code, sorted descending.",
+     "Code 132 leads with 99,363 trips."
+    ],
+    "remark": "Zone code 132 has the most pickups (99,363), then 237 (87,916) and 161 (86,783); these are codes, not yet names.",
+    "howRemark": [
+     "Name the top three codes with numbers.",
+     "Remind to convert to names next."
+    ]
    }
   },
   "3.1.12": {
@@ -1253,7 +1645,17 @@ export const asg: Assignment = {
     ],
     "code": "zones_with_trips = zones.merge(trips, left_on='LocationID', right_on='PULocationID', how='left')\nzones_with_trips['trips'] = zones_with_trips['trips'].fillna(0)\nprint(type(zones_with_trips))",
     "lotus": "Một chi nhánh mới chưa có booking phải hiện 0, không phải biến mất khỏi bản đồ.",
-    "trap": "Trộn theo thứ tự ngược (trips.merge(zones)) có thể trả về DataFrame thường, mất khả năng vẽ bản đồ."
+    "trap": "Trộn theo thứ tự ngược (trips.merge(zones)) có thể trả về DataFrame thường, mất khả năng vẽ bản đồ.",
+    "read": [
+     "Bảng top vùng với tên, quận và số chuyến.",
+     "JFK Airport đứng đầu."
+    ],
+    "remark": "JFK Airport (99.363 chuyến) đứng đầu, sau đó Upper East Side South (87.916) và Midtown Center (86.783): sân bay và các khu trung tâm Manhattan là điểm đón chính.",
+    "howRemark": [
+     "Nêu ba vùng đầu.",
+     "Nhận xét kiểu vùng (sân bay, trung tâm).",
+     "Nhắc vùng không có chuyến phải ghi 0."
+    ]
    },
    "en": {
     "think": "Attach trip counts to the zone table so you can plot. Zones with no trips must show 0, not be left blank.",
@@ -1264,7 +1666,17 @@ export const asg: Assignment = {
     ],
     "code": "zones_with_trips = zones.merge(trips, left_on='LocationID', right_on='PULocationID', how='left')\nzones_with_trips['trips'] = zones_with_trips['trips'].fillna(0)\nprint(type(zones_with_trips))",
     "lotus": "A new branch with no bookings should show 0, not vanish from the map.",
-    "trap": "Merging in the reverse order (trips.merge(zones)) can return a plain DataFrame, losing the ability to draw the map."
+    "trap": "Merging in the reverse order (trips.merge(zones)) can return a plain DataFrame, losing the ability to draw the map.",
+    "read": [
+     "Table of top zones with name, borough and trips.",
+     "JFK Airport leads."
+    ],
+    "remark": "JFK Airport (99,363 trips) leads, then Upper East Side South (87,916) and Midtown Center (86,783): airports and central Manhattan areas are the main pickup points.",
+    "howRemark": [
+     "Name the top three zones.",
+     "Comment on the zone types (airport, centre).",
+     "Remind zones with no trips must show 0."
+    ]
    }
   },
   "3.1.13": {
@@ -1278,7 +1690,17 @@ export const asg: Assignment = {
     ],
     "code": "fig, ax = plt.subplots(1, 1, figsize=(12, 10))\nzones_with_trips.plot(column='trips', ax=ax, legend=True,\n                      legend_kwds={'label': 'Number of trips', 'orientation': 'horizontal'})\nplt.show()\nzones_with_trips.sort_values('trips', ascending=False)[['zone','trips']].head(10)",
     "lotus": "Ba chi nhánh Lotus Spa tô theo số lượt: Quận 1 đậm nhất. Bản đồ cho thấy vị trí, còn bảng đứng sau cho tên và số.",
-    "trap": "Bản đồ chỉ cho thấy thứ tự lớn nhỏ bằng màu. Số chính xác phải đọc từ bảng."
+    "trap": "Bản đồ chỉ cho thấy thứ tự lớn nhỏ bằng màu. Số chính xác phải đọc từ bảng.",
+    "read": [
+     "Bản đồ màu: vùng đậm là nhiều chuyến đón; vùng nhạt là ít.",
+     "Tìm cụm vùng đậm."
+    ],
+    "remark": "Bản đồ cho thấy các chuyến đón tập trung ở Manhattan và hai sân bay, còn các vùng ngoại ô nhạt màu.",
+    "howRemark": [
+     "Mô tả vùng đậm.",
+     "Nối với bảng top vùng ở 3.1.12.",
+     "Nêu ý nghĩa khi bố trí xe."
+    ]
    },
    "en": {
     "think": "Choropleth map: colour zones by trip count. Set the figure first, then draw onto it.",
@@ -1290,7 +1712,17 @@ export const asg: Assignment = {
     ],
     "code": "fig, ax = plt.subplots(1, 1, figsize=(12, 10))\nzones_with_trips.plot(column='trips', ax=ax, legend=True,\n                      legend_kwds={'label': 'Number of trips', 'orientation': 'horizontal'})\nplt.show()\nzones_with_trips.sort_values('trips', ascending=False)[['zone','trips']].head(10)",
     "lotus": "The three Lotus Spa branches coloured by visits: District 1 darkest. The map shows position, and the table behind it gives names and numbers.",
-    "trap": "A map shows only rank order by colour. Read exact numbers from the table."
+    "trap": "A map shows only rank order by colour. Read exact numbers from the table.",
+    "read": [
+     "Colour map: dark zones have many pickups; light zones few.",
+     "Look for dark clusters."
+    ],
+    "remark": "The map shows pickups concentrated in Manhattan and the two airports while outer zones are pale.",
+    "howRemark": [
+     "Describe the dark areas.",
+     "Tie to the top-zone table in 3.1.12.",
+     "State the meaning for fleet placement."
+    ]
    }
   },
   "3.2.1": {
@@ -1305,7 +1737,17 @@ export const asg: Assignment = {
     ],
     "code": "g = df.groupby(['PULocationID','DOLocationID','pickup_hour']).agg(\n    dist=('trip_distance','mean'), dur=('trip_duration','mean'), n=('trip_distance','size')).reset_index()\ng['speed_mph'] = g['dist'] / (g['dur'] / 60)\nslow = g[g['n'] >= 30].sort_values('speed_mph').head(10)\nprint(slow)",
     "lotus": "Hai chi nhánh Quận 1 và Quận 3: một khách đi từ chi nhánh này sang chi nhánh kia mất bao lâu lúc 18:00 so với 10:00. Tuyến nào luôn chậm lúc 18:00 là chỗ nên dời lịch hẹn.",
-    "trap": "Một tuyến chỉ có 2 chuyến có thể đứng đầu danh sách chậm nhất chỉ vì nhiễu. Đặt ngưỡng số chuyến."
+    "trap": "Một tuyến chỉ có 2 chuyến có thể đứng đầu danh sách chậm nhất chỉ vì nhiễu. Đặt ngưỡng số chuyến.",
+    "read": [
+     "Bảng đầu: tốc độ trung bình theo giờ (dặm/giờ): thấp nhất 9,5 lúc 15h, cao nhất 20,5 lúc 5h.",
+     "Bảng sau: các tuyến chậm với số chuyến và tốc độ."
+    ],
+    "remark": "Xe chậm nhất ban ngày (khoảng 9,5–10 dặm/giờ từ 12h đến 18h) và nhanh nhất lúc 5h (20,5), nên giờ cao điểm là lúc đường kẹt. Một số tuyến nội vùng chỉ đạt khoảng 3,7 dặm/giờ.",
+    "howRemark": [
+     "Nêu giờ nhanh nhất và chậm nhất kèm số.",
+     "Nối với giờ đông xe.",
+     "Nêu tuyến chậm và ý nghĩa."
+    ]
    },
    "en": {
     "think": "A route's speed is distance divided by average time. Do it per pickup-and-dropoff zone pair and per hour, then find the slowest routes.",
@@ -1318,7 +1760,17 @@ export const asg: Assignment = {
     ],
     "code": "g = df.groupby(['PULocationID','DOLocationID','pickup_hour']).agg(\n    dist=('trip_distance','mean'), dur=('trip_duration','mean'), n=('trip_distance','size')).reset_index()\ng['speed_mph'] = g['dist'] / (g['dur'] / 60)\nslow = g[g['n'] >= 30].sort_values('speed_mph').head(10)\nprint(slow)",
     "lotus": "Two branches, District 1 and District 3: how long a customer takes from one branch to the other at 18:00 versus 10:00. A route that is always slow at 18:00 is where to shift appointments.",
-    "trap": "A route with only 2 trips can top the slowest list purely from noise. Set a trip-count threshold."
+    "trap": "A route with only 2 trips can top the slowest list purely from noise. Set a trip-count threshold.",
+    "read": [
+     "First table: mean speed by hour (miles/hour): slowest 9.5 at 15h, fastest 20.5 at 5h.",
+     "Second table: slow routes with trips and speed."
+    ],
+    "remark": "Cars are slowest in daytime (about 9.5–10 mph from 12h to 18h) and fastest at 5h (20.5), so peak hours are when roads clog. Some within-zone routes reach only about 3.7 mph.",
+    "howRemark": [
+     "Name the fastest and slowest hours with numbers.",
+     "Tie to busy hours.",
+     "State slow routes and their meaning."
+    ]
    }
   },
   "3.2.2": {
@@ -1331,7 +1783,16 @@ export const asg: Assignment = {
     ],
     "code": "hourly = df.groupby('pickup_hour').size()\nhourly.plot(kind='bar')\nprint(hourly.idxmax(), hourly.max())",
     "lotus": "Giờ đông nhất của Lotus Spa là 19:00 với 62 lượt trong mẫu. Con số này là số trong mẫu, chưa phải số thật.",
-    "trap": "Báo số trong mẫu như số thật. Bài 3.2.3 nhân lên."
+    "trap": "Báo số trong mẫu như số thật. Bài 3.2.3 nhân lên.",
+    "read": [
+     "Dòng chữ: giờ đông nhất 18 và số chuyến của giờ đó (130.555 trong mẫu).",
+     "Biểu đồ: số chuyến theo 24 giờ."
+    ],
+    "remark": "Đỉnh nhu cầu lúc 18h với 130.555 chuyến trong mẫu; thấp nhất khoảng rạng sáng.",
+    "howRemark": [
+     "Nêu giờ đỉnh kèm số.",
+     "Mô tả hình dạng đường theo giờ."
+    ]
    },
    "en": {
     "think": "Count trips per hour, draw it, and state the busiest hour with its trip count.",
@@ -1342,7 +1803,16 @@ export const asg: Assignment = {
     ],
     "code": "hourly = df.groupby('pickup_hour').size()\nhourly.plot(kind='bar')\nprint(hourly.idxmax(), hourly.max())",
     "lotus": "Lotus Spa's busiest hour is 19:00 with 62 visits in the sample. That is a sample number, not the real one.",
-    "trap": "Reporting a sample number as the real one. Task 3.2.3 scales up."
+    "trap": "Reporting a sample number as the real one. Task 3.2.3 scales up.",
+    "read": [
+     "Text: the busiest hour 18 and its trips (130,555 in the sample).",
+     "Chart: trips across 24 hours."
+    ],
+    "remark": "Demand peaks at 18h with 130,555 trips in the sample; lowest around dawn.",
+    "howRemark": [
+     "Name the peak hour with the number.",
+     "Describe the shape of the hourly line."
+    ]
    }
   },
   "3.2.3": {
@@ -1355,7 +1825,17 @@ export const asg: Assignment = {
     ],
     "code": "sample_fraction = 0.05\nscaled = hourly / sample_fraction\nprint(scaled.nlargest(5).round(0))",
     "lotus": "Nếu mẫu có 62 lượt lúc 19:00 và tỷ lệ lấy mẫu là 5%, số thật xấp xỉ 62 ÷ 0,05 = 1.240 lượt.",
-    "trap": "Nhân với 5 thay vì chia cho 0,05 (nhân 20) là lỗi thường gặp."
+    "trap": "Nhân với 5 thay vì chia cho 0,05 (nhân 20) là lỗi thường gặp.",
+    "read": [
+     "Bảng: số chuyến ước tính thật theo giờ = số trong mẫu chia 0,05.",
+     "18h có 2.611.100 chuyến."
+    ],
+    "remark": "Quy ra số thật, 18h có khoảng 2,61 triệu chuyến cả năm, 17h 2,50 triệu và 19h 2,34 triệu.",
+    "howRemark": [
+     "Nêu công thức nhân 20.",
+     "Báo ba giờ đầu theo số thật.",
+     "Nhắc đây là ước tính."
+    ]
    },
    "en": {
     "think": "The sample holds only 5% of trips. Real count = sample count divided by the sampling fraction.",
@@ -1366,7 +1846,17 @@ export const asg: Assignment = {
     ],
     "code": "sample_fraction = 0.05\nscaled = hourly / sample_fraction\nprint(scaled.nlargest(5).round(0))",
     "lotus": "If the sample has 62 visits at 19:00 and the sampling fraction is 5%, the real count is about 62 ÷ 0.05 = 1,240 visits.",
-    "trap": "Multiplying by 5 instead of dividing by 0.05 (multiplying by 20) is a common slip."
+    "trap": "Multiplying by 5 instead of dividing by 0.05 (multiplying by 20) is a common slip.",
+    "read": [
+     "Table: estimated real trips per hour = sample count / 0.05.",
+     "18h has 2,611,100 trips."
+    ],
+    "remark": "Scaled up, 18h has about 2.61 million trips in the year, 17h 2.50 million and 19h 2.34 million.",
+    "howRemark": [
+     "State the ×20 formula.",
+     "Report the top three hours at real scale.",
+     "Remind these are estimates."
+    ]
    }
   },
   "3.2.4": {
@@ -1379,7 +1869,17 @@ export const asg: Assignment = {
     ],
     "code": "df['is_weekend'] = df['tpep_pickup_datetime'].dt.dayofweek >= 5\ndays = df.groupby('is_weekend')['tpep_pickup_datetime'].apply(lambda s: s.dt.date.nunique())\nby = df.groupby(['is_weekend','pickup_hour']).size().unstack(0)\n(by / days).plot()",
     "lotus": "Lotus Spa ngày thường đông vào 18:00 đến 20:00 sau giờ làm. Cuối tuần đông vào 10:00 đến 14:00. Hai nhóm khác ngày nên phải chia cho số ngày.",
-    "trap": "So sánh số chuyến thô giữa 5 ngày thường và 2 ngày cuối tuần mà không chia cho số ngày là so lệch."
+    "trap": "So sánh số chuyến thô giữa 5 ngày thường và 2 ngày cuối tuần mà không chia cho số ngày là so lệch.",
+    "read": [
+     "Hai đường trên một biểu đồ: ngày thường và cuối tuần.",
+     "So giờ đỉnh và độ cao của hai đường."
+    ],
+    "remark": "Ngày thường có đỉnh rõ lúc chiều tối, còn cuối tuần phẳng hơn và kéo dài hơn về đêm; hai nhịp khác nhau nên cần điều phối riêng.",
+    "howRemark": [
+     "Mô tả mỗi đường một câu.",
+     "Nêu điểm khác chính.",
+     "Nói hệ quả điều phối."
+    ]
    },
    "en": {
     "think": "Compare the hourly shape between weekdays and weekends. Two lines on one chart.",
@@ -1390,7 +1890,17 @@ export const asg: Assignment = {
     ],
     "code": "df['is_weekend'] = df['tpep_pickup_datetime'].dt.dayofweek >= 5\ndays = df.groupby('is_weekend')['tpep_pickup_datetime'].apply(lambda s: s.dt.date.nunique())\nby = df.groupby(['is_weekend','pickup_hour']).size().unstack(0)\n(by / days).plot()",
     "lotus": "Lotus Spa weekdays peak 18:00 to 20:00 after work. Weekends peak 10:00 to 14:00. The two groups have different numbers of days so divide by days.",
-    "trap": "Comparing raw counts between 5 weekdays and 2 weekend days without dividing by days is a lopsided comparison."
+    "trap": "Comparing raw counts between 5 weekdays and 2 weekend days without dividing by days is a lopsided comparison.",
+    "read": [
+     "Two lines on one chart: weekdays and weekends.",
+     "Compare peak hours and heights."
+    ],
+    "remark": "Weekdays peak sharply in the early evening while weekends are flatter and run later into the night; the two rhythms need separate dispatch.",
+    "howRemark": [
+     "Describe each line in one sentence.",
+     "State the main difference.",
+     "State the dispatch consequence."
+    ]
    }
   },
   "3.2.5": {
@@ -1403,7 +1913,17 @@ export const asg: Assignment = {
     ],
     "code": "top_pu = df['PULocationID'].value_counts().head(10).index\ntop_do = df['DOLocationID'].value_counts().head(10).index\nhp = df[df['PULocationID'].isin(top_pu)].groupby(['pickup_hour','PULocationID']).size().unstack()\nhp.plot(figsize=(12,5))",
     "lotus": "Với ba chi nhánh, xem chi nhánh nào đón khách nhiều nhất và đông vào giờ nào. Chi nhánh nhiều khách đến chưa chắc là chi nhánh nhiều khách đi.",
-    "trap": "Dùng mã vùng mà không đổi sang tên vùng làm biểu đồ khó đọc. Ghép tên từ bảng zones."
+    "trap": "Dùng mã vùng mà không đổi sang tên vùng làm biểu đồ khó đọc. Ghép tên từ bảng zones.",
+    "read": [
+     "Hai bảng top 10: điểm đón và điểm trả; kèm biểu đồ nhịp theo giờ.",
+     "So hai danh sách để thấy vùng nào xuất hiện cả hai."
+    ],
+    "remark": "Top đón: JFK Airport (99.363), Upper East Side South (87.916), Midtown Center (86.783); các vùng trung tâm Manhattan và hai sân bay chiếm gần hết top 10.",
+    "howRemark": [
+     "Nêu 3 vùng đầu mỗi danh sách.",
+     "So hai danh sách.",
+     "Nhận xét nhịp theo giờ."
+    ]
    },
    "en": {
     "think": "Top ten pickup zones and top ten dropoff zones, then look at the hourly rhythm of those zones.",
@@ -1414,7 +1934,17 @@ export const asg: Assignment = {
     ],
     "code": "top_pu = df['PULocationID'].value_counts().head(10).index\ntop_do = df['DOLocationID'].value_counts().head(10).index\nhp = df[df['PULocationID'].isin(top_pu)].groupby(['pickup_hour','PULocationID']).size().unstack()\nhp.plot(figsize=(12,5))",
     "lotus": "With three branches, see which branch receives the most customers and at what hour. The branch customers arrive at most is not necessarily where they leave from most.",
-    "trap": "Using zone codes without switching to zone names makes the chart hard to read. Join names from the zones table."
+    "trap": "Using zone codes without switching to zone names makes the chart hard to read. Join names from the zones table.",
+    "read": [
+     "Two top-10 tables: pickups and dropoffs; plus hourly rhythm charts.",
+     "Compare the two lists to see zones in both."
+    ],
+    "remark": "Top pickups: JFK Airport (99,363), Upper East Side South (87,916), Midtown Center (86,783); central Manhattan zones and the two airports fill most of the top 10.",
+    "howRemark": [
+     "Name the top 3 of each list.",
+     "Compare the two lists.",
+     "Comment on the hourly rhythm."
+    ]
    }
   },
   "3.2.6": {
@@ -1428,7 +1958,17 @@ export const asg: Assignment = {
     ],
     "code": "pu = df['PULocationID'].value_counts()\ndo = df['DOLocationID'].value_counts()\nratio = (pu / do).replace([np.inf, -np.inf], np.nan).dropna()\nprint(ratio.nlargest(10)); print(ratio.nsmallest(10))",
     "lotus": "Chi nhánh có 300 khách đi và 150 khách đến cho tỷ lệ 2: nhiều người rời đi hơn đến. Chi nhánh tỷ lệ 0,5 thì ngược lại.",
-    "trap": "Vùng chỉ có 1 đón và 0 trả cho tỷ lệ vô cực. Lọc số chuyến tối thiểu trước khi xếp hạng."
+    "trap": "Vùng chỉ có 1 đón và 0 trả cho tỷ lệ vô cực. Lọc số chuyến tối thiểu trước khi xếp hạng.",
+    "read": [
+     "Bảng: tỷ lệ đón/trả mỗi vùng; trên 1 là vùng đón nhiều hơn trả.",
+     "East Elmhurst 7,83, JFK 4,48 và LaGuardia 2,88 đứng đầu."
+    ],
+    "remark": "Các vùng sân bay có tỷ lệ đón/trả rất cao (East Elmhurst 7,83; JFK 4,48; LaGuardia 2,88): khách rời sân bay nhiều hơn khách đến, nên xe cần được chuyển từ nơi khác về bù.",
+    "howRemark": [
+     "Nêu vùng có tỷ lệ cao nhất.",
+     "Giải thích ý nghĩa tỷ lệ trên và dưới 1.",
+     "Gợi ý hành động điều phối."
+    ]
    },
    "en": {
     "think": "Pickup-to-dropoff ratio of each zone. Above 1 means more departures than arrivals; below 1 the opposite.",
@@ -1440,7 +1980,17 @@ export const asg: Assignment = {
     ],
     "code": "pu = df['PULocationID'].value_counts()\ndo = df['DOLocationID'].value_counts()\nratio = (pu / do).replace([np.inf, -np.inf], np.nan).dropna()\nprint(ratio.nlargest(10)); print(ratio.nsmallest(10))",
     "lotus": "A branch with 300 customers leaving and 150 arriving gives a ratio of 2: more people leave than arrive. A branch with ratio 0.5 is the opposite.",
-    "trap": "A zone with 1 pickup and 0 dropoffs gives infinity. Filter a minimum trip count before ranking."
+    "trap": "A zone with 1 pickup and 0 dropoffs gives infinity. Filter a minimum trip count before ranking.",
+    "read": [
+     "Table: pickup/dropoff ratio per zone; above 1 means more pickups than dropoffs.",
+     "East Elmhurst 7.83, JFK 4.48 and LaGuardia 2.88 lead."
+    ],
+    "remark": "Airport zones have very high pickup/dropoff ratios (East Elmhurst 7.83; JFK 4.48; LaGuardia 2.88): more people leave airports than arrive, so cars must be repositioned in.",
+    "howRemark": [
+     "Name the zones with the highest ratio.",
+     "Explain the meaning above and below 1.",
+     "Suggest a dispatch action."
+    ]
    }
   },
   "3.2.7": {
@@ -1453,7 +2003,17 @@ export const asg: Assignment = {
     ],
     "code": "night = df[(df['pickup_hour'] >= 23) | (df['pickup_hour'] < 5)]\nprint(night['PULocationID'].value_counts().head(10))\nprint(night['DOLocationID'].value_counts().head(10))",
     "lotus": "Ở khung 21:00 đến 23:00, giả sử chi nhánh Quận 1 vẫn đông còn Thủ Đức thưa. Top vùng của giờ đêm thường khác top vùng cả ngày.",
-    "trap": "Lấy top của cả năm rồi lọc giờ đêm cho kết quả khác. Lọc giờ đêm trước rồi mới xếp hạng."
+    "trap": "Lấy top của cả năm rồi lọc giờ đêm cho kết quả khác. Lọc giờ đêm trước rồi mới xếp hạng.",
+    "read": [
+     "Hai bảng: top vùng đón đêm và top vùng trả đêm (23h–5h).",
+     "So với top ban ngày để thấy khác biệt."
+    ],
+    "remark": "Đêm đón nhiều nhất ở East Village (15.416), JFK Airport (13.870) và West Village (12.498): ban đêm nhu cầu chuyển sang các khu giải trí thay vì các khu văn phòng.",
+    "howRemark": [
+     "Nêu 3 vùng đầu.",
+     "So với top ban ngày.",
+     "Giải thích khác biệt."
+    ]
    },
    "en": {
     "think": "Night hours run 11 PM to 5 AM. Filter trips by night hour, then find top pickup and dropoff zones within that subset.",
@@ -1464,7 +2024,17 @@ export const asg: Assignment = {
     ],
     "code": "night = df[(df['pickup_hour'] >= 23) | (df['pickup_hour'] < 5)]\nprint(night['PULocationID'].value_counts().head(10))\nprint(night['DOLocationID'].value_counts().head(10))",
     "lotus": "In the 21:00 to 23:00 window, suppose District 1 is still busy while Thu Duc is quiet. Late-hour top zones are often not the all-day top zones.",
-    "trap": "Taking the yearly top then filtering to night gives a different result. Filter to night first, then rank."
+    "trap": "Taking the yearly top then filtering to night gives a different result. Filter to night first, then rank.",
+    "read": [
+     "Two tables: top night pickup zones and top night dropoff zones (23h–5h).",
+     "Compare with the daytime top."
+    ],
+    "remark": "At night pickups lead in East Village (15,416), JFK Airport (13,870) and West Village (12,498): night demand shifts to entertainment areas rather than office districts.",
+    "howRemark": [
+     "Name the top 3.",
+     "Compare with the daytime top.",
+     "Explain the difference."
+    ]
    }
   },
   "3.2.8": {
@@ -1477,7 +2047,17 @@ export const asg: Assignment = {
     ],
     "code": "df['is_night'] = (df['pickup_hour'] >= 23) | (df['pickup_hour'] < 5)\nrev = df.groupby('is_night')['total_amount'].sum()\nprint((rev / rev.sum()).round(3))",
     "lotus": "Nếu giờ đêm cho 12 phần doanh thu trên 100, tỷ trọng đêm là 12%. Một khung giờ vắng khách vẫn có thể có giá bán cao hơn.",
-    "trap": "Dùng cùng định nghĩa đêm xuyên suốt. Đổi định nghĩa giữa các bài làm các con số không so được."
+    "trap": "Dùng cùng định nghĩa đêm xuyên suốt. Đổi định nghĩa giữa các bài làm các con số không so được.",
+    "read": [
+     "Dòng chữ: ban ngày 88,6% và ban đêm (23h–5h) 11,4% doanh thu.",
+     "Biểu đồ: tỷ trọng hai nhóm."
+    ],
+    "remark": "Ban đêm (23h–5h) chiếm 11,4% doanh thu so với 88,6% ban ngày: doanh thu chủ yếu đến từ ban ngày.",
+    "howRemark": [
+     "Báo hai tỷ trọng.",
+     "Nhắc đêm chỉ 6 giờ trong 24.",
+     "Kết luận."
+    ]
    },
    "en": {
     "think": "Night versus day revenue share is each group's revenue divided by the total.",
@@ -1488,7 +2068,17 @@ export const asg: Assignment = {
     ],
     "code": "df['is_night'] = (df['pickup_hour'] >= 23) | (df['pickup_hour'] < 5)\nrev = df.groupby('is_night')['total_amount'].sum()\nprint((rev / rev.sum()).round(3))",
     "lotus": "If night hours bring 12 parts of revenue per 100, the night share is 12%. A quiet window can still carry a higher price.",
-    "trap": "Use one definition of night throughout. Changing it between tasks makes the numbers incomparable."
+    "trap": "Use one definition of night throughout. Changing it between tasks makes the numbers incomparable.",
+    "read": [
+     "Text: daytime 88.6% and night (23h–5h) 11.4% of revenue.",
+     "Chart: share of the two groups."
+    ],
+    "remark": "Night (23h–5h) brings 11.4% of revenue versus 88.6% by day: revenue is mostly daytime.",
+    "howRemark": [
+     "Report both shares.",
+     "Remind night is only 6 of 24 hours.",
+     "Conclude."
+    ]
    }
   },
   "3.2.9": {
@@ -1502,7 +2092,17 @@ export const asg: Assignment = {
     ],
     "code": "d = df[df['trip_distance'] > 0].copy()\nd['fare_per_mile'] = d['fare_amount'] / d['trip_distance']\nd['fpm_pp'] = d['fare_per_mile'] / d['passenger_count']\nprint(d.groupby('passenger_count')['fpm_pp'].mean())",
     "lotus": "Gói đôi 1.200 nghìn cho hai người nghĩa là mỗi người 600 nghìn. Giá chia cho đầu người cho thấy gói đôi rẻ hơn gói lẻ bao nhiêu.",
-    "trap": "Chia cho 0 hành khách hoặc 0 dặm làm ra vô cực. Lọc trước."
+    "trap": "Chia cho 0 hành khách hoặc 0 dặm làm ra vô cực. Lọc trước.",
+    "read": [
+     "Bảng: giá trên dặm và giá trên dặm trên người, theo số khách.",
+     "Giá mỗi dặm gần như không đổi (7,3–7,5); chia theo người thì giảm."
+    ],
+    "remark": "Giá trên dặm của chuyến ổn định khoảng 7,4 dù có bao nhiêu khách, nên đi chung rẻ hơn mỗi người: 6 khách chỉ còn 1,24 mỗi người so với 7,49 khi đi một mình.",
+    "howRemark": [
+     "Nêu giá trên dặm và trên người.",
+     "Giải thích vì sao chia theo người.",
+     "Nói ý nghĩa với chính sách giá."
+    ]
    },
    "en": {
     "think": "Fare per mile per passenger: take the trip's fare per mile, then divide by passenger count. Two people sharing one trip each pay half.",
@@ -1514,7 +2114,17 @@ export const asg: Assignment = {
     ],
     "code": "d = df[df['trip_distance'] > 0].copy()\nd['fare_per_mile'] = d['fare_amount'] / d['trip_distance']\nd['fpm_pp'] = d['fare_per_mile'] / d['passenger_count']\nprint(d.groupby('passenger_count')['fpm_pp'].mean())",
     "lotus": "A couple package at 1,200 thousand for two people means 600 thousand each. Dividing by head shows how much cheaper the couple package is than single ones.",
-    "trap": "Dividing by 0 passengers or 0 miles gives infinity. Filter first."
+    "trap": "Dividing by 0 passengers or 0 miles gives infinity. Filter first.",
+    "read": [
+     "Table: fare per mile and fare per mile per person by passenger count.",
+     "Per-mile price barely changes (7.3–7.5); per person it drops."
+    ],
+    "remark": "The trip's price per mile stays about 7.4 whatever the passenger count, so sharing is cheaper per person: 6 passengers pay only 1.24 each vs 7.49 alone.",
+    "howRemark": [
+     "State price per mile and per person.",
+     "Explain why divide by passengers.",
+     "State the pricing implication."
+    ]
    }
   },
   "3.2.10": {
@@ -1527,7 +2137,17 @@ export const asg: Assignment = {
     ],
     "code": "d.groupby('pickup_hour')['fare_per_mile'].mean().plot()\nd.groupby('pickup_day')['fare_per_mile'].mean().reindex(days).plot(kind='bar')",
     "lotus": "Giá bình quân mỗi phút liệu trình theo giờ: giờ vàng 18:00 đến 20:00 đắt hơn giờ trưa. Thấy rồi mới hỏi có nên giảm giá giờ thấp điểm không.",
-    "trap": "Chuyến rất ngắn làm giá trên dặm vọt lên vì cước mở cửa cố định. Cân nhắc lọc ngưỡng quãng đường."
+    "trap": "Chuyến rất ngắn làm giá trên dặm vọt lên vì cước mở cửa cố định. Cân nhắc lọc ngưỡng quãng đường.",
+    "read": [
+     "Bảng giá trung bình mỗi dặm theo giờ: thấp nhất 5,66 lúc 5h, cao nhất 8,16 lúc 12h.",
+     "Biểu đồ còn có theo thứ trong tuần."
+    ],
+    "remark": "Giá mỗi dặm thấp ban đêm và rạng sáng (5,66 lúc 5h) và cao nhất quanh trưa (8,16 lúc 12h) vì ban ngày chuyến ngắn và kẹt xe nên tính theo dặm đắt hơn.",
+    "howRemark": [
+     "Nêu giờ thấp và cao nhất kèm số.",
+     "Đưa một lý do có thể.",
+     "Nhắc chỉ là tương quan."
+    ]
    },
    "en": {
     "think": "Average fare per mile by hour of day and by day of week.",
@@ -1538,7 +2158,17 @@ export const asg: Assignment = {
     ],
     "code": "d.groupby('pickup_hour')['fare_per_mile'].mean().plot()\nd.groupby('pickup_day')['fare_per_mile'].mean().reindex(days).plot(kind='bar')",
     "lotus": "Average price per session minute by hour: the 18:00 to 20:00 golden window costs more than lunch. After seeing it, ask whether to discount quiet hours.",
-    "trap": "Very short trips push fare per mile up because of the fixed flag-down fee. Consider a distance threshold."
+    "trap": "Very short trips push fare per mile up because of the fixed flag-down fee. Consider a distance threshold.",
+    "read": [
+     "Table of mean price per mile by hour: lowest 5.66 at 5h, highest 8.16 at 12h.",
+     "The chart also shows weekdays."
+    ],
+    "remark": "Price per mile is low at night and dawn (5.66 at 5h) and highest around noon (8.16 at 12h), as daytime trips are shorter and slower so cost more per mile.",
+    "howRemark": [
+     "State the low and high hours with numbers.",
+     "Give a possible reason.",
+     "Remind it is only correlation."
+    ]
    }
   },
   "3.2.11": {
@@ -1551,7 +2181,17 @@ export const asg: Assignment = {
     ],
     "code": "d.pivot_table(index='pickup_hour', columns='VendorID', values='fare_per_mile', aggfunc='mean').plot()",
     "lotus": "Hai kênh đặt lịch (web và điện thoại) bán cùng gói với giá hiển thị khác nhau. So theo giờ để xem chênh lệch có cố định hay thay đổi.",
-    "trap": "Hai nhà cung cấp có thể phục vụ các nhóm chuyến khác nhau, nên chênh lệch không chỉ là chênh lệch giá."
+    "trap": "Hai nhà cung cấp có thể phục vụ các nhóm chuyến khác nhau, nên chênh lệch không chỉ là chênh lệch giá.",
+    "read": [
+     "Hai số: giá trên dặm của nhà cung cấp 1 (7,42) và 2 (7,47).",
+     "Biểu đồ chi tiết theo giờ."
+    ],
+    "remark": "Hai nhà cung cấp gần như giống nhau về giá trên dặm (7,42 và 7,47), chỉ chênh khoảng 0,05.",
+    "howRemark": [
+     "So hai số.",
+     "Nói chênh có đáng kể không.",
+     "Nhắc xem biểu đồ theo giờ."
+    ]
    },
    "en": {
     "think": "Compare fare per mile between the two vendors (VendorID) for each hour.",
@@ -1562,7 +2202,17 @@ export const asg: Assignment = {
     ],
     "code": "d.pivot_table(index='pickup_hour', columns='VendorID', values='fare_per_mile', aggfunc='mean').plot()",
     "lotus": "Two booking channels (web and phone) sell the same package at different shown prices. Compare by hour to see whether the gap is fixed or changing.",
-    "trap": "The two vendors may serve different mixes of trips, so a gap is not only a price gap."
+    "trap": "The two vendors may serve different mixes of trips, so a gap is not only a price gap.",
+    "read": [
+     "Two numbers: price per mile of vendor 1 (7.42) and 2 (7.47).",
+     "The chart details it by hour."
+    ],
+    "remark": "The two vendors are nearly identical on price per mile (7.42 vs 7.47), only about 0.05 apart.",
+    "howRemark": [
+     "Compare the two numbers.",
+     "Say whether the gap matters.",
+     "Point to the hourly chart."
+    ]
    }
   },
   "3.2.12": {
@@ -1575,7 +2225,17 @@ export const asg: Assignment = {
     ],
     "code": "d['tier'] = pd.cut(d['trip_distance'], bins=[0, 2, 5, np.inf], labels=['<=2','2-5','>5'])\nprint(d.groupby(['tier','VendorID'], observed=True)['fare_per_mile'].mean().unstack())",
     "lotus": "Gói ngắn, vừa, dài: nhà cung cấp rẻ hơn ở bậc ngắn có thể đắt hơn ở bậc dài. Chia bậc cho thấy điều mà một con số trung bình che đi.",
-    "trap": "Biên bậc phải rõ: 2 dặm thuộc bậc nào. Với right=True thì 2 thuộc bậc đầu."
+    "trap": "Biên bậc phải rõ: 2 dặm thuộc bậc nào. Với right=True thì 2 thuộc bậc đầu.",
+    "read": [
+     "Bảng: giá trên dặm theo bậc quãng đường (hàng) và nhà cung cấp (cột).",
+     "Bậc càng dài, giá mỗi dặm càng thấp."
+    ],
+    "remark": "Chuyến ngắn đắt nhất mỗi dặm (khoảng 8,9–9,0 dưới 2 dặm) và rẻ dần theo quãng đường (khoảng 4,4–4,5 trên 5 dặm); nhà cung cấp 2 nhỉnh hơn một chút ở mọi bậc.",
+    "howRemark": [
+     "Nêu xu hướng theo bậc.",
+     "So hai nhà cung cấp ở mỗi bậc.",
+     "Giải thích vì sao chuyến ngắn đắt mỗi dặm (phí mở cửa)."
+    ]
    },
    "en": {
     "think": "Split trips into three distance tiers, then compare fare per mile between vendors in each tier.",
@@ -1586,7 +2246,17 @@ export const asg: Assignment = {
     ],
     "code": "d['tier'] = pd.cut(d['trip_distance'], bins=[0, 2, 5, np.inf], labels=['<=2','2-5','>5'])\nprint(d.groupby(['tier','VendorID'], observed=True)['fare_per_mile'].mean().unstack())",
     "lotus": "Short, medium, long packages: the vendor cheaper on short ones may be dearer on long ones. Tiers reveal what one average hides.",
-    "trap": "The tier edges must be clear: which tier does 2 miles belong to. With right=True it belongs to the first."
+    "trap": "The tier edges must be clear: which tier does 2 miles belong to. With right=True it belongs to the first.",
+    "read": [
+     "Table: price per mile by distance tier (rows) and vendor (columns).",
+     "The longer the tier, the lower the per-mile price."
+    ],
+    "remark": "Short trips cost most per mile (about 8.9–9.0 under 2 miles) and fall with distance (about 4.4–4.5 over 5 miles); vendor 2 is slightly higher at every tier.",
+    "howRemark": [
+     "State the trend by tier.",
+     "Compare the two vendors per tier.",
+     "Explain why short trips cost more per mile."
+    ]
    }
   },
   "3.2.13": {
@@ -1600,7 +2270,17 @@ export const asg: Assignment = {
     ],
     "code": "c = d[(d['payment_type'] == 1) & (d['fare_amount'] > 0)].copy()\nc['tip_pct'] = c['tip_amount'] / c['fare_amount'] * 100\nprint(c.groupby('tier', observed=True)['tip_pct'].mean())\nprint(c.groupby('passenger_count')['tip_pct'].mean())\nprint(c.groupby('pickup_hour')['tip_pct'].mean())",
     "lotus": "Boa 50 nghìn trên giá 650 nghìn là 7,7%. Chỉ tính khách thanh toán thẻ hoặc chuyển khoản, vì tiền mặt không có trong sổ.",
-    "trap": "Tính boa cho cả chuyến tiền mặt làm tỷ lệ boa thấp giả."
+    "trap": "Tính boa cho cả chuyến tiền mặt làm tỷ lệ boa thấp giả.",
+    "read": [
+     "Dòng chữ: tiền boa trung bình của khách trả thẻ là 24,6% cước.",
+     "Biểu đồ phân phối % boa."
+    ],
+    "remark": "Khách trả thẻ boa trung bình 24,6% cước. Chỉ tính thẻ vì tiền boa tiền mặt không được ghi lại nên thiếu.",
+    "howRemark": [
+     "Báo %.",
+     "Nói vì sao chỉ lấy thẻ.",
+     "Nhắc giới hạn của số liệu."
+    ]
    },
    "en": {
     "think": "Tip percentage is tip divided by fare. Count card trips only because cash tips are not recorded.",
@@ -1612,7 +2292,17 @@ export const asg: Assignment = {
     ],
     "code": "c = d[(d['payment_type'] == 1) & (d['fare_amount'] > 0)].copy()\nc['tip_pct'] = c['tip_amount'] / c['fare_amount'] * 100\nprint(c.groupby('tier', observed=True)['tip_pct'].mean())\nprint(c.groupby('passenger_count')['tip_pct'].mean())\nprint(c.groupby('pickup_hour')['tip_pct'].mean())",
     "lotus": "A tip of 50 thousand on a 650 thousand price is 7.7%. Count only card or transfer customers, since cash is not in the log.",
-    "trap": "Counting cash trips makes the tip rate falsely low."
+    "trap": "Counting cash trips makes the tip rate falsely low.",
+    "read": [
+     "Text: card customers tip 24.6% of the fare on average.",
+     "Chart: distribution of tip %."
+    ],
+    "remark": "Card customers tip 24.6% of the fare on average. Only cards are counted because cash tips are not recorded.",
+    "howRemark": [
+     "Report the %.",
+     "Say why only card.",
+     "Remind the data limit."
+    ]
    }
   },
   "3.2.14": {
@@ -1625,7 +2315,17 @@ export const asg: Assignment = {
     ],
     "code": "pt = df.pivot_table(index='pickup_hour', columns='pickup_day', values='passenger_count', aggfunc='mean')[days]\nsns.heatmap(pt, cmap='YlOrRd')",
     "lotus": "Số khách mỗi lượt đặt ở Lotus Spa: tối cuối tuần thường đi đôi nhiều hơn sáng thứ hai. Bản đồ nhiệt cho thấy điều đó trong một hình.",
-    "trap": "Trung bình số khách chênh nhau rất ít giữa các ô. Đừng đọc chênh lệch nhỏ như một mẫu hình."
+    "trap": "Trung bình số khách chênh nhau rất ít giữa các ô. Đừng đọc chênh lệch nhỏ như một mẫu hình.",
+    "read": [
+     "Bảng giờ × thứ: số hành khách trung bình mỗi chuyến.",
+     "Đọc theo hàng (một giờ qua các thứ) và theo cột."
+    ],
+    "remark": "Số hành khách trung bình chỉ dao động khoảng 1,2–1,5 mỗi chuyến; cao hơn vào cuối tuần và ban đêm (khoảng 1,45–1,51), thấp nhất sáng sớm ngày thường (1,21–1,26).",
+    "howRemark": [
+     "Nêu thấp nhất và cao nhất kèm số.",
+     "Nhận xét cuối tuần và ban đêm.",
+     "Kết luận về độ dao động."
+    ]
    },
    "en": {
     "think": "How passenger count varies by hour and by day of week. An hour-by-day table shows both at once.",
@@ -1636,7 +2336,17 @@ export const asg: Assignment = {
     ],
     "code": "pt = df.pivot_table(index='pickup_hour', columns='pickup_day', values='passenger_count', aggfunc='mean')[days]\nsns.heatmap(pt, cmap='YlOrRd')",
     "lotus": "Guests per Lotus Spa booking: weekend evenings tend to carry more pairs than Monday mornings. A heatmap shows that in one picture.",
-    "trap": "Average guest counts differ very little between cells. Do not read a tiny difference as a pattern."
+    "trap": "Average guest counts differ very little between cells. Do not read a tiny difference as a pattern.",
+    "read": [
+     "Hour × weekday table: mean passengers per trip.",
+     "Read across a row (one hour over weekdays) and down a column."
+    ],
+    "remark": "Mean passengers only range about 1.2–1.5 per trip; higher on weekends and at night (about 1.45–1.51), lowest on weekday early mornings (1.21–1.26).",
+    "howRemark": [
+     "State the lowest and highest with numbers.",
+     "Comment on weekend and night.",
+     "Conclude on the small variation."
+    ]
    }
   },
   "3.2.15": {
@@ -1649,7 +2359,17 @@ export const asg: Assignment = {
     ],
     "code": "avg = df.groupby('PULocationID')['passenger_count'].mean().rename('avg_passengers')\nzones_with_trips = zones_with_trips.merge(avg, left_on='LocationID', right_index=True, how='left')\nzones_with_trips.plot(column='avg_passengers', legend=True, figsize=(12,10))",
     "lotus": "Chi nhánh có nhiều nhóm đi chung có số khách trung bình cao hơn. Biết điều đó thì chọn gói đôi hay gói nhóm cho chi nhánh nào.",
-    "trap": "Vùng ít chuyến có trung bình nhiễu. Lọc số chuyến tối thiểu hoặc ghi chú."
+    "trap": "Vùng ít chuyến có trung bình nhiễu. Lọc số chuyến tối thiểu hoặc ghi chú.",
+    "read": [
+     "Bảng: vùng, số khách trung bình và số chuyến.",
+     "Chỉ nên so vùng có đủ chuyến (cột n)."
+    ],
+    "remark": "Battery Park có số khách trung bình cao nhất (1,82 với 837 chuyến), tiếp theo Red Hook (1,71) và DUMBO (1,69); các vùng du lịch hay đi nhóm.",
+    "howRemark": [
+     "Nêu top vùng kèm số khách.",
+     "Kiểm cột n để chắc đủ mẫu.",
+     "Giải thích có thể."
+    ]
    },
    "en": {
     "think": "Average passenger count per zone. Draw bars for the top and add a column to the map table.",
@@ -1660,7 +2380,17 @@ export const asg: Assignment = {
     ],
     "code": "avg = df.groupby('PULocationID')['passenger_count'].mean().rename('avg_passengers')\nzones_with_trips = zones_with_trips.merge(avg, left_on='LocationID', right_index=True, how='left')\nzones_with_trips.plot(column='avg_passengers', legend=True, figsize=(12,10))",
     "lotus": "A branch with many group visits has a higher average guest count. Knowing that, choose couple or group packages for which branch.",
-    "trap": "Zones with few trips have noisy averages. Filter a minimum count or add a note."
+    "trap": "Zones with few trips have noisy averages. Filter a minimum count or add a note.",
+    "read": [
+     "Table: zone, mean passengers and trips.",
+     "Compare only zones with enough trips (column n)."
+    ],
+    "remark": "Battery Park has the highest mean passengers (1.82 over 837 trips), then Red Hook (1.71) and DUMBO (1.69); tourist areas often travel in groups.",
+    "howRemark": [
+     "Name the top zones with passenger means.",
+     "Check column n for enough sample.",
+     "Give a possible explanation."
+    ]
    }
   },
   "3.2.16": {
@@ -1673,7 +2403,17 @@ export const asg: Assignment = {
     ],
     "code": "surch = ['extra','mta_tax','tolls_amount','improvement_surcharge','congestion_surcharge','airport_fee']\nprint((df[surch] > 0).mean().round(3))\nfor col in ['extra','congestion_surcharge','airport_fee']:\n    df.assign(flag=df[col] > 0).groupby('pickup_hour')['flag'].mean().plot(label=col)",
     "lotus": "Phụ phí giờ vàng áp dụng 18:00 đến 20:00. Đếm tỷ lệ booking có phụ phí theo giờ cho thấy phụ phí tập trung ở đâu và có đang làm khách rời đi không.",
-    "trap": "Đừng nhầm tần suất với doanh thu: một phụ phí hiếm nhưng lớn có thể quan trọng hơn một phụ phí thường xuyên nhưng nhỏ."
+    "trap": "Đừng nhầm tần suất với doanh thu: một phụ phí hiếm nhưng lớn có thể quan trọng hơn một phụ phí thường xuyên nhưng nhỏ.",
+    "read": [
+     "Bốn số: % chuyến có từng loại phụ phí: extra 61,6%, congestion 92,2%, airport 8,9%, tolls 8,2%.",
+     "Biểu đồ chi tiết theo giờ hoặc vùng."
+    ],
+    "remark": "Phí ùn tắc áp dụng cho 92,2% chuyến và phụ thu extra cho 61,6%; phí sân bay (8,9%) và cầu đường (8,2%) chỉ ở số ít chuyến, nên chỉ phí ùn tắc là phụ phí phổ biến.",
+    "howRemark": [
+     "Xếp phụ phí theo mức thường gặp.",
+     "Nêu phí nào đặc thù theo nơi.",
+     "Nói ý nghĩa tính tổng cước."
+    ]
    },
    "en": {
     "think": "How often each surcharge applies and where or when it applies more.",
@@ -1684,7 +2424,17 @@ export const asg: Assignment = {
     ],
     "code": "surch = ['extra','mta_tax','tolls_amount','improvement_surcharge','congestion_surcharge','airport_fee']\nprint((df[surch] > 0).mean().round(3))\nfor col in ['extra','congestion_surcharge','airport_fee']:\n    df.assign(flag=df[col] > 0).groupby('pickup_hour')['flag'].mean().plot(label=col)",
     "lotus": "The golden-hour surcharge applies 18:00 to 20:00. Counting the share of bookings with a surcharge by hour shows where it concentrates and whether it pushes customers away.",
-    "trap": "Do not confuse frequency with revenue: a rare but large surcharge can matter more than a frequent but small one."
+    "trap": "Do not confuse frequency with revenue: a rare but large surcharge can matter more than a frequent but small one.",
+    "read": [
+     "Four numbers: % of trips with each surcharge: extra 61.6%, congestion 92.2%, airport 8.9%, tolls 8.2%.",
+     "The chart details by hour or zone."
+    ],
+    "remark": "The congestion surcharge applies to 92.2% of trips and extra to 61.6%; airport (8.9%) and tolls (8.2%) hit few trips, so only congestion is a widespread surcharge.",
+    "howRemark": [
+     "Rank surcharges by frequency.",
+     "Name which are location-specific.",
+     "State the meaning for total fare."
+    ]
    }
   },
   "4.1.1": {
@@ -1697,7 +2447,17 @@ export const asg: Assignment = {
     ],
     "code": "# Write your recommendations here as markdown or print statements,\n# each citing a number from your analysis, e.g.\n# print(f'Busiest hour {hourly.idxmax()}: {scaled.max():,.0f} trips -> dispatch more cabs before this hour')",
     "lotus": "Giờ đông là 19:00 và tuyến Quận 1 sang Quận 3 chậm nhất lúc 18:00: dời một nhân viên về chi nhánh Quận 1 trước 18:00 và đẩy lịch hẹn giữa hai chi nhánh sang 16:00.",
-    "trap": "Một khuyến nghị không có con số đi kèm chỉ là ý kiến. Dẫn con số."
+    "trap": "Một khuyến nghị không có con số đi kèm chỉ là ý kiến. Dẫn con số.",
+    "read": [
+     "Mục này là bài viết khuyến nghị, không có số mới; hãy dựa vào các kết quả ở mục 3."
+    ],
+    "remark": "Khuyến nghị điều phối phải trỏ về số đã tính: ví dụ đỉnh lúc 18h (3.2.2), tốc độ chỉ khoảng 10 dặm/giờ buổi chiều (3.2.1), tỷ lệ đón/trả sân bay cao (3.2.6).",
+    "howRemark": [
+     "Chọn một kết quả cụ thể làm bằng chứng.",
+     "Nêu số liệu kèm mục tham chiếu.",
+     "Đưa hành động cụ thể, đo được.",
+     "Nêu giới hạn (mẫu 5%, không có dữ liệu chi phí)."
+    ]
    },
    "en": {
     "think": "Dispatch recommendations: based on demand patterns and slow routes. Each recommendation must point back to a result you computed.",
@@ -1708,7 +2468,17 @@ export const asg: Assignment = {
     ],
     "code": "# Write your recommendations here as markdown or print statements,\n# each citing a number from your analysis, e.g.\n# print(f'Busiest hour {hourly.idxmax()}: {scaled.max():,.0f} trips -> dispatch more cabs before this hour')",
     "lotus": "The busy hour is 19:00 and the District 1 to District 3 route is slowest at 18:00: move one staff member to District 1 before 18:00 and shift inter-branch appointments to 16:00.",
-    "trap": "A recommendation with no number is only an opinion. Cite the number."
+    "trap": "A recommendation with no number is only an opinion. Cite the number.",
+    "read": [
+     "This task is a written recommendation with no new numbers; rely on the results in part 3."
+    ],
+    "remark": "Dispatch recommendations must cite computed numbers: e.g. the 18h peak (3.2.2), only about 10 mph in the afternoon (3.2.1), high airport pickup/dropoff ratios (3.2.6).",
+    "howRemark": [
+     "Pick a concrete result as evidence.",
+     "Quote the number with the task reference.",
+     "Give a specific, measurable action.",
+     "State the limits (5% sample, no cost data)."
+    ]
    }
   },
   "4.1.2": {
@@ -1721,7 +2491,17 @@ export const asg: Assignment = {
     ],
     "code": "# Write positioning suggestions here, citing the ratio table (3.2.6),\n# the night-hours table (3.2.7) and the monthly trend (3.1.4)",
     "lotus": "Chi nhánh Quận 1 có tỷ lệ đi trên đến là 2: đưa thêm một nhân viên về sau 18:00. Thủ Đức vắng vào tháng 12: giảm ca ở đó.",
-    "trap": "Đề xuất đặt xe ở vùng có nhiều chuyến mà không xét tỷ lệ đón trên trả sẽ làm vùng đó thừa xe."
+    "trap": "Đề xuất đặt xe ở vùng có nhiều chuyến mà không xét tỷ lệ đón trên trả sẽ làm vùng đó thừa xe.",
+    "read": [
+     "Mục này là bài viết khuyến nghị, không có số mới; hãy dựa vào các kết quả ở mục 3."
+    ],
+    "remark": "Đặt xe theo vùng, giờ và thứ: tăng xe quanh 18h và ở JFK/LaGuardia (tỷ lệ đón/trả 4,48 và 2,88), chuyển xe từ các vùng có tỷ lệ dưới 1 về bù.",
+    "howRemark": [
+     "Chọn một kết quả cụ thể làm bằng chứng.",
+     "Nêu số liệu kèm mục tham chiếu.",
+     "Đưa hành động cụ thể, đo được.",
+     "Nêu giới hạn (mẫu 5%, không có dữ liệu chi phí)."
+    ]
    },
    "en": {
     "think": "Where and when to position cabs based on demand by zone, hour, weekday and month. Use the pickup-to-dropoff ratio (3.2.6) to know which zones need top-ups.",
@@ -1732,7 +2512,17 @@ export const asg: Assignment = {
     ],
     "code": "# Write positioning suggestions here, citing the ratio table (3.2.6),\n# the night-hours table (3.2.7) and the monthly trend (3.1.4)",
     "lotus": "District 1 has a leave-to-arrive ratio of 2: bring in one more staff member after 18:00. Thu Duc is quiet in December: cut shifts there.",
-    "trap": "Positioning cabs where there are many trips without checking the pickup-to-dropoff ratio leaves that zone with too many cabs."
+    "trap": "Positioning cabs where there are many trips without checking the pickup-to-dropoff ratio leaves that zone with too many cabs.",
+    "read": [
+     "This task is a written recommendation with no new numbers; rely on the results in part 3."
+    ],
+    "remark": "Place cars by zone, hour and weekday: add cars around 18h and at JFK/LaGuardia (pickup/dropoff ratio 4.48 and 2.88), moving cars in from zones below 1.",
+    "howRemark": [
+     "Pick a concrete result as evidence.",
+     "Quote the number with the task reference.",
+     "Give a specific, measurable action.",
+     "State the limits (5% sample, no cost data)."
+    ]
    }
   },
   "4.1.3": {
@@ -1746,7 +2536,17 @@ export const asg: Assignment = {
     ],
     "code": "# Write pricing adjustments here, citing fare per mile by hour (3.2.10),\n# the tier comparison (3.2.12) and the surcharge shares (3.2.16)",
     "lotus": "Giờ vàng 18:00 đến 20:00 đông nhưng giá ngang giờ trưa: thử tăng giá ở khung đó, giữ giá giờ vắng. Theo dõi tuần sau xem số lượt đặt có giảm quá mức bạn chấp nhận không.",
-    "trap": "Tăng giá mà không đặt mức chấp nhận được cho sự sụt giảm số lượt là đánh cược."
+    "trap": "Tăng giá mà không đặt mức chấp nhận được cho sự sụt giảm số lượt là đánh cược.",
+    "read": [
+     "Mục này là bài viết khuyến nghị, không có số mới; hãy dựa vào các kết quả ở mục 3."
+    ],
+    "remark": "Điều chỉnh giá: chuyến ngắn đắt mỗi dặm (8,9–9,0) trong khi hai nhà cung cấp gần như bằng giá (7,42 và 7,47); tăng giá vừa phải ở giờ cao điểm nhưng giữ cạnh tranh.",
+    "howRemark": [
+     "Chọn một kết quả cụ thể làm bằng chứng.",
+     "Nêu số liệu kèm mục tham chiếu.",
+     "Đưa hành động cụ thể, đo được.",
+     "Nêu giới hạn (mẫu 5%, không có dữ liệu chi phí)."
+    ]
    },
    "en": {
     "think": "Data-driven pricing adjustments: raise revenue while staying competitive with other vendors.",
@@ -1758,7 +2558,17 @@ export const asg: Assignment = {
     ],
     "code": "# Write pricing adjustments here, citing fare per mile by hour (3.2.10),\n# the tier comparison (3.2.12) and the surcharge shares (3.2.16)",
     "lotus": "The golden window 18:00 to 20:00 is busy but priced like lunch: try raising it, keep quiet-hour prices. Watch next week to see whether bookings drop by more than you accept.",
-    "trap": "Raising prices without setting an acceptable drop in bookings is a gamble."
+    "trap": "Raising prices without setting an acceptable drop in bookings is a gamble.",
+    "read": [
+     "This task is a written recommendation with no new numbers; rely on the results in part 3."
+    ],
+    "remark": "Pricing: short trips cost most per mile (8.9–9.0) while the two vendors are nearly equal (7.42 vs 7.47); raise prices modestly at peak while staying competitive.",
+    "howRemark": [
+     "Pick a concrete result as evidence.",
+     "Quote the number with the task reference.",
+     "Give a specific, measurable action.",
+     "State the limits (5% sample, no cost data)."
+    ]
    }
   }
  },

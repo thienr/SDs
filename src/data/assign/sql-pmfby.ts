@@ -177,7 +177,16 @@ export const asg: Assignment = {
     ],
     "code": "SELECT DISTINCT srcStateName FROM farmersinsurancedata ORDER BY srcStateName;",
     "lotus": "Giống liệt kê tên các chi nhánh của Lotus Spa từ sổ booking: mỗi chi nhánh xuất hiện trăm lần, bạn chỉ muốn ba tên.",
-    "trap": "Quên DISTINCT sẽ ra hơn 1.800 dòng, mỗi dòng một bản ghi."
+    "trap": "Quên DISTINCT sẽ ra hơn 1.800 dòng, mỗi dòng một bản ghi.",
+    "read": [
+     "Dòng đầu cho số dòng (27); các dòng sau là tên bang."
+    ],
+    "remark": "Có 27 bang trong dữ liệu, mỗi bang một dòng nhờ DISTINCT.",
+    "howRemark": [
+     "Nêu số dòng và giá trị nổi bật nhất của kết quả.",
+     "So một dòng với dòng khác hoặc với mức chung.",
+     "Nói kết quả trả lời câu hỏi thế nào, và lưu ý đơn vị (lakh) hoặc điều kiện lọc."
+    ]
    },
    "en": {
     "think": "List the names of all states, once each.",
@@ -188,7 +197,16 @@ export const asg: Assignment = {
     ],
     "code": "SELECT DISTINCT srcStateName FROM farmersinsurancedata ORDER BY srcStateName;",
     "lotus": "Like listing Lotus Spa's branch names from the booking log: each appears a hundred times, you want three names.",
-    "trap": "Forgetting DISTINCT returns over 1,800 rows, one per record."
+    "trap": "Forgetting DISTINCT returns over 1,800 rows, one per record.",
+    "read": [
+     "The first line gives the row count (27); the rest are state names."
+    ],
+    "remark": "There are 27 states in the data, one row each thanks to DISTINCT.",
+    "howRemark": [
+     "State the row count and the most notable value.",
+     "Compare one row with another or with the overall level.",
+     "Say how it answers the question, noting the unit (lakh) or filter."
+    ]
    }
   },
   "Q2": {
@@ -201,7 +219,17 @@ export const asg: Assignment = {
     ],
     "code": "SELECT srcStateName, SUM(TotalFarmersCovered) AS TotalFarmersCovered, SUM(SumInsured) AS SumInsured\nFROM farmersinsurancedata\nGROUP BY srcStateName\nORDER BY TotalFarmersCovered DESC;",
     "lotus": "Như cộng số khách và doanh thu của từng chi nhánh rồi xếp chi nhánh đông nhất lên đầu.",
-    "trap": "Dùng cột SumInsured mà quên đơn vị: dữ liệu lưu theo lakh (100.000 INR), không phải rupee."
+    "trap": "Dùng cột SumInsured mà quên đơn vị: dữ liệu lưu theo lakh (100.000 INR), không phải rupee.",
+    "read": [
+     "Mỗi dòng là một bang: tổng nông dân và tổng số tiền bảo hiểm (đơn vị lakh).",
+     "Bảng đã sắp giảm dần theo số nông dân."
+    ],
+    "remark": "Madhya Pradesh dẫn đầu với 9,15 triệu nông dân, tiếp theo Maharashtra (8,94 triệu) và Uttar Pradesh (7,24 triệu). Rajasthan ít nông dân hơn Uttar Pradesh nhưng tổng bảo hiểm cao hơn, nên nhiều khách chưa chắc nhiều tiền.",
+    "howRemark": [
+     "Nêu số dòng và giá trị nổi bật nhất của kết quả.",
+     "So một dòng với dòng khác hoặc với mức chung.",
+     "Nói kết quả trả lời câu hỏi thế nào, và lưu ý đơn vị (lakh) hoặc điều kiện lọc."
+    ]
    },
    "en": {
     "think": "Total farmers covered and total sum insured per state, ordered from most to fewest farmers.",
@@ -212,7 +240,17 @@ export const asg: Assignment = {
     ],
     "code": "SELECT srcStateName, SUM(TotalFarmersCovered) AS TotalFarmersCovered, SUM(SumInsured) AS SumInsured\nFROM farmersinsurancedata\nGROUP BY srcStateName\nORDER BY TotalFarmersCovered DESC;",
     "lotus": "Like adding up customers and revenue per branch and listing the busiest first.",
-    "trap": "Using SumInsured while forgetting the unit: data is stored in lakh (100,000 INR), not rupees."
+    "trap": "Using SumInsured while forgetting the unit: data is stored in lakh (100,000 INR), not rupees.",
+    "read": [
+     "Each row is a state: total farmers and total sum insured (lakh).",
+     "Sorted descending by farmers."
+    ],
+    "remark": "Madhya Pradesh leads with 9.15 million farmers, then Maharashtra (8.94 million) and Uttar Pradesh (7.24 million). Rajasthan has fewer farmers than Uttar Pradesh but a higher sum insured, so more customers is not always more money.",
+    "howRemark": [
+     "State the row count and the most notable value.",
+     "Compare one row with another or with the overall level.",
+     "Say how it answers the question, noting the unit (lakh) or filter."
+    ]
    }
   },
   "Q3": {
@@ -225,7 +263,16 @@ export const asg: Assignment = {
     ],
     "code": "SELECT rowID, srcStateName, srcDistrictName, TotalFarmersCovered FROM farmersinsurancedata WHERE srcYear = 2020 LIMIT 10;\n-- đếm: SELECT COUNT(*) FROM farmersinsurancedata WHERE srcYear = 2020;",
     "lotus": "Như lọc sổ booking riêng của tháng 11.",
-    "trap": "So sánh Year_ = '2020' sẽ không ra dòng nào vì Year_ là chữ dài."
+    "trap": "So sánh Year_ = '2020' sẽ không ra dòng nào vì Year_ là chữ dài.",
+    "read": [
+     "Dòng đầu: có 429 dòng của năm 2020; bảng chỉ hiển thị 10 dòng đầu."
+    ],
+    "remark": "Năm 2020 có 429 bản ghi; vài huyện Karnataka có số nông dân bằng 0, nên đừng kết luận chỉ từ những dòng đầu.",
+    "howRemark": [
+     "Nêu số dòng và giá trị nổi bật nhất của kết quả.",
+     "So một dòng với dòng khác hoặc với mức chung.",
+     "Nói kết quả trả lời câu hỏi thế nào, và lưu ý đơn vị (lakh) hoặc điều kiện lọc."
+    ]
    },
    "en": {
     "think": "Retrieve the records of year 2020.",
@@ -236,7 +283,16 @@ export const asg: Assignment = {
     ],
     "code": "SELECT rowID, srcStateName, srcDistrictName, TotalFarmersCovered FROM farmersinsurancedata WHERE srcYear = 2020 LIMIT 10;\n-- đếm: SELECT COUNT(*) FROM farmersinsurancedata WHERE srcYear = 2020;",
     "lotus": "Like filtering the booking log for November only.",
-    "trap": "Comparing Year_ = '2020' returns nothing because Year_ is the long text."
+    "trap": "Comparing Year_ = '2020' returns nothing because Year_ is the long text.",
+    "read": [
+     "First line: 429 rows for 2020; the table shows only the first 10."
+    ],
+    "remark": "2020 has 429 records; some Karnataka districts show 0 farmers, so do not conclude from the first rows alone.",
+    "howRemark": [
+     "State the row count and the most notable value.",
+     "Compare one row with another or with the overall level.",
+     "Say how it answers the question, noting the unit (lakh) or filter."
+    ]
    }
   },
   "Q4": {
@@ -248,7 +304,16 @@ export const asg: Assignment = {
     ],
     "code": "SELECT rowID, srcStateName, srcDistrictName, TotalPopulationRural\nFROM farmersinsurancedata\nWHERE TotalPopulationRural > 1000000 AND srcStateName = 'HIMACHAL PRADESH';",
     "lotus": "Hai điều kiện cùng đúng mới giữ dòng, như chỉ lấy khách vừa ở Quận 3 vừa dùng gói VIP.",
-    "trap": "Chữ hoa chữ thường: tên bang trong dữ liệu viết hoa toàn bộ."
+    "trap": "Chữ hoa chữ thường: tên bang trong dữ liệu viết hoa toàn bộ.",
+    "read": [
+     "4 dòng, đều là Kangra, dân số nông thôn 1.423.794."
+    ],
+    "remark": "Chỉ huyện Kangra của Himachal Pradesh vượt 1 triệu dân nông thôn (1.423.794), và xuất hiện 4 lần vì mỗi năm một dòng.",
+    "howRemark": [
+     "Nêu số dòng và giá trị nổi bật nhất của kết quả.",
+     "So một dòng với dòng khác hoặc với mức chung.",
+     "Nói kết quả trả lời câu hỏi thế nào, và lưu ý đơn vị (lakh) hoặc điều kiện lọc."
+    ]
    },
    "en": {
     "think": "Filter rows in Himachal Pradesh with rural population above 1 million.",
@@ -258,7 +323,16 @@ export const asg: Assignment = {
     ],
     "code": "SELECT rowID, srcStateName, srcDistrictName, TotalPopulationRural\nFROM farmersinsurancedata\nWHERE TotalPopulationRural > 1000000 AND srcStateName = 'HIMACHAL PRADESH';",
     "lotus": "Both conditions must hold to keep a row, like only taking customers in District 3 who also use the VIP package.",
-    "trap": "Case: state names in the data are fully uppercase."
+    "trap": "Case: state names in the data are fully uppercase.",
+    "read": [
+     "4 rows, all Kangra, rural population 1,423,794."
+    ],
+    "remark": "Only Kangra in Himachal Pradesh exceeds 1 million rural people (1,423,794), appearing 4 times because there is one row per year.",
+    "howRemark": [
+     "State the row count and the most notable value.",
+     "Compare one row with another or with the overall level.",
+     "Say how it answers the question, noting the unit (lakh) or filter."
+    ]
    }
   },
   "Q5": {
@@ -271,7 +345,16 @@ export const asg: Assignment = {
     ],
     "code": "SELECT srcStateName, srcDistrictName, SUM(FarmersPremiumAmount) AS FarmersPremiumAmount\nFROM farmersinsurancedata\nWHERE srcYear = 2018\nGROUP BY srcStateName, srcDistrictName\nORDER BY FarmersPremiumAmount ASC;",
     "lotus": "Như doanh thu từng chi nhánh trong một tháng, xếp từ thấp lên cao.",
-    "trap": "Dòng đầu đều là 0: nhiều huyện Karnataka chưa có phí, nên xem trước khi kết luận «huyện này thấp nhất»."
+    "trap": "Dòng đầu đều là 0: nhiều huyện Karnataka chưa có phí, nên xem trước khi kết luận «huyện này thấp nhất».",
+    "read": [
+     "525 dòng; xếp tăng dần nên đầu bảng là các huyện có phí bằng 0."
+    ],
+    "remark": "Nhiều huyện Karnataka có tổng phí nông dân bằng 0 năm 2018 (525 huyện trong bảng), nghĩa là chưa có dữ liệu hoặc không thu phí, không phải miễn phí thật.",
+    "howRemark": [
+     "Nêu số dòng và giá trị nổi bật nhất của kết quả.",
+     "So một dòng với dòng khác hoặc với mức chung.",
+     "Nói kết quả trả lời câu hỏi thế nào, và lưu ý đơn vị (lakh) hoặc điều kiện lọc."
+    ]
    },
    "en": {
     "think": "Total premium farmers paid per district in 2018, ordered ascending.",
@@ -282,7 +365,16 @@ export const asg: Assignment = {
     ],
     "code": "SELECT srcStateName, srcDistrictName, SUM(FarmersPremiumAmount) AS FarmersPremiumAmount\nFROM farmersinsurancedata\nWHERE srcYear = 2018\nGROUP BY srcStateName, srcDistrictName\nORDER BY FarmersPremiumAmount ASC;",
     "lotus": "Like branch revenue for one month, sorted low to high.",
-    "trap": "The first rows are all 0: many Karnataka districts have no premium yet, so check before concluding “this district is lowest”."
+    "trap": "The first rows are all 0: many Karnataka districts have no premium yet, so check before concluding “this district is lowest”.",
+    "read": [
+     "525 rows; sorted ascending, so the top shows districts with zero premium."
+    ],
+    "remark": "Many Karnataka districts show a farmers premium of 0 for 2018 (525 districts in the table), meaning missing data or no charge, not truly free.",
+    "howRemark": [
+     "State the row count and the most notable value.",
+     "Compare one row with another or with the overall level.",
+     "Say how it answers the question, noting the unit (lakh) or filter."
+    ]
    }
   },
   "Q6": {
@@ -295,7 +387,17 @@ export const asg: Assignment = {
     ],
     "code": "SELECT srcStateName, SUM(TotalFarmersCovered) AS TotalFarmersCovered, SUM(GrossPremiumAmountToBePaid) AS GrossPremium\nFROM farmersinsurancedata\nWHERE InsuredLandArea > 5.0 AND srcYear = 2018\nGROUP BY srcStateName\nORDER BY TotalFarmersCovered DESC;",
     "lotus": "Lọc trước rồi mới cộng theo nhóm: WHERE chạy trước GROUP BY.",
-    "trap": "Đặt điều kiện trên tổng (SUM) vào WHERE thì lỗi: điều kiện trên tổng phải dùng HAVING."
+    "trap": "Đặt điều kiện trên tổng (SUM) vào WHERE thì lỗi: điều kiện trên tổng phải dùng HAVING.",
+    "read": [
+     "17 dòng: bang, tổng nông dân và tổng phí gộp (lakh).",
+     "Chỉ gồm bản ghi có diện tích bảo hiểm trên 5."
+    ],
+    "remark": "Uttar Pradesh có nhiều nông dân nhất (2,61 triệu) nhưng phí gộp (70.173) thấp hơn Madhya Pradesh (155.228) hay Tamil Nadu (157.822) với ít nông dân hơn; phí trên đầu người rất khác nhau giữa các bang.",
+    "howRemark": [
+     "Nêu số dòng và giá trị nổi bật nhất của kết quả.",
+     "So một dòng với dòng khác hoặc với mức chung.",
+     "Nói kết quả trả lời câu hỏi thế nào, và lưu ý đơn vị (lakh) hoặc điều kiện lọc."
+    ]
    },
    "en": {
     "think": "Farmers and gross premium by state, only records with insured land area above 5.0 in 2018.",
@@ -306,7 +408,17 @@ export const asg: Assignment = {
     ],
     "code": "SELECT srcStateName, SUM(TotalFarmersCovered) AS TotalFarmersCovered, SUM(GrossPremiumAmountToBePaid) AS GrossPremium\nFROM farmersinsurancedata\nWHERE InsuredLandArea > 5.0 AND srcYear = 2018\nGROUP BY srcStateName\nORDER BY TotalFarmersCovered DESC;",
     "lotus": "Filter first, then sum per group: WHERE runs before GROUP BY.",
-    "trap": "Putting a condition on a sum (SUM) in WHERE errors: conditions on sums need HAVING."
+    "trap": "Putting a condition on a sum (SUM) in WHERE errors: conditions on sums need HAVING.",
+    "read": [
+     "17 rows: state, total farmers and gross premium (lakh).",
+     "Only records with insured area above 5."
+    ],
+    "remark": "Uttar Pradesh has the most farmers (2.61 million) but a gross premium (70,173) below Madhya Pradesh (155,228) or Tamil Nadu (157,822) with fewer farmers; premium per head differs a lot across states.",
+    "howRemark": [
+     "State the row count and the most notable value.",
+     "Compare one row with another or with the overall level.",
+     "Say how it answers the question, noting the unit (lakh) or filter."
+    ]
    }
   },
   "Q7": {
@@ -318,7 +430,16 @@ export const asg: Assignment = {
     ],
     "code": "SELECT srcYear, AVG(InsuredLandArea) AS AvgInsuredLandArea\nFROM farmersinsurancedata\nGROUP BY srcYear\nORDER BY srcYear;",
     "lotus": "Như số khách trung bình mỗi ngày theo từng tháng.",
-    "trap": "Đơn vị diện tích là nghìn ha (hệ số 1.000), nên 37,9 nghĩa là khoảng 37.900 ha mỗi bản ghi."
+    "trap": "Đơn vị diện tích là nghìn ha (hệ số 1.000), nên 37,9 nghĩa là khoảng 37.900 ha mỗi bản ghi.",
+    "read": [
+     "4 dòng, mỗi năm một giá trị trung bình diện tích."
+    ],
+    "remark": "Diện tích bảo hiểm trung bình khoảng 38 mỗi năm, riêng 2020 nhảy lên 46,9; cần xem 2020 có bản ghi bất thường không trước khi kết luận xu hướng.",
+    "howRemark": [
+     "Nêu số dòng và giá trị nổi bật nhất của kết quả.",
+     "So một dòng với dòng khác hoặc với mức chung.",
+     "Nói kết quả trả lời câu hỏi thế nào, và lưu ý đơn vị (lakh) hoặc điều kiện lọc."
+    ]
    },
    "en": {
     "think": "Average insured land area per year.",
@@ -328,7 +449,16 @@ export const asg: Assignment = {
     ],
     "code": "SELECT srcYear, AVG(InsuredLandArea) AS AvgInsuredLandArea\nFROM farmersinsurancedata\nGROUP BY srcYear\nORDER BY srcYear;",
     "lotus": "Like average customers per day for each month.",
-    "trap": "Area unit is thousand ha (factor 1,000), so 37.9 means about 37,900 ha per record."
+    "trap": "Area unit is thousand ha (factor 1,000), so 37.9 means about 37,900 ha per record.",
+    "read": [
+     "4 rows, one average area per year."
+    ],
+    "remark": "Average insured area is about 38 each year, but 2020 jumps to 46.9; check 2020 for unusual records before concluding a trend.",
+    "howRemark": [
+     "State the row count and the most notable value.",
+     "Compare one row with another or with the overall level.",
+     "Say how it answers the question, noting the unit (lakh) or filter."
+    ]
    }
   },
   "Q8": {
@@ -341,7 +471,16 @@ export const asg: Assignment = {
     ],
     "code": "SELECT srcDistrictName, SUM(TotalFarmersCovered) AS TotalFarmersCovered\nFROM farmersinsurancedata\nWHERE InsuranceUnits > 0\nGROUP BY srcDistrictName\nORDER BY TotalFarmersCovered DESC;",
     "lotus": "Chỉ tính những ca đã thực sự diễn ra (đơn vị > 0).",
-    "trap": "Nhiều huyện trùng tên ở các bang khác nhau: nên GROUP BY cả srcStateName nếu cần chính xác."
+    "trap": "Nhiều huyện trùng tên ở các bang khác nhau: nên GROUP BY cả srcStateName nếu cần chính xác.",
+    "read": [
+     "558 dòng; mỗi dòng là một huyện với tổng nông dân, giảm dần."
+    ],
+    "remark": "Bid (1,43 triệu), Latur (1,18 triệu) và Nanded (739.712), đều ở Maharashtra, dẫn đầu; số nông dân tập trung ở vài huyện.",
+    "howRemark": [
+     "Nêu số dòng và giá trị nổi bật nhất của kết quả.",
+     "So một dòng với dòng khác hoặc với mức chung.",
+     "Nói kết quả trả lời câu hỏi thế nào, và lưu ý đơn vị (lakh) hoặc điều kiện lọc."
+    ]
    },
    "en": {
     "think": "Total farmers per district, only records where Insurance units is above 0.",
@@ -352,7 +491,16 @@ export const asg: Assignment = {
     ],
     "code": "SELECT srcDistrictName, SUM(TotalFarmersCovered) AS TotalFarmersCovered\nFROM farmersinsurancedata\nWHERE InsuranceUnits > 0\nGROUP BY srcDistrictName\nORDER BY TotalFarmersCovered DESC;",
     "lotus": "Count only cases that really happened (units > 0).",
-    "trap": "Several districts share a name across states: GROUP BY srcStateName too if you need exactness."
+    "trap": "Several districts share a name across states: GROUP BY srcStateName too if you need exactness.",
+    "read": [
+     "558 rows; each row is a district with total farmers, descending."
+    ],
+    "remark": "Bid (1.43 million), Latur (1.18 million) and Nanded (739,712), all in Maharashtra, lead; farmers are concentrated in a few districts.",
+    "howRemark": [
+     "State the row count and the most notable value.",
+     "Compare one row with another or with the overall level.",
+     "Say how it answers the question, noting the unit (lakh) or filter."
+    ]
    }
   },
   "Q9": {
@@ -365,7 +513,17 @@ export const asg: Assignment = {
     ],
     "code": "SELECT srcStateName,\n       SUM(FarmersPremiumAmount) AS FarmersPremium, SUM(StatePremiumAmount) AS StatePremium, SUM(GOVPremiumAmount) AS GovPremium,\n       SUM(TotalFarmersCovered) AS TotalFarmersCovered\nFROM farmersinsurancedata\nWHERE SumInsured > 5   -- 500,000 INR = 5 lakh, dữ liệu lưu theo đơn vị lakh\nGROUP BY srcStateName\nORDER BY TotalFarmersCovered DESC;",
     "lotus": "Như giá hiển thị theo nghìn đồng: 500 nghĩa là 500.000 đồng, phải đổi đơn vị trước khi so.",
-    "trap": "Viết SumInsured > 500000 mà quên hệ số 100.000 sẽ gần như loại hết dữ liệu."
+    "trap": "Viết SumInsured > 500000 mà quên hệ số 100.000 sẽ gần như loại hết dữ liệu.",
+    "read": [
+     "26 dòng: phí nông dân, phí bang, phí chính phủ và tổng nông dân theo bang (lakh).",
+     "Lọc SumInsured > 5 vì 500.000 rupee = 5 lakh."
+    ],
+    "remark": "Madhya Pradesh có phí lớn nhất (nông dân 139.861, bang 399.901, chính phủ 399.901); phần nông dân tự trả nhỏ hơn nhiều so với bang và chính phủ cộng lại, nên hệ thống được trợ cấp nặng.",
+    "howRemark": [
+     "Nêu số dòng và giá trị nổi bật nhất của kết quả.",
+     "So một dòng với dòng khác hoặc với mức chung.",
+     "Nói kết quả trả lời câu hỏi thế nào, và lưu ý đơn vị (lakh) hoặc điều kiện lọc."
+    ]
    },
    "en": {
     "think": "Total premiums per state, only records with SumInsured above 500,000. Mind the scaling factor.",
@@ -376,7 +534,17 @@ export const asg: Assignment = {
     ],
     "code": "SELECT srcStateName,\n       SUM(FarmersPremiumAmount) AS FarmersPremium, SUM(StatePremiumAmount) AS StatePremium, SUM(GOVPremiumAmount) AS GovPremium,\n       SUM(TotalFarmersCovered) AS TotalFarmersCovered\nFROM farmersinsurancedata\nWHERE SumInsured > 5   -- 500,000 INR = 5 lakh, dữ liệu lưu theo đơn vị lakh\nGROUP BY srcStateName\nORDER BY TotalFarmersCovered DESC;",
     "lotus": "Like prices shown in thousands: 500 means 500,000 dong, convert before comparing.",
-    "trap": "Writing SumInsured > 500000 and forgetting the 100,000 factor drops nearly all the data."
+    "trap": "Writing SumInsured > 500000 and forgetting the 100,000 factor drops nearly all the data.",
+    "read": [
+     "26 rows: farmers premium, state premium, government premium and total farmers per state (lakh).",
+     "Filter SumInsured > 5 since 500,000 rupees = 5 lakh."
+    ],
+    "remark": "Madhya Pradesh has the largest premiums (farmers 139,861, state 399,901, government 399,901); the farmers' share is far below the state and government combined, so the scheme is heavily subsidised.",
+    "howRemark": [
+     "State the row count and the most notable value.",
+     "Compare one row with another or with the overall level.",
+     "Say how it answers the question, noting the unit (lakh) or filter."
+    ]
    }
   },
   "Q10": {
@@ -390,7 +558,16 @@ export const asg: Assignment = {
     ],
     "code": "SELECT srcDistrictName, TotalPopulation\nFROM farmersinsurancedata\nWHERE srcYear = 2020\nORDER BY TotalPopulation DESC\nLIMIT 5;",
     "lotus": "Như năm chi nhánh có nhiều khách nhất trong tháng.",
-    "trap": "Quên WHERE sẽ trộn bốn năm và cùng một huyện xuất hiện nhiều lần."
+    "trap": "Quên WHERE sẽ trộn bốn năm và cùng một huyện xuất hiện nhiều lần.",
+    "read": [
+     "5 dòng: huyện và dân số năm 2020."
+    ],
+    "remark": "Bengaluru Urban (9,62 triệu) và Pune (9,43 triệu) đông dân nhất, rồi Thane (8,07 triệu); toàn là các huyện đô thị lớn.",
+    "howRemark": [
+     "Nêu số dòng và giá trị nổi bật nhất của kết quả.",
+     "So một dòng với dòng khác hoặc với mức chung.",
+     "Nói kết quả trả lời câu hỏi thế nào, và lưu ý đơn vị (lakh) hoặc điều kiện lọc."
+    ]
    },
    "en": {
     "think": "The five districts with the highest population in 2020.",
@@ -402,7 +579,16 @@ export const asg: Assignment = {
     ],
     "code": "SELECT srcDistrictName, TotalPopulation\nFROM farmersinsurancedata\nWHERE srcYear = 2020\nORDER BY TotalPopulation DESC\nLIMIT 5;",
     "lotus": "Like the five branches with the most customers in a month.",
-    "trap": "Forgetting WHERE mixes four years and the same district appears several times."
+    "trap": "Forgetting WHERE mixes four years and the same district appears several times.",
+    "read": [
+     "5 rows: district and population for 2020."
+    ],
+    "remark": "Bengaluru Urban (9.62 million) and Pune (9.43 million) are most populous, then Thane (8.07 million); all large urban districts.",
+    "howRemark": [
+     "State the row count and the most notable value.",
+     "Compare one row with another or with the overall level.",
+     "Say how it answers the question, noting the unit (lakh) or filter."
+    ]
    }
   },
   "Q11": {
@@ -415,7 +601,16 @@ export const asg: Assignment = {
     ],
     "code": "SELECT srcStateName, srcDistrictName, SumInsured, FarmersPremiumAmount\nFROM farmersinsurancedata\nWHERE FarmersPremiumAmount > 0\nORDER BY FarmersPremiumAmount ASC, SumInsured ASC\nLIMIT 10;",
     "lotus": "Bỏ những gói chưa phát sinh doanh thu, rồi lấy những gói nhỏ nhất.",
-    "trap": "Câu hỏi nói «sắp theo SumInsured rồi phí» nhưng ý chính là phí thấp nhất: đọc kỹ thứ tự ưu tiên."
+    "trap": "Câu hỏi nói «sắp theo SumInsured rồi phí» nhưng ý chính là phí thấp nhất: đọc kỹ thứ tự ưu tiên.",
+    "read": [
+     "10 dòng: huyện có phí nhỏ nhưng khác 0, xếp theo SumInsured rồi phí."
+    ],
+    "remark": "Các huyện Karnataka như Kalaburgi, Kolar và Davangere có SumInsured chỉ 0,004–0,006 lakh: giá trị cực nhỏ, có thể là dữ liệu chưa đầy đủ hơn là bảo hiểm thật.",
+    "howRemark": [
+     "Nêu số dòng và giá trị nổi bật nhất của kết quả.",
+     "So một dòng với dòng khác hoặc với mức chung.",
+     "Nói kết quả trả lời câu hỏi thế nào, và lưu ý đơn vị (lakh) hoặc điều kiện lọc."
+    ]
    },
    "en": {
     "think": "Ten districts with the lowest nonzero farmers' premium, ordered by sum insured then premium.",
@@ -426,7 +621,16 @@ export const asg: Assignment = {
     ],
     "code": "SELECT srcStateName, srcDistrictName, SumInsured, FarmersPremiumAmount\nFROM farmersinsurancedata\nWHERE FarmersPremiumAmount > 0\nORDER BY FarmersPremiumAmount ASC, SumInsured ASC\nLIMIT 10;",
     "lotus": "Skip packages with no revenue yet, then take the smallest.",
-    "trap": "The question says “ordered by SumInsured then premium” but the main idea is lowest premium: read the order of priority carefully."
+    "trap": "The question says “ordered by SumInsured then premium” but the main idea is lowest premium: read the order of priority carefully.",
+    "read": [
+     "10 rows: districts with small but non-zero premium, ordered by SumInsured then premium."
+    ],
+    "remark": "Karnataka districts such as Kalaburgi, Kolar and Davangere have SumInsured of only 0.004–0.006 lakh: tiny values, more likely incomplete data than real insurance.",
+    "howRemark": [
+     "State the row count and the most notable value.",
+     "Compare one row with another or with the overall level.",
+     "Say how it answers the question, noting the unit (lakh) or filter."
+    ]
    }
   },
   "Q12": {
@@ -439,7 +643,16 @@ export const asg: Assignment = {
     ],
     "code": "SELECT srcStateName, srcYear,\n       SUM(TotalFarmersCovered) * 1.0 / SUM(TotalPopulation) AS ratio\nFROM farmersinsurancedata\nGROUP BY srcStateName, srcYear\nORDER BY ratio DESC\nLIMIT 3;",
     "lotus": "Như tỷ lệ khách mua gói trên tổng số khách đi qua từng chi nhánh.",
-    "trap": "Chia hai số nguyên trong một số hệ SQL cho kết quả nguyên (0). Nhân 1.0 trước."
+    "trap": "Chia hai số nguyên trong một số hệ SQL cho kết quả nguyên (0). Nhân 1.0 trước.",
+    "read": [
+     "3 dòng: bang, năm và tỷ lệ nông dân được bảo hiểm trên dân số."
+    ],
+    "remark": "Chhattisgarh năm 2021 cao nhất (5,0% dân số), rồi Tripura 2020 (4,7%) và 2021 (4,6%): ngay cả bang cao nhất cũng chỉ bảo hiểm khoảng 5% dân số.",
+    "howRemark": [
+     "Nêu số dòng và giá trị nổi bật nhất của kết quả.",
+     "So một dòng với dòng khác hoặc với mức chung.",
+     "Nói kết quả trả lời câu hỏi thế nào, và lưu ý đơn vị (lakh) hoặc điều kiện lọc."
+    ]
    },
    "en": {
     "think": "The three state-year pairs with the highest ratio of insured farmers to population.",
@@ -450,7 +663,16 @@ export const asg: Assignment = {
     ],
     "code": "SELECT srcStateName, srcYear,\n       SUM(TotalFarmersCovered) * 1.0 / SUM(TotalPopulation) AS ratio\nFROM farmersinsurancedata\nGROUP BY srcStateName, srcYear\nORDER BY ratio DESC\nLIMIT 3;",
     "lotus": "Like the share of visitors who buy a package out of all who pass each branch.",
-    "trap": "Integer division in some SQL engines gives 0. Multiply by 1.0 first."
+    "trap": "Integer division in some SQL engines gives 0. Multiply by 1.0 first.",
+    "read": [
+     "3 rows: state, year and ratio of insured farmers to population."
+    ],
+    "remark": "Chhattisgarh in 2021 is highest (5.0% of population), then Tripura 2020 (4.7%) and 2021 (4.6%): even the top state insures only about 5% of its population.",
+    "howRemark": [
+     "State the row count and the most notable value.",
+     "Compare one row with another or with the overall level.",
+     "Say how it answers the question, noting the unit (lakh) or filter."
+    ]
    }
   },
   "Q13": {
@@ -463,7 +685,16 @@ export const asg: Assignment = {
     ],
     "code": "SELECT DISTINCT srcStateName, SUBSTR(srcStateName, 1, 3) AS StateShortName\nFROM farmersinsurancedata\nORDER BY srcStateName;",
     "lotus": "Như tạo mã chi nhánh từ ba chữ đầu: hai tên có thể trùng mã.",
-    "trap": "Hai bang cho cùng mã «AND»: mã rút gọn không đảm bảo duy nhất."
+    "trap": "Hai bang cho cùng mã «AND»: mã rút gọn không đảm bảo duy nhất.",
+    "read": [
+     "27 dòng: bang và tên viết tắt 3 chữ cái đầu."
+    ],
+    "remark": "Có trùng tên viết tắt: Andaman and Nicobar Islands và Andhra Pradesh đều là AND, nên 3 chữ cái đầu không đủ làm mã duy nhất.",
+    "howRemark": [
+     "Nêu số dòng và giá trị nổi bật nhất của kết quả.",
+     "So một dòng với dòng khác hoặc với mức chung.",
+     "Nói kết quả trả lời câu hỏi thế nào, và lưu ý đơn vị (lakh) hoặc điều kiện lọc."
+    ]
    },
    "en": {
     "think": "Build a short name from the first 3 characters of each state.",
@@ -474,7 +705,16 @@ export const asg: Assignment = {
     ],
     "code": "SELECT DISTINCT srcStateName, SUBSTR(srcStateName, 1, 3) AS StateShortName\nFROM farmersinsurancedata\nORDER BY srcStateName;",
     "lotus": "Like building branch codes from the first three letters: two names can collide.",
-    "trap": "Two states share the code “AND”: a shortened code is not guaranteed unique."
+    "trap": "Two states share the code “AND”: a shortened code is not guaranteed unique.",
+    "read": [
+     "27 rows: state and 3-letter short name."
+    ],
+    "remark": "Short names collide: Andaman and Nicobar Islands and Andhra Pradesh are both AND, so the first 3 letters are not unique.",
+    "howRemark": [
+     "State the row count and the most notable value.",
+     "Compare one row with another or with the overall level.",
+     "Say how it answers the question, noting the unit (lakh) or filter."
+    ]
    }
   },
   "Q14": {
@@ -487,7 +727,16 @@ export const asg: Assignment = {
     ],
     "code": "SELECT DISTINCT srcDistrictName FROM farmersinsurancedata WHERE srcDistrictName LIKE 'B%' ORDER BY srcDistrictName;",
     "lotus": "Như lọc khách có tên bắt đầu bằng B.",
-    "trap": "LIKE 'B%' trong MySQL không phân biệt hoa thường."
+    "trap": "LIKE 'B%' trong MySQL không phân biệt hoa thường.",
+    "read": [
+     "60 dòng: tên huyện bắt đầu bằng B."
+    ],
+    "remark": "Có 60 huyện bắt đầu bằng B (Bagalkot, Bageshwar, Baghpat...): phép lọc bằng LIKE 'B%' hoạt động đúng.",
+    "howRemark": [
+     "Nêu số dòng và giá trị nổi bật nhất của kết quả.",
+     "So một dòng với dòng khác hoặc với mức chung.",
+     "Nói kết quả trả lời câu hỏi thế nào, và lưu ý đơn vị (lakh) hoặc điều kiện lọc."
+    ]
    },
    "en": {
     "think": "Districts whose names start with B.",
@@ -498,7 +747,16 @@ export const asg: Assignment = {
     ],
     "code": "SELECT DISTINCT srcDistrictName FROM farmersinsurancedata WHERE srcDistrictName LIKE 'B%' ORDER BY srcDistrictName;",
     "lotus": "Like filtering customers whose names start with B.",
-    "trap": "LIKE 'B%' in MySQL is case-insensitive."
+    "trap": "LIKE 'B%' in MySQL is case-insensitive.",
+    "read": [
+     "60 rows: district names starting with B."
+    ],
+    "remark": "60 districts start with B (Bagalkot, Bageshwar, Baghpat...): the LIKE 'B%' filter works.",
+    "howRemark": [
+     "State the row count and the most notable value.",
+     "Compare one row with another or with the overall level.",
+     "Say how it answers the question, noting the unit (lakh) or filter."
+    ]
    }
   },
   "Q15": {
@@ -511,7 +769,16 @@ export const asg: Assignment = {
     ],
     "code": "SELECT DISTINCT srcStateName, srcDistrictName FROM farmersinsurancedata WHERE srcDistrictName LIKE '%pur' ORDER BY srcStateName, srcDistrictName;",
     "lotus": "Dấu % đứng trước nghĩa là «bất kỳ gì rồi kết thúc bằng pur».",
-    "trap": "'%pur%' sẽ khớp cả tên chứa «pur» ở giữa. Câu hỏi chỉ muốn ở cuối."
+    "trap": "'%pur%' sẽ khớp cả tên chứa «pur» ở giữa. Câu hỏi chỉ muốn ở cuối.",
+    "read": [
+     "59 dòng: bang và huyện có tên kết thúc bằng pur."
+    ],
+    "remark": "Có 59 huyện kết thúc bằng «pur» (Anantapur, Lakhimpur, Raipur...), rải trên nhiều bang như Chhattisgarh và Assam.",
+    "howRemark": [
+     "Nêu số dòng và giá trị nổi bật nhất của kết quả.",
+     "So một dòng với dòng khác hoặc với mức chung.",
+     "Nói kết quả trả lời câu hỏi thế nào, và lưu ý đơn vị (lakh) hoặc điều kiện lọc."
+    ]
    },
    "en": {
     "think": "State and district where the district name ends with “pur”.",
@@ -522,7 +789,16 @@ export const asg: Assignment = {
     ],
     "code": "SELECT DISTINCT srcStateName, srcDistrictName FROM farmersinsurancedata WHERE srcDistrictName LIKE '%pur' ORDER BY srcStateName, srcDistrictName;",
     "lotus": "A leading % means “anything, ending in pur”.",
-    "trap": "'%pur%' also matches “pur” in the middle. The question wants only the end."
+    "trap": "'%pur%' also matches “pur” in the middle. The question wants only the end.",
+    "read": [
+     "59 rows: states and districts whose names end in pur."
+    ],
+    "remark": "59 districts end in “pur” (Anantapur, Lakhimpur, Raipur...), spread across states like Chhattisgarh and Assam.",
+    "howRemark": [
+     "State the row count and the most notable value.",
+     "Compare one row with another or with the overall level.",
+     "Say how it answers the question, noting the unit (lakh) or filter."
+    ]
    }
   },
   "Q16": {
@@ -535,7 +811,16 @@ export const asg: Assignment = {
     ],
     "code": "SELECT a.srcStateName, a.srcDistrictName, SUM(a.FarmersPremiumAmount) AS FarmersPremiumAmount\nFROM farmersinsurancedata a\nINNER JOIN (SELECT srcStateName, srcDistrictName FROM farmersinsurancedata WHERE InsuranceUnits > 10\n            GROUP BY srcStateName, srcDistrictName) b\n  ON a.srcStateName = b.srcStateName AND a.srcDistrictName = b.srcDistrictName\nGROUP BY a.srcStateName, a.srcDistrictName\nORDER BY FarmersPremiumAmount DESC;",
     "lotus": "Như chọn danh sách chi nhánh có ngày nào đó vượt 10 ca, rồi cộng doanh thu cả năm của những chi nhánh đó.",
-    "trap": "Join chỉ theo tên huyện bỏ qua bang sẽ ghép nhầm huyện trùng tên."
+    "trap": "Join chỉ theo tên huyện bỏ qua bang sẽ ghép nhầm huyện trùng tên.",
+    "read": [
+     "491 dòng: huyện và phí nông dân của những huyện có Insurance units trên 10."
+    ],
+    "remark": "Bid (14.529), Ujjain (12.385) và Latur (11.700) có phí nông dân lớn nhất trong 491 dòng thỏa điều kiện.",
+    "howRemark": [
+     "Nêu số dòng và giá trị nổi bật nhất của kết quả.",
+     "So một dòng với dòng khác hoặc với mức chung.",
+     "Nói kết quả trả lời câu hỏi thế nào, và lưu ý đơn vị (lakh) hoặc điều kiện lọc."
+    ]
    },
    "en": {
     "think": "INNER JOIN to total farmers' premium for districts with Insurance units above 10 in some year.",
@@ -546,7 +831,16 @@ export const asg: Assignment = {
     ],
     "code": "SELECT a.srcStateName, a.srcDistrictName, SUM(a.FarmersPremiumAmount) AS FarmersPremiumAmount\nFROM farmersinsurancedata a\nINNER JOIN (SELECT srcStateName, srcDistrictName FROM farmersinsurancedata WHERE InsuranceUnits > 10\n            GROUP BY srcStateName, srcDistrictName) b\n  ON a.srcStateName = b.srcStateName AND a.srcDistrictName = b.srcDistrictName\nGROUP BY a.srcStateName, a.srcDistrictName\nORDER BY FarmersPremiumAmount DESC;",
     "lotus": "Like picking branches that exceeded 10 cases on some day, then summing those branches' revenue for the whole year.",
-    "trap": "Joining on district name only, ignoring state, mismatches districts sharing a name."
+    "trap": "Joining on district name only, ignoring state, mismatches districts sharing a name.",
+    "read": [
+     "491 rows: districts and farmers premium for those with Insurance units above 10."
+    ],
+    "remark": "Bid (14,529), Ujjain (12,385) and Latur (11,700) have the largest farmers premium among the 491 rows meeting the condition.",
+    "howRemark": [
+     "State the row count and the most notable value.",
+     "Compare one row with another or with the overall level.",
+     "Say how it answers the question, noting the unit (lakh) or filter."
+    ]
    }
   },
   "Q17": {
@@ -559,7 +853,17 @@ export const asg: Assignment = {
     ],
     "code": "SELECT f.srcStateName, f.srcDistrictName, f.Year_, f.TotalPopulation, m.MaxPremium\nFROM farmersinsurancedata f\nJOIN (SELECT srcStateName, srcDistrictName, MAX(FarmersPremiumAmount) AS MaxPremium\n      FROM farmersinsurancedata GROUP BY srcStateName, srcDistrictName\n      HAVING MAX(FarmersPremiumAmount) > 2000) m   -- 20 crore = 2000 lakh\n  ON f.srcStateName = m.srcStateName AND f.srcDistrictName = m.srcDistrictName\nORDER BY m.MaxPremium DESC;",
     "lotus": "Như tìm tháng doanh thu cao nhất của mỗi chi nhánh rồi chỉ giữ chi nhánh có đỉnh vượt một ngưỡng.",
-    "trap": "Đổi crore thành lakh sai: 1 crore = 100 lakh, nên 20 crore là 2000 lakh, không phải 20."
+    "trap": "Đổi crore thành lakh sai: 1 crore = 100 lakh, nên 20 crore là 2000 lakh, không phải 20.",
+    "read": [
+     "132 dòng: huyện, năm, dân số và mức phí cao nhất mọi năm của huyện.",
+     "Cột Year_ là chữ dài nên mỗi huyện lặp qua các năm."
+    ],
+    "remark": "Bid có mức phí cao nhất 7.244 và dân số 2.583.421, lặp lại mỗi năm vì MaxPremium tính trên mọi năm; điều kiện trên 20 crore tương đương trên 2.000 lakh.",
+    "howRemark": [
+     "Nêu số dòng và giá trị nổi bật nhất của kết quả.",
+     "So một dòng với dòng khác hoặc với mức chung.",
+     "Nói kết quả trả lời câu hỏi thế nào, và lưu ý đơn vị (lakh) hoặc điều kiện lọc."
+    ]
    },
    "en": {
     "think": "For each district: name, year, population and the highest farmers' premium over all years; only districts whose peak exceeds 20 crore.",
@@ -570,7 +874,17 @@ export const asg: Assignment = {
     ],
     "code": "SELECT f.srcStateName, f.srcDistrictName, f.Year_, f.TotalPopulation, m.MaxPremium\nFROM farmersinsurancedata f\nJOIN (SELECT srcStateName, srcDistrictName, MAX(FarmersPremiumAmount) AS MaxPremium\n      FROM farmersinsurancedata GROUP BY srcStateName, srcDistrictName\n      HAVING MAX(FarmersPremiumAmount) > 2000) m   -- 20 crore = 2000 lakh\n  ON f.srcStateName = m.srcStateName AND f.srcDistrictName = m.srcDistrictName\nORDER BY m.MaxPremium DESC;",
     "lotus": "Like finding each branch's best revenue month, then keeping only branches whose peak exceeds a threshold.",
-    "trap": "Converting crore to lakh wrongly: 1 crore = 100 lakh, so 20 crore is 2,000 lakh, not 20."
+    "trap": "Converting crore to lakh wrongly: 1 crore = 100 lakh, so 20 crore is 2,000 lakh, not 20.",
+    "read": [
+     "132 rows: district, year, population and the district's maximum premium over all years.",
+     "Year_ is long text so each district repeats across years."
+    ],
+    "remark": "Bid has a maximum premium of 7,244 and population 2,583,421, repeated each year because MaxPremium spans all years; the 20 crore condition equals 2,000 lakh.",
+    "howRemark": [
+     "State the row count and the most notable value.",
+     "Compare one row with another or with the overall level.",
+     "Say how it answers the question, noting the unit (lakh) or filter."
+    ]
    }
   },
   "Q18": {
@@ -584,7 +898,16 @@ export const asg: Assignment = {
     ],
     "code": "SELECT srcStateName, srcDistrictName,\n       SUM(FarmersPremiumAmount) AS TotalFarmersPremium, AVG(TotalPopulation) AS AvgPopulation\nFROM farmersinsurancedata\nGROUP BY srcStateName, srcDistrictName\nHAVING SUM(FarmersPremiumAmount) > 10000   -- 100 crore = 10000 lakh\nORDER BY TotalFarmersPremium DESC;",
     "lotus": "Như chỉ giữ chi nhánh có tổng doanh thu cả bốn năm vượt mốc 100 crore.",
-    "trap": "Điều kiện trên tổng phải đặt ở HAVING, không phải WHERE."
+    "trap": "Điều kiện trên tổng phải đặt ở HAVING, không phải WHERE.",
+    "read": [
+     "3 dòng: huyện có tổng phí trên 100 crore (10.000 lakh) kèm dân số trung bình."
+    ],
+    "remark": "Chỉ ba huyện vượt 100 crore: Bid (14.529), Ujjain (12.385) và Latur (11.700), đều là huyện đông dân (2–2,6 triệu).",
+    "howRemark": [
+     "Nêu số dòng và giá trị nổi bật nhất của kết quả.",
+     "So một dòng với dòng khác hoặc với mức chung.",
+     "Nói kết quả trả lời câu hỏi thế nào, và lưu ý đơn vị (lakh) hoặc điều kiện lọc."
+    ]
    },
    "en": {
     "think": "LEFT JOIN population with farmer data; return total premium and average population per district, only districts above 100 crore total, sorted descending.",
@@ -596,7 +919,16 @@ export const asg: Assignment = {
     ],
     "code": "SELECT srcStateName, srcDistrictName,\n       SUM(FarmersPremiumAmount) AS TotalFarmersPremium, AVG(TotalPopulation) AS AvgPopulation\nFROM farmersinsurancedata\nGROUP BY srcStateName, srcDistrictName\nHAVING SUM(FarmersPremiumAmount) > 10000   -- 100 crore = 10000 lakh\nORDER BY TotalFarmersPremium DESC;",
     "lotus": "Like keeping only branches whose four-year total revenue exceeds 100 crore.",
-    "trap": "A condition on a total goes in HAVING, not WHERE."
+    "trap": "A condition on a total goes in HAVING, not WHERE.",
+    "read": [
+     "3 rows: districts with total premium above 100 crore (10,000 lakh) with average population."
+    ],
+    "remark": "Only three districts exceed 100 crore: Bid (14,529), Ujjain (12,385) and Latur (11,700), all populous (2–2.6 million).",
+    "howRemark": [
+     "State the row count and the most notable value.",
+     "Compare one row with another or with the overall level.",
+     "Say how it answers the question, noting the unit (lakh) or filter."
+    ]
    }
   },
   "Q19": {
@@ -609,7 +941,16 @@ export const asg: Assignment = {
     ],
     "code": "SELECT DISTINCT srcDistrictName\nFROM farmersinsurancedata\nWHERE TotalFarmersCovered > (SELECT AVG(TotalFarmersCovered) FROM farmersinsurancedata)\nORDER BY srcDistrictName;",
     "lotus": "Như tìm chi nhánh có số khách trên trung bình toàn chuỗi.",
-    "trap": "Trung bình tính trên mọi bản ghi, không theo từng huyện: đọc kỹ đề."
+    "trap": "Trung bình tính trên mọi bản ghi, không theo từng huyện: đọc kỹ đề.",
+    "read": [
+     "251 dòng: huyện có số nông dân lớn hơn mức trung bình toàn bộ bản ghi."
+    ],
+    "remark": "251 huyện trên trung bình, tức một phần đáng kể huyện nằm trên mức chung; tên mẫu gồm Agra, Ajmer, Alwar.",
+    "howRemark": [
+     "Nêu số dòng và giá trị nổi bật nhất của kết quả.",
+     "So một dòng với dòng khác hoặc với mức chung.",
+     "Nói kết quả trả lời câu hỏi thế nào, và lưu ý đơn vị (lakh) hoặc điều kiện lọc."
+    ]
    },
    "en": {
     "think": "Districts whose farmers covered exceed the average over all records.",
@@ -620,7 +961,16 @@ export const asg: Assignment = {
     ],
     "code": "SELECT DISTINCT srcDistrictName\nFROM farmersinsurancedata\nWHERE TotalFarmersCovered > (SELECT AVG(TotalFarmersCovered) FROM farmersinsurancedata)\nORDER BY srcDistrictName;",
     "lotus": "Like finding branches with above-chain-average customers.",
-    "trap": "The average is over all records, not per district: read the question carefully."
+    "trap": "The average is over all records, not per district: read the question carefully.",
+    "read": [
+     "251 rows: districts with farmers above the average of all records."
+    ],
+    "remark": "251 districts are above average, a sizeable share; sample names include Agra, Ajmer, Alwar.",
+    "howRemark": [
+     "State the row count and the most notable value.",
+     "Compare one row with another or with the overall level.",
+     "Say how it answers the question, noting the unit (lakh) or filter."
+    ]
    }
   },
   "Q20": {
@@ -633,7 +983,16 @@ export const asg: Assignment = {
     ],
     "code": "SELECT DISTINCT srcStateName\nFROM farmersinsurancedata\nWHERE SumInsured > (SELECT SumInsured FROM farmersinsurancedata ORDER BY FarmersPremiumAmount DESC LIMIT 1);",
     "lotus": "Nếu gói đắt nhất cũng là gói có giá trị cao nhất thì không gói nào vượt nó.",
-    "trap": "Kết quả trống không phải lỗi: kiểm tra dữ liệu để hiểu vì sao."
+    "trap": "Kết quả trống không phải lỗi: kiểm tra dữ liệu để hiểu vì sao.",
+    "read": [
+     "Kết quả 0 dòng: bảng rỗng."
+    ],
+    "remark": "Không có bang nào có SumInsured cao hơn bản ghi có phí nông dân cao nhất, vì bản ghi đó đã có SumInsured lớn nhất; kết quả rỗng là đúng, không phải lỗi.",
+    "howRemark": [
+     "Nói rõ 0 dòng và vì sao.",
+     "Kiểm điều kiện so sánh.",
+     "Phân biệt rỗng đúng với lỗi truy vấn."
+    ]
    },
    "en": {
     "think": "States with SumInsured above that of the record with the highest farmers' premium.",
@@ -644,7 +1003,16 @@ export const asg: Assignment = {
     ],
     "code": "SELECT DISTINCT srcStateName\nFROM farmersinsurancedata\nWHERE SumInsured > (SELECT SumInsured FROM farmersinsurancedata ORDER BY FarmersPremiumAmount DESC LIMIT 1);",
     "lotus": "If the priciest package also has the highest value, nothing exceeds it.",
-    "trap": "An empty result is not an error: inspect the data to see why."
+    "trap": "An empty result is not an error: inspect the data to see why.",
+    "read": [
+     "Result is 0 rows: an empty table."
+    ],
+    "remark": "No state has a SumInsured above that of the record with the highest farmers premium, since that record already has the largest SumInsured; the empty result is correct, not an error.",
+    "howRemark": [
+     "Say clearly it is 0 rows and why.",
+     "Check the comparison condition.",
+     "Distinguish a correct empty result from a query bug."
+    ]
    }
   },
   "Q21": {
@@ -657,7 +1025,16 @@ export const asg: Assignment = {
     ],
     "code": "SELECT DISTINCT srcDistrictName\nFROM farmersinsurancedata\nWHERE FarmersPremiumAmount > (\n    SELECT AVG(FarmersPremiumAmount) FROM farmersinsurancedata\n    WHERE srcStateName = (SELECT srcStateName FROM farmersinsurancedata\n                          GROUP BY srcStateName ORDER BY SUM(TotalPopulation) DESC LIMIT 1))\nORDER BY srcDistrictName;",
     "lotus": "Như so doanh thu từng chi nhánh với trung bình của khu vực đông khách nhất.",
-    "trap": "Hai tầng bảng con lồng nhau: viết từng tầng riêng, chạy thử rồi mới ghép."
+    "trap": "Hai tầng bảng con lồng nhau: viết từng tầng riêng, chạy thử rồi mới ghép.",
+    "read": [
+     "246 dòng: huyện có phí nông dân cao hơn mức trung bình của bang đông dân nhất."
+    ],
+    "remark": "246 huyện vượt mức trung bình của bang đông dân nhất; so với Q19 (251) con số gần nhau.",
+    "howRemark": [
+     "Nêu số dòng và giá trị nổi bật nhất của kết quả.",
+     "So một dòng với dòng khác hoặc với mức chung.",
+     "Nói kết quả trả lời câu hỏi thế nào, và lưu ý đơn vị (lakh) hoặc điều kiện lọc."
+    ]
    },
    "en": {
     "think": "Districts whose farmers' premium exceeds the average of the most populous state.",
@@ -668,7 +1045,16 @@ export const asg: Assignment = {
     ],
     "code": "SELECT DISTINCT srcDistrictName\nFROM farmersinsurancedata\nWHERE FarmersPremiumAmount > (\n    SELECT AVG(FarmersPremiumAmount) FROM farmersinsurancedata\n    WHERE srcStateName = (SELECT srcStateName FROM farmersinsurancedata\n                          GROUP BY srcStateName ORDER BY SUM(TotalPopulation) DESC LIMIT 1))\nORDER BY srcDistrictName;",
     "lotus": "Like comparing each branch's revenue with the average of the area with the most customers.",
-    "trap": "Two nested subquery levels: write each separately, test, then combine."
+    "trap": "Two nested subquery levels: write each separately, test, then combine.",
+    "read": [
+     "246 rows: districts whose farmers premium exceeds the average of the most populous state."
+    ],
+    "remark": "246 districts exceed the most populous state's average; close to Q19's 251.",
+    "howRemark": [
+     "State the row count and the most notable value.",
+     "Compare one row with another or with the overall level.",
+     "Say how it answers the question, noting the unit (lakh) or filter."
+    ]
    }
   },
   "Q22": {
@@ -680,7 +1066,16 @@ export const asg: Assignment = {
     ],
     "code": "SELECT srcStateName, srcDistrictName, TotalFarmersCovered,\n       ROW_NUMBER() OVER (ORDER BY TotalFarmersCovered DESC) AS row_num\nFROM farmersinsurancedata\nLIMIT 10;",
     "lotus": "Như đánh số thứ tự các ngày theo số khách từ đông nhất.",
-    "trap": "ROW_NUMBER không cho hai dòng cùng số dù giá trị bằng nhau, khác RANK."
+    "trap": "ROW_NUMBER không cho hai dòng cùng số dù giá trị bằng nhau, khác RANK.",
+    "read": [
+     "10 dòng: mỗi dòng có row_num theo số nông dân giảm dần."
+    ],
+    "remark": "Bản ghi số 1 là Bid (548.572 nông dân), 2 là Nanded (426.801), 3 là Latur (407.452); row_num đánh số duy nhất kể cả khi lặp huyện (Bid lại ở hạng 4).",
+    "howRemark": [
+     "Nêu số dòng và giá trị nổi bật nhất của kết quả.",
+     "So một dòng với dòng khác hoặc với mức chung.",
+     "Nói kết quả trả lời câu hỏi thế nào, và lưu ý đơn vị (lakh) hoặc điều kiện lọc."
+    ]
    },
    "en": {
     "think": "Number each row by farmers covered descending.",
@@ -690,7 +1085,16 @@ export const asg: Assignment = {
     ],
     "code": "SELECT srcStateName, srcDistrictName, TotalFarmersCovered,\n       ROW_NUMBER() OVER (ORDER BY TotalFarmersCovered DESC) AS row_num\nFROM farmersinsurancedata\nLIMIT 10;",
     "lotus": "Like numbering days by customers, busiest first.",
-    "trap": "ROW_NUMBER never gives two rows the same number even on ties, unlike RANK."
+    "trap": "ROW_NUMBER never gives two rows the same number even on ties, unlike RANK.",
+    "read": [
+     "10 rows: each row has row_num by farmers descending."
+    ],
+    "remark": "Rank 1 is Bid (548,572 farmers), 2 is Nanded (426,801), 3 is Latur (407,452); row_num numbers uniquely even when a district repeats (Bid again at 4).",
+    "howRemark": [
+     "State the row count and the most notable value.",
+     "Compare one row with another or with the overall level.",
+     "Say how it answers the question, noting the unit (lakh) or filter."
+    ]
    }
   },
   "Q23": {
@@ -702,7 +1106,16 @@ export const asg: Assignment = {
     ],
     "code": "SELECT srcStateName, srcDistrictName, SumInsured,\n       RANK() OVER (PARTITION BY srcStateName ORDER BY SumInsured DESC) AS rnk\nFROM farmersinsurancedata\nORDER BY srcStateName, rnk\nLIMIT 12;",
     "lotus": "Như xếp hạng chi nhánh theo doanh thu bên trong từng quận.",
-    "trap": "Quên PARTITION BY sẽ xếp một bảng hạng chung cho cả nước."
+    "trap": "Quên PARTITION BY sẽ xếp một bảng hạng chung cho cả nước.",
+    "read": [
+     "12 dòng đầu: rnk là hạng SumInsured trong từng bang, bắt đầu lại từ 1 ở mỗi bang."
+    ],
+    "remark": "Trong Andaman and Nicobar, North and Middle Andaman hạng 1 (180,54) và South Andaman hạng 2 (12,02); hạng được tính riêng trong mỗi bang.",
+    "howRemark": [
+     "Nêu số dòng và giá trị nổi bật nhất của kết quả.",
+     "So một dòng với dòng khác hoặc với mức chung.",
+     "Nói kết quả trả lời câu hỏi thế nào, và lưu ý đơn vị (lakh) hoặc điều kiện lọc."
+    ]
    },
    "en": {
     "think": "Rank districts by SumInsured descending within each state.",
@@ -712,7 +1125,16 @@ export const asg: Assignment = {
     ],
     "code": "SELECT srcStateName, srcDistrictName, SumInsured,\n       RANK() OVER (PARTITION BY srcStateName ORDER BY SumInsured DESC) AS rnk\nFROM farmersinsurancedata\nORDER BY srcStateName, rnk\nLIMIT 12;",
     "lotus": "Like ranking branches by revenue inside each district.",
-    "trap": "Forgetting PARTITION BY gives one national ranking."
+    "trap": "Forgetting PARTITION BY gives one national ranking.",
+    "read": [
+     "First 12 rows: rnk is the SumInsured rank within each state, restarting at 1 per state."
+    ],
+    "remark": "In Andaman and Nicobar, North and Middle Andaman ranks 1 (180.54) and South Andaman 2 (12.02); ranks are computed within each state.",
+    "howRemark": [
+     "State the row count and the most notable value.",
+     "Compare one row with another or with the overall level.",
+     "Say how it answers the question, noting the unit (lakh) or filter."
+    ]
    }
   },
   "Q24": {
@@ -724,7 +1146,16 @@ export const asg: Assignment = {
     ],
     "code": "SELECT srcStateName, srcDistrictName, srcYear, FarmersPremiumAmount,\n       SUM(FarmersPremiumAmount) OVER (PARTITION BY srcStateName, srcDistrictName ORDER BY srcYear) AS cumulative_premium\nFROM farmersinsurancedata\nORDER BY srcStateName, srcDistrictName, srcYear\nLIMIT 12;",
     "lotus": "Như doanh thu cộng dồn từng tháng của một chi nhánh: tháng 3 = tháng 1 + 2 + 3.",
-    "trap": "Không có ORDER BY trong OVER thì ra tổng cả nhóm cho mọi dòng, không phải cộng dồn."
+    "trap": "Không có ORDER BY trong OVER thì ra tổng cả nhóm cho mọi dòng, không phải cộng dồn.",
+    "read": [
+     "12 dòng: phí theo năm và cột cumulative_premium là tổng cộng dồn."
+    ],
+    "remark": "Nicobars: 0,003 năm 2020 rồi 0,014 năm 2021, cộng dồn thành 0,017; cột cộng dồn luôn tăng hoặc giữ nguyên theo năm.",
+    "howRemark": [
+     "Nêu số dòng và giá trị nổi bật nhất của kết quả.",
+     "So một dòng với dòng khác hoặc với mức chung.",
+     "Nói kết quả trả lời câu hỏi thế nào, và lưu ý đơn vị (lakh) hoặc điều kiện lọc."
+    ]
    },
    "en": {
     "think": "Cumulative sum of farmers' premium per district, ascending by year, within each state.",
@@ -734,7 +1165,16 @@ export const asg: Assignment = {
     ],
     "code": "SELECT srcStateName, srcDistrictName, srcYear, FarmersPremiumAmount,\n       SUM(FarmersPremiumAmount) OVER (PARTITION BY srcStateName, srcDistrictName ORDER BY srcYear) AS cumulative_premium\nFROM farmersinsurancedata\nORDER BY srcStateName, srcDistrictName, srcYear\nLIMIT 12;",
     "lotus": "Like a branch's running revenue by month: month 3 = months 1 + 2 + 3.",
-    "trap": "Without ORDER BY in OVER you get the whole group's total on every row, not a running one."
+    "trap": "Without ORDER BY in OVER you get the whole group's total on every row, not a running one.",
+    "read": [
+     "12 rows: premium by year and cumulative_premium is the running total."
+    ],
+    "remark": "Nicobars: 0.003 in 2020 then 0.014 in 2021, accumulating to 0.017; the cumulative column never falls with year.",
+    "howRemark": [
+     "State the row count and the most notable value.",
+     "Compare one row with another or with the overall level.",
+     "Say how it answers the question, noting the unit (lakh) or filter."
+    ]
    }
   },
   "Q25": {
@@ -747,7 +1187,16 @@ export const asg: Assignment = {
     ],
     "code": "CREATE TABLE states (\n    StateCode INT PRIMARY KEY,\n    StateName VARCHAR(255)\n);\nCREATE TABLE districts (\n    DistrictCode INT PRIMARY KEY,\n    DistrictName VARCHAR(255),\n    StateCode INT\n);",
     "lotus": "Như lập danh mục chi nhánh và danh mục quận riêng, mỗi cái có mã duy nhất.",
-    "trap": "Khoá chính không được trùng: hai dòng cùng DistrictCode sẽ bị từ chối."
+    "trap": "Khoá chính không được trùng: hai dòng cùng DistrictCode sẽ bị từ chối.",
+    "read": [
+     "Danh sách tên bảng mới tạo: states và districts."
+    ],
+    "remark": "Đã tạo hai bảng states và districts, mỗi bảng có khoá chính riêng.",
+    "howRemark": [
+     "Nêu số dòng và giá trị nổi bật nhất của kết quả.",
+     "So một dòng với dòng khác hoặc với mức chung.",
+     "Nói kết quả trả lời câu hỏi thế nào, và lưu ý đơn vị (lakh) hoặc điều kiện lọc."
+    ]
    },
    "en": {
     "think": "Create two tables: districts (primary key DistrictCode) and states (primary key StateCode).",
@@ -758,7 +1207,16 @@ export const asg: Assignment = {
     ],
     "code": "CREATE TABLE states (\n    StateCode INT PRIMARY KEY,\n    StateName VARCHAR(255)\n);\nCREATE TABLE districts (\n    DistrictCode INT PRIMARY KEY,\n    DistrictName VARCHAR(255),\n    StateCode INT\n);",
     "lotus": "Like making a separate branch directory and district directory, each with a unique code.",
-    "trap": "A primary key cannot repeat: two rows with the same DistrictCode are rejected."
+    "trap": "A primary key cannot repeat: two rows with the same DistrictCode are rejected.",
+    "read": [
+     "The list of newly created tables: states and districts."
+    ],
+    "remark": "Two tables states and districts were created, each with its own primary key.",
+    "howRemark": [
+     "State the row count and the most notable value.",
+     "Compare one row with another or with the overall level.",
+     "Say how it answers the question, noting the unit (lakh) or filter."
+    ]
    }
   },
   "Q26": {
@@ -770,7 +1228,16 @@ export const asg: Assignment = {
     ],
     "code": "-- MySQL\nALTER TABLE districts\nADD CONSTRAINT fk_districts_state FOREIGN KEY (StateCode) REFERENCES states(StateCode);",
     "lotus": "Mỗi quận phải thuộc một chi nhánh có thật: không thể gán quận cho chi nhánh chưa tồn tại.",
-    "trap": "Chèn dòng vào districts với StateCode chưa có trong states sẽ bị từ chối."
+    "trap": "Chèn dòng vào districts với StateCode chưa có trong states sẽ bị từ chối.",
+    "read": [
+     "Bảng kiểm tra khoá ngoại: districts.StateCode tham chiếu states.StateCode."
+    ],
+    "remark": "Khoá ngoại đã gắn: cột StateCode của districts trỏ về StateCode của states, nên không thể thêm huyện thuộc bang không tồn tại.",
+    "howRemark": [
+     "Nêu số dòng và giá trị nổi bật nhất của kết quả.",
+     "So một dòng với dòng khác hoặc với mức chung.",
+     "Nói kết quả trả lời câu hỏi thế nào, và lưu ý đơn vị (lakh) hoặc điều kiện lọc."
+    ]
    },
    "en": {
     "think": "Add a foreign key so districts.StateCode references states.StateCode.",
@@ -780,7 +1247,16 @@ export const asg: Assignment = {
     ],
     "code": "-- MySQL\nALTER TABLE districts\nADD CONSTRAINT fk_districts_state FOREIGN KEY (StateCode) REFERENCES states(StateCode);",
     "lotus": "Every district must belong to a real branch: you cannot assign a district to a branch that does not exist.",
-    "trap": "Inserting into districts a StateCode absent from states is rejected."
+    "trap": "Inserting into districts a StateCode absent from states is rejected.",
+    "read": [
+     "Foreign-key check table: districts.StateCode references states.StateCode."
+    ],
+    "remark": "The foreign key is in place: districts.StateCode points to states.StateCode, so a district of a non-existent state cannot be added.",
+    "howRemark": [
+     "State the row count and the most notable value.",
+     "Compare one row with another or with the overall level.",
+     "Say how it answers the question, noting the unit (lakh) or filter."
+    ]
    }
   },
   "Q27": {
@@ -792,7 +1268,16 @@ export const asg: Assignment = {
     ],
     "code": "UPDATE farmersinsurancedata SET FarmersPremiumAmount = 500.0 WHERE rowID = 1;",
     "lotus": "Như sửa một booking cụ thể bằng mã booking của nó.",
-    "trap": "UPDATE không có WHERE sửa mọi dòng của bảng."
+    "trap": "UPDATE không có WHERE sửa mọi dòng của bảng.",
+    "read": [
+     "Dòng «1 dòng bị ảnh hưởng» và bảng kiểm tra giá trị mới."
+    ],
+    "remark": "Cập nhật đúng 1 dòng (rowID 1), phí nông dân thành 500,0.",
+    "howRemark": [
+     "Nêu số dòng bị ảnh hưởng.",
+     "Đối chiếu giá trị mới.",
+     "Nhắc kiểm WHERE trước khi UPDATE."
+    ]
    },
    "en": {
     "think": "Update the farmers' premium of the row with rowID = 1 to 500.0.",
@@ -802,7 +1287,16 @@ export const asg: Assignment = {
     ],
     "code": "UPDATE farmersinsurancedata SET FarmersPremiumAmount = 500.0 WHERE rowID = 1;",
     "lotus": "Like editing one specific booking by its booking ID.",
-    "trap": "UPDATE without WHERE changes every row of the table."
+    "trap": "UPDATE without WHERE changes every row of the table.",
+    "read": [
+     "The line “1 row affected” and a check table of the new value."
+    ],
+    "remark": "Exactly 1 row updated (rowID 1), farmers premium now 500.0.",
+    "howRemark": [
+     "State the rows affected.",
+     "Check the new value.",
+     "Remind to check WHERE before UPDATE."
+    ]
    }
   },
   "Q28": {
@@ -814,7 +1308,16 @@ export const asg: Assignment = {
     ],
     "code": "UPDATE farmersinsurancedata SET srcYear = 2021 WHERE srcStateName = 'HIMACHAL PRADESH';",
     "lotus": "Như đổi ngày cho cả lô booking của một chi nhánh.",
-    "trap": "Cập nhật hàng loạt khó hoàn tác: SELECT với cùng WHERE trước để đếm số dòng."
+    "trap": "Cập nhật hàng loạt khó hoàn tác: SELECT với cùng WHERE trước để đếm số dòng.",
+    "read": [
+     "«40 dòng bị ảnh hưởng» và bảng đếm cho thấy cả 40 dòng Himachal Pradesh đã sang 2021."
+    ],
+    "remark": "40 dòng của Himachal Pradesh đều được đổi sang năm 2021; bảng kiểm tra xác nhận không còn năm khác.",
+    "howRemark": [
+     "Nêu số dòng bị ảnh hưởng.",
+     "Đối chiếu bằng truy vấn kiểm tra.",
+     "Nói dữ liệu gốc đã đổi."
+    ]
    },
    "en": {
     "think": "Change the year to 2021 for all Himachal Pradesh rows.",
@@ -824,7 +1327,16 @@ export const asg: Assignment = {
     ],
     "code": "UPDATE farmersinsurancedata SET srcYear = 2021 WHERE srcStateName = 'HIMACHAL PRADESH';",
     "lotus": "Like changing the date for a whole batch of one branch's bookings.",
-    "trap": "Bulk updates are hard to undo: SELECT with the same WHERE first to count rows."
+    "trap": "Bulk updates are hard to undo: SELECT with the same WHERE first to count rows.",
+    "read": [
+     "“40 rows affected” and a count table showing all 40 Himachal Pradesh rows now at 2021."
+    ],
+    "remark": "All 40 Himachal Pradesh rows were changed to 2021; the check table confirms no other year remains.",
+    "howRemark": [
+     "State the rows affected.",
+     "Verify with a check query.",
+     "Say the data has changed."
+    ]
    }
   },
   "Q29": {
@@ -836,7 +1348,16 @@ export const asg: Assignment = {
     ],
     "code": "DELETE FROM farmersinsurancedata WHERE TotalFarmersCovered < 10000 AND srcYear = 2020;",
     "lotus": "Như xóa các booking nhỏ của một tháng: phải chắc chắn trước khi xóa.",
-    "trap": "DELETE không có WHERE xóa sạch bảng. Dùng cùng WHERE với SELECT để xem trước."
+    "trap": "DELETE không có WHERE xóa sạch bảng. Dùng cùng WHERE với SELECT để xem trước.",
+    "read": [
+     "«184 dòng bị ảnh hưởng» và rows_left còn 1.686 dòng."
+    ],
+    "remark": "Xoá 184 dòng có dưới 10.000 nông dân năm 2020; bảng còn 1.686 dòng. Xoá không đảo ngược nên luôn SELECT trước bằng cùng điều kiện.",
+    "howRemark": [
+     "Nêu số dòng xoá và còn lại.",
+     "Đối chiếu tổng trước và sau.",
+     "Nhắc SELECT thử trước khi DELETE."
+    ]
    },
    "en": {
     "think": "Delete rows with fewer than 10,000 farmers in 2020.",
@@ -846,7 +1367,16 @@ export const asg: Assignment = {
     ],
     "code": "DELETE FROM farmersinsurancedata WHERE TotalFarmersCovered < 10000 AND srcYear = 2020;",
     "lotus": "Like deleting a month's small bookings: be sure before deleting.",
-    "trap": "DELETE without WHERE wipes the table. Preview with SELECT using the same WHERE."
+    "trap": "DELETE without WHERE wipes the table. Preview with SELECT using the same WHERE.",
+    "read": [
+     "“184 rows affected” and rows_left shows 1,686 rows."
+    ],
+    "remark": "Deleted 184 rows with under 10,000 farmers in 2020; 1,686 rows remain. Delete is irreversible so always SELECT first with the same condition.",
+    "howRemark": [
+     "State rows deleted and remaining.",
+     "Reconcile totals before and after.",
+     "Remind to SELECT first before DELETE."
+    ]
    }
   }
  },
