@@ -3,3 +3,4 @@ import { asg as edaTaxi } from "@/data/assign/eda-taxi";
 
 export const assignments: Assignment[] = [edaTaxi];
 export const getAssignment = (id: string) => assignments.find((a) => a.id === id);
+export const getAssignmentByConcept = (conceptId: string) => assignments.find((a) => a.concepts.includes(conceptId));

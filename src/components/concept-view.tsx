@@ -8,6 +8,8 @@ import { InferWidget } from "@/components/sims/infer-widgets";
 import { Tex } from "@/components/tex";
 import { walks, type Visual, type WalkText } from "@/data/walk";
 import { WalkVisual } from "@/components/walk-visual";
+import { AssignBody } from "@/components/assign-view";
+import { getAssignmentByConcept } from "@/data/assign";
 import { relatedOf } from "@/data/map";
 import { studyCopy, studyListTitle, studyNeighbors, type StudyConcept } from "@/data/study";
 import { getProgress, getServerProgress, subscribeProgress } from "@/lib/progress";
@@ -124,15 +126,20 @@ export function ConceptView({ concept }: { concept: StudyConcept }) {
   const hasDemo = Boolean(demos[concept.id]);
   const hasLab = Boolean(concept.sim) && !hasDemo;
   const [view, setView] = useState<"2d" | "3d">("2d");
+  const asg = getAssignmentByConcept(concept.id);
   return (
     <article className="reading mx-auto">
       <p className="text-xs uppercase tracking-widest text-muted">{concept.eyebrow} · {concept.session}</p>
       <p className="mt-2 text-sm text-muted">{near.index + 1}/{near.total} · {concept.video}</p>
-      <h1 className="mt-3 font-display text-4xl leading-tight">{text.title}</h1>
+      <h1 className="mt-3 font-display text-4xl leading-tight">{asg ? asg.title[lang === "en" ? 1 : 0] : text.title}</h1>
       <Link to="/goc" hash={concept.id} className="mt-3 inline-block text-sm text-accent underline">
         {lang === "en" ? "Edit the raw text" : "Sửa chữ gốc"}
       </Link>
 
+      {asg ? (
+        <AssignBody a={asg} />
+      ) : (
+        <>
       <section className="mt-6 rounded-card border border-line bg-card p-4">
         <h2 className="text-xs uppercase tracking-widest text-accent">{head.why}</h2>
         <p className="mt-2 text-lg leading-relaxed">{text.why}</p>
@@ -247,6 +254,9 @@ export function ConceptView({ concept }: { concept: StudyConcept }) {
           </div>
         </section>
       ) : null}
+
+        </>
+      )}
 
       <div className="mt-8 grid gap-3 sm:grid-cols-2">
         {near.prev && prevText ? (

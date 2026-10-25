@@ -10,7 +10,6 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
-import { Route as BaiTapRouteImport } from './routes/bai-tap'
 import { Route as BanDoRouteImport } from './routes/ban-do'
 import { Route as CongThucRouteImport } from './routes/cong-thuc'
 import { Route as DoPhuRouteImport } from './routes/do-phu'
@@ -19,7 +18,6 @@ import { Route as TimKiemRouteImport } from './routes/tim-kiem'
 import { Route as TuDienRouteImport } from './routes/tu-dien'
 import { Route as ApiMcpRouteImport } from './routes/api/mcp'
 import { Route as ApiSoMucRouteImport } from './routes/api/so-muc'
-import { Route as BaiTapIdRouteImport } from './routes/bai-tap.$id'
 import { Route as BaiLessonIdRouteImport } from './routes/bai.$lessonId'
 import { Route as KhaiNiemConceptIdRouteImport } from './routes/khai-niem.$conceptId'
 import { Route as KhoaCourseIdRouteImport } from './routes/khoa.$courseId'
@@ -27,11 +25,6 @@ import { Route as KhoaCourseIdRouteImport } from './routes/khoa.$courseId'
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const BaiTapRoute = BaiTapRouteImport.update({
-  id: '/bai-tap',
-  path: '/bai-tap',
   getParentRoute: () => rootRouteImport,
 } as any)
 const BanDoRoute = BanDoRouteImport.update({
@@ -74,11 +67,6 @@ const ApiSoMucRoute = ApiSoMucRouteImport.update({
   path: '/api/so-muc',
   getParentRoute: () => rootRouteImport,
 } as any)
-const BaiTapIdRoute = BaiTapIdRouteImport.update({
-  id: '/$id',
-  path: '/$id',
-  getParentRoute: () => BaiTapRoute,
-} as any)
 const BaiLessonIdRoute = BaiLessonIdRouteImport.update({
   id: '/bai/$lessonId',
   path: '/bai/$lessonId',
@@ -97,7 +85,6 @@ const KhoaCourseIdRoute = KhoaCourseIdRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
-  '/bai-tap': typeof BaiTapRouteWithChildren
   '/ban-do': typeof BanDoRoute
   '/cong-thuc': typeof CongThucRoute
   '/do-phu': typeof DoPhuRoute
@@ -106,14 +93,12 @@ export interface FileRoutesByFullPath {
   '/tu-dien': typeof TuDienRoute
   '/api/mcp': typeof ApiMcpRoute
   '/api/so-muc': typeof ApiSoMucRoute
-  '/bai-tap/$id': typeof BaiTapIdRoute
   '/bai/$lessonId': typeof BaiLessonIdRoute
   '/khai-niem/$conceptId': typeof KhaiNiemConceptIdRoute
   '/khoa/$courseId': typeof KhoaCourseIdRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
-  '/bai-tap': typeof BaiTapRouteWithChildren
   '/ban-do': typeof BanDoRoute
   '/cong-thuc': typeof CongThucRoute
   '/do-phu': typeof DoPhuRoute
@@ -122,7 +107,6 @@ export interface FileRoutesByTo {
   '/tu-dien': typeof TuDienRoute
   '/api/mcp': typeof ApiMcpRoute
   '/api/so-muc': typeof ApiSoMucRoute
-  '/bai-tap/$id': typeof BaiTapIdRoute
   '/bai/$lessonId': typeof BaiLessonIdRoute
   '/khai-niem/$conceptId': typeof KhaiNiemConceptIdRoute
   '/khoa/$courseId': typeof KhoaCourseIdRoute
@@ -130,7 +114,6 @@ export interface FileRoutesByTo {
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
-  '/bai-tap': typeof BaiTapRouteWithChildren
   '/ban-do': typeof BanDoRoute
   '/cong-thuc': typeof CongThucRoute
   '/do-phu': typeof DoPhuRoute
@@ -139,7 +122,6 @@ export interface FileRoutesById {
   '/tu-dien': typeof TuDienRoute
   '/api/mcp': typeof ApiMcpRoute
   '/api/so-muc': typeof ApiSoMucRoute
-  '/bai-tap/$id': typeof BaiTapIdRoute
   '/bai/$lessonId': typeof BaiLessonIdRoute
   '/khai-niem/$conceptId': typeof KhaiNiemConceptIdRoute
   '/khoa/$courseId': typeof KhoaCourseIdRoute
@@ -148,7 +130,6 @@ export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
-    | '/bai-tap'
     | '/ban-do'
     | '/cong-thuc'
     | '/do-phu'
@@ -157,14 +138,12 @@ export interface FileRouteTypes {
     | '/tu-dien'
     | '/api/mcp'
     | '/api/so-muc'
-    | '/bai-tap/$id'
     | '/bai/$lessonId'
     | '/khai-niem/$conceptId'
     | '/khoa/$courseId'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
-    | '/bai-tap'
     | '/ban-do'
     | '/cong-thuc'
     | '/do-phu'
@@ -173,14 +152,12 @@ export interface FileRouteTypes {
     | '/tu-dien'
     | '/api/mcp'
     | '/api/so-muc'
-    | '/bai-tap/$id'
     | '/bai/$lessonId'
     | '/khai-niem/$conceptId'
     | '/khoa/$courseId'
   id:
     | '__root__'
     | '/'
-    | '/bai-tap'
     | '/ban-do'
     | '/cong-thuc'
     | '/do-phu'
@@ -189,7 +166,6 @@ export interface FileRouteTypes {
     | '/tu-dien'
     | '/api/mcp'
     | '/api/so-muc'
-    | '/bai-tap/$id'
     | '/bai/$lessonId'
     | '/khai-niem/$conceptId'
     | '/khoa/$courseId'
@@ -197,7 +173,6 @@ export interface FileRouteTypes {
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
-  BaiTapRoute: typeof BaiTapRouteWithChildren
   BanDoRoute: typeof BanDoRoute
   CongThucRoute: typeof CongThucRoute
   DoPhuRoute: typeof DoPhuRoute
@@ -218,13 +193,6 @@ declare module '@tanstack/react-router' {
       path: '/'
       fullPath: '/'
       preLoaderRoute: typeof IndexRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/bai-tap': {
-      id: '/bai-tap'
-      path: '/bai-tap'
-      fullPath: '/bai-tap'
-      preLoaderRoute: typeof BaiTapRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/ban-do': {
@@ -283,13 +251,6 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ApiSoMucRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/bai-tap/$id': {
-      id: '/bai-tap/$id'
-      path: '/$id'
-      fullPath: '/bai-tap/$id'
-      preLoaderRoute: typeof BaiTapIdRouteImport
-      parentRoute: typeof BaiTapRoute
-    }
     '/bai/$lessonId': {
       id: '/bai/$lessonId'
       path: '/bai/$lessonId'
@@ -314,20 +275,8 @@ declare module '@tanstack/react-router' {
   }
 }
 
-interface BaiTapRouteChildren {
-  BaiTapIdRoute: typeof BaiTapIdRoute
-}
-
-const BaiTapRouteChildren: BaiTapRouteChildren = {
-  BaiTapIdRoute: BaiTapIdRoute,
-}
-
-const BaiTapRouteWithChildren =
-  BaiTapRoute._addFileChildren(BaiTapRouteChildren)
-
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
-  BaiTapRoute: BaiTapRouteWithChildren,
   BanDoRoute: BanDoRoute,
   CongThucRoute: CongThucRoute,
   DoPhuRoute: DoPhuRoute,

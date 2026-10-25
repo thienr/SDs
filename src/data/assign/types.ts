@@ -5,6 +5,8 @@ export type Guide = { think: string; steps: string[]; code: string; lotus: strin
 export type Assignment = {
   id: string;
   course: string;
+  /** Các thẻ khái niệm giữ chỗ (d-*) mà bài này thay thế nội dung. */
+  concepts: string[];
   title: [string, string];
   file: string;
   /** Câu chuyện Lotus Spa nối với bài này. */

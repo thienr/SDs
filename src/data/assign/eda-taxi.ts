@@ -3,6 +3,7 @@ import type { Assignment } from "@/data/assign/types";
 export const asg: Assignment = {
  "id": "eda-taxi",
  "course": "C2",
+ "concepts": ["d-bf9615ba3a8e"],
  "title": [
   "EDA: Phân tích chuyến taxi NYC",
   "EDA: NYC Taxi trip analysis"
