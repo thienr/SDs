@@ -1,10 +1,10 @@
 import { o as __toESM } from "../_runtime.mjs";
 import { J as require_react, S as require_jsx_runtime, b as Link } from "../_libs/@tanstack/react-router+[...].mjs";
-import { A as studyCopy, B as subscribeRaw, F as getRawVersion, I as getServerRawVersion, M as studyNeighbors, O as subscribeProgress, b as getServerProgress, j as studyListTitle, k as getStudy, r as Route$1, y as getProgress } from "./router-BKWLIbEa.mjs";
-import { n as Range, r as Sim, t as Lab } from "./labs-aUcU9feF.mjs";
+import { A as studyCopy, B as subscribeRaw, F as getRawVersion, I as getServerRawVersion, M as studyNeighbors, O as subscribeProgress, b as getServerProgress, j as studyListTitle, k as getStudy, r as Route$1, y as getProgress } from "./router-C1cZum1M.mjs";
+import { n as Range, r as Sim, t as Lab } from "./labs-WWT3i0AM.mjs";
 import { t as Tex } from "./tex-t3KOuum9.mjs";
-import { o as relatedOf } from "./map-CdqxUwPF.mjs";
-//#region node_modules/.nitro/vite/services/ssr/assets/khai-niem._conceptId-Do6OpDBW.js
+import { o as relatedOf } from "./map-C6g9KKGz.mjs";
+//#region node_modules/.nitro/vite/services/ssr/assets/khai-niem._conceptId-DQuPPLQ5.js
 var import_react = /* @__PURE__ */ __toESM(require_react());
 var import_jsx_runtime = require_jsx_runtime();
 var ui$1 = {
@@ -24431,7 +24431,14 @@ var assignments = [
 					],
 					"code": "df = pd.DataFrame()\nfor file_name in file_list:\n    month = pd.read_parquet(file_path)\n    month['date'] = month['tpep_pickup_datetime'].dt.date\n    month['hour'] = month['tpep_pickup_datetime'].dt.hour\n    parts = []\n    for (d, h), grp in month.groupby(['date', 'hour']):\n        parts.append(grp.sample(frac=0.05, random_state=42))\n    df = pd.concat([df] + parts)\ndf = df.drop(columns=['date', 'hour'])",
 					"lotus": "Sổ booking Lotus Spa có 12 tháng. Lấy 5% theo từng ngày và từng giờ giữ được cả giờ vắng lẫn giờ đông. Nếu chỉ lấy 5% theo giờ chung cho cả năm, giờ nào của ngày nào cũng bị trộn lẫn.",
-					"trap": "Lấy mẫu theo giờ mà không theo ngày sẽ làm lệch các ngày ít xe. Ghi lại sample_fraction vì bài 3.2.3 cần nó để nhân lên."
+					"trap": "Lấy mẫu theo giờ mà không theo ngày sẽ làm lệch các ngày ít xe. Ghi lại sample_fraction vì bài 3.2.3 cần nó để nhân lên.",
+					"read": ["Mỗi dòng là một file tháng: số chuyến gốc → số chuyến trong mẫu 5%.", "Dòng cuối là tổng cả năm và số dòng của mẫu."],
+					"remark": "Cả năm 2023 có 38.310.226 chuyến; mẫu 5% mỗi giờ mỗi ngày lấy khoảng 1,9 triệu dòng, vẫn giữ nhịp theo từng tháng (mỗi tháng 141–176 nghìn dòng).",
+					"howRemark": [
+						"Nêu tổng chuyến cả năm và cỡ mẫu.",
+						"Kiểm tỷ lệ lấy mẫu ≈ 5% mỗi tháng.",
+						"Nói vì sao lấy mẫu theo giờ và ngày."
+					]
 				},
 				"en": {
 					"think": "Each monthly file has millions of rows. You do not load everything; you take 5% of every hour of every day so the sample keeps the real rhythm of the whole year.",
@@ -24444,7 +24451,14 @@ var assignments = [
 					],
 					"code": "df = pd.DataFrame()\nfor file_name in file_list:\n    month = pd.read_parquet(file_path)\n    month['date'] = month['tpep_pickup_datetime'].dt.date\n    month['hour'] = month['tpep_pickup_datetime'].dt.hour\n    parts = []\n    for (d, h), grp in month.groupby(['date', 'hour']):\n        parts.append(grp.sample(frac=0.05, random_state=42))\n    df = pd.concat([df] + parts)\ndf = df.drop(columns=['date', 'hour'])",
 					"lotus": "The Lotus Spa booking log covers 12 months. Taking 5% by each day and each hour keeps both quiet and busy hours. Taking 5% by hour across the whole year would blend every day together.",
-					"trap": "Sampling by hour without the date skews quiet days. Record sample_fraction because task 3.2.3 needs it to scale up."
+					"trap": "Sampling by hour without the date skews quiet days. Record sample_fraction because task 3.2.3 needs it to scale up.",
+					"read": ["Each line is a monthly file: original trips → trips in the 5% sample.", "The last line is the yearly total and the sample size."],
+					"remark": "2023 has 38,310,226 trips; the 5% per hour per day sample keeps about 1.9 million rows, preserving each month's rhythm (141–176 thousand rows per month).",
+					"howRemark": [
+						"State the yearly total and sample size.",
+						"Check the sampling rate ≈ 5% each month.",
+						"Say why sample by hour and day."
+					]
 				}
 			},
 			"2.1.1": {
@@ -24457,7 +24471,18 @@ var assignments = [
 					],
 					"code": "df = df.reset_index(drop=True)\n# drop columns you will not use, with a reason for each\ndf = df.drop(columns=['store_and_fwd_flag'])",
 					"lotus": "Bảng booking có cột «mã in phiếu» không dùng cho câu hỏi nào. Bỏ nó đi và ghi lý do, để tháng sau mở lại không phải đoán.",
-					"trap": "Đừng bỏ cột chỉ vì không hiểu nó. Bỏ vì biết mình không cần."
+					"trap": "Đừng bỏ cột chỉ vì không hiểu nó. Bỏ vì biết mình không cần.",
+					"read": [
+						"Mỗi dòng là một cột: tên, kiểu dữ liệu.",
+						"Tổng 1.915.510 dòng và 20 cột sau khi nối 12 tháng.",
+						"datetime64 là thời điểm; float64 là số thập phân."
+					],
+					"remark": "Bảng gộp có 1.915.510 dòng × 20 cột; hai cột giờ đã đúng kiểu thời gian nên tính được thời lượng chuyến.",
+					"howRemark": [
+						"Báo hình dạng.",
+						"Kiểm kiểu dữ liệu cột giờ.",
+						"Nêu cột bỏ hoặc đổi."
+					]
 				},
 				"en": {
 					"think": "After combining and re-reading, the table may carry a leftover index column. You reset the index and drop columns that do not serve the question.",
@@ -24468,7 +24493,18 @@ var assignments = [
 					],
 					"code": "df = df.reset_index(drop=True)\n# drop columns you will not use, with a reason for each\ndf = df.drop(columns=['store_and_fwd_flag'])",
 					"lotus": "The booking table has a “receipt print code” column no question uses. Drop it and note why, so reopening next month needs no guessing.",
-					"trap": "Do not drop a column because you do not understand it. Drop it because you know you do not need it."
+					"trap": "Do not drop a column because you do not understand it. Drop it because you know you do not need it.",
+					"read": [
+						"Each row is a column: name and data type.",
+						"1,915,510 rows and 20 columns after joining 12 months.",
+						"datetime64 is a timestamp; float64 a decimal number."
+					],
+					"remark": "The merged table has 1,915,510 rows × 20 columns; the two time columns have the right type so trip duration can be computed.",
+					"howRemark": [
+						"Report the shape.",
+						"Check the time columns' types.",
+						"State columns dropped or converted."
+					]
 				}
 			},
 			"2.1.2": {
@@ -24482,7 +24518,14 @@ var assignments = [
 					],
 					"code": "print(df[['Airport_fee', 'airport_fee']].notna().sum())\nboth = df['Airport_fee'].notna() & df['airport_fee'].notna()\nprint(both.sum())  # expect 0\ndf['airport_fee'] = df['airport_fee'].combine_first(df['Airport_fee'])\ndf = df.drop(columns=['Airport_fee'])",
 					"lotus": "Chi nhánh Quận 1 ghi «Khu_vực», chi nhánh Thủ Đức ghi «khu_vuc». Nối hai sổ lại ra hai cột nửa rỗng. Gộp thành một cột trước khi đếm.",
-					"trap": "Nếu hai cột cùng có giá trị trên một dòng thì không được gộp bằng combine_first mà không xem lại."
+					"trap": "Nếu hai cột cùng có giá trị trên một dòng thì không được gộp bằng combine_first mà không xem lại.",
+					"read": ["Dòng đầu là hai tên cột trùng nghĩa: airport_fee và Airport_fee.", "Bảng describe là cột đã gộp: min −1,75, max 1,75."],
+					"remark": "Hai tên cột chỉ khác chữ hoa nhưng cùng một phí; đã gộp thành một cột airport_fee (trung bình 0,14, giá trị từ −1,75 đến 1,75).",
+					"howRemark": [
+						"Nêu hai tên và vì sao nên gộp.",
+						"Kiểm cột gộp có đủ dòng.",
+						"Nhắc giá trị âm xử lý ở 2.1.3."
+					]
 				},
 				"en": {
 					"think": "The same column is spelled two ways: Airport_fee and airport_fee. One month uses one name, another month the other, so concatenation creates two complementary columns.",
@@ -24494,7 +24537,14 @@ var assignments = [
 					],
 					"code": "print(df[['Airport_fee', 'airport_fee']].notna().sum())\nboth = df['Airport_fee'].notna() & df['airport_fee'].notna()\nprint(both.sum())  # expect 0\ndf['airport_fee'] = df['airport_fee'].combine_first(df['Airport_fee'])\ndf = df.drop(columns=['Airport_fee'])",
 					"lotus": "District 1 writes “Khu_vuc”, Thu Duc writes “khu_vuc”. Joining the two logs gives two half-empty columns. Merge into one before counting.",
-					"trap": "If both columns hold a value on one row, do not merge with combine_first without looking again."
+					"trap": "If both columns hold a value on one row, do not merge with combine_first without looking again.",
+					"read": ["First line shows two same-meaning names: airport_fee and Airport_fee.", "The describe table is the merged column: min −1.75, max 1.75."],
+					"remark": "The two names differ only by case but are the same fee; merged into one airport_fee column (mean 0.14, values from −1.75 to 1.75).",
+					"howRemark": [
+						"State both names and why to merge.",
+						"Check the merged column has all rows.",
+						"Remind negatives are handled in 2.1.3."
+					]
 				}
 			},
 			"2.1.3": {
@@ -24508,7 +24558,18 @@ var assignments = [
 					],
 					"code": "money = ['fare_amount','extra','mta_tax','tip_amount','tolls_amount','improvement_surcharge','total_amount','congestion_surcharge','airport_fee']\nprint((df[money] < 0).sum())\nneg = df[df['fare_amount'] < 0]\nprint(neg['RatecodeID'].value_counts(dropna=False))\nprint(neg['payment_type'].value_counts())\ndf[money] = df[money].abs()",
 					"lotus": "Một dòng booking ghi -650 nghìn. Đó là hoàn tiền gói A12, không phải spa trả tiền cho khách. Hiểu nó là hoàn tiền thì mới chọn lấy trị tuyệt đối hoặc giữ riêng.",
-					"trap": "Sửa dấu hàng loạt mà không nhìn các dòng đó là gì có thể che mất một nhóm giao dịch hoàn tiền."
+					"trap": "Sửa dấu hàng loạt mà không nhìn các dòng đó là gì có thể che mất một nhóm giao dịch hoàn tiền.",
+					"read": [
+						"Bảng đầu: số dòng âm ở mỗi cột tiền; fare_amount có 19.059 dòng âm.",
+						"Bảng sau: số chuyến theo RatecodeID, mã 1 là giá chuẩn.",
+						"Dòng âm thường là hoàn tiền hoặc tranh chấp."
+					],
+					"remark": "Có hàng chục nghìn dòng tiền âm (fare_amount 19.059, total_amount 18.801), chủ yếu là hoàn tiền hoặc tranh chấp, nên xử lý bằng quy tắc rõ ràng thay vì sửa tùy ý.",
+					"howRemark": [
+						"Nêu cột có nhiều dòng âm.",
+						"Giải thích nguyên nhân có thể.",
+						"Nói quyết định: bỏ hay đổi dấu, và vì sao."
+					]
 				},
 				"en": {
 					"think": "Some rows carry negative money. Before fixing, ask what they are: usually refunds or disputes, not truly negative prices.",
@@ -24520,7 +24581,18 @@ var assignments = [
 					],
 					"code": "money = ['fare_amount','extra','mta_tax','tip_amount','tolls_amount','improvement_surcharge','total_amount','congestion_surcharge','airport_fee']\nprint((df[money] < 0).sum())\nneg = df[df['fare_amount'] < 0]\nprint(neg['RatecodeID'].value_counts(dropna=False))\nprint(neg['payment_type'].value_counts())\ndf[money] = df[money].abs()",
 					"lotus": "One booking row shows -650 thousand. It is a refund of package A12, not the spa paying the customer. Knowing it is a refund is what lets you choose absolute value or keeping it apart.",
-					"trap": "Flipping signs in bulk without looking at what those rows are can hide a whole group of refund transactions."
+					"trap": "Flipping signs in bulk without looking at what those rows are can hide a whole group of refund transactions.",
+					"read": [
+						"First table: negative rows per money column; fare_amount has 19,059.",
+						"Second table: trips per RatecodeID, code 1 is the standard fare.",
+						"Negative rows are usually refunds or disputes."
+					],
+					"remark": "There are tens of thousands of negative money rows (fare_amount 19,059, total_amount 18,801), mostly refunds or disputes, so handle them by a clear rule rather than ad hoc fixes.",
+					"howRemark": [
+						"Name the columns with many negatives.",
+						"Explain the likely cause.",
+						"State the decision: drop or flip sign, and why."
+					]
 				}
 			},
 			"2.2.1": {
@@ -24533,7 +24605,14 @@ var assignments = [
 					],
 					"code": "miss = (df.isnull().mean() * 100).sort_values(ascending=False)\nprint(miss[miss > 0])\n# do the same rows miss several columns?\ncols = ['passenger_count','RatecodeID','congestion_surcharge','airport_fee']\nprint(df[cols].isnull().all(axis=1).mean())",
 					"lotus": "Trong bảng booking, nếu «số khách», «mã gói» và «phụ phí» cùng trống trên cùng các dòng thì đó là một nguồn nhập thiếu, không phải ba lỗi riêng.",
-					"trap": "Điền từng cột riêng lẻ trước khi biết chúng thiếu cùng nhau hay không là điền khi chưa hiểu."
+					"trap": "Điền từng cột riêng lẻ trước khi biết chúng thiếu cùng nhau hay không là điền khi chưa hiểu.",
+					"read": ["Mỗi dòng là % thiếu của một cột; cả năm cột cùng 3,43%.", "Cùng tỷ lệ nghĩa là thiếu theo cả dòng, không rải rác."],
+					"remark": "Năm cột cùng thiếu 3,43%: các dòng này thiếu nguyên một khối thông tin, nên có thể cùng một nguyên nhân và xử lý chung.",
+					"howRemark": [
+						"Báo % từng cột.",
+						"Nhận ra các tỷ lệ giống nhau.",
+						"Nêu cách xử lý chung."
+					]
 				},
 				"en": {
 					"think": "Before filling blanks, count blanks: which column misses what percentage.",
@@ -24544,7 +24623,14 @@ var assignments = [
 					],
 					"code": "miss = (df.isnull().mean() * 100).sort_values(ascending=False)\nprint(miss[miss > 0])\n# do the same rows miss several columns?\ncols = ['passenger_count','RatecodeID','congestion_surcharge','airport_fee']\nprint(df[cols].isnull().all(axis=1).mean())",
 					"lotus": "In the booking table, if “guests”, “package code” and “surcharge” are blank on the same rows, that is one source of missing entry, not three separate faults.",
-					"trap": "Filling each column on its own before knowing whether they are missing together is filling without understanding."
+					"trap": "Filling each column on its own before knowing whether they are missing together is filling without understanding.",
+					"read": ["Each line is a column's % missing; all five at 3.43%.", "The same rate means whole rows are missing, not scattered cells."],
+					"remark": "Five columns share the same 3.43% missing: those rows lack a whole block of info, likely one cause and handled together.",
+					"howRemark": [
+						"Report each column's %.",
+						"Notice the identical rates.",
+						"State a joint treatment."
+					]
 				}
 			},
 			"2.2.2": {
@@ -24557,7 +24643,14 @@ var assignments = [
 					],
 					"code": "print(df['passenger_count'].value_counts(dropna=False).sort_index())\ndf['passenger_count'] = df['passenger_count'].replace(0, np.nan)\ndf['passenger_count'] = df['passenger_count'].fillna(df['passenger_count'].mode()[0])",
 					"lotus": "Một booking ghi 0 khách thì chắc chắn nhập thiếu. Điền bằng 1 (giá trị thường gặp nhất) tốt hơn điền bằng trung bình 1,4 vì khách là số nguyên.",
-					"trap": "Điền trung bình sẽ ra 1,37 hành khách: một số không tồn tại ở đời thực."
+					"trap": "Điền trung bình sẽ ra 1,37 hành khách: một số không tồn tại ở đời thực.",
+					"read": ["Bảng đếm số chuyến theo số khách; có 0 khách (28.990) và thiếu (65.735).", "7, 8, 9 khách rất ít, có thể là lỗi."],
+					"remark": "Đa số chuyến 1 khách (1.390.732); 28.990 dòng 0 khách là vô lý và 65.735 dòng thiếu, nên coi 0 như thiếu rồi xử lý chung.",
+					"howRemark": [
+						"Nêu giá trị bất thường.",
+						"Giải thích vì sao 0 là thiếu.",
+						"Chọn cách điền và lý do."
+					]
 				},
 				"en": {
 					"think": "passenger_count has blanks and also zeros. Zero passengers has no meaning, so treat it as missing.",
@@ -24568,7 +24661,14 @@ var assignments = [
 					],
 					"code": "print(df['passenger_count'].value_counts(dropna=False).sort_index())\ndf['passenger_count'] = df['passenger_count'].replace(0, np.nan)\ndf['passenger_count'] = df['passenger_count'].fillna(df['passenger_count'].mode()[0])",
 					"lotus": "A booking with 0 guests was surely entered wrongly. Filling with 1 (the most common) beats filling with a mean of 1.4 because guests are whole numbers.",
-					"trap": "Filling with the mean gives 1.37 passengers: a number that does not exist in real life."
+					"trap": "Filling with the mean gives 1.37 passengers: a number that does not exist in real life.",
+					"read": ["The table counts trips by passenger number; zero (28,990) and missing (65,735).", "7, 8, 9 passengers are very few, maybe errors."],
+					"remark": "Most trips carry 1 passenger (1,390,732); 28,990 zero-passenger rows are meaningless and 65,735 are missing, so treat 0 as missing and handle together.",
+					"howRemark": [
+						"Name the abnormal values.",
+						"Explain why 0 is missing.",
+						"Choose the fill and the reason."
+					]
 				}
 			},
 			"2.2.3": {
@@ -24581,7 +24681,14 @@ var assignments = [
 					],
 					"code": "print(df['RatecodeID'].value_counts(dropna=False))\ndf['RatecodeID'] = df['RatecodeID'].fillna(df['RatecodeID'].mode()[0])",
 					"lotus": "Mã gói là A12, B07, C03: không có «trung bình của A12 và B07». Chỉ điền bằng mã hay gặp nhất.",
-					"trap": "Trung bình của một mã vô nghĩa. Dùng mode cho cột mã."
+					"trap": "Trung bình của một mã vô nghĩa. Dùng mode cho cột mã.",
+					"read": ["Bảng đếm RatecodeID: mã 1 áp đảo (1.744.049), có mã 99 (10.649) và thiếu (65.735).", "Mã 99 không có trong từ điển dữ liệu."],
+					"remark": "RatecodeID mã 1 chiếm áp đảo nên điền chỗ thiếu bằng mã 1 (mốt); mã 99 là giá trị lạ cần chú ý.",
+					"howRemark": [
+						"Nêu mã phổ biến nhất.",
+						"Giải thích vì sao dùng mốt, không dùng trung bình.",
+						"Ghi chú mã 99."
+					]
 				},
 				"en": {
 					"think": "RatecodeID is a code, not a number to average. Fill with the most common code.",
@@ -24592,7 +24699,14 @@ var assignments = [
 					],
 					"code": "print(df['RatecodeID'].value_counts(dropna=False))\ndf['RatecodeID'] = df['RatecodeID'].fillna(df['RatecodeID'].mode()[0])",
 					"lotus": "Package codes are A12, B07, C03: there is no “average of A12 and B07”. Fill only with the most common code.",
-					"trap": "The average of a code is meaningless. Use the mode for code columns."
+					"trap": "The average of a code is meaningless. Use the mode for code columns.",
+					"read": ["Counts of RatecodeID: code 1 dominates (1,744,049), with 99 (10,649) and missing (65,735).", "Code 99 is not in the data dictionary."],
+					"remark": "RatecodeID code 1 dominates, so fill missing with 1 (the mode); code 99 is an odd value to note.",
+					"howRemark": [
+						"Name the most common code.",
+						"Explain why mode, not mean.",
+						"Note code 99."
+					]
 				}
 			},
 			"2.2.4": {
@@ -24605,7 +24719,14 @@ var assignments = [
 					],
 					"code": "print(df['congestion_surcharge'].value_counts(dropna=False))\ndf['congestion_surcharge'] = df['congestion_surcharge'].fillna(df['congestion_surcharge'].mode()[0])",
 					"lotus": "Phụ phí ngoài giờ chỉ áp dụng ở vài khung giờ. Dòng thiếu phụ phí có thể là «không áp dụng» (0) hay «quên ghi» (mức thường). Hai cách điền cho ra hai tổng doanh thu khác nhau.",
-					"trap": "Chọn mode hay 0 đổi tổng phụ phí. Nói rõ mình đã chọn gì và vì sao."
+					"trap": "Chọn mode hay 0 đổi tổng phụ phí. Nói rõ mình đã chọn gì và vì sao.",
+					"read": ["Bảng đếm congestion_surcharge: 2,5 (1.705.676), 0 (144.099), thiếu (65.735).", "Dòng cuối: 65.735 ô trống còn lại để xử lý."],
+					"remark": "Phí chỉ có hai giá trị là 2,5 và 0; 0 là có nghĩa (chuyến không phải trả), nên chỗ thiếu được điền 0 và còn lại 65.735 ô trống cần quyết định.",
+					"howRemark": [
+						"Nêu các giá trị thật.",
+						"Giải thích 0 là giá trị hợp lệ.",
+						"Nêu số ô trống còn lại."
+					]
 				},
 				"en": {
 					"think": "congestion_surcharge has gaps. This fee applies only to some trips, so 0 is a meaningful value, not a lazy fill.",
@@ -24616,7 +24737,14 @@ var assignments = [
 					],
 					"code": "print(df['congestion_surcharge'].value_counts(dropna=False))\ndf['congestion_surcharge'] = df['congestion_surcharge'].fillna(df['congestion_surcharge'].mode()[0])",
 					"lotus": "The off-peak surcharge applies in only a few time windows. A row missing it may mean “not applicable” (0) or “forgot to record” (the usual rate). The two fills give different total revenue.",
-					"trap": "Choosing mode or 0 changes the surcharge total. State what you chose and why."
+					"trap": "Choosing mode or 0 changes the surcharge total. State what you chose and why.",
+					"read": ["Counts of congestion_surcharge: 2.5 (1,705,676), 0 (144,099), missing (65,735).", "Last line: 65,735 blanks left to handle."],
+					"remark": "The fee has only two values, 2.5 and 0; 0 is meaningful (trip not charged), so fill gaps with 0, leaving 65,735 blanks to decide.",
+					"howRemark": [
+						"Name the real values.",
+						"Explain why 0 is valid.",
+						"State the blanks left."
+					]
 				}
 			},
 			"2.3.1": {
@@ -24632,7 +24760,14 @@ var assignments = [
 					],
 					"code": "print(df.describe().T)\nn0 = len(df)\ndf = df[~((df['trip_distance'] < 0.1) & (df['fare_amount'] > 300))]\ndf = df[~((df['trip_distance'] == 0) & (df['fare_amount'] == 0) & (df['PULocationID'] != df['DOLocationID']))]\ndf = df[df['trip_distance'] <= 250]\ndf = df[df['payment_type'] != 0]\ndf = df[df['passenger_count'] <= 6]\nprint(n0 - len(df), 'rows removed')",
 					"lotus": "Booking ghi giá 65.000 nghìn cho 5 phút ghế massage là lỗi nhập thêm hai số 0. Bỏ nó. Booking giá 0 nhưng chi nhánh vào và ra khác nhau cũng không hợp lệ.",
-					"trap": "Bỏ quá tay làm mẫu mất thật. Ghi số dòng bỏ ở mỗi quy tắc để thấy quy tắc nào xóa nhiều."
+					"trap": "Bỏ quá tay làm mẫu mất thật. Ghi số dòng bỏ ở mỗi quy tắc để thấy quy tắc nào xóa nhiều.",
+					"read": ["Bảng describe: trip_distance, fare_amount, tip_amount, total_amount, trip_duration.", "Chú ý std rất lớn (199 cho quãng đường) và min âm của thời lượng (−58,6)."],
+					"remark": "Quãng đường trung bình 4,0 dặm nhưng độ lệch chuẩn 199 và thời lượng có giá trị âm (−58,6 phút): còn nhiều điểm xa và lỗi dữ liệu cần xử lý trước khi phân tích.",
+					"howRemark": [
+						"Nêu cột có std quá lớn hoặc giá trị âm.",
+						"Mỗi quy tắc lọc cần lý do.",
+						"Quyết định bỏ hay thay giá trị."
+					]
 				},
 				"en": {
 					"think": "Analyse the distribution first, then remove. Each hint in the brief is a rule, and each rule needs a decision: drop the row or replace the value.",
@@ -24646,7 +24781,14 @@ var assignments = [
 					],
 					"code": "print(df.describe().T)\nn0 = len(df)\ndf = df[~((df['trip_distance'] < 0.1) & (df['fare_amount'] > 300))]\ndf = df[~((df['trip_distance'] == 0) & (df['fare_amount'] == 0) & (df['PULocationID'] != df['DOLocationID']))]\ndf = df[df['trip_distance'] <= 250]\ndf = df[df['payment_type'] != 0]\ndf = df[df['passenger_count'] <= 6]\nprint(n0 - len(df), 'rows removed')",
 					"lotus": "A booking priced 65,000 thousand for 5 minutes of massage chair is a typing slip with two extra zeros. Drop it. A booking priced 0 whose start and end branch differ is also invalid.",
-					"trap": "Over-removing loses real data. Record rows removed at each rule to see which rule deletes the most."
+					"trap": "Over-removing loses real data. Record rows removed at each rule to see which rule deletes the most.",
+					"read": ["describe table: trip_distance, fare_amount, tip_amount, total_amount, trip_duration.", "Note the huge std (199 for distance) and the negative duration min (−58.6)."],
+					"remark": "Mean distance is 4.0 miles but std is 199 and duration has negatives (−58.6 min): many outliers and data errors need handling before analysis.",
+					"howRemark": [
+						"Name the columns with huge std or negatives.",
+						"Each filter rule needs a reason.",
+						"Decide drop or replace."
+					]
 				}
 			},
 			"3.1.1": {
@@ -24660,7 +24802,14 @@ var assignments = [
 					],
 					"code": "numerical = ['passenger_count','trip_distance','pickup_hour','trip_duration']\ncategorical = ['VendorID','RatecodeID','PULocationID','DOLocationID','payment_type']\n# money columns: numerical",
 					"lotus": "Mã gói A12 hay mã chi nhánh 1, 2, 3 là nhóm. Giá 650 nghìn là số. Lấy trung bình của «mã chi nhánh» không cho ra điều gì có nghĩa.",
-					"trap": "Một cột chứa số không tự động là biến số. Hỏi xem trung bình có nghĩa không."
+					"trap": "Một cột chứa số không tự động là biến số. Hỏi xem trung bình có nghĩa không.",
+					"read": ["Hai danh sách: categorical (VendorID, RatecodeID, PULocationID, DOLocationID, payment_type) và numerical.", "Mã trông như số nhưng là nhóm."],
+					"remark": "VendorID, RatecodeID, mã vùng và payment_type là nhóm dù là số; passenger_count, quãng đường, thời lượng và các cột tiền là số.",
+					"howRemark": [
+						"Giải thích các mã là nhóm.",
+						"Chia hai danh sách.",
+						"Nhắc không tính trung bình mã."
+					]
 				},
 				"en": {
 					"think": "Classify variables before plotting: numerical (measurable, with distances) or categorical (labels). Code numbers like VendorID look numeric but are categories.",
@@ -24672,7 +24821,14 @@ var assignments = [
 					],
 					"code": "numerical = ['passenger_count','trip_distance','pickup_hour','trip_duration']\ncategorical = ['VendorID','RatecodeID','PULocationID','DOLocationID','payment_type']\n# money columns: numerical",
 					"lotus": "Package code A12 or branch code 1, 2, 3 are categories. A price of 650 thousand is numerical. The average of a “branch code” means nothing.",
-					"trap": "A column holding numbers is not automatically a numerical variable. Ask whether the average means something."
+					"trap": "A column holding numbers is not automatically a numerical variable. Ask whether the average means something.",
+					"read": ["Two lists: categorical (VendorID, RatecodeID, PULocationID, DOLocationID, payment_type) and numerical.", "Codes look numeric but are categories."],
+					"remark": "VendorID, RatecodeID, zone ids and payment_type are categories though numeric; passenger_count, distance, duration and money columns are numerical.",
+					"howRemark": [
+						"Explain why the codes are categories.",
+						"Split the two lists.",
+						"Remind not to average codes."
+					]
 				}
 			},
 			"3.1.2": {
@@ -24685,7 +24841,14 @@ var assignments = [
 					],
 					"code": "df['pickup_hour'] = df['tpep_pickup_datetime'].dt.hour\ndf['pickup_day'] = df['tpep_pickup_datetime'].dt.day_name()\ndf['pickup_month'] = df['tpep_pickup_datetime'].dt.month\ndays = ['Monday','Tuesday','Wednesday','Thursday','Friday','Saturday','Sunday']\ndf.groupby('pickup_hour').size().plot(kind='bar')\ndf['pickup_day'].value_counts().reindex(days).plot(kind='bar')\ndf.groupby('pickup_month').size().plot(kind='bar')",
 					"lotus": "Đếm booking Lotus Spa theo giờ cho thấy đỉnh ở 18:00 đến 20:00. Theo thứ cho thấy cuối tuần đông. Theo tháng cho thấy tháng 12 xuống (180 form so với 220), một câu hỏi để đào tiếp, không phải kết luận.",
-					"trap": "Thứ trong tuần mà không đặt thứ tự sẽ xếp theo bảng chữ cái: Friday đứng đầu."
+					"trap": "Thứ trong tuần mà không đặt thứ tự sẽ xếp theo bảng chữ cái: Friday đứng đầu.",
+					"read": ["Dòng chữ: giờ, thứ và tháng đông nhất.", "Biểu đồ: ba lát cắt thời gian cạnh nhau."],
+					"remark": "Đông nhất lúc 18h, vào thứ Năm và tháng 5: nhu cầu cao nhất là giờ tan tầm cuối tuần làm việc và mùa xuân.",
+					"howRemark": [
+						"Nêu ba đỉnh.",
+						"Giải thích bằng nhịp sinh hoạt.",
+						"Nhắc mẫu 5% giữ hình dạng, không giữ số tuyệt đối."
+					]
 				},
 				"en": {
 					"think": "Three time cuts: by hour, by weekday, by month. Each cut is a new column and a groupby.",
@@ -24696,7 +24859,14 @@ var assignments = [
 					],
 					"code": "df['pickup_hour'] = df['tpep_pickup_datetime'].dt.hour\ndf['pickup_day'] = df['tpep_pickup_datetime'].dt.day_name()\ndf['pickup_month'] = df['tpep_pickup_datetime'].dt.month\ndays = ['Monday','Tuesday','Wednesday','Thursday','Friday','Saturday','Sunday']\ndf.groupby('pickup_hour').size().plot(kind='bar')\ndf['pickup_day'].value_counts().reindex(days).plot(kind='bar')\ndf.groupby('pickup_month').size().plot(kind='bar')",
 					"lotus": "Counting Lotus Spa bookings by hour shows a peak at 18:00 to 20:00. By weekday it shows busy weekends. By month it shows December down (180 forms versus 220), a question to dig into, not a conclusion.",
-					"trap": "Weekdays without an order sort alphabetically: Friday comes first."
+					"trap": "Weekdays without an order sort alphabetically: Friday comes first.",
+					"read": ["Text: the busiest hour, weekday and month.", "Chart: three time slices side by side."],
+					"remark": "Busiest at 18h, on Thursdays and in May: peak demand is the evening rush of a working weekday in spring.",
+					"howRemark": [
+						"Name the three peaks.",
+						"Explain with daily rhythm.",
+						"Remind the 5% sample keeps shape, not absolute counts."
+					]
 				}
 			},
 			"3.1.3": {
@@ -24710,7 +24880,14 @@ var assignments = [
 					],
 					"code": "cols = ['fare_amount','tip_amount','total_amount','trip_distance']\nprint((df[cols] <= 0).sum())\ndf_nz = df[(df['fare_amount'] > 0) & (df['total_amount'] > 0)].copy()\n# trip_distance == 0 may be same-zone trips: inspect before dropping\nprint(((df['trip_distance'] == 0) & (df['PULocationID'] == df['DOLocationID'])).sum())",
 					"lotus": "Booking giá 0 là tặng thử, không phải lỗi. Booking thời lượng 0 phút ở một chi nhánh có thể là hủy. Xem rồi mới quyết định bỏ hay giữ.",
-					"trap": "Bỏ mọi số 0 thì mất cả chuyến cùng vùng, một nhóm chuyến thật."
+					"trap": "Bỏ mọi số 0 thì mất cả chuyến cùng vùng, một nhóm chuyến thật.",
+					"read": ["Bảng đếm số dòng bằng 0 ở từng cột: quãng đường 0 có 23.540 dòng.", "Dòng cuối: 1.848.971 → 1.848.395, tức bỏ 576 dòng fare bằng 0."],
+					"remark": "23.540 chuyến cách 0 dặm (có thể là đón và trả cùng vùng, không hẳn lỗi), còn 576 chuyến cước 0 bị bỏ vì vô nghĩa.",
+					"howRemark": [
+						"Nêu số dòng 0 mỗi cột.",
+						"Phân biệt 0 hợp lệ và 0 là lỗi.",
+						"Báo số dòng đã bỏ."
+					]
 				},
 				"en": {
 					"think": "Before filtering zeros, look at how many there are and what they are. Distance 0 may be a trip within one zone, not an error.",
@@ -24722,7 +24899,14 @@ var assignments = [
 					],
 					"code": "cols = ['fare_amount','tip_amount','total_amount','trip_distance']\nprint((df[cols] <= 0).sum())\ndf_nz = df[(df['fare_amount'] > 0) & (df['total_amount'] > 0)].copy()\n# trip_distance == 0 may be same-zone trips: inspect before dropping\nprint(((df['trip_distance'] == 0) & (df['PULocationID'] == df['DOLocationID'])).sum())",
 					"lotus": "A booking priced 0 is a free trial, not an error. A 0-minute booking at one branch may be a cancellation. Look, then decide to drop or keep.",
-					"trap": "Dropping every zero loses same-zone trips, a real group."
+					"trap": "Dropping every zero loses same-zone trips, a real group.",
+					"read": ["Table counts rows equal to 0 per column: distance 0 has 23,540 rows.", "Last line: 1,848,971 → 1,848,395, i.e. 576 zero-fare rows dropped."],
+					"remark": "23,540 trips have 0 miles (maybe pickup and drop in the same zone, not always an error), while 576 zero-fare trips are dropped as meaningless.",
+					"howRemark": [
+						"State the zero counts per column.",
+						"Distinguish valid zero from error.",
+						"Report rows dropped."
+					]
 				}
 			},
 			"3.1.4": {
@@ -24735,7 +24919,14 @@ var assignments = [
 					],
 					"code": "monthly = df.groupby('pickup_month')['total_amount'].sum()\nmonthly.plot(kind='line', marker='o')\nprint(monthly.idxmax(), monthly.idxmin())",
 					"lotus": "Doanh thu Lotus Spa theo tháng cho thấy tháng 12 thấp hơn tháng 11. Hỏi trước khi kết luận: tháng 12 có đủ ngày không, có đợt khuyến mãi nào không.",
-					"trap": "Đọc doanh thu mẫu như doanh thu thật. Mẫu 5% chỉ cho xu hướng, và con số thật cần nhân lên ở bài 3.2.3."
+					"trap": "Đọc doanh thu mẫu như doanh thu thật. Mẫu 5% chỉ cho xu hướng, và con số thật cần nhân lên ở bài 3.2.3.",
+					"read": ["Bảng: doanh thu từng tháng (số tương đối vì là mẫu 5%).", "Đọc xu hướng: tháng 5 và 10 cao nhất (100,2), tháng 2 thấp nhất (77,4)."],
+					"remark": "Doanh thu đỉnh ở tháng 5 và 10 (100,2) và thấp nhất tháng 2 (77,4) và tháng 8 (79,9). Số tuyệt đối thấp vì là mẫu; nên đọc xu hướng.",
+					"howRemark": [
+						"Nêu tháng cao nhất và thấp nhất.",
+						"Tính chênh phần trăm.",
+						"Nhắc mẫu 5%."
+					]
 				},
 				"en": {
 					"think": "Monthly revenue is the sum of total_amount by month. Remember this is a 5% sample, so absolute numbers are low; the trend is what you read.",
@@ -24746,7 +24937,14 @@ var assignments = [
 					],
 					"code": "monthly = df.groupby('pickup_month')['total_amount'].sum()\nmonthly.plot(kind='line', marker='o')\nprint(monthly.idxmax(), monthly.idxmin())",
 					"lotus": "Lotus Spa monthly revenue shows December below November. Ask before concluding: does December have all its days, was there a promotion.",
-					"trap": "Reading sample revenue as real revenue. A 5% sample gives only the trend, and the real figure needs scaling in task 3.2.3."
+					"trap": "Reading sample revenue as real revenue. A 5% sample gives only the trend, and the real figure needs scaling in task 3.2.3.",
+					"read": ["Table: revenue per month (relative since a 5% sample).", "Read the trend: May and October highest (100.2), February lowest (77.4)."],
+					"remark": "Revenue peaks in May and October (100.2) and is lowest in February (77.4) and August (79.9). Absolute numbers are small because of the sample; read the trend.",
+					"howRemark": [
+						"Name the highest and lowest months.",
+						"Compute the percentage gap.",
+						"Remind the 5% sample."
+					]
 				}
 			},
 			"3.1.5": {
@@ -24759,7 +24957,14 @@ var assignments = [
 					],
 					"code": "df['quarter'] = df['tpep_pickup_datetime'].dt.quarter\nq = df.groupby('quarter')['total_amount'].sum()\nshare = q / q.sum()\nprint(share.round(3), share.sum())\nshare.plot(kind='bar')",
 					"lotus": "Doanh thu quý 1 là 80, quý 2 là 100, quý 3 là 90, quý 4 là 130 (triệu): tổng 400, tỷ trọng 20%, 25%, 22,5%, 32,5%. Cộng lại luôn 100%.",
-					"trap": "Quên kiểm tra tổng các tỷ trọng bằng 1 là cách dễ để chia nhầm mẫu số."
+					"trap": "Quên kiểm tra tổng các tỷ trọng bằng 1 là cách dễ để chia nhầm mẫu số.",
+					"read": ["Bốn số là tỷ trọng doanh thu của bốn quý, cộng lại 100%."],
+					"remark": "Quý 4 (26,8%) và quý 2 (26,7%) dẫn đầu, quý 3 thấp nhất (22,8%): chênh chỉ 4 điểm phần trăm nên doanh thu khá đều quanh năm.",
+					"howRemark": [
+						"Nêu quý cao nhất và thấp nhất.",
+						"Đo chênh bằng điểm phần trăm.",
+						"Kết luận về tính mùa vụ."
+					]
 				},
 				"en": {
 					"think": "Each quarter's share is quarter revenue divided by whole-year revenue. The four numbers sum to 100%.",
@@ -24770,7 +24975,14 @@ var assignments = [
 					],
 					"code": "df['quarter'] = df['tpep_pickup_datetime'].dt.quarter\nq = df.groupby('quarter')['total_amount'].sum()\nshare = q / q.sum()\nprint(share.round(3), share.sum())\nshare.plot(kind='bar')",
 					"lotus": "Quarterly revenue is 80, 100, 90, 130 (million): total 400, shares 20%, 25%, 22.5%, 32.5%. They always add up to 100%.",
-					"trap": "Forgetting to check that shares sum to 1 is an easy way to divide by the wrong denominator."
+					"trap": "Forgetting to check that shares sum to 1 is an easy way to divide by the wrong denominator.",
+					"read": ["Four numbers are the revenue shares of the four quarters, summing to 100%."],
+					"remark": "Q4 (26.8%) and Q2 (26.7%) lead, Q3 is lowest (22.8%): only 4 points apart, so revenue is fairly even through the year.",
+					"howRemark": [
+						"Name the highest and lowest quarters.",
+						"Measure the gap in points.",
+						"Conclude on seasonality."
+					]
 				}
 			},
 			"3.1.6": {
@@ -24783,7 +24995,14 @@ var assignments = [
 					],
 					"code": "d = df[df['trip_distance'] > 0]\nsns.scatterplot(data=d.sample(5000, random_state=42), x='trip_distance', y='fare_amount', alpha=0.3)\nprint(d[['trip_distance','fare_amount']].corr())",
 					"lotus": "Thời lượng liệu trình và giá: 60 phút 650 nghìn, 90 phút 950 nghìn. Các điểm gần một đường thẳng nên tương quan cao, nhưng không có nghĩa thời lượng là nguyên nhân của giá, vì giá được đặt theo bảng giá.",
-					"trap": "Tương quan cao không phải nguyên nhân. Giá cước tính theo quãng đường theo công thức, nên tương quan ở đây là hệ quả của công thức."
+					"trap": "Tương quan cao không phải nguyên nhân. Giá cước tính theo quãng đường theo công thức, nên tương quan ở đây là hệ quả của công thức.",
+					"read": ["Dòng chữ: tương quan 0,944.", "Biểu đồ phân tán: đám điểm dốc lên gần một đường thẳng."],
+					"remark": "Tương quan quãng đường – cước là 0,944, rất mạnh: đi xa hơn thì cước tăng gần như tuyến tính, nên quãng đường là biến giải thích chính.",
+					"howRemark": [
+						"Báo hệ số.",
+						"Nói mạnh hay yếu.",
+						"Chỉ ra điểm lệch khỏi đường nếu có."
+					]
 				},
 				"en": {
 					"think": "Relationship between distance and fare: plot points and measure correlation. Drop 0-mile trips as hinted.",
@@ -24794,7 +25013,14 @@ var assignments = [
 					],
 					"code": "d = df[df['trip_distance'] > 0]\nsns.scatterplot(data=d.sample(5000, random_state=42), x='trip_distance', y='fare_amount', alpha=0.3)\nprint(d[['trip_distance','fare_amount']].corr())",
 					"lotus": "Session length and price: 60 minutes 650 thousand, 90 minutes 950 thousand. The points sit near a line so correlation is high, but length does not cause price, because price is set from a price list.",
-					"trap": "High correlation is not cause. Fares are computed from distance by a formula, so correlation here is a consequence of the formula."
+					"trap": "High correlation is not cause. Fares are computed from distance by a formula, so correlation here is a consequence of the formula.",
+					"read": ["Text: correlation 0.944.", "Scatter: the cloud rises close to a straight line."],
+					"remark": "Distance–fare correlation is 0.944, very strong: longer trips cost almost linearly more, so distance is the main driver.",
+					"howRemark": [
+						"Report the coefficient.",
+						"Say strong or weak.",
+						"Point out departures from the line if any."
+					]
 				}
 			},
 			"3.1.7": {
@@ -24808,7 +25034,14 @@ var assignments = [
 					],
 					"code": "df['trip_duration'] = (df['tpep_dropoff_datetime'] - df['tpep_pickup_datetime']).dt.total_seconds() / 60\nd = df[(df['trip_duration'] > 0) & (df['trip_duration'] < 180)]\nprint(d[['fare_amount','trip_duration']].corr())\nprint(d[['fare_amount','passenger_count']].corr())\nprint(d[['tip_amount','trip_distance']].corr())",
 					"lotus": "Giá liệu trình theo số khách trong một booking: hai khách không trả gấp đôi. Tương quan thấp ở đây nói rằng số khách không quyết định giá, không nói rằng số khách vô nghĩa.",
-					"trap": "Trip_duration âm hoặc quá lớn là lỗi giờ. Lọc trước khi tính tương quan."
+					"trap": "Trip_duration âm hoặc quá lớn là lỗi giờ. Lọc trước khi tính tương quan.",
+					"read": ["Ba hệ số: cước–thời lượng 0,271; cước–số khách 0,047; boa–quãng đường 0,568.", "Gần 0 là không liên quan."],
+					"remark": "Cước chỉ liên quan yếu đến thời lượng (0,271) và gần như không liên quan đến số khách (0,047); tiền boa tăng theo quãng đường (0,568).",
+					"howRemark": [
+						"Xếp ba quan hệ theo độ mạnh.",
+						"Diễn giải từng cái bằng một câu.",
+						"Nhớ tương quan chưa là nhân quả."
+					]
 				},
 				"en": {
 					"think": "Three relationships need correlation and a picture: fare with trip duration, fare with passenger count, tip with distance.",
@@ -24820,7 +25053,14 @@ var assignments = [
 					],
 					"code": "df['trip_duration'] = (df['tpep_dropoff_datetime'] - df['tpep_pickup_datetime']).dt.total_seconds() / 60\nd = df[(df['trip_duration'] > 0) & (df['trip_duration'] < 180)]\nprint(d[['fare_amount','trip_duration']].corr())\nprint(d[['fare_amount','passenger_count']].corr())\nprint(d[['tip_amount','trip_distance']].corr())",
 					"lotus": "Session price by number of guests in one booking: two guests do not pay double. Low correlation here says guest count does not set price, not that guest count is meaningless.",
-					"trap": "A negative or huge trip_duration is a time error. Filter before computing correlation."
+					"trap": "A negative or huge trip_duration is a time error. Filter before computing correlation.",
+					"read": ["Three coefficients: fare–duration 0.271; fare–passengers 0.047; tip–distance 0.568.", "Near 0 means unrelated."],
+					"remark": "Fare relates only weakly to duration (0.271) and hardly to passengers (0.047); tips rise with distance (0.568).",
+					"howRemark": [
+						"Rank the three relationships by strength.",
+						"Interpret each in one sentence.",
+						"Remember correlation is not causation."
+					]
 				}
 			},
 			"3.1.8": {
@@ -24833,7 +25073,14 @@ var assignments = [
 					],
 					"code": "labels = {1:'Credit card', 2:'Cash', 3:'No charge', 4:'Dispute'}\npt = df['payment_type'].map(labels).value_counts(normalize=True)\nprint(pt.round(3))\npt.plot(kind='bar')",
 					"lotus": "Lotus Spa: 70% thanh toán thẻ, 25% chuyển khoản, 5% tiền mặt. Cột tiền boa chỉ phản ánh phần thẻ và chuyển khoản.",
-					"trap": "Quên rằng cột boa không tính tiền mặt sẽ làm tỷ lệ boa thật bị thấp đi."
+					"trap": "Quên rằng cột boa không tính tiền mặt sẽ làm tỷ lệ boa thật bị thấp đi.",
+					"read": ["Bảng % theo loại thanh toán, cộng lại 100%."],
+					"remark": "Thẻ tín dụng chiếm 80,7%, tiền mặt 17,3%, tranh chấp 1,3% và miễn phí 0,7%: gần như mọi chuyến thanh toán bằng thẻ.",
+					"howRemark": [
+						"Nêu loại dẫn đầu và cuối.",
+						"Chú ý tỷ lệ tranh chấp.",
+						"Nói hệ quả cho phân tích tiền boa (chỉ thẻ ghi được)."
+					]
 				},
 				"en": {
 					"think": "The payment-type distribution is counting each type and dividing by the total. Code 1 card, 2 cash, 3 no charge, 4 dispute.",
@@ -24844,7 +25091,14 @@ var assignments = [
 					],
 					"code": "labels = {1:'Credit card', 2:'Cash', 3:'No charge', 4:'Dispute'}\npt = df['payment_type'].map(labels).value_counts(normalize=True)\nprint(pt.round(3))\npt.plot(kind='bar')",
 					"lotus": "Lotus Spa: 70% card, 25% transfer, 5% cash. The tip column reflects only the card and transfer share.",
-					"trap": "Forgetting that the tip column omits cash makes the real tip rate look lower."
+					"trap": "Forgetting that the tip column omits cash makes the real tip rate look lower.",
+					"read": ["A table of % by payment type, summing to 100%."],
+					"remark": "Credit card is 80.7%, cash 17.3%, disputes 1.3% and free 0.7%: almost every trip is paid by card.",
+					"howRemark": [
+						"Name the top and bottom type.",
+						"Note the dispute rate.",
+						"State the effect on tip analysis (only cards are recorded)."
+					]
 				}
 			},
 			"3.1.9": {
@@ -24857,7 +25111,10 @@ var assignments = [
 					],
 					"code": "import geopandas as gpd\nzones = gpd.read_file('taxi_zones/taxi_zones.shp')\nzones.head()\nzones.plot()",
 					"lotus": "Ba chi nhánh Quận 1, Quận 3 và Thủ Đức là ba vùng trên một bản đồ. Bảng vùng cho tên và mã, còn hình dạng nằm trong cột geometry.",
-					"trap": "Chuyển file .shp ra khỏi thư mục sẽ làm hỏng, vì các file đi kèm (.shx, .dbf) phải nằm cùng chỗ."
+					"trap": "Chuyển file .shp ra khỏi thư mục sẽ làm hỏng, vì các file đi kèm (.shx, .dbf) phải nằm cùng chỗ.",
+					"read": ["Bảng mẫu bảng vùng: mỗi dòng là một vùng với tên, quận và mã LocationID.", "Biểu đồ là bản đồ các vùng taxi."],
+					"remark": "File shapefile có các vùng taxi của New York kèm tên và quận, ví dụ Newark Airport (mã 1) và Jamaica Bay (mã 2); mã LocationID dùng để nối với bảng chuyến.",
+					"howRemark": ["Nêu cột quan trọng (LocationID, zone, borough).", "Nói mục đích nối bảng."]
 				},
 				"en": {
 					"think": "The zone map lives in a shapefile. Read it with geopandas and keep the taxi_zones folder structure unchanged.",
@@ -24868,7 +25125,10 @@ var assignments = [
 					],
 					"code": "import geopandas as gpd\nzones = gpd.read_file('taxi_zones/taxi_zones.shp')\nzones.head()\nzones.plot()",
 					"lotus": "The three branches District 1, District 3 and Thu Duc are three zones on one map. The zone table gives names and codes, and the shape sits in the geometry column.",
-					"trap": "Moving the .shp out of its folder breaks it, since the companion files (.shx, .dbf) must sit alongside."
+					"trap": "Moving the .shp out of its folder breaks it, since the companion files (.shx, .dbf) must sit alongside.",
+					"read": ["Sample of the zone table: each row is a zone with name, borough and LocationID.", "The chart is the map of taxi zones."],
+					"remark": "The shapefile holds New York's taxi zones with names and boroughs, e.g. Newark Airport (id 1) and Jamaica Bay (id 2); LocationID is the key to join to trips.",
+					"howRemark": ["Name the key columns (LocationID, zone, borough).", "State the purpose of joining."]
 				}
 			},
 			"3.1.10": {
@@ -24881,7 +25141,10 @@ var assignments = [
 					],
 					"code": "n = len(df)\ndf = df.merge(zones[['LocationID','zone','borough']], left_on='PULocationID', right_on='LocationID', how='left')\nprint(n, len(df))  # must match",
 					"lotus": "Bảng booking có mã chi nhánh 1 đến 3. Bảng chi nhánh cho tên đầy đủ. Nối theo mã, giữ mọi booking.",
-					"trap": "Nếu số dòng sau nối khác số dòng trước, mã vùng trong bảng vùng bị trùng và bạn đã nhân bản chuyến."
+					"trap": "Nếu số dòng sau nối khác số dòng trước, mã vùng trong bảng vùng bị trùng và bạn đã nhân bản chuyến.",
+					"read": ["Bảng mẫu sau khi nối: mã vùng đón kèm tên vùng và quận."],
+					"remark": "Sau khi nối, mỗi chuyến có tên vùng và quận đón (ví dụ 68 là East Chelsea, Manhattan), nên có thể đọc kết quả theo tên thay vì theo mã.",
+					"howRemark": ["Kiểm tên đã khớp mã.", "Kiểm số dòng không đổi."]
 				},
 				"en": {
 					"think": "Join the zone table to the trip table by zone code: LocationID on the zone side, PULocationID on the trip side.",
@@ -24892,7 +25155,10 @@ var assignments = [
 					],
 					"code": "n = len(df)\ndf = df.merge(zones[['LocationID','zone','borough']], left_on='PULocationID', right_on='LocationID', how='left')\nprint(n, len(df))  # must match",
 					"lotus": "The booking table has branch codes 1 to 3. The branch table gives full names. Join on the code, keep every booking.",
-					"trap": "If the row count differs after the join, a zone code is duplicated in the zone table and you cloned trips."
+					"trap": "If the row count differs after the join, a zone code is duplicated in the zone table and you cloned trips.",
+					"read": ["Sample after the join: pickup zone code with zone name and borough."],
+					"remark": "After the join each trip has a pickup zone name and borough (e.g. 68 is East Chelsea, Manhattan), so results read by name instead of code.",
+					"howRemark": ["Check names match the codes.", "Check the row count is unchanged."]
 				}
 			},
 			"3.1.11": {
@@ -24905,7 +25171,10 @@ var assignments = [
 					],
 					"code": "trips = df.groupby('PULocationID').size().reset_index(name='trips')\ntrips.sort_values('trips', ascending=False).head(10)",
 					"lotus": "Quận 1: 480 lượt, Quận 3: 300, Thủ Đức: 220 trong một tuần. Chi nhánh đông nhất không nhất thiết đem lại doanh thu cao nhất.",
-					"trap": "Đếm số chuyến khác với cộng doanh thu. Chọn đúng thứ bạn muốn đo."
+					"trap": "Đếm số chuyến khác với cộng doanh thu. Chọn đúng thứ bạn muốn đo.",
+					"read": ["Bảng đếm số chuyến theo mã vùng, sắp giảm dần.", "Mã 132 đứng đầu với 99.363 chuyến."],
+					"remark": "Mã vùng 132 có nhiều chuyến đón nhất (99.363), kế đến 237 (87.916) và 161 (86.783); đây là mã, chưa phải tên.",
+					"howRemark": ["Nêu ba mã đầu kèm số.", "Nhắc cần đổi sang tên ở bước sau."]
 				},
 				"en": {
 					"think": "Trips per zone code is one groupby that counts rows.",
@@ -24916,7 +25185,10 @@ var assignments = [
 					],
 					"code": "trips = df.groupby('PULocationID').size().reset_index(name='trips')\ntrips.sort_values('trips', ascending=False).head(10)",
 					"lotus": "District 1: 480 visits, District 3: 300, Thu Duc: 220 in one week. The busiest branch does not necessarily bring the highest revenue.",
-					"trap": "Counting trips differs from summing revenue. Choose exactly what you want to measure."
+					"trap": "Counting trips differs from summing revenue. Choose exactly what you want to measure.",
+					"read": ["Table of trips per zone code, sorted descending.", "Code 132 leads with 99,363 trips."],
+					"remark": "Zone code 132 has the most pickups (99,363), then 237 (87,916) and 161 (86,783); these are codes, not yet names.",
+					"howRemark": ["Name the top three codes with numbers.", "Remind to convert to names next."]
 				}
 			},
 			"3.1.12": {
@@ -24929,7 +25201,14 @@ var assignments = [
 					],
 					"code": "zones_with_trips = zones.merge(trips, left_on='LocationID', right_on='PULocationID', how='left')\nzones_with_trips['trips'] = zones_with_trips['trips'].fillna(0)\nprint(type(zones_with_trips))",
 					"lotus": "Một chi nhánh mới chưa có booking phải hiện 0, không phải biến mất khỏi bản đồ.",
-					"trap": "Trộn theo thứ tự ngược (trips.merge(zones)) có thể trả về DataFrame thường, mất khả năng vẽ bản đồ."
+					"trap": "Trộn theo thứ tự ngược (trips.merge(zones)) có thể trả về DataFrame thường, mất khả năng vẽ bản đồ.",
+					"read": ["Bảng top vùng với tên, quận và số chuyến.", "JFK Airport đứng đầu."],
+					"remark": "JFK Airport (99.363 chuyến) đứng đầu, sau đó Upper East Side South (87.916) và Midtown Center (86.783): sân bay và các khu trung tâm Manhattan là điểm đón chính.",
+					"howRemark": [
+						"Nêu ba vùng đầu.",
+						"Nhận xét kiểu vùng (sân bay, trung tâm).",
+						"Nhắc vùng không có chuyến phải ghi 0."
+					]
 				},
 				"en": {
 					"think": "Attach trip counts to the zone table so you can plot. Zones with no trips must show 0, not be left blank.",
@@ -24940,7 +25219,14 @@ var assignments = [
 					],
 					"code": "zones_with_trips = zones.merge(trips, left_on='LocationID', right_on='PULocationID', how='left')\nzones_with_trips['trips'] = zones_with_trips['trips'].fillna(0)\nprint(type(zones_with_trips))",
 					"lotus": "A new branch with no bookings should show 0, not vanish from the map.",
-					"trap": "Merging in the reverse order (trips.merge(zones)) can return a plain DataFrame, losing the ability to draw the map."
+					"trap": "Merging in the reverse order (trips.merge(zones)) can return a plain DataFrame, losing the ability to draw the map.",
+					"read": ["Table of top zones with name, borough and trips.", "JFK Airport leads."],
+					"remark": "JFK Airport (99,363 trips) leads, then Upper East Side South (87,916) and Midtown Center (86,783): airports and central Manhattan areas are the main pickup points.",
+					"howRemark": [
+						"Name the top three zones.",
+						"Comment on the zone types (airport, centre).",
+						"Remind zones with no trips must show 0."
+					]
 				}
 			},
 			"3.1.13": {
@@ -24954,7 +25240,14 @@ var assignments = [
 					],
 					"code": "fig, ax = plt.subplots(1, 1, figsize=(12, 10))\nzones_with_trips.plot(column='trips', ax=ax, legend=True,\n                      legend_kwds={'label': 'Number of trips', 'orientation': 'horizontal'})\nplt.show()\nzones_with_trips.sort_values('trips', ascending=False)[['zone','trips']].head(10)",
 					"lotus": "Ba chi nhánh Lotus Spa tô theo số lượt: Quận 1 đậm nhất. Bản đồ cho thấy vị trí, còn bảng đứng sau cho tên và số.",
-					"trap": "Bản đồ chỉ cho thấy thứ tự lớn nhỏ bằng màu. Số chính xác phải đọc từ bảng."
+					"trap": "Bản đồ chỉ cho thấy thứ tự lớn nhỏ bằng màu. Số chính xác phải đọc từ bảng.",
+					"read": ["Bản đồ màu: vùng đậm là nhiều chuyến đón; vùng nhạt là ít.", "Tìm cụm vùng đậm."],
+					"remark": "Bản đồ cho thấy các chuyến đón tập trung ở Manhattan và hai sân bay, còn các vùng ngoại ô nhạt màu.",
+					"howRemark": [
+						"Mô tả vùng đậm.",
+						"Nối với bảng top vùng ở 3.1.12.",
+						"Nêu ý nghĩa khi bố trí xe."
+					]
 				},
 				"en": {
 					"think": "Choropleth map: colour zones by trip count. Set the figure first, then draw onto it.",
@@ -24966,7 +25259,14 @@ var assignments = [
 					],
 					"code": "fig, ax = plt.subplots(1, 1, figsize=(12, 10))\nzones_with_trips.plot(column='trips', ax=ax, legend=True,\n                      legend_kwds={'label': 'Number of trips', 'orientation': 'horizontal'})\nplt.show()\nzones_with_trips.sort_values('trips', ascending=False)[['zone','trips']].head(10)",
 					"lotus": "The three Lotus Spa branches coloured by visits: District 1 darkest. The map shows position, and the table behind it gives names and numbers.",
-					"trap": "A map shows only rank order by colour. Read exact numbers from the table."
+					"trap": "A map shows only rank order by colour. Read exact numbers from the table.",
+					"read": ["Colour map: dark zones have many pickups; light zones few.", "Look for dark clusters."],
+					"remark": "The map shows pickups concentrated in Manhattan and the two airports while outer zones are pale.",
+					"howRemark": [
+						"Describe the dark areas.",
+						"Tie to the top-zone table in 3.1.12.",
+						"State the meaning for fleet placement."
+					]
 				}
 			},
 			"3.2.1": {
@@ -24981,7 +25281,14 @@ var assignments = [
 					],
 					"code": "g = df.groupby(['PULocationID','DOLocationID','pickup_hour']).agg(\n    dist=('trip_distance','mean'), dur=('trip_duration','mean'), n=('trip_distance','size')).reset_index()\ng['speed_mph'] = g['dist'] / (g['dur'] / 60)\nslow = g[g['n'] >= 30].sort_values('speed_mph').head(10)\nprint(slow)",
 					"lotus": "Hai chi nhánh Quận 1 và Quận 3: một khách đi từ chi nhánh này sang chi nhánh kia mất bao lâu lúc 18:00 so với 10:00. Tuyến nào luôn chậm lúc 18:00 là chỗ nên dời lịch hẹn.",
-					"trap": "Một tuyến chỉ có 2 chuyến có thể đứng đầu danh sách chậm nhất chỉ vì nhiễu. Đặt ngưỡng số chuyến."
+					"trap": "Một tuyến chỉ có 2 chuyến có thể đứng đầu danh sách chậm nhất chỉ vì nhiễu. Đặt ngưỡng số chuyến.",
+					"read": ["Bảng đầu: tốc độ trung bình theo giờ (dặm/giờ): thấp nhất 9,5 lúc 15h, cao nhất 20,5 lúc 5h.", "Bảng sau: các tuyến chậm với số chuyến và tốc độ."],
+					"remark": "Xe chậm nhất ban ngày (khoảng 9,5–10 dặm/giờ từ 12h đến 18h) và nhanh nhất lúc 5h (20,5), nên giờ cao điểm là lúc đường kẹt. Một số tuyến nội vùng chỉ đạt khoảng 3,7 dặm/giờ.",
+					"howRemark": [
+						"Nêu giờ nhanh nhất và chậm nhất kèm số.",
+						"Nối với giờ đông xe.",
+						"Nêu tuyến chậm và ý nghĩa."
+					]
 				},
 				"en": {
 					"think": "A route's speed is distance divided by average time. Do it per pickup-and-dropoff zone pair and per hour, then find the slowest routes.",
@@ -24994,7 +25301,14 @@ var assignments = [
 					],
 					"code": "g = df.groupby(['PULocationID','DOLocationID','pickup_hour']).agg(\n    dist=('trip_distance','mean'), dur=('trip_duration','mean'), n=('trip_distance','size')).reset_index()\ng['speed_mph'] = g['dist'] / (g['dur'] / 60)\nslow = g[g['n'] >= 30].sort_values('speed_mph').head(10)\nprint(slow)",
 					"lotus": "Two branches, District 1 and District 3: how long a customer takes from one branch to the other at 18:00 versus 10:00. A route that is always slow at 18:00 is where to shift appointments.",
-					"trap": "A route with only 2 trips can top the slowest list purely from noise. Set a trip-count threshold."
+					"trap": "A route with only 2 trips can top the slowest list purely from noise. Set a trip-count threshold.",
+					"read": ["First table: mean speed by hour (miles/hour): slowest 9.5 at 15h, fastest 20.5 at 5h.", "Second table: slow routes with trips and speed."],
+					"remark": "Cars are slowest in daytime (about 9.5–10 mph from 12h to 18h) and fastest at 5h (20.5), so peak hours are when roads clog. Some within-zone routes reach only about 3.7 mph.",
+					"howRemark": [
+						"Name the fastest and slowest hours with numbers.",
+						"Tie to busy hours.",
+						"State slow routes and their meaning."
+					]
 				}
 			},
 			"3.2.2": {
@@ -25007,7 +25321,10 @@ var assignments = [
 					],
 					"code": "hourly = df.groupby('pickup_hour').size()\nhourly.plot(kind='bar')\nprint(hourly.idxmax(), hourly.max())",
 					"lotus": "Giờ đông nhất của Lotus Spa là 19:00 với 62 lượt trong mẫu. Con số này là số trong mẫu, chưa phải số thật.",
-					"trap": "Báo số trong mẫu như số thật. Bài 3.2.3 nhân lên."
+					"trap": "Báo số trong mẫu như số thật. Bài 3.2.3 nhân lên.",
+					"read": ["Dòng chữ: giờ đông nhất 18 và số chuyến của giờ đó (130.555 trong mẫu).", "Biểu đồ: số chuyến theo 24 giờ."],
+					"remark": "Đỉnh nhu cầu lúc 18h với 130.555 chuyến trong mẫu; thấp nhất khoảng rạng sáng.",
+					"howRemark": ["Nêu giờ đỉnh kèm số.", "Mô tả hình dạng đường theo giờ."]
 				},
 				"en": {
 					"think": "Count trips per hour, draw it, and state the busiest hour with its trip count.",
@@ -25018,7 +25335,10 @@ var assignments = [
 					],
 					"code": "hourly = df.groupby('pickup_hour').size()\nhourly.plot(kind='bar')\nprint(hourly.idxmax(), hourly.max())",
 					"lotus": "Lotus Spa's busiest hour is 19:00 with 62 visits in the sample. That is a sample number, not the real one.",
-					"trap": "Reporting a sample number as the real one. Task 3.2.3 scales up."
+					"trap": "Reporting a sample number as the real one. Task 3.2.3 scales up.",
+					"read": ["Text: the busiest hour 18 and its trips (130,555 in the sample).", "Chart: trips across 24 hours."],
+					"remark": "Demand peaks at 18h with 130,555 trips in the sample; lowest around dawn.",
+					"howRemark": ["Name the peak hour with the number.", "Describe the shape of the hourly line."]
 				}
 			},
 			"3.2.3": {
@@ -25031,7 +25351,14 @@ var assignments = [
 					],
 					"code": "sample_fraction = 0.05\nscaled = hourly / sample_fraction\nprint(scaled.nlargest(5).round(0))",
 					"lotus": "Nếu mẫu có 62 lượt lúc 19:00 và tỷ lệ lấy mẫu là 5%, số thật xấp xỉ 62 ÷ 0,05 = 1.240 lượt.",
-					"trap": "Nhân với 5 thay vì chia cho 0,05 (nhân 20) là lỗi thường gặp."
+					"trap": "Nhân với 5 thay vì chia cho 0,05 (nhân 20) là lỗi thường gặp.",
+					"read": ["Bảng: số chuyến ước tính thật theo giờ = số trong mẫu chia 0,05.", "18h có 2.611.100 chuyến."],
+					"remark": "Quy ra số thật, 18h có khoảng 2,61 triệu chuyến cả năm, 17h 2,50 triệu và 19h 2,34 triệu.",
+					"howRemark": [
+						"Nêu công thức nhân 20.",
+						"Báo ba giờ đầu theo số thật.",
+						"Nhắc đây là ước tính."
+					]
 				},
 				"en": {
 					"think": "The sample holds only 5% of trips. Real count = sample count divided by the sampling fraction.",
@@ -25042,7 +25369,14 @@ var assignments = [
 					],
 					"code": "sample_fraction = 0.05\nscaled = hourly / sample_fraction\nprint(scaled.nlargest(5).round(0))",
 					"lotus": "If the sample has 62 visits at 19:00 and the sampling fraction is 5%, the real count is about 62 ÷ 0.05 = 1,240 visits.",
-					"trap": "Multiplying by 5 instead of dividing by 0.05 (multiplying by 20) is a common slip."
+					"trap": "Multiplying by 5 instead of dividing by 0.05 (multiplying by 20) is a common slip.",
+					"read": ["Table: estimated real trips per hour = sample count / 0.05.", "18h has 2,611,100 trips."],
+					"remark": "Scaled up, 18h has about 2.61 million trips in the year, 17h 2.50 million and 19h 2.34 million.",
+					"howRemark": [
+						"State the ×20 formula.",
+						"Report the top three hours at real scale.",
+						"Remind these are estimates."
+					]
 				}
 			},
 			"3.2.4": {
@@ -25055,7 +25389,14 @@ var assignments = [
 					],
 					"code": "df['is_weekend'] = df['tpep_pickup_datetime'].dt.dayofweek >= 5\ndays = df.groupby('is_weekend')['tpep_pickup_datetime'].apply(lambda s: s.dt.date.nunique())\nby = df.groupby(['is_weekend','pickup_hour']).size().unstack(0)\n(by / days).plot()",
 					"lotus": "Lotus Spa ngày thường đông vào 18:00 đến 20:00 sau giờ làm. Cuối tuần đông vào 10:00 đến 14:00. Hai nhóm khác ngày nên phải chia cho số ngày.",
-					"trap": "So sánh số chuyến thô giữa 5 ngày thường và 2 ngày cuối tuần mà không chia cho số ngày là so lệch."
+					"trap": "So sánh số chuyến thô giữa 5 ngày thường và 2 ngày cuối tuần mà không chia cho số ngày là so lệch.",
+					"read": ["Hai đường trên một biểu đồ: ngày thường và cuối tuần.", "So giờ đỉnh và độ cao của hai đường."],
+					"remark": "Ngày thường có đỉnh rõ lúc chiều tối, còn cuối tuần phẳng hơn và kéo dài hơn về đêm; hai nhịp khác nhau nên cần điều phối riêng.",
+					"howRemark": [
+						"Mô tả mỗi đường một câu.",
+						"Nêu điểm khác chính.",
+						"Nói hệ quả điều phối."
+					]
 				},
 				"en": {
 					"think": "Compare the hourly shape between weekdays and weekends. Two lines on one chart.",
@@ -25066,7 +25407,14 @@ var assignments = [
 					],
 					"code": "df['is_weekend'] = df['tpep_pickup_datetime'].dt.dayofweek >= 5\ndays = df.groupby('is_weekend')['tpep_pickup_datetime'].apply(lambda s: s.dt.date.nunique())\nby = df.groupby(['is_weekend','pickup_hour']).size().unstack(0)\n(by / days).plot()",
 					"lotus": "Lotus Spa weekdays peak 18:00 to 20:00 after work. Weekends peak 10:00 to 14:00. The two groups have different numbers of days so divide by days.",
-					"trap": "Comparing raw counts between 5 weekdays and 2 weekend days without dividing by days is a lopsided comparison."
+					"trap": "Comparing raw counts between 5 weekdays and 2 weekend days without dividing by days is a lopsided comparison.",
+					"read": ["Two lines on one chart: weekdays and weekends.", "Compare peak hours and heights."],
+					"remark": "Weekdays peak sharply in the early evening while weekends are flatter and run later into the night; the two rhythms need separate dispatch.",
+					"howRemark": [
+						"Describe each line in one sentence.",
+						"State the main difference.",
+						"State the dispatch consequence."
+					]
 				}
 			},
 			"3.2.5": {
@@ -25079,7 +25427,14 @@ var assignments = [
 					],
 					"code": "top_pu = df['PULocationID'].value_counts().head(10).index\ntop_do = df['DOLocationID'].value_counts().head(10).index\nhp = df[df['PULocationID'].isin(top_pu)].groupby(['pickup_hour','PULocationID']).size().unstack()\nhp.plot(figsize=(12,5))",
 					"lotus": "Với ba chi nhánh, xem chi nhánh nào đón khách nhiều nhất và đông vào giờ nào. Chi nhánh nhiều khách đến chưa chắc là chi nhánh nhiều khách đi.",
-					"trap": "Dùng mã vùng mà không đổi sang tên vùng làm biểu đồ khó đọc. Ghép tên từ bảng zones."
+					"trap": "Dùng mã vùng mà không đổi sang tên vùng làm biểu đồ khó đọc. Ghép tên từ bảng zones.",
+					"read": ["Hai bảng top 10: điểm đón và điểm trả; kèm biểu đồ nhịp theo giờ.", "So hai danh sách để thấy vùng nào xuất hiện cả hai."],
+					"remark": "Top đón: JFK Airport (99.363), Upper East Side South (87.916), Midtown Center (86.783); các vùng trung tâm Manhattan và hai sân bay chiếm gần hết top 10.",
+					"howRemark": [
+						"Nêu 3 vùng đầu mỗi danh sách.",
+						"So hai danh sách.",
+						"Nhận xét nhịp theo giờ."
+					]
 				},
 				"en": {
 					"think": "Top ten pickup zones and top ten dropoff zones, then look at the hourly rhythm of those zones.",
@@ -25090,7 +25445,14 @@ var assignments = [
 					],
 					"code": "top_pu = df['PULocationID'].value_counts().head(10).index\ntop_do = df['DOLocationID'].value_counts().head(10).index\nhp = df[df['PULocationID'].isin(top_pu)].groupby(['pickup_hour','PULocationID']).size().unstack()\nhp.plot(figsize=(12,5))",
 					"lotus": "With three branches, see which branch receives the most customers and at what hour. The branch customers arrive at most is not necessarily where they leave from most.",
-					"trap": "Using zone codes without switching to zone names makes the chart hard to read. Join names from the zones table."
+					"trap": "Using zone codes without switching to zone names makes the chart hard to read. Join names from the zones table.",
+					"read": ["Two top-10 tables: pickups and dropoffs; plus hourly rhythm charts.", "Compare the two lists to see zones in both."],
+					"remark": "Top pickups: JFK Airport (99,363), Upper East Side South (87,916), Midtown Center (86,783); central Manhattan zones and the two airports fill most of the top 10.",
+					"howRemark": [
+						"Name the top 3 of each list.",
+						"Compare the two lists.",
+						"Comment on the hourly rhythm."
+					]
 				}
 			},
 			"3.2.6": {
@@ -25104,7 +25466,14 @@ var assignments = [
 					],
 					"code": "pu = df['PULocationID'].value_counts()\ndo = df['DOLocationID'].value_counts()\nratio = (pu / do).replace([np.inf, -np.inf], np.nan).dropna()\nprint(ratio.nlargest(10)); print(ratio.nsmallest(10))",
 					"lotus": "Chi nhánh có 300 khách đi và 150 khách đến cho tỷ lệ 2: nhiều người rời đi hơn đến. Chi nhánh tỷ lệ 0,5 thì ngược lại.",
-					"trap": "Vùng chỉ có 1 đón và 0 trả cho tỷ lệ vô cực. Lọc số chuyến tối thiểu trước khi xếp hạng."
+					"trap": "Vùng chỉ có 1 đón và 0 trả cho tỷ lệ vô cực. Lọc số chuyến tối thiểu trước khi xếp hạng.",
+					"read": ["Bảng: tỷ lệ đón/trả mỗi vùng; trên 1 là vùng đón nhiều hơn trả.", "East Elmhurst 7,83, JFK 4,48 và LaGuardia 2,88 đứng đầu."],
+					"remark": "Các vùng sân bay có tỷ lệ đón/trả rất cao (East Elmhurst 7,83; JFK 4,48; LaGuardia 2,88): khách rời sân bay nhiều hơn khách đến, nên xe cần được chuyển từ nơi khác về bù.",
+					"howRemark": [
+						"Nêu vùng có tỷ lệ cao nhất.",
+						"Giải thích ý nghĩa tỷ lệ trên và dưới 1.",
+						"Gợi ý hành động điều phối."
+					]
 				},
 				"en": {
 					"think": "Pickup-to-dropoff ratio of each zone. Above 1 means more departures than arrivals; below 1 the opposite.",
@@ -25116,7 +25485,14 @@ var assignments = [
 					],
 					"code": "pu = df['PULocationID'].value_counts()\ndo = df['DOLocationID'].value_counts()\nratio = (pu / do).replace([np.inf, -np.inf], np.nan).dropna()\nprint(ratio.nlargest(10)); print(ratio.nsmallest(10))",
 					"lotus": "A branch with 300 customers leaving and 150 arriving gives a ratio of 2: more people leave than arrive. A branch with ratio 0.5 is the opposite.",
-					"trap": "A zone with 1 pickup and 0 dropoffs gives infinity. Filter a minimum trip count before ranking."
+					"trap": "A zone with 1 pickup and 0 dropoffs gives infinity. Filter a minimum trip count before ranking.",
+					"read": ["Table: pickup/dropoff ratio per zone; above 1 means more pickups than dropoffs.", "East Elmhurst 7.83, JFK 4.48 and LaGuardia 2.88 lead."],
+					"remark": "Airport zones have very high pickup/dropoff ratios (East Elmhurst 7.83; JFK 4.48; LaGuardia 2.88): more people leave airports than arrive, so cars must be repositioned in.",
+					"howRemark": [
+						"Name the zones with the highest ratio.",
+						"Explain the meaning above and below 1.",
+						"Suggest a dispatch action."
+					]
 				}
 			},
 			"3.2.7": {
@@ -25129,7 +25505,14 @@ var assignments = [
 					],
 					"code": "night = df[(df['pickup_hour'] >= 23) | (df['pickup_hour'] < 5)]\nprint(night['PULocationID'].value_counts().head(10))\nprint(night['DOLocationID'].value_counts().head(10))",
 					"lotus": "Ở khung 21:00 đến 23:00, giả sử chi nhánh Quận 1 vẫn đông còn Thủ Đức thưa. Top vùng của giờ đêm thường khác top vùng cả ngày.",
-					"trap": "Lấy top của cả năm rồi lọc giờ đêm cho kết quả khác. Lọc giờ đêm trước rồi mới xếp hạng."
+					"trap": "Lấy top của cả năm rồi lọc giờ đêm cho kết quả khác. Lọc giờ đêm trước rồi mới xếp hạng.",
+					"read": ["Hai bảng: top vùng đón đêm và top vùng trả đêm (23h–5h).", "So với top ban ngày để thấy khác biệt."],
+					"remark": "Đêm đón nhiều nhất ở East Village (15.416), JFK Airport (13.870) và West Village (12.498): ban đêm nhu cầu chuyển sang các khu giải trí thay vì các khu văn phòng.",
+					"howRemark": [
+						"Nêu 3 vùng đầu.",
+						"So với top ban ngày.",
+						"Giải thích khác biệt."
+					]
 				},
 				"en": {
 					"think": "Night hours run 11 PM to 5 AM. Filter trips by night hour, then find top pickup and dropoff zones within that subset.",
@@ -25140,7 +25523,14 @@ var assignments = [
 					],
 					"code": "night = df[(df['pickup_hour'] >= 23) | (df['pickup_hour'] < 5)]\nprint(night['PULocationID'].value_counts().head(10))\nprint(night['DOLocationID'].value_counts().head(10))",
 					"lotus": "In the 21:00 to 23:00 window, suppose District 1 is still busy while Thu Duc is quiet. Late-hour top zones are often not the all-day top zones.",
-					"trap": "Taking the yearly top then filtering to night gives a different result. Filter to night first, then rank."
+					"trap": "Taking the yearly top then filtering to night gives a different result. Filter to night first, then rank.",
+					"read": ["Two tables: top night pickup zones and top night dropoff zones (23h–5h).", "Compare with the daytime top."],
+					"remark": "At night pickups lead in East Village (15,416), JFK Airport (13,870) and West Village (12,498): night demand shifts to entertainment areas rather than office districts.",
+					"howRemark": [
+						"Name the top 3.",
+						"Compare with the daytime top.",
+						"Explain the difference."
+					]
 				}
 			},
 			"3.2.8": {
@@ -25153,7 +25543,14 @@ var assignments = [
 					],
 					"code": "df['is_night'] = (df['pickup_hour'] >= 23) | (df['pickup_hour'] < 5)\nrev = df.groupby('is_night')['total_amount'].sum()\nprint((rev / rev.sum()).round(3))",
 					"lotus": "Nếu giờ đêm cho 12 phần doanh thu trên 100, tỷ trọng đêm là 12%. Một khung giờ vắng khách vẫn có thể có giá bán cao hơn.",
-					"trap": "Dùng cùng định nghĩa đêm xuyên suốt. Đổi định nghĩa giữa các bài làm các con số không so được."
+					"trap": "Dùng cùng định nghĩa đêm xuyên suốt. Đổi định nghĩa giữa các bài làm các con số không so được.",
+					"read": ["Dòng chữ: ban ngày 88,6% và ban đêm (23h–5h) 11,4% doanh thu.", "Biểu đồ: tỷ trọng hai nhóm."],
+					"remark": "Ban đêm (23h–5h) chiếm 11,4% doanh thu so với 88,6% ban ngày: doanh thu chủ yếu đến từ ban ngày.",
+					"howRemark": [
+						"Báo hai tỷ trọng.",
+						"Nhắc đêm chỉ 6 giờ trong 24.",
+						"Kết luận."
+					]
 				},
 				"en": {
 					"think": "Night versus day revenue share is each group's revenue divided by the total.",
@@ -25164,7 +25561,14 @@ var assignments = [
 					],
 					"code": "df['is_night'] = (df['pickup_hour'] >= 23) | (df['pickup_hour'] < 5)\nrev = df.groupby('is_night')['total_amount'].sum()\nprint((rev / rev.sum()).round(3))",
 					"lotus": "If night hours bring 12 parts of revenue per 100, the night share is 12%. A quiet window can still carry a higher price.",
-					"trap": "Use one definition of night throughout. Changing it between tasks makes the numbers incomparable."
+					"trap": "Use one definition of night throughout. Changing it between tasks makes the numbers incomparable.",
+					"read": ["Text: daytime 88.6% and night (23h–5h) 11.4% of revenue.", "Chart: share of the two groups."],
+					"remark": "Night (23h–5h) brings 11.4% of revenue versus 88.6% by day: revenue is mostly daytime.",
+					"howRemark": [
+						"Report both shares.",
+						"Remind night is only 6 of 24 hours.",
+						"Conclude."
+					]
 				}
 			},
 			"3.2.9": {
@@ -25178,7 +25582,14 @@ var assignments = [
 					],
 					"code": "d = df[df['trip_distance'] > 0].copy()\nd['fare_per_mile'] = d['fare_amount'] / d['trip_distance']\nd['fpm_pp'] = d['fare_per_mile'] / d['passenger_count']\nprint(d.groupby('passenger_count')['fpm_pp'].mean())",
 					"lotus": "Gói đôi 1.200 nghìn cho hai người nghĩa là mỗi người 600 nghìn. Giá chia cho đầu người cho thấy gói đôi rẻ hơn gói lẻ bao nhiêu.",
-					"trap": "Chia cho 0 hành khách hoặc 0 dặm làm ra vô cực. Lọc trước."
+					"trap": "Chia cho 0 hành khách hoặc 0 dặm làm ra vô cực. Lọc trước.",
+					"read": ["Bảng: giá trên dặm và giá trên dặm trên người, theo số khách.", "Giá mỗi dặm gần như không đổi (7,3–7,5); chia theo người thì giảm."],
+					"remark": "Giá trên dặm của chuyến ổn định khoảng 7,4 dù có bao nhiêu khách, nên đi chung rẻ hơn mỗi người: 6 khách chỉ còn 1,24 mỗi người so với 7,49 khi đi một mình.",
+					"howRemark": [
+						"Nêu giá trên dặm và trên người.",
+						"Giải thích vì sao chia theo người.",
+						"Nói ý nghĩa với chính sách giá."
+					]
 				},
 				"en": {
 					"think": "Fare per mile per passenger: take the trip's fare per mile, then divide by passenger count. Two people sharing one trip each pay half.",
@@ -25190,7 +25601,14 @@ var assignments = [
 					],
 					"code": "d = df[df['trip_distance'] > 0].copy()\nd['fare_per_mile'] = d['fare_amount'] / d['trip_distance']\nd['fpm_pp'] = d['fare_per_mile'] / d['passenger_count']\nprint(d.groupby('passenger_count')['fpm_pp'].mean())",
 					"lotus": "A couple package at 1,200 thousand for two people means 600 thousand each. Dividing by head shows how much cheaper the couple package is than single ones.",
-					"trap": "Dividing by 0 passengers or 0 miles gives infinity. Filter first."
+					"trap": "Dividing by 0 passengers or 0 miles gives infinity. Filter first.",
+					"read": ["Table: fare per mile and fare per mile per person by passenger count.", "Per-mile price barely changes (7.3–7.5); per person it drops."],
+					"remark": "The trip's price per mile stays about 7.4 whatever the passenger count, so sharing is cheaper per person: 6 passengers pay only 1.24 each vs 7.49 alone.",
+					"howRemark": [
+						"State price per mile and per person.",
+						"Explain why divide by passengers.",
+						"State the pricing implication."
+					]
 				}
 			},
 			"3.2.10": {
@@ -25203,7 +25621,14 @@ var assignments = [
 					],
 					"code": "d.groupby('pickup_hour')['fare_per_mile'].mean().plot()\nd.groupby('pickup_day')['fare_per_mile'].mean().reindex(days).plot(kind='bar')",
 					"lotus": "Giá bình quân mỗi phút liệu trình theo giờ: giờ vàng 18:00 đến 20:00 đắt hơn giờ trưa. Thấy rồi mới hỏi có nên giảm giá giờ thấp điểm không.",
-					"trap": "Chuyến rất ngắn làm giá trên dặm vọt lên vì cước mở cửa cố định. Cân nhắc lọc ngưỡng quãng đường."
+					"trap": "Chuyến rất ngắn làm giá trên dặm vọt lên vì cước mở cửa cố định. Cân nhắc lọc ngưỡng quãng đường.",
+					"read": ["Bảng giá trung bình mỗi dặm theo giờ: thấp nhất 5,66 lúc 5h, cao nhất 8,16 lúc 12h.", "Biểu đồ còn có theo thứ trong tuần."],
+					"remark": "Giá mỗi dặm thấp ban đêm và rạng sáng (5,66 lúc 5h) và cao nhất quanh trưa (8,16 lúc 12h) vì ban ngày chuyến ngắn và kẹt xe nên tính theo dặm đắt hơn.",
+					"howRemark": [
+						"Nêu giờ thấp và cao nhất kèm số.",
+						"Đưa một lý do có thể.",
+						"Nhắc chỉ là tương quan."
+					]
 				},
 				"en": {
 					"think": "Average fare per mile by hour of day and by day of week.",
@@ -25214,7 +25639,14 @@ var assignments = [
 					],
 					"code": "d.groupby('pickup_hour')['fare_per_mile'].mean().plot()\nd.groupby('pickup_day')['fare_per_mile'].mean().reindex(days).plot(kind='bar')",
 					"lotus": "Average price per session minute by hour: the 18:00 to 20:00 golden window costs more than lunch. After seeing it, ask whether to discount quiet hours.",
-					"trap": "Very short trips push fare per mile up because of the fixed flag-down fee. Consider a distance threshold."
+					"trap": "Very short trips push fare per mile up because of the fixed flag-down fee. Consider a distance threshold.",
+					"read": ["Table of mean price per mile by hour: lowest 5.66 at 5h, highest 8.16 at 12h.", "The chart also shows weekdays."],
+					"remark": "Price per mile is low at night and dawn (5.66 at 5h) and highest around noon (8.16 at 12h), as daytime trips are shorter and slower so cost more per mile.",
+					"howRemark": [
+						"State the low and high hours with numbers.",
+						"Give a possible reason.",
+						"Remind it is only correlation."
+					]
 				}
 			},
 			"3.2.11": {
@@ -25227,7 +25659,14 @@ var assignments = [
 					],
 					"code": "d.pivot_table(index='pickup_hour', columns='VendorID', values='fare_per_mile', aggfunc='mean').plot()",
 					"lotus": "Hai kênh đặt lịch (web và điện thoại) bán cùng gói với giá hiển thị khác nhau. So theo giờ để xem chênh lệch có cố định hay thay đổi.",
-					"trap": "Hai nhà cung cấp có thể phục vụ các nhóm chuyến khác nhau, nên chênh lệch không chỉ là chênh lệch giá."
+					"trap": "Hai nhà cung cấp có thể phục vụ các nhóm chuyến khác nhau, nên chênh lệch không chỉ là chênh lệch giá.",
+					"read": ["Hai số: giá trên dặm của nhà cung cấp 1 (7,42) và 2 (7,47).", "Biểu đồ chi tiết theo giờ."],
+					"remark": "Hai nhà cung cấp gần như giống nhau về giá trên dặm (7,42 và 7,47), chỉ chênh khoảng 0,05.",
+					"howRemark": [
+						"So hai số.",
+						"Nói chênh có đáng kể không.",
+						"Nhắc xem biểu đồ theo giờ."
+					]
 				},
 				"en": {
 					"think": "Compare fare per mile between the two vendors (VendorID) for each hour.",
@@ -25238,7 +25677,14 @@ var assignments = [
 					],
 					"code": "d.pivot_table(index='pickup_hour', columns='VendorID', values='fare_per_mile', aggfunc='mean').plot()",
 					"lotus": "Two booking channels (web and phone) sell the same package at different shown prices. Compare by hour to see whether the gap is fixed or changing.",
-					"trap": "The two vendors may serve different mixes of trips, so a gap is not only a price gap."
+					"trap": "The two vendors may serve different mixes of trips, so a gap is not only a price gap.",
+					"read": ["Two numbers: price per mile of vendor 1 (7.42) and 2 (7.47).", "The chart details it by hour."],
+					"remark": "The two vendors are nearly identical on price per mile (7.42 vs 7.47), only about 0.05 apart.",
+					"howRemark": [
+						"Compare the two numbers.",
+						"Say whether the gap matters.",
+						"Point to the hourly chart."
+					]
 				}
 			},
 			"3.2.12": {
@@ -25251,7 +25697,14 @@ var assignments = [
 					],
 					"code": "d['tier'] = pd.cut(d['trip_distance'], bins=[0, 2, 5, np.inf], labels=['<=2','2-5','>5'])\nprint(d.groupby(['tier','VendorID'], observed=True)['fare_per_mile'].mean().unstack())",
 					"lotus": "Gói ngắn, vừa, dài: nhà cung cấp rẻ hơn ở bậc ngắn có thể đắt hơn ở bậc dài. Chia bậc cho thấy điều mà một con số trung bình che đi.",
-					"trap": "Biên bậc phải rõ: 2 dặm thuộc bậc nào. Với right=True thì 2 thuộc bậc đầu."
+					"trap": "Biên bậc phải rõ: 2 dặm thuộc bậc nào. Với right=True thì 2 thuộc bậc đầu.",
+					"read": ["Bảng: giá trên dặm theo bậc quãng đường (hàng) và nhà cung cấp (cột).", "Bậc càng dài, giá mỗi dặm càng thấp."],
+					"remark": "Chuyến ngắn đắt nhất mỗi dặm (khoảng 8,9–9,0 dưới 2 dặm) và rẻ dần theo quãng đường (khoảng 4,4–4,5 trên 5 dặm); nhà cung cấp 2 nhỉnh hơn một chút ở mọi bậc.",
+					"howRemark": [
+						"Nêu xu hướng theo bậc.",
+						"So hai nhà cung cấp ở mỗi bậc.",
+						"Giải thích vì sao chuyến ngắn đắt mỗi dặm (phí mở cửa)."
+					]
 				},
 				"en": {
 					"think": "Split trips into three distance tiers, then compare fare per mile between vendors in each tier.",
@@ -25262,7 +25715,14 @@ var assignments = [
 					],
 					"code": "d['tier'] = pd.cut(d['trip_distance'], bins=[0, 2, 5, np.inf], labels=['<=2','2-5','>5'])\nprint(d.groupby(['tier','VendorID'], observed=True)['fare_per_mile'].mean().unstack())",
 					"lotus": "Short, medium, long packages: the vendor cheaper on short ones may be dearer on long ones. Tiers reveal what one average hides.",
-					"trap": "The tier edges must be clear: which tier does 2 miles belong to. With right=True it belongs to the first."
+					"trap": "The tier edges must be clear: which tier does 2 miles belong to. With right=True it belongs to the first.",
+					"read": ["Table: price per mile by distance tier (rows) and vendor (columns).", "The longer the tier, the lower the per-mile price."],
+					"remark": "Short trips cost most per mile (about 8.9–9.0 under 2 miles) and fall with distance (about 4.4–4.5 over 5 miles); vendor 2 is slightly higher at every tier.",
+					"howRemark": [
+						"State the trend by tier.",
+						"Compare the two vendors per tier.",
+						"Explain why short trips cost more per mile."
+					]
 				}
 			},
 			"3.2.13": {
@@ -25276,7 +25736,14 @@ var assignments = [
 					],
 					"code": "c = d[(d['payment_type'] == 1) & (d['fare_amount'] > 0)].copy()\nc['tip_pct'] = c['tip_amount'] / c['fare_amount'] * 100\nprint(c.groupby('tier', observed=True)['tip_pct'].mean())\nprint(c.groupby('passenger_count')['tip_pct'].mean())\nprint(c.groupby('pickup_hour')['tip_pct'].mean())",
 					"lotus": "Boa 50 nghìn trên giá 650 nghìn là 7,7%. Chỉ tính khách thanh toán thẻ hoặc chuyển khoản, vì tiền mặt không có trong sổ.",
-					"trap": "Tính boa cho cả chuyến tiền mặt làm tỷ lệ boa thấp giả."
+					"trap": "Tính boa cho cả chuyến tiền mặt làm tỷ lệ boa thấp giả.",
+					"read": ["Dòng chữ: tiền boa trung bình của khách trả thẻ là 24,6% cước.", "Biểu đồ phân phối % boa."],
+					"remark": "Khách trả thẻ boa trung bình 24,6% cước. Chỉ tính thẻ vì tiền boa tiền mặt không được ghi lại nên thiếu.",
+					"howRemark": [
+						"Báo %.",
+						"Nói vì sao chỉ lấy thẻ.",
+						"Nhắc giới hạn của số liệu."
+					]
 				},
 				"en": {
 					"think": "Tip percentage is tip divided by fare. Count card trips only because cash tips are not recorded.",
@@ -25288,7 +25755,14 @@ var assignments = [
 					],
 					"code": "c = d[(d['payment_type'] == 1) & (d['fare_amount'] > 0)].copy()\nc['tip_pct'] = c['tip_amount'] / c['fare_amount'] * 100\nprint(c.groupby('tier', observed=True)['tip_pct'].mean())\nprint(c.groupby('passenger_count')['tip_pct'].mean())\nprint(c.groupby('pickup_hour')['tip_pct'].mean())",
 					"lotus": "A tip of 50 thousand on a 650 thousand price is 7.7%. Count only card or transfer customers, since cash is not in the log.",
-					"trap": "Counting cash trips makes the tip rate falsely low."
+					"trap": "Counting cash trips makes the tip rate falsely low.",
+					"read": ["Text: card customers tip 24.6% of the fare on average.", "Chart: distribution of tip %."],
+					"remark": "Card customers tip 24.6% of the fare on average. Only cards are counted because cash tips are not recorded.",
+					"howRemark": [
+						"Report the %.",
+						"Say why only card.",
+						"Remind the data limit."
+					]
 				}
 			},
 			"3.2.14": {
@@ -25301,7 +25775,14 @@ var assignments = [
 					],
 					"code": "pt = df.pivot_table(index='pickup_hour', columns='pickup_day', values='passenger_count', aggfunc='mean')[days]\nsns.heatmap(pt, cmap='YlOrRd')",
 					"lotus": "Số khách mỗi lượt đặt ở Lotus Spa: tối cuối tuần thường đi đôi nhiều hơn sáng thứ hai. Bản đồ nhiệt cho thấy điều đó trong một hình.",
-					"trap": "Trung bình số khách chênh nhau rất ít giữa các ô. Đừng đọc chênh lệch nhỏ như một mẫu hình."
+					"trap": "Trung bình số khách chênh nhau rất ít giữa các ô. Đừng đọc chênh lệch nhỏ như một mẫu hình.",
+					"read": ["Bảng giờ × thứ: số hành khách trung bình mỗi chuyến.", "Đọc theo hàng (một giờ qua các thứ) và theo cột."],
+					"remark": "Số hành khách trung bình chỉ dao động khoảng 1,2–1,5 mỗi chuyến; cao hơn vào cuối tuần và ban đêm (khoảng 1,45–1,51), thấp nhất sáng sớm ngày thường (1,21–1,26).",
+					"howRemark": [
+						"Nêu thấp nhất và cao nhất kèm số.",
+						"Nhận xét cuối tuần và ban đêm.",
+						"Kết luận về độ dao động."
+					]
 				},
 				"en": {
 					"think": "How passenger count varies by hour and by day of week. An hour-by-day table shows both at once.",
@@ -25312,7 +25793,14 @@ var assignments = [
 					],
 					"code": "pt = df.pivot_table(index='pickup_hour', columns='pickup_day', values='passenger_count', aggfunc='mean')[days]\nsns.heatmap(pt, cmap='YlOrRd')",
 					"lotus": "Guests per Lotus Spa booking: weekend evenings tend to carry more pairs than Monday mornings. A heatmap shows that in one picture.",
-					"trap": "Average guest counts differ very little between cells. Do not read a tiny difference as a pattern."
+					"trap": "Average guest counts differ very little between cells. Do not read a tiny difference as a pattern.",
+					"read": ["Hour × weekday table: mean passengers per trip.", "Read across a row (one hour over weekdays) and down a column."],
+					"remark": "Mean passengers only range about 1.2–1.5 per trip; higher on weekends and at night (about 1.45–1.51), lowest on weekday early mornings (1.21–1.26).",
+					"howRemark": [
+						"State the lowest and highest with numbers.",
+						"Comment on weekend and night.",
+						"Conclude on the small variation."
+					]
 				}
 			},
 			"3.2.15": {
@@ -25325,7 +25813,14 @@ var assignments = [
 					],
 					"code": "avg = df.groupby('PULocationID')['passenger_count'].mean().rename('avg_passengers')\nzones_with_trips = zones_with_trips.merge(avg, left_on='LocationID', right_index=True, how='left')\nzones_with_trips.plot(column='avg_passengers', legend=True, figsize=(12,10))",
 					"lotus": "Chi nhánh có nhiều nhóm đi chung có số khách trung bình cao hơn. Biết điều đó thì chọn gói đôi hay gói nhóm cho chi nhánh nào.",
-					"trap": "Vùng ít chuyến có trung bình nhiễu. Lọc số chuyến tối thiểu hoặc ghi chú."
+					"trap": "Vùng ít chuyến có trung bình nhiễu. Lọc số chuyến tối thiểu hoặc ghi chú.",
+					"read": ["Bảng: vùng, số khách trung bình và số chuyến.", "Chỉ nên so vùng có đủ chuyến (cột n)."],
+					"remark": "Battery Park có số khách trung bình cao nhất (1,82 với 837 chuyến), tiếp theo Red Hook (1,71) và DUMBO (1,69); các vùng du lịch hay đi nhóm.",
+					"howRemark": [
+						"Nêu top vùng kèm số khách.",
+						"Kiểm cột n để chắc đủ mẫu.",
+						"Giải thích có thể."
+					]
 				},
 				"en": {
 					"think": "Average passenger count per zone. Draw bars for the top and add a column to the map table.",
@@ -25336,7 +25831,14 @@ var assignments = [
 					],
 					"code": "avg = df.groupby('PULocationID')['passenger_count'].mean().rename('avg_passengers')\nzones_with_trips = zones_with_trips.merge(avg, left_on='LocationID', right_index=True, how='left')\nzones_with_trips.plot(column='avg_passengers', legend=True, figsize=(12,10))",
 					"lotus": "A branch with many group visits has a higher average guest count. Knowing that, choose couple or group packages for which branch.",
-					"trap": "Zones with few trips have noisy averages. Filter a minimum count or add a note."
+					"trap": "Zones with few trips have noisy averages. Filter a minimum count or add a note.",
+					"read": ["Table: zone, mean passengers and trips.", "Compare only zones with enough trips (column n)."],
+					"remark": "Battery Park has the highest mean passengers (1.82 over 837 trips), then Red Hook (1.71) and DUMBO (1.69); tourist areas often travel in groups.",
+					"howRemark": [
+						"Name the top zones with passenger means.",
+						"Check column n for enough sample.",
+						"Give a possible explanation."
+					]
 				}
 			},
 			"3.2.16": {
@@ -25349,7 +25851,14 @@ var assignments = [
 					],
 					"code": "surch = ['extra','mta_tax','tolls_amount','improvement_surcharge','congestion_surcharge','airport_fee']\nprint((df[surch] > 0).mean().round(3))\nfor col in ['extra','congestion_surcharge','airport_fee']:\n    df.assign(flag=df[col] > 0).groupby('pickup_hour')['flag'].mean().plot(label=col)",
 					"lotus": "Phụ phí giờ vàng áp dụng 18:00 đến 20:00. Đếm tỷ lệ booking có phụ phí theo giờ cho thấy phụ phí tập trung ở đâu và có đang làm khách rời đi không.",
-					"trap": "Đừng nhầm tần suất với doanh thu: một phụ phí hiếm nhưng lớn có thể quan trọng hơn một phụ phí thường xuyên nhưng nhỏ."
+					"trap": "Đừng nhầm tần suất với doanh thu: một phụ phí hiếm nhưng lớn có thể quan trọng hơn một phụ phí thường xuyên nhưng nhỏ.",
+					"read": ["Bốn số: % chuyến có từng loại phụ phí: extra 61,6%, congestion 92,2%, airport 8,9%, tolls 8,2%.", "Biểu đồ chi tiết theo giờ hoặc vùng."],
+					"remark": "Phí ùn tắc áp dụng cho 92,2% chuyến và phụ thu extra cho 61,6%; phí sân bay (8,9%) và cầu đường (8,2%) chỉ ở số ít chuyến, nên chỉ phí ùn tắc là phụ phí phổ biến.",
+					"howRemark": [
+						"Xếp phụ phí theo mức thường gặp.",
+						"Nêu phí nào đặc thù theo nơi.",
+						"Nói ý nghĩa tính tổng cước."
+					]
 				},
 				"en": {
 					"think": "How often each surcharge applies and where or when it applies more.",
@@ -25360,7 +25869,14 @@ var assignments = [
 					],
 					"code": "surch = ['extra','mta_tax','tolls_amount','improvement_surcharge','congestion_surcharge','airport_fee']\nprint((df[surch] > 0).mean().round(3))\nfor col in ['extra','congestion_surcharge','airport_fee']:\n    df.assign(flag=df[col] > 0).groupby('pickup_hour')['flag'].mean().plot(label=col)",
 					"lotus": "The golden-hour surcharge applies 18:00 to 20:00. Counting the share of bookings with a surcharge by hour shows where it concentrates and whether it pushes customers away.",
-					"trap": "Do not confuse frequency with revenue: a rare but large surcharge can matter more than a frequent but small one."
+					"trap": "Do not confuse frequency with revenue: a rare but large surcharge can matter more than a frequent but small one.",
+					"read": ["Four numbers: % of trips with each surcharge: extra 61.6%, congestion 92.2%, airport 8.9%, tolls 8.2%.", "The chart details by hour or zone."],
+					"remark": "The congestion surcharge applies to 92.2% of trips and extra to 61.6%; airport (8.9%) and tolls (8.2%) hit few trips, so only congestion is a widespread surcharge.",
+					"howRemark": [
+						"Rank surcharges by frequency.",
+						"Name which are location-specific.",
+						"State the meaning for total fare."
+					]
 				}
 			},
 			"4.1.1": {
@@ -25373,7 +25889,15 @@ var assignments = [
 					],
 					"code": "# Write your recommendations here as markdown or print statements,\n# each citing a number from your analysis, e.g.\n# print(f'Busiest hour {hourly.idxmax()}: {scaled.max():,.0f} trips -> dispatch more cabs before this hour')",
 					"lotus": "Giờ đông là 19:00 và tuyến Quận 1 sang Quận 3 chậm nhất lúc 18:00: dời một nhân viên về chi nhánh Quận 1 trước 18:00 và đẩy lịch hẹn giữa hai chi nhánh sang 16:00.",
-					"trap": "Một khuyến nghị không có con số đi kèm chỉ là ý kiến. Dẫn con số."
+					"trap": "Một khuyến nghị không có con số đi kèm chỉ là ý kiến. Dẫn con số.",
+					"read": ["Mục này là bài viết khuyến nghị, không có số mới; hãy dựa vào các kết quả ở mục 3."],
+					"remark": "Khuyến nghị điều phối phải trỏ về số đã tính: ví dụ đỉnh lúc 18h (3.2.2), tốc độ chỉ khoảng 10 dặm/giờ buổi chiều (3.2.1), tỷ lệ đón/trả sân bay cao (3.2.6).",
+					"howRemark": [
+						"Chọn một kết quả cụ thể làm bằng chứng.",
+						"Nêu số liệu kèm mục tham chiếu.",
+						"Đưa hành động cụ thể, đo được.",
+						"Nêu giới hạn (mẫu 5%, không có dữ liệu chi phí)."
+					]
 				},
 				"en": {
 					"think": "Dispatch recommendations: based on demand patterns and slow routes. Each recommendation must point back to a result you computed.",
@@ -25384,7 +25908,15 @@ var assignments = [
 					],
 					"code": "# Write your recommendations here as markdown or print statements,\n# each citing a number from your analysis, e.g.\n# print(f'Busiest hour {hourly.idxmax()}: {scaled.max():,.0f} trips -> dispatch more cabs before this hour')",
 					"lotus": "The busy hour is 19:00 and the District 1 to District 3 route is slowest at 18:00: move one staff member to District 1 before 18:00 and shift inter-branch appointments to 16:00.",
-					"trap": "A recommendation with no number is only an opinion. Cite the number."
+					"trap": "A recommendation with no number is only an opinion. Cite the number.",
+					"read": ["This task is a written recommendation with no new numbers; rely on the results in part 3."],
+					"remark": "Dispatch recommendations must cite computed numbers: e.g. the 18h peak (3.2.2), only about 10 mph in the afternoon (3.2.1), high airport pickup/dropoff ratios (3.2.6).",
+					"howRemark": [
+						"Pick a concrete result as evidence.",
+						"Quote the number with the task reference.",
+						"Give a specific, measurable action.",
+						"State the limits (5% sample, no cost data)."
+					]
 				}
 			},
 			"4.1.2": {
@@ -25397,7 +25929,15 @@ var assignments = [
 					],
 					"code": "# Write positioning suggestions here, citing the ratio table (3.2.6),\n# the night-hours table (3.2.7) and the monthly trend (3.1.4)",
 					"lotus": "Chi nhánh Quận 1 có tỷ lệ đi trên đến là 2: đưa thêm một nhân viên về sau 18:00. Thủ Đức vắng vào tháng 12: giảm ca ở đó.",
-					"trap": "Đề xuất đặt xe ở vùng có nhiều chuyến mà không xét tỷ lệ đón trên trả sẽ làm vùng đó thừa xe."
+					"trap": "Đề xuất đặt xe ở vùng có nhiều chuyến mà không xét tỷ lệ đón trên trả sẽ làm vùng đó thừa xe.",
+					"read": ["Mục này là bài viết khuyến nghị, không có số mới; hãy dựa vào các kết quả ở mục 3."],
+					"remark": "Đặt xe theo vùng, giờ và thứ: tăng xe quanh 18h và ở JFK/LaGuardia (tỷ lệ đón/trả 4,48 và 2,88), chuyển xe từ các vùng có tỷ lệ dưới 1 về bù.",
+					"howRemark": [
+						"Chọn một kết quả cụ thể làm bằng chứng.",
+						"Nêu số liệu kèm mục tham chiếu.",
+						"Đưa hành động cụ thể, đo được.",
+						"Nêu giới hạn (mẫu 5%, không có dữ liệu chi phí)."
+					]
 				},
 				"en": {
 					"think": "Where and when to position cabs based on demand by zone, hour, weekday and month. Use the pickup-to-dropoff ratio (3.2.6) to know which zones need top-ups.",
@@ -25408,7 +25948,15 @@ var assignments = [
 					],
 					"code": "# Write positioning suggestions here, citing the ratio table (3.2.6),\n# the night-hours table (3.2.7) and the monthly trend (3.1.4)",
 					"lotus": "District 1 has a leave-to-arrive ratio of 2: bring in one more staff member after 18:00. Thu Duc is quiet in December: cut shifts there.",
-					"trap": "Positioning cabs where there are many trips without checking the pickup-to-dropoff ratio leaves that zone with too many cabs."
+					"trap": "Positioning cabs where there are many trips without checking the pickup-to-dropoff ratio leaves that zone with too many cabs.",
+					"read": ["This task is a written recommendation with no new numbers; rely on the results in part 3."],
+					"remark": "Place cars by zone, hour and weekday: add cars around 18h and at JFK/LaGuardia (pickup/dropoff ratio 4.48 and 2.88), moving cars in from zones below 1.",
+					"howRemark": [
+						"Pick a concrete result as evidence.",
+						"Quote the number with the task reference.",
+						"Give a specific, measurable action.",
+						"State the limits (5% sample, no cost data)."
+					]
 				}
 			},
 			"4.1.3": {
@@ -25422,7 +25970,15 @@ var assignments = [
 					],
 					"code": "# Write pricing adjustments here, citing fare per mile by hour (3.2.10),\n# the tier comparison (3.2.12) and the surcharge shares (3.2.16)",
 					"lotus": "Giờ vàng 18:00 đến 20:00 đông nhưng giá ngang giờ trưa: thử tăng giá ở khung đó, giữ giá giờ vắng. Theo dõi tuần sau xem số lượt đặt có giảm quá mức bạn chấp nhận không.",
-					"trap": "Tăng giá mà không đặt mức chấp nhận được cho sự sụt giảm số lượt là đánh cược."
+					"trap": "Tăng giá mà không đặt mức chấp nhận được cho sự sụt giảm số lượt là đánh cược.",
+					"read": ["Mục này là bài viết khuyến nghị, không có số mới; hãy dựa vào các kết quả ở mục 3."],
+					"remark": "Điều chỉnh giá: chuyến ngắn đắt mỗi dặm (8,9–9,0) trong khi hai nhà cung cấp gần như bằng giá (7,42 và 7,47); tăng giá vừa phải ở giờ cao điểm nhưng giữ cạnh tranh.",
+					"howRemark": [
+						"Chọn một kết quả cụ thể làm bằng chứng.",
+						"Nêu số liệu kèm mục tham chiếu.",
+						"Đưa hành động cụ thể, đo được.",
+						"Nêu giới hạn (mẫu 5%, không có dữ liệu chi phí)."
+					]
 				},
 				"en": {
 					"think": "Data-driven pricing adjustments: raise revenue while staying competitive with other vendors.",
@@ -25434,7 +25990,15 @@ var assignments = [
 					],
 					"code": "# Write pricing adjustments here, citing fare per mile by hour (3.2.10),\n# the tier comparison (3.2.12) and the surcharge shares (3.2.16)",
 					"lotus": "The golden window 18:00 to 20:00 is busy but priced like lunch: try raising it, keep quiet-hour prices. Watch next week to see whether bookings drop by more than you accept.",
-					"trap": "Raising prices without setting an acceptable drop in bookings is a gamble."
+					"trap": "Raising prices without setting an acceptable drop in bookings is a gamble.",
+					"read": ["This task is a written recommendation with no new numbers; rely on the results in part 3."],
+					"remark": "Pricing: short trips cost most per mile (8.9–9.0) while the two vendors are nearly equal (7.42 vs 7.47); raise prices modestly at peak while staying competitive.",
+					"howRemark": [
+						"Pick a concrete result as evidence.",
+						"Quote the number with the task reference.",
+						"Give a specific, measurable action.",
+						"State the limits (5% sample, no cost data)."
+					]
 				}
 			}
 		},
@@ -26173,7 +26737,14 @@ var assignments = [
 					],
 					"code": "df['created_at'] = pd.to_datetime(df['created_at'])\ndf['actual_delivery_time'] = pd.to_datetime(df['actual_delivery_time'])\nprint(df[['created_at','actual_delivery_time']].dtypes)",
 					"lotus": "Sổ booking ghi giờ đặt là chữ «2026-11-03 19:05». Phải đổi thành giờ thật thì mới tính được khách chờ bao lâu.",
-					"trap": "Trừ hai cột chữ sẽ báo lỗi hoặc ra kết quả vô nghĩa."
+					"trap": "Trừ hai cột chữ sẽ báo lỗi hoặc ra kết quả vô nghĩa.",
+					"read": ["Dòng dtype: datetime64 nghĩa là Python đã hiểu hai cột là thời điểm thật, không còn là chữ.", "Bảng mẫu: so created_at và actual_delivery_time; mốc giao luôn sau mốc đặt."],
+					"remark": "Hai cột đã thành datetime; ví dụ đơn đầu đặt 22:24 và giao 23:11, tức 47 phút, nên giờ có thể trừ cho nhau.",
+					"howRemark": [
+						"Kiểm kiểu dữ liệu trước và sau khi đổi.",
+						"Tự trừ tay một dòng mẫu để kiểm tra.",
+						"Ghi một câu: vì sao phải đổi kiểu."
+					]
 				},
 				"en": {
 					"think": "Both time columns are text. To subtract two timestamps they must become datetime.",
@@ -26184,7 +26755,14 @@ var assignments = [
 					],
 					"code": "df['created_at'] = pd.to_datetime(df['created_at'])\ndf['actual_delivery_time'] = pd.to_datetime(df['actual_delivery_time'])\nprint(df[['created_at','actual_delivery_time']].dtypes)",
 					"lotus": "The booking log stores the order time as text “2026-11-03 19:05”. It must become a real time before you can compute how long the customer waited.",
-					"trap": "Subtracting two text columns errors out or gives nonsense."
+					"trap": "Subtracting two text columns errors out or gives nonsense.",
+					"read": ["The dtype line: datetime64 means Python now reads the columns as real timestamps, not text.", "Sample table: compare created_at and actual_delivery_time; delivery always follows creation."],
+					"remark": "Both columns are now datetime; e.g. the first order was placed 22:24 and delivered 23:11, i.e. 47 minutes, so times can be subtracted.",
+					"howRemark": [
+						"Check the dtype before and after.",
+						"Subtract one sample row by hand to verify.",
+						"Write one sentence: why the type had to change."
+					]
 				}
 			},
 			"2.1.2": {
@@ -26197,7 +26775,14 @@ var assignments = [
 					],
 					"code": "cat_cols = ['market_id', 'order_protocol', 'store_primary_category']\ndf[cat_cols] = df[cat_cols].astype('category')\nprint(df[cat_cols].nunique())",
 					"lotus": "Mã chi nhánh 1, 2, 3 không có «hơn kém». Mã gói A12, B07, C03 cũng vậy. Đổi sang nhóm để máy không tự coi 3 là gấp 3 lần 1.",
-					"trap": "Để mã ở kiểu số thì hồi quy sẽ gán một hệ số chung cho mã, như thể mã 6 gấp 6 lần mã 1."
+					"trap": "Để mã ở kiểu số thì hồi quy sẽ gán một hệ số chung cho mã, như thể mã 6 gấp 6 lần mã 1.",
+					"read": ["Mỗi dòng là số giá trị khác nhau của một cột mã: market_id 6, order_protocol 7, store_primary_category 73.", "Cột có ít giá trị (6, 7) thành nhóm dễ; cột có 73 giá trị phải thận trọng vì nhiều nhóm sẽ rất ít đơn."],
+					"remark": "Ba cột mã được xem là nhóm (6, 7 và 73 giá trị). store_primary_category có 73 nhóm nên khi mã hóa sẽ sinh rất nhiều cột và nhiều nhóm có ít đơn.",
+					"howRemark": [
+						"Nêu số nhóm của từng cột.",
+						"Phân biệt mã với số đo được.",
+						"Dự báo hệ quả khi mã hóa cột có nhiều nhóm."
+					]
 				},
 				"en": {
 					"think": "market_id, order_protocol, store_primary_category are codes, not numbers to add or subtract. Convert to category so models and charts treat them as groups.",
@@ -26208,7 +26793,14 @@ var assignments = [
 					],
 					"code": "cat_cols = ['market_id', 'order_protocol', 'store_primary_category']\ndf[cat_cols] = df[cat_cols].astype('category')\nprint(df[cat_cols].nunique())",
 					"lotus": "Branch codes 1, 2, 3 have no “more or less”. Package codes A12, B07, C03 likewise. Convert to category so the machine does not treat 3 as three times 1.",
-					"trap": "Leaving codes numeric makes regression assign one coefficient to the code, as if code 6 were six times code 1."
+					"trap": "Leaving codes numeric makes regression assign one coefficient to the code, as if code 6 were six times code 1.",
+					"read": ["Each line is the number of distinct values of a code column: market_id 6, order_protocol 7, store_primary_category 73.", "Few values (6, 7) make easy groups; 73 values call for care because many groups will have very few orders."],
+					"remark": "Three code columns are treated as categories (6, 7 and 73 values). store_primary_category has 73, so encoding creates many columns and many thin groups.",
+					"howRemark": [
+						"State each column's number of groups.",
+						"Distinguish codes from measurable numbers.",
+						"Predict the consequence of encoding a column with many groups."
+					]
 				}
 			},
 			"2.2.1": {
@@ -26221,7 +26813,15 @@ var assignments = [
 					],
 					"code": "df['time_taken'] = (df['actual_delivery_time'] - df['created_at']).dt.total_seconds() / 60\nprint(df['time_taken'].describe().round(1))",
 					"lotus": "Khách đặt lúc 19:05 và vào phòng lúc 19:50 là 45 phút chờ. Đây là con số mô hình sẽ cố đoán trước.",
-					"trap": "Dùng .dt.seconds thay vì total_seconds làm mất phần ngày khi chênh qua nửa đêm."
+					"trap": "Dùng .dt.seconds thay vì total_seconds làm mất phần ngày khi chênh qua nửa đêm.",
+					"read": ["count là số đơn (175.777), mean là trung bình, 50% là trung vị.", "So mean 46,2 với trung vị 45: gần nhau là phân phối cân; max 110 xa hẳn 75% (52) là đuôi dài bên phải."],
+					"remark": "Một đơn mất trung bình 46,2 phút (độ lệch chuẩn 9,3), nửa số đơn giao trong 45 phút. Có vài đơn rất lâu (tối đa 110 phút), nên phân phối có đuôi phải.",
+					"howRemark": [
+						"Báo trung bình và trung vị.",
+						"Dùng độ lệch chuẩn để nói mức dao động.",
+						"So max với 75% để nói về đuôi.",
+						"Nêu biến này là mục tiêu của cả bài."
+					]
 				},
 				"en": {
 					"think": "Delivery time is the difference of the two timestamps, in minutes. It is the target of the whole assignment.",
@@ -26232,7 +26832,15 @@ var assignments = [
 					],
 					"code": "df['time_taken'] = (df['actual_delivery_time'] - df['created_at']).dt.total_seconds() / 60\nprint(df['time_taken'].describe().round(1))",
 					"lotus": "A customer books at 19:05 and enters the room at 19:50: a 45-minute wait. That is the number the model will try to predict ahead of time.",
-					"trap": "Using .dt.seconds instead of total_seconds drops the day part when the gap crosses midnight."
+					"trap": "Using .dt.seconds instead of total_seconds drops the day part when the gap crosses midnight.",
+					"read": ["count is the number of orders (175,777), mean the average, 50% the median.", "Mean 46.2 vs median 45 close means balanced; max 110 far above the 75% value (52) is a long right tail."],
+					"remark": "An order takes 46.2 minutes on average (std 9.3); half are delivered within 45. A few take very long (max 110), so the distribution has a right tail.",
+					"howRemark": [
+						"Report the mean and median.",
+						"Use std to describe spread.",
+						"Compare max with 75% to describe the tail.",
+						"State this is the target of the whole assignment."
+					]
 				}
 			},
 			"2.2.2": {
@@ -26245,7 +26853,18 @@ var assignments = [
 					],
 					"code": "df['hour'] = df['created_at'].dt.hour\ndf['day'] = df['created_at'].dt.dayofweek\ndf['isWeekend'] = (df['day'] >= 5).astype('category')\ndf = df.drop(columns=['created_at', 'actual_delivery_time'])",
 					"lotus": "Giờ đặt 19:00 và thứ bảy cho biết khách đông hay vắng. Trong file của bạn, đơn đặt lúc 2 đến 3 giờ sáng chờ lâu nhất (khoảng 50 phút), còn buổi tối khoảng 40 đến 42 phút.",
-					"trap": "Giữ lại actual_delivery_time khi dự đoán là rò rỉ đáp án: bạn đã biết kết quả trước khi đoán."
+					"trap": "Giữ lại actual_delivery_time khi dự đoán là rò rỉ đáp án: bạn đã biết kết quả trước khi đoán.",
+					"read": [
+						"Bảng là thời gian giao trung bình theo giờ đặt; mỗi dòng là một giờ.",
+						"Nhìn hai đầu của bảng: giờ 2 khoảng 50,7 phút, giờ 21 khoảng 40,1 phút.",
+						"Biểu đồ là cùng dữ liệu để xem hình dạng."
+					],
+					"remark": "Giao chậm nhất đơn đặt khoảng 2h sáng (~50,7 phút) và nhanh nhất khoảng 21h (~40,1 phút). Giờ đặt có ảnh hưởng, nên giữ hour làm biến vào mô hình.",
+					"howRemark": [
+						"Nêu giờ cao nhất và thấp nhất kèm số.",
+						"Tính chênh (khoảng 10 phút).",
+						"Kết luận: có giữ biến hay không."
+					]
 				},
 				"en": {
 					"think": "Order hour and weekday are signals of demand rhythm. Add a weekend flag, then drop columns no longer needed.",
@@ -26256,7 +26875,18 @@ var assignments = [
 					],
 					"code": "df['hour'] = df['created_at'].dt.hour\ndf['day'] = df['created_at'].dt.dayofweek\ndf['isWeekend'] = (df['day'] >= 5).astype('category')\ndf = df.drop(columns=['created_at', 'actual_delivery_time'])",
 					"lotus": "Order hour 19:00 and Saturday tell you whether customers are many or few. In your file, orders at 2 to 3 AM wait longest (about 50 minutes), evenings about 40 to 42.",
-					"trap": "Keeping actual_delivery_time when predicting leaks the answer: you already know the result before guessing."
+					"trap": "Keeping actual_delivery_time when predicting leaks the answer: you already know the result before guessing.",
+					"read": [
+						"The table is mean delivery time by order hour; each row is one hour.",
+						"Look at both ends: hour 2 about 50.7 min, hour 21 about 40.1 min.",
+						"The chart shows the same data as a shape."
+					],
+					"remark": "Slowest for orders around 2am (~50.7 min), fastest around 9pm (~40.1 min). Hour matters, so keep hour as a model input.",
+					"howRemark": [
+						"Name the highest and lowest hours with numbers.",
+						"Compute the gap (about 10 minutes).",
+						"Conclude whether to keep the variable."
+					]
 				}
 			},
 			"2.3.1": {
@@ -26269,7 +26899,10 @@ var assignments = [
 					],
 					"code": "y = df['time_taken']\nX = df.drop(columns=['time_taken'])\nprint(X.shape, y.shape)",
 					"lotus": "Câu hỏi là «chờ bao lâu». Đáp án (y) đi một bên, mọi thông tin biết trước lúc đặt (X) đi một bên.",
-					"trap": "Để time_taken lọt vào X làm mô hình đạt điểm gần tuyệt đối, một kết quả giả."
+					"trap": "Để time_taken lọt vào X làm mô hình đạt điểm gần tuyệt đối, một kết quả giả.",
+					"read": ["Hai bộ số là hình dạng: X có 175.777 dòng và 15 cột, y có 175.777 giá trị.", "Số dòng X và y phải bằng nhau."],
+					"remark": "X có 175.777 dòng × 15 cột và y có 175.777 giá trị: khớp nhau, sẵn sàng chia train/test.",
+					"howRemark": ["Kiểm số dòng hai bên bằng nhau.", "Nói cột nào là y và vì sao tách."]
 				},
 				"en": {
 					"think": "Separate the target y (time_taken) from the input features X. Everything else is X.",
@@ -26280,7 +26913,10 @@ var assignments = [
 					],
 					"code": "y = df['time_taken']\nX = df.drop(columns=['time_taken'])\nprint(X.shape, y.shape)",
 					"lotus": "The question is “how long to wait”. The answer (y) goes one side, everything known before booking (X) the other.",
-					"trap": "Letting time_taken slip into X gives a near-perfect score, a fake result."
+					"trap": "Letting time_taken slip into X gives a near-perfect score, a fake result.",
+					"read": ["Two shapes: X has 175,777 rows and 15 columns, y has 175,777 values.", "Row counts of X and y must be equal."],
+					"remark": "X is 175,777 rows × 15 columns and y has 175,777 values: they match, ready to split.",
+					"howRemark": ["Check both row counts match.", "Say which column is y and why it is split off."]
 				}
 			},
 			"2.3.2": {
@@ -26293,7 +26929,14 @@ var assignments = [
 					],
 					"code": "from sklearn.model_selection import train_test_split\nX_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)\nprint(len(X_train), len(X_test))",
 					"lotus": "Giống như bạn nhìn sổ booking quý 1 để rút quy luật, rồi thử đoán quý 2 mà chưa xem. Nếu xem cả hai trước, phép đoán không còn là phép đoán.",
-					"trap": "Khám phá trên toàn bộ dữ liệu rồi mới chia làm lộ thông tin của test vào các quyết định của bạn."
+					"trap": "Khám phá trên toàn bộ dữ liệu rồi mới chia làm lộ thông tin của test vào các quyết định của bạn.",
+					"read": ["Hai số: 140.621 dòng cho train và 35.156 dòng cho test.", "Chia tỷ lệ: 140.621 / 175.777 ≈ 80%."],
+					"remark": "Chia 80/20: train 140.621 đơn, test 35.156 đơn; test được giữ riêng chưa nhìn vào.",
+					"howRemark": [
+						"Tính lại tỷ lệ chia.",
+						"Nhắc random_state để lặp lại được.",
+						"Giải thích vì sao chia trước khi khám phá."
+					]
 				},
 				"en": {
 					"think": "Split train and test before exploring so the test set is genuinely unseen.",
@@ -26304,7 +26947,14 @@ var assignments = [
 					],
 					"code": "from sklearn.model_selection import train_test_split\nX_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)\nprint(len(X_train), len(X_test))",
 					"lotus": "Like studying Q1's booking log to find a rule, then predicting Q2 without looking. If you looked at both first, the prediction is no longer a prediction.",
-					"trap": "Exploring all the data before splitting leaks test information into your decisions."
+					"trap": "Exploring all the data before splitting leaks test information into your decisions.",
+					"read": ["Two numbers: 140,621 rows for train and 35,156 for test.", "The split ratio: 140,621 / 175,777 ≈ 80%."],
+					"remark": "An 80/20 split: 140,621 train orders and 35,156 test orders; the test part is kept unseen.",
+					"howRemark": [
+						"Recompute the split ratio.",
+						"Mention random_state for repeatability.",
+						"Explain why you split before exploring."
+					]
 				}
 			},
 			"3.1.1": {
@@ -26317,7 +26967,19 @@ var assignments = [
 					],
 					"code": "num_cols = X_train.select_dtypes(include='number').columns\nX_train[num_cols].hist(bins=40, figsize=(14, 10))",
 					"lotus": "Nếu số khách mỗi booking lệch phải (đa số 1 đến 2 người, vài nhóm 15 người) thì biết trước rằng vài điểm rất xa sẽ kéo đường hồi quy.",
-					"trap": "Trong file của bạn có số nhân viên trực âm, một lỗi nhập, không phải dữ liệu thật. Hình phân phối là chỗ thấy nó."
+					"trap": "Trong file của bạn có số nhân viên trực âm, một lỗi nhập, không phải dữ liệu thật. Hình phân phối là chỗ thấy nó.",
+					"read": [
+						"Bảng đếm giá trị trống mỗi cột; đa số bằng 0.",
+						"Các cột có trống: total_outstanding_orders (34), total_onshift_dashers (20), total_busy_dashers (16), min_item_price (11).",
+						"Biểu đồ: mỗi ô là phân phối một cột; xem cột nào lệch hẳn một bên."
+					],
+					"remark": "Chỉ vài chục dòng thiếu dữ liệu ở 4 cột, rất ít so với 140.621 dòng nên có thể bỏ hoặc điền dễ dàng. Phân phối của số lượng món và tiền đơn lệch phải, có đuôi dài.",
+					"howRemark": [
+						"Nêu cột nào thiếu và bao nhiêu.",
+						"So với tổng số dòng để kết luận mức nghiêm trọng.",
+						"Mô tả hình dạng từng phân phối.",
+						"Quyết định xử lý và nói lý do."
+					]
 				},
 				"en": {
 					"think": "Plot each numeric column's distribution on the training set to see skewness and odd values.",
@@ -26328,7 +26990,19 @@ var assignments = [
 					],
 					"code": "num_cols = X_train.select_dtypes(include='number').columns\nX_train[num_cols].hist(bins=40, figsize=(14, 10))",
 					"lotus": "If guests per booking are right-skewed (most 1 to 2, a few groups of 15), you know in advance a few far points will pull the regression line.",
-					"trap": "Your file has a negative count of staff on shift, an entry error, not real data. The distribution plot is where you see it."
+					"trap": "Your file has a negative count of staff on shift, an entry error, not real data. The distribution plot is where you see it.",
+					"read": [
+						"The table counts blanks per column; most are 0.",
+						"Columns with blanks: total_outstanding_orders (34), total_onshift_dashers (20), total_busy_dashers (16), min_item_price (11).",
+						"Charts: each panel is one column's distribution; see which are clearly skewed."
+					],
+					"remark": "Only a few dozen rows are missing in 4 columns, tiny against 140,621 rows, so they can be dropped or filled easily. Item count and subtotal are right-skewed with long tails.",
+					"howRemark": [
+						"Name which columns are missing and how many.",
+						"Compare with total rows to judge severity.",
+						"Describe each distribution's shape.",
+						"Decide the treatment and say why."
+					]
 				}
 			},
 			"3.1.2": {
@@ -26341,7 +27015,14 @@ var assignments = [
 					],
 					"code": "for c in ['market_id', 'order_protocol', 'isWeekend']:\n    X_train[c].value_counts().sort_index().plot(kind='bar', title=c)\n    plt.show()\nX_train['store_primary_category'].value_counts().head(15)",
 					"lotus": "Ba chi nhánh mà một chi nhánh chỉ có 20 booking thì hệ số của chi nhánh đó là số của 20 người.",
-					"trap": "Vẽ 73 cột của store_primary_category vào một biểu đồ cho ra một khối chữ không đọc được."
+					"trap": "Vẽ 73 cột của store_primary_category vào một biểu đồ cho ra một khối chữ không đọc được.",
+					"read": ["Mỗi biểu đồ cột là một cột nhóm; chiều cao là số đơn của nhóm.", "Tìm nhóm quá thấp: market 6 chỉ ~0,4% đơn."],
+					"remark": "Phần lớn đơn nằm ở vài nhóm lớn; market_id 6 gần như không có đơn (~0,4%) nên hệ số của nhóm này sẽ không ổn định.",
+					"howRemark": [
+						"Nêu nhóm lớn nhất và nhỏ nhất.",
+						"Nói nhóm nhỏ ảnh hưởng thế nào đến hệ số.",
+						"Đề xuất gộp hoặc để nguyên."
+					]
 				},
 				"en": {
 					"think": "Distribution of categorical columns: how many orders per group. Groups with very few orders give unstable coefficients.",
@@ -26352,7 +27033,14 @@ var assignments = [
 					],
 					"code": "for c in ['market_id', 'order_protocol', 'isWeekend']:\n    X_train[c].value_counts().sort_index().plot(kind='bar', title=c)\n    plt.show()\nX_train['store_primary_category'].value_counts().head(15)",
 					"lotus": "Of three branches, if one has only 20 bookings, that branch's coefficient is the number of 20 people.",
-					"trap": "Drawing all 73 bars of store_primary_category in one chart gives an unreadable block of text."
+					"trap": "Drawing all 73 bars of store_primary_category in one chart gives an unreadable block of text.",
+					"read": ["Each bar chart is a categorical column; height is the order count per group.", "Find tiny groups: market 6 is only ~0.4% of orders."],
+					"remark": "Most orders sit in a few big groups; market_id 6 has almost none (~0.4%) so its coefficient will be unstable.",
+					"howRemark": [
+						"Name the biggest and smallest groups.",
+						"Say how a small group affects coefficients.",
+						"Suggest merging or leaving as is."
+					]
 				}
 			},
 			"3.1.3": {
@@ -26365,7 +27053,14 @@ var assignments = [
 					],
 					"code": "sns.histplot(y_train, bins=40, kde=True)\nplt.show()\nprint(y_train.describe().round(1))",
 					"lotus": "Phần lớn khách chờ 40 đến 50 phút, vài người chờ 110. Vài người chờ rất lâu kéo trung bình lên cao hơn trung vị.",
-					"trap": "Trung bình cao hơn trung vị là dấu hiệu lệch phải. Đừng chỉ nhìn trung bình."
+					"trap": "Trung bình cao hơn trung vị là dấu hiệu lệch phải. Đừng chỉ nhìn trung bình.",
+					"read": ["Hình là phân phối time_taken; dòng chữ là các số tóm tắt.", "Trung bình 46,2 và trung vị 45 gần nhau; đuôi bên phải kéo đến 110."],
+					"remark": "time_taken tập trung quanh 39–52 phút (từ 25% đến 75%) và có đuôi phải đến 110 phút; không đối xứng hoàn hảo nhưng đủ gần để hồi quy tuyến tính dùng được.",
+					"howRemark": [
+						"Mô tả đỉnh và độ rộng.",
+						"Nói có lệch không và về phía nào.",
+						"Kết luận: có cần đổi dạng biến hay không."
+					]
 				},
 				"en": {
 					"think": "Distribution of the target: is it skewed, does it have a long tail.",
@@ -26376,7 +27071,14 @@ var assignments = [
 					],
 					"code": "sns.histplot(y_train, bins=40, kde=True)\nplt.show()\nprint(y_train.describe().round(1))",
 					"lotus": "Most customers wait 40 to 50 minutes, a few wait 110. A few very long waits pull the mean above the median.",
-					"trap": "A mean above the median signals right skew. Do not look at the mean alone."
+					"trap": "A mean above the median signals right skew. Do not look at the mean alone.",
+					"read": ["The chart is the distribution of time_taken; the text gives summary numbers.", "Mean 46.2 and median 45 are close; the right tail stretches to 110."],
+					"remark": "time_taken concentrates around 39–52 minutes (25% to 75%) with a right tail to 110; not perfectly symmetric but close enough for linear regression.",
+					"howRemark": [
+						"Describe the peak and width.",
+						"Say whether it is skewed and which way.",
+						"Conclude whether the variable needs transforming."
+					]
 				}
 			},
 			"3.2.1": {
@@ -26389,7 +27091,14 @@ var assignments = [
 					],
 					"code": "train = X_train.copy(); train['time_taken'] = y_train\nsample = train.sample(5000, random_state=42)\nsns.scatterplot(data=sample, x='distance', y='time_taken', alpha=0.3)\nplt.show()\nsns.boxplot(data=train, x='hour', y='time_taken')",
 					"lotus": "Càng nhiều đơn đang chờ xử lý, khách càng chờ lâu: ở file của bạn, tương quan giữa total_outstanding_orders và time_taken khoảng 0,39 và distance khoảng 0,46.",
-					"trap": "Scatter hơn 100.000 điểm thành một khối đen. Lấy mẫu hoặc dùng alpha."
+					"trap": "Scatter hơn 100.000 điểm thành một khối đen. Lấy mẫu hoặc dùng alpha.",
+					"read": ["Mỗi biểu đồ phân tán: trục ngang là một biến, trục dọc là time_taken; xem đám điểm đi lên, đi xuống hay nằm ngang.", "Đường dốc rõ nghĩa là biến có liên quan; đám tròn nghĩa là không."],
+					"remark": "Đám điểm của distance và subtotal dốc lên nhẹ so với time_taken, còn giờ trong ngày cho thấy chênh nhau giữa các giờ. Các biến này đáng đưa vào mô hình.",
+					"howRemark": [
+						"Mỗi biểu đồ nói xu hướng một câu.",
+						"Dùng từ «dốc lên/ngang/xuống».",
+						"Nhớ rằng nhìn bằng mắt cần được xác nhận bằng số ở 3.3.1."
+					]
 				},
 				"en": {
 					"think": "Scatter plots between time_taken and the important numeric features, and the distribution of time_taken by hour.",
@@ -26400,7 +27109,14 @@ var assignments = [
 					],
 					"code": "train = X_train.copy(); train['time_taken'] = y_train\nsample = train.sample(5000, random_state=42)\nsns.scatterplot(data=sample, x='distance', y='time_taken', alpha=0.3)\nplt.show()\nsns.boxplot(data=train, x='hour', y='time_taken')",
 					"lotus": "The more orders pending, the longer the customer waits: in your file, correlation of total_outstanding_orders with time_taken is about 0.39 and of distance about 0.46.",
-					"trap": "Scattering over 100,000 points makes a black block. Sample or use alpha."
+					"trap": "Scattering over 100,000 points makes a black block. Sample or use alpha.",
+					"read": ["Each scatter: x is a variable, y is time_taken; see if the cloud rises, falls or stays flat.", "A clear slope means related; a round blob means unrelated."],
+					"remark": "The distance and subtotal clouds slope slightly upward against time_taken, and hour shows differences across hours. These are worth including in the model.",
+					"howRemark": [
+						"One sentence per chart on the trend.",
+						"Use words like rising/flat/falling.",
+						"Remember eyeballing needs confirming with numbers in 3.3.1."
+					]
 				}
 			},
 			"3.3.1": {
@@ -26413,7 +27129,19 @@ var assignments = [
 					],
 					"code": "corr = train.select_dtypes(include='number').corr()\nplt.figure(figsize=(12, 9))\nsns.heatmap(corr, annot=True, fmt='.2f', cmap='coolwarm', center=0)\nprint(corr['time_taken'].sort_values())",
 					"lotus": "Các số ở hàng thời gian chờ cho biết yếu tố nào đáng đưa vào mô hình trước: khoảng cách, giá trị đơn, số đơn đang chờ.",
-					"trap": "Hệ số tương quan giữa hai biến đầu vào cao (ví dụ subtotal và total_items) là tín hiệu đa cộng tuyến, không phải một phát hiện."
+					"trap": "Hệ số tương quan giữa hai biến đầu vào cao (ví dụ subtotal và total_items) là tín hiệu đa cộng tuyến, không phải một phát hiện.",
+					"read": [
+						"Dòng chữ là tương quan của từng biến với time_taken, từ −1 đến 1.",
+						"Dương là đi cùng chiều, âm là ngược chiều; càng gần 1 hoặc −1 càng mạnh.",
+						"Bản đồ nhiệt: màu đậm là tương quan mạnh."
+					],
+					"remark": "distance có tương quan cao nhất (0,461), kế đến subtotal (0,413) và total_outstanding_orders (0,385). hour âm (−0,346): đặt càng muộn trong ngày thì giao càng nhanh. min_item_price (0,021) gần như không liên quan.",
+					"howRemark": [
+						"Xếp biến theo độ lớn tuyệt đối.",
+						"Nói dấu âm hay dương nghĩa là gì.",
+						"Chỉ ra biến yếu cần xem lại.",
+						"Nhớ tương quan chưa phải nhân quả."
+					]
 				},
 				"en": {
 					"think": "A correlation heatmap shows which numeric features move most with time_taken.",
@@ -26424,7 +27152,19 @@ var assignments = [
 					],
 					"code": "corr = train.select_dtypes(include='number').corr()\nplt.figure(figsize=(12, 9))\nsns.heatmap(corr, annot=True, fmt='.2f', cmap='coolwarm', center=0)\nprint(corr['time_taken'].sort_values())",
 					"lotus": "The numbers in the wait-time row tell you which factors deserve the model first: distance, order value, pending orders.",
-					"trap": "High correlation between two input features (for example subtotal and total_items) signals multicollinearity, not a discovery."
+					"trap": "High correlation between two input features (for example subtotal and total_items) signals multicollinearity, not a discovery.",
+					"read": [
+						"The text lists each variable's correlation with time_taken, from −1 to 1.",
+						"Positive means same direction, negative the opposite; closer to 1 or −1 is stronger.",
+						"Heatmap: darker is stronger."
+					],
+					"remark": "distance has the highest correlation (0.461), then subtotal (0.413) and total_outstanding_orders (0.385). hour is negative (−0.346): later in the day, faster delivery. min_item_price (0.021) is almost unrelated.",
+					"howRemark": [
+						"Rank variables by absolute value.",
+						"Say what a negative or positive sign means.",
+						"Point out weak variables to review.",
+						"Remember correlation is not causation."
+					]
 				}
 			},
 			"3.3.2": {
@@ -26437,7 +27177,14 @@ var assignments = [
 					],
 					"code": "weak = ['min_item_price', 'store_primary_category']  # pick 3-5 and justify\nX_train = X_train.drop(columns=weak)\nX_test = X_test.drop(columns=weak)",
 					"lotus": "Mã in phiếu không liên quan thời gian chờ thì bỏ. Nhưng nếu cột có quan hệ cong hay theo nhóm, tương quan đường thẳng thấp có thể đánh lừa.",
-					"trap": "Bỏ cột ở train mà quên bỏ ở test làm số cột hai bên khác nhau và mô hình báo lỗi khi dự đoán."
+					"trap": "Bỏ cột ở train mà quên bỏ ở test làm số cột hai bên khác nhau và mô hình báo lỗi khi dự đoán.",
+					"read": ["Danh sách là các cột được giữ lại (13 cột) sau khi bỏ cột yếu.", "So với 3.3.1: cột bị bỏ là những cột có tương quan gần 0."],
+					"remark": "Giữ 13 cột; bỏ các cột tương quan yếu như min_item_price để mô hình gọn hơn mà không mất tín hiệu chính.",
+					"howRemark": [
+						"Liệt kê cột bỏ và lý do từng cột.",
+						"Kiểm cột giữ có đủ biến mạnh ở 3.3.1.",
+						"Áp dụng đúng danh sách này cho validation."
+					]
 				},
 				"en": {
 					"think": "Drop a few weakly correlated columns for a leaner model. Write down the reason for each.",
@@ -26448,7 +27195,14 @@ var assignments = [
 					],
 					"code": "weak = ['min_item_price', 'store_primary_category']  # pick 3-5 and justify\nX_train = X_train.drop(columns=weak)\nX_test = X_test.drop(columns=weak)",
 					"lotus": "A receipt print code unrelated to wait time gets dropped. But if a column relates by curve or by group, a low linear correlation can mislead.",
-					"trap": "Dropping on train but forgetting on test leaves different column counts and the model errors at prediction."
+					"trap": "Dropping on train but forgetting on test leaves different column counts and the model errors at prediction.",
+					"read": ["The list shows the 13 kept columns after dropping weak ones.", "Compare with 3.3.1: dropped columns are the near-zero correlations."],
+					"remark": "Keep 13 columns; drop weak ones like min_item_price so the model is leaner without losing the main signals.",
+					"howRemark": [
+						"List dropped columns with a reason each.",
+						"Check the kept columns include the strong ones from 3.3.1.",
+						"Apply exactly this list to validation."
+					]
 				}
 			},
 			"3.4.1": {
@@ -26461,7 +27215,14 @@ var assignments = [
 					],
 					"code": "sns.boxplot(x=y_train)\nplt.show()\nfor c in ['total_items', 'subtotal', 'distance']:\n    sns.boxplot(x=X_train[c]); plt.show()",
 					"lotus": "Một booking 411 gói hay 83 km là một điểm xa. Nó có thể là một khách hàng doanh nghiệp thật hoặc một lỗi nhập, và bạn cần biết nó là cái nào trước khi bỏ.",
-					"trap": "Boxplot chỉ gắn cờ điểm xa. Nó không nói điểm đó là lỗi."
+					"trap": "Boxplot chỉ gắn cờ điểm xa. Nó không nói điểm đó là lỗi.",
+					"read": ["Số liệu là giá trị lớn nhất của vài cột: total_items 411, subtotal 26.800, distance 83,52.", "Boxplot: các chấm nằm ngoài râu là điểm xa."],
+					"remark": "Có đơn 411 món, 26.800 tiền đơn và khoảng cách 83,5: quá xa so với mức thường nên là điểm xa đáng nghi, cần xử lý trước khi huấn luyện.",
+					"howRemark": [
+						"Nêu giá trị lớn nhất và so với mức thường.",
+						"Phân biệt điểm xa thật và lỗi nhập.",
+						"Nói cách xử lý ở 3.4.2."
+					]
 				},
 				"en": {
 					"think": "Boxplots to see outliers in time_taken and the numeric features.",
@@ -26472,7 +27233,14 @@ var assignments = [
 					],
 					"code": "sns.boxplot(x=y_train)\nplt.show()\nfor c in ['total_items', 'subtotal', 'distance']:\n    sns.boxplot(x=X_train[c]); plt.show()",
 					"lotus": "A booking of 411 packages or 83 km is an outlier. It may be a real corporate customer or an entry error, and you need to know which before dropping it.",
-					"trap": "A boxplot only flags outliers. It does not say the point is an error."
+					"trap": "A boxplot only flags outliers. It does not say the point is an error.",
+					"read": ["The numbers are the maxima of a few columns: total_items 411, subtotal 26,800, distance 83.52.", "Boxplot: dots beyond the whiskers are outliers."],
+					"remark": "There are orders with 411 items, 26,800 subtotal and 83.5 distance: far beyond normal, suspicious outliers to handle before training.",
+					"howRemark": [
+						"Quote the max and compare with normal.",
+						"Separate genuine extremes from entry errors.",
+						"Point to the treatment in 3.4.2."
+					]
 				}
 			},
 			"3.4.2": {
@@ -26486,7 +27254,15 @@ var assignments = [
 					],
 					"code": "train = X_train.copy(); train['time_taken'] = y_train\nn0 = len(train)\nneg = ['total_onshift_dashers', 'total_busy_dashers', 'total_outstanding_orders']\ntrain = train[(train[neg] >= 0).all(axis=1)]\nfor c in ['total_items', 'subtotal', 'distance']:\n    hi = train[c].quantile(0.99)\n    train = train[train[c] <= hi]\nprint(n0 - len(train), 'rows removed')",
 					"lotus": "Số nhân viên âm bỏ hẳn. Một booking 411 gói giữ lại thì kéo hệ số, bỏ đi thì mô hình không còn thấy khách doanh nghiệp. Quyết định nào cũng phải ghi lý do.",
-					"trap": "Tính ngưỡng trên cả train và validation cùng lúc rò rỉ thông tin. Tính trên train rồi mang sang."
+					"trap": "Tính ngưỡng trên cả train và validation cùng lúc rò rỉ thông tin. Tính trên train rồi mang sang.",
+					"read": ["Dòng chữ: bỏ 65 dòng vì giá trị âm, bỏ 4.124 dòng điểm xa (phân vị 99), còn 136.432 dòng.", "Tổng đã bỏ ≈ 3% (4.189 trên 140.621)."],
+					"remark": "Bỏ 65 dòng giá trị âm và 4.124 dòng điểm xa (trên phân vị 99): còn 136.432 dòng, mất khoảng 3% dữ liệu để mô hình không bị kéo bởi vài đơn bất thường.",
+					"howRemark": [
+						"Báo số dòng bỏ theo từng quy tắc.",
+						"Tính % mất.",
+						"Nêu lý do cho từng quy tắc.",
+						"Áp dụng cùng ngưỡng cho validation."
+					]
 				},
 				"en": {
 					"think": "Handling outliers: each rule needs a reason and must be applied the same way to validation.",
@@ -26498,7 +27274,15 @@ var assignments = [
 					],
 					"code": "train = X_train.copy(); train['time_taken'] = y_train\nn0 = len(train)\nneg = ['total_onshift_dashers', 'total_busy_dashers', 'total_outstanding_orders']\ntrain = train[(train[neg] >= 0).all(axis=1)]\nfor c in ['total_items', 'subtotal', 'distance']:\n    hi = train[c].quantile(0.99)\n    train = train[train[c] <= hi]\nprint(n0 - len(train), 'rows removed')",
 					"lotus": "A negative staff count is dropped outright. A 411-package booking kept pulls the coefficient, dropped means the model no longer sees corporate customers. Either decision needs a recorded reason.",
-					"trap": "Computing thresholds on train and validation together leaks information. Compute on train and carry over."
+					"trap": "Computing thresholds on train and validation together leaks information. Compute on train and carry over.",
+					"read": ["Text: 65 rows dropped for negatives, 4,124 as outliers (99th percentile), leaving 136,432.", "Total dropped ≈ 3% (4,189 of 140,621)."],
+					"remark": "Dropped 65 negative rows and 4,124 outlier rows (above the 99th percentile): 136,432 remain, losing about 3% so a few odd orders do not pull the model.",
+					"howRemark": [
+						"Report rows dropped per rule.",
+						"Compute the % lost.",
+						"Justify each rule.",
+						"Apply the same thresholds to validation."
+					]
 				}
 			},
 			"4.1.1": {
@@ -26511,7 +27295,14 @@ var assignments = [
 					],
 					"code": "num_cols_v = X_test.select_dtypes(include='number').columns\nX_test[num_cols_v].hist(bins=40, figsize=(14, 10))",
 					"lotus": "Sổ booking tháng 11 và tháng 12 nên có hình dạng giống nhau. Nếu giờ đông của tháng 12 khác hẳn thì một mô hình luyện từ tháng 11 sẽ đoán sai.",
-					"trap": "Ở phần này chỉ nhìn, không điều chỉnh train theo những gì thấy ở validation."
+					"trap": "Ở phần này chỉ nhìn, không điều chỉnh train theo những gì thấy ở validation.",
+					"read": ["Hình lặp lại phân phối cột số nhưng trên validation.", "So hình dạng với 3.1.1: giống nhau là tốt."],
+					"remark": "Hình dạng các phân phối ở validation giống train, nên mô hình học từ train có cơ sở áp dụng cho validation.",
+					"howRemark": [
+						"Đặt hai bộ biểu đồ cạnh nhau.",
+						"Nói điểm giống và khác.",
+						"Kết luận về độ tương đồng."
+					]
 				},
 				"en": {
 					"think": "Part 4 is optional: repeat EDA on validation to see whether the data's shape matches train.",
@@ -26522,7 +27313,14 @@ var assignments = [
 					],
 					"code": "num_cols_v = X_test.select_dtypes(include='number').columns\nX_test[num_cols_v].hist(bins=40, figsize=(14, 10))",
 					"lotus": "The November and December booking logs should look alike. If December's busy hours differ a lot, a model trained on November will guess wrong.",
-					"trap": "In this part only look; do not adjust train based on what you see in validation."
+					"trap": "In this part only look; do not adjust train based on what you see in validation.",
+					"read": ["The chart repeats the numeric distributions on validation.", "Compare the shapes with 3.1.1: similar is good."],
+					"remark": "Validation distributions look like train's, so a model trained on train has grounds to work on validation.",
+					"howRemark": [
+						"Put the two chart sets side by side.",
+						"State similarities and differences.",
+						"Conclude on similarity."
+					]
 				}
 			},
 			"4.1.2": {
@@ -26535,7 +27333,14 @@ var assignments = [
 					],
 					"code": "pd.concat([X_train['market_id'].value_counts(normalize=True), X_test['market_id'].value_counts(normalize=True)], axis=1, keys=['train','valid'])",
 					"lotus": "Tỷ lệ chi nhánh trong train và validation phải gần nhau. Nếu Thủ Đức chỉ có ở validation, mô hình chưa từng thấy nó.",
-					"trap": "Một nhóm mới ở validation làm get_dummies sinh cột khác nhau giữa hai tập."
+					"trap": "Một nhóm mới ở validation làm get_dummies sinh cột khác nhau giữa hai tập.",
+					"read": ["Mỗi dòng là một market, hai cột là tỷ lệ ở train và valid.", "Hai cột gần bằng nhau (ví dụ 0,306 và 0,306) là tốt."],
+					"remark": "Tỷ lệ các market ở validation gần như trùng train (ví dụ market 2 chiếm 30,6% ở cả hai), nên việc chia không làm lệch cơ cấu.",
+					"howRemark": [
+						"So từng cặp số.",
+						"Nêu chênh lớn nhất.",
+						"Kết luận."
+					]
 				},
 				"en": {
 					"think": "Distribution of categorical columns in validation versus train.",
@@ -26546,7 +27351,14 @@ var assignments = [
 					],
 					"code": "pd.concat([X_train['market_id'].value_counts(normalize=True), X_test['market_id'].value_counts(normalize=True)], axis=1, keys=['train','valid'])",
 					"lotus": "Branch shares in train and validation should be close. If Thu Duc exists only in validation, the model has never seen it.",
-					"trap": "A new group in validation makes get_dummies produce different columns between the two sets."
+					"trap": "A new group in validation makes get_dummies produce different columns between the two sets.",
+					"read": ["Each row is a market, the two columns are shares in train and valid.", "Two columns close to each other (e.g. 0.306 and 0.306) is good."],
+					"remark": "Market shares in validation almost equal train's (e.g. market 2 is 30.6% in both), so the split did not distort the mix.",
+					"howRemark": [
+						"Compare each pair of numbers.",
+						"State the largest difference.",
+						"Conclude."
+					]
 				}
 			},
 			"4.1.3": {
@@ -26559,7 +27371,14 @@ var assignments = [
 					],
 					"code": "print(y_train.describe().round(1)); print(y_test.describe().round(1))",
 					"lotus": "Thời gian chờ trung bình của tháng 11 và tháng 12 mà khác nhau nhiều thì có chuyện gì đó khác ngoài ngẫu nhiên.",
-					"trap": "Hai trung bình lệch vài phút là bình thường với mẫu lớn, nhưng lệch nhiều là dấu hiệu chia chưa tốt."
+					"trap": "Hai trung bình lệch vài phút là bình thường với mẫu lớn, nhưng lệch nhiều là dấu hiệu chia chưa tốt.",
+					"read": ["Hai bảng tóm tắt time_taken: bảng đầu là train, bảng sau là validation.", "So mean, std và các phân vị của hai bảng."],
+					"remark": "Trung bình 45,9 ở train và 46,2 ở validation, độ lệch chuẩn 9,1 so với 9,4, phân vị gần nhau: hai tập có cùng phân phối.",
+					"howRemark": [
+						"Đặt các số cạnh nhau.",
+						"Tính chênh trung bình (0,3 phút).",
+						"Kết luận hai tập có giống nhau không."
+					]
 				},
 				"en": {
 					"think": "Target distribution in validation versus train.",
@@ -26570,7 +27389,14 @@ var assignments = [
 					],
 					"code": "print(y_train.describe().round(1)); print(y_test.describe().round(1))",
 					"lotus": "If average wait differs a lot between November and December, something other than chance is going on.",
-					"trap": "A few minutes' gap is normal in a large sample, but a big one signals a poor split."
+					"trap": "A few minutes' gap is normal in a large sample, but a big one signals a poor split.",
+					"read": ["Two summaries of time_taken: first is train, second is validation.", "Compare mean, std and percentiles."],
+					"remark": "Mean is 45.9 in train and 46.2 in validation, std 9.1 vs 9.4, percentiles close: the two sets share the same distribution.",
+					"howRemark": [
+						"Put the numbers side by side.",
+						"Compute the mean difference (0.3 min).",
+						"Conclude whether they match."
+					]
 				}
 			},
 			"4.2": {
@@ -26583,7 +27409,14 @@ var assignments = [
 					],
 					"code": "val = X_test.copy(); val['time_taken'] = y_test\nsns.scatterplot(data=val.sample(5000, random_state=42), x='distance', y='time_taken', alpha=0.3)",
 					"lotus": "Quan hệ giữa khoảng cách và thời gian chờ ở validation phải đi cùng chiều với train.",
-					"trap": "Nếu chiều quan hệ đảo ngược giữa train và validation thì mô hình sẽ không khái quát hóa."
+					"trap": "Nếu chiều quan hệ đảo ngược giữa train và validation thì mô hình sẽ không khái quát hóa.",
+					"read": ["Hình giống 3.2.1 nhưng trên validation.", "Kiểm tra độ dốc và hình đám điểm có khớp train không."],
+					"remark": "Quan hệ giữa time_taken và các biến ở validation cùng xu hướng với train, nên mối liên hệ học được không phải ngẫu nhiên của một tập.",
+					"howRemark": [
+						"So từng biểu đồ với 3.2.1.",
+						"Nói xu hướng nào giữ nguyên.",
+						"Kết luận."
+					]
 				},
 				"en": {
 					"think": "Scatter time_taken against numeric features on validation, to compare with train.",
@@ -26594,7 +27427,14 @@ var assignments = [
 					],
 					"code": "val = X_test.copy(); val['time_taken'] = y_test\nsns.scatterplot(data=val.sample(5000, random_state=42), x='distance', y='time_taken', alpha=0.3)",
 					"lotus": "The relation between distance and wait on validation should run the same direction as train.",
-					"trap": "If the relation direction reverses between train and validation, the model will not generalise."
+					"trap": "If the relation direction reverses between train and validation, the model will not generalise.",
+					"read": ["The chart mirrors 3.2.1 but on validation.", "Check whether slopes and cloud shapes match train."],
+					"remark": "The relationships between time_taken and the variables on validation follow train's trends, so what was learned is not a quirk of one set.",
+					"howRemark": [
+						"Compare each chart with 3.2.1.",
+						"State which trends hold.",
+						"Conclude."
+					]
 				}
 			},
 			"4.3": {
@@ -26607,7 +27447,14 @@ var assignments = [
 					],
 					"code": "X_test = X_test.drop(columns=weak, errors='ignore')\nprint(list(X_train.columns) == list(X_test.columns))",
 					"lotus": "Hai sổ phải có cùng các cột theo cùng thứ tự, nếu không phép so sánh táo với cam.",
-					"trap": "Thứ tự cột khác nhau làm sai kết quả dự đoán mà không báo lỗi."
+					"trap": "Thứ tự cột khác nhau làm sai kết quả dự đoán mà không báo lỗi.",
+					"read": ["Dòng «True 35143» cho biết cột còn lại giống train (True) và số dòng validation sau xử lý (35.143).", "So với 35.156 dòng ban đầu: mất 13 dòng."],
+					"remark": "Validation đã bỏ đúng các cột của train (True) và còn 35.143 dòng sau khi áp cùng quy tắc, mất 13 dòng so với 35.156.",
+					"howRemark": [
+						"Kiểm cột trùng train.",
+						"Báo số dòng còn lại.",
+						"Nói đã áp cùng quy tắc."
+					]
 				},
 				"en": {
 					"think": "Drop exactly the columns dropped on train (task 3.3.2) from validation.",
@@ -26618,7 +27465,14 @@ var assignments = [
 					],
 					"code": "X_test = X_test.drop(columns=weak, errors='ignore')\nprint(list(X_train.columns) == list(X_test.columns))",
 					"lotus": "The two logs must have the same columns in the same order, or the comparison is apples to oranges.",
-					"trap": "A different column order corrupts predictions without raising an error."
+					"trap": "A different column order corrupts predictions without raising an error.",
+					"read": ["The line “True 35143” says the columns match train (True) and validation has 35,143 rows after processing.", "Versus the original 35,156: 13 rows lost."],
+					"remark": "Validation dropped exactly train's columns (True) and has 35,143 rows after the same rules, 13 fewer than 35,156.",
+					"howRemark": [
+						"Check columns match train.",
+						"Report remaining rows.",
+						"State the same rules were applied."
+					]
 				}
 			},
 			"5.1": {
@@ -26631,7 +27485,14 @@ var assignments = [
 					],
 					"code": "from sklearn.preprocessing import StandardScaler\nnum = X_train.select_dtypes(include='number').columns\nscaler = StandardScaler()\nX_train[num] = scaler.fit_transform(X_train[num])\nX_test[num] = scaler.transform(X_test[num])",
 					"lotus": "Khoảng cách tính bằng km (0 đến 83) và giá trị đơn tính bằng nghìn (0 đến 26.800) có thang rất khác. Chuẩn hóa để hệ số của hai biến đặt cạnh nhau được.",
-					"trap": "fit scaler trên cả train và validation làm lộ trung bình và độ lệch chuẩn của validation."
+					"trap": "fit scaler trên cả train và validation làm lộ trung bình và độ lệch chuẩn của validation.",
+					"read": ["Bảng mô tả sau chuẩn hóa: hàng mean gần 0, hàng std bằng 1.", "Đó là dấu hiệu chuẩn hóa đúng."],
+					"remark": "Sau chuẩn hóa, mỗi cột có trung bình 0 và độ lệch chuẩn 1, nên các hệ số về sau so sánh được trực tiếp với nhau.",
+					"howRemark": [
+						"Kiểm mean ≈ 0 và std = 1.",
+						"Nói chuẩn hóa fit trên train rồi áp lên validation.",
+						"Nêu lý do cần chuẩn hóa."
+					]
 				},
 				"en": {
 					"think": "Put features on a common scale so coefficients are comparable. Linear regression does not need scaling, but coefficients become easier to read.",
@@ -26642,7 +27503,14 @@ var assignments = [
 					],
 					"code": "from sklearn.preprocessing import StandardScaler\nnum = X_train.select_dtypes(include='number').columns\nscaler = StandardScaler()\nX_train[num] = scaler.fit_transform(X_train[num])\nX_test[num] = scaler.transform(X_test[num])",
 					"lotus": "Distance in km (0 to 83) and order value in thousands (0 to 26,800) have very different scales. Scale so their coefficients sit side by side.",
-					"trap": "Fitting the scaler on train and validation together leaks validation's mean and standard deviation."
+					"trap": "Fitting the scaler on train and validation together leaks validation's mean and standard deviation.",
+					"read": ["The describe table after scaling: mean row near 0, std row 1.", "That is the sign of correct scaling."],
+					"remark": "After scaling each column has mean 0 and std 1, so later coefficients can be compared directly.",
+					"howRemark": [
+						"Check mean ≈ 0 and std = 1.",
+						"Say the scaler is fit on train and applied to validation.",
+						"State why scaling helps."
+					]
 				}
 			},
 			"5.2": {
@@ -26656,7 +27524,15 @@ var assignments = [
 					],
 					"code": "from sklearn.linear_model import LinearRegression\nfrom sklearn.metrics import r2_score, mean_squared_error\nlr = LinearRegression().fit(X_train, y_train)\nfor name, X, y in [('train', X_train, y_train), ('valid', X_test, y_test)]:\n    p = lr.predict(X)\n    print(name, 'R2', round(r2_score(y, p), 3), 'RMSE', round(mean_squared_error(y, p) ** 0.5, 2))",
 					"lotus": "Mô hình đoán khách chờ 47 phút trong khi thực tế là 45. RMSE là cỡ sai lệch trung bình của những lần đoán như vậy, tính bằng phút.",
-					"trap": "R² cao ở train mà thấp ở validation là quá khớp. Luôn nhìn cả hai."
+					"trap": "R² cao ở train mà thấp ở validation là quá khớp. Luôn nhìn cả hai.",
+					"read": ["Hai dòng: R2 và RMSE trên train, rồi trên validation.", "R2 gần 1 là mô hình giải thích tốt; RMSE là sai số trung bình tính bằng phút."],
+					"remark": "R2 0,900 ở train và 0,903 ở validation, RMSE khoảng 2,9 phút: mô hình giải thích khoảng 90% biến thiên thời gian giao, và hai tập gần nhau nên không quá khớp.",
+					"howRemark": [
+						"Báo R2 và RMSE cả hai tập.",
+						"So train với validation để nói quá khớp hay không.",
+						"Diễn giải RMSE bằng phút.",
+						"Nêu giới hạn."
+					]
 				},
 				"en": {
 					"think": "Build a linear regression with statsmodels or scikit-learn, train, predict, then measure.",
@@ -26668,7 +27544,15 @@ var assignments = [
 					],
 					"code": "from sklearn.linear_model import LinearRegression\nfrom sklearn.metrics import r2_score, mean_squared_error\nlr = LinearRegression().fit(X_train, y_train)\nfor name, X, y in [('train', X_train, y_train), ('valid', X_test, y_test)]:\n    p = lr.predict(X)\n    print(name, 'R2', round(r2_score(y, p), 3), 'RMSE', round(mean_squared_error(y, p) ** 0.5, 2))",
 					"lotus": "The model guesses a 47-minute wait when the real one is 45. RMSE is the typical size of such misses, in minutes.",
-					"trap": "High R² on train and low on validation is overfitting. Always look at both."
+					"trap": "High R² on train and low on validation is overfitting. Always look at both.",
+					"read": ["Two lines: R2 and RMSE on train, then validation.", "R2 near 1 means a good fit; RMSE is the typical error in minutes."],
+					"remark": "R2 is 0.900 on train and 0.903 on validation, RMSE about 2.9 minutes: the model explains about 90% of delivery-time variation, and the sets are close so no overfitting.",
+					"howRemark": [
+						"Report R2 and RMSE for both sets.",
+						"Compare train and validation to judge overfitting.",
+						"Read RMSE in minutes.",
+						"State the limits."
+					]
 				}
 			},
 			"5.3": {
@@ -26681,7 +27565,14 @@ var assignments = [
 					],
 					"code": "from sklearn.feature_selection import RFE\nscores = {}\nfor k in range(1, X_train.shape[1] + 1):\n    rfe = RFE(LinearRegression(), n_features_to_select=k).fit(X_train, y_train)\n    cols = X_train.columns[rfe.support_]\n    m = LinearRegression().fit(X_train[cols], y_train)\n    scores[k] = r2_score(y_test, m.predict(X_test[cols]))\npd.Series(scores).plot(marker='o')",
 					"lotus": "Giống chọn bao nhiêu hạng mục để đưa vào bảng khảo sát: sau mức nào đó thêm câu hỏi không làm thông tin tăng thêm bao nhiêu.",
-					"trap": "Chọn số biến theo điểm trên train luôn chọn nhiều nhất. Dùng điểm trên validation."
+					"trap": "Chọn số biến theo điểm trên train luôn chọn nhiều nhất. Dùng điểm trên validation.",
+					"read": ["Bảng là R2 theo số biến giữ lại (1 đến 22).", "Tìm chỗ đường cong ngừng tăng: sau 12 biến R2 chỉ nhích từ 0,8925 lên 0,90."],
+					"remark": "R2 tăng nhanh đến 12 biến (0,8925) rồi gần như phẳng (0,9031 ở 22 biến), nên chọn 12 biến là gọn mà vẫn tốt.",
+					"howRemark": [
+						"Chỉ chỗ khuỷu của đường cong.",
+						"So R2 ở khuỷu với R2 đầy đủ.",
+						"Chốt số biến và lý do."
+					]
 				},
 				"en": {
 					"think": "RFE drops the weakest feature one at a time. Choose the number of features beyond which adding more barely helps.",
@@ -26692,7 +27583,14 @@ var assignments = [
 					],
 					"code": "from sklearn.feature_selection import RFE\nscores = {}\nfor k in range(1, X_train.shape[1] + 1):\n    rfe = RFE(LinearRegression(), n_features_to_select=k).fit(X_train, y_train)\n    cols = X_train.columns[rfe.support_]\n    m = LinearRegression().fit(X_train[cols], y_train)\n    scores[k] = r2_score(y_test, m.predict(X_test[cols]))\npd.Series(scores).plot(marker='o')",
 					"lotus": "Like choosing how many items to put on a survey: beyond some level, extra questions add little information.",
-					"trap": "Choosing the number by train score always picks the most. Use validation score."
+					"trap": "Choosing the number by train score always picks the most. Use validation score.",
+					"read": ["The table is R2 by number of features kept (1 to 22).", "Find where the curve stops rising: after 12 features R2 only moves from 0.8925 to 0.90."],
+					"remark": "R2 rises fast up to 12 features (0.8925) then flattens (0.9031 at 22), so 12 features is lean and still good.",
+					"howRemark": [
+						"Point out the elbow of the curve.",
+						"Compare R2 at the elbow with the full R2.",
+						"Fix the count and the reason."
+					]
 				}
 			},
 			"6.1": {
@@ -26706,7 +27604,15 @@ var assignments = [
 					],
 					"code": "pred = final_model.predict(X_test[cols])\nres = y_test - pred\nplt.scatter(pred, res, alpha=0.2); plt.axhline(0, color='r'); plt.show()\nimport statsmodels.api as sm\nsm.qqplot(res, line='45', fit=True); plt.show()\nsns.histplot(res, bins=40, kde=True)",
 					"lotus": "Nếu mô hình luôn đoán thấp cho khách chờ rất lâu (phần dư dương lớn ở bên phải) thì có một nhóm đơn mà mô hình chưa hiểu.",
-					"trap": "Chỉ nhìn R² mà bỏ qua phần dư bỏ lỡ các mẫu hình cho thấy mô hình sai ở đâu."
+					"trap": "Chỉ nhìn R² mà bỏ qua phần dư bỏ lỡ các mẫu hình cho thấy mô hình sai ở đâu.",
+					"read": ["Dòng đầu là 12 biến được giữ; dòng sau là R2 validation 0,892.", "Ba biểu đồ phần dư: phần dư theo dự đoán nên tản đều quanh 0; Q-Q plot nên gần đường thẳng; histogram nên hình chuông."],
+					"remark": "Mô hình 12 biến đạt R2 0,892 trên validation, chỉ thấp hơn mô hình đầy đủ khoảng 0,01. Phần dư quanh 0 nên giả định cơ bản chấp nhận được.",
+					"howRemark": [
+						"Báo R2 của mô hình cuối.",
+						"Mô tả từng biểu đồ phần dư.",
+						"Nói giả định nào đạt, chưa đạt.",
+						"Kết luận có dùng được không."
+					]
 				},
 				"en": {
 					"think": "Residual analysis: plot residuals against predictions, a Q-Q plot and a residual histogram to check regression assumptions.",
@@ -26718,7 +27624,15 @@ var assignments = [
 					],
 					"code": "pred = final_model.predict(X_test[cols])\nres = y_test - pred\nplt.scatter(pred, res, alpha=0.2); plt.axhline(0, color='r'); plt.show()\nimport statsmodels.api as sm\nsm.qqplot(res, line='45', fit=True); plt.show()\nsns.histplot(res, bins=40, kde=True)",
 					"lotus": "If the model always underguesses for very long waits (large positive residuals on the right) there is a group of orders the model does not understand.",
-					"trap": "Looking at R² only and skipping residuals misses patterns that show where the model is wrong."
+					"trap": "Looking at R² only and skipping residuals misses patterns that show where the model is wrong.",
+					"read": ["First line: the 12 kept features; next: validation R2 0.892.", "Three residual charts: residual vs prediction should scatter evenly around 0; Q-Q plot near the line; histogram bell-shaped."],
+					"remark": "The 12-feature model reaches R2 0.892 on validation, only about 0.01 below the full model. Residuals centre on 0 so basic assumptions are acceptable.",
+					"howRemark": [
+						"Report the final model's R2.",
+						"Describe each residual chart.",
+						"Say which assumptions hold or not.",
+						"Conclude whether it is usable."
+					]
 				}
 			},
 			"6.2": {
@@ -26732,7 +27646,15 @@ var assignments = [
 					],
 					"code": "coef_scaled = pd.Series(final_model.coef_, index=cols)\nscale = pd.Series(scaler.scale_, index=num)\ncoef_orig = coef_scaled[cols.intersection(num)] / scale[cols.intersection(num)]\nprint(pd.DataFrame({'scaled': coef_scaled, 'original': coef_orig}))\n# effect of +1 distance on time_taken: coef_orig['distance'] minutes",
 					"lotus": "Nếu hệ số gốc của số đơn đang chờ là 0,1 thì thêm 10 đơn đang chờ làm khách chờ thêm khoảng 1 phút, giữ mọi thứ khác không đổi.",
-					"trap": "Hệ số chuẩn hóa so được độ mạnh, nhưng muốn nói «thêm 1 đơn thì mấy phút» phải dùng hệ số thang gốc."
+					"trap": "Hệ số chuẩn hóa so được độ mạnh, nhưng muốn nói «thêm 1 đơn thì mấy phút» phải dùng hệ số thang gốc.",
+					"read": ["Hai cột: scaled là hệ số trên dữ liệu chuẩn hóa (so sánh mạnh yếu), original là hệ số trên thang gốc (đọc ý nghĩa).", "Dòng cuối: +1 đơn vị distance làm thời gian giao tăng 0,483 phút."],
+					"remark": "Trên thang chuẩn hóa, total_outstanding_orders (+18,2) và total_onshift_dashers (−11,9) có ảnh hưởng mạnh nhất. Ở thang gốc, mỗi đơn đang chờ thêm làm chậm 0,34 phút, mỗi tài xế trực thêm nhanh hơn 0,34 phút, và mỗi đơn vị distance thêm 0,48 phút.",
+					"howRemark": [
+						"Dùng cột scaled để xếp mức ảnh hưởng.",
+						"Dùng cột original để nói bằng đơn vị thật.",
+						"Nói dấu hệ số nghĩa là gì.",
+						"Nhớ chỉ giữ các biến khác cố định."
+					]
 				},
 				"en": {
 					"think": "Coefficient analysis: compare coefficients on standardised data with coefficients converted to the original scale, then say how much one unit of a feature changes time_taken in minutes.",
@@ -26744,7 +27666,15 @@ var assignments = [
 					],
 					"code": "coef_scaled = pd.Series(final_model.coef_, index=cols)\nscale = pd.Series(scaler.scale_, index=num)\ncoef_orig = coef_scaled[cols.intersection(num)] / scale[cols.intersection(num)]\nprint(pd.DataFrame({'scaled': coef_scaled, 'original': coef_orig}))\n# effect of +1 distance on time_taken: coef_orig['distance'] minutes",
 					"lotus": "If the original coefficient for pending orders is 0.1, then 10 more pending orders add about 1 minute to the wait, holding everything else constant.",
-					"trap": "Scaled coefficients compare strength, but to say “one more order is how many minutes” you need the original-scale coefficient."
+					"trap": "Scaled coefficients compare strength, but to say “one more order is how many minutes” you need the original-scale coefficient.",
+					"read": ["Two columns: scaled is the coefficient on standardized data (compare strength), original is on the raw scale (read meaning).", "Last line: +1 unit of distance adds 0.483 minutes."],
+					"remark": "On the scaled axis total_outstanding_orders (+18.2) and total_onshift_dashers (−11.9) matter most. On the raw scale each extra waiting order slows delivery by 0.34 min, each extra on-shift dasher speeds it by 0.34, and each distance unit adds 0.48.",
+					"howRemark": [
+						"Use the scaled column to rank influence.",
+						"Use the original column to speak in real units.",
+						"Say what each sign means.",
+						"Remember it holds other variables fixed."
+					]
 				}
 			},
 			"Q1": {
@@ -26757,7 +27687,13 @@ var assignments = [
 					],
 					"code": "# Câu trả lời viết bằng chữ trong ô Answer của notebook",
 					"lotus": "Chi nhánh nào có thời gian chờ trung bình cao hơn rõ rệt thì chi nhánh là một yếu tố, không chỉ là nhãn.",
-					"trap": "Nói «ảnh hưởng» chỉ từ một biểu đồ đếm số đơn mà không so time_taken theo nhóm là chưa trả lời câu hỏi."
+					"trap": "Nói «ảnh hưởng» chỉ từ một biểu đồ đếm số đơn mà không so time_taken theo nhóm là chưa trả lời câu hỏi.",
+					"remark": "Có các cột nhóm như market_id, order_protocol, store_primary_category. Nhìn biểu đồ nhóm (3.1.2) và tương quan, market và loại cửa hàng cho thời gian giao khác nhau, nên chúng ảnh hưởng nhưng cần mã hóa trước khi đưa vào hồi quy.",
+					"howRemark": [
+						"Liệt kê cột nhóm trước.",
+						"Nói biểu đồ nào bạn dựa vào.",
+						"Kết luận ảnh hưởng và cách xử lý."
+					]
 				},
 				"en": {
 					"think": "Which categorical columns exist, and what can your charts say about their effect on delivery time?",
@@ -26768,7 +27704,13 @@ var assignments = [
 					],
 					"code": "# Write the answer in words in the notebook's Answer cell",
 					"lotus": "A branch with a clearly higher average wait means branch is a factor, not just a label.",
-					"trap": "Claiming “effect” from a count chart alone, without comparing time_taken by group, does not answer the question."
+					"trap": "Claiming “effect” from a count chart alone, without comparing time_taken by group, does not answer the question.",
+					"remark": "There are categorical columns such as market_id, order_protocol, store_primary_category. From the group charts (3.1.2) and correlations, markets and store types show different delivery times, so they matter but must be encoded before regression.",
+					"howRemark": [
+						"List the categorical columns first.",
+						"Say which chart you rely on.",
+						"Conclude on the effect and the treatment."
+					]
 				}
 			},
 			"Q2": {
@@ -26781,7 +27723,13 @@ var assignments = [
 					],
 					"code": "# Câu trả lời viết bằng chữ trong ô Answer của notebook",
 					"lotus": "Giống để một phần sổ booking sang một bên để thử đoán sau khi đã rút quy luật từ phần còn lại.",
-					"trap": "Nhầm 0,2 là 2 hoặc 20 dòng thay vì 20% số dòng."
+					"trap": "Nhầm 0,2 là 2 hoặc 20 dòng thay vì 20% số dòng.",
+					"remark": "test_size = 0.2 nghĩa là 20% dữ liệu được giữ làm tập kiểm tra và 80% để huấn luyện; ở bài này là 35.156 và 140.621 dòng.",
+					"howRemark": [
+						"Nêu ý nghĩa tỷ lệ.",
+						"Dẫn số dòng thật.",
+						"Nói mục đích (đo trên dữ liệu chưa thấy)."
+					]
 				},
 				"en": {
 					"think": "What does test_size = 0.2 mean?",
@@ -26792,7 +27740,13 @@ var assignments = [
 					],
 					"code": "# Write the answer in words in the notebook's Answer cell",
 					"lotus": "Like setting part of the booking log aside to test guesses after learning the rule from the rest.",
-					"trap": "Mistaking 0.2 for 2 or 20 rows instead of 20% of rows."
+					"trap": "Mistaking 0.2 for 2 or 20 rows instead of 20% of rows.",
+					"remark": "test_size = 0.2 means 20% of data is held out for testing and 80% for training; here 35,156 and 140,621 rows.",
+					"howRemark": [
+						"State what the ratio means.",
+						"Quote the real row counts.",
+						"Say the purpose (measure on unseen data)."
+					]
 				}
 			},
 			"Q3": {
@@ -26805,7 +27759,13 @@ var assignments = [
 					],
 					"code": "# Câu trả lời viết bằng chữ trong ô Answer của notebook",
 					"lotus": "Yếu tố đi cùng thời gian chờ mạnh nhất cho bạn biết nên đưa vào mô hình trước.",
-					"trap": "Trả lời bằng tên biến mà không nêu số hệ số. Dẫn cả hai."
+					"trap": "Trả lời bằng tên biến mà không nêu số hệ số. Dẫn cả hai.",
+					"remark": "Trên bản đồ nhiệt, distance có tương quan cao nhất với time_taken (0,461), rồi subtotal (0,413) và total_outstanding_orders (0,385).",
+					"howRemark": [
+						"Lấy biến cao nhất theo trị tuyệt đối.",
+						"Nêu thêm 2 biến kế.",
+						"Nhắc đây là tương quan, chưa phải nhân quả."
+					]
 				},
 				"en": {
 					"think": "On the heatmap, which feature has the highest correlation with the target?",
@@ -26816,7 +27776,13 @@ var assignments = [
 					],
 					"code": "# Write the answer in words in the notebook's Answer cell",
 					"lotus": "The factor that moves most with wait time tells you what to put in the model first.",
-					"trap": "Answering with the feature name but no coefficient. Cite both."
+					"trap": "Answering with the feature name but no coefficient. Cite both.",
+					"remark": "On the heatmap, distance has the highest correlation with time_taken (0.461), then subtotal (0.413) and total_outstanding_orders (0.385).",
+					"howRemark": [
+						"Take the highest by absolute value.",
+						"Add the next two.",
+						"Remind it is correlation, not causation."
+					]
 				}
 			},
 			"Q4": {
@@ -26829,7 +27795,13 @@ var assignments = [
 					],
 					"code": "# Câu trả lời viết bằng chữ trong ô Answer của notebook",
 					"lotus": "Số nhân viên âm bỏ hẳn, booking 411 gói giới hạn ở mức phân vị 99. Hai quy tắc khác nhau vì hai nguyên nhân khác nhau.",
-					"trap": "Nói «tôi bỏ điểm xa» chung chung mà không nói bỏ theo quy tắc nào."
+					"trap": "Nói «tôi bỏ điểm xa» chung chung mà không nói bỏ theo quy tắc nào.",
+					"remark": "Phát hiện điểm xa bằng boxplot và ngưỡng phân vị 99, thấy các đơn với 411 món hay khoảng cách 83,5. Xử lý bằng cách bỏ giá trị âm (65 dòng) và điểm xa (4.124 dòng), áp cùng quy tắc cho validation.",
+					"howRemark": [
+						"Nêu công cụ phát hiện.",
+						"Nêu quy tắc cắt và số dòng.",
+						"Nói áp cho validation thế nào."
+					]
 				},
 				"en": {
 					"think": "How did you detect outliers and how did you handle them?",
@@ -26840,7 +27812,13 @@ var assignments = [
 					],
 					"code": "# Write the answer in words in the notebook's Answer cell",
 					"lotus": "A negative staff count is dropped, a 411-package booking is capped at the 99th percentile. Two rules because two different causes.",
-					"trap": "Saying “I removed outliers” without saying by what rule."
+					"trap": "Saying “I removed outliers” without saying by what rule.",
+					"remark": "Spot outliers with a boxplot and the 99th percentile, seeing orders with 411 items or 83.5 distance. Treat by dropping negatives (65 rows) and outliers (4,124 rows), applying the same rules to validation.",
+					"howRemark": [
+						"Name the detection tool.",
+						"State the cut rule and rows.",
+						"Say how it applies to validation."
+					]
 				}
 			},
 			"Q5": {
@@ -26853,7 +27831,13 @@ var assignments = [
 					],
 					"code": "# Câu trả lời viết bằng chữ trong ô Answer của notebook",
 					"lotus": "Ba yếu tố đầu bảng cho bạn biết nên can thiệp vào đâu để rút ngắn thời gian chờ.",
-					"trap": "Xếp theo hệ số chưa chuẩn hóa so sánh táo với cam, vì thang đo khác nhau."
+					"trap": "Xếp theo hệ số chưa chuẩn hóa so sánh táo với cam, vì thang đo khác nhau.",
+					"remark": "Theo hệ số chuẩn hóa ở 6.2, ba biến ảnh hưởng nhất là total_outstanding_orders (+18,2), total_onshift_dashers (−11,9) và total_busy_dashers (−4,2); distance (+4,1) đứng ngay sau.",
+					"howRemark": [
+						"Xếp theo trị tuyệt đối hệ số chuẩn hóa.",
+						"Nêu dấu và ý nghĩa.",
+						"Nhắc giữ các biến khác cố định."
+					]
 				},
 				"en": {
 					"think": "Based on the final model, which three features most significantly affect delivery time?",
@@ -26864,7 +27848,13 @@ var assignments = [
 					],
 					"code": "# Write the answer in words in the notebook's Answer cell",
 					"lotus": "The top three factors tell you where to intervene to shorten the wait.",
-					"trap": "Ranking by unscaled coefficients compares apples with oranges, since scales differ."
+					"trap": "Ranking by unscaled coefficients compares apples with oranges, since scales differ.",
+					"remark": "By the scaled coefficients in 6.2, the top three are total_outstanding_orders (+18.2), total_onshift_dashers (−11.9) and total_busy_dashers (−4.2); distance (+4.1) follows closely.",
+					"howRemark": [
+						"Rank by absolute scaled coefficient.",
+						"State sign and meaning.",
+						"Remind others are held fixed."
+					]
 				}
 			},
 			"Q6": {
@@ -26878,7 +27868,13 @@ var assignments = [
 					],
 					"code": "# Câu trả lời viết bằng chữ trong ô Answer của notebook",
 					"lotus": "Đường thẳng nối khoảng cách và thời gian chờ sao cho các khoảng cách dọc từ điểm đến đường nhỏ nhất.",
-					"trap": "Chỉ nói «vẽ đường thẳng qua các điểm» mà bỏ phần tối thiểu hóa sai số và các giả định."
+					"trap": "Chỉ nói «vẽ đường thẳng qua các điểm» mà bỏ phần tối thiểu hóa sai số và các giả định.",
+					"remark": "Hồi quy tuyến tính tìm đường thẳng (hoặc mặt phẳng) y = b0 + b1x1 + ... sao cho tổng bình phương sai số giữa dự đoán và thực tế nhỏ nhất. Hệ số cho biết khi một biến tăng một đơn vị, y đổi bao nhiêu.",
+					"howRemark": [
+						"Viết công thức.",
+						"Nói tiêu chí tối ưu.",
+						"Giải thích ý nghĩa hệ số."
+					]
 				},
 				"en": {
 					"think": "Explain the linear regression algorithm in detail.",
@@ -26890,7 +27886,13 @@ var assignments = [
 					],
 					"code": "# Write the answer in words in the notebook's Answer cell",
 					"lotus": "A line linking distance and wait so that vertical gaps from points to the line are smallest.",
-					"trap": "Saying only “draw a line through the points” and skipping error minimisation and assumptions."
+					"trap": "Saying only “draw a line through the points” and skipping error minimisation and assumptions.",
+					"remark": "Linear regression finds a line (or plane) y = b0 + b1x1 + ... minimizing the sum of squared errors between predictions and actuals. A coefficient says how much y changes per one-unit rise in a variable.",
+					"howRemark": [
+						"Write the formula.",
+						"State the optimisation criterion.",
+						"Explain the meaning of a coefficient."
+					]
 				}
 			},
 			"Q7": {
@@ -26903,7 +27905,13 @@ var assignments = [
 					],
 					"code": "# Câu trả lời viết bằng chữ trong ô Answer của notebook",
 					"lotus": "Dự đoán thời gian chờ chỉ từ khoảng cách (đơn) so với từ khoảng cách, số đơn đang chờ và giờ đặt (đa).",
-					"trap": "Quên rằng hệ số của đa biến chỉ có nghĩa «giữ các biến khác cố định»."
+					"trap": "Quên rằng hệ số của đa biến chỉ có nghĩa «giữ các biến khác cố định».",
+					"remark": "Đơn biến dùng một biến vào (ví dụ chỉ distance), đa biến dùng nhiều biến cùng lúc (ở đây 12 biến) và mỗi hệ số đọc khi các biến khác cố định. Đa biến thường giải thích tốt hơn: R2 0,89 so với 0,21 nếu chỉ dùng distance.",
+					"howRemark": [
+						"Nêu khác biệt cơ bản.",
+						"Cho ví dụ có số.",
+						"Nói khi nào chọn cái nào."
+					]
 				},
 				"en": {
 					"think": "What is the difference between simple and multiple linear regression?",
@@ -26914,7 +27922,13 @@ var assignments = [
 					],
 					"code": "# Write the answer in words in the notebook's Answer cell",
 					"lotus": "Predicting wait from distance alone (simple) versus from distance, pending orders and order hour (multiple).",
-					"trap": "Forgetting that a multiple-regression coefficient means “holding the others fixed”."
+					"trap": "Forgetting that a multiple-regression coefficient means “holding the others fixed”.",
+					"remark": "Simple uses one input (e.g. only distance), multiple uses many at once (12 here) and each coefficient is read holding the others fixed. Multiple usually explains more: R2 0.89 vs about 0.21 with distance alone.",
+					"howRemark": [
+						"State the basic difference.",
+						"Give a numeric example.",
+						"Say when to choose which."
+					]
 				}
 			},
 			"Q8": {
@@ -26927,7 +27941,13 @@ var assignments = [
 					],
 					"code": "# Câu trả lời viết bằng chữ trong ô Answer của notebook",
 					"lotus": "Hàm chi phí là điểm số của một cách vẽ đường: đường nào cho tổng sai lệch nhỏ hơn thì tốt hơn.",
-					"trap": "Nhầm hàm chi phí với R²: R² là thước đo sau khi huấn luyện, chi phí là thứ được tối thiểu hóa lúc huấn luyện."
+					"trap": "Nhầm hàm chi phí với R²: R² là thước đo sau khi huấn luyện, chi phí là thứ được tối thiểu hóa lúc huấn luyện.",
+					"remark": "Hàm chi phí đo mô hình sai bao nhiêu, thường là trung bình bình phương sai số (MSE). Mục tiêu là tìm hệ số làm MSE nhỏ nhất, bằng công thức nghiệm đóng hoặc gradient descent.",
+					"howRemark": [
+						"Nêu hàm chi phí là gì.",
+						"Nêu cách tối thiểu hóa.",
+						"Liên hệ với RMSE 2,9 phút ở 5.2."
+					]
 				},
 				"en": {
 					"think": "What is the role of the cost function in linear regression and how is it minimised?",
@@ -26938,7 +27958,13 @@ var assignments = [
 					],
 					"code": "# Write the answer in words in the notebook's Answer cell",
 					"lotus": "The cost function is the score of a way of drawing the line: the line with smaller total miss is better.",
-					"trap": "Confusing cost with R²: R² is a measure after training, cost is what is minimised during training."
+					"trap": "Confusing cost with R²: R² is a measure after training, cost is what is minimised during training.",
+					"remark": "The cost function measures how wrong the model is, usually mean squared error (MSE). The goal is the coefficients minimizing MSE, by the closed-form solution or gradient descent.",
+					"howRemark": [
+						"State what the cost function is.",
+						"State how it is minimized.",
+						"Relate to the 2.9-minute RMSE in 5.2."
+					]
 				}
 			},
 			"Q9": {
@@ -26952,7 +27978,13 @@ var assignments = [
 					],
 					"code": "# Câu trả lời viết bằng chữ trong ô Answer của notebook",
 					"lotus": "Một mô hình nhớ từng booking của tháng 11 (quá khớp) so với một mô hình chỉ đoán 45 phút cho mọi người (chưa khớp).",
-					"trap": "Chỉ nhìn điểm ở train rồi kết luận mô hình tốt."
+					"trap": "Chỉ nhìn điểm ở train rồi kết luận mô hình tốt.",
+					"remark": "Quá khớp là mô hình tốt trên train nhưng kém trên validation; chưa khớp là kém ở cả hai. Ở bài này R2 train 0,900 và valid 0,903 nên không quá khớp, R2 cao nên không chưa khớp.",
+					"howRemark": [
+						"Định nghĩa hai khái niệm.",
+						"Dùng số train và valid.",
+						"Kết luận cho mô hình này."
+					]
 				},
 				"en": {
 					"think": "What is the difference between overfitting and underfitting?",
@@ -26964,7 +27996,13 @@ var assignments = [
 					],
 					"code": "# Write the answer in words in the notebook's Answer cell",
 					"lotus": "A model memorising each November booking (overfit) versus one that guesses 45 minutes for everyone (underfit).",
-					"trap": "Judging a model good from its train score alone."
+					"trap": "Judging a model good from its train score alone.",
+					"remark": "Overfitting is good on train but poor on validation; underfitting is poor on both. Here R2 is 0.900 on train and 0.903 on validation, so neither overfit nor underfit.",
+					"howRemark": [
+						"Define both concepts.",
+						"Use train and valid numbers.",
+						"Conclude for this model."
+					]
 				}
 			},
 			"Q10": {
@@ -26978,7 +28016,13 @@ var assignments = [
 					],
 					"code": "# Câu trả lời viết bằng chữ trong ô Answer của notebook",
 					"lotus": "Nếu mô hình đoán thấp mọi lúc ở giờ cao điểm thì phần dư theo giờ có hình dạng, và bạn thiếu một biến liên quan đến giờ.",
-					"trap": "Chỉ nói «phần dư nên quanh 0» mà không nói hình dạng nào là dấu hiệu xấu."
+					"trap": "Chỉ nói «phần dư nên quanh 0» mà không nói hình dạng nào là dấu hiệu xấu.",
+					"remark": "Biểu đồ phần dư cho thấy mô hình sai ở đâu: phần dư tản đều quanh 0 là tốt, hình cong hoặc loe ra là mô hình bỏ sót quan hệ hay phương sai không đều; Q-Q plot kiểm tra phần dư có gần chuẩn không.",
+					"howRemark": [
+						"Nói phần dư tốt trông thế nào.",
+						"Nêu dấu hiệu xấu và ý nghĩa.",
+						"Nêu vai trò Q-Q plot."
+					]
 				},
 				"en": {
 					"think": "How do residual plots help in diagnosing a linear regression model?",
@@ -26990,7 +28034,13 @@ var assignments = [
 					],
 					"code": "# Write the answer in words in the notebook's Answer cell",
 					"lotus": "If the model underguesses at every peak hour, residuals by hour show a shape and you are missing an hour-related feature.",
-					"trap": "Saying only “residuals should be around 0” without saying which shapes are bad signs."
+					"trap": "Saying only “residuals should be around 0” without saying which shapes are bad signs.",
+					"remark": "Residual plots show where the model errs: even scatter around 0 is good, curves or fans mean a missed relationship or uneven variance; the Q-Q plot checks whether residuals are near normal.",
+					"howRemark": [
+						"Say what good residuals look like.",
+						"State bad signs and their meaning.",
+						"State the Q-Q plot's role."
+					]
 				}
 			}
 		},
@@ -27983,7 +29033,14 @@ var assignments = [
 					],
 					"code": "df = pd.read_csv('Employee_data.csv')\nprint(df.shape)\ndf.head()",
 					"lotus": "Mỗi dòng là một nhân viên của chuỗi Lotus Spa (kỹ thuật viên, lễ tân, quản lý), mỗi cột là một thông tin hồ sơ về họ. Cột cuối Attrition cho biết họ ở lại hay nghỉ.",
-					"trap": "Đường dẫn file sai thì read_csv báo FileNotFoundError. Kiểm tra file nằm cạnh notebook."
+					"trap": "Đường dẫn file sai thì read_csv báo FileNotFoundError. Kiểm tra file nằm cạnh notebook.",
+					"read": ["(74610, 24) là số dòng và số cột.", "Bảng mẫu ba nhân viên: mỗi cột của bảng gốc nằm ở một hàng của bảng này (đã xoay để dễ đọc)."],
+					"remark": "Có 74.610 nhân viên và 24 cột gồm thông tin cá nhân, công việc và cột mục tiêu Attrition.",
+					"howRemark": [
+						"Báo số dòng, số cột.",
+						"Nói cột nào là mục tiêu.",
+						"Nói qua nhóm cột chính."
+					]
 				},
 				"en": {
 					"think": "Read the CSV into a DataFrame, print a few rows and the size to see what you have.",
@@ -27994,7 +29051,14 @@ var assignments = [
 					],
 					"code": "df = pd.read_csv('Employee_data.csv')\nprint(df.shape)\ndf.head()",
 					"lotus": "Each row is a Lotus Spa staff member (therapist, receptionist, manager), each column a piece of their record. The last column Attrition says whether they stayed or left.",
-					"trap": "A wrong path raises FileNotFoundError. Check the file sits next to the notebook."
+					"trap": "A wrong path raises FileNotFoundError. Check the file sits next to the notebook.",
+					"read": ["(74610, 24) is rows and columns.", "The sample table shows three employees: each column of the original sits on a row here (transposed for readability)."],
+					"remark": "There are 74,610 employees and 24 columns covering personal info, job info and the Attrition target.",
+					"howRemark": [
+						"Report rows and columns.",
+						"Say which column is the target.",
+						"Summarise the main column groups."
+					]
 				}
 			},
 			"1.2": {
@@ -28007,7 +29071,18 @@ var assignments = [
 					],
 					"code": "df.describe()",
 					"lotus": "Trong file của bạn Distance from Home chỉ có 72.698 giá trị (thiếu 1.912) và Company Tenure có 72.197 (thiếu 2.413). Tuổi từ 18 đến 59, lương tháng trung bình khoảng 7.345.",
-					"trap": "describe() mặc định chỉ hiển thị cột số, cột chữ không xuất hiện."
+					"trap": "describe() mặc định chỉ hiển thị cột số, cột chữ không xuất hiện.",
+					"read": [
+						"Mỗi hàng là một cột số; đọc count, mean, min, max.",
+						"Age từ 18 đến 59, trung bình 38,5; Years at Company từ 1 đến 51.",
+						"Xem min và max có hợp lý không."
+					],
+					"remark": "Tuổi 18–59 (trung bình 38,5), thâm niên 1–51 năm (trung bình 15,7): các giá trị hợp lý, không thấy số vô lý ở thống kê tổng quan.",
+					"howRemark": [
+						"Nêu khoảng giá trị từng cột chính.",
+						"Kiểm có giá trị vô lý không.",
+						"Chú ý cột có count thấp hơn các cột khác."
+					]
 				},
 				"en": {
 					"think": "Look at summary statistics to see each numeric column's scale and any odd values.",
@@ -28018,7 +29093,18 @@ var assignments = [
 					],
 					"code": "df.describe()",
 					"lotus": "In your file Distance from Home has only 72,698 values (1,912 missing) and Company Tenure 72,197 (2,413 missing). Age runs 18 to 59, mean monthly income about 7,345.",
-					"trap": "describe() shows numeric columns only by default; text columns do not appear."
+					"trap": "describe() shows numeric columns only by default; text columns do not appear.",
+					"read": [
+						"Each row is a numeric column; read count, mean, min, max.",
+						"Age runs 18 to 59, mean 38.5; Years at Company 1 to 51.",
+						"Check min and max are plausible."
+					],
+					"remark": "Age 18–59 (mean 38.5), tenure 1–51 years (mean 15.7): values are plausible, no absurd numbers in the overview.",
+					"howRemark": [
+						"State ranges of the main columns.",
+						"Check for absurd values.",
+						"Watch for columns with a lower count."
+					]
 				}
 			},
 			"1.3": {
@@ -28031,7 +29117,18 @@ var assignments = [
 					],
 					"code": "df.info()",
 					"lotus": "Giới tính, vị trí công việc, mức hài lòng, làm thêm giờ... là chữ. Tuổi, lương, số lần thăng chức là số.",
-					"trap": "Mã nhân viên là số nhưng không có ý nghĩa tính toán: đừng đưa nó vào mô hình."
+					"trap": "Mã nhân viên là số nhưng không có ý nghĩa tính toán: đừng đưa nó vào mô hình.",
+					"read": [
+						"Cột Non-Null Count cho biết số ô có dữ liệu mỗi cột.",
+						"Dtype: int64 là số nguyên, float64 là số thập phân, str là chữ.",
+						"Cột có Non-Null nhỏ hơn 74.610 là cột thiếu dữ liệu."
+					],
+					"remark": "Hầu hết cột đủ 74.610 ô; chữ là các cột nhóm (Gender, Job Role...), số là Age, Monthly Income...; hai cột thiếu dữ liệu sẽ xử lý ở 2.1.",
+					"howRemark": [
+						"Chia cột thành chữ và số.",
+						"Tìm cột có Non-Null thấp hơn.",
+						"Báo trước bước xử lý tiếp theo."
+					]
 				},
 				"en": {
 					"think": "Check each column's data type to know which are numeric and which text.",
@@ -28042,7 +29139,18 @@ var assignments = [
 					],
 					"code": "df.info()",
 					"lotus": "Gender, job role, satisfaction, overtime... are text. Age, income, promotions are numbers.",
-					"trap": "Employee ID is numeric but meaningless for calculation: do not feed it to the model."
+					"trap": "Employee ID is numeric but meaningless for calculation: do not feed it to the model.",
+					"read": [
+						"Non-Null Count is how many cells have data per column.",
+						"Dtype: int64 integer, float64 decimal, str text.",
+						"A column with Non-Null below 74,610 is missing data."
+					],
+					"remark": "Most columns have all 74,610 cells; text columns are categories (Gender, Job Role...), numbers are Age, Monthly Income...; two columns with gaps are handled in 2.1.",
+					"howRemark": [
+						"Split columns into text and numeric.",
+						"Find columns with lower Non-Null.",
+						"Foreshadow the next step."
+					]
 				}
 			},
 			"2.1.1": {
@@ -28051,14 +29159,20 @@ var assignments = [
 					"steps": ["df.isnull().sum().", "Chỉ hai cột có thiếu: Distance from Home (1.912) và Company Tenure (2.413)."],
 					"code": "df.isnull().sum()",
 					"lotus": "Hồ sơ nhân viên thiếu khoảng cách từ nhà đến chi nhánh và thâm niên: chị Lan chưa nhập đủ.",
-					"trap": "isnull().sum() không đếm ô chứa chữ như «N/A». Với file này không có, nhưng hãy nhớ kiểm tra."
+					"trap": "isnull().sum() không đếm ô chứa chữ như «N/A». Với file này không có, nhưng hãy nhớ kiểm tra.",
+					"read": ["Chỉ hiện các cột có ô trống: Distance from Home và Company Tenure (In Months).", "Con số là số ô trống."],
+					"remark": "Chỉ hai cột thiếu: Distance from Home 1.912 ô và Company Tenure 2.413 ô; các cột khác đầy đủ.",
+					"howRemark": ["Nêu cột thiếu và số ô.", "Chưa kết luận mức nghiêm trọng khi chưa có %."]
 				},
 				"en": {
 					"think": "Count blanks in each column.",
 					"steps": ["df.isnull().sum().", "Only two columns have gaps: Distance from Home (1,912) and Company Tenure (2,413)."],
 					"code": "df.isnull().sum()",
 					"lotus": "Staff records miss the distance from home to the branch and tenure: chị Lan did not fill them all in.",
-					"trap": "isnull().sum() does not count text like “N/A”. This file has none, but remember to check."
+					"trap": "isnull().sum() does not count text like “N/A”. This file has none, but remember to check.",
+					"read": ["Only columns with blanks appear: Distance from Home and Company Tenure (In Months).", "Numbers are blank cell counts."],
+					"remark": "Only two columns are missing data: Distance from Home 1,912 and Company Tenure 2,413; all others are complete.",
+					"howRemark": ["Name the columns and blank counts.", "Do not judge severity without the %."]
 				}
 			},
 			"2.1.2": {
@@ -28067,14 +29181,28 @@ var assignments = [
 					"steps": ["df.isnull().mean() * 100.", "File của bạn: Distance 2,56%, Tenure 3,23%."],
 					"code": "(df.isnull().mean() * 100).round(2)",
 					"lotus": "Thiếu 2 đến 3% là ít. Bỏ các dòng này không làm hao đáng kể số nhân viên.",
-					"trap": "Nhìn số đếm 1.912 mà không so với tổng 74.610 dễ đánh giá sai mức độ."
+					"trap": "Nhìn số đếm 1.912 mà không so với tổng 74.610 dễ đánh giá sai mức độ.",
+					"read": ["Số là % ô trống: 2,56% và 3,23%.", "Quy ước thường dùng: dưới 5% thì bỏ dòng cũng chấp nhận được."],
+					"remark": "Thiếu 2,56% và 3,23%, đều dưới 5% nên bỏ các dòng thiếu ít làm lệch kết quả.",
+					"howRemark": [
+						"Báo % từng cột.",
+						"So với ngưỡng 5%.",
+						"Chọn cách xử lý và lý do."
+					]
 				},
 				"en": {
 					"think": "Turn the blank counts into percentages to decide how to handle them.",
 					"steps": ["df.isnull().mean() * 100.", "Your file: Distance 2.56%, Tenure 3.23%."],
 					"code": "(df.isnull().mean() * 100).round(2)",
 					"lotus": "2 to 3% missing is little. Dropping those rows does not lose many staff.",
-					"trap": "Looking at 1,912 without comparing to the 74,610 total makes it easy to misjudge the scale."
+					"trap": "Looking at 1,912 without comparing to the 74,610 total makes it easy to misjudge the scale.",
+					"read": ["Numbers are the % blank: 2.56% and 3.23%.", "Common rule: under 5%, dropping rows is acceptable."],
+					"remark": "Missing 2.56% and 3.23%, both under 5%, so dropping those rows barely biases results.",
+					"howRemark": [
+						"State the % per column.",
+						"Compare with the 5% threshold.",
+						"Choose the treatment and reason."
+					]
 				}
 			},
 			"2.1.3": {
@@ -28087,7 +29215,14 @@ var assignments = [
 					],
 					"code": "df = df.dropna()\ndf.shape",
 					"lotus": "Bỏ những nhân viên thiếu thông tin thay vì đoán khoảng cách nhà của họ.",
-					"trap": "Gọi dropna() mà không gán lại df thì bảng không đổi."
+					"trap": "Gọi dropna() mà không gán lại df thì bảng không đổi.",
+					"read": ["«74610 -> 70635» là số dòng trước và sau khi bỏ.", "Hiệu: 3.975 dòng bị bỏ."],
+					"remark": "Bỏ 3.975 dòng thiếu dữ liệu, còn 70.635 dòng.",
+					"howRemark": [
+						"Báo trước/sau.",
+						"Tính số dòng đã bỏ.",
+						"Nhắc rằng bỏ dòng là việc không đảo ngược."
+					]
 				},
 				"en": {
 					"think": "Handle the rows with gaps. Since the share is small, the simple and safe way is to drop them.",
@@ -28098,7 +29233,14 @@ var assignments = [
 					],
 					"code": "df = df.dropna()\ndf.shape",
 					"lotus": "Drop staff with missing info instead of guessing their distance from home.",
-					"trap": "Calling dropna() without assigning back leaves the table unchanged."
+					"trap": "Calling dropna() without assigning back leaves the table unchanged.",
+					"read": ["“74610 -> 70635” is row count before and after.", "Difference: 3,975 rows dropped."],
+					"remark": "Dropped 3,975 rows with missing values, leaving 70,635.",
+					"howRemark": [
+						"Report before/after.",
+						"Compute rows dropped.",
+						"Remind that dropping is irreversible."
+					]
 				}
 			},
 			"2.1.4": {
@@ -28107,14 +29249,20 @@ var assignments = [
 					"steps": ["len(df) / 74610 * 100.", "File của bạn còn 70.635 dòng, khoảng 94,7%."],
 					"code": "print(len(df), round(len(df) / 74610 * 100, 2))",
 					"lotus": "Còn gần 95% nhân viên, đủ nhiều để mô hình tin cậy.",
-					"trap": "Dùng số 74.610 cố định thay vì kích thước ban đầu đã lưu làm sai khi dữ liệu thay đổi. Lưu n_ban_dau trước."
+					"trap": "Dùng số 74.610 cố định thay vì kích thước ban đầu đã lưu làm sai khi dữ liệu thay đổi. Lưu n_ban_dau trước.",
+					"read": ["Số đầu là số dòng còn lại; số sau là % so với dữ liệu gốc."],
+					"remark": "Còn 70.635 dòng, bằng 94,67% dữ liệu gốc: giữ được gần hết, đủ lớn để huấn luyện.",
+					"howRemark": ["Báo % giữ lại.", "Kết luận có đủ dữ liệu không."]
 				},
 				"en": {
 					"think": "Compute how much data remains after dropping the rows with gaps.",
 					"steps": ["len(df) / 74610 * 100.", "Your file keeps 70,635 rows, about 94.7%."],
 					"code": "print(len(df), round(len(df) / 74610 * 100, 2))",
 					"lotus": "Nearly 95% of staff remain, plenty for a reliable model.",
-					"trap": "Hard-coding 74,610 breaks if the data changes. Save the original size first."
+					"trap": "Hard-coding 74,610 breaks if the data changes. Save the original size first.",
+					"read": ["First number is rows left; second is the % of the original."],
+					"remark": "70,635 rows remain, 94.67% of the original: nearly all kept and plenty to train on.",
+					"howRemark": ["Report the % kept.", "Conclude whether enough data remains."]
 				}
 			},
 			"2.2": {
@@ -28127,7 +29275,18 @@ var assignments = [
 					],
 					"code": "for c in df.select_dtypes(include='object').columns:\n    print(c, df[c].unique())\ndf['Education Level'] = df['Education Level'].str.replace('â€™', \"'\")",
 					"lotus": "Giống bảng chấm công nơi «Cử nhân» có chỗ viết có dấu, chỗ lỗi font: máy coi là hai loại khác nhau.",
-					"trap": "Nếu sửa ở train mà quên sửa ở validation thì get_dummies tạo hai bộ cột khác nhau."
+					"trap": "Nếu sửa ở train mà quên sửa ở validation thì get_dummies tạo hai bộ cột khác nhau.",
+					"read": [
+						"Mỗi dòng là một cột nhóm và các giá trị khác nhau của nó.",
+						"Tìm giá trị trông lạ hoặc cùng ý hai cách viết.",
+						"Education Level có ký tự lỗi: Masterâ€™s, Bachelorâ€™s."
+					],
+					"remark": "Các cột nhóm sạch, chỉ trừ lỗi mã hóa ký tự ở Education Level (Masterâ€™s Degree, Bachelorâ€™s Degree). Lỗi chỉ ở nhãn nên không ảnh hưởng mô hình nhưng nên biết khi đọc kết quả.",
+					"howRemark": [
+						"Duyệt từng cột nhóm tìm nhãn bất thường.",
+						"Nêu lỗi và ảnh hưởng.",
+						"Nói đã sửa hay giữ."
+					]
 				},
 				"en": {
 					"think": "Find redundant or wrong values in categorical columns: the same thing written two ways, broken characters.",
@@ -28138,7 +29297,18 @@ var assignments = [
 					],
 					"code": "for c in df.select_dtypes(include='object').columns:\n    print(c, df[c].unique())\ndf['Education Level'] = df['Education Level'].str.replace('â€™', \"'\")",
 					"lotus": "Like a timesheet where “Bachelor” is written with the right accent in one place and a broken font in another: the machine sees two different groups.",
-					"trap": "Fixing train but not validation makes get_dummies create two different column sets."
+					"trap": "Fixing train but not validation makes get_dummies create two different column sets.",
+					"read": [
+						"Each line is a categorical column and its distinct values.",
+						"Look for odd labels or the same thing written two ways.",
+						"Education Level has encoding glitches: Masterâ€™s, Bachelorâ€™s."
+					],
+					"remark": "Categorical columns are clean except a character-encoding glitch in Education Level (Masterâ€™s Degree, Bachelorâ€™s Degree). Only the label is affected, so the model is fine, but know it when reading results.",
+					"howRemark": [
+						"Scan each categorical column for odd labels.",
+						"State the glitch and its effect.",
+						"Say whether fixed or kept."
+					]
 				}
 			},
 			"2.3": {
@@ -28151,7 +29321,10 @@ var assignments = [
 					],
 					"code": "df = df.drop(columns=['Employee ID'])\ndf.head()",
 					"lotus": "Số thẻ nhân viên không nói gì về việc họ nghỉ hay ở. Giữ lại chỉ làm mô hình nhớ từng người.",
-					"trap": "Để mã duy nhất trong X làm mô hình học thuộc lòng, nhìn tốt trên train nhưng sai trên dữ liệu mới."
+					"trap": "Để mã duy nhất trong X làm mô hình học thuộc lòng, nhìn tốt trên train nhưng sai trên dữ liệu mới.",
+					"read": ["(70635, 23) là hình dạng sau khi bỏ Employee ID: số dòng giữ, số cột giảm từ 24 xuống 23."],
+					"remark": "Bỏ cột Employee ID vì nó chỉ là nhãn, không có thông tin để dự đoán; còn 23 cột.",
+					"howRemark": ["Kiểm số cột giảm đúng 1.", "Nói vì sao bỏ."]
 				},
 				"en": {
 					"think": "Drop columns that do not help prediction, such as the employee ID.",
@@ -28162,7 +29335,10 @@ var assignments = [
 					],
 					"code": "df = df.drop(columns=['Employee ID'])\ndf.head()",
 					"lotus": "A staff card number says nothing about whether they leave. Keeping it only lets the model memorise individuals.",
-					"trap": "Leaving a unique ID in X lets the model memorise: good on train, wrong on new data."
+					"trap": "Leaving a unique ID in X lets the model memorise: good on train, wrong on new data.",
+					"read": ["(70635, 23) is the shape after dropping Employee ID: rows kept, columns 24 → 23."],
+					"remark": "Employee ID dropped because it is only a label with no predictive info; 23 columns remain.",
+					"howRemark": ["Check columns fell by exactly 1.", "Say why it was dropped."]
 				}
 			},
 			"3.1": {
@@ -28171,14 +29347,20 @@ var assignments = [
 					"steps": ["from sklearn.model_selection import train_test_split."],
 					"code": "from sklearn.model_selection import train_test_split",
 					"lotus": "Chuẩn bị công cụ để để riêng một phần nhân viên cho việc kiểm tra.",
-					"trap": "Không có."
+					"trap": "Không có.",
+					"read": ["Ô này không in kết quả; việc cần xem là chạy không báo lỗi."],
+					"remark": "Đã nạp công cụ chia dữ liệu train/validation.",
+					"howRemark": ["Nói bước này chuẩn bị gì cho bước sau.", "Ghi tên biến/đối tượng mới được tạo."]
 				},
 				"en": {
 					"think": "Import the split helper.",
 					"steps": ["from sklearn.model_selection import train_test_split."],
 					"code": "from sklearn.model_selection import train_test_split",
 					"lotus": "Get the tool ready to set aside some staff for testing.",
-					"trap": "None."
+					"trap": "None.",
+					"read": ["This cell prints nothing; just check it ran without error."],
+					"remark": "The train/validation split tool is loaded.",
+					"howRemark": ["Say what this step prepares for the next.", "Note the new variable/object created."]
 				}
 			},
 			"3.2": {
@@ -28191,7 +29373,10 @@ var assignments = [
 					],
 					"code": "y = df['Attrition']\nX = df.drop(columns=['Attrition'])\nprint(X.shape, y.shape)",
 					"lotus": "Câu hỏi: nhân viên này sẽ ở lại hay nghỉ? Đáp án đi riêng một bên.",
-					"trap": "Để Attrition lọt vào X làm mô hình đạt độ chính xác gần 100% giả tạo."
+					"trap": "Để Attrition lọt vào X làm mô hình đạt độ chính xác gần 100% giả tạo.",
+					"read": ["Hai hình dạng: X (70.635, 22) và y (70.635,).", "Số dòng hai bên phải bằng nhau."],
+					"remark": "X có 22 cột đầu vào và y là cột Attrition, cùng 70.635 dòng.",
+					"howRemark": ["Kiểm số dòng bằng nhau.", "Nói y là gì."]
 				},
 				"en": {
 					"think": "Separate X (input columns) and y (Attrition, the thing to predict).",
@@ -28202,7 +29387,10 @@ var assignments = [
 					],
 					"code": "y = df['Attrition']\nX = df.drop(columns=['Attrition'])\nprint(X.shape, y.shape)",
 					"lotus": "The question: will this staff member stay or leave? The answer goes separately.",
-					"trap": "Letting Attrition slip into X gives a fake near-100% accuracy."
+					"trap": "Letting Attrition slip into X gives a fake near-100% accuracy.",
+					"read": ["Two shapes: X (70,635, 22) and y (70,635,).", "Row counts must match."],
+					"remark": "X has 22 input columns and y is the Attrition column, both 70,635 rows.",
+					"howRemark": ["Check row counts match.", "Say what y is."]
 				}
 			},
 			"3.3": {
@@ -28215,7 +29403,10 @@ var assignments = [
 					],
 					"code": "X_train, X_validation, y_train, y_validation = train_test_split(X, y, train_size=0.7, random_state=100)\nprint(len(X_train), len(X_validation))",
 					"lotus": "Như để riêng 30% hồ sơ nhân viên để thử dự đoán sau khi học quy luật từ 70% còn lại.",
-					"trap": "Chia xong mới làm EDA và làm sạch tiếp. Làm trước thì thông tin validation đã lọt vào quyết định."
+					"trap": "Chia xong mới làm EDA và làm sạch tiếp. Làm trước thì thông tin validation đã lọt vào quyết định.",
+					"read": ["Hai số: 49.444 dòng train và 21.191 dòng validation.", "49.444 / 70.635 ≈ 70%."],
+					"remark": "Chia 70/30: train 49.444 và validation 21.191 dòng.",
+					"howRemark": ["Tính lại tỷ lệ.", "Nhắc random_state."]
 				},
 				"en": {
 					"think": "Split 70% train and 30% validation, with random_state so it is repeatable.",
@@ -28226,7 +29417,10 @@ var assignments = [
 					],
 					"code": "X_train, X_validation, y_train, y_validation = train_test_split(X, y, train_size=0.7, random_state=100)\nprint(len(X_train), len(X_validation))",
 					"lotus": "Like keeping 30% of staff records aside to test predictions after learning the rule from the other 70%.",
-					"trap": "Split first, then do EDA and further cleaning. Doing it before lets validation information leak into your decisions."
+					"trap": "Split first, then do EDA and further cleaning. Doing it before lets validation information leak into your decisions.",
+					"read": ["Two numbers: 49,444 train rows and 21,191 validation rows.", "49,444 / 70,635 ≈ 70%."],
+					"remark": "A 70/30 split: 49,444 train and 21,191 validation rows.",
+					"howRemark": ["Recompute the ratio.", "Mention random_state."]
 				}
 			},
 			"4.1.1": {
@@ -28235,14 +29429,20 @@ var assignments = [
 					"steps": ["X_train.select_dtypes(include='number').columns."],
 					"code": "num_cols = X_train.select_dtypes(include=['int64', 'float64']).columns\nnum_cols",
 					"lotus": "Tuổi, lương, thâm niên, số lần thăng chức, số người phụ thuộc, khoảng cách từ nhà.",
-					"trap": "Đừng lấy cột số từ toàn bộ df, hãy lấy từ X_train."
+					"trap": "Đừng lấy cột số từ toàn bộ df, hãy lấy từ X_train.",
+					"read": ["Danh sách 7 cột số của tập train."],
+					"remark": "Có 7 cột số: Age, Years at Company, Monthly Income, Number of Promotions, Distance from Home, Number of Dependents, Company Tenure.",
+					"howRemark": ["Đếm cột số.", "Phân biệt với cột nhóm."]
 				},
 				"en": {
 					"think": "Select the numeric columns of the training set.",
 					"steps": ["X_train.select_dtypes(include='number').columns."],
 					"code": "num_cols = X_train.select_dtypes(include=['int64', 'float64']).columns\nnum_cols",
 					"lotus": "Age, income, tenure, promotions, dependents, distance from home.",
-					"trap": "Do not take numeric columns from the whole df; take them from X_train."
+					"trap": "Do not take numeric columns from the whole df; take them from X_train.",
+					"read": ["The list of 7 numeric columns in train."],
+					"remark": "There are 7 numeric columns: Age, Years at Company, Monthly Income, Number of Promotions, Distance from Home, Number of Dependents, Company Tenure.",
+					"howRemark": ["Count the numeric columns.", "Distinguish from categorical."]
 				}
 			},
 			"4.1.2": {
@@ -28255,7 +29455,14 @@ var assignments = [
 					],
 					"code": "X_train[num_cols].hist(bins=30, figsize=(14, 10))\nplt.show()",
 					"lotus": "Lương của hầu hết nhân viên quanh 7.000, nhưng vài người cao gấp bảy lần: có thể là quản lý cấp cao hoặc lỗi nhập.",
-					"trap": "Nhìn một biểu đồ không đủ để kết luận lỗi. Đối chiếu với các cột khác như Job Level."
+					"trap": "Nhìn một biểu đồ không đủ để kết luận lỗi. Đối chiếu với các cột khác như Job Level.",
+					"read": ["Mỗi ô là phân phối của một cột số: thân cao là nhiều nhân viên ở mức đó.", "Xem cột nào lệch hoặc có đuôi."],
+					"remark": "Các phân phối cho thấy hình dạng từng cột; xem độ lệch và điểm xa để quyết định có cần xử lý không.",
+					"howRemark": [
+						"Mô tả hình dạng từng cột chính.",
+						"Chỉ ra cột lệch hoặc có điểm xa.",
+						"Quyết định xử lý."
+					]
 				},
 				"en": {
 					"think": "Plot each numeric column's distribution to see shape and outliers.",
@@ -28266,7 +29473,14 @@ var assignments = [
 					],
 					"code": "X_train[num_cols].hist(bins=30, figsize=(14, 10))\nplt.show()",
 					"lotus": "Most staff earn around 7,000, but a few earn seven times more: maybe senior managers or entry errors.",
-					"trap": "One chart is not enough to call it an error. Cross-check with other columns like Job Level."
+					"trap": "One chart is not enough to call it an error. Cross-check with other columns like Job Level.",
+					"read": ["Each panel is the distribution of a numeric column: a tall body means many employees at that level.", "See which columns are skewed or have tails."],
+					"remark": "The distributions show each column's shape; look at skew and outliers to decide if treatment is needed.",
+					"howRemark": [
+						"Describe each main column's shape.",
+						"Point out skewed columns or outliers.",
+						"Decide on treatment."
+					]
 				}
 			},
 			"4.2": {
@@ -28279,7 +29493,18 @@ var assignments = [
 					],
 					"code": "plt.figure(figsize=(9, 7))\nsns.heatmap(X_train[num_cols].corr(), annot=True, fmt='.2f', cmap='coolwarm', center=0)\nplt.show()",
 					"lotus": "Tuổi và số năm làm ở Lotus Spa thường tăng cùng nhau: nói gần như cùng một điều.",
-					"trap": "Tương quan chỉ đo quan hệ đường thẳng giữa hai cột số, không nói lên quan hệ với Attrition."
+					"trap": "Tương quan chỉ đo quan hệ đường thẳng giữa hai cột số, không nói lên quan hệ với Attrition.",
+					"read": [
+						"Bản đồ nhiệt: mỗi ô là tương quan hai cột số, từ −1 đến 1; đường chéo luôn bằng 1.",
+						"Tìm ô đậm ngoài đường chéo: cặp đi cùng nhau mạnh.",
+						"Phần lớn ô gần 0 nghĩa là hai cột gần như độc lập."
+					],
+					"remark": "Chỉ có hai cặp đáng kể: Age – Years at Company (0,54) và Years at Company – Company Tenure (0,44); các cặp còn lại gần 0. Nên chú ý biến chồng lấn khi dựng mô hình (kiểm VIF ở 7.2.4).",
+					"howRemark": [
+						"Nêu cặp tương quan mạnh nhất kèm số.",
+						"Nói phần lớn cặp độc lập.",
+						"Nói hệ quả với mô hình (đa cộng tuyến)."
+					]
 				},
 				"en": {
 					"think": "Correlation among numeric columns, to find strongly related pairs.",
@@ -28290,7 +29515,18 @@ var assignments = [
 					],
 					"code": "plt.figure(figsize=(9, 7))\nsns.heatmap(X_train[num_cols].corr(), annot=True, fmt='.2f', cmap='coolwarm', center=0)\nplt.show()",
 					"lotus": "Age and years at Lotus Spa tend to rise together: saying nearly the same thing.",
-					"trap": "Correlation measures only the straight-line relation between two numeric columns, not the link to Attrition."
+					"trap": "Correlation measures only the straight-line relation between two numeric columns, not the link to Attrition.",
+					"read": [
+						"Heatmap: each cell is a correlation of two numeric columns, −1 to 1; the diagonal is always 1.",
+						"Find dark off-diagonal cells: strongly related pairs.",
+						"Most cells near 0 mean the columns are nearly independent."
+					],
+					"remark": "Only two pairs matter: Age – Years at Company (0.54) and Years at Company – Company Tenure (0.44); the rest are near 0. Watch for overlapping variables when modelling (check VIF in 7.2.4).",
+					"howRemark": [
+						"Name the strongest pair with numbers.",
+						"Say most pairs are independent.",
+						"State the effect on the model (multicollinearity)."
+					]
 				}
 			},
 			"4.3": {
@@ -28303,7 +29539,14 @@ var assignments = [
 					],
 					"code": "print(y_train.value_counts(normalize=True).round(3))\ny_train.value_counts().plot(kind='bar')",
 					"lotus": "Gần một nửa nhân viên nghỉ: số rất cao, nhưng đủ cân để dùng độ chính xác mà không sợ mô hình chỉ đoán «ở lại» cho mọi người.",
-					"trap": "Với tập mất cân bằng (95/5) độ chính xác đánh lừa. Ở đây thì không, nhưng vẫn nên xem thêm sensitivity và specificity."
+					"trap": "Với tập mất cân bằng (95/5) độ chính xác đánh lừa. Ở đây thì không, nhưng vẫn nên xem thêm sensitivity và specificity.",
+					"read": ["Hai số tỷ lệ: Stayed 0,521 và Left 0,479.", "Gần 50/50 là cân bằng."],
+					"remark": "52,1% ở lại và 47,9% nghỉ: lớp gần cân bằng nên độ chính xác là thước đo hợp lý và không cần xử lý mất cân bằng.",
+					"howRemark": [
+						"Báo tỷ lệ hai lớp.",
+						"Kết luận cân bằng hay không.",
+						"Nói hệ quả với cách đo."
+					]
 				},
 				"en": {
 					"think": "Check class balance of the target.",
@@ -28314,7 +29557,14 @@ var assignments = [
 					],
 					"code": "print(y_train.value_counts(normalize=True).round(3))\ny_train.value_counts().plot(kind='bar')",
 					"lotus": "Almost half of staff leave: a very high number, but balanced enough to use accuracy without fearing the model simply says “stay” for everyone.",
-					"trap": "With an imbalanced set (95/5) accuracy misleads. Not here, but still look at sensitivity and specificity."
+					"trap": "With an imbalanced set (95/5) accuracy misleads. Not here, but still look at sensitivity and specificity.",
+					"read": ["Two proportions: Stayed 0.521 and Left 0.479.", "Near 50/50 is balanced."],
+					"remark": "52.1% stayed and 47.9% left: classes are near balanced so accuracy is a fair measure and no imbalance fix is needed.",
+					"howRemark": [
+						"Report both class shares.",
+						"Conclude balanced or not.",
+						"State the effect on metrics."
+					]
 				}
 			},
 			"4.4": {
@@ -28327,7 +29577,19 @@ var assignments = [
 					],
 					"code": "cat_cols = X_train.select_dtypes(include='object').columns\nfor c in cat_cols:\n    sns.countplot(data=X_train.assign(Attrition=y_train), x=c, hue='Attrition')\n    plt.xticks(rotation=45); plt.show()",
 					"lotus": "Nếu nhân viên làm thêm giờ nghỉ nhiều hơn rõ rệt so với người không làm thêm, đó là yếu tố chị Lan có thể can thiệp.",
-					"trap": "Đếm số lượng thô dễ đánh lừa khi nhóm có kích thước khác nhau. So tỷ lệ phần trăm trong từng nhóm."
+					"trap": "Đếm số lượng thô dễ đánh lừa khi nhóm có kích thước khác nhau. So tỷ lệ phần trăm trong từng nhóm.",
+					"read": [
+						"Mỗi dòng là một cột nhóm và TỶ LỆ NGHỈ của từng giá trị; đường đỏ trên biểu đồ là mức chung 0,479.",
+						"Giá trị cao hơn 0,479 là nhóm nghỉ nhiều; thấp hơn là nhóm ở lại nhiều.",
+						"Chênh càng lớn trong một cột thì cột đó càng quan trọng."
+					],
+					"remark": "Nghỉ nhiều nhất ở nhóm Single (0,671), Entry (0,639) và Work-Life Balance Poor (0,608); nghỉ ít nhất ở Senior (0,202) và Remote Work Yes (0,247). Chênh lớn nhất ở Job Level và Marital Status nên đó là biến đáng giữ.",
+					"howRemark": [
+						"Với mỗi cột chọn giá trị cao nhất và thấp nhất.",
+						"Nhớ giá trị là tỷ lệ NGHỈ.",
+						"So với mức chung 0,479.",
+						"Xếp cột theo độ chênh rồi đối chiếu biến RFE chọn ở 7.1.2."
+					]
 				},
 				"en": {
 					"think": "Bivariate analysis: how each categorical column affects Attrition.",
@@ -28338,7 +29600,19 @@ var assignments = [
 					],
 					"code": "cat_cols = X_train.select_dtypes(include='object').columns\nfor c in cat_cols:\n    sns.countplot(data=X_train.assign(Attrition=y_train), x=c, hue='Attrition')\n    plt.xticks(rotation=45); plt.show()",
 					"lotus": "If staff who work overtime leave clearly more than those who do not, that is a factor chị Lan can act on.",
-					"trap": "Raw counts mislead when groups differ in size. Compare percentages within each group."
+					"trap": "Raw counts mislead when groups differ in size. Compare percentages within each group.",
+					"read": [
+						"Each line is a categorical column and the LEAVE RATE of each value; the red line on the chart is the overall 0.479.",
+						"Above 0.479 is a high-leaving group; below is a staying group.",
+						"The larger the gap within a column, the more important that column."
+					],
+					"remark": "Highest leaving in Single (0.671), Entry (0.639) and Work-Life Balance Poor (0.608); lowest in Senior (0.202) and Remote Work Yes (0.247). The largest gaps are in Job Level and Marital Status, so those variables are worth keeping.",
+					"howRemark": [
+						"For each column pick the highest and lowest value.",
+						"Remember the value is the LEAVE rate.",
+						"Compare with the overall 0.479.",
+						"Rank columns by gap and cross-check the RFE picks in 7.1.2."
+					]
 				}
 			},
 			"5.1.1": {
@@ -28347,14 +29621,20 @@ var assignments = [
 					"steps": ["X_validation.select_dtypes(include='number').columns."],
 					"code": "num_cols_v = X_validation.select_dtypes(include=['int64', 'float64']).columns",
 					"lotus": "Cùng danh sách cột số như train.",
-					"trap": "Không dùng validation để chọn cột; chỉ để so sánh."
+					"trap": "Không dùng validation để chọn cột; chỉ để so sánh.",
+					"read": ["Ô này không in kết quả hoặc hiển thị hình giống train: so với bước tương ứng ở phần 4."],
+					"remark": "Phần tùy chọn: lặp lại bước khám phá trên validation để chắc hai tập giống nhau; nếu hình và số gần train thì chia dữ liệu hợp lý.",
+					"howRemark": ["Nói bước này chuẩn bị gì cho bước sau.", "Ghi tên biến/đối tượng mới được tạo."]
 				},
 				"en": {
 					"think": "(Optional) select numeric columns of validation.",
 					"steps": ["X_validation.select_dtypes(include='number').columns."],
 					"code": "num_cols_v = X_validation.select_dtypes(include=['int64', 'float64']).columns",
 					"lotus": "The same numeric list as train.",
-					"trap": "Do not use validation to choose columns; only to compare."
+					"trap": "Do not use validation to choose columns; only to compare.",
+					"read": ["This cell prints nothing or a train-like chart: compare with the matching step in part 4."],
+					"remark": "Optional part: repeats the exploration on validation to confirm the two sets match; if shapes and numbers are close to train, the split is sound.",
+					"howRemark": ["Say what this step prepares for the next.", "Note the new variable/object created."]
 				}
 			},
 			"5.1.2": {
@@ -28363,14 +29643,20 @@ var assignments = [
 					"steps": ["Histogram từng cột.", "So hình dạng với bước 4.1.2."],
 					"code": "X_validation[num_cols_v].hist(bins=30, figsize=(14, 10))\nplt.show()",
 					"lotus": "Hai tập nên có hình dạng gần nhau.",
-					"trap": "Hình khác nhiều giữa hai tập là dấu hiệu chia chưa tốt."
+					"trap": "Hình khác nhiều giữa hai tập là dấu hiệu chia chưa tốt.",
+					"read": ["Ô này không in kết quả hoặc hiển thị hình giống train: so với bước tương ứng ở phần 4."],
+					"remark": "Phần tùy chọn: lặp lại bước khám phá trên validation để chắc hai tập giống nhau; nếu hình và số gần train thì chia dữ liệu hợp lý.",
+					"howRemark": ["Nói bước này chuẩn bị gì cho bước sau.", "Ghi tên biến/đối tượng mới được tạo."]
 				},
 				"en": {
 					"think": "(Optional) plot numeric distributions in validation, compared to train.",
 					"steps": ["A histogram per column.", "Compare shape with step 4.1.2."],
 					"code": "X_validation[num_cols_v].hist(bins=30, figsize=(14, 10))\nplt.show()",
 					"lotus": "The two sets should look alike.",
-					"trap": "Very different shapes between the two sets signal a poor split."
+					"trap": "Very different shapes between the two sets signal a poor split.",
+					"read": ["This cell prints nothing or a train-like chart: compare with the matching step in part 4."],
+					"remark": "Optional part: repeats the exploration on validation to confirm the two sets match; if shapes and numbers are close to train, the split is sound.",
+					"howRemark": ["Say what this step prepares for the next.", "Note the new variable/object created."]
 				}
 			},
 			"5.2": {
@@ -28379,14 +29665,20 @@ var assignments = [
 					"steps": ["Làm giống 4.2 trên validation."],
 					"code": "sns.heatmap(X_validation[num_cols_v].corr(), annot=True, fmt='.2f', cmap='coolwarm', center=0)",
 					"lotus": "Mẫu tương quan nên giống train.",
-					"trap": "Tương quan khác hẳn là dấu hiệu dữ liệu không đồng nhất."
+					"trap": "Tương quan khác hẳn là dấu hiệu dữ liệu không đồng nhất.",
+					"read": ["Ô này không in kết quả hoặc hiển thị hình giống train: so với bước tương ứng ở phần 4."],
+					"remark": "Phần tùy chọn: lặp lại bước khám phá trên validation để chắc hai tập giống nhau; nếu hình và số gần train thì chia dữ liệu hợp lý.",
+					"howRemark": ["Nói bước này chuẩn bị gì cho bước sau.", "Ghi tên biến/đối tượng mới được tạo."]
 				},
 				"en": {
 					"think": "(Optional) numeric correlation in validation.",
 					"steps": ["Repeat 4.2 on validation."],
 					"code": "sns.heatmap(X_validation[num_cols_v].corr(), annot=True, fmt='.2f', cmap='coolwarm', center=0)",
 					"lotus": "The correlation pattern should resemble train.",
-					"trap": "A very different pattern means inhomogeneous data."
+					"trap": "A very different pattern means inhomogeneous data.",
+					"read": ["This cell prints nothing or a train-like chart: compare with the matching step in part 4."],
+					"remark": "Optional part: repeats the exploration on validation to confirm the two sets match; if shapes and numbers are close to train, the split is sound.",
+					"howRemark": ["Say what this step prepares for the next.", "Note the new variable/object created."]
 				}
 			},
 			"5.3": {
@@ -28395,14 +29687,20 @@ var assignments = [
 					"steps": ["y_validation.value_counts(normalize=True)."],
 					"code": "print(y_validation.value_counts(normalize=True).round(3))",
 					"lotus": "Tỷ lệ ở/nghỉ ở validation phải gần 52/48 của train.",
-					"trap": "Lệch vài điểm phần trăm là bình thường."
+					"trap": "Lệch vài điểm phần trăm là bình thường.",
+					"read": ["Ô này không in kết quả hoặc hiển thị hình giống train: so với bước tương ứng ở phần 4."],
+					"remark": "Phần tùy chọn: lặp lại bước khám phá trên validation để chắc hai tập giống nhau; nếu hình và số gần train thì chia dữ liệu hợp lý.",
+					"howRemark": ["Nói bước này chuẩn bị gì cho bước sau.", "Ghi tên biến/đối tượng mới được tạo."]
 				},
 				"en": {
 					"think": "(Optional) class balance in validation.",
 					"steps": ["y_validation.value_counts(normalize=True)."],
 					"code": "print(y_validation.value_counts(normalize=True).round(3))",
 					"lotus": "The stay/leave ratio in validation should be close to train's 52/48.",
-					"trap": "A few percentage points of gap is normal."
+					"trap": "A few percentage points of gap is normal.",
+					"read": ["This cell prints nothing or a train-like chart: compare with the matching step in part 4."],
+					"remark": "Optional part: repeats the exploration on validation to confirm the two sets match; if shapes and numbers are close to train, the split is sound.",
+					"howRemark": ["Say what this step prepares for the next.", "Note the new variable/object created."]
 				}
 			},
 			"5.4": {
@@ -28411,14 +29709,20 @@ var assignments = [
 					"steps": ["Làm giống 4.4 trên validation."],
 					"code": "cat_cols = X_validation.select_dtypes(include='object').columns\nfor c in cat_cols:\n    sns.countplot(data=X_validation.assign(Attrition=y_validation), x=c, hue='Attrition')\n    plt.xticks(rotation=45); plt.show()",
 					"lotus": "Nhóm nghỉ nhiều ở train cũng nên nghỉ nhiều ở validation.",
-					"trap": "Nếu chiều ngược nhau, mô hình sẽ không khái quát hóa."
+					"trap": "Nếu chiều ngược nhau, mô hình sẽ không khái quát hóa.",
+					"read": ["Ô này không in kết quả hoặc hiển thị hình giống train: so với bước tương ứng ở phần 4."],
+					"remark": "Phần tùy chọn: lặp lại bước khám phá trên validation để chắc hai tập giống nhau; nếu hình và số gần train thì chia dữ liệu hợp lý.",
+					"howRemark": ["Nói bước này chuẩn bị gì cho bước sau.", "Ghi tên biến/đối tượng mới được tạo."]
 				},
 				"en": {
 					"think": "(Optional) bivariate analysis in validation.",
 					"steps": ["Repeat 4.4 on validation."],
 					"code": "cat_cols = X_validation.select_dtypes(include='object').columns\nfor c in cat_cols:\n    sns.countplot(data=X_validation.assign(Attrition=y_validation), x=c, hue='Attrition')\n    plt.xticks(rotation=45); plt.show()",
 					"lotus": "Groups that leave a lot in train should also leave a lot in validation.",
-					"trap": "If the direction reverses, the model will not generalise."
+					"trap": "If the direction reverses, the model will not generalise.",
+					"read": ["This cell prints nothing or a train-like chart: compare with the matching step in part 4."],
+					"remark": "Optional part: repeats the exploration on validation to confirm the two sets match; if shapes and numbers are close to train, the split is sound.",
+					"howRemark": ["Say what this step prepares for the next.", "Note the new variable/object created."]
 				}
 			},
 			"6.1.1": {
@@ -28427,14 +29731,20 @@ var assignments = [
 					"steps": ["Lấy các cột kiểu chữ của X_train.", "Gồm Gender, Job Role, Work-Life Balance, Job Satisfaction, Performance Rating, Overtime, Education Level, Marital Status, Job Level, Company Size, Remote Work, Leadership/Innovation Opportunities, Company Reputation, Employee Recognition."],
 					"code": "cat_cols = X_train.select_dtypes(include=['object']).columns\nprint(list(cat_cols))",
 					"lotus": "Mọi thông tin chữ trong hồ sơ nhân viên đều phải đổi thành số 0/1 để mô hình dùng được.",
-					"trap": "Cột chữ nhưng có thứ tự (mức hài lòng) vẫn có thể dùng dummy, chỉ là mất thông tin thứ tự."
+					"trap": "Cột chữ nhưng có thứ tự (mức hài lòng) vẫn có thể dùng dummy, chỉ là mất thông tin thứ tự.",
+					"read": ["Danh sách 15 cột nhóm cần tạo biến giả."],
+					"remark": "Có 15 cột chữ cần chuyển thành số 0/1 (biến giả) vì mô hình chỉ đọc số.",
+					"howRemark": ["Đếm cột nhóm.", "Nói vì sao cần biến giả."]
 				},
 				"en": {
 					"think": "Identify the categorical columns that need dummy variables.",
 					"steps": ["Take the text-type columns of X_train.", "They include Gender, Job Role, Work-Life Balance, Job Satisfaction, Performance Rating, Overtime, Education Level, Marital Status, Job Level, Company Size, Remote Work, Leadership/Innovation Opportunities, Company Reputation, Employee Recognition."],
 					"code": "cat_cols = X_train.select_dtypes(include=['object']).columns\nprint(list(cat_cols))",
 					"lotus": "Every text field in a staff record must become 0/1 numbers before the model can use it.",
-					"trap": "Ordered text columns (satisfaction level) can still use dummies, but the order information is lost."
+					"trap": "Ordered text columns (satisfaction level) can still use dummies, but the order information is lost.",
+					"read": ["The list of 15 categorical columns needing dummies."],
+					"remark": "There are 15 text columns to convert to 0/1 dummies since the model reads only numbers.",
+					"howRemark": ["Count the categorical columns.", "Say why dummies are needed."]
 				}
 			},
 			"6.1.2": {
@@ -28447,7 +29757,14 @@ var assignments = [
 					],
 					"code": "dummy_train = pd.get_dummies(X_train[cat_cols], drop_first=True, dtype=int)\ndummy_train.head()",
 					"lotus": "«Overtime = Yes» thành một cột Overtime_Yes bằng 1 nếu có làm thêm giờ, bằng 0 nếu không.",
-					"trap": "Không có drop_first thì các cột cộng lại luôn bằng 1: mô hình bị trùng lặp."
+					"trap": "Không có drop_first thì các cột cộng lại luôn bằng 1: mô hình bị trùng lặp.",
+					"read": ["(49444, 34): 34 cột sau khi tạo biến giả cho các cột nhóm.", "Bảng mẫu là các cột 0/1; ví dụ Gender_Male = 1 là nam."],
+					"remark": "Sau khi tạo biến giả, X_train có 34 cột; mỗi cột 0/1 là một lựa chọn của một nhóm (bỏ một nhóm làm mốc).",
+					"howRemark": [
+						"Báo hình dạng mới.",
+						"Đọc một cột mẫu.",
+						"Nêu ý nghĩa nhóm mốc."
+					]
 				},
 				"en": {
 					"think": "Create dummy variables for X_train.",
@@ -28458,7 +29775,14 @@ var assignments = [
 					],
 					"code": "dummy_train = pd.get_dummies(X_train[cat_cols], drop_first=True, dtype=int)\ndummy_train.head()",
 					"lotus": "“Overtime = Yes” becomes a column Overtime_Yes equal to 1 if they work overtime, 0 otherwise.",
-					"trap": "Without drop_first the columns always sum to 1: the model is redundant."
+					"trap": "Without drop_first the columns always sum to 1: the model is redundant.",
+					"read": ["(49444, 34): 34 columns after creating dummies.", "The sample table shows 0/1 columns; e.g. Gender_Male = 1 means male."],
+					"remark": "After dummies X_train has 34 columns; each 0/1 column is one level of a category (one level dropped as baseline).",
+					"howRemark": [
+						"Report the new shape.",
+						"Read a sample column.",
+						"State the baseline level idea."
+					]
 				}
 			},
 			"6.1.3": {
@@ -28467,14 +29791,20 @@ var assignments = [
 					"steps": ["Dùng đúng cat_cols và drop_first như train.", "Kiểm tra số cột và tên cột bằng nhau, nếu thiếu thì reindex theo cột train."],
 					"code": "dummy_val = pd.get_dummies(X_validation[cat_cols], drop_first=True, dtype=int)\ndummy_val = dummy_val.reindex(columns=dummy_train.columns, fill_value=0)",
 					"lotus": "Hai sổ nhân viên phải có cùng bộ cột 0/1.",
-					"trap": "Một mức chỉ xuất hiện ở một tập làm hai bảng khác cột. reindex xử lý việc đó."
+					"trap": "Một mức chỉ xuất hiện ở một tập làm hai bảng khác cột. reindex xử lý việc đó.",
+					"read": ["(21191, 34): cùng số cột với train, nghĩa là biến giả được tạo khớp."],
+					"remark": "Validation có 34 cột giống train, nên mô hình áp dụng được trực tiếp.",
+					"howRemark": ["Kiểm số cột bằng train."]
 				},
 				"en": {
 					"think": "Create dummy variables for X_validation the same way as train.",
 					"steps": ["Use exactly the same cat_cols and drop_first as train.", "Check the column count and names match; if not, reindex to train's columns."],
 					"code": "dummy_val = pd.get_dummies(X_validation[cat_cols], drop_first=True, dtype=int)\ndummy_val = dummy_val.reindex(columns=dummy_train.columns, fill_value=0)",
 					"lotus": "The two staff logs must have the same 0/1 columns.",
-					"trap": "A level present in only one set gives mismatched columns. reindex fixes it."
+					"trap": "A level present in only one set gives mismatched columns. reindex fixes it.",
+					"read": ["(21191, 34): same column count as train, so dummies line up."],
+					"remark": "Validation has the same 34 columns as train, so the model applies directly.",
+					"howRemark": ["Check column count equals train."]
 				}
 			},
 			"6.1.4": {
@@ -28483,14 +29813,20 @@ var assignments = [
 					"steps": ["y_train.to_frame() hoặc pd.DataFrame(y_train).", "Làm tương tự cho y_validation."],
 					"code": "y_train_df = pd.DataFrame(y_train)\ny_val_df = pd.DataFrame(y_validation)",
 					"lotus": "Cột Attrition chữ «Stayed/Left» cũng cần đổi thành 0/1.",
-					"trap": "Quên chuyển Series thành DataFrame thì get_dummies trả cột sai tên."
+					"trap": "Quên chuyển Series thành DataFrame thì get_dummies trả cột sai tên.",
+					"read": ["Ô này không in kết quả; việc cần xem là chạy không báo lỗi."],
+					"remark": "Biến mục tiêu đã chuyển thành bảng để tạo biến giả.",
+					"howRemark": ["Nói bước này chuẩn bị gì cho bước sau.", "Ghi tên biến/đối tượng mới được tạo."]
 				},
 				"en": {
 					"think": "Convert y_train and y_validation to DataFrames to create target dummies.",
 					"steps": ["y_train.to_frame() or pd.DataFrame(y_train).", "Do the same for y_validation."],
 					"code": "y_train_df = pd.DataFrame(y_train)\ny_val_df = pd.DataFrame(y_validation)",
 					"lotus": "The text column Attrition “Stayed/Left” must become 0/1 too.",
-					"trap": "Forgetting to make the Series a DataFrame gives get_dummies wrongly named columns."
+					"trap": "Forgetting to make the Series a DataFrame gives get_dummies wrongly named columns.",
+					"read": ["This cell prints nothing; just check it ran without error."],
+					"remark": "The target is turned into a table to build dummies.",
+					"howRemark": ["Say what this step prepares for the next.", "Note the new variable/object created."]
 				}
 			},
 			"6.1.5": {
@@ -28503,7 +29839,10 @@ var assignments = [
 					],
 					"code": "y_train_d = pd.get_dummies(y_train_df, drop_first=True, dtype=int)\ny_train_d.head()",
 					"lotus": "Mô hình đo xác suất một nhân viên ở lại, nên 1 là ở lại.",
-					"trap": "Nhầm 1 là nghỉ làm đảo nghĩa mọi hệ số."
+					"trap": "Nhầm 1 là nghỉ làm đảo nghĩa mọi hệ số.",
+					"read": ["Cột Attrition_Stayed với giá trị trung bình 0,521 là tỷ lệ ở lại, khớp 4.3."],
+					"remark": "Biến mục tiêu thành 0/1 (1 = ở lại), trung bình 0,521 khớp tỷ lệ 52,1% ở 4.3.",
+					"howRemark": ["Đối chiếu với 4.3."]
 				},
 				"en": {
 					"think": "Create dummy variables for the target in train.",
@@ -28514,7 +29853,10 @@ var assignments = [
 					],
 					"code": "y_train_d = pd.get_dummies(y_train_df, drop_first=True, dtype=int)\ny_train_d.head()",
 					"lotus": "The model measures the probability a staff member stays, so 1 means stayed.",
-					"trap": "Mistaking 1 for left flips the meaning of every coefficient."
+					"trap": "Mistaking 1 for left flips the meaning of every coefficient.",
+					"read": ["Attrition_Stayed with mean 0.521 is the stayed rate, matching 4.3."],
+					"remark": "The target becomes 0/1 (1 = stayed), mean 0.521 matching the 52.1% in 4.3.",
+					"howRemark": ["Cross-check with 4.3."]
 				}
 			},
 			"6.1.6": {
@@ -28523,14 +29865,20 @@ var assignments = [
 					"steps": ["Làm như 6.1.5 trên y_val_df."],
 					"code": "y_val_d = pd.get_dummies(y_val_df, drop_first=True, dtype=int)",
 					"lotus": "Cùng cách mã hóa với train.",
-					"trap": "Mã hóa ngược với train làm điểm đánh giá vô nghĩa."
+					"trap": "Mã hóa ngược với train làm điểm đánh giá vô nghĩa.",
+					"read": ["Ô này không in kết quả; việc cần xem là chạy không báo lỗi."],
+					"remark": "Tạo biến giả cho biến mục tiêu ở validation, cùng cách với train.",
+					"howRemark": ["Nói bước này chuẩn bị gì cho bước sau.", "Ghi tên biến/đối tượng mới được tạo."]
 				},
 				"en": {
 					"think": "Create dummy variables for the target in validation.",
 					"steps": ["Do as 6.1.5 on y_val_df."],
 					"code": "y_val_d = pd.get_dummies(y_val_df, drop_first=True, dtype=int)",
 					"lotus": "Same encoding as train.",
-					"trap": "Encoding opposite to train makes evaluation meaningless."
+					"trap": "Encoding opposite to train makes evaluation meaningless.",
+					"read": ["This cell prints nothing; just check it ran without error."],
+					"remark": "Dummy for the target on validation, same way as train.",
+					"howRemark": ["Say what this step prepares for the next.", "Note the new variable/object created."]
 				}
 			},
 			"6.1.7": {
@@ -28543,7 +29891,10 @@ var assignments = [
 					],
 					"code": "X_train = pd.concat([X_train.drop(columns=cat_cols), dummy_train], axis=1)\nX_validation = pd.concat([X_validation.drop(columns=cat_cols), dummy_val], axis=1)\nprint(X_train.shape, X_validation.shape)",
 					"lotus": "File của bạn có khoảng 41 cột sau bước này.",
-					"trap": "Bỏ cột gốc rồi mới concat thì thiếu cột số."
+					"trap": "Bỏ cột gốc rồi mới concat thì thiếu cột số.",
+					"read": ["Hai hình dạng: train (49444, 41) và validation (21191, 41).", "41 cột = 34 biến giả + 7 cột số."],
+					"remark": "Sau khi gộp, cả hai tập có 41 cột (34 biến giả và 7 cột số): sẵn sàng chuẩn hóa và huấn luyện.",
+					"howRemark": ["Kiểm hai tập cùng số cột.", "Giải thích 41 = 34 + 7."]
 				},
 				"en": {
 					"think": "Merge dummies into X and drop the original text columns.",
@@ -28554,7 +29905,10 @@ var assignments = [
 					],
 					"code": "X_train = pd.concat([X_train.drop(columns=cat_cols), dummy_train], axis=1)\nX_validation = pd.concat([X_validation.drop(columns=cat_cols), dummy_val], axis=1)\nprint(X_train.shape, X_validation.shape)",
 					"lotus": "Your file has about 41 columns after this step.",
-					"trap": "Dropping the originals before concatenating loses the numeric columns."
+					"trap": "Dropping the originals before concatenating loses the numeric columns.",
+					"read": ["Two shapes: train (49444, 41) and validation (21191, 41).", "41 columns = 34 dummies + 7 numeric."],
+					"remark": "After merging both sets have 41 columns (34 dummies + 7 numeric): ready to scale and train.",
+					"howRemark": ["Check both sets have the same columns.", "Explain 41 = 34 + 7."]
 				}
 			},
 			"6.2.1": {
@@ -28563,14 +29917,20 @@ var assignments = [
 					"steps": ["from sklearn.preprocessing import StandardScaler."],
 					"code": "from sklearn.preprocessing import StandardScaler",
 					"lotus": "Chuẩn bị đưa tuổi, lương, khoảng cách về cùng thang.",
-					"trap": "Không có."
+					"trap": "Không có.",
+					"read": ["Ô này không in kết quả; việc cần xem là chạy không báo lỗi."],
+					"remark": "Đã nạp công cụ chuẩn hóa.",
+					"howRemark": ["Nói bước này chuẩn bị gì cho bước sau.", "Ghi tên biến/đối tượng mới được tạo."]
 				},
 				"en": {
 					"think": "Import the scaling tool.",
 					"steps": ["from sklearn.preprocessing import StandardScaler."],
 					"code": "from sklearn.preprocessing import StandardScaler",
 					"lotus": "Prepare to bring age, income and distance to one scale.",
-					"trap": "None."
+					"trap": "None.",
+					"read": ["This cell prints nothing; just check it ran without error."],
+					"remark": "The scaler is loaded.",
+					"howRemark": ["Say what this step prepares for the next.", "Note the new variable/object created."]
 				}
 			},
 			"6.2.2": {
@@ -28583,7 +29943,10 @@ var assignments = [
 					],
 					"code": "scaler = StandardScaler()\nX_train[num_cols] = scaler.fit_transform(X_train[num_cols])\nX_validation[num_cols] = scaler.transform(X_validation[num_cols])",
 					"lotus": "Lương tính theo hàng nghìn, số người phụ thuộc tính theo đơn vị: phải về cùng thang thì hệ số so được.",
-					"trap": "fit scaler trên validation làm lộ trung bình và độ lệch chuẩn của validation."
+					"trap": "fit scaler trên validation làm lộ trung bình và độ lệch chuẩn của validation.",
+					"read": ["Hàng mean gần 0 và hàng std bằng 1 cho cả 7 cột số.", "Chuẩn hóa fit trên train rồi áp cùng tham số lên validation."],
+					"remark": "Cả 7 cột số có trung bình 0 và độ lệch chuẩn 1 trên train, nên các hệ số về sau so sánh được.",
+					"howRemark": ["Kiểm mean ≈ 0 và std = 1.", "Nói fit chỉ trên train."]
 				},
 				"en": {
 					"think": "Scale numeric columns: fit on train, transform both.",
@@ -28594,7 +29957,10 @@ var assignments = [
 					],
 					"code": "scaler = StandardScaler()\nX_train[num_cols] = scaler.fit_transform(X_train[num_cols])\nX_validation[num_cols] = scaler.transform(X_validation[num_cols])",
 					"lotus": "Income runs in thousands and dependents in single units: they must share one scale for coefficients to be comparable.",
-					"trap": "Fitting the scaler on validation leaks validation's mean and standard deviation."
+					"trap": "Fitting the scaler on validation leaks validation's mean and standard deviation.",
+					"read": ["The mean row near 0 and std row 1 for all 7 numeric columns.", "Scaler fit on train, same parameters applied to validation."],
+					"remark": "All 7 numeric columns have mean 0 and std 1 on train, so later coefficients are comparable.",
+					"howRemark": ["Check mean ≈ 0 and std = 1.", "Say fit only on train."]
 				}
 			},
 			"7.1.1": {
@@ -28603,14 +29969,20 @@ var assignments = [
 					"steps": ["from sklearn.linear_model import LogisticRegression.", "logreg = LogisticRegression()."],
 					"code": "from sklearn.linear_model import LogisticRegression\nlogreg = LogisticRegression(max_iter=1000)",
 					"lotus": "Mô hình sẽ đoán xác suất một nhân viên ở lại.",
-					"trap": "Quên max_iter có thể gặp cảnh báo chưa hội tụ."
+					"trap": "Quên max_iter có thể gặp cảnh báo chưa hội tụ.",
+					"read": ["Ô này không in kết quả; việc cần xem là chạy không báo lỗi."],
+					"remark": "Đã tạo đối tượng LogisticRegression để RFE dùng.",
+					"howRemark": ["Nói bước này chuẩn bị gì cho bước sau.", "Ghi tên biến/đối tượng mới được tạo."]
 				},
 				"en": {
 					"think": "Import LogisticRegression and create the object.",
 					"steps": ["from sklearn.linear_model import LogisticRegression.", "logreg = LogisticRegression()."],
 					"code": "from sklearn.linear_model import LogisticRegression\nlogreg = LogisticRegression(max_iter=1000)",
 					"lotus": "The model will predict the probability a staff member stays.",
-					"trap": "Forgetting max_iter may produce a not-converged warning."
+					"trap": "Forgetting max_iter may produce a not-converged warning.",
+					"read": ["This cell prints nothing; just check it ran without error."],
+					"remark": "The LogisticRegression object is created for RFE to use.",
+					"howRemark": ["Say what this step prepares for the next.", "Note the new variable/object created."]
 				}
 			},
 			"7.1.2": {
@@ -28624,7 +29996,14 @@ var assignments = [
 					],
 					"code": "from sklearn.feature_selection import RFE\nrfe = RFE(estimator=logreg, n_features_to_select=15)\nrfe = rfe.fit(X_train, y_train_d.values.ravel())\nX_train.columns[rfe.support_]",
 					"lotus": "Từ 41 cột còn 15. Với file của bạn, các biến thường được chọn gồm Job Level, Marital Status_Single, Remote Work_Yes, Work-Life Balance, Education Level_PhD, Job Satisfaction, Overtime_Yes.",
-					"trap": "y phải là mảng một chiều (ravel); đưa vào DataFrame cột báo cảnh báo hình dạng."
+					"trap": "y phải là mảng một chiều (ravel); đưa vào DataFrame cột báo cảnh báo hình dạng.",
+					"read": ["Danh sách 15 biến RFE giữ lại, đều là cột 0/1.", "Đây là những biến được cho là hữu ích nhất để dự đoán."],
+					"remark": "RFE chọn 15 biến gồm Overtime_Yes, Remote Work_Yes, Marital Status_Single, Job Level (Mid, Senior), Work-Life Balance (Fair, Poor)...; khớp các nhóm có chênh lớn ở 4.4.",
+					"howRemark": [
+						"Nhóm các biến theo chủ đề.",
+						"Đối chiếu với 4.4.",
+						"Nói biến nào bất ngờ."
+					]
 				},
 				"en": {
 					"think": "Use RFE to choose the 15 most important features.",
@@ -28636,7 +30015,14 @@ var assignments = [
 					],
 					"code": "from sklearn.feature_selection import RFE\nrfe = RFE(estimator=logreg, n_features_to_select=15)\nrfe = rfe.fit(X_train, y_train_d.values.ravel())\nX_train.columns[rfe.support_]",
 					"lotus": "From 41 columns down to 15. In your file the usual picks include Job Level, Marital Status_Single, Remote Work_Yes, Work-Life Balance, Education Level_PhD, Job Satisfaction, Overtime_Yes.",
-					"trap": "y must be one-dimensional (ravel); passing a single-column DataFrame raises a shape warning."
+					"trap": "y must be one-dimensional (ravel); passing a single-column DataFrame raises a shape warning.",
+					"read": ["The list of 15 variables RFE kept, all 0/1 columns.", "These are judged most useful for prediction."],
+					"remark": "RFE picked 15 variables including Overtime_Yes, Remote Work_Yes, Marital Status_Single, Job Level (Mid, Senior), Work-Life Balance (Fair, Poor)...; consistent with the big gaps in 4.4.",
+					"howRemark": [
+						"Group the variables by theme.",
+						"Cross-check with 4.4.",
+						"Say which are surprising."
+					]
 				}
 			},
 			"7.1.3": {
@@ -28645,14 +30031,20 @@ var assignments = [
 					"steps": ["col = X_train.columns[rfe.support_]."],
 					"code": "col = X_train.columns[rfe.support_]\nlist(col)",
 					"lotus": "Đây là 15 yếu tố mô hình sẽ dùng để đoán nhân viên ở hay nghỉ.",
-					"trap": "Không có."
+					"trap": "Không có.",
+					"read": ["Ô này không in kết quả; việc cần xem là chạy không báo lỗi."],
+					"remark": "Danh sách 15 biến đã được lưu vào col để dùng ở các bước sau.",
+					"howRemark": ["Nói bước này chuẩn bị gì cho bước sau.", "Ghi tên biến/đối tượng mới được tạo."]
 				},
 				"en": {
 					"think": "Store the selected features in col.",
 					"steps": ["col = X_train.columns[rfe.support_]."],
 					"code": "col = X_train.columns[rfe.support_]\nlist(col)",
 					"lotus": "These are the 15 factors the model will use to guess stay or leave.",
-					"trap": "None."
+					"trap": "None.",
+					"read": ["This cell prints nothing; just check it ran without error."],
+					"remark": "The 15 variables are saved in col for later steps.",
+					"howRemark": ["Say what this step prepares for the next.", "Note the new variable/object created."]
 				}
 			},
 			"7.2.1": {
@@ -28661,14 +30053,20 @@ var assignments = [
 					"steps": ["X_train_sm = X_train[col]."],
 					"code": "X_train_rfe = X_train[col]\nX_train_rfe.head()",
 					"lotus": "Chỉ giữ 15 yếu tố đã được chọn.",
-					"trap": "Chọn nhầm cột (từ validation) làm mô hình lệch."
+					"trap": "Chọn nhầm cột (từ validation) làm mô hình lệch.",
+					"read": ["Ô này không in kết quả; việc cần xem là chạy không báo lỗi."],
+					"remark": "Lấy đúng 15 cột đã chọn của train.",
+					"howRemark": ["Nói bước này chuẩn bị gì cho bước sau.", "Ghi tên biến/đối tượng mới được tạo."]
 				},
 				"en": {
 					"think": "Take exactly the 15 selected columns from train.",
 					"steps": ["X_train_sm = X_train[col]."],
 					"code": "X_train_rfe = X_train[col]\nX_train_rfe.head()",
 					"lotus": "Keep only the 15 chosen factors.",
-					"trap": "Selecting from validation by mistake skews the model."
+					"trap": "Selecting from validation by mistake skews the model.",
+					"read": ["This cell prints nothing; just check it ran without error."],
+					"remark": "Take exactly the 15 chosen columns of train.",
+					"howRemark": ["Say what this step prepares for the next.", "Note the new variable/object created."]
 				}
 			},
 			"7.2.2": {
@@ -28677,14 +30075,20 @@ var assignments = [
 					"steps": ["import statsmodels.api as sm.", "X_train_sm = sm.add_constant(X_train_rfe)."],
 					"code": "import statsmodels.api as sm\nX_train_sm = sm.add_constant(X_train_rfe)",
 					"lotus": "Hằng số là xác suất cơ bản khi mọi yếu tố ở mức gốc.",
-					"trap": "Quên add_constant ép đường qua gốc, hệ số sai."
+					"trap": "Quên add_constant ép đường qua gốc, hệ số sai.",
+					"read": ["Ô này không in kết quả; việc cần xem là chạy không báo lỗi."],
+					"remark": "Đã thêm hằng số (intercept) vì statsmodels không tự thêm.",
+					"howRemark": ["Nói bước này chuẩn bị gì cho bước sau.", "Ghi tên biến/đối tượng mới được tạo."]
 				},
 				"en": {
 					"think": "Add the constant (intercept) since statsmodels does not.",
 					"steps": ["import statsmodels.api as sm.", "X_train_sm = sm.add_constant(X_train_rfe)."],
 					"code": "import statsmodels.api as sm\nX_train_sm = sm.add_constant(X_train_rfe)",
 					"lotus": "The constant is the baseline probability when every factor is at its reference.",
-					"trap": "Forgetting add_constant forces the line through the origin, wrong coefficients."
+					"trap": "Forgetting add_constant forces the line through the origin, wrong coefficients.",
+					"read": ["This cell prints nothing; just check it ran without error."],
+					"remark": "Added the constant (intercept) since statsmodels does not.",
+					"howRemark": ["Say what this step prepares for the next.", "Note the new variable/object created."]
 				}
 			},
 			"7.2.3": {
@@ -28697,7 +30101,19 @@ var assignments = [
 					],
 					"code": "logm = sm.GLM(y_train_d, X_train_sm, family=sm.families.Binomial())\nres = logm.fit()\nprint(res.summary())",
 					"lotus": "Hệ số dương làm tăng khả năng ở lại, âm làm giảm. Ví dụ Overtime_Yes âm: làm thêm giờ làm nhân viên dễ nghỉ hơn.",
-					"trap": "Đọc coef mà bỏ qua p-value: biến p cao có thể chỉ là nhiễu."
+					"trap": "Đọc coef mà bỏ qua p-value: biến p cao có thể chỉ là nhiễu.",
+					"read": [
+						"Mỗi hàng là một biến: coef là hệ số, P>|z| là mức ý nghĩa.",
+						"coef dương làm tăng xác suất ở lại, coef âm làm giảm.",
+						"P nhỏ hơn 0,05 là biến có ý nghĩa thống kê."
+					],
+					"remark": "Hệ số cho biết biến nào đẩy khả năng ở lại lên hoặc xuống; những biến có P < 0,05 giữ lại. Hệ số của Marital Status_Single, Job Level_Senior hay Remote Work_Yes cho biết biến đó tăng hay giảm khả năng ở lại; đọc dấu rồi đối chiếu với 4.4.",
+					"howRemark": [
+						"Chọn 3 biến có |coef| lớn nhất.",
+						"Nói dấu nghĩa là gì.",
+						"Kiểm P < 0,05.",
+						"Dịch sang ngôn ngữ kinh doanh."
+					]
 				},
 				"en": {
 					"think": "Train the logistic regression with statsmodels GLM and read the summary.",
@@ -28708,7 +30124,19 @@ var assignments = [
 					],
 					"code": "logm = sm.GLM(y_train_d, X_train_sm, family=sm.families.Binomial())\nres = logm.fit()\nprint(res.summary())",
 					"lotus": "A positive coefficient raises the chance of staying, a negative one lowers it. For example a negative Overtime_Yes: overtime makes staff more likely to leave.",
-					"trap": "Reading coef but skipping p-values: a high-p feature may just be noise."
+					"trap": "Reading coef but skipping p-values: a high-p feature may just be noise.",
+					"read": [
+						"Each row is a variable: coef is the coefficient, P>|z| the significance.",
+						"Positive coef raises the chance of staying, negative lowers it.",
+						"P below 0.05 means statistically significant."
+					],
+					"remark": "Coefficients show which variables push staying up or down; keep those with P < 0.05. E.g. Overtime_Yes and Marital Status_Single push people toward leaving.",
+					"howRemark": [
+						"Pick the 3 variables with largest |coef|.",
+						"Say what the sign means.",
+						"Check P < 0.05.",
+						"Translate to business language."
+					]
 				}
 			},
 			"7.2.4": {
@@ -28721,7 +30149,14 @@ var assignments = [
 					],
 					"code": "from statsmodels.stats.outliers_influence import variance_inflation_factor\nvif = pd.DataFrame({'Feature': X_train_rfe.columns,\n    'VIF': [variance_inflation_factor(X_train_rfe.values, i) for i in range(X_train_rfe.shape[1])]})\nvif.sort_values('VIF', ascending=False)",
 					"lotus": "VIF cao nghĩa hai yếu tố nói gần như cùng một điều, như tuổi và số năm làm.",
-					"trap": "Tính VIF trên X_train_sm có hằng số cho VIF của hằng số rất lớn. Dùng bảng không có hằng số."
+					"trap": "Tính VIF trên X_train_sm có hằng số cho VIF của hằng số rất lớn. Dùng bảng không có hằng số.",
+					"read": ["Mỗi dòng là VIF của một biến.", "VIF gần 1 là không chồng lấn; trên 5 là đáng lo."],
+					"remark": "VIF cao nhất là 1,20 (Job Level), tất cả gần 1 nên các biến không chồng lấn đáng kể và hệ số đáng tin.",
+					"howRemark": [
+						"Nêu VIF lớn nhất.",
+						"So với ngưỡng 5.",
+						"Kết luận."
+					]
 				},
 				"en": {
 					"think": "Compute VIF to detect overlapping features.",
@@ -28732,7 +30167,14 @@ var assignments = [
 					],
 					"code": "from statsmodels.stats.outliers_influence import variance_inflation_factor\nvif = pd.DataFrame({'Feature': X_train_rfe.columns,\n    'VIF': [variance_inflation_factor(X_train_rfe.values, i) for i in range(X_train_rfe.shape[1])]})\nvif.sort_values('VIF', ascending=False)",
 					"lotus": "A high VIF means two factors say almost the same thing, like age and years of service.",
-					"trap": "Computing VIF on X_train_sm with the constant gives a huge VIF for the constant. Use the table without it."
+					"trap": "Computing VIF on X_train_sm with the constant gives a huge VIF for the constant. Use the table without it.",
+					"read": ["Each line is a variable's VIF.", "VIF near 1 means no overlap; above 5 is worrying."],
+					"remark": "The highest VIF is 1.20 (Job Level), all near 1, so variables do not overlap much and coefficients are trustworthy.",
+					"howRemark": [
+						"State the largest VIF.",
+						"Compare with the threshold 5.",
+						"Conclude."
+					]
 				}
 			},
 			"7.2.5": {
@@ -28741,14 +30183,20 @@ var assignments = [
 					"steps": ["res.predict(X_train_sm)."],
 					"code": "y_train_pred = res.predict(X_train_sm)\ny_train_pred.head()",
 					"lotus": "Mỗi nhân viên có một xác suất ở lại giữa 0 và 1.",
-					"trap": "Đưa vào X thiếu hằng số báo lỗi kích thước."
+					"trap": "Đưa vào X thiếu hằng số báo lỗi kích thước.",
+					"read": ["Ô này không in kết quả; việc cần xem là chạy không báo lỗi."],
+					"remark": "Đã dự đoán xác suất ở lại cho từng nhân viên train.",
+					"howRemark": ["Nói bước này chuẩn bị gì cho bước sau.", "Ghi tên biến/đối tượng mới được tạo."]
 				},
 				"en": {
 					"think": "Predict the probability of staying on the training set.",
 					"steps": ["res.predict(X_train_sm)."],
 					"code": "y_train_pred = res.predict(X_train_sm)\ny_train_pred.head()",
 					"lotus": "Each staff member gets a stay probability between 0 and 1.",
-					"trap": "Passing X without the constant raises a size error."
+					"trap": "Passing X without the constant raises a size error.",
+					"read": ["This cell prints nothing; just check it ran without error."],
+					"remark": "Predicted stay probability for each train employee.",
+					"howRemark": ["Say what this step prepares for the next.", "Note the new variable/object created."]
 				}
 			},
 			"7.2.6": {
@@ -28757,14 +30205,20 @@ var assignments = [
 					"steps": ["y_train_pred.values.reshape(-1)."],
 					"code": "y_train_pred_final = y_train_pred.values.reshape(-1)",
 					"lotus": "Chỉ là định dạng lại.",
-					"trap": "Mảng 2 chiều khi tạo DataFrame báo lỗi."
+					"trap": "Mảng 2 chiều khi tạo DataFrame báo lỗi.",
+					"read": ["Ô này không in kết quả; việc cần xem là chạy không báo lỗi."],
+					"remark": "Đổi dự đoán thành mảng phẳng cho dễ ghép bảng.",
+					"howRemark": ["Nói bước này chuẩn bị gì cho bước sau.", "Ghi tên biến/đối tượng mới được tạo."]
 				},
 				"en": {
 					"think": "Flatten the prediction into an array.",
 					"steps": ["y_train_pred.values.reshape(-1)."],
 					"code": "y_train_pred_final = y_train_pred.values.reshape(-1)",
 					"lotus": "Just a reshape.",
-					"trap": "A 2D array raises an error when building the DataFrame."
+					"trap": "A 2D array raises an error when building the DataFrame.",
+					"read": ["This cell prints nothing; just check it ran without error."],
+					"remark": "Flattened the predictions to build a table.",
+					"howRemark": ["Say what this step prepares for the next.", "Note the new variable/object created."]
 				}
 			},
 			"7.2.7": {
@@ -28773,14 +30227,20 @@ var assignments = [
 					"steps": ["DataFrame có cột Stayed (thực) và Stayed_Prob (dự đoán)."],
 					"code": "y_train_pred_df = pd.DataFrame({'Stayed': y_train_d.values.reshape(-1), 'Stayed_Prob': y_train_pred_final})\ny_train_pred_df.head()",
 					"lotus": "Mỗi dòng: người đó thực ra ở hay nghỉ, và mô hình cho bao nhiêu phần trăm ở.",
-					"trap": "Hai mảng khác độ dài báo lỗi."
+					"trap": "Hai mảng khác độ dài báo lỗi.",
+					"read": ["Ô này không in kết quả; việc cần xem là chạy không báo lỗi."],
+					"remark": "Đã tạo bảng đặt giá trị thực cạnh xác suất dự đoán.",
+					"howRemark": ["Nói bước này chuẩn bị gì cho bước sau.", "Ghi tên biến/đối tượng mới được tạo."]
 				},
 				"en": {
 					"think": "Build a table of actual values and predicted probabilities.",
 					"steps": ["A DataFrame with Stayed (actual) and Stayed_Prob (predicted)."],
 					"code": "y_train_pred_df = pd.DataFrame({'Stayed': y_train_d.values.reshape(-1), 'Stayed_Prob': y_train_pred_final})\ny_train_pred_df.head()",
 					"lotus": "Each row: whether the person actually stayed or left, and the percentage the model gave to staying.",
-					"trap": "Arrays of different length raise an error."
+					"trap": "Arrays of different length raise an error.",
+					"read": ["This cell prints nothing; just check it ran without error."],
+					"remark": "Built a table with actual values beside predicted probabilities.",
+					"howRemark": ["Say what this step prepares for the next.", "Note the new variable/object created."]
 				}
 			},
 			"7.2.8": {
@@ -28789,14 +30249,28 @@ var assignments = [
 					"steps": ["np.where(xác suất > 0.5, 1, 0)."],
 					"code": "y_train_pred_df['Predicted'] = y_train_pred_df['Stayed_Prob'].map(lambda x: 1 if x > 0.5 else 0)\ny_train_pred_df.head()",
 					"lotus": "Ngưỡng 0,5: trên 50% thì đoán là ở lại.",
-					"trap": "0,5 chỉ là mặc định, bước 7.3 sẽ tìm ngưỡng tốt hơn."
+					"trap": "0,5 chỉ là mặc định, bước 7.3 sẽ tìm ngưỡng tốt hơn.",
+					"read": ["Cột Stayed là thực tế, Stayed_Prob là xác suất, Predicted là đoán 1 nếu xác suất > 0,5.", "So Stayed với Predicted để thấy dòng nào đoán đúng."],
+					"remark": "Ví dụ dòng 1 có xác suất 0,943 và đoán đúng ở lại; dòng 2 thực tế nghỉ nhưng xác suất 0,768 nên đoán sai. Đây là cách mô hình ra quyết định theo ngưỡng 0,5.",
+					"howRemark": [
+						"Chọn 2 dòng: một đúng, một sai.",
+						"Nói vì sao sai (xác suất qua ngưỡng).",
+						"Nhắc ngưỡng chỉnh được."
+					]
 				},
 				"en": {
 					"think": "Create Predicted: 1 if probability is above 0.5.",
 					"steps": ["np.where(probability > 0.5, 1, 0)."],
 					"code": "y_train_pred_df['Predicted'] = y_train_pred_df['Stayed_Prob'].map(lambda x: 1 if x > 0.5 else 0)\ny_train_pred_df.head()",
 					"lotus": "Threshold 0.5: above 50% predict stay.",
-					"trap": "0.5 is only a default; step 7.3 finds a better one."
+					"trap": "0.5 is only a default; step 7.3 finds a better one.",
+					"read": ["Stayed is actual, Stayed_Prob is probability, Predicted is 1 if probability > 0.5.", "Compare Stayed with Predicted to see which rows were right."],
+					"remark": "E.g. row 1 has probability 0.943 and correctly predicts stay; row 2 actually left but probability 0.768 so it is wrong. This is how the model decides by a 0.5 threshold.",
+					"howRemark": [
+						"Pick 2 rows: one right, one wrong.",
+						"Say why wrong (probability crossed the threshold).",
+						"Remind the threshold is adjustable."
+					]
 				}
 			},
 			"7.2.9": {
@@ -28805,14 +30279,20 @@ var assignments = [
 					"steps": ["metrics.accuracy_score(Stayed, Predicted)."],
 					"code": "from sklearn import metrics\nmetrics.accuracy_score(y_train_pred_df['Stayed'], y_train_pred_df['Predicted'])",
 					"lotus": "Với file của bạn kết quả khoảng 74%: ba trong bốn lần đoán đúng.",
-					"trap": "Độ chính xác đơn độc không nói kiểu sai nào. Xem bước tiếp."
+					"trap": "Độ chính xác đơn độc không nói kiểu sai nào. Xem bước tiếp.",
+					"read": ["Một con số: tỷ lệ dự đoán đúng trên train."],
+					"remark": "Độ chính xác train là 0,7387: đúng khoảng 74% nhân viên.",
+					"howRemark": ["Báo số.", "So với đoán bừa 52% (lớp lớn nhất)."]
 				},
 				"en": {
 					"think": "Compute accuracy on train.",
 					"steps": ["metrics.accuracy_score(Stayed, Predicted)."],
 					"code": "from sklearn import metrics\nmetrics.accuracy_score(y_train_pred_df['Stayed'], y_train_pred_df['Predicted'])",
 					"lotus": "With your file the result is about 74%: three in four guesses are right.",
-					"trap": "Accuracy alone does not say which errors. See the next step."
+					"trap": "Accuracy alone does not say which errors. See the next step.",
+					"read": ["One number: share predicted correctly on train."],
+					"remark": "Train accuracy is 0.7387: about 74% of employees are right.",
+					"howRemark": ["Report the number.", "Compare with guessing at 52% (the biggest class)."]
 				}
 			},
 			"7.2.10": {
@@ -28821,14 +30301,28 @@ var assignments = [
 					"steps": ["metrics.confusion_matrix(Stayed, Predicted)."],
 					"code": "confusion = metrics.confusion_matrix(y_train_pred_df['Stayed'], y_train_pred_df['Predicted'])\nprint(confusion)",
 					"lotus": "Với file của bạn khoảng 17.100 nghỉ đoán đúng, 19.400 ở đoán đúng, 6.600 nghỉ bị đoán thành ở, 6.400 ở bị đoán thành nghỉ.",
-					"trap": "Thứ tự hàng và cột: hàng là thực tế, cột là dự đoán."
+					"trap": "Thứ tự hàng và cột: hàng là thực tế, cột là dự đoán.",
+					"read": ["Hàng là thực tế, cột là dự đoán.", "Đường chéo (17.104 và 19.422) là đoán đúng; hai ô còn lại (6.559 và 6.359) là đoán sai."],
+					"remark": "Đoán đúng 36.526 trên 49.444, sai 12.918. Hai loại sai gần bằng nhau (6.559 và 6.359) nên mô hình không nghiêng hẳn về một phía.",
+					"howRemark": [
+						"Cộng đường chéo và ô sai.",
+						"Nói loại sai nào nặng hơn trong bài toán này.",
+						"Liên hệ độ chính xác 0,7387."
+					]
 				},
 				"en": {
 					"think": "Build the confusion matrix.",
 					"steps": ["metrics.confusion_matrix(Stayed, Predicted)."],
 					"code": "confusion = metrics.confusion_matrix(y_train_pred_df['Stayed'], y_train_pred_df['Predicted'])\nprint(confusion)",
 					"lotus": "In your file roughly 17,100 leavers correct, 19,400 stayers correct, 6,600 leavers guessed as staying, 6,400 stayers guessed as leaving.",
-					"trap": "Order: rows are actual, columns are predicted."
+					"trap": "Order: rows are actual, columns are predicted.",
+					"read": ["Rows are actual, columns predicted.", "The diagonal (17,104 and 19,422) is right; the other two (6,559 and 6,359) wrong."],
+					"remark": "Right on 36,526 of 49,444, wrong on 12,918. The two error types are similar (6,559 and 6,359), so the model does not lean one way.",
+					"howRemark": [
+						"Add the diagonal and the error cells.",
+						"Say which error is worse here.",
+						"Tie to the 0.7387 accuracy."
+					]
 				}
 			},
 			"7.2.11": {
@@ -28841,7 +30335,10 @@ var assignments = [
 					],
 					"code": "TN, FP, FN, TP = confusion.ravel()\nprint(TP, TN, FP, FN)",
 					"lotus": "FP là nguy hiểm nhất: nhân viên sắp nghỉ mà mô hình nói sẽ ở, chị Lan không kịp giữ.",
-					"trap": "Nhầm ô nào là FP, FN đảo ngược mọi chỉ số."
+					"trap": "Nhầm ô nào là FP, FN đảo ngược mọi chỉ số.",
+					"read": ["Bốn số TP, TN, FP, FN lấy từ ma trận nhầm lẫn."],
+					"remark": "TP 19.422 (đoán ở và đúng), TN 17.104 (đoán nghỉ và đúng), FP 6.559, FN 6.359.",
+					"howRemark": ["Gọi tên bốn ô.", "Định nghĩa Positive (ở đây là ở lại)."]
 				},
 				"en": {
 					"think": "Name the four cells: TP, TN, FP, FN.",
@@ -28852,7 +30349,10 @@ var assignments = [
 					],
 					"code": "TN, FP, FN, TP = confusion.ravel()\nprint(TP, TN, FP, FN)",
 					"lotus": "FP is the most dangerous: a staff member about to leave but the model says stay, chị Lan has no time to keep them.",
-					"trap": "Confusing which cell is FP or FN reverses every metric."
+					"trap": "Confusing which cell is FP or FN reverses every metric.",
+					"read": ["Four numbers TP, TN, FP, FN from the confusion matrix."],
+					"remark": "TP 19,422 (predict stay and right), TN 17,104 (predict leave and right), FP 6,559, FN 6,359.",
+					"howRemark": ["Name the four cells.", "Define Positive (here: stayed)."]
 				}
 			},
 			"7.2.12": {
@@ -28861,14 +30361,28 @@ var assignments = [
 					"steps": ["Sensitivity = TP / (TP + FN): trong số người ở lại thật, đoán đúng bao nhiêu.", "Specificity = TN / (TN + FP): trong số người nghỉ thật, đoán đúng bao nhiêu."],
 					"code": "sensitivity = TP / (TP + FN)\nspecificity = TN / (TN + FP)\nprint(round(sensitivity, 3), round(specificity, 3))",
 					"lotus": "Specificity cho biết mô hình bắt được bao nhiêu phần người sắp nghỉ.",
-					"trap": "Đổi chỗ công thức hai chỉ số cho kết quả đảo."
+					"trap": "Đổi chỗ công thức hai chỉ số cho kết quả đảo.",
+					"read": ["sensitivity là tỷ lệ người ở lại được đoán đúng; specificity là tỷ lệ người nghỉ được đoán đúng."],
+					"remark": "Sensitivity 0,753 và specificity 0,723: mô hình bắt người ở lại tốt hơn một chút so với người nghỉ.",
+					"howRemark": [
+						"Báo hai số và định nghĩa.",
+						"So hai số.",
+						"Nói hệ quả."
+					]
 				},
 				"en": {
 					"think": "Compute sensitivity and specificity.",
 					"steps": ["Sensitivity = TP / (TP + FN): of those who really stay, how many are caught.", "Specificity = TN / (TN + FP): of those who really leave, how many are caught."],
 					"code": "sensitivity = TP / (TP + FN)\nspecificity = TN / (TN + FP)\nprint(round(sensitivity, 3), round(specificity, 3))",
 					"lotus": "Specificity tells how much of those about to leave the model catches.",
-					"trap": "Swapping the two formulas inverts the result."
+					"trap": "Swapping the two formulas inverts the result.",
+					"read": ["sensitivity is the share of stayers predicted right; specificity the share of leavers predicted right."],
+					"remark": "Sensitivity 0.753 and specificity 0.723: the model catches stayers slightly better than leavers.",
+					"howRemark": [
+						"Report both with definitions.",
+						"Compare them.",
+						"State the consequence."
+					]
 				}
 			},
 			"7.2.13": {
@@ -28877,14 +30391,20 @@ var assignments = [
 					"steps": ["Precision = TP / (TP + FP): trong số đoán ở, bao nhiêu thật sự ở.", "Recall = TP / (TP + FN), bằng sensitivity."],
 					"code": "precision = TP / (TP + FP)\nrecall = TP / (TP + FN)\nprint(round(precision, 3), round(recall, 3))",
 					"lotus": "Precision cho biết khi mô hình nói «người này sẽ ở», đúng bao nhiêu phần.",
-					"trap": "Recall và sensitivity là một thứ, đừng tính hai kết quả khác nhau."
+					"trap": "Recall và sensitivity là một thứ, đừng tính hai kết quả khác nhau.",
+					"read": ["precision là trong số đoán «ở lại», bao nhiêu thật sự ở lại; recall bằng sensitivity."],
+					"remark": "Precision 0,748 và recall 0,753: khi mô hình nói «ở lại», đúng khoảng 75%.",
+					"howRemark": ["Báo hai số.", "Giải thích bằng câu thường."]
 				},
 				"en": {
 					"think": "Compute precision and recall.",
 					"steps": ["Precision = TP / (TP + FP): of those guessed to stay, how many really stay.", "Recall = TP / (TP + FN), equal to sensitivity."],
 					"code": "precision = TP / (TP + FP)\nrecall = TP / (TP + FN)\nprint(round(precision, 3), round(recall, 3))",
 					"lotus": "Precision tells how often “this person will stay” is right.",
-					"trap": "Recall and sensitivity are the same thing; do not compute two different results."
+					"trap": "Recall and sensitivity are the same thing; do not compute two different results.",
+					"read": ["precision is among predicted “stay”, how many truly stayed; recall equals sensitivity."],
+					"remark": "Precision 0.748 and recall 0.753: when the model says “stay”, it is right about 75% of the time.",
+					"howRemark": ["Report both numbers.", "Explain in plain words."]
 				}
 			},
 			"7.3.1": {
@@ -28897,7 +30417,14 @@ var assignments = [
 					],
 					"code": "def draw_roc(actual, probs):\n    fpr, tpr, thr = metrics.roc_curve(actual, probs, drop_intermediate=False)\n    auc = metrics.roc_auc_score(actual, probs)\n    plt.plot(fpr, tpr, label=f'AUC = {auc:.2f}'); plt.plot([0, 1], [0, 1], 'k--')\n    plt.xlabel('FPR'); plt.ylabel('TPR'); plt.legend(); plt.show()\ndraw_roc(y_train_pred_df['Stayed'], y_train_pred_df['Stayed_Prob'])",
 					"lotus": "Đường càng sát góc trên trái thì mô hình càng phân biệt tốt người ở và người nghỉ.",
-					"trap": "Đường sát đường chéo thì không tốt hơn đoán bằng đồng xu."
+					"trap": "Đường sát đường chéo thì không tốt hơn đoán bằng đồng xu.",
+					"read": ["Đường ROC: trục ngang là tỉ lệ báo nhầm, trục dọc là tỉ lệ bắt đúng; đường càng ôm góc trên trái càng tốt.", "AUC là diện tích dưới đường: 0,5 là đoán bừa, 1 là hoàn hảo."],
+					"remark": "Đường ROC nằm hẳn trên đường chéo, nghĩa là mô hình tốt hơn đoán bừa; AUC cho một con số tóm tắt khả năng phân biệt.",
+					"howRemark": [
+						"Mô tả hình đường ROC.",
+						"Báo AUC.",
+						"So với 0,5."
+					]
 				},
 				"en": {
 					"think": "Plot the ROC curve and compute AUC.",
@@ -28908,7 +30435,14 @@ var assignments = [
 					],
 					"code": "def draw_roc(actual, probs):\n    fpr, tpr, thr = metrics.roc_curve(actual, probs, drop_intermediate=False)\n    auc = metrics.roc_auc_score(actual, probs)\n    plt.plot(fpr, tpr, label=f'AUC = {auc:.2f}'); plt.plot([0, 1], [0, 1], 'k--')\n    plt.xlabel('FPR'); plt.ylabel('TPR'); plt.legend(); plt.show()\ndraw_roc(y_train_pred_df['Stayed'], y_train_pred_df['Stayed_Prob'])",
 					"lotus": "The closer the curve hugs the top-left, the better the model separates stayers from leavers.",
-					"trap": "A curve near the diagonal is no better than a coin flip."
+					"trap": "A curve near the diagonal is no better than a coin flip.",
+					"read": ["ROC curve: x axis is false-alarm rate, y axis is true-catch rate; the closer to the top-left corner the better.", "AUC is the area under it: 0.5 is guessing, 1 is perfect."],
+					"remark": "The ROC curve sits well above the diagonal, so the model beats guessing; AUC summarises its discrimination in one number.",
+					"howRemark": [
+						"Describe the ROC shape.",
+						"Report AUC.",
+						"Compare with 0.5."
+					]
 				}
 			},
 			"7.3.2": {
@@ -28917,14 +30451,20 @@ var assignments = [
 					"steps": ["Vòng lặp i trong [0.0, 0.1, ..., 0.9].", "Mỗi lần tạo một cột Stayed_Prob > i."],
 					"code": "numbers = [float(x) / 10 for x in range(10)]\nfor i in numbers:\n    y_train_pred_df[i] = y_train_pred_df['Stayed_Prob'].map(lambda x: 1 if x > i else 0)\ny_train_pred_df.head()",
 					"lotus": "Thử từng ngưỡng: đoán «ở» khi trên 10%, 20%, ... để xem ngưỡng nào hợp lý.",
-					"trap": "Không có."
+					"trap": "Không có.",
+					"read": ["Ô này không in kết quả; việc cần xem là chạy không báo lỗi."],
+					"remark": "Đã dự đoán ở nhiều ngưỡng từ 0,0 đến 0,9.",
+					"howRemark": ["Nói bước này chuẩn bị gì cho bước sau.", "Ghi tên biến/đối tượng mới được tạo."]
 				},
 				"en": {
 					"think": "Predict at several probability cutoffs from 0.0 to 0.9.",
 					"steps": ["Loop i over [0.0, 0.1, ..., 0.9].", "Each time create a column Stayed_Prob > i."],
 					"code": "numbers = [float(x) / 10 for x in range(10)]\nfor i in numbers:\n    y_train_pred_df[i] = y_train_pred_df['Stayed_Prob'].map(lambda x: 1 if x > i else 0)\ny_train_pred_df.head()",
 					"lotus": "Try each threshold: predict “stay” when above 10%, 20%, ... to see which is sensible.",
-					"trap": "None."
+					"trap": "None.",
+					"read": ["This cell prints nothing; just check it ran without error."],
+					"remark": "Predicted at many thresholds from 0.0 to 0.9.",
+					"howRemark": ["Say what this step prepares for the next.", "Note the new variable/object created."]
 				}
 			},
 			"7.3.3": {
@@ -28937,7 +30477,18 @@ var assignments = [
 					],
 					"code": "cutoff_df = pd.DataFrame(columns=['prob', 'accuracy', 'sensi', 'speci'])\nfor i in numbers:\n    cm = metrics.confusion_matrix(y_train_pred_df['Stayed'], y_train_pred_df[i])\n    tn, fp, fn, tp = cm.ravel()\n    cutoff_df.loc[i] = [i, (tp + tn) / cm.sum(), tp / (tp + fn), tn / (tn + fp)]\ncutoff_df.plot.line(x='prob', y=['accuracy', 'sensi', 'speci'])\nplt.show()",
 					"lotus": "Ngưỡng 0,5 không nhất thiết là tốt nhất; với file của bạn ngưỡng tối ưu thường quanh 0,5 vì hai lớp gần cân bằng.",
-					"trap": "Chọn ngưỡng chỉ theo độ chính xác bỏ qua sensitivity và specificity."
+					"trap": "Chọn ngưỡng chỉ theo độ chính xác bỏ qua sensitivity và specificity.",
+					"read": [
+						"Mỗi dòng là một ngưỡng; ba cột accuracy, sensitivity, specificity.",
+						"Tăng ngưỡng thì sensitivity giảm và specificity tăng.",
+						"Điểm tốt thường là chỗ accuracy cao nhất hoặc sensitivity gần specificity."
+					],
+					"remark": "Ngưỡng 0,5 cho accuracy cao nhất (0,739) và sensitivity (0,753) gần specificity (0,723), nên chọn 0,5.",
+					"howRemark": [
+						"Tìm ngưỡng có accuracy cao nhất.",
+						"Nêu sự đánh đổi sensitivity và specificity.",
+						"Chốt ngưỡng và lý do."
+					]
 				},
 				"en": {
 					"think": "Plot accuracy, sensitivity and specificity per threshold to choose the optimal cutoff.",
@@ -28948,7 +30499,18 @@ var assignments = [
 					],
 					"code": "cutoff_df = pd.DataFrame(columns=['prob', 'accuracy', 'sensi', 'speci'])\nfor i in numbers:\n    cm = metrics.confusion_matrix(y_train_pred_df['Stayed'], y_train_pred_df[i])\n    tn, fp, fn, tp = cm.ravel()\n    cutoff_df.loc[i] = [i, (tp + tn) / cm.sum(), tp / (tp + fn), tn / (tn + fp)]\ncutoff_df.plot.line(x='prob', y=['accuracy', 'sensi', 'speci'])\nplt.show()",
 					"lotus": "0.5 is not necessarily best; with your file the optimum is usually near 0.5 because the two classes are near balanced.",
-					"trap": "Choosing the threshold by accuracy only ignores sensitivity and specificity."
+					"trap": "Choosing the threshold by accuracy only ignores sensitivity and specificity.",
+					"read": [
+						"Each row is a threshold; columns accuracy, sensitivity, specificity.",
+						"Raising the threshold lowers sensitivity and raises specificity.",
+						"A good point is the highest accuracy or where sensitivity ≈ specificity."
+					],
+					"remark": "A 0.5 threshold gives the highest accuracy (0.739) and sensitivity (0.753) near specificity (0.723), so choose 0.5.",
+					"howRemark": [
+						"Find the threshold with the highest accuracy.",
+						"State the sensitivity–specificity trade-off.",
+						"Fix the threshold and the reason."
+					]
 				}
 			},
 			"7.3.4": {
@@ -28957,14 +30519,20 @@ var assignments = [
 					"steps": ["Chọn ngưỡng (ví dụ 0,5) rồi tạo cột final_predicted."],
 					"code": "cutoff = 0.5  # use the value you read from the plot\ny_train_pred_df['final_predicted'] = y_train_pred_df['Stayed_Prob'].map(lambda x: 1 if x > cutoff else 0)",
 					"lotus": "Từ giờ, mô hình nói «ở» khi xác suất vượt ngưỡng này.",
-					"trap": "Hard-code ngưỡng rồi quên đổi sau khi đổi mô hình."
+					"trap": "Hard-code ngưỡng rồi quên đổi sau khi đổi mô hình.",
+					"read": ["Một dòng cho biết ngưỡng được chọn: 0,5."],
+					"remark": "Ngưỡng cuối là 0,5, từ bảng ở 7.3.3.",
+					"howRemark": ["Nêu ngưỡng.", "Dẫn chứng từ 7.3.3."]
 				},
 				"en": {
 					"think": "Create the final prediction column using the optimal cutoff.",
 					"steps": ["Choose the cutoff (for example 0.5) then create final_predicted."],
 					"code": "cutoff = 0.5  # use the value you read from the plot\ny_train_pred_df['final_predicted'] = y_train_pred_df['Stayed_Prob'].map(lambda x: 1 if x > cutoff else 0)",
 					"lotus": "From now on the model says “stay” when probability exceeds this threshold.",
-					"trap": "Hard-coding the cutoff and forgetting to update it after changing the model."
+					"trap": "Hard-coding the cutoff and forgetting to update it after changing the model.",
+					"read": ["One line shows the chosen threshold: 0.5."],
+					"remark": "The final cutoff is 0.5, from the table in 7.3.3.",
+					"howRemark": ["State the cutoff.", "Cite 7.3.3."]
 				}
 			},
 			"7.3.5": {
@@ -28973,14 +30541,20 @@ var assignments = [
 					"steps": ["accuracy_score(Stayed, final_predicted)."],
 					"code": "metrics.accuracy_score(y_train_pred_df['Stayed'], y_train_pred_df['final_predicted'])",
 					"lotus": "So với 7.2.9: ngưỡng tối ưu có thể không đổi nhiều nếu 0,5 đã gần tối ưu.",
-					"trap": "Không có."
+					"trap": "Không có.",
+					"read": ["Ô này không in kết quả; việc cần xem là chạy không báo lỗi."],
+					"remark": "Độ chính xác với ngưỡng mới, vì ngưỡng vẫn 0,5 nên trùng 0,7387.",
+					"howRemark": ["Nói bước này chuẩn bị gì cho bước sau.", "Ghi tên biến/đối tượng mới được tạo."]
 				},
 				"en": {
 					"think": "Accuracy with the new cutoff.",
 					"steps": ["accuracy_score(Stayed, final_predicted)."],
 					"code": "metrics.accuracy_score(y_train_pred_df['Stayed'], y_train_pred_df['final_predicted'])",
 					"lotus": "Compare with 7.2.9: the optimal cutoff may barely change if 0.5 was already near optimal.",
-					"trap": "None."
+					"trap": "None.",
+					"read": ["This cell prints nothing; just check it ran without error."],
+					"remark": "Accuracy with the new threshold; still 0.5 so it equals 0.7387.",
+					"howRemark": ["Say what this step prepares for the next.", "Note the new variable/object created."]
 				}
 			},
 			"7.3.6": {
@@ -28989,14 +30563,20 @@ var assignments = [
 					"steps": ["confusion_matrix(Stayed, final_predicted)."],
 					"code": "confusion2 = metrics.confusion_matrix(y_train_pred_df['Stayed'], y_train_pred_df['final_predicted'])\nprint(confusion2)",
 					"lotus": "Số người nghỉ bị bỏ sót (FP) thay đổi thế nào khi đổi ngưỡng.",
-					"trap": "Không có."
+					"trap": "Không có.",
+					"read": ["Độ chính xác và ma trận nhầm lẫn ở ngưỡng đã chọn.", "Giống 7.2.10 vì ngưỡng không đổi."],
+					"remark": "Với ngưỡng 0,5, độ chính xác 0,7387 và ma trận giống 7.2.10, nên việc chọn ngưỡng xác nhận mặc định 0,5 là hợp lý.",
+					"howRemark": ["Đối chiếu với 7.2.10.", "Nói ngưỡng không đổi nên kết quả không đổi."]
 				},
 				"en": {
 					"think": "Confusion matrix with the new cutoff.",
 					"steps": ["confusion_matrix(Stayed, final_predicted)."],
 					"code": "confusion2 = metrics.confusion_matrix(y_train_pred_df['Stayed'], y_train_pred_df['final_predicted'])\nprint(confusion2)",
 					"lotus": "How the number of missed leavers (FP) changes when the threshold changes.",
-					"trap": "None."
+					"trap": "None.",
+					"read": ["Accuracy and confusion matrix at the chosen threshold.", "Same as 7.2.10 since the threshold is unchanged."],
+					"remark": "At 0.5, accuracy is 0.7387 and the matrix equals 7.2.10, so the threshold search confirms the 0.5 default.",
+					"howRemark": ["Cross-check with 7.2.10.", "Say unchanged threshold means unchanged result."]
 				}
 			},
 			"7.3.7": {
@@ -29005,14 +30585,20 @@ var assignments = [
 					"steps": ["ravel() ma trận mới."],
 					"code": "TN, FP, FN, TP = confusion2.ravel()",
 					"lotus": "Như 7.2.11.",
-					"trap": "Nhớ cập nhật biến, đừng dùng biến cũ."
+					"trap": "Nhớ cập nhật biến, đừng dùng biến cũ.",
+					"read": ["Đối chiếu số với bước tương ứng ở 7.2."],
+					"remark": "Cùng số với 7.2.11–7.2.13 vì ngưỡng vẫn 0,5 (TP 19.422, TN 17.104, sensitivity 0,753, specificity 0,723, precision 0,748).",
+					"howRemark": ["Nói bước này chuẩn bị gì cho bước sau.", "Ghi tên biến/đối tượng mới được tạo."]
 				},
 				"en": {
 					"think": "TP, TN, FP, FN for the new cutoff.",
 					"steps": ["ravel() the new matrix."],
 					"code": "TN, FP, FN, TP = confusion2.ravel()",
 					"lotus": "As in 7.2.11.",
-					"trap": "Remember to update the variables; do not reuse the old ones."
+					"trap": "Remember to update the variables; do not reuse the old ones.",
+					"read": ["Cross-check numbers with the matching step in 7.2."],
+					"remark": "Same numbers as 7.2.11–7.2.13 because the threshold stays 0.5 (TP 19,422, TN 17,104, sensitivity 0.753, specificity 0.723, precision 0.748).",
+					"howRemark": ["Say what this step prepares for the next.", "Note the new variable/object created."]
 				}
 			},
 			"7.3.8": {
@@ -29021,14 +30607,20 @@ var assignments = [
 					"steps": ["Dùng công thức như 7.2.12."],
 					"code": "sensitivity = TP / (TP + FN)\nspecificity = TN / (TN + FP)\nprint(round(sensitivity, 3), round(specificity, 3))",
 					"lotus": "Cân bằng hơn giữa bắt người sắp nghỉ và đoán đúng người ở lại.",
-					"trap": "Không có."
+					"trap": "Không có.",
+					"read": ["Đối chiếu số với bước tương ứng ở 7.2."],
+					"remark": "Cùng số với 7.2.11–7.2.13 vì ngưỡng vẫn 0,5 (TP 19.422, TN 17.104, sensitivity 0,753, specificity 0,723, precision 0,748).",
+					"howRemark": ["Nói bước này chuẩn bị gì cho bước sau.", "Ghi tên biến/đối tượng mới được tạo."]
 				},
 				"en": {
 					"think": "Sensitivity and specificity for the new cutoff.",
 					"steps": ["Use the formulas from 7.2.12."],
 					"code": "sensitivity = TP / (TP + FN)\nspecificity = TN / (TN + FP)\nprint(round(sensitivity, 3), round(specificity, 3))",
 					"lotus": "More balance between catching leavers and correctly guessing stayers.",
-					"trap": "None."
+					"trap": "None.",
+					"read": ["Cross-check numbers with the matching step in 7.2."],
+					"remark": "Same numbers as 7.2.11–7.2.13 because the threshold stays 0.5 (TP 19,422, TN 17,104, sensitivity 0.753, specificity 0.723, precision 0.748).",
+					"howRemark": ["Say what this step prepares for the next.", "Note the new variable/object created."]
 				}
 			},
 			"7.3.9": {
@@ -29037,14 +30629,20 @@ var assignments = [
 					"steps": ["Dùng công thức như 7.2.13."],
 					"code": "precision = TP / (TP + FP)\nrecall = TP / (TP + FN)\nprint(round(precision, 3), round(recall, 3))",
 					"lotus": "Khi nâng ngưỡng precision thường tăng còn recall giảm.",
-					"trap": "Không có."
+					"trap": "Không có.",
+					"read": ["Đối chiếu số với bước tương ứng ở 7.2."],
+					"remark": "Cùng số với 7.2.11–7.2.13 vì ngưỡng vẫn 0,5 (TP 19.422, TN 17.104, sensitivity 0,753, specificity 0,723, precision 0,748).",
+					"howRemark": ["Nói bước này chuẩn bị gì cho bước sau.", "Ghi tên biến/đối tượng mới được tạo."]
 				},
 				"en": {
 					"think": "Precision and recall for the new cutoff.",
 					"steps": ["Use the formulas from 7.2.13."],
 					"code": "precision = TP / (TP + FP)\nrecall = TP / (TP + FN)\nprint(round(precision, 3), round(recall, 3))",
 					"lotus": "Raising the threshold usually lifts precision and lowers recall.",
-					"trap": "None."
+					"trap": "None.",
+					"read": ["Cross-check numbers with the matching step in 7.2."],
+					"remark": "Same numbers as 7.2.11–7.2.13 because the threshold stays 0.5 (TP 19,422, TN 17,104, sensitivity 0.753, specificity 0.723, precision 0.748).",
+					"howRemark": ["Say what this step prepares for the next.", "Note the new variable/object created."]
 				}
 			},
 			"7.3.10": {
@@ -29057,7 +30655,18 @@ var assignments = [
 					],
 					"code": "from sklearn.metrics import precision_recall_curve\np, r, t = precision_recall_curve(y_train_pred_df['Stayed'], y_train_pred_df['Stayed_Prob'])\nplt.plot(t, p[:-1], 'g', label='precision'); plt.plot(t, r[:-1], 'r', label='recall'); plt.legend(); plt.show()",
 					"lotus": "Nếu chị Lan cần bắt nhiều người sắp nghỉ hơn (chấp nhận báo động nhầm) thì chỉnh ngưỡng theo hướng đó.",
-					"trap": "p và r dài hơn t một phần tử; dùng p[:-1], r[:-1]."
+					"trap": "p và r dài hơn t một phần tử; dùng p[:-1], r[:-1].",
+					"read": [
+						"Đường precision-recall: trục ngang recall, trục dọc precision.",
+						"Tăng recall thì precision thường giảm.",
+						"Chọn điểm cân bằng theo mục tiêu kinh doanh."
+					],
+					"remark": "Đường precision-recall cho thấy sự đánh đổi; ở ngưỡng 0,5 precision 0,748 và recall 0,753 cân bằng nên giữ ngưỡng này.",
+					"howRemark": [
+						"Mô tả sự đánh đổi.",
+						"Chỉ điểm của ngưỡng đã chọn.",
+						"Nói khi nào ưu tiên precision hay recall."
+					]
 				},
 				"en": {
 					"think": "Plot the precision-recall curve and re-pick the cutoff if needed.",
@@ -29068,7 +30677,18 @@ var assignments = [
 					],
 					"code": "from sklearn.metrics import precision_recall_curve\np, r, t = precision_recall_curve(y_train_pred_df['Stayed'], y_train_pred_df['Stayed_Prob'])\nplt.plot(t, p[:-1], 'g', label='precision'); plt.plot(t, r[:-1], 'r', label='recall'); plt.legend(); plt.show()",
 					"lotus": "If chị Lan needs to catch more leavers (accepting false alarms) shift the threshold that way.",
-					"trap": "p and r are one element longer than t; use p[:-1], r[:-1]."
+					"trap": "p and r are one element longer than t; use p[:-1], r[:-1].",
+					"read": [
+						"Precision-recall curve: x axis recall, y axis precision.",
+						"Raising recall usually lowers precision.",
+						"Pick a balance point by business goal."
+					],
+					"remark": "The precision-recall curve shows the trade-off; at 0.5 precision 0.748 and recall 0.753 are balanced, so keep it.",
+					"howRemark": [
+						"Describe the trade-off.",
+						"Mark the chosen threshold's point.",
+						"Say when to favour precision or recall."
+					]
 				}
 			},
 			"8.1.1": {
@@ -29077,14 +30697,20 @@ var assignments = [
 					"steps": ["X_validation[col]."],
 					"code": "X_validation_rfe = X_validation[col]",
 					"lotus": "Cùng 15 yếu tố như train.",
-					"trap": "Chọn cột khác train làm dự đoán sai."
+					"trap": "Chọn cột khác train làm dự đoán sai.",
+					"read": ["Ô này không in kết quả; việc cần xem là chạy không báo lỗi."],
+					"remark": "Chuẩn bị dự đoán trên validation bằng đúng cách đã làm ở train (cùng 15 cột, cùng hằng số).",
+					"howRemark": ["Nói bước này chuẩn bị gì cho bước sau.", "Ghi tên biến/đối tượng mới được tạo."]
 				},
 				"en": {
 					"think": "Select the same 15 columns for validation.",
 					"steps": ["X_validation[col]."],
 					"code": "X_validation_rfe = X_validation[col]",
 					"lotus": "The same 15 factors as train.",
-					"trap": "Selecting different columns than train makes predictions wrong."
+					"trap": "Selecting different columns than train makes predictions wrong.",
+					"read": ["This cell prints nothing; just check it ran without error."],
+					"remark": "Prepare predictions on validation exactly as done on train (same 15 columns, same constant).",
+					"howRemark": ["Say what this step prepares for the next.", "Note the new variable/object created."]
 				}
 			},
 			"8.1.2": {
@@ -29093,14 +30719,20 @@ var assignments = [
 					"steps": ["sm.add_constant(X_validation_rfe)."],
 					"code": "X_validation_sm = sm.add_constant(X_validation_rfe)",
 					"lotus": "Cùng cấu trúc như train.",
-					"trap": "Thiếu hằng số báo lỗi kích thước."
+					"trap": "Thiếu hằng số báo lỗi kích thước.",
+					"read": ["Ô này không in kết quả; việc cần xem là chạy không báo lỗi."],
+					"remark": "Chuẩn bị dự đoán trên validation bằng đúng cách đã làm ở train (cùng 15 cột, cùng hằng số).",
+					"howRemark": ["Nói bước này chuẩn bị gì cho bước sau.", "Ghi tên biến/đối tượng mới được tạo."]
 				},
 				"en": {
 					"think": "Add the constant to validation.",
 					"steps": ["sm.add_constant(X_validation_rfe)."],
 					"code": "X_validation_sm = sm.add_constant(X_validation_rfe)",
 					"lotus": "Same structure as train.",
-					"trap": "Missing the constant raises a size error."
+					"trap": "Missing the constant raises a size error.",
+					"read": ["This cell prints nothing; just check it ran without error."],
+					"remark": "Prepare predictions on validation exactly as done on train (same 15 columns, same constant).",
+					"howRemark": ["Say what this step prepares for the next.", "Note the new variable/object created."]
 				}
 			},
 			"8.1.3": {
@@ -29109,14 +30741,20 @@ var assignments = [
 					"steps": ["res.predict(X_validation_sm)."],
 					"code": "y_validation_pred = res.predict(X_validation_sm)",
 					"lotus": "Mô hình đoán người nhân viên chưa từng thấy.",
-					"trap": "Dùng mô hình đã huấn luyện lại bằng validation là gian lận."
+					"trap": "Dùng mô hình đã huấn luyện lại bằng validation là gian lận.",
+					"read": ["Ô này không in kết quả; việc cần xem là chạy không báo lỗi."],
+					"remark": "Chuẩn bị dự đoán trên validation bằng đúng cách đã làm ở train (cùng 15 cột, cùng hằng số).",
+					"howRemark": ["Nói bước này chuẩn bị gì cho bước sau.", "Ghi tên biến/đối tượng mới được tạo."]
 				},
 				"en": {
 					"think": "Predict probabilities on validation.",
 					"steps": ["res.predict(X_validation_sm)."],
 					"code": "y_validation_pred = res.predict(X_validation_sm)",
 					"lotus": "The model guesses staff it has never seen.",
-					"trap": "Retraining on validation is cheating."
+					"trap": "Retraining on validation is cheating.",
+					"read": ["This cell prints nothing; just check it ran without error."],
+					"remark": "Prepare predictions on validation exactly as done on train (same 15 columns, same constant).",
+					"howRemark": ["Say what this step prepares for the next.", "Note the new variable/object created."]
 				}
 			},
 			"8.1.4": {
@@ -29125,14 +30763,20 @@ var assignments = [
 					"steps": ["Giống 7.2.7 cho validation."],
 					"code": "y_validation_pred_df = pd.DataFrame({'Stayed': y_val_d.values.reshape(-1), 'Stayed_Prob': y_validation_pred.values.reshape(-1)})\ny_validation_pred_df.head()",
 					"lotus": "Mỗi nhân viên có xác suất ở lại dự đoán.",
-					"trap": "Hai mảng khác độ dài báo lỗi."
+					"trap": "Hai mảng khác độ dài báo lỗi.",
+					"read": ["Ô này không in kết quả; việc cần xem là chạy không báo lỗi."],
+					"remark": "Chuẩn bị dự đoán trên validation bằng đúng cách đã làm ở train (cùng 15 cột, cùng hằng số).",
+					"howRemark": ["Nói bước này chuẩn bị gì cho bước sau.", "Ghi tên biến/đối tượng mới được tạo."]
 				},
 				"en": {
 					"think": "Build the actual-vs-predicted table for validation.",
 					"steps": ["As 7.2.7 for validation."],
 					"code": "y_validation_pred_df = pd.DataFrame({'Stayed': y_val_d.values.reshape(-1), 'Stayed_Prob': y_validation_pred.values.reshape(-1)})\ny_validation_pred_df.head()",
 					"lotus": "Each staff member has a predicted stay probability.",
-					"trap": "Arrays of different length raise an error."
+					"trap": "Arrays of different length raise an error.",
+					"read": ["This cell prints nothing; just check it ran without error."],
+					"remark": "Prepare predictions on validation exactly as done on train (same 15 columns, same constant).",
+					"howRemark": ["Say what this step prepares for the next.", "Note the new variable/object created."]
 				}
 			},
 			"8.1.5": {
@@ -29141,14 +30785,20 @@ var assignments = [
 					"steps": ["Dùng cùng cutoff như 7.3.4."],
 					"code": "y_validation_pred_df['final_predicted'] = y_validation_pred_df['Stayed_Prob'].map(lambda x: 1 if x > cutoff else 0)",
 					"lotus": "Dùng cùng ngưỡng, không chọn lại ngưỡng trên validation.",
-					"trap": "Chọn ngưỡng trên validation là rò rỉ thông tin."
+					"trap": "Chọn ngưỡng trên validation là rò rỉ thông tin.",
+					"read": ["Cột final_predicted là dự đoán cuối theo ngưỡng chọn từ train (0,5).", "So Stayed với final_predicted từng dòng."],
+					"remark": "Trên validation, ngưỡng 0,5 từ train được dùng nguyên; ví dụ dòng 2 có xác suất 0,237 nên đoán nghỉ nhưng thực tế ở lại, một dự đoán sai.",
+					"howRemark": ["Áp ngưỡng của train, không chọn lại.", "Chọn một dòng đúng và một dòng sai."]
 				},
 				"en": {
 					"think": "Final prediction using the cutoff chosen on train.",
 					"steps": ["Use the same cutoff as 7.3.4."],
 					"code": "y_validation_pred_df['final_predicted'] = y_validation_pred_df['Stayed_Prob'].map(lambda x: 1 if x > cutoff else 0)",
 					"lotus": "Use the same cutoff, do not re-choose it on validation.",
-					"trap": "Choosing the cutoff on validation leaks information."
+					"trap": "Choosing the cutoff on validation leaks information.",
+					"read": ["final_predicted is the final prediction at the threshold from train (0.5).", "Compare Stayed with final_predicted row by row."],
+					"remark": "On validation the train threshold 0.5 is used unchanged; e.g. row 2 has probability 0.237 so it predicts leave but the person stayed, a wrong prediction.",
+					"howRemark": ["Apply train's threshold, do not re-pick.", "Choose one right and one wrong row."]
 				}
 			},
 			"8.2": {
@@ -29157,14 +30807,20 @@ var assignments = [
 					"steps": ["accuracy_score trên validation."],
 					"code": "metrics.accuracy_score(y_validation_pred_df['Stayed'], y_validation_pred_df['final_predicted'])",
 					"lotus": "Gần với độ chính xác train (khoảng 74%) thì mô hình không quá khớp.",
-					"trap": "Chênh nhiều giữa train và validation là quá khớp."
+					"trap": "Chênh nhiều giữa train và validation là quá khớp.",
+					"read": ["Hai số: accuracy validation 0,7357 và train 0,7387."],
+					"remark": "Độ chính xác 0,7357 ở validation so với 0,7387 ở train, chênh chỉ 0,003 nên mô hình không quá khớp.",
+					"howRemark": ["So hai số.", "Nói quá khớp hay không."]
 				},
 				"en": {
 					"think": "Accuracy on validation.",
 					"steps": ["accuracy_score on validation."],
 					"code": "metrics.accuracy_score(y_validation_pred_df['Stayed'], y_validation_pred_df['final_predicted'])",
 					"lotus": "Close to train accuracy (about 74%) means no overfitting.",
-					"trap": "A big train-validation gap signals overfitting."
+					"trap": "A big train-validation gap signals overfitting.",
+					"read": ["Two numbers: validation accuracy 0.7357 and train 0.7387."],
+					"remark": "Accuracy is 0.7357 on validation vs 0.7387 on train, only 0.003 apart, so no overfitting.",
+					"howRemark": ["Compare the two numbers.", "Say overfit or not."]
 				}
 			},
 			"8.3": {
@@ -29173,14 +30829,28 @@ var assignments = [
 					"steps": ["confusion_matrix và ravel()."],
 					"code": "cm_val = metrics.confusion_matrix(y_validation_pred_df['Stayed'], y_validation_pred_df['final_predicted'])\nTN, FP, FN, TP = cm_val.ravel()\nprint(cm_val)",
 					"lotus": "Số liệu tương tự train nhưng với 21.200 nhân viên chưa từng thấy.",
-					"trap": "Không có."
+					"trap": "Không có.",
+					"read": ["Ma trận nhầm lẫn của validation: đường chéo 7.357 và 8.233 là đúng.", "So tỷ lệ với train: các ô cùng cỡ."],
+					"remark": "Validation đoán đúng 15.590 trên 21.191, nhầm 2.805 và 2.796 ở hai phía; cơ cấu giống train.",
+					"howRemark": [
+						"Cộng đường chéo.",
+						"So tỷ lệ các ô với train.",
+						"Nói về hai loại sai."
+					]
 				},
 				"en": {
 					"think": "Confusion matrix and TP, TN, FP, FN on validation.",
 					"steps": ["confusion_matrix and ravel()."],
 					"code": "cm_val = metrics.confusion_matrix(y_validation_pred_df['Stayed'], y_validation_pred_df['final_predicted'])\nTN, FP, FN, TP = cm_val.ravel()\nprint(cm_val)",
 					"lotus": "Numbers like train but for 21,200 unseen staff.",
-					"trap": "None."
+					"trap": "None.",
+					"read": ["Validation confusion matrix: diagonal 7,357 and 8,233 is right.", "Compare proportions with train."],
+					"remark": "Validation is right on 15,590 of 21,191 with 2,805 and 2,796 errors each side; same pattern as train.",
+					"howRemark": [
+						"Add the diagonal.",
+						"Compare cell proportions with train.",
+						"Talk about the two error types."
+					]
 				}
 			},
 			"8.4": {
@@ -29189,14 +30859,20 @@ var assignments = [
 					"steps": ["Công thức như 7.2.12."],
 					"code": "sensitivity = TP / (TP + FN)\nspecificity = TN / (TN + FP)\nprint(round(sensitivity, 3), round(specificity, 3))",
 					"lotus": "So với train để thấy mô hình giữ vững không.",
-					"trap": "Không có."
+					"trap": "Không có.",
+					"read": ["Hai số trên validation: sensitivity 0,746, specificity 0,724."],
+					"remark": "Sensitivity 0,746 và specificity 0,724, gần với train (0,753 và 0,723): mô hình ổn định.",
+					"howRemark": ["So với train.", "Kết luận ổn định."]
 				},
 				"en": {
 					"think": "Sensitivity and specificity on validation.",
 					"steps": ["Formulas as 7.2.12."],
 					"code": "sensitivity = TP / (TP + FN)\nspecificity = TN / (TN + FP)\nprint(round(sensitivity, 3), round(specificity, 3))",
 					"lotus": "Compare with train to see whether the model holds up.",
-					"trap": "None."
+					"trap": "None.",
+					"read": ["Two numbers on validation: sensitivity 0.746, specificity 0.724."],
+					"remark": "Sensitivity 0.746 and specificity 0.724, near train's (0.753 and 0.723): the model is stable.",
+					"howRemark": ["Compare with train.", "Conclude stable."]
 				}
 			},
 			"8.5": {
@@ -29205,14 +30881,20 @@ var assignments = [
 					"steps": ["Công thức như 7.2.13."],
 					"code": "precision = TP / (TP + FP)\nrecall = TP / (TP + FN)\nprint(round(precision, 3), round(recall, 3))",
 					"lotus": "Kết luận ở ô cuối: mô hình có đủ tốt để chị Lan dùng báo trước nhân viên có nguy cơ nghỉ không.",
-					"trap": "Kết luận chỉ bằng một chỉ số."
+					"trap": "Kết luận chỉ bằng một chỉ số.",
+					"read": ["Hai số trên validation: precision 0,746 và recall 0,746."],
+					"remark": "Precision và recall cùng 0,746, gần train (0,748 và 0,753), nên có thể tin vào mô hình khi áp cho nhân viên mới.",
+					"howRemark": ["So với train.", "Nêu kết luận về độ tin cậy."]
 				},
 				"en": {
 					"think": "Precision and recall on validation.",
 					"steps": ["Formulas as 7.2.13."],
 					"code": "precision = TP / (TP + FP)\nrecall = TP / (TP + FN)\nprint(round(precision, 3), round(recall, 3))",
 					"lotus": "Conclude in the last cell: is the model good enough for chị Lan to flag staff at risk of leaving.",
-					"trap": "Concluding from a single metric."
+					"trap": "Concluding from a single metric.",
+					"read": ["Two numbers on validation: precision 0.746 and recall 0.746."],
+					"remark": "Precision and recall are both 0.746, close to train (0.748 and 0.753), so the model can be trusted on new employees.",
+					"howRemark": ["Compare with train.", "State the conclusion on reliability."]
 				}
 			}
 		},
@@ -30414,14 +32096,28 @@ var assignments = [
 					"steps": ["pd.read_csv('insurance_claims.csv').", "head() và shape: file có 1.000 dòng, 40 cột."],
 					"code": "import pandas as pd, numpy as np, matplotlib.pyplot as plt, seaborn as sns\ndf = pd.read_csv('/tmp/asg/all/2/Starter Notebook + Data/insurance_claims.csv')\nprint(df.shape)\nprint(df.iloc[:3, :12].to_string())",
 					"lotus": "Mỗi dòng là một yêu cầu bồi hoàn của khách Lotus Spa (ví dụ khách đòi hoàn tiền gói liệu trình sau sự cố). Cột cuối fraud_reported = Y nếu hồ sơ bị xác định gian lận.",
-					"trap": "Dữ liệu chỉ 1.000 dòng, nhỏ: kết quả dao động nhiều theo cách chia, đừng tin một con số duy nhất."
+					"trap": "Dữ liệu chỉ 1.000 dòng, nhỏ: kết quả dao động nhiều theo cách chia, đừng tin một con số duy nhất.",
+					"read": ["(1000, 40) là số dòng và số cột.", "Bảng mẫu cho thấy các cột hợp đồng (months_as_customer, policy_state...) và cột cuối fraud_reported."],
+					"remark": "Có 1.000 hồ sơ bồi thường với 40 cột; mỗi hàng là một hồ sơ gồm thông tin hợp đồng, người được bảo hiểm và sự cố.",
+					"howRemark": [
+						"Báo số dòng và cột.",
+						"Nói cột mục tiêu là fraud_reported.",
+						"Nhóm các cột chính."
+					]
 				},
 				"en": {
 					"think": "Read the claims file, print a few rows and the size.",
 					"steps": ["pd.read_csv('insurance_claims.csv').", "head() and shape: the file has 1,000 rows, 40 columns."],
 					"code": "import pandas as pd, numpy as np, matplotlib.pyplot as plt, seaborn as sns\ndf = pd.read_csv('/tmp/asg/all/2/Starter Notebook + Data/insurance_claims.csv')\nprint(df.shape)\nprint(df.iloc[:3, :12].to_string())",
 					"lotus": "Each row is a Lotus Spa customer refund claim (for example a customer demanding a refund of a treatment package after an incident). The last column fraud_reported = Y when the claim was found fraudulent.",
-					"trap": "Only 1,000 rows, small: results swing with the split, so do not trust a single number."
+					"trap": "Only 1,000 rows, small: results swing with the split, so do not trust a single number.",
+					"read": ["(1000, 40) is rows and columns.", "The sample table shows policy columns (months_as_customer, policy_state...) and the last column fraud_reported."],
+					"remark": "There are 1,000 claim records with 40 columns; each row is a claim with policy, insured person and incident details.",
+					"howRemark": [
+						"Report rows and columns.",
+						"Say the target is fraud_reported.",
+						"Group the main columns."
+					]
 				}
 			},
 			"2.1.1": {
@@ -30430,14 +32126,20 @@ var assignments = [
 					"steps": ["df.isnull().sum().", "Hai cột có vấn đề: authorities_contacted thiếu 91 ô, và _c39 trống hoàn toàn (1.000 ô)."],
 					"code": "print(df.isnull().sum()[df.isnull().sum() > 0])",
 					"lotus": "Hồ sơ không ghi cơ quan nào được liên hệ: có thể là chưa liên hệ ai, không phải thiếu thông tin.",
-					"trap": "Vội dropna() sẽ bỏ 91 hồ sơ có ý nghĩa và cả cột _c39 làm bảng rỗng."
+					"trap": "Vội dropna() sẽ bỏ 91 hồ sơ có ý nghĩa và cả cột _c39 làm bảng rỗng.",
+					"read": ["Chỉ hiện cột có ô trống: authorities_contacted (91) và _c39 (1.000)."],
+					"remark": "authorities_contacted thiếu 91 ô và _c39 trống hoàn toàn (1.000 ô); các cột khác đầy đủ.",
+					"howRemark": ["Nêu cột thiếu và số ô.", "Phân biệt thiếu một phần và rỗng cả cột."]
 				},
 				"en": {
 					"think": "Count blanks per column.",
 					"steps": ["df.isnull().sum().", "Two columns matter: authorities_contacted misses 91 cells, and _c39 is entirely empty (1,000 cells)."],
 					"code": "print(df.isnull().sum()[df.isnull().sum() > 0])",
 					"lotus": "A record with no authority listed may mean none was contacted, not missing information.",
-					"trap": "Rushing dropna() would drop 91 meaningful records, and _c39 would empty the whole table."
+					"trap": "Rushing dropna() would drop 91 meaningful records, and _c39 would empty the whole table.",
+					"read": ["Only columns with blanks appear: authorities_contacted (91) and _c39 (1,000)."],
+					"remark": "authorities_contacted misses 91 cells and _c39 is entirely empty (1,000 cells); all other columns are complete.",
+					"howRemark": ["Name the columns and blank counts.", "Distinguish partly missing from entirely empty."]
 				}
 			},
 			"2.1.2": {
@@ -30446,14 +32148,28 @@ var assignments = [
 					"steps": ["Điền fillna('None') cho authorities_contacted.", "Cột _c39 xử lý ở 2.2.2."],
 					"code": "# authorities_contacted trống = chưa liên hệ cơ quan nào\ndf['authorities_contacted'] = df['authorities_contacted'].fillna('None')\nprint(df['authorities_contacted'].value_counts())",
 					"lotus": "Một yêu cầu hoàn tiền mà không có công an hay xe cứu thương nào được gọi là một tín hiệu đáng xem, không phải ô hỏng.",
-					"trap": "Điền bằng nhóm phổ biến nhất (Police) làm mất tín hiệu đó."
+					"trap": "Điền bằng nhóm phổ biến nhất (Police) làm mất tín hiệu đó.",
+					"read": ["Bảng đếm giá trị authorities_contacted sau khi điền: Police 292, Fire 223, Other 198, Ambulance 196, None 91."],
+					"remark": "Ô trống nghĩa là «không liên hệ ai», nên điền None (91 hồ sơ) thay vì bỏ dòng; không mất hồ sơ nào.",
+					"howRemark": [
+						"Giải thích ý nghĩa của trống.",
+						"Báo số hồ sơ được giữ.",
+						"Nêu lý do không bỏ dòng."
+					]
 				},
 				"en": {
 					"think": "Handle blanks: here blank means “no one contacted”, so fill with 'None' rather than drop rows.",
 					"steps": ["fillna('None') for authorities_contacted.", "Column _c39 is handled in 2.2.2."],
 					"code": "# authorities_contacted trống = chưa liên hệ cơ quan nào\ndf['authorities_contacted'] = df['authorities_contacted'].fillna('None')\nprint(df['authorities_contacted'].value_counts())",
 					"lotus": "A refund claim with no police or ambulance called is a signal worth seeing, not a broken cell.",
-					"trap": "Filling with the most common group (Police) erases that signal."
+					"trap": "Filling with the most common group (Police) erases that signal.",
+					"read": ["Counts of authorities_contacted after filling: Police 292, Fire 223, Other 198, Ambulance 196, None 91."],
+					"remark": "A blank means “no one contacted”, so fill with None (91 records) instead of dropping rows; no record is lost.",
+					"howRemark": [
+						"Explain what blank means.",
+						"Report records kept.",
+						"State why rows were not dropped."
+					]
 				}
 			},
 			"2.2.1": {
@@ -30462,14 +32178,28 @@ var assignments = [
 					"steps": ["In value_counts từng cột có ít nhóm.", "Chú ý dấu '?': collision_type 178, property_damage 360, police_report_available 343 dòng."],
 					"code": "for c in df.select_dtypes(include=['object', 'str']).columns:\n    if df[c].nunique() < 12: print(c, df[c].value_counts().to_dict())\nprint((df == '?').sum()[lambda s: s > 0])",
 					"lotus": "Dấu '?' là «không biết», không phải một nhóm có thật. Nhưng ở đây nó chiếm tới một phần ba, nên giữ như một nhóm riêng «Unknown» thường hợp lý hơn bỏ dòng.",
-					"trap": "Bỏ mọi dòng có '?' sẽ mất hơn một nửa dữ liệu."
+					"trap": "Bỏ mọi dòng có '?' sẽ mất hơn một nửa dữ liệu.",
+					"read": ["Mỗi dòng là một cột nhóm và số hồ sơ mỗi giá trị.", "Tìm giá trị lạ, nhãn trùng nghĩa, hoặc nhóm quá nhỏ."],
+					"remark": "Các cột nhóm sạch (ví dụ policy_state: OH 352, IL 338, IN 310; insured_sex: 537 nữ, 463 nam), không có nhãn lạ; chỉ cần chú ý nhóm nhỏ ở bước 6.4.",
+					"howRemark": [
+						"Duyệt từng cột tìm nhãn bất thường.",
+						"Nêu phân bố vài cột chính.",
+						"Báo nhóm quá nhỏ."
+					]
 				},
 				"en": {
 					"think": "Inspect categorical columns for odd or redundant values.",
 					"steps": ["Print value_counts for each low-cardinality column.", "Notice '?': collision_type 178, property_damage 360, police_report_available 343 rows."],
 					"code": "for c in df.select_dtypes(include=['object', 'str']).columns:\n    if df[c].nunique() < 12: print(c, df[c].value_counts().to_dict())\nprint((df == '?').sum()[lambda s: s > 0])",
 					"lotus": "'?' means “unknown”, not a real group. But it covers up to a third, so keeping it as its own “Unknown” group usually beats dropping rows.",
-					"trap": "Dropping every row with '?' would lose over half the data."
+					"trap": "Dropping every row with '?' would lose over half the data.",
+					"read": ["Each line is a categorical column and the count per value.", "Look for odd labels, same-meaning labels or tiny groups."],
+					"remark": "Categorical columns are clean (e.g. policy_state: OH 352, IL 338, IN 310; insured_sex: 537 female, 463 male), no odd labels; just watch small groups in 6.4.",
+					"howRemark": [
+						"Scan each column for abnormal labels.",
+						"State the spread of a few main columns.",
+						"Flag tiny groups."
+					]
 				}
 			},
 			"2.2.2": {
@@ -30478,14 +32208,20 @@ var assignments = [
 					"steps": ["Tìm cột mà isnull().all() là True: _c39.", "drop(columns=...)."],
 					"code": "empty = [c for c in df.columns if df[c].isnull().all()]\nprint('cột rỗng hoàn toàn:', empty)\ndf = df.drop(columns=empty)",
 					"lotus": "Cột chưa từng có dữ liệu thì không giúp gì.",
-					"trap": "Dùng dropna(axis=1) mặc định chỉ bỏ cột có bất kỳ ô trống, bỏ nhầm cả authorities_contacted."
+					"trap": "Dùng dropna(axis=1) mặc định chỉ bỏ cột có bất kỳ ô trống, bỏ nhầm cả authorities_contacted.",
+					"read": ["Dòng chữ liệt kê cột rỗng hoàn toàn: _c39."],
+					"remark": "_c39 chỉ chứa ô trống nên bị bỏ vì không có thông tin.",
+					"howRemark": ["Nêu cột bỏ và lý do."]
 				},
 				"en": {
 					"think": "Drop entirely empty columns.",
 					"steps": ["Find columns where isnull().all() is True: _c39.", "drop(columns=...)."],
 					"code": "empty = [c for c in df.columns if df[c].isnull().all()]\nprint('cột rỗng hoàn toàn:', empty)\ndf = df.drop(columns=empty)",
 					"lotus": "A column that never had data helps nothing.",
-					"trap": "Default dropna(axis=1) drops any column with a blank, wrongly removing authorities_contacted too."
+					"trap": "Default dropna(axis=1) drops any column with a blank, wrongly removing authorities_contacted too.",
+					"read": ["The text lists entirely empty columns: _c39."],
+					"remark": "_c39 holds only blanks so it is dropped; it carries no information.",
+					"howRemark": ["Name the dropped column and reason."]
 				}
 			},
 			"2.2.3": {
@@ -30498,7 +32234,14 @@ var assignments = [
 					],
 					"code": "num = df.select_dtypes(include='number')\nprint((num < 0).sum()[lambda s: s > 0])\nprint(df[['umbrella_limit']].query('umbrella_limit < 0'))\ndf = df[df['umbrella_limit'] >= 0]\nprint(len(df))",
 					"lotus": "Hạn mức bảo hiểm bổ sung không thể âm: dòng đó là lỗi nhập. Nhưng khoản lỗ vốn âm là ghi sổ bình thường.",
-					"trap": "Thấy số âm là bỏ ngay làm mất 525 dòng hợp lệ của capital-loss."
+					"trap": "Thấy số âm là bỏ ngay làm mất 525 dòng hợp lệ của capital-loss.",
+					"read": ["Bảng đầu: số giá trị phi lý ở mỗi cột (umbrella_limit có 1 giá trị âm).", "Dòng mẫu: umbrella_limit = −1.000.000, một hồ sơ; 999 là số dòng còn lại."],
+					"remark": "Một hồ sơ có umbrella_limit âm (−1.000.000) vì hạn mức không thể âm; bỏ hồ sơ này còn 999 dòng. capital-loss mang dấu âm theo quy ước nên giữ.",
+					"howRemark": [
+						"Phân biệt âm bất hợp lý và âm hợp lệ.",
+						"Báo số dòng còn lại.",
+						"Nói quyết định và lý do."
+					]
 				},
 				"en": {
 					"think": "Find and drop impossible values such as negatives in columns that can only be positive.",
@@ -30509,7 +32252,14 @@ var assignments = [
 					],
 					"code": "num = df.select_dtypes(include='number')\nprint((num < 0).sum()[lambda s: s > 0])\nprint(df[['umbrella_limit']].query('umbrella_limit < 0'))\ndf = df[df['umbrella_limit'] >= 0]\nprint(len(df))",
 					"lotus": "A supplementary coverage limit cannot be negative: that row is an entry error. But a capital loss as a negative is ordinary bookkeeping.",
-					"trap": "Dropping every negative loses 525 valid capital-loss rows."
+					"trap": "Dropping every negative loses 525 valid capital-loss rows.",
+					"read": ["First table: absurd values per column (umbrella_limit has 1 negative).", "The sample row: umbrella_limit = −1,000,000, one record; 999 rows remain."],
+					"remark": "One record has a negative umbrella_limit (−1,000,000), impossible for a limit; drop it leaving 999 rows. capital-loss is negative by convention so it stays.",
+					"howRemark": [
+						"Distinguish invalid from valid negatives.",
+						"Report rows remaining.",
+						"State the decision and reason."
+					]
 				}
 			},
 			"2.2.4": {
@@ -30522,7 +32272,14 @@ var assignments = [
 					],
 					"code": "ratio = (df.nunique() / len(df)).sort_values(ascending=False)\nprint(ratio.head(6).round(3))\nids = ['policy_number', 'incident_location', 'insured_zip']\ndf = df.drop(columns=ids)\nprint(df.shape)",
 					"lotus": "Số hợp đồng và địa chỉ sự cố giống số thẻ nhân viên: mỗi người một số, mô hình sẽ học thuộc lòng.",
-					"trap": "Giữ cột mã giúp train đạt điểm cao giả và tệ trên validation."
+					"trap": "Giữ cột mã giúp train đạt điểm cao giả và tệ trên validation.",
+					"read": ["Bảng tỷ lệ giá trị khác nhau trên số dòng: 1,000 nghĩa là mỗi dòng một giá trị (mã định danh).", "(999, 36) là hình dạng sau khi bỏ các cột mã."],
+					"remark": "policy_number và incident_location có mỗi dòng một giá trị (tỷ lệ 1,000) nên là mã định danh, bỏ đi còn 36 cột cho 999 dòng.",
+					"howRemark": [
+						"Nêu cột có tỷ lệ ≈ 1.",
+						"Giải thích vì sao mã không dự đoán được.",
+						"Báo hình dạng mới."
+					]
 				},
 				"en": {
 					"think": "Drop near-unique columns (identifiers) because they do not help prediction.",
@@ -30533,7 +32290,14 @@ var assignments = [
 					],
 					"code": "ratio = (df.nunique() / len(df)).sort_values(ascending=False)\nprint(ratio.head(6).round(3))\nids = ['policy_number', 'incident_location', 'insured_zip']\ndf = df.drop(columns=ids)\nprint(df.shape)",
 					"lotus": "Policy numbers and incident addresses are like staff card numbers: one per person, the model would memorise.",
-					"trap": "Keeping ID columns gives a falsely high train score and a poor validation score."
+					"trap": "Keeping ID columns gives a falsely high train score and a poor validation score.",
+					"read": ["Table of distinct values over rows: 1.000 means every row is unique (an identifier).", "(999, 36) is the shape after dropping identifier columns."],
+					"remark": "policy_number and incident_location are unique per row (ratio 1.000), so identifiers, dropped leaving 36 columns for 999 rows.",
+					"howRemark": [
+						"Name columns with ratio ≈ 1.",
+						"Explain why identifiers cannot predict.",
+						"Report the new shape."
+					]
 				}
 			},
 			"2.3": {
@@ -30542,14 +32306,20 @@ var assignments = [
 					"steps": ["to_datetime cho policy_bind_date và incident_date.", "Kiểm tra dtypes."],
 					"code": "df['policy_bind_date'] = pd.to_datetime(df['policy_bind_date'])\ndf['incident_date'] = pd.to_datetime(df['incident_date'])\nprint(df[['policy_bind_date', 'incident_date']].dtypes)",
 					"lotus": "Ngày mua hợp đồng và ngày sự cố đổi thành ngày thật để tính được hợp đồng đã tồn tại bao lâu khi xảy ra sự cố (dùng ở 6.2).",
-					"trap": "Trừ hai cột chữ thì lỗi."
+					"trap": "Trừ hai cột chữ thì lỗi.",
+					"read": ["Hai dòng kiểu dữ liệu: policy_bind_date và incident_date đều là datetime64."],
+					"remark": "Hai cột ngày đã đổi sang datetime nên tính được tuổi hợp đồng và tháng, thứ của sự cố ở bước 6.2.",
+					"howRemark": ["Kiểm kiểu sau khi đổi.", "Nói mục đích."]
 				},
 				"en": {
 					"think": "Convert text date columns to datetime.",
 					"steps": ["to_datetime for policy_bind_date and incident_date.", "Check dtypes."],
 					"code": "df['policy_bind_date'] = pd.to_datetime(df['policy_bind_date'])\ndf['incident_date'] = pd.to_datetime(df['incident_date'])\nprint(df[['policy_bind_date', 'incident_date']].dtypes)",
 					"lotus": "Policy purchase date and incident date become real dates so you can compute how long the policy existed at the incident (used in 6.2).",
-					"trap": "Subtracting two text columns errors."
+					"trap": "Subtracting two text columns errors.",
+					"read": ["Two dtype lines: policy_bind_date and incident_date are datetime64."],
+					"remark": "Both date columns are now datetime so contract age and incident month/weekday can be computed in 6.2.",
+					"howRemark": ["Check the type after conversion.", "State the purpose."]
 				}
 			},
 			"3.2": {
@@ -30558,14 +32328,20 @@ var assignments = [
 					"steps": ["y = df['fraud_reported'].", "X = df.drop(columns=['fraud_reported'])."],
 					"code": "y = df['fraud_reported']\nX = df.drop(columns=['fraud_reported'])\nprint(X.shape, y.shape)",
 					"lotus": "Câu hỏi: hồ sơ này có gian lận không? Đáp án (Y/N) đi riêng.",
-					"trap": "Để fraud_reported lọt vào X cho điểm gần tuyệt đối giả tạo."
+					"trap": "Để fraud_reported lọt vào X cho điểm gần tuyệt đối giả tạo.",
+					"read": ["Hai hình dạng: X (999, 35) và y (999,)."],
+					"remark": "X có 35 cột đầu vào, y là fraud_reported; cùng 999 dòng.",
+					"howRemark": ["Kiểm số dòng hai bên."]
 				},
 				"en": {
 					"think": "Split X and y (fraud_reported).",
 					"steps": ["y = df['fraud_reported'].", "X = df.drop(columns=['fraud_reported'])."],
 					"code": "y = df['fraud_reported']\nX = df.drop(columns=['fraud_reported'])\nprint(X.shape, y.shape)",
 					"lotus": "The question: is this claim fraudulent? The answer (Y/N) goes separately.",
-					"trap": "Letting fraud_reported slip into X gives a fake near-perfect score."
+					"trap": "Letting fraud_reported slip into X gives a fake near-perfect score.",
+					"read": ["Two shapes: X (999, 35) and y (999,)."],
+					"remark": "X has 35 input columns, y is fraud_reported; both 999 rows.",
+					"howRemark": ["Check both row counts."]
 				}
 			},
 			"3.3": {
@@ -30578,7 +32354,14 @@ var assignments = [
 					],
 					"code": "from sklearn.model_selection import train_test_split\nX_train, X_validation, y_train, y_validation = train_test_split(X, y, train_size=0.7, stratify=y, random_state=42)\nfor t in (X_train, X_validation, y_train, y_validation): t.reset_index(drop=True, inplace=True)\nprint(len(X_train), len(X_validation), y_train.value_counts(normalize=True).round(3).to_dict(), y_validation.value_counts(normalize=True).round(3).to_dict())",
 					"lotus": "Chỉ 247 hồ sơ gian lận trên 1.000: nếu chia ngẫu nhiên không stratify, một tập có thể may mắn nhiều hơn hẳn.",
-					"trap": "Quên stratify với dữ liệu mất cân bằng làm hai tập lệch tỷ lệ."
+					"trap": "Quên stratify với dữ liệu mất cân bằng làm hai tập lệch tỷ lệ.",
+					"read": ["Bộ ba: 699 dòng train, 300 dòng validation, và hai tỷ lệ gian lận (train và validation đều Y = 0,247)."],
+					"remark": "Chia 70/30 có stratify: cả hai tập đều có 24,7% hồ sơ gian lận nên so sánh công bằng.",
+					"howRemark": [
+						"Báo cỡ hai tập.",
+						"So tỷ lệ gian lận hai tập.",
+						"Giải thích stratify."
+					]
 				},
 				"en": {
 					"think": "Split 70/30 with stratify so both sets share the same fraud rate.",
@@ -30589,7 +32372,14 @@ var assignments = [
 					],
 					"code": "from sklearn.model_selection import train_test_split\nX_train, X_validation, y_train, y_validation = train_test_split(X, y, train_size=0.7, stratify=y, random_state=42)\nfor t in (X_train, X_validation, y_train, y_validation): t.reset_index(drop=True, inplace=True)\nprint(len(X_train), len(X_validation), y_train.value_counts(normalize=True).round(3).to_dict(), y_validation.value_counts(normalize=True).round(3).to_dict())",
 					"lotus": "Only 247 fraud claims in 1,000: without stratify one set could get noticeably more by luck.",
-					"trap": "Forgetting stratify on imbalanced data skews the rates between the sets."
+					"trap": "Forgetting stratify on imbalanced data skews the rates between the sets.",
+					"read": ["The trio: 699 train rows, 300 validation rows, and two fraud shares (both Y = 0.247)."],
+					"remark": "A stratified 70/30 split: both sets have 24.7% fraud so comparison is fair.",
+					"howRemark": [
+						"Report both sizes.",
+						"Compare the fraud share.",
+						"Explain stratify."
+					]
 				}
 			},
 			"4.1.1": {
@@ -30598,14 +32388,20 @@ var assignments = [
 					"steps": ["select_dtypes(include='number')."],
 					"code": "num_cols = X_train.select_dtypes(include='number').columns\nprint(list(num_cols))",
 					"lotus": "Tuổi, số tháng là khách, phí bảo hiểm, các khoản bồi hoàn...",
-					"trap": "Không lấy từ toàn bộ df."
+					"trap": "Không lấy từ toàn bộ df.",
+					"read": ["Danh sách 16 cột số của train."],
+					"remark": "Có 16 cột số, gồm tuổi, phí, các khoản đòi bồi thường và năm xe.",
+					"howRemark": ["Đếm cột số.", "Nhóm theo chủ đề."]
 				},
 				"en": {
 					"think": "Select numeric columns of the training set.",
 					"steps": ["select_dtypes(include='number')."],
 					"code": "num_cols = X_train.select_dtypes(include='number').columns\nprint(list(num_cols))",
 					"lotus": "Age, months as customer, premium, claim amounts...",
-					"trap": "Do not take them from the whole df."
+					"trap": "Do not take them from the whole df.",
+					"read": ["The list of 16 numeric columns in train."],
+					"remark": "There are 16 numeric columns, covering age, premium, claim amounts and vehicle year.",
+					"howRemark": ["Count numeric columns.", "Group by theme."]
 				}
 			},
 			"4.1.2": {
@@ -30614,14 +32410,20 @@ var assignments = [
 					"steps": ["Histogram từng cột.", "Chú ý cột lệch, nhiều số 0 (capital-gains, umbrella_limit) và nhóm giá trị rời rạc."],
 					"code": "X_train[num_cols].hist(bins=25, figsize=(15, 11)); plt.tight_layout()",
 					"lotus": "Phần lớn khoản bồi hoàn tập trung ở khoảng giữa, vài khoản rất lớn kéo đuôi.",
-					"trap": "Cột như số tháng làm khách và tuổi tương quan mạnh nhau, sẽ thấy ở bước kế tiếp."
+					"trap": "Cột như số tháng làm khách và tuổi tương quan mạnh nhau, sẽ thấy ở bước kế tiếp.",
+					"read": ["Mỗi ô là phân phối một cột số: nhìn hình dạng, độ lệch và điểm xa."],
+					"remark": "Các phân phối cho thấy hình dạng từng cột số; những cột tiền (total_claim_amount, claim) thường lệch phải.",
+					"howRemark": ["Mô tả hình dạng cột chính.", "Chỉ cột lệch hoặc có điểm xa."]
 				},
 				"en": {
 					"think": "Plot each numeric column's distribution.",
 					"steps": ["A histogram per column.", "Notice skewed columns, many zeros (capital-gains, umbrella_limit) and discrete value groups."],
 					"code": "X_train[num_cols].hist(bins=25, figsize=(15, 11)); plt.tight_layout()",
 					"lotus": "Most claim amounts sit mid-range, a few huge ones stretch the tail.",
-					"trap": "Columns like months as customer and age correlate strongly, seen in the next step."
+					"trap": "Columns like months as customer and age correlate strongly, seen in the next step.",
+					"read": ["Each panel is a numeric column's distribution: look at shape, skew and outliers."],
+					"remark": "The distributions show each numeric column's shape; money columns (total_claim_amount, claims) tend to skew right.",
+					"howRemark": ["Describe the main columns' shapes.", "Point out skewed columns or outliers."]
 				}
 			},
 			"4.2": {
@@ -30630,14 +32432,28 @@ var assignments = [
 					"steps": ["corr() và heatmap.", "Cặp mạnh nhất: total_claim_amount với vehicle_claim (0,98), months_as_customer với age (0,92), total với injury/property claim (0,82)."],
 					"code": "plt.figure(figsize=(11, 8)); sns.heatmap(X_train[num_cols].corr(), annot=True, fmt='.2f', cmap='coolwarm', center=0, annot_kws={'size': 7})\nc = X_train[num_cols].corr().abs().where(np.triu(np.ones((len(num_cols),)*2), 1).astype(bool)).stack().sort_values(ascending=False)\nprint(c.head(6).round(2))",
 					"lotus": "Tổng bồi hoàn là tổng của ba khoản nhỏ, nên đương nhiên đi cùng nhau: giữ cả bốn cột là lặp lại cùng một thông tin.",
-					"trap": "Giữ mọi biến tương quan cao làm hệ số logistic không ổn định (đa cộng tuyến)."
+					"trap": "Giữ mọi biến tương quan cao làm hệ số logistic không ổn định (đa cộng tuyến).",
+					"read": ["Danh sách cặp cột tương quan cao nhất.", "total_claim_amount – vehicle_claim 0,98; months_as_customer – age 0,92."],
+					"remark": "total_claim_amount gần như bằng vehicle_claim (0,98) vì tổng gồm các phần; tuổi và thời gian làm khách cũng đi cùng nhau (0,92). Cần bỏ bớt cột trùng thông tin ở 6.3.",
+					"howRemark": [
+						"Nêu cặp mạnh nhất kèm số.",
+						"Giải thích vì sao chồng lấn.",
+						"Nói hệ quả (đa cộng tuyến) và xử lý."
+					]
 				},
 				"en": {
 					"think": "Correlation among numeric columns to see overlapping features.",
 					"steps": ["corr() and a heatmap.", "Strongest pairs: total_claim_amount with vehicle_claim (0.98), months_as_customer with age (0.92), total with injury/property claim (0.82)."],
 					"code": "plt.figure(figsize=(11, 8)); sns.heatmap(X_train[num_cols].corr(), annot=True, fmt='.2f', cmap='coolwarm', center=0, annot_kws={'size': 7})\nc = X_train[num_cols].corr().abs().where(np.triu(np.ones((len(num_cols),)*2), 1).astype(bool)).stack().sort_values(ascending=False)\nprint(c.head(6).round(2))",
 					"lotus": "Total claim is the sum of three smaller amounts so they naturally move together: keeping all four repeats the same information.",
-					"trap": "Keeping every highly correlated feature makes logistic coefficients unstable (multicollinearity)."
+					"trap": "Keeping every highly correlated feature makes logistic coefficients unstable (multicollinearity).",
+					"read": ["The list of most correlated pairs.", "total_claim_amount – vehicle_claim 0.98; months_as_customer – age 0.92."],
+					"remark": "total_claim_amount nearly equals vehicle_claim (0.98) because the total is made of parts; age and customer tenure also move together (0.92). Drop duplicate-information columns in 6.3.",
+					"howRemark": [
+						"Name the strongest pair with numbers.",
+						"Explain the overlap.",
+						"State the consequence (multicollinearity) and fix."
+					]
 				}
 			},
 			"4.3": {
@@ -30646,14 +32462,20 @@ var assignments = [
 					"steps": ["value_counts(normalize=True) và bar chart.", "24,7% gian lận, 75,3% sạch: mất cân bằng vừa."],
 					"code": "print(y_train.value_counts(normalize=True).round(3))\ny_train.value_counts().plot(kind='bar', color=['#2f6f5e', '#b5543c'], title='Cân bằng lớp (train)')",
 					"lotus": "Cứ 4 yêu cầu có 1 gian lận. Mô hình đoán «sạch» cho tất cả vẫn đúng 75%, nên độ chính xác đơn độc đánh lừa.",
-					"trap": "Chỉ nhìn accuracy khi lớp mất cân bằng: 75% mà bắt được 0 vụ gian lận."
+					"trap": "Chỉ nhìn accuracy khi lớp mất cân bằng: 75% mà bắt được 0 vụ gian lận.",
+					"read": ["Hai tỷ lệ: N (sạch) 0,753 và Y (gian lận) 0,247."],
+					"remark": "24,7% hồ sơ gian lận so với 75,3% sạch: lớp mất cân bằng nên độ chính xác đơn thuần dễ đánh lừa và cần cân bằng ở 6.1.",
+					"howRemark": ["Báo tỷ lệ hai lớp.", "Nói mất cân bằng ảnh hưởng thế nào đến cách đo."]
 				},
 				"en": {
 					"think": "Check class balance.",
 					"steps": ["value_counts(normalize=True) and a bar chart.", "24.7% fraud, 75.3% clean: moderately imbalanced."],
 					"code": "print(y_train.value_counts(normalize=True).round(3))\ny_train.value_counts().plot(kind='bar', color=['#2f6f5e', '#b5543c'], title='Cân bằng lớp (train)')",
 					"lotus": "One claim in four is fraud. A model saying “clean” for all is still 75% right, so accuracy alone misleads.",
-					"trap": "Looking only at accuracy on imbalanced classes: 75% while catching zero fraud cases."
+					"trap": "Looking only at accuracy on imbalanced classes: 75% while catching zero fraud cases.",
+					"read": ["Two shares: N (clean) 0.753 and Y (fraud) 0.247."],
+					"remark": "24.7% fraud vs 75.3% clean: classes are imbalanced so plain accuracy can mislead and balancing is needed in 6.1.",
+					"howRemark": ["Report both class shares.", "State how imbalance affects measurement."]
 				}
 			},
 			"4.4.1": {
@@ -30666,7 +32488,19 @@ var assignments = [
 					],
 					"code": "cat_cols = X_train.select_dtypes(include=['object', 'str']).columns\nt = X_train.assign(fraud=(y_train == 'Y').astype(int))\ndef likelihood(col):\n    return t.groupby(col)['fraud'].mean().sort_values(ascending=False)\noverall = t['fraud'].mean()\nrows = []\nfor c in cat_cols:\n    s = likelihood(c)\n    rows.append((c, s.index[0], round(s.iloc[0], 3), round(s.iloc[-1] - 0, 3), round(s.iloc[0] - s.iloc[-1], 3)))\ntab = pd.DataFrame(rows, columns=['cột', 'nhóm có tỷ lệ gian lận cao nhất', 'tỷ lệ cao nhất', 'tỷ lệ thấp nhất', 'khoảng cách']).sort_values('khoảng cách', ascending=False)\nprint('tỷ lệ gian lận chung:', round(overall, 3)); print(tab.head(8).to_string(index=False))\nfig, ax = plt.subplots(1, 3, figsize=(16, 4))\nfor a, c in zip(ax, ['incident_severity', 'insured_hobbies', 'collision_type']):\n    likelihood(c).plot(kind='bar', ax=a, title=f'Tỷ lệ gian lận theo {c}'); a.axhline(overall, color='r', ls='--')\nplt.tight_layout()",
 					"lotus": "Nhóm khách có sở thích cờ vua có tỷ lệ gian lận tới 90%: đây là mẫu hình của bộ dữ liệu, cần xem lại để biết là tín hiệu thật hay do mẫu nhỏ.",
-					"trap": "Nhóm hiếm (ít hồ sơ) cho tỷ lệ cao thất thường. Kiểm tra số lượng của nhóm trước khi tin."
+					"trap": "Nhóm hiếm (ít hồ sơ) cho tỷ lệ cao thất thường. Kiểm tra số lượng của nhóm trước khi tin.",
+					"read": [
+						"Bảng: mỗi dòng là một cột nhóm với nhóm có tỷ lệ gian lận cao nhất, cao nhất, thấp nhất và khoảng cách.",
+						"Khoảng cách lớn là cột có sức phân biệt mạnh.",
+						"Tỷ lệ chung 0,247 là mốc so sánh."
+					],
+					"remark": "insured_hobbies có khoảng cách lớn nhất: chess 0,906 so với thấp nhất 0,075 (chênh 0,831); incident_severity: Major Damage 0,609 so với 0,066. Hai cột này phân biệt gian lận rất mạnh.",
+					"howRemark": [
+						"Xếp cột theo khoảng cách.",
+						"Nêu nhóm cao nhất và thấp nhất.",
+						"So với tỷ lệ chung 0,247.",
+						"Nối với biến mô hình chọn sau."
+					]
 				},
 				"en": {
 					"think": "Analyse fraud likelihood for each group of every categorical column.",
@@ -30677,7 +32511,19 @@ var assignments = [
 					],
 					"code": "cat_cols = X_train.select_dtypes(include=['object', 'str']).columns\nt = X_train.assign(fraud=(y_train == 'Y').astype(int))\ndef likelihood(col):\n    return t.groupby(col)['fraud'].mean().sort_values(ascending=False)\noverall = t['fraud'].mean()\nrows = []\nfor c in cat_cols:\n    s = likelihood(c)\n    rows.append((c, s.index[0], round(s.iloc[0], 3), round(s.iloc[-1] - 0, 3), round(s.iloc[0] - s.iloc[-1], 3)))\ntab = pd.DataFrame(rows, columns=['cột', 'nhóm có tỷ lệ gian lận cao nhất', 'tỷ lệ cao nhất', 'tỷ lệ thấp nhất', 'khoảng cách']).sort_values('khoảng cách', ascending=False)\nprint('tỷ lệ gian lận chung:', round(overall, 3)); print(tab.head(8).to_string(index=False))\nfig, ax = plt.subplots(1, 3, figsize=(16, 4))\nfor a, c in zip(ax, ['incident_severity', 'insured_hobbies', 'collision_type']):\n    likelihood(c).plot(kind='bar', ax=a, title=f'Tỷ lệ gian lận theo {c}'); a.axhline(overall, color='r', ls='--')\nplt.tight_layout()",
 					"lotus": "Customers with the chess hobby show 90% fraud: a pattern of this dataset, worth checking whether it is a real signal or a small-sample effect.",
-					"trap": "Rare groups (few records) give odd high rates. Check a group's count before trusting it."
+					"trap": "Rare groups (few records) give odd high rates. Check a group's count before trusting it.",
+					"read": [
+						"Table: each row is a categorical column with its highest-fraud group, highest and lowest rates and the gap.",
+						"A large gap means strong discriminating power.",
+						"The overall 0.247 is the benchmark."
+					],
+					"remark": "insured_hobbies has the largest gap: chess 0.906 vs lowest 0.075 (gap 0.831); incident_severity: Major Damage 0.609 vs 0.066. These two columns separate fraud very strongly.",
+					"howRemark": [
+						"Rank columns by gap.",
+						"State the highest and lowest groups.",
+						"Compare with the overall 0.247.",
+						"Link to the variables the model picks later."
+					]
 				}
 			},
 			"4.4.2": {
@@ -30686,14 +32532,28 @@ var assignments = [
 					"steps": ["Boxplot cột số theo fraud.", "Bồi hoàn trung bình: total_claim_amount 60.921 (gian lận) so với 50.293 (sạch)."],
 					"code": "tn = X_train.assign(fraud=y_train)\nfig, ax = plt.subplots(1, 4, figsize=(17, 4))\nfor a, c in zip(ax, ['total_claim_amount', 'vehicle_claim', 'months_as_customer', 'policy_annual_premium']):\n    sns.boxplot(data=tn, x='fraud', y=c, ax=a)\nplt.tight_layout()\nprint(tn.groupby('fraud')[['total_claim_amount', 'vehicle_claim', 'injury_claim', 'property_claim']].mean().round(0).to_string())",
 					"lotus": "Hồ sơ gian lận có khoản đòi cao hơn khoảng 21%, nhưng hai hộp chồng nhau nhiều: cột này mạnh một nửa, không đủ một mình.",
-					"trap": "Dùng trung bình mà bỏ qua độ chồng của hai hộp làm tin quá mức vào khác biệt."
+					"trap": "Dùng trung bình mà bỏ qua độ chồng của hai hộp làm tin quá mức vào khác biệt.",
+					"read": ["Bảng trung bình theo nhóm N và Y cho các khoản đòi bồi thường."],
+					"remark": "Hồ sơ gian lận đòi trung bình 60.921 so với 50.293 ở hồ sơ sạch (cao hơn khoảng 21%); khoản đòi xe 43.812 so với 36.109.",
+					"howRemark": [
+						"So trung bình hai nhóm cho từng cột.",
+						"Tính chênh phần trăm.",
+						"Nói chênh có đủ lớn để dự đoán không."
+					]
 				},
 				"en": {
 					"think": "Numeric columns versus fraud: boxplots by Y/N.",
 					"steps": ["Boxplot numeric columns by fraud.", "Mean claim: total_claim_amount 60,921 (fraud) vs 50,293 (clean)."],
 					"code": "tn = X_train.assign(fraud=y_train)\nfig, ax = plt.subplots(1, 4, figsize=(17, 4))\nfor a, c in zip(ax, ['total_claim_amount', 'vehicle_claim', 'months_as_customer', 'policy_annual_premium']):\n    sns.boxplot(data=tn, x='fraud', y=c, ax=a)\nplt.tight_layout()\nprint(tn.groupby('fraud')[['total_claim_amount', 'vehicle_claim', 'injury_claim', 'property_claim']].mean().round(0).to_string())",
 					"lotus": "Fraud claims ask about 21% more, but the two boxes overlap a lot: the feature is half strong, not enough alone.",
-					"trap": "Using the mean and ignoring the overlap of the two boxes overstates the difference."
+					"trap": "Using the mean and ignoring the overlap of the two boxes overstates the difference.",
+					"read": ["Table of means for groups N and Y across claim amounts."],
+					"remark": "Fraud claims average 60,921 vs 50,293 for clean ones (about 21% higher); vehicle claims 43,812 vs 36,109.",
+					"howRemark": [
+						"Compare the two groups' means per column.",
+						"Compute the percentage gap.",
+						"Say whether it is big enough to predict."
+					]
 				}
 			},
 			"5.1.1": {
@@ -30702,14 +32562,20 @@ var assignments = [
 					"steps": ["Làm giống bước tương ứng ở train.", "So hình dạng hai tập."],
 					"code": "# Làm theo ô starter, xem kết quả ở trên",
 					"lotus": "Hai tập nên giống nhau; khác nhiều thì chia chưa tốt.",
-					"trap": "Không dùng validation để chọn đặc trưng."
+					"trap": "Không dùng validation để chọn đặc trưng.",
+					"read": ["Ô này không in kết quả hoặc hình giống train: so với bước tương ứng ở phần 4."],
+					"remark": "Phần tùy chọn: lặp lại bước khám phá trên validation để chắc hai tập tương đồng với train.",
+					"howRemark": ["Nói bước này chuẩn bị gì cho bước sau.", "Ghi tên biến/đối tượng mới được tạo."]
 				},
 				"en": {
 					"think": "Select validation numeric columns (optional).",
 					"steps": ["Do the same as the matching train step.", "Compare the shapes of the two sets."],
 					"code": "# Làm theo ô starter, xem kết quả ở trên",
 					"lotus": "The two sets should look alike; very different means a poor split.",
-					"trap": "Do not use validation to choose features."
+					"trap": "Do not use validation to choose features.",
+					"read": ["This cell prints nothing or a train-like chart: compare with the matching step in part 4."],
+					"remark": "Optional part: repeats exploration on validation to confirm it resembles train.",
+					"howRemark": ["Say what this step prepares for the next.", "Note the new variable/object created."]
 				}
 			},
 			"5.1.2": {
@@ -30718,14 +32584,20 @@ var assignments = [
 					"steps": ["Làm giống bước tương ứng ở train.", "So hình dạng hai tập."],
 					"code": "num_v = X_validation.select_dtypes(include='number').columns\nX_validation[num_v].hist(bins=25, figsize=(15, 11)); plt.tight_layout()",
 					"lotus": "Hai tập nên giống nhau; khác nhiều thì chia chưa tốt.",
-					"trap": "Không dùng validation để chọn đặc trưng."
+					"trap": "Không dùng validation để chọn đặc trưng.",
+					"read": ["Hình giống 4.1.2 nhưng trên validation."],
+					"remark": "Phân phối các cột số ở validation có hình dạng tương tự train nên hai tập cùng nguồn.",
+					"howRemark": ["So hai bộ biểu đồ.", "Kết luận độ tương đồng."]
 				},
 				"en": {
 					"think": "Plot validation numeric distributions, compared with train.",
 					"steps": ["Do the same as the matching train step.", "Compare the shapes of the two sets."],
 					"code": "num_v = X_validation.select_dtypes(include='number').columns\nX_validation[num_v].hist(bins=25, figsize=(15, 11)); plt.tight_layout()",
 					"lotus": "The two sets should look alike; very different means a poor split.",
-					"trap": "Do not use validation to choose features."
+					"trap": "Do not use validation to choose features.",
+					"read": ["The chart mirrors 4.1.2 but on validation."],
+					"remark": "Numeric distributions on validation look like train's, so both sets share the same source.",
+					"howRemark": ["Compare the two chart sets.", "Conclude similarity."]
 				}
 			},
 			"5.2": {
@@ -30734,14 +32606,20 @@ var assignments = [
 					"steps": ["Làm giống bước tương ứng ở train.", "So hình dạng hai tập."],
 					"code": "# Làm theo ô starter, xem kết quả ở trên",
 					"lotus": "Hai tập nên giống nhau; khác nhiều thì chia chưa tốt.",
-					"trap": "Không dùng validation để chọn đặc trưng."
+					"trap": "Không dùng validation để chọn đặc trưng.",
+					"read": ["Ô này không in kết quả hoặc hình giống train: so với bước tương ứng ở phần 4."],
+					"remark": "Phần tùy chọn: lặp lại bước khám phá trên validation để chắc hai tập tương đồng với train.",
+					"howRemark": ["Nói bước này chuẩn bị gì cho bước sau.", "Ghi tên biến/đối tượng mới được tạo."]
 				},
 				"en": {
 					"think": "Numeric correlation in validation.",
 					"steps": ["Do the same as the matching train step.", "Compare the shapes of the two sets."],
 					"code": "# Làm theo ô starter, xem kết quả ở trên",
 					"lotus": "The two sets should look alike; very different means a poor split.",
-					"trap": "Do not use validation to choose features."
+					"trap": "Do not use validation to choose features.",
+					"read": ["This cell prints nothing or a train-like chart: compare with the matching step in part 4."],
+					"remark": "Optional part: repeats exploration on validation to confirm it resembles train.",
+					"howRemark": ["Say what this step prepares for the next.", "Note the new variable/object created."]
 				}
 			},
 			"5.3": {
@@ -30750,14 +32628,20 @@ var assignments = [
 					"steps": ["Làm giống bước tương ứng ở train.", "So hình dạng hai tập."],
 					"code": "print(y_validation.value_counts(normalize=True).round(3))",
 					"lotus": "Hai tập nên giống nhau; khác nhiều thì chia chưa tốt.",
-					"trap": "Không dùng validation để chọn đặc trưng."
+					"trap": "Không dùng validation để chọn đặc trưng.",
+					"read": ["Hai tỷ lệ ở validation: N 0,753 và Y 0,247."],
+					"remark": "Validation cũng 24,7% gian lận, đúng như train nhờ stratify.",
+					"howRemark": ["So với 4.3."]
 				},
 				"en": {
 					"think": "Class balance in validation: 24.7% fraud, same as train thanks to stratify.",
 					"steps": ["Do the same as the matching train step.", "Compare the shapes of the two sets."],
 					"code": "print(y_validation.value_counts(normalize=True).round(3))",
 					"lotus": "The two sets should look alike; very different means a poor split.",
-					"trap": "Do not use validation to choose features."
+					"trap": "Do not use validation to choose features.",
+					"read": ["Two shares on validation: N 0.753 and Y 0.247."],
+					"remark": "Validation is also 24.7% fraud, exactly like train thanks to stratify.",
+					"howRemark": ["Compare with 4.3."]
 				}
 			},
 			"5.4.1": {
@@ -30766,14 +32650,20 @@ var assignments = [
 					"steps": ["Làm giống bước tương ứng ở train.", "So hình dạng hai tập."],
 					"code": "# Làm theo ô starter, xem kết quả ở trên",
 					"lotus": "Hai tập nên giống nhau; khác nhiều thì chia chưa tốt.",
-					"trap": "Không dùng validation để chọn đặc trưng."
+					"trap": "Không dùng validation để chọn đặc trưng.",
+					"read": ["Ô này không in kết quả; việc cần xem là chạy không báo lỗi."],
+					"remark": "Lặp lại 4.4.1 trên validation; kỳ vọng các cột như insured_hobbies và incident_severity vẫn có khoảng cách lớn.",
+					"howRemark": ["Nói bước này chuẩn bị gì cho bước sau.", "Ghi tên biến/đối tượng mới được tạo."]
 				},
 				"en": {
 					"think": "Fraud likelihood by group in validation, compared to train.",
 					"steps": ["Do the same as the matching train step.", "Compare the shapes of the two sets."],
 					"code": "# Làm theo ô starter, xem kết quả ở trên",
 					"lotus": "The two sets should look alike; very different means a poor split.",
-					"trap": "Do not use validation to choose features."
+					"trap": "Do not use validation to choose features.",
+					"read": ["This cell prints nothing; just check it ran without error."],
+					"remark": "Repeats 4.4.1 on validation; expect columns like insured_hobbies and incident_severity to keep large gaps.",
+					"howRemark": ["Say what this step prepares for the next.", "Note the new variable/object created."]
 				}
 			},
 			"5.4.2": {
@@ -30782,14 +32672,20 @@ var assignments = [
 					"steps": ["Làm giống bước tương ứng ở train.", "So hình dạng hai tập."],
 					"code": "# Làm theo ô starter, xem kết quả ở trên",
 					"lotus": "Hai tập nên giống nhau; khác nhiều thì chia chưa tốt.",
-					"trap": "Không dùng validation để chọn đặc trưng."
+					"trap": "Không dùng validation để chọn đặc trưng.",
+					"read": ["Ô này không in kết quả hoặc hình giống train: so với bước tương ứng ở phần 4."],
+					"remark": "Phần tùy chọn: lặp lại bước khám phá trên validation để chắc hai tập tương đồng với train.",
+					"howRemark": ["Nói bước này chuẩn bị gì cho bước sau.", "Ghi tên biến/đối tượng mới được tạo."]
 				},
 				"en": {
 					"think": "Numeric columns by fraud in validation, compared to train.",
 					"steps": ["Do the same as the matching train step.", "Compare the shapes of the two sets."],
 					"code": "# Làm theo ô starter, xem kết quả ở trên",
 					"lotus": "The two sets should look alike; very different means a poor split.",
-					"trap": "Do not use validation to choose features."
+					"trap": "Do not use validation to choose features.",
+					"read": ["This cell prints nothing or a train-like chart: compare with the matching step in part 4."],
+					"remark": "Optional part: repeats exploration on validation to confirm it resembles train.",
+					"howRemark": ["Say what this step prepares for the next.", "Note the new variable/object created."]
 				}
 			},
 			"6.1": {
@@ -30802,7 +32698,14 @@ var assignments = [
 					],
 					"code": "from imblearn.over_sampling import RandomOverSampler\nros = RandomOverSampler(random_state=42)\nX_train, y_train = ros.fit_resample(X_train, y_train)\nprint(y_train.value_counts(), len(X_train))",
 					"lotus": "Nhân bản các vụ gian lận để mô hình thấy đủ ví dụ, giống chép thêm các hồ sơ hiếm vào sổ luyện tập.",
-					"trap": "Resample cả validation làm điểm đánh giá giả. Validation giữ tỷ lệ thật 24,7%."
+					"trap": "Resample cả validation làm điểm đánh giá giả. Validation giữ tỷ lệ thật 24,7%.",
+					"read": ["Bảng đếm lớp sau khi cân bằng: N 526 và Y 526, tổng 1.052."],
+					"remark": "Cân bằng bằng cách nhân bản ngẫu nhiên hồ sơ gian lận ở TRAIN: 526 sạch và 526 gian lận (tổng 1.052). Validation giữ nguyên để đo trung thực.",
+					"howRemark": [
+						"Báo số hồ sơ mỗi lớp.",
+						"Nói chỉ cân bằng train.",
+						"Nêu rủi ro (nhân bản gây quá khớp)."
+					]
 				},
 				"en": {
 					"think": "Balance classes with RandomOverSampler: randomly duplicate fraud rows in TRAIN until they match clean rows.",
@@ -30813,7 +32716,14 @@ var assignments = [
 					],
 					"code": "from imblearn.over_sampling import RandomOverSampler\nros = RandomOverSampler(random_state=42)\nX_train, y_train = ros.fit_resample(X_train, y_train)\nprint(y_train.value_counts(), len(X_train))",
 					"lotus": "Duplicate fraud cases so the model sees enough examples, like copying rare records into the practice log.",
-					"trap": "Resampling validation too makes evaluation fake. Validation keeps the real 24.7%."
+					"trap": "Resampling validation too makes evaluation fake. Validation keeps the real 24.7%.",
+					"read": ["Class counts after balancing: N 526 and Y 526, total 1,052."],
+					"remark": "Balanced by randomly duplicating fraud records in TRAIN: 526 clean and 526 fraud (1,052 total). Validation is left as is for an honest measure.",
+					"howRemark": [
+						"Report records per class.",
+						"Say only train is balanced.",
+						"State the risk (duplication can cause overfitting)."
+					]
 				}
 			},
 			"6.2": {
@@ -30827,7 +32737,14 @@ var assignments = [
 					],
 					"code": "for d in (X_train, X_validation):\n    d['policy_age_days'] = (d['incident_date'] - d['policy_bind_date']).dt.days\n    d['incident_month'] = d['incident_date'].dt.month\n    d['incident_dow'] = d['incident_date'].dt.dayofweek\n    d['claim_per_vehicle'] = d['total_claim_amount'] / d['number_of_vehicles_involved']\nprint(X_train[['policy_age_days', 'incident_month', 'incident_dow', 'claim_per_vehicle']].describe().round(1).to_string())",
 					"lotus": "Một hợp đồng mới mua vài ngày đã có sự cố là tín hiệu đáng ngờ hơn ngày mua tuyệt đối.",
-					"trap": "Một dòng có policy_age_days âm (-20) cho thấy ngày sự cố trước ngày mua: kiểm tra lại. Chỉ tạo đặc trưng bằng cách chia bằng các cột đã có, không dùng y."
+					"trap": "Một dòng có policy_age_days âm (-20) cho thấy ngày sự cố trước ngày mua: kiểm tra lại. Chỉ tạo đặc trưng bằng cách chia bằng các cột đã có, không dùng y.",
+					"read": ["Bảng describe cho 4 đặc trưng mới: policy_age_days, incident_month, incident_dow, claim_per_vehicle.", "Chú ý min của policy_age_days là −20."],
+					"remark": "Đặc trưng mới gồm tuổi hợp đồng (trung bình 4.654 ngày), tháng, thứ và đòi bồi thường trên mỗi xe (trung bình 37.040); min −20 ngày cho thấy một số sự cố xảy ra trước ngày ký hợp đồng, đáng nghi.",
+					"howRemark": [
+						"Nêu đặc trưng mới và công thức.",
+						"Kiểm giá trị bất thường.",
+						"Nói giá trị của đặc trưng."
+					]
 				},
 				"en": {
 					"think": "Create new features from existing columns.",
@@ -30839,7 +32756,14 @@ var assignments = [
 					],
 					"code": "for d in (X_train, X_validation):\n    d['policy_age_days'] = (d['incident_date'] - d['policy_bind_date']).dt.days\n    d['incident_month'] = d['incident_date'].dt.month\n    d['incident_dow'] = d['incident_date'].dt.dayofweek\n    d['claim_per_vehicle'] = d['total_claim_amount'] / d['number_of_vehicles_involved']\nprint(X_train[['policy_age_days', 'incident_month', 'incident_dow', 'claim_per_vehicle']].describe().round(1).to_string())",
 					"lotus": "A policy bought only days before the incident is more suspicious than the absolute purchase date.",
-					"trap": "A row with negative policy_age_days (-20) shows the incident before purchase: recheck. Build features only from existing columns, never from y."
+					"trap": "A row with negative policy_age_days (-20) shows the incident before purchase: recheck. Build features only from existing columns, never from y.",
+					"read": ["describe table for 4 new features: policy_age_days, incident_month, incident_dow, claim_per_vehicle.", "Note policy_age_days min is −20."],
+					"remark": "New features: contract age (mean 4,654 days), month, weekday and claim per vehicle (mean 37,040); the −20-day minimum shows some incidents happened before the contract date, which is suspicious.",
+					"howRemark": [
+						"Name the new features and formulas.",
+						"Check unusual values.",
+						"State the value of the features."
+					]
 				}
 			},
 			"6.3": {
@@ -30852,7 +32776,10 @@ var assignments = [
 					],
 					"code": "drop = ['policy_bind_date', 'incident_date', 'injury_claim', 'property_claim', 'vehicle_claim', 'auto_model', 'age']\nfor d in (X_train, X_validation): d.drop(columns=drop, inplace=True)\nprint(X_train.shape)",
 					"lotus": "Giữ tổng, bỏ ba khoản thành phần: cùng thông tin, ít cột hơn.",
-					"trap": "Bỏ ở train mà quên bỏ ở validation làm số cột lệch."
+					"trap": "Bỏ ở train mà quên bỏ ở validation làm số cột lệch.",
+					"read": ["(1052, 32) là hình dạng sau khi bỏ cột thừa."],
+					"remark": "Bỏ các cột tương quan cao hoặc ít thông tin (ví dụ khoản đòi con của total_claim_amount), còn 32 cột.",
+					"howRemark": ["Báo số cột sau khi bỏ.", "Nêu lý do bỏ."]
 				},
 				"en": {
 					"think": "Drop redundant columns: highly correlated or low in information.",
@@ -30863,7 +32790,10 @@ var assignments = [
 					],
 					"code": "drop = ['policy_bind_date', 'incident_date', 'injury_claim', 'property_claim', 'vehicle_claim', 'auto_model', 'age']\nfor d in (X_train, X_validation): d.drop(columns=drop, inplace=True)\nprint(X_train.shape)",
 					"lotus": "Keep the total, drop the three parts: same information, fewer columns.",
-					"trap": "Dropping on train but forgetting validation leaves mismatched column counts."
+					"trap": "Dropping on train but forgetting validation leaves mismatched column counts.",
+					"read": ["(1052, 32) is the shape after dropping redundant columns."],
+					"remark": "Dropped highly correlated or low-information columns (e.g. components of total_claim_amount), leaving 32 columns.",
+					"howRemark": ["Report columns after dropping.", "State the reasons."]
 				}
 			},
 			"6.4": {
@@ -30876,7 +32806,14 @@ var assignments = [
 					],
 					"code": "# gộp nhóm hiếm: bang xảy ra sự cố và sở thích\nrare_states = X_train['incident_state'].value_counts()[lambda s: s < 60].index\nhobby_top = ['chess', 'cross-fit']\nfor d in (X_train, X_validation):\n    d['incident_state'] = d['incident_state'].replace({s: 'Other' for s in rare_states})\n    d['insured_hobbies'] = d['insured_hobbies'].where(d['insured_hobbies'].isin(hobby_top), 'other')\nprint(X_train['incident_state'].value_counts().to_dict()); print(X_train['insured_hobbies'].value_counts().to_dict())",
 					"lotus": "Hai nhóm cờ vua và cross-fit đủ khác biệt nên giữ riêng; mười một sở thích còn lại gộp một nhóm.",
-					"trap": "Gộp theo kết quả y trên toàn bộ dữ liệu làm rò rỉ. Chọn nhóm giữ riêng theo EDA ở train."
+					"trap": "Gộp theo kết quả y trên toàn bộ dữ liệu làm rò rỉ. Chọn nhóm giữ riêng theo EDA ở train.",
+					"read": ["Hai bảng đếm: policy_state gộp nhóm hiếm thành Other; insured_hobbies thành chess, cross-fit, other."],
+					"remark": "Gộp nhóm hiếm: bang còn SC 283, NY 257, WV 194, NC 135, VA 109 và Other 74; sở thích còn other 902, chess 101, cross-fit 49. Ít nhóm hơn thì mô hình ổn định hơn.",
+					"howRemark": [
+						"Nêu nhóm sau khi gộp.",
+						"Giải thích vì sao gộp.",
+						"Nhớ chess và cross-fit là hai sở thích nổi bật ở 4.4.1."
+					]
 				},
 				"en": {
 					"think": "Combine rare groups in categorical columns for a sturdier model.",
@@ -30887,7 +32824,14 @@ var assignments = [
 					],
 					"code": "# gộp nhóm hiếm: bang xảy ra sự cố và sở thích\nrare_states = X_train['incident_state'].value_counts()[lambda s: s < 60].index\nhobby_top = ['chess', 'cross-fit']\nfor d in (X_train, X_validation):\n    d['incident_state'] = d['incident_state'].replace({s: 'Other' for s in rare_states})\n    d['insured_hobbies'] = d['insured_hobbies'].where(d['insured_hobbies'].isin(hobby_top), 'other')\nprint(X_train['incident_state'].value_counts().to_dict()); print(X_train['insured_hobbies'].value_counts().to_dict())",
 					"lotus": "The chess and cross-fit groups differ enough to keep separate; the other eleven hobbies merge into one.",
-					"trap": "Merging by y results on the full data leaks. Choose the groups to keep from train EDA."
+					"trap": "Merging by y results on the full data leaks. Choose the groups to keep from train EDA.",
+					"read": ["Two count tables: policy_state with rare groups merged to Other; insured_hobbies to chess, cross-fit, other."],
+					"remark": "Rare groups merged: states left SC 283, NY 257, WV 194, NC 135, VA 109 and Other 74; hobbies left other 902, chess 101, cross-fit 49. Fewer groups make the model steadier.",
+					"howRemark": [
+						"Name the groups after merging.",
+						"Explain why merge.",
+						"Remember chess and cross-fit stood out in 4.4.1."
+					]
 				}
 			},
 			"6.5.1": {
@@ -30896,14 +32840,20 @@ var assignments = [
 					"steps": ["select_dtypes(include=['object','str'])."],
 					"code": "cat_cols = X_train.select_dtypes(include=['object', 'str']).columns\nprint(list(cat_cols))",
 					"lotus": "Mọi cột chữ còn lại.",
-					"trap": "Quên cột vừa gộp ở 6.4."
+					"trap": "Quên cột vừa gộp ở 6.4.",
+					"read": ["Danh sách 16 cột nhóm cần dummy."],
+					"remark": "16 cột chữ cần chuyển thành 0/1 vì mô hình chỉ đọc số.",
+					"howRemark": ["Đếm cột.", "Nói vì sao cần dummy."]
 				},
 				"en": {
 					"think": "Identify categorical columns needing dummies.",
 					"steps": ["select_dtypes(include=['object','str'])."],
 					"code": "cat_cols = X_train.select_dtypes(include=['object', 'str']).columns\nprint(list(cat_cols))",
 					"lotus": "Every remaining text column.",
-					"trap": "Forgetting the columns just merged in 6.4."
+					"trap": "Forgetting the columns just merged in 6.4.",
+					"read": ["The list of 16 categorical columns needing dummies."],
+					"remark": "16 text columns must become 0/1 since the model reads only numbers.",
+					"howRemark": ["Count columns.", "Say why dummies."]
 				}
 			},
 			"6.5.2": {
@@ -30916,7 +32866,10 @@ var assignments = [
 					],
 					"code": "dt = pd.get_dummies(X_train[cat_cols], drop_first=True, dtype=int)\nX_train = pd.concat([X_train.drop(columns=cat_cols), dt], axis=1)\nprint(X_train.shape)",
 					"lotus": "Mỗi nhóm thành một cột 0/1.",
-					"trap": "Không drop_first sinh cột trùng lặp."
+					"trap": "Không drop_first sinh cột trùng lặp.",
+					"read": ["(1052, 88): số cột của train sau khi tạo dummy."],
+					"remark": "Sau dummy, train có 88 cột; mỗi nhóm của một cột chữ thành một cột 0/1.",
+					"howRemark": ["Báo hình dạng mới.", "Giải thích vì sao tăng cột."]
 				},
 				"en": {
 					"think": "Create dummies for train.",
@@ -30927,7 +32880,10 @@ var assignments = [
 					],
 					"code": "dt = pd.get_dummies(X_train[cat_cols], drop_first=True, dtype=int)\nX_train = pd.concat([X_train.drop(columns=cat_cols), dt], axis=1)\nprint(X_train.shape)",
 					"lotus": "Each group becomes a 0/1 column.",
-					"trap": "Without drop_first you get duplicate columns."
+					"trap": "Without drop_first you get duplicate columns.",
+					"read": ["(1052, 88): train's column count after dummies."],
+					"remark": "After dummies train has 88 columns; each level of a text column becomes a 0/1 column.",
+					"howRemark": ["Report the new shape.", "Explain why columns grew."]
 				}
 			},
 			"6.5.3": {
@@ -30936,14 +32892,20 @@ var assignments = [
 					"steps": ["get_dummies rồi reindex(columns=X_train.columns, fill_value=0)."],
 					"code": "dv = pd.get_dummies(X_validation[cat_cols], drop_first=True, dtype=int)\nX_validation = pd.concat([X_validation.drop(columns=cat_cols), dv], axis=1).reindex(columns=X_train.columns, fill_value=0)\nprint(X_validation.shape)",
 					"lotus": "Hai sổ phải có cùng bộ cột.",
-					"trap": "Một nhóm có ở train mà không có ở validation làm lệch cột: reindex xử lý."
+					"trap": "Một nhóm có ở train mà không có ở validation làm lệch cột: reindex xử lý.",
+					"read": ["(300, 88): validation có đúng 88 cột như train."],
+					"remark": "Validation có 88 cột trùng bộ cột của train nên mô hình áp dụng trực tiếp.",
+					"howRemark": ["Kiểm cùng số cột với train."]
 				},
 				"en": {
 					"think": "Create dummies for validation with exactly train's columns.",
 					"steps": ["get_dummies then reindex(columns=X_train.columns, fill_value=0)."],
 					"code": "dv = pd.get_dummies(X_validation[cat_cols], drop_first=True, dtype=int)\nX_validation = pd.concat([X_validation.drop(columns=cat_cols), dv], axis=1).reindex(columns=X_train.columns, fill_value=0)\nprint(X_validation.shape)",
 					"lotus": "Both logs must have the same columns.",
-					"trap": "A group present in train but absent in validation misaligns columns: reindex fixes it."
+					"trap": "A group present in train but absent in validation misaligns columns: reindex fixes it.",
+					"read": ["(300, 88): validation has exactly 88 columns like train."],
+					"remark": "Validation has the same 88 columns as train so the model applies directly.",
+					"howRemark": ["Check same columns as train."]
 				}
 			},
 			"6.5.4": {
@@ -30952,14 +32914,20 @@ var assignments = [
 					"steps": ["(y == 'Y').astype(int) cho cả hai tập.", "Kiểm tra: train 0,5 (sau resample), validation 0,247."],
 					"code": "y_train = (y_train == 'Y').astype(int); y_validation = (y_validation == 'Y').astype(int)\nprint(y_train.mean().round(3), y_validation.mean().round(3))",
 					"lotus": "1 nghĩa là hồ sơ gian lận: mô hình đoán xác suất gian lận.",
-					"trap": "Mã hóa ngược làm đảo mọi chỉ số."
+					"trap": "Mã hóa ngược làm đảo mọi chỉ số.",
+					"read": ["Hai số: 0,5 và 0,247 là tỷ lệ gian lận của train đã cân bằng và của validation."],
+					"remark": "Sau khi mã hóa Y = 1 và N = 0, train cân bằng có 50% gian lận còn validation giữ 24,7%.",
+					"howRemark": ["Giải thích hai tỷ lệ khác nhau.", "Nhắc không cân bằng validation."]
 				},
 				"en": {
 					"think": "Encode the target: Y to 1, N to 0.",
 					"steps": ["(y == 'Y').astype(int) for both sets.", "Check: train 0.5 (after resampling), validation 0.247."],
 					"code": "y_train = (y_train == 'Y').astype(int); y_validation = (y_validation == 'Y').astype(int)\nprint(y_train.mean().round(3), y_validation.mean().round(3))",
 					"lotus": "1 means a fraud claim: the model predicts the probability of fraud.",
-					"trap": "Reversed encoding flips every metric."
+					"trap": "Reversed encoding flips every metric.",
+					"read": ["Two numbers: 0.5 and 0.247 are the fraud share of the balanced train and of validation."],
+					"remark": "After encoding Y = 1 and N = 0, balanced train has 50% fraud while validation stays at 24.7%.",
+					"howRemark": ["Explain why the two rates differ.", "Remind not to balance validation."]
 				}
 			},
 			"6.6": {
@@ -30972,7 +32940,10 @@ var assignments = [
 					],
 					"code": "from sklearn.preprocessing import StandardScaler\nsc_cols = [c for c in X_train.columns if X_train[c].nunique() > 2]\nscaler = StandardScaler()\nX_train[sc_cols] = scaler.fit_transform(X_train[sc_cols]); X_validation[sc_cols] = scaler.transform(X_validation[sc_cols])\nprint(len(sc_cols), 'cột số được chuẩn hóa')",
 					"lotus": "Số tiền hàng chục nghìn và số xe một hai đơn vị phải cùng thang.",
-					"trap": "fit scaler trên validation làm lộ thông tin."
+					"trap": "fit scaler trên validation làm lộ thông tin.",
+					"read": ["Dòng chữ: 16 cột số được chuẩn hóa."],
+					"remark": "Chuẩn hóa 16 cột số (fit trên train, áp lên validation) để hệ số so sánh được.",
+					"howRemark": ["Nói chuẩn hóa fit chỉ trên train."]
 				},
 				"en": {
 					"think": "Scale numeric columns: fit on train, transform both.",
@@ -30983,7 +32954,10 @@ var assignments = [
 					],
 					"code": "from sklearn.preprocessing import StandardScaler\nsc_cols = [c for c in X_train.columns if X_train[c].nunique() > 2]\nscaler = StandardScaler()\nX_train[sc_cols] = scaler.fit_transform(X_train[sc_cols]); X_validation[sc_cols] = scaler.transform(X_validation[sc_cols])\nprint(len(sc_cols), 'cột số được chuẩn hóa')",
 					"lotus": "Amounts in tens of thousands and vehicle counts of one or two must share a scale.",
-					"trap": "Fitting the scaler on validation leaks information."
+					"trap": "Fitting the scaler on validation leaks information.",
+					"read": ["Text: 16 numeric columns scaled."],
+					"remark": "Scaled 16 numeric columns (fit on train, applied to validation) so coefficients are comparable.",
+					"howRemark": ["Say scaling is fit only on train."]
 				}
 			},
 			"7.1.1": {
@@ -30992,14 +32966,20 @@ var assignments = [
 					"steps": ["LogisticRegression và RFECV."],
 					"code": "# Làm theo ô starter, xem kết quả ở trên",
 					"lotus": "Chuẩn bị chọn các biến đáng giữ.",
-					"trap": "Không có."
+					"trap": "Không có.",
+					"read": ["Ô này không in kết quả; việc cần xem là chạy không báo lỗi."],
+					"remark": "Đã nạp công cụ RFECV.",
+					"howRemark": ["Nói bước này chuẩn bị gì cho bước sau.", "Ghi tên biến/đối tượng mới được tạo."]
 				},
 				"en": {
 					"think": "Import libraries for feature selection (RFECV).",
 					"steps": ["LogisticRegression and RFECV."],
 					"code": "# Làm theo ô starter, xem kết quả ở trên",
 					"lotus": "Get ready to choose which features to keep.",
-					"trap": "None."
+					"trap": "None.",
+					"read": ["This cell prints nothing; just check it ran without error."],
+					"remark": "RFECV is loaded.",
+					"howRemark": ["Say what this step prepares for the next.", "Note the new variable/object created."]
 				}
 			},
 			"7.1.2": {
@@ -31012,7 +32992,18 @@ var assignments = [
 					],
 					"code": "from sklearn.linear_model import LogisticRegression\nfrom sklearn.feature_selection import RFECV\nrfecv = RFECV(LogisticRegression(max_iter=2000), step=1, cv=5, scoring='accuracy', min_features_to_select=5).fit(X_train, y_train)\nprint('số biến tối ưu:', rfecv.n_features_)\nplt.plot(range(5, 5 + len(rfecv.cv_results_['mean_test_score'])), rfecv.cv_results_['mean_test_score']); plt.xlabel('số biến'); plt.ylabel('accuracy CV')\nrank = pd.DataFrame({'feature': X_train.columns, 'rank': rfecv.ranking_}).sort_values('rank')\nprint(rank.head(12).to_string(index=False))",
 					"lotus": "Chín yếu tố đủ để đoán gian lận: nghề, sở thích, mức độ hư hại, hãng xe.",
-					"trap": "Không có cross-validation thì chọn số biến theo điểm train luôn nghiêng về nhiều biến nhất."
+					"trap": "Không có cross-validation thì chọn số biến theo điểm train luôn nghiêng về nhiều biến nhất.",
+					"read": [
+						"Dòng đầu: số biến tối ưu 9.",
+						"Bảng xếp hạng: rank 1 là biến được giữ.",
+						"Biểu đồ: accuracy theo số biến, tìm đỉnh."
+					],
+					"remark": "RFECV với cross-validation chọn 9 biến, gồm incident_severity (Minor, Trivial, Total Loss), insured_hobbies, insured_occupation và auto_make; đúng với hai cột mạnh nhất ở 4.4.1.",
+					"howRemark": [
+						"Nêu số biến tối ưu.",
+						"Nhóm biến theo chủ đề.",
+						"Đối chiếu với 4.4.1."
+					]
 				},
 				"en": {
 					"think": "Use RFECV: drop the weakest feature step by step and use cross-validation to pick the best count.",
@@ -31023,7 +33014,18 @@ var assignments = [
 					],
 					"code": "from sklearn.linear_model import LogisticRegression\nfrom sklearn.feature_selection import RFECV\nrfecv = RFECV(LogisticRegression(max_iter=2000), step=1, cv=5, scoring='accuracy', min_features_to_select=5).fit(X_train, y_train)\nprint('số biến tối ưu:', rfecv.n_features_)\nplt.plot(range(5, 5 + len(rfecv.cv_results_['mean_test_score'])), rfecv.cv_results_['mean_test_score']); plt.xlabel('số biến'); plt.ylabel('accuracy CV')\nrank = pd.DataFrame({'feature': X_train.columns, 'rank': rfecv.ranking_}).sort_values('rank')\nprint(rank.head(12).to_string(index=False))",
 					"lotus": "Nine factors suffice to predict fraud: occupation, hobby, damage severity, car make.",
-					"trap": "Without cross-validation, choosing by train score always leans toward the most features."
+					"trap": "Without cross-validation, choosing by train score always leans toward the most features.",
+					"read": [
+						"First line: optimal number of features 9.",
+						"Ranking table: rank 1 are kept.",
+						"Chart: accuracy by number of features, find the peak."
+					],
+					"remark": "RFECV with cross-validation picks 9 features, including incident_severity (Minor, Trivial, Total Loss), insured_hobbies, insured_occupation and auto_make; matching the strongest columns in 4.4.1.",
+					"howRemark": [
+						"State the optimal count.",
+						"Group features by theme.",
+						"Cross-check with 4.4.1."
+					]
 				}
 			},
 			"7.1.2b": {
@@ -31032,14 +33034,20 @@ var assignments = [
 					"steps": ["col = X_train.columns[rfecv.support_]."],
 					"code": "col = X_train.columns[rfecv.support_]\nprint(len(col), list(col)[:20])",
 					"lotus": "Đây là 9 biến mô hình sẽ dùng.",
-					"trap": "Không có."
+					"trap": "Không có.",
+					"read": ["Dòng đầu là số biến giữ (9) và danh sách tên biến."],
+					"remark": "Giữ 9 biến: handlers-cleaners, priv-house-serv, hobbies cross-fit/other, incident severity Minor/Total Loss/Trivial, auto_make Audi/Honda.",
+					"howRemark": ["Liệt kê biến giữ.", "Kiểm khớp với 7.1.2."]
 				},
 				"en": {
 					"think": "Retain the features selected by RFECV.",
 					"steps": ["col = X_train.columns[rfecv.support_]."],
 					"code": "col = X_train.columns[rfecv.support_]\nprint(len(col), list(col)[:20])",
 					"lotus": "These are the 9 features the model will use.",
-					"trap": "None."
+					"trap": "None.",
+					"read": ["First line is the kept count (9) and the feature names."],
+					"remark": "Kept 9 variables: handlers-cleaners, priv-house-serv, hobbies cross-fit/other, incident severity Minor/Total Loss/Trivial, auto_make Audi/Honda.",
+					"howRemark": ["List the kept variables.", "Check they match 7.1.2."]
 				}
 			},
 			"7.2.1": {
@@ -31048,14 +33056,20 @@ var assignments = [
 					"steps": ["X_train[col].", "sm.add_constant."],
 					"code": "# Làm theo ô starter, xem kết quả ở trên",
 					"lotus": "Chỉ giữ chín yếu tố đã chọn.",
-					"trap": "Quên hằng số thì hệ số sai."
+					"trap": "Quên hằng số thì hệ số sai.",
+					"read": ["Ô này không in kết quả; việc cần xem là chạy không báo lỗi."],
+					"remark": "Lấy đúng các cột đã chọn và thêm hằng số.",
+					"howRemark": ["Nói bước này chuẩn bị gì cho bước sau.", "Ghi tên biến/đối tượng mới được tạo."]
 				},
 				"en": {
 					"think": "Select the chosen columns and add the constant.",
 					"steps": ["X_train[col].", "sm.add_constant."],
 					"code": "# Làm theo ô starter, xem kết quả ở trên",
 					"lotus": "Keep only the nine chosen factors.",
-					"trap": "Forgetting the constant gives wrong coefficients."
+					"trap": "Forgetting the constant gives wrong coefficients.",
+					"read": ["This cell prints nothing; just check it ran without error."],
+					"remark": "Take exactly the chosen columns and add the constant.",
+					"howRemark": ["Say what this step prepares for the next.", "Note the new variable/object created."]
 				}
 			},
 			"7.2.2": {
@@ -31064,14 +33078,38 @@ var assignments = [
 					"steps": ["sm.GLM(y_train, X_train_sm, family=Binomial()).fit().", "Đọc coef và P>|z|."],
 					"code": "import statsmodels.api as sm\nX_train_sm = sm.add_constant(X_train[col].astype(float))\nres = sm.GLM(y_train, X_train_sm, family=sm.families.Binomial()).fit()\nprint(res.summary().tables[1])",
 					"lotus": "Hệ số âm ở incident_severity_Minor Damage nghĩa là hư hại nhẹ làm giảm xác suất gian lận so với nhóm gốc Major Damage. Dấu và p-value cho biết yếu tố nào đáng tin.",
-					"trap": "Đọc hệ số mà bỏ qua p-value: biến p cao (như priv-house-serv, p ≈ 0,04 sát ngưỡng) có thể chỉ là nhiễu."
+					"trap": "Đọc hệ số mà bỏ qua p-value: biến p cao (như priv-house-serv, p ≈ 0,04 sát ngưỡng) có thể chỉ là nhiễu.",
+					"read": [
+						"Mỗi hàng là một biến: coef là hệ số, P>|z| là mức ý nghĩa.",
+						"coef dương làm tăng khả năng gian lận, âm làm giảm.",
+						"P < 0,05 là biến có ý nghĩa thống kê."
+					],
+					"remark": "Hệ số cho biết biến nào đẩy xác suất gian lận lên hoặc xuống; giữ biến có P < 0,05. Đọc dấu để nói hướng, độ lớn để nói mạnh yếu.",
+					"howRemark": [
+						"Chọn 3 biến |coef| lớn nhất.",
+						"Nói dấu nghĩa là gì.",
+						"Kiểm P < 0,05.",
+						"Dịch sang ngôn ngữ kinh doanh."
+					]
 				},
 				"en": {
 					"think": "Train logistic regression with statsmodels and read the coefficient table.",
 					"steps": ["sm.GLM(y_train, X_train_sm, family=Binomial()).fit().", "Read coef and P>|z|."],
 					"code": "import statsmodels.api as sm\nX_train_sm = sm.add_constant(X_train[col].astype(float))\nres = sm.GLM(y_train, X_train_sm, family=sm.families.Binomial()).fit()\nprint(res.summary().tables[1])",
 					"lotus": "A negative coefficient on incident_severity_Minor Damage means minor damage lowers the fraud probability relative to the Major Damage baseline. Sign and p-value say which factors are trustworthy.",
-					"trap": "Reading coefficients but skipping p-values: a high-p feature (like priv-house-serv, p ≈ 0.04 near the threshold) may just be noise."
+					"trap": "Reading coefficients but skipping p-values: a high-p feature (like priv-house-serv, p ≈ 0.04 near the threshold) may just be noise.",
+					"read": [
+						"Each row is a variable: coef is the coefficient, P>|z| the significance.",
+						"Positive coef raises fraud probability, negative lowers it.",
+						"P < 0.05 means statistically significant."
+					],
+					"remark": "Coefficients show which variables push fraud probability up or down; keep those with P < 0.05. Read the sign for direction and the size for strength.",
+					"howRemark": [
+						"Pick the 3 variables with largest |coef|.",
+						"Say what the sign means.",
+						"Check P < 0.05.",
+						"Translate to business language."
+					]
 				}
 			},
 			"7.2.3": {
@@ -31080,14 +33118,28 @@ var assignments = [
 					"steps": ["variance_inflation_factor cho từng cột.", "Tất cả VIF dưới 1,5: không đa cộng tuyến."],
 					"code": "from statsmodels.stats.outliers_influence import variance_inflation_factor\nXv = X_train[col].astype(float)\nvif = pd.DataFrame({'feature': col, 'VIF': [variance_inflation_factor(Xv.values, i) for i in range(Xv.shape[1])]}).sort_values('VIF', ascending=False)\nprint(vif.head(8).round(2).to_string(index=False))",
 					"lotus": "VIF thấp nghĩa mỗi biến mang thông tin riêng.",
-					"trap": "Tính VIF kèm hằng số cho số rất lớn."
+					"trap": "Tính VIF kèm hằng số cho số rất lớn.",
+					"read": ["Mỗi dòng là VIF của một biến; gần 1 là không chồng lấn."],
+					"remark": "VIF lớn nhất chỉ 1,48 (insured_hobbies_other), tất cả gần 1 nên các biến độc lập và hệ số đáng tin.",
+					"howRemark": [
+						"Nêu VIF lớn nhất.",
+						"So với ngưỡng 5.",
+						"Kết luận."
+					]
 				},
 				"en": {
 					"think": "Compute VIF to check overlap among features.",
 					"steps": ["variance_inflation_factor per column.", "All VIF below 1.5: no multicollinearity."],
 					"code": "from statsmodels.stats.outliers_influence import variance_inflation_factor\nXv = X_train[col].astype(float)\nvif = pd.DataFrame({'feature': col, 'VIF': [variance_inflation_factor(Xv.values, i) for i in range(Xv.shape[1])]}).sort_values('VIF', ascending=False)\nprint(vif.head(8).round(2).to_string(index=False))",
 					"lotus": "Low VIF means each feature carries its own information.",
-					"trap": "Computing VIF with the constant gives a huge number."
+					"trap": "Computing VIF with the constant gives a huge number.",
+					"read": ["Each line is a variable's VIF; near 1 means no overlap."],
+					"remark": "The highest VIF is only 1.48 (insured_hobbies_other), all near 1, so variables are independent and coefficients trustworthy.",
+					"howRemark": [
+						"State the largest VIF.",
+						"Compare with the threshold 5.",
+						"Conclude."
+					]
 				}
 			},
 			"7.2.4": {
@@ -31096,14 +33148,20 @@ var assignments = [
 					"steps": ["res.predict(X_train_sm)."],
 					"code": "# Làm theo ô starter, xem kết quả ở trên",
 					"lotus": "Mỗi hồ sơ có xác suất gian lận từ 0 đến 1.",
-					"trap": "Thiếu hằng số báo lỗi."
+					"trap": "Thiếu hằng số báo lỗi.",
+					"read": ["Ô này không in kết quả; việc cần xem là chạy không báo lỗi."],
+					"remark": "Đã dự đoán xác suất gian lận trên train.",
+					"howRemark": ["Nói bước này chuẩn bị gì cho bước sau.", "Ghi tên biến/đối tượng mới được tạo."]
 				},
 				"en": {
 					"think": "Predict fraud probabilities on train.",
 					"steps": ["res.predict(X_train_sm)."],
 					"code": "# Làm theo ô starter, xem kết quả ở trên",
 					"lotus": "Each claim gets a fraud probability from 0 to 1.",
-					"trap": "A missing constant raises an error."
+					"trap": "A missing constant raises an error.",
+					"read": ["This cell prints nothing; just check it ran without error."],
+					"remark": "Predicted fraud probability on train.",
+					"howRemark": ["Say what this step prepares for the next.", "Note the new variable/object created."]
 				}
 			},
 			"7.2.5": {
@@ -31112,14 +33170,20 @@ var assignments = [
 					"steps": ["DataFrame có Fraud, Prob, Predicted (Prob > 0,5)."],
 					"code": "from sklearn import metrics\ntr = pd.DataFrame({'Fraud': y_train.values, 'Prob': res.predict(X_train_sm).values})\ntr['Predicted'] = (tr['Prob'] > 0.5).astype(int)\nprint(tr.head(6).round(3).to_string())",
 					"lotus": "Mỗi dòng: hồ sơ thực sự gian lận hay không, mô hình cho bao nhiêu phần trăm.",
-					"trap": "0,5 chỉ là mặc định, 7.3 tìm ngưỡng tốt hơn."
+					"trap": "0,5 chỉ là mặc định, 7.3 tìm ngưỡng tốt hơn.",
+					"read": ["Cột Fraud là thực tế, Prob là xác suất, Predicted là đoán 1 nếu xác suất > 0,5."],
+					"remark": "Dòng 0 thực tế sạch nhưng xác suất 0,816 nên bị đoán là gian lận (báo nhầm); các dòng 1–4 xác suất thấp nên đoán đúng sạch.",
+					"howRemark": ["Chọn một dòng đúng, một dòng sai.", "Giải thích vì sao sai (xác suất vượt ngưỡng)."]
 				},
 				"en": {
 					"think": "Build a table of actual, probability and the 0.5-cutoff prediction.",
 					"steps": ["A DataFrame with Fraud, Prob, Predicted (Prob > 0.5)."],
 					"code": "from sklearn import metrics\ntr = pd.DataFrame({'Fraud': y_train.values, 'Prob': res.predict(X_train_sm).values})\ntr['Predicted'] = (tr['Prob'] > 0.5).astype(int)\nprint(tr.head(6).round(3).to_string())",
 					"lotus": "Each row: whether the claim was really fraud and the percentage the model gave.",
-					"trap": "0.5 is only a default; 7.3 finds a better cutoff."
+					"trap": "0.5 is only a default; 7.3 finds a better cutoff.",
+					"read": ["Fraud is actual, Prob is probability, Predicted is 1 if probability > 0.5."],
+					"remark": "Row 0 is actually clean but probability 0.816 predicts fraud (a false alarm); rows 1–4 have low probability and are correctly predicted clean.",
+					"howRemark": ["Choose one right row and one wrong row.", "Explain why wrong (probability crossed the threshold)."]
 				}
 			},
 			"7.2.6": {
@@ -31128,14 +33192,20 @@ var assignments = [
 					"steps": ["accuracy_score."],
 					"code": "print('accuracy', round(metrics.accuracy_score(tr['Fraud'], tr['Predicted']), 4))",
 					"lotus": "Khoảng 87%.",
-					"trap": "Độ chính xác đơn độc không nói kiểu sai nào."
+					"trap": "Độ chính xác đơn độc không nói kiểu sai nào.",
+					"read": ["Một con số: độ chính xác train."],
+					"remark": "Độ chính xác train 0,8726: đúng khoảng 87% (train đã cân bằng 50/50 nên mốc đoán bừa là 50%).",
+					"howRemark": ["Báo số.", "So với mốc 50%."]
 				},
 				"en": {
 					"think": "Accuracy on train.",
 					"steps": ["accuracy_score."],
 					"code": "print('accuracy', round(metrics.accuracy_score(tr['Fraud'], tr['Predicted']), 4))",
 					"lotus": "About 87%.",
-					"trap": "Accuracy alone does not say which errors."
+					"trap": "Accuracy alone does not say which errors.",
+					"read": ["One number: train accuracy."],
+					"remark": "Train accuracy is 0.8726: about 87% right (train is balanced 50/50 so the guessing baseline is 50%).",
+					"howRemark": ["Report the number.", "Compare with the 50% baseline."]
 				}
 			},
 			"7.2.7": {
@@ -31144,14 +33214,20 @@ var assignments = [
 					"steps": ["confusion_matrix(thực, dự đoán)."],
 					"code": "cm = metrics.confusion_matrix(tr['Fraud'], tr['Predicted'])\nprint(pd.DataFrame(cm, index=['thực: sạch', 'thực: gian lận'], columns=['đoán: sạch', 'đoán: gian lận']))",
 					"lotus": "Trên train: 453 sạch đoán đúng, 465 gian lận đoán đúng, 73 sạch bị báo gian lận, 61 gian lận bị bỏ sót.",
-					"trap": "Hàng là thực tế, cột là dự đoán."
+					"trap": "Hàng là thực tế, cột là dự đoán.",
+					"read": ["Hàng là thực tế, cột là đoán.", "Đường chéo 453 và 465 là đoán đúng; 73 và 61 là sai."],
+					"remark": "Đúng 918 trên 1.052; báo nhầm gian lận 73, bỏ sót 61. Hai loại sai gần nhau.",
+					"howRemark": ["Cộng đường chéo và ô sai.", "Nói loại sai nào nặng hơn khi điều tra gian lận (bỏ sót)."]
 				},
 				"en": {
 					"think": "Confusion matrix on train.",
 					"steps": ["confusion_matrix(actual, predicted)."],
 					"code": "cm = metrics.confusion_matrix(tr['Fraud'], tr['Predicted'])\nprint(pd.DataFrame(cm, index=['thực: sạch', 'thực: gian lận'], columns=['đoán: sạch', 'đoán: gian lận']))",
 					"lotus": "On train: 453 clean correct, 465 fraud correct, 73 clean flagged as fraud, 61 fraud missed.",
-					"trap": "Rows are actual, columns are predicted."
+					"trap": "Rows are actual, columns are predicted.",
+					"read": ["Rows are actual, columns predicted.", "Diagonal 453 and 465 is right; 73 and 61 wrong."],
+					"remark": "Right on 918 of 1,052; 73 false alarms and 61 misses. The two error types are close.",
+					"howRemark": ["Add the diagonal and error cells.", "Say which error is worse in fraud work (misses)."]
 				}
 			},
 			"7.2.8": {
@@ -31160,14 +33236,20 @@ var assignments = [
 					"steps": ["TN, FP, FN, TP = cm.ravel().", "Ở đây dương = gian lận."],
 					"code": "# Làm theo ô starter, xem kết quả ở trên",
 					"lotus": "FN (bỏ sót gian lận) làm công ty mất tiền; FP (báo nhầm) làm khách thật bị làm phiền.",
-					"trap": "Nhầm ô nào là FP hay FN đảo ngược chỉ số."
+					"trap": "Nhầm ô nào là FP hay FN đảo ngược chỉ số.",
+					"read": ["Ô này không in kết quả; việc cần xem là chạy không báo lỗi."],
+					"remark": "Bốn ô: TP 465, TN 453, FP 73, FN 61 (Positive là gian lận).",
+					"howRemark": ["Nói bước này chuẩn bị gì cho bước sau.", "Ghi tên biến/đối tượng mới được tạo."]
 				},
 				"en": {
 					"think": "Name the four cells: TP, TN, FP, FN.",
 					"steps": ["TN, FP, FN, TP = cm.ravel().", "Here positive = fraud."],
 					"code": "# Làm theo ô starter, xem kết quả ở trên",
 					"lotus": "FN (missed fraud) costs the company money; FP (false alarm) bothers honest customers.",
-					"trap": "Mixing up FP and FN inverts the metrics."
+					"trap": "Mixing up FP and FN inverts the metrics.",
+					"read": ["This cell prints nothing; just check it ran without error."],
+					"remark": "Four cells: TP 465, TN 453, FP 73, FN 61 (Positive is fraud).",
+					"howRemark": ["Say what this step prepares for the next.", "Note the new variable/object created."]
 				}
 			},
 			"7.2.9": {
@@ -31176,14 +33258,20 @@ var assignments = [
 					"steps": ["Sensitivity = recall = TP/(TP+FN).", "Specificity = TN/(TN+FP); precision = TP/(TP+FP); F1 = trung bình điều hòa của precision và recall."],
 					"code": "TN, FP, FN, TP = cm.ravel()\ndef rep(TN, FP, FN, TP):\n    se = TP / (TP + FN); sp = TN / (TN + FP); pr = TP / (TP + FP); f1 = 2 * pr * se / (pr + se)\n    return f'sensitivity(recall) {se:.3f} | specificity {sp:.3f} | precision {pr:.3f} | F1 {f1:.3f}'\nprint(rep(TN, FP, FN, TP))",
 					"lotus": "Trên train: sensitivity 0,884 (bắt được 88% vụ gian lận), specificity 0,861, precision 0,864, F1 0,874.",
-					"trap": "Dữ liệu train đã được cân bằng nên các số này đẹp hơn thực tế, chờ xem validation."
+					"trap": "Dữ liệu train đã được cân bằng nên các số này đẹp hơn thực tế, chờ xem validation.",
+					"read": ["Năm chỉ số: sensitivity 0,884, specificity 0,861, precision 0,864, F1 0,874."],
+					"remark": "Bắt được 88,4% hồ sơ gian lận (sensitivity); khi báo gian lận thì đúng 86,4% (precision); F1 0,874 là điểm cân bằng hai thước đo.",
+					"howRemark": ["Báo từng chỉ số bằng câu thường.", "Nói chỉ số nào quan trọng nhất cho việc điều tra."]
 				},
 				"en": {
 					"think": "Compute sensitivity, specificity, precision, recall and F1.",
 					"steps": ["Sensitivity = recall = TP/(TP+FN).", "Specificity = TN/(TN+FP); precision = TP/(TP+FP); F1 = harmonic mean of precision and recall."],
 					"code": "TN, FP, FN, TP = cm.ravel()\ndef rep(TN, FP, FN, TP):\n    se = TP / (TP + FN); sp = TN / (TN + FP); pr = TP / (TP + FP); f1 = 2 * pr * se / (pr + se)\n    return f'sensitivity(recall) {se:.3f} | specificity {sp:.3f} | precision {pr:.3f} | F1 {f1:.3f}'\nprint(rep(TN, FP, FN, TP))",
 					"lotus": "On train: sensitivity 0.884 (catches 88% of fraud), specificity 0.861, precision 0.864, F1 0.874.",
-					"trap": "Train was balanced, so these look better than reality; wait for validation."
+					"trap": "Train was balanced, so these look better than reality; wait for validation.",
+					"read": ["Five metrics: sensitivity 0.884, specificity 0.861, precision 0.864, F1 0.874."],
+					"remark": "Catches 88.4% of fraud claims (sensitivity); when it flags fraud it is right 86.4% of the time (precision); F1 0.874 balances the two.",
+					"howRemark": ["State each metric in plain words.", "Say which metric matters most for investigation."]
 				}
 			},
 			"7.3.1": {
@@ -31192,14 +33280,28 @@ var assignments = [
 					"steps": ["roc_curve và roc_auc_score.", "Đường càng sát góc trên trái càng tốt."],
 					"code": "fpr, tpr, _ = metrics.roc_curve(tr['Fraud'], tr['Prob'], drop_intermediate=False)\nauc = metrics.roc_auc_score(tr['Fraud'], tr['Prob'])\nplt.plot(fpr, tpr, label=f'AUC = {auc:.3f}'); plt.plot([0, 1], [0, 1], 'k--'); plt.legend(); plt.xlabel('FPR'); plt.ylabel('TPR')",
 					"lotus": "AUC cho biết khả năng xếp hồ sơ gian lận cao hơn hồ sơ sạch.",
-					"trap": "Đường sát đường chéo là đoán bừa."
+					"trap": "Đường sát đường chéo là đoán bừa.",
+					"read": ["Đường ROC: trục ngang tỉ lệ báo nhầm, trục dọc tỉ lệ bắt đúng; càng ôm góc trên trái càng tốt.", "AUC là diện tích dưới đường: 0,5 là đoán bừa."],
+					"remark": "Đường ROC nằm hẳn trên đường chéo, nghĩa là mô hình phân biệt tốt hơn đoán bừa; AUC tóm tắt trong một con số.",
+					"howRemark": [
+						"Mô tả hình ROC.",
+						"Báo AUC.",
+						"So với 0,5."
+					]
 				},
 				"en": {
 					"think": "Plot the ROC curve and AUC.",
 					"steps": ["roc_curve and roc_auc_score.", "The closer to the top-left the better."],
 					"code": "fpr, tpr, _ = metrics.roc_curve(tr['Fraud'], tr['Prob'], drop_intermediate=False)\nauc = metrics.roc_auc_score(tr['Fraud'], tr['Prob'])\nplt.plot(fpr, tpr, label=f'AUC = {auc:.3f}'); plt.plot([0, 1], [0, 1], 'k--'); plt.legend(); plt.xlabel('FPR'); plt.ylabel('TPR')",
 					"lotus": "AUC measures how well it ranks fraud claims above clean ones.",
-					"trap": "A curve near the diagonal is guessing."
+					"trap": "A curve near the diagonal is guessing.",
+					"read": ["ROC curve: x axis false-alarm rate, y axis true-catch rate; closer to top-left is better.", "AUC is the area under it: 0.5 is guessing."],
+					"remark": "The ROC curve sits well above the diagonal, so the model discriminates better than guessing; AUC summarises it in one number.",
+					"howRemark": [
+						"Describe the ROC shape.",
+						"Report AUC.",
+						"Compare with 0.5."
+					]
 				}
 			},
 			"7.3.2": {
@@ -31208,14 +33310,20 @@ var assignments = [
 					"steps": ["Vòng lặp tạo cột cho mỗi ngưỡng."],
 					"code": "# Làm theo ô starter, xem kết quả ở trên",
 					"lotus": "Thử từng ngưỡng: báo gian lận khi xác suất trên 10%, 20%, ...",
-					"trap": "Không có."
+					"trap": "Không có.",
+					"read": ["Ô này không in kết quả; việc cần xem là chạy không báo lỗi."],
+					"remark": "Đã dự đoán ở nhiều ngưỡng từ 0,0 đến 0,9.",
+					"howRemark": ["Nói bước này chuẩn bị gì cho bước sau.", "Ghi tên biến/đối tượng mới được tạo."]
 				},
 				"en": {
 					"think": "Predict at cutoffs from 0.0 to 0.9.",
 					"steps": ["A loop creating a column per cutoff."],
 					"code": "# Làm theo ô starter, xem kết quả ở trên",
 					"lotus": "Try each threshold: flag fraud when probability exceeds 10%, 20%, ...",
-					"trap": "None."
+					"trap": "None.",
+					"read": ["This cell prints nothing; just check it ran without error."],
+					"remark": "Predicted at many thresholds from 0.0 to 0.9.",
+					"howRemark": ["Say what this step prepares for the next.", "Note the new variable/object created."]
 				}
 			},
 			"7.3.3": {
@@ -31224,14 +33332,28 @@ var assignments = [
 					"steps": ["Tính ba chỉ số ở mỗi ngưỡng.", "Chọn nơi sensitivity và specificity gần nhau và accuracy cao: khoảng 0,5 đến 0,7."],
 					"code": "rows = []\nfor i in [x / 10 for x in range(10)]:\n    p = (tr['Prob'] > i).astype(int)\n    tn, fp, fn, tp = metrics.confusion_matrix(tr['Fraud'], p).ravel()\n    rows.append([i, (tp + tn) / len(tr), tp / (tp + fn), tn / (tn + fp)])\ncdf = pd.DataFrame(rows, columns=['cutoff', 'accuracy', 'sensitivity', 'specificity'])\ncdf.plot(x='cutoff', y=['accuracy', 'sensitivity', 'specificity'])\nprint(cdf.round(3).to_string(index=False))",
 					"lotus": "Hạ ngưỡng xuống 0,2 bắt thêm vụ gian lận (sensitivity 0,90) nhưng báo nhầm nhiều hơn (specificity 0,81).",
-					"trap": "Chọn ngưỡng chỉ theo accuracy bỏ qua chi phí của từng kiểu sai."
+					"trap": "Chọn ngưỡng chỉ theo accuracy bỏ qua chi phí của từng kiểu sai.",
+					"read": ["Mỗi dòng là một ngưỡng; ba cột accuracy, sensitivity, specificity.", "Tăng ngưỡng thì sensitivity giảm và specificity tăng."],
+					"remark": "Accuracy cao nhất ở ngưỡng 0,4 (0,875) và 0,5 (0,873); ngưỡng 0,5 có sensitivity 0,884 gần specificity 0,861 nên chọn 0,5.",
+					"howRemark": [
+						"Tìm ngưỡng accuracy cao nhất.",
+						"Nêu đánh đổi sensitivity và specificity.",
+						"Chốt ngưỡng và lý do."
+					]
 				},
 				"en": {
 					"think": "Plot accuracy, sensitivity, specificity by cutoff and pick the optimal one.",
 					"steps": ["Compute the three metrics at each cutoff.", "Choose where sensitivity and specificity are close and accuracy high: about 0.5 to 0.7."],
 					"code": "rows = []\nfor i in [x / 10 for x in range(10)]:\n    p = (tr['Prob'] > i).astype(int)\n    tn, fp, fn, tp = metrics.confusion_matrix(tr['Fraud'], p).ravel()\n    rows.append([i, (tp + tn) / len(tr), tp / (tp + fn), tn / (tn + fp)])\ncdf = pd.DataFrame(rows, columns=['cutoff', 'accuracy', 'sensitivity', 'specificity'])\ncdf.plot(x='cutoff', y=['accuracy', 'sensitivity', 'specificity'])\nprint(cdf.round(3).to_string(index=False))",
 					"lotus": "Lowering the cutoff to 0.2 catches more fraud (sensitivity 0.90) but raises false alarms (specificity 0.81).",
-					"trap": "Choosing the cutoff by accuracy alone ignores the cost of each error type."
+					"trap": "Choosing the cutoff by accuracy alone ignores the cost of each error type.",
+					"read": ["Each row is a threshold; columns accuracy, sensitivity, specificity.", "Raising the threshold lowers sensitivity and raises specificity."],
+					"remark": "Accuracy peaks at thresholds 0.4 (0.875) and 0.5 (0.873); at 0.5 sensitivity 0.884 is close to specificity 0.861 so choose 0.5.",
+					"howRemark": [
+						"Find the highest-accuracy threshold.",
+						"State the sensitivity–specificity trade-off.",
+						"Fix the threshold and reason."
+					]
 				}
 			},
 			"7.3.4": {
@@ -31240,14 +33362,20 @@ var assignments = [
 					"steps": ["Chọn cutoff (ở đây 0,5) và tạo cột final."],
 					"code": "cutoff = 0.5\ntr['final'] = (tr['Prob'] > cutoff).astype(int)\nprint('cutoff chọn:', cutoff)",
 					"lotus": "Từ giờ mô hình báo gian lận khi xác suất vượt ngưỡng này.",
-					"trap": "Hard-code rồi quên cập nhật."
+					"trap": "Hard-code rồi quên cập nhật.",
+					"read": ["Một dòng: ngưỡng chọn 0,5."],
+					"remark": "Ngưỡng cuối là 0,5, từ bảng ở 7.3.3.",
+					"howRemark": ["Nêu ngưỡng và dẫn 7.3.3."]
 				},
 				"en": {
 					"think": "Create the final prediction using the chosen cutoff.",
 					"steps": ["Choose the cutoff (here 0.5) and create a final column."],
 					"code": "cutoff = 0.5\ntr['final'] = (tr['Prob'] > cutoff).astype(int)\nprint('cutoff chọn:', cutoff)",
 					"lotus": "From now on the model flags fraud above this threshold.",
-					"trap": "Hard-coding and forgetting to update."
+					"trap": "Hard-coding and forgetting to update.",
+					"read": ["One line: chosen cutoff 0.5."],
+					"remark": "The final cutoff is 0.5, from the table in 7.3.3.",
+					"howRemark": ["State the cutoff and cite 7.3.3."]
 				}
 			},
 			"7.3.5": {
@@ -31256,14 +33384,20 @@ var assignments = [
 					"steps": ["Làm giống bước tương ứng ở 7.2."],
 					"code": "# Làm theo ô starter, xem kết quả ở trên",
 					"lotus": "Cùng 0,873 vì ngưỡng 0,5 đã gần tối ưu.",
-					"trap": "Nhớ cập nhật biến."
+					"trap": "Nhớ cập nhật biến.",
+					"read": ["Đối chiếu với bước tương ứng ở 7.2."],
+					"remark": "Cùng kết quả với 7.2.6–7.2.8 vì ngưỡng vẫn 0,5 (accuracy 0,8726; TP 465, TN 453, FP 73, FN 61).",
+					"howRemark": ["Nói bước này chuẩn bị gì cho bước sau.", "Ghi tên biến/đối tượng mới được tạo."]
 				},
 				"en": {
 					"think": "Accuracy with the new cutoff.",
 					"steps": ["Do as the matching step in 7.2."],
 					"code": "# Làm theo ô starter, xem kết quả ở trên",
 					"lotus": "Same 0.873 because 0.5 was already near optimal.",
-					"trap": "Remember to update the variables."
+					"trap": "Remember to update the variables.",
+					"read": ["Cross-check with the matching step in 7.2."],
+					"remark": "Same results as 7.2.6–7.2.8 since the threshold stays 0.5 (accuracy 0.8726; TP 465, TN 453, FP 73, FN 61).",
+					"howRemark": ["Say what this step prepares for the next.", "Note the new variable/object created."]
 				}
 			},
 			"7.3.6": {
@@ -31272,14 +33406,20 @@ var assignments = [
 					"steps": ["Làm giống bước tương ứng ở 7.2."],
 					"code": "# Làm theo ô starter, xem kết quả ở trên",
 					"lotus": "Cùng ma trận như 7.2.7.",
-					"trap": "Nhớ cập nhật biến."
+					"trap": "Nhớ cập nhật biến.",
+					"read": ["Đối chiếu với bước tương ứng ở 7.2."],
+					"remark": "Cùng kết quả với 7.2.6–7.2.8 vì ngưỡng vẫn 0,5 (accuracy 0,8726; TP 465, TN 453, FP 73, FN 61).",
+					"howRemark": ["Nói bước này chuẩn bị gì cho bước sau.", "Ghi tên biến/đối tượng mới được tạo."]
 				},
 				"en": {
 					"think": "Confusion matrix with the new cutoff.",
 					"steps": ["Do as the matching step in 7.2."],
 					"code": "# Làm theo ô starter, xem kết quả ở trên",
 					"lotus": "Same matrix as 7.2.7.",
-					"trap": "Remember to update the variables."
+					"trap": "Remember to update the variables.",
+					"read": ["Cross-check with the matching step in 7.2."],
+					"remark": "Same results as 7.2.6–7.2.8 since the threshold stays 0.5 (accuracy 0.8726; TP 465, TN 453, FP 73, FN 61).",
+					"howRemark": ["Say what this step prepares for the next.", "Note the new variable/object created."]
 				}
 			},
 			"7.3.7": {
@@ -31288,14 +33428,20 @@ var assignments = [
 					"steps": ["Làm giống bước tương ứng ở 7.2."],
 					"code": "# Làm theo ô starter, xem kết quả ở trên",
 					"lotus": "Như 7.2.8.",
-					"trap": "Nhớ cập nhật biến."
+					"trap": "Nhớ cập nhật biến.",
+					"read": ["Đối chiếu với bước tương ứng ở 7.2."],
+					"remark": "Cùng kết quả với 7.2.6–7.2.8 vì ngưỡng vẫn 0,5 (accuracy 0,8726; TP 465, TN 453, FP 73, FN 61).",
+					"howRemark": ["Nói bước này chuẩn bị gì cho bước sau.", "Ghi tên biến/đối tượng mới được tạo."]
 				},
 				"en": {
 					"think": "TP, TN, FP, FN for the new cutoff.",
 					"steps": ["Do as the matching step in 7.2."],
 					"code": "# Làm theo ô starter, xem kết quả ở trên",
 					"lotus": "As 7.2.8.",
-					"trap": "Remember to update the variables."
+					"trap": "Remember to update the variables.",
+					"read": ["Cross-check with the matching step in 7.2."],
+					"remark": "Same results as 7.2.6–7.2.8 since the threshold stays 0.5 (accuracy 0.8726; TP 465, TN 453, FP 73, FN 61).",
+					"howRemark": ["Say what this step prepares for the next.", "Note the new variable/object created."]
 				}
 			},
 			"7.3.8": {
@@ -31304,14 +33450,20 @@ var assignments = [
 					"steps": ["Làm giống bước tương ứng ở 7.2."],
 					"code": "cm2 = metrics.confusion_matrix(tr['Fraud'], tr['final']); TN, FP, FN, TP = cm2.ravel()\nprint(cm2); print(rep(TN, FP, FN, TP))",
 					"lotus": "Với 0,5 các số giống 7.2.9; nếu bạn chọn ngưỡng khác, các số sẽ đổi.",
-					"trap": "Nhớ cập nhật biến."
+					"trap": "Nhớ cập nhật biến.",
+					"read": ["Ma trận và năm chỉ số ở ngưỡng 0,5, giống 7.2.9."],
+					"remark": "Ở ngưỡng 0,5: sensitivity 0,884, specificity 0,861, precision 0,864, F1 0,874; ngưỡng không đổi nên kết quả không đổi.",
+					"howRemark": ["Đối chiếu 7.2.9.", "Nói ngưỡng không đổi nên không đổi."]
 				},
 				"en": {
 					"think": "Sensitivity, specificity, precision, recall, F1 at the new cutoff.",
 					"steps": ["Do as the matching step in 7.2."],
 					"code": "cm2 = metrics.confusion_matrix(tr['Fraud'], tr['final']); TN, FP, FN, TP = cm2.ravel()\nprint(cm2); print(rep(TN, FP, FN, TP))",
 					"lotus": "With 0.5 the numbers match 7.2.9; if you choose another cutoff they change.",
-					"trap": "Remember to update the variables."
+					"trap": "Remember to update the variables.",
+					"read": ["Matrix and five metrics at 0.5, same as 7.2.9."],
+					"remark": "At 0.5: sensitivity 0.884, specificity 0.861, precision 0.864, F1 0.874; unchanged threshold, unchanged result.",
+					"howRemark": ["Cross-check 7.2.9.", "Say unchanged threshold means unchanged result."]
 				}
 			},
 			"7.3.9": {
@@ -31320,14 +33472,28 @@ var assignments = [
 					"steps": ["precision_recall_curve.", "Vẽ precision và recall theo ngưỡng, điểm cắt là cân bằng."],
 					"code": "from sklearn.metrics import precision_recall_curve\np, r, t = precision_recall_curve(tr['Fraud'], tr['Prob'])\nplt.plot(t, p[:-1], 'g', label='precision'); plt.plot(t, r[:-1], 'r', label='recall'); plt.legend(); plt.xlabel('ngưỡng')",
 					"lotus": "Nếu công ty chấp nhận báo nhầm để bắt thêm gian lận thì hạ ngưỡng, ngược lại nâng ngưỡng.",
-					"trap": "p và r dài hơn t một phần tử."
+					"trap": "p và r dài hơn t một phần tử.",
+					"read": ["Đường precision-recall: trục ngang recall, trục dọc precision; tăng recall thường làm giảm precision."],
+					"remark": "Đường cho thấy đánh đổi giữa bắt thêm gian lận và báo nhầm; ở ngưỡng 0,5 precision 0,864 và recall 0,884 cân bằng nên giữ.",
+					"howRemark": [
+						"Mô tả đánh đổi.",
+						"Chỉ điểm ngưỡng đã chọn.",
+						"Nói khi nào ưu tiên recall (không bỏ sót gian lận)."
+					]
 				},
 				"en": {
 					"think": "Plot the precision-recall curve.",
 					"steps": ["precision_recall_curve.", "Plot precision and recall by cutoff; the crossing is the balance."],
 					"code": "from sklearn.metrics import precision_recall_curve\np, r, t = precision_recall_curve(tr['Fraud'], tr['Prob'])\nplt.plot(t, p[:-1], 'g', label='precision'); plt.plot(t, r[:-1], 'r', label='recall'); plt.legend(); plt.xlabel('ngưỡng')",
 					"lotus": "If the company accepts false alarms to catch more fraud, lower the cutoff, otherwise raise it.",
-					"trap": "p and r are one element longer than t."
+					"trap": "p and r are one element longer than t.",
+					"read": ["Precision-recall curve: x axis recall, y axis precision; raising recall usually lowers precision."],
+					"remark": "The curve shows the trade-off between catching more fraud and false alarms; at 0.5 precision 0.864 and recall 0.884 are balanced so keep it.",
+					"howRemark": [
+						"Describe the trade-off.",
+						"Mark the chosen threshold.",
+						"Say when to favour recall (not missing fraud)."
+					]
 				}
 			},
 			"7.4.1": {
@@ -31336,14 +33502,20 @@ var assignments = [
 					"steps": ["RandomForestClassifier, GridSearchCV, cross_val_score."],
 					"code": "# Làm theo ô starter, xem kết quả ở trên",
 					"lotus": "Chuyển từ mô hình tuyến tính sang rừng cây.",
-					"trap": "Không có."
+					"trap": "Không có.",
+					"read": ["Ô này không in kết quả; việc cần xem là chạy không báo lỗi."],
+					"remark": "Đã nạp thư viện random forest.",
+					"howRemark": ["Nói bước này chuẩn bị gì cho bước sau.", "Ghi tên biến/đối tượng mới được tạo."]
 				},
 				"en": {
 					"think": "Import libraries for random forest.",
 					"steps": ["RandomForestClassifier, GridSearchCV, cross_val_score."],
 					"code": "# Làm theo ô starter, xem kết quả ở trên",
 					"lotus": "Move from the linear model to a forest of trees.",
-					"trap": "None."
+					"trap": "None.",
+					"read": ["This cell prints nothing; just check it ran without error."],
+					"remark": "Random forest libraries are loaded.",
+					"howRemark": ["Say what this step prepares for the next.", "Note the new variable/object created."]
 				}
 			},
 			"7.4.2": {
@@ -31352,14 +33524,20 @@ var assignments = [
 					"steps": ["RandomForestClassifier(n_estimators=100, random_state=42).fit."],
 					"code": "from sklearn.ensemble import RandomForestClassifier\nfrom sklearn.metrics import classification_report\nfrom sklearn.model_selection import cross_val_score, GridSearchCV\nrf = RandomForestClassifier(random_state=42, n_estimators=100).fit(X_train, y_train)\nprint('đã huấn luyện rừng', rf.n_estimators, 'cây')",
 					"lotus": "100 cây quyết định bỏ phiếu để đoán gian lận.",
-					"trap": "Quên random_state làm kết quả đổi mỗi lần chạy."
+					"trap": "Quên random_state làm kết quả đổi mỗi lần chạy.",
+					"read": ["Dòng chữ: đã huấn luyện rừng 100 cây."],
+					"remark": "Rừng 100 cây cơ bản đã huấn luyện; chưa chỉnh tham số.",
+					"howRemark": ["Nói số cây và việc chưa tinh chỉnh."]
 				},
 				"en": {
 					"think": "Train a base random forest.",
 					"steps": ["RandomForestClassifier(n_estimators=100, random_state=42).fit."],
 					"code": "from sklearn.ensemble import RandomForestClassifier\nfrom sklearn.metrics import classification_report\nfrom sklearn.model_selection import cross_val_score, GridSearchCV\nrf = RandomForestClassifier(random_state=42, n_estimators=100).fit(X_train, y_train)\nprint('đã huấn luyện rừng', rf.n_estimators, 'cây')",
 					"lotus": "100 decision trees vote to predict fraud.",
-					"trap": "Forgetting random_state makes results change on each run."
+					"trap": "Forgetting random_state makes results change on each run.",
+					"read": ["Text: a forest of 100 trees trained."],
+					"remark": "A basic 100-tree forest is trained; parameters not yet tuned.",
+					"howRemark": ["State the tree count and that it is untuned."]
 				}
 			},
 			"7.4.3": {
@@ -31368,14 +33546,36 @@ var assignments = [
 					"steps": ["rf.feature_importances_ thành Series và sắp xếp.", "Giữ biến vượt mức trung bình: 17 biến."],
 					"code": "imp = pd.Series(rf.feature_importances_, index=X_train.columns).sort_values(ascending=False)\nimp.head(12).iloc[::-1].plot(kind='barh', title='Mức quan trọng của biến (random forest)')\nsel = imp[imp > imp.mean()].index\nprint(len(sel), 'biến vượt mức trung bình'); print(imp.head(10).round(3).to_string())",
 					"lotus": "Mức hư hại nhẹ và sở thích là hai biến quan trọng nhất, giống kết quả hồi quy logistic: hai mô hình đồng ý nhau.",
-					"trap": "Mức quan trọng của rừng không nói chiều ảnh hưởng, chỉ nói mức."
+					"trap": "Mức quan trọng của rừng không nói chiều ảnh hưởng, chỉ nói mức.",
+					"read": [
+						"Dòng đầu: 17 biến vượt mức quan trọng trung bình.",
+						"Bảng: biến và độ quan trọng; càng lớn càng được rừng dùng nhiều.",
+						"Biểu đồ: cột độ quan trọng."
+					],
+					"remark": "17 biến vượt mức trung bình; quan trọng nhất là incident_severity_Minor Damage (0,090), insured_hobbies_other (0,075) và incident_severity_Total Loss (0,058), rồi total_claim_amount (0,054): rừng cũng chọn các biến mà hồi quy đã chọn.",
+					"howRemark": [
+						"Nêu 3 biến đầu kèm số.",
+						"So với biến RFECV ở 7.1.2.",
+						"Giải thích độ quan trọng là gì."
+					]
 				},
 				"en": {
 					"think": "See feature importance and select the important ones.",
 					"steps": ["rf.feature_importances_ into a Series, sorted.", "Keep features above the mean: 17 features."],
 					"code": "imp = pd.Series(rf.feature_importances_, index=X_train.columns).sort_values(ascending=False)\nimp.head(12).iloc[::-1].plot(kind='barh', title='Mức quan trọng của biến (random forest)')\nsel = imp[imp > imp.mean()].index\nprint(len(sel), 'biến vượt mức trung bình'); print(imp.head(10).round(3).to_string())",
 					"lotus": "Minor damage and hobby are the two most important features, matching the logistic result: both models agree.",
-					"trap": "Forest importance gives no direction, only size."
+					"trap": "Forest importance gives no direction, only size.",
+					"read": [
+						"First line: 17 variables above average importance.",
+						"Table: variable and importance; larger means used more by the forest.",
+						"Chart: importance bars."
+					],
+					"remark": "17 variables exceed the average; most important are incident_severity_Minor Damage (0.090), insured_hobbies_other (0.075) and incident_severity_Total Loss (0.058), then total_claim_amount (0.054): the forest picks the same variables regression did.",
+					"howRemark": [
+						"Name the top 3 with numbers.",
+						"Compare with the RFECV features in 7.1.2.",
+						"Explain what importance is."
+					]
 				}
 			},
 			"7.4.4": {
@@ -31384,14 +33584,20 @@ var assignments = [
 					"steps": ["fit trên X_train[sel]."],
 					"code": "rf2 = RandomForestClassifier(random_state=42, n_estimators=100).fit(X_train[sel], y_train)\nprint('train với', len(sel), 'biến')",
 					"lotus": "Mô hình gọn hơn: 17 biến.",
-					"trap": "Chọn biến theo validation là rò rỉ."
+					"trap": "Chọn biến theo validation là rò rỉ.",
+					"read": ["Dòng chữ: huấn luyện lại với 17 biến."],
+					"remark": "Rừng huấn luyện lại chỉ với 17 biến quan trọng để giảm nhiễu.",
+					"howRemark": ["Nêu số biến."]
 				},
 				"en": {
 					"think": "Retrain with the selected features.",
 					"steps": ["fit on X_train[sel]."],
 					"code": "rf2 = RandomForestClassifier(random_state=42, n_estimators=100).fit(X_train[sel], y_train)\nprint('train với', len(sel), 'biến')",
 					"lotus": "A leaner model: 17 features.",
-					"trap": "Choosing features by validation leaks."
+					"trap": "Choosing features by validation leaks.",
+					"read": ["Text: retrained with 17 variables."],
+					"remark": "The forest is retrained on only the 17 important variables to cut noise.",
+					"howRemark": ["State the variable count."]
 				}
 			},
 			"7.4.5": {
@@ -31400,14 +33606,20 @@ var assignments = [
 					"steps": ["rf2.predict(X_train[sel])."],
 					"code": "# Làm theo ô starter, xem kết quả ở trên",
 					"lotus": "Dự đoán các hồ sơ đã học.",
-					"trap": "Không có."
+					"trap": "Không có.",
+					"read": ["Ô này không in kết quả; việc cần xem là chạy không báo lỗi."],
+					"remark": "Đã dự đoán trên train bằng rừng.",
+					"howRemark": ["Nói bước này chuẩn bị gì cho bước sau.", "Ghi tên biến/đối tượng mới được tạo."]
 				},
 				"en": {
 					"think": "Predict on train.",
 					"steps": ["rf2.predict(X_train[sel])."],
 					"code": "# Làm theo ô starter, xem kết quả ở trên",
 					"lotus": "Predict the claims it learned from.",
-					"trap": "None."
+					"trap": "None.",
+					"read": ["This cell prints nothing; just check it ran without error."],
+					"remark": "Predicted on train with the forest.",
+					"howRemark": ["Say what this step prepares for the next.", "Note the new variable/object created."]
 				}
 			},
 			"7.4.6": {
@@ -31416,14 +33628,28 @@ var assignments = [
 					"steps": ["accuracy_score."],
 					"code": "p = rf2.predict(X_train[sel])\nprint('accuracy train', round(metrics.accuracy_score(y_train, p), 4))",
 					"lotus": "Đạt 100% trên train: quá hoàn hảo, rừng cây đã nhớ thuộc lòng, dấu hiệu quá khớp.",
-					"trap": "Tin điểm 100% là sai: phải kiểm tra bằng cross-validation (7.4.10)."
+					"trap": "Tin điểm 100% là sai: phải kiểm tra bằng cross-validation (7.4.10).",
+					"read": ["Một số: accuracy train 1,0."],
+					"remark": "Độ chính xác train 1,0 (đúng 100%): quá hoàn hảo, dấu hiệu rừng học thuộc train (quá khớp), cần kiểm bằng validation.",
+					"howRemark": [
+						"Báo số.",
+						"Nói vì sao 100% đáng nghi.",
+						"Nhắc kiểm tra trên dữ liệu mới."
+					]
 				},
 				"en": {
 					"think": "Random forest accuracy on train.",
 					"steps": ["accuracy_score."],
 					"code": "p = rf2.predict(X_train[sel])\nprint('accuracy train', round(metrics.accuracy_score(y_train, p), 4))",
 					"lotus": "It hits 100% on train: too perfect, the forest memorised, a sign of overfitting.",
-					"trap": "Trusting the 100% is wrong: check with cross-validation (7.4.10)."
+					"trap": "Trusting the 100% is wrong: check with cross-validation (7.4.10).",
+					"read": ["One number: train accuracy 1.0."],
+					"remark": "Train accuracy 1.0 (100% right): too perfect, a sign the forest memorised train (overfitting), to be checked on validation.",
+					"howRemark": [
+						"Report the number.",
+						"Say why 100% is suspicious.",
+						"Remind to test on new data."
+					]
 				}
 			},
 			"7.4.7": {
@@ -31432,14 +33658,20 @@ var assignments = [
 					"steps": ["confusion_matrix."],
 					"code": "cmr = metrics.confusion_matrix(y_train, p)\nprint(pd.DataFrame(cmr, index=['thực: sạch', 'thực: gian lận'], columns=['đoán: sạch', 'đoán: gian lận']))",
 					"lotus": "Không có sai số nào: 526 sạch và 526 gian lận đều đúng.",
-					"trap": "Ma trận hoàn hảo trên train không chứng minh gì."
+					"trap": "Ma trận hoàn hảo trên train không chứng minh gì.",
+					"read": ["Ma trận train: toàn bộ trên đường chéo (526 và 526), hai ô sai bằng 0."],
+					"remark": "Rừng không nhầm hồ sơ nào trên train (0 báo nhầm, 0 bỏ sót), nghĩa là học thuộc dữ liệu train.",
+					"howRemark": ["Chỉ ra hai ô sai bằng 0.", "Liên hệ quá khớp."]
 				},
 				"en": {
 					"think": "Confusion matrix of the forest on train.",
 					"steps": ["confusion_matrix."],
 					"code": "cmr = metrics.confusion_matrix(y_train, p)\nprint(pd.DataFrame(cmr, index=['thực: sạch', 'thực: gian lận'], columns=['đoán: sạch', 'đoán: gian lận']))",
 					"lotus": "Zero errors: all 526 clean and 526 fraud correct.",
-					"trap": "A perfect matrix on train proves nothing."
+					"trap": "A perfect matrix on train proves nothing.",
+					"read": ["Train matrix: everything on the diagonal (526 and 526), both error cells 0."],
+					"remark": "The forest misclassifies nothing on train (0 false alarms, 0 misses), meaning it memorised train data.",
+					"howRemark": ["Point out the two error cells at 0.", "Tie to overfitting."]
 				}
 			},
 			"7.4.8": {
@@ -31448,14 +33680,20 @@ var assignments = [
 					"steps": ["ravel() ma trận."],
 					"code": "# Làm theo ô starter, xem kết quả ở trên",
 					"lotus": "Như 7.2.8.",
-					"trap": "Không có."
+					"trap": "Không có.",
+					"read": ["Ô này không in kết quả; việc cần xem là chạy không báo lỗi."],
+					"remark": "TP 526, TN 526, FP 0, FN 0 trên train.",
+					"howRemark": ["Nói bước này chuẩn bị gì cho bước sau.", "Ghi tên biến/đối tượng mới được tạo."]
 				},
 				"en": {
 					"think": "TP, TN, FP, FN of the forest.",
 					"steps": ["ravel() the matrix."],
 					"code": "# Làm theo ô starter, xem kết quả ở trên",
 					"lotus": "As 7.2.8.",
-					"trap": "None."
+					"trap": "None.",
+					"read": ["This cell prints nothing; just check it ran without error."],
+					"remark": "TP 526, TN 526, FP 0, FN 0 on train.",
+					"howRemark": ["Say what this step prepares for the next.", "Note the new variable/object created."]
 				}
 			},
 			"7.4.9": {
@@ -31464,14 +33702,20 @@ var assignments = [
 					"steps": ["Công thức như 7.2.9."],
 					"code": "TN, FP, FN, TP = cmr.ravel(); print(rep(TN, FP, FN, TP))",
 					"lotus": "Tất cả đều 1,0 trên train.",
-					"trap": "Điểm tuyệt đối là cảnh báo, không phải chiến thắng."
+					"trap": "Điểm tuyệt đối là cảnh báo, không phải chiến thắng.",
+					"read": ["Năm chỉ số đều 1,000."],
+					"remark": "Mọi chỉ số bằng 1,000 trên train: không phản ánh chất lượng thật, chỉ cho thấy rừng đã thuộc dữ liệu train.",
+					"howRemark": ["Nói mọi số bằng 1 nghĩa là gì.", "Nhắc phải dùng validation."]
 				},
 				"en": {
 					"think": "Forest metrics on train.",
 					"steps": ["Formulas as 7.2.9."],
 					"code": "TN, FP, FN, TP = cmr.ravel(); print(rep(TN, FP, FN, TP))",
 					"lotus": "All are 1.0 on train.",
-					"trap": "A perfect score is a warning, not a win."
+					"trap": "A perfect score is a warning, not a win.",
+					"read": ["All five metrics are 1.000."],
+					"remark": "Every metric is 1.000 on train: not real quality, only showing the forest memorised train.",
+					"howRemark": ["Say what all-ones means.", "Remind to use validation."]
 				}
 			},
 			"7.4.10": {
@@ -31480,14 +33724,28 @@ var assignments = [
 					"steps": ["cross_val_score(rf2, X, y, cv=5).", "So điểm CV với điểm train."],
 					"code": "cv = cross_val_score(rf2, X_train[sel], y_train, cv=5, scoring='accuracy')\nprint('accuracy 5 lần CV:', cv.round(3), '| trung bình', cv.mean().round(3))",
 					"lotus": "CV trung bình 0,921 so với 1,0 ở train: có quá khớp nhưng vẫn chấp nhận được. Lưu ý: vì đã nhân bản mẫu ở 6.1, các fold CV có thể chứa bản sao của cùng hồ sơ, nên 0,921 hơi lạc quan.",
-					"trap": "Resample trước khi cross-validation làm điểm CV đẹp giả."
+					"trap": "Resample trước khi cross-validation làm điểm CV đẹp giả.",
+					"read": ["Năm số accuracy của 5 lần cross-validation và trung bình."],
+					"remark": "CV cho 0,891–0,938, trung bình 0,921: thấp hơn 1,0 của train, cho thấy hiệu năng thật khoảng 92% (có thể cao do hồ sơ nhân bản trải qua các fold).",
+					"howRemark": [
+						"Nêu khoảng và trung bình.",
+						"So với 1,0 ở train.",
+						"Nêu giới hạn."
+					]
 				},
 				"en": {
 					"think": "Check overfitting with cross-validation.",
 					"steps": ["cross_val_score(rf2, X, y, cv=5).", "Compare the CV score with the train score."],
 					"code": "cv = cross_val_score(rf2, X_train[sel], y_train, cv=5, scoring='accuracy')\nprint('accuracy 5 lần CV:', cv.round(3), '| trung bình', cv.mean().round(3))",
 					"lotus": "Mean CV 0.921 against 1.0 on train: some overfitting but acceptable. Note that because rows were duplicated in 6.1, CV folds may contain copies of the same claim, so 0.921 is slightly optimistic.",
-					"trap": "Resampling before cross-validation inflates the CV score."
+					"trap": "Resampling before cross-validation inflates the CV score.",
+					"read": ["Five accuracy numbers from 5-fold cross-validation and the mean."],
+					"remark": "CV gives 0.891–0.938, mean 0.921: below train's 1.0, so real performance is about 92% (possibly high because duplicated records spread across folds).",
+					"howRemark": [
+						"State the range and the mean.",
+						"Compare with the 1.0 on train.",
+						"State the limit."
+					]
 				}
 			},
 			"7.5.1": {
@@ -31500,7 +33758,14 @@ var assignments = [
 					],
 					"code": "grid = GridSearchCV(RandomForestClassifier(random_state=42), {'n_estimators': [100, 200], 'max_depth': [5, 10, None], 'min_samples_leaf': [1, 5, 10]}, cv=5, scoring='accuracy', n_jobs=-1).fit(X_train[sel], y_train)\nprint('tham số tốt nhất:', grid.best_params_, '| CV accuracy', round(grid.best_score_, 3))",
 					"lotus": "Giới hạn độ sâu cây ngăn việc học thuộc lòng.",
-					"trap": "Lưới quá lớn chạy rất lâu."
+					"trap": "Lưới quá lớn chạy rất lâu.",
+					"read": ["Dòng chữ: bộ tham số tốt nhất và CV accuracy 0,926."],
+					"remark": "Grid search chọn max_depth 10, min_samples_leaf 1, n_estimators 100 với CV accuracy 0,926, cải thiện nhẹ so với 0,921; giới hạn độ sâu để giảm học thuộc.",
+					"howRemark": [
+						"Nêu tham số chọn.",
+						"So CV với 7.4.10.",
+						"Giải thích vì sao giới hạn độ sâu."
+					]
 				},
 				"en": {
 					"think": "Find the best parameters with grid search.",
@@ -31511,7 +33776,14 @@ var assignments = [
 					],
 					"code": "grid = GridSearchCV(RandomForestClassifier(random_state=42), {'n_estimators': [100, 200], 'max_depth': [5, 10, None], 'min_samples_leaf': [1, 5, 10]}, cv=5, scoring='accuracy', n_jobs=-1).fit(X_train[sel], y_train)\nprint('tham số tốt nhất:', grid.best_params_, '| CV accuracy', round(grid.best_score_, 3))",
 					"lotus": "Limiting tree depth prevents memorising.",
-					"trap": "An oversized grid runs very long."
+					"trap": "An oversized grid runs very long.",
+					"read": ["Text: best parameters and CV accuracy 0.926."],
+					"remark": "Grid search picks max_depth 10, min_samples_leaf 1, n_estimators 100 with CV accuracy 0.926, slightly above 0.921; limiting depth reduces memorising.",
+					"howRemark": [
+						"State the chosen parameters.",
+						"Compare CV with 7.4.10.",
+						"Explain why limit depth."
+					]
 				}
 			},
 			"7.5.2": {
@@ -31520,14 +33792,20 @@ var assignments = [
 					"steps": ["RandomForestClassifier(**best_params_).fit."],
 					"code": "rf3 = RandomForestClassifier(random_state=42, **grid.best_params_).fit(X_train[sel], y_train)\nprint(rf3)",
 					"lotus": "Rừng giờ có độ sâu giới hạn 10.",
-					"trap": "Không có."
+					"trap": "Không có.",
+					"read": ["Dòng chữ là đối tượng RandomForestClassifier(max_depth=10, random_state=42)."],
+					"remark": "Đã dựng rừng với tham số vừa tìm.",
+					"howRemark": ["Kiểm tham số khớp 7.5.1."]
 				},
 				"en": {
 					"think": "Build the forest with the tuned parameters.",
 					"steps": ["RandomForestClassifier(**best_params_).fit."],
 					"code": "rf3 = RandomForestClassifier(random_state=42, **grid.best_params_).fit(X_train[sel], y_train)\nprint(rf3)",
 					"lotus": "The forest now has depth capped at 10.",
-					"trap": "None."
+					"trap": "None.",
+					"read": ["The text is the RandomForestClassifier(max_depth=10, random_state=42) object."],
+					"remark": "Built the forest with the parameters just found.",
+					"howRemark": ["Check parameters match 7.5.1."]
 				}
 			},
 			"7.5.3": {
@@ -31536,14 +33814,20 @@ var assignments = [
 					"steps": ["predict."],
 					"code": "# Làm theo ô starter, xem kết quả ở trên",
 					"lotus": "Như 7.4.5.",
-					"trap": "Không có."
+					"trap": "Không có.",
+					"read": ["Ô này không in kết quả; việc cần xem là chạy không báo lỗi."],
+					"remark": "Đã dự đoán trên train với rừng đã chỉnh.",
+					"howRemark": ["Nói bước này chuẩn bị gì cho bước sau.", "Ghi tên biến/đối tượng mới được tạo."]
 				},
 				"en": {
 					"think": "Predict on train with the tuned forest.",
 					"steps": ["predict."],
 					"code": "# Làm theo ô starter, xem kết quả ở trên",
 					"lotus": "As 7.4.5.",
-					"trap": "None."
+					"trap": "None.",
+					"read": ["This cell prints nothing; just check it ran without error."],
+					"remark": "Predicted on train with the tuned forest.",
+					"howRemark": ["Say what this step prepares for the next.", "Note the new variable/object created."]
 				}
 			},
 			"7.5.4": {
@@ -31552,14 +33836,20 @@ var assignments = [
 					"steps": ["accuracy_score."],
 					"code": "p3 = rf3.predict(X_train[sel]); print('accuracy train', round(metrics.accuracy_score(y_train, p3), 4))",
 					"lotus": "Còn 97,9% trên train thay vì 100%: bớt học thuộc.",
-					"trap": "Không có."
+					"trap": "Không có.",
+					"read": ["Một số: accuracy train 0,9791."],
+					"remark": "Train 0,9791, thấp hơn 1,0 nên rừng đã chỉnh bớt học thuộc.",
+					"howRemark": ["So với 1,0 ở 7.4.6."]
 				},
 				"en": {
 					"think": "Accuracy of the tuned forest.",
 					"steps": ["accuracy_score."],
 					"code": "p3 = rf3.predict(X_train[sel]); print('accuracy train', round(metrics.accuracy_score(y_train, p3), 4))",
 					"lotus": "97.9% on train instead of 100%: less memorising.",
-					"trap": "None."
+					"trap": "None.",
+					"read": ["One number: train accuracy 0.9791."],
+					"remark": "Train 0.9791, below 1.0 so the tuned forest memorises less.",
+					"howRemark": ["Compare with 1.0 in 7.4.6."]
 				}
 			},
 			"7.5.5": {
@@ -31568,14 +33858,20 @@ var assignments = [
 					"steps": ["confusion_matrix."],
 					"code": "cm3 = metrics.confusion_matrix(y_train, p3)\nprint(pd.DataFrame(cm3, index=['thực: sạch', 'thực: gian lận'], columns=['đoán: sạch', 'đoán: gian lận']))",
 					"lotus": "Chỉ 1 vụ gian lận bị bỏ sót, 21 hồ sơ sạch bị báo nhầm trên train.",
-					"trap": "Không có."
+					"trap": "Không có.",
+					"read": ["Ma trận train: sai chỉ ở hai ô (21 báo nhầm, 1 bỏ sót)."],
+					"remark": "Rừng đã chỉnh sai 22 trên 1.052: báo nhầm 21 và bỏ sót 1; gần như không bỏ sót gian lận trên train.",
+					"howRemark": ["Cộng ô sai.", "Nêu loại sai chiếm ưu thế."]
 				},
 				"en": {
 					"think": "Confusion matrix of the tuned forest.",
 					"steps": ["confusion_matrix."],
 					"code": "cm3 = metrics.confusion_matrix(y_train, p3)\nprint(pd.DataFrame(cm3, index=['thực: sạch', 'thực: gian lận'], columns=['đoán: sạch', 'đoán: gian lận']))",
 					"lotus": "Only 1 fraud missed and 21 clean claims flagged on train.",
-					"trap": "None."
+					"trap": "None.",
+					"read": ["Train matrix: errors only in two cells (21 false alarms, 1 miss)."],
+					"remark": "The tuned forest is wrong on 22 of 1,052: 21 false alarms and 1 miss; almost no missed fraud on train.",
+					"howRemark": ["Add the error cells.", "State the dominant error type."]
 				}
 			},
 			"7.5.6": {
@@ -31584,14 +33880,20 @@ var assignments = [
 					"steps": ["ravel() ma trận."],
 					"code": "# Làm theo ô starter, xem kết quả ở trên",
 					"lotus": "Như 7.2.8.",
-					"trap": "Không có."
+					"trap": "Không có.",
+					"read": ["Ô này không in kết quả; việc cần xem là chạy không báo lỗi."],
+					"remark": "TP 525, TN 505, FP 21, FN 1.",
+					"howRemark": ["Nói bước này chuẩn bị gì cho bước sau.", "Ghi tên biến/đối tượng mới được tạo."]
 				},
 				"en": {
 					"think": "TP, TN, FP, FN of the tuned forest.",
 					"steps": ["ravel() the matrix."],
 					"code": "# Làm theo ô starter, xem kết quả ở trên",
 					"lotus": "As 7.2.8.",
-					"trap": "None."
+					"trap": "None.",
+					"read": ["This cell prints nothing; just check it ran without error."],
+					"remark": "TP 525, TN 505, FP 21, FN 1.",
+					"howRemark": ["Say what this step prepares for the next.", "Note the new variable/object created."]
 				}
 			},
 			"7.5.7": {
@@ -31600,14 +33902,20 @@ var assignments = [
 					"steps": ["Công thức như 7.2.9."],
 					"code": "TN, FP, FN, TP = cm3.ravel(); print(rep(TN, FP, FN, TP))",
 					"lotus": "Sensitivity 0,998, specificity 0,960, F1 0,979.",
-					"trap": "Số trên train vẫn quá đẹp: quyết định ở validation."
+					"trap": "Số trên train vẫn quá đẹp: quyết định ở validation.",
+					"read": ["Năm chỉ số: sensitivity 0,998, specificity 0,960, precision 0,962, F1 0,979."],
+					"remark": "Trên train sensitivity 0,998 và F1 0,979 rất cao; chưa đáng tin cho đến khi kiểm validation.",
+					"howRemark": ["Báo chỉ số.", "Nhắc train không phải bằng chứng cuối."]
 				},
 				"en": {
 					"think": "Metrics of the tuned forest on train.",
 					"steps": ["Formulas as 7.2.9."],
 					"code": "TN, FP, FN, TP = cm3.ravel(); print(rep(TN, FP, FN, TP))",
 					"lotus": "Sensitivity 0.998, specificity 0.960, F1 0.979.",
-					"trap": "Train numbers are still too pretty: decide on validation."
+					"trap": "Train numbers are still too pretty: decide on validation.",
+					"read": ["Five metrics: sensitivity 0.998, specificity 0.960, precision 0.962, F1 0.979."],
+					"remark": "On train sensitivity 0.998 and F1 0.979 are very high; not trustworthy until checked on validation.",
+					"howRemark": ["Report the metrics.", "Remind train is not the final proof."]
 				}
 			},
 			"8.1.1": {
@@ -31616,14 +33924,20 @@ var assignments = [
 					"steps": ["X_validation[col], add_constant(has_constant='add')."],
 					"code": "# Làm theo ô starter, xem kết quả ở trên",
 					"lotus": "Cùng biến như train.",
-					"trap": "Thiếu hằng số báo lỗi."
+					"trap": "Thiếu hằng số báo lỗi.",
+					"read": ["Ô này không in kết quả; việc cần xem là chạy không báo lỗi."],
+					"remark": "Chuẩn bị dự đoán trên validation theo đúng cách đã làm ở train (cùng biến, cùng hằng số).",
+					"howRemark": ["Nói bước này chuẩn bị gì cho bước sau.", "Ghi tên biến/đối tượng mới được tạo."]
 				},
 				"en": {
 					"think": "Select the same features for validation and add the constant.",
 					"steps": ["X_validation[col], add_constant(has_constant='add')."],
 					"code": "# Làm theo ô starter, xem kết quả ở trên",
 					"lotus": "Same features as train.",
-					"trap": "A missing constant raises an error."
+					"trap": "A missing constant raises an error.",
+					"read": ["This cell prints nothing; just check it ran without error."],
+					"remark": "Prepare validation predictions exactly as done on train (same variables, same constant).",
+					"howRemark": ["Say what this step prepares for the next.", "Note the new variable/object created."]
 				}
 			},
 			"8.1.2": {
@@ -31632,14 +33946,20 @@ var assignments = [
 					"steps": ["res.predict."],
 					"code": "# Làm theo ô starter, xem kết quả ở trên",
 					"lotus": "Mô hình đoán hồ sơ chưa từng thấy.",
-					"trap": "Không huấn luyện lại bằng validation."
+					"trap": "Không huấn luyện lại bằng validation.",
+					"read": ["Ô này không in kết quả; việc cần xem là chạy không báo lỗi."],
+					"remark": "Chuẩn bị dự đoán trên validation theo đúng cách đã làm ở train (cùng biến, cùng hằng số).",
+					"howRemark": ["Nói bước này chuẩn bị gì cho bước sau.", "Ghi tên biến/đối tượng mới được tạo."]
 				},
 				"en": {
 					"think": "Predict probabilities on validation.",
 					"steps": ["res.predict."],
 					"code": "# Làm theo ô starter, xem kết quả ở trên",
 					"lotus": "The model guesses claims it has never seen.",
-					"trap": "Do not retrain on validation."
+					"trap": "Do not retrain on validation.",
+					"read": ["This cell prints nothing; just check it ran without error."],
+					"remark": "Prepare validation predictions exactly as done on train (same variables, same constant).",
+					"howRemark": ["Say what this step prepares for the next.", "Note the new variable/object created."]
 				}
 			},
 			"8.1.3": {
@@ -31648,14 +33968,20 @@ var assignments = [
 					"steps": ["Giống 7.2.5."],
 					"code": "# Làm theo ô starter, xem kết quả ở trên",
 					"lotus": "Mỗi hồ sơ validation có xác suất gian lận.",
-					"trap": "Hai mảng khác độ dài báo lỗi."
+					"trap": "Hai mảng khác độ dài báo lỗi.",
+					"read": ["Ô này không in kết quả; việc cần xem là chạy không báo lỗi."],
+					"remark": "Chuẩn bị dự đoán trên validation theo đúng cách đã làm ở train (cùng biến, cùng hằng số).",
+					"howRemark": ["Nói bước này chuẩn bị gì cho bước sau.", "Ghi tên biến/đối tượng mới được tạo."]
 				},
 				"en": {
 					"think": "Build the actual-vs-predicted table for validation.",
 					"steps": ["As 7.2.5."],
 					"code": "# Làm theo ô starter, xem kết quả ở trên",
 					"lotus": "Each validation claim has a fraud probability.",
-					"trap": "Arrays of different length raise an error."
+					"trap": "Arrays of different length raise an error.",
+					"read": ["This cell prints nothing; just check it ran without error."],
+					"remark": "Prepare validation predictions exactly as done on train (same variables, same constant).",
+					"howRemark": ["Say what this step prepares for the next.", "Note the new variable/object created."]
 				}
 			},
 			"8.1.4": {
@@ -31664,14 +33990,20 @@ var assignments = [
 					"steps": ["Dùng cùng cutoff 0,5."],
 					"code": "Xv_sm = sm.add_constant(X_validation[col].astype(float), has_constant='add')\nva = pd.DataFrame({'Fraud': y_validation.values, 'Prob': res.predict(Xv_sm).values})\nva['final'] = (va['Prob'] > cutoff).astype(int)\nprint(va.head(6).round(3).to_string())",
 					"lotus": "Dùng đúng ngưỡng chọn ở train.",
-					"trap": "Chọn lại ngưỡng trên validation là rò rỉ."
+					"trap": "Chọn lại ngưỡng trên validation là rò rỉ.",
+					"read": ["Cột final là dự đoán cuối theo ngưỡng chọn từ train."],
+					"remark": "Áp ngưỡng 0,5 của train lên validation; hồ sơ có xác suất 0,964 được đoán gian lận đúng như thực tế.",
+					"howRemark": ["Áp ngưỡng của train, không chọn lại."]
 				},
 				"en": {
 					"think": "Final prediction using the cutoff chosen on train.",
 					"steps": ["Use the same cutoff 0.5."],
 					"code": "Xv_sm = sm.add_constant(X_validation[col].astype(float), has_constant='add')\nva = pd.DataFrame({'Fraud': y_validation.values, 'Prob': res.predict(Xv_sm).values})\nva['final'] = (va['Prob'] > cutoff).astype(int)\nprint(va.head(6).round(3).to_string())",
 					"lotus": "Use exactly the cutoff chosen on train.",
-					"trap": "Re-choosing the cutoff on validation leaks."
+					"trap": "Re-choosing the cutoff on validation leaks.",
+					"read": ["final is the final prediction at the threshold chosen on train."],
+					"remark": "Applied train's 0.5 threshold to validation; the record with probability 0.964 is correctly predicted as fraud.",
+					"howRemark": ["Apply train's threshold, do not re-pick."]
 				}
 			},
 			"8.1.5": {
@@ -31680,14 +34012,20 @@ var assignments = [
 					"steps": ["accuracy_score."],
 					"code": "print('accuracy validation', round(metrics.accuracy_score(va['Fraud'], va['final']), 4), '| train', round(metrics.accuracy_score(tr['Fraud'], tr['final']), 4))",
 					"lotus": "84,3% trên validation so với 87,3% trên train: giảm một chút, chấp nhận được.",
-					"trap": "Chênh nhiều là quá khớp."
+					"trap": "Chênh nhiều là quá khớp.",
+					"read": ["Hai số: accuracy validation 0,8433 và train 0,8726."],
+					"remark": "Độ chính xác validation 0,8433 thấp hơn train 0,8726 khoảng 3 điểm: chênh nhỏ nên hồi quy logistic không quá khớp.",
+					"howRemark": ["So hai số.", "Nói quá khớp hay không."]
 				},
 				"en": {
 					"think": "Logistic regression accuracy on validation.",
 					"steps": ["accuracy_score."],
 					"code": "print('accuracy validation', round(metrics.accuracy_score(va['Fraud'], va['final']), 4), '| train', round(metrics.accuracy_score(tr['Fraud'], tr['final']), 4))",
 					"lotus": "84.3% on validation versus 87.3% on train: a small drop, acceptable.",
-					"trap": "A big gap means overfitting."
+					"trap": "A big gap means overfitting.",
+					"read": ["Two numbers: validation accuracy 0.8433 and train 0.8726."],
+					"remark": "Validation accuracy 0.8433 is about 3 points below train's 0.8726: a small gap so logistic regression is not overfit.",
+					"howRemark": ["Compare the two numbers.", "Say overfit or not."]
 				}
 			},
 			"8.1.6": {
@@ -31696,14 +34034,28 @@ var assignments = [
 					"steps": ["confusion_matrix."],
 					"code": "cmv = metrics.confusion_matrix(va['Fraud'], va['final'])\nprint(pd.DataFrame(cmv, index=['thực: sạch', 'thực: gian lận'], columns=['đoán: sạch', 'đoán: gian lận']))",
 					"lotus": "Trên 300 hồ sơ chưa thấy: bắt 62 vụ gian lận, bỏ sót 12, báo nhầm 35 hồ sơ sạch.",
-					"trap": "Không có."
+					"trap": "Không có.",
+					"read": ["Ma trận validation: đoán đúng 191 sạch và 62 gian lận; sai 35 và 12."],
+					"remark": "Bắt được 62 trong 74 hồ sơ gian lận (bỏ sót 12) nhưng báo nhầm 35 hồ sơ sạch; ít bỏ sót nhưng nhiều báo nhầm.",
+					"howRemark": [
+						"Cộng đúng và sai.",
+						"Nêu loại sai nhiều hơn.",
+						"Nói hệ quả."
+					]
 				},
 				"en": {
 					"think": "Confusion matrix on validation.",
 					"steps": ["confusion_matrix."],
 					"code": "cmv = metrics.confusion_matrix(va['Fraud'], va['final'])\nprint(pd.DataFrame(cmv, index=['thực: sạch', 'thực: gian lận'], columns=['đoán: sạch', 'đoán: gian lận']))",
 					"lotus": "On 300 unseen claims: catches 62 frauds, misses 12, falsely flags 35 clean ones.",
-					"trap": "None."
+					"trap": "None.",
+					"read": ["Validation matrix: 191 clean and 62 fraud right; 35 and 12 wrong."],
+					"remark": "Caught 62 of 74 fraud records (12 missed) but falsely flagged 35 clean ones; few misses but many false alarms.",
+					"howRemark": [
+						"Add right and wrong.",
+						"State the more frequent error.",
+						"State the consequence."
+					]
 				}
 			},
 			"8.1.7": {
@@ -31712,14 +34064,20 @@ var assignments = [
 					"steps": ["ravel() ma trận."],
 					"code": "# Làm theo ô starter, xem kết quả ở trên",
 					"lotus": "Như 7.2.8.",
-					"trap": "Không có."
+					"trap": "Không có.",
+					"read": ["Ô này không in kết quả; việc cần xem là chạy không báo lỗi."],
+					"remark": "TP 62, TN 191, FP 35, FN 12 trên validation.",
+					"howRemark": ["Nói bước này chuẩn bị gì cho bước sau.", "Ghi tên biến/đối tượng mới được tạo."]
 				},
 				"en": {
 					"think": "TP, TN, FP, FN on validation.",
 					"steps": ["ravel() the matrix."],
 					"code": "# Làm theo ô starter, xem kết quả ở trên",
 					"lotus": "As 7.2.8.",
-					"trap": "None."
+					"trap": "None.",
+					"read": ["This cell prints nothing; just check it ran without error."],
+					"remark": "TP 62, TN 191, FP 35, FN 12 on validation.",
+					"howRemark": ["Say what this step prepares for the next.", "Note the new variable/object created."]
 				}
 			},
 			"8.1.8": {
@@ -31728,14 +34086,28 @@ var assignments = [
 					"steps": ["Công thức như 7.2.9."],
 					"code": "TN, FP, FN, TP = cmv.ravel(); print(rep(TN, FP, FN, TP))",
 					"lotus": "Sensitivity 0,838, specificity 0,845, precision 0,639, F1 0,725. Precision chỉ 64%: cứ ba hồ sơ bị báo thì một là báo nhầm.",
-					"trap": "So với train, precision tụt mạnh vì validation giữ tỷ lệ gian lận thật (ít hơn)."
+					"trap": "So với train, precision tụt mạnh vì validation giữ tỷ lệ gian lận thật (ít hơn).",
+					"read": ["Năm chỉ số validation: sensitivity 0,838, specificity 0,845, precision 0,639, F1 0,725."],
+					"remark": "Bắt được 83,8% gian lận nhưng precision chỉ 0,639: trong số hồ sơ bị báo gian lận chỉ khoảng 64% thật sự gian lận, vì gian lận chỉ chiếm 24,7%. F1 0,725.",
+					"howRemark": [
+						"Báo từng chỉ số.",
+						"Giải thích precision thấp.",
+						"Nói đánh đổi cho việc điều tra."
+					]
 				},
 				"en": {
 					"think": "Metrics on validation.",
 					"steps": ["Formulas as 7.2.9."],
 					"code": "TN, FP, FN, TP = cmv.ravel(); print(rep(TN, FP, FN, TP))",
 					"lotus": "Sensitivity 0.838, specificity 0.845, precision 0.639, F1 0.725. Precision is only 64%: of three flagged claims one is a false alarm.",
-					"trap": "Precision drops against train because validation keeps the real (lower) fraud rate."
+					"trap": "Precision drops against train because validation keeps the real (lower) fraud rate.",
+					"read": ["Five validation metrics: sensitivity 0.838, specificity 0.845, precision 0.639, F1 0.725."],
+					"remark": "Catches 83.8% of fraud but precision is only 0.639: of records flagged only about 64% are truly fraud, since fraud is just 24.7%. F1 0.725.",
+					"howRemark": [
+						"Report each metric.",
+						"Explain the low precision.",
+						"State the trade-off for investigation."
+					]
 				}
 			},
 			"8.2.1": {
@@ -31744,14 +34116,20 @@ var assignments = [
 					"steps": ["rf3.predict(X_validation[sel])."],
 					"code": "pv = rf3.predict(X_validation[sel]); print('dự đoán', len(pv), 'hồ sơ validation; dự đoán gian lận:', int(pv.sum()))",
 					"lotus": "Rừng báo gian lận 92 trên 300 hồ sơ.",
-					"trap": "Dùng đúng danh sách biến sel của train."
+					"trap": "Dùng đúng danh sách biến sel của train.",
+					"read": ["Dòng chữ: dự đoán 300 hồ sơ validation, 92 hồ sơ bị đoán gian lận."],
+					"remark": "Rừng đánh dấu 92 hồ sơ gian lận trong 300 (thực tế 74), tức báo nhiều hơn thực tế.",
+					"howRemark": ["So số báo với số thật (74)."]
 				},
 				"en": {
 					"think": "Select the important features and predict on validation with the random forest.",
 					"steps": ["rf3.predict(X_validation[sel])."],
 					"code": "pv = rf3.predict(X_validation[sel]); print('dự đoán', len(pv), 'hồ sơ validation; dự đoán gian lận:', int(pv.sum()))",
 					"lotus": "The forest flags 92 of 300 claims as fraud.",
-					"trap": "Use exactly the sel list from train."
+					"trap": "Use exactly the sel list from train.",
+					"read": ["Text: predicted 300 validation records, 92 flagged as fraud."],
+					"remark": "The forest flags 92 of 300 as fraud (actual 74), i.e. more than reality.",
+					"howRemark": ["Compare flagged with actual (74)."]
 				}
 			},
 			"8.2.2": {
@@ -31760,14 +34138,20 @@ var assignments = [
 					"steps": ["accuracy_score."],
 					"code": "print('accuracy RF validation', round(metrics.accuracy_score(y_validation, pv), 4))",
 					"lotus": "82,0% trên validation so với 97,9% trên train: khoảng cách lớn, rừng quá khớp hơn hồi quy logistic.",
-					"trap": "Chọn rừng chỉ vì điểm train cao."
+					"trap": "Chọn rừng chỉ vì điểm train cao.",
+					"read": ["Một số: accuracy rừng validation 0,82."],
+					"remark": "Rừng đạt 0,82 trên validation, thấp hơn 0,9791 ở train nhiều nên còn quá khớp.",
+					"howRemark": ["So với train.", "Nói quá khớp hay không."]
 				},
 				"en": {
 					"think": "Random forest accuracy on validation.",
 					"steps": ["accuracy_score."],
 					"code": "print('accuracy RF validation', round(metrics.accuracy_score(y_validation, pv), 4))",
 					"lotus": "82.0% on validation versus 97.9% on train: a large gap, the forest overfits more than logistic regression.",
-					"trap": "Choosing the forest just because of a high train score."
+					"trap": "Choosing the forest just because of a high train score.",
+					"read": ["One number: forest validation accuracy 0.82."],
+					"remark": "The forest scores 0.82 on validation, far below 0.9791 on train, so still overfit.",
+					"howRemark": ["Compare with train.", "Say overfit or not."]
 				}
 			},
 			"8.2.3": {
@@ -31776,14 +34160,20 @@ var assignments = [
 					"steps": ["confusion_matrix."],
 					"code": "cmrf = metrics.confusion_matrix(y_validation, pv)\nprint(pd.DataFrame(cmrf, index=['thực: sạch', 'thực: gian lận'], columns=['đoán: sạch', 'đoán: gian lận']))",
 					"lotus": "Bắt 56 vụ gian lận, bỏ sót 18, báo nhầm 36.",
-					"trap": "Không có."
+					"trap": "Không có.",
+					"read": ["Ma trận validation của rừng: đúng 190 sạch và 56 gian lận; sai 36 và 18."],
+					"remark": "Rừng bắt được 56 trên 74 gian lận (bỏ sót 18) và báo nhầm 36; kém hồi quy ở cả hai loại sai.",
+					"howRemark": ["So từng ô với 8.1.6.", "Nêu mô hình nào ít sai hơn."]
 				},
 				"en": {
 					"think": "Confusion matrix of the forest on validation.",
 					"steps": ["confusion_matrix."],
 					"code": "cmrf = metrics.confusion_matrix(y_validation, pv)\nprint(pd.DataFrame(cmrf, index=['thực: sạch', 'thực: gian lận'], columns=['đoán: sạch', 'đoán: gian lận']))",
 					"lotus": "Catches 56 frauds, misses 18, falsely flags 36.",
-					"trap": "None."
+					"trap": "None.",
+					"read": ["Forest validation matrix: 190 clean and 56 fraud right; 36 and 18 wrong."],
+					"remark": "The forest catches 56 of 74 fraud (18 missed) and falsely flags 36; worse than regression on both error types.",
+					"howRemark": ["Compare each cell with 8.1.6.", "State which model errs less."]
 				}
 			},
 			"8.2.4": {
@@ -31792,14 +34182,20 @@ var assignments = [
 					"steps": ["ravel() ma trận."],
 					"code": "# Làm theo ô starter, xem kết quả ở trên",
 					"lotus": "Như 7.2.8.",
-					"trap": "Không có."
+					"trap": "Không có.",
+					"read": ["Ô này không in kết quả; việc cần xem là chạy không báo lỗi."],
+					"remark": "TP 56, TN 190, FP 36, FN 18 trên validation.",
+					"howRemark": ["Nói bước này chuẩn bị gì cho bước sau.", "Ghi tên biến/đối tượng mới được tạo."]
 				},
 				"en": {
 					"think": "TP, TN, FP, FN of the forest on validation.",
 					"steps": ["ravel() the matrix."],
 					"code": "# Làm theo ô starter, xem kết quả ở trên",
 					"lotus": "As 7.2.8.",
-					"trap": "None."
+					"trap": "None.",
+					"read": ["This cell prints nothing; just check it ran without error."],
+					"remark": "TP 56, TN 190, FP 36, FN 18 on validation.",
+					"howRemark": ["Say what this step prepares for the next.", "Note the new variable/object created."]
 				}
 			},
 			"8.2.5": {
@@ -31808,14 +34204,28 @@ var assignments = [
 					"steps": ["Công thức như 7.2.9 hoặc classification_report.", "So với hồi quy logistic."],
 					"code": "TN, FP, FN, TP = cmrf.ravel(); print(rep(TN, FP, FN, TP))\nprint(classification_report(y_validation, pv, target_names=['sạch', 'gian lận']))",
 					"lotus": "Rừng: sensitivity 0,757, precision 0,609, F1 0,675. Hồi quy logistic: 0,838, 0,639, 0,725. Với dữ liệu nhỏ này hồi quy logistic bắt được nhiều gian lận hơn và ổn định hơn: chọn nó và viết lý do vào phần kết luận.",
-					"trap": "So sánh hai mô hình chỉ bằng train."
+					"trap": "So sánh hai mô hình chỉ bằng train.",
+					"read": ["Năm chỉ số của rừng: sensitivity 0,757, specificity 0,841, precision 0,609, F1 0,675.", "Bảng cuối là báo cáo phân loại cho cả hai lớp."],
+					"remark": "So hai mô hình trên validation: hồi quy logistic có accuracy 0,843, sensitivity 0,838, F1 0,725; rừng 0,82, 0,757 và 0,675. Hồi quy tốt hơn ở mọi thước đo nên chọn hồi quy logistic.",
+					"howRemark": [
+						"Đặt hai mô hình cạnh nhau.",
+						"Chọn mô hình theo thước đo ưu tiên (bắt gian lận).",
+						"Nêu lý do (rừng quá khớp)."
+					]
 				},
 				"en": {
 					"think": "Forest metrics on validation and comparison of the two models.",
 					"steps": ["Formulas as 7.2.9 or classification_report.", "Compare with logistic regression."],
 					"code": "TN, FP, FN, TP = cmrf.ravel(); print(rep(TN, FP, FN, TP))\nprint(classification_report(y_validation, pv, target_names=['sạch', 'gian lận']))",
 					"lotus": "Forest: sensitivity 0.757, precision 0.609, F1 0.675. Logistic: 0.838, 0.639, 0.725. On this small dataset logistic regression catches more fraud and is more stable: choose it and write the reason in the conclusion.",
-					"trap": "Comparing the two models on train only."
+					"trap": "Comparing the two models on train only.",
+					"read": ["Five forest metrics: sensitivity 0.757, specificity 0.841, precision 0.609, F1 0.675.", "The last table is the classification report for both classes."],
+					"remark": "Comparing the two on validation: logistic regression has accuracy 0.843, sensitivity 0.838, F1 0.725; the forest 0.82, 0.757 and 0.675. Regression wins on every measure so choose logistic regression.",
+					"howRemark": [
+						"Put the two models side by side.",
+						"Choose by the priority metric (catching fraud).",
+						"State the reason (forest overfits)."
+					]
 				}
 			}
 		},
@@ -32291,7 +34701,14 @@ var assignments = [
 					],
 					"code": "SELECT DISTINCT srcStateName FROM farmersinsurancedata ORDER BY srcStateName;",
 					"lotus": "Giống liệt kê tên các chi nhánh của Lotus Spa từ sổ booking: mỗi chi nhánh xuất hiện trăm lần, bạn chỉ muốn ba tên.",
-					"trap": "Quên DISTINCT sẽ ra hơn 1.800 dòng, mỗi dòng một bản ghi."
+					"trap": "Quên DISTINCT sẽ ra hơn 1.800 dòng, mỗi dòng một bản ghi.",
+					"read": ["Dòng đầu cho số dòng (27); các dòng sau là tên bang."],
+					"remark": "Có 27 bang trong dữ liệu, mỗi bang một dòng nhờ DISTINCT.",
+					"howRemark": [
+						"Nêu số dòng và giá trị nổi bật nhất của kết quả.",
+						"So một dòng với dòng khác hoặc với mức chung.",
+						"Nói kết quả trả lời câu hỏi thế nào, và lưu ý đơn vị (lakh) hoặc điều kiện lọc."
+					]
 				},
 				"en": {
 					"think": "List the names of all states, once each.",
@@ -32302,7 +34719,14 @@ var assignments = [
 					],
 					"code": "SELECT DISTINCT srcStateName FROM farmersinsurancedata ORDER BY srcStateName;",
 					"lotus": "Like listing Lotus Spa's branch names from the booking log: each appears a hundred times, you want three names.",
-					"trap": "Forgetting DISTINCT returns over 1,800 rows, one per record."
+					"trap": "Forgetting DISTINCT returns over 1,800 rows, one per record.",
+					"read": ["The first line gives the row count (27); the rest are state names."],
+					"remark": "There are 27 states in the data, one row each thanks to DISTINCT.",
+					"howRemark": [
+						"State the row count and the most notable value.",
+						"Compare one row with another or with the overall level.",
+						"Say how it answers the question, noting the unit (lakh) or filter."
+					]
 				}
 			},
 			"Q2": {
@@ -32315,7 +34739,14 @@ var assignments = [
 					],
 					"code": "SELECT srcStateName, SUM(TotalFarmersCovered) AS TotalFarmersCovered, SUM(SumInsured) AS SumInsured\nFROM farmersinsurancedata\nGROUP BY srcStateName\nORDER BY TotalFarmersCovered DESC;",
 					"lotus": "Như cộng số khách và doanh thu của từng chi nhánh rồi xếp chi nhánh đông nhất lên đầu.",
-					"trap": "Dùng cột SumInsured mà quên đơn vị: dữ liệu lưu theo lakh (100.000 INR), không phải rupee."
+					"trap": "Dùng cột SumInsured mà quên đơn vị: dữ liệu lưu theo lakh (100.000 INR), không phải rupee.",
+					"read": ["Mỗi dòng là một bang: tổng nông dân và tổng số tiền bảo hiểm (đơn vị lakh).", "Bảng đã sắp giảm dần theo số nông dân."],
+					"remark": "Madhya Pradesh dẫn đầu với 9,15 triệu nông dân, tiếp theo Maharashtra (8,94 triệu) và Uttar Pradesh (7,24 triệu). Rajasthan ít nông dân hơn Uttar Pradesh nhưng tổng bảo hiểm cao hơn, nên nhiều khách chưa chắc nhiều tiền.",
+					"howRemark": [
+						"Nêu số dòng và giá trị nổi bật nhất của kết quả.",
+						"So một dòng với dòng khác hoặc với mức chung.",
+						"Nói kết quả trả lời câu hỏi thế nào, và lưu ý đơn vị (lakh) hoặc điều kiện lọc."
+					]
 				},
 				"en": {
 					"think": "Total farmers covered and total sum insured per state, ordered from most to fewest farmers.",
@@ -32326,7 +34757,14 @@ var assignments = [
 					],
 					"code": "SELECT srcStateName, SUM(TotalFarmersCovered) AS TotalFarmersCovered, SUM(SumInsured) AS SumInsured\nFROM farmersinsurancedata\nGROUP BY srcStateName\nORDER BY TotalFarmersCovered DESC;",
 					"lotus": "Like adding up customers and revenue per branch and listing the busiest first.",
-					"trap": "Using SumInsured while forgetting the unit: data is stored in lakh (100,000 INR), not rupees."
+					"trap": "Using SumInsured while forgetting the unit: data is stored in lakh (100,000 INR), not rupees.",
+					"read": ["Each row is a state: total farmers and total sum insured (lakh).", "Sorted descending by farmers."],
+					"remark": "Madhya Pradesh leads with 9.15 million farmers, then Maharashtra (8.94 million) and Uttar Pradesh (7.24 million). Rajasthan has fewer farmers than Uttar Pradesh but a higher sum insured, so more customers is not always more money.",
+					"howRemark": [
+						"State the row count and the most notable value.",
+						"Compare one row with another or with the overall level.",
+						"Say how it answers the question, noting the unit (lakh) or filter."
+					]
 				}
 			},
 			"Q3": {
@@ -32339,7 +34777,14 @@ var assignments = [
 					],
 					"code": "SELECT rowID, srcStateName, srcDistrictName, TotalFarmersCovered FROM farmersinsurancedata WHERE srcYear = 2020 LIMIT 10;\n-- đếm: SELECT COUNT(*) FROM farmersinsurancedata WHERE srcYear = 2020;",
 					"lotus": "Như lọc sổ booking riêng của tháng 11.",
-					"trap": "So sánh Year_ = '2020' sẽ không ra dòng nào vì Year_ là chữ dài."
+					"trap": "So sánh Year_ = '2020' sẽ không ra dòng nào vì Year_ là chữ dài.",
+					"read": ["Dòng đầu: có 429 dòng của năm 2020; bảng chỉ hiển thị 10 dòng đầu."],
+					"remark": "Năm 2020 có 429 bản ghi; vài huyện Karnataka có số nông dân bằng 0, nên đừng kết luận chỉ từ những dòng đầu.",
+					"howRemark": [
+						"Nêu số dòng và giá trị nổi bật nhất của kết quả.",
+						"So một dòng với dòng khác hoặc với mức chung.",
+						"Nói kết quả trả lời câu hỏi thế nào, và lưu ý đơn vị (lakh) hoặc điều kiện lọc."
+					]
 				},
 				"en": {
 					"think": "Retrieve the records of year 2020.",
@@ -32350,7 +34795,14 @@ var assignments = [
 					],
 					"code": "SELECT rowID, srcStateName, srcDistrictName, TotalFarmersCovered FROM farmersinsurancedata WHERE srcYear = 2020 LIMIT 10;\n-- đếm: SELECT COUNT(*) FROM farmersinsurancedata WHERE srcYear = 2020;",
 					"lotus": "Like filtering the booking log for November only.",
-					"trap": "Comparing Year_ = '2020' returns nothing because Year_ is the long text."
+					"trap": "Comparing Year_ = '2020' returns nothing because Year_ is the long text.",
+					"read": ["First line: 429 rows for 2020; the table shows only the first 10."],
+					"remark": "2020 has 429 records; some Karnataka districts show 0 farmers, so do not conclude from the first rows alone.",
+					"howRemark": [
+						"State the row count and the most notable value.",
+						"Compare one row with another or with the overall level.",
+						"Say how it answers the question, noting the unit (lakh) or filter."
+					]
 				}
 			},
 			"Q4": {
@@ -32359,14 +34811,28 @@ var assignments = [
 					"steps": ["WHERE TotalPopulationRural > 1000000 AND srcStateName = 'HIMACHAL PRADESH'.", "Kết quả: 4 dòng, đều là huyện Kangra (1.423.794 dân nông thôn) ở bốn năm."],
 					"code": "SELECT rowID, srcStateName, srcDistrictName, TotalPopulationRural\nFROM farmersinsurancedata\nWHERE TotalPopulationRural > 1000000 AND srcStateName = 'HIMACHAL PRADESH';",
 					"lotus": "Hai điều kiện cùng đúng mới giữ dòng, như chỉ lấy khách vừa ở Quận 3 vừa dùng gói VIP.",
-					"trap": "Chữ hoa chữ thường: tên bang trong dữ liệu viết hoa toàn bộ."
+					"trap": "Chữ hoa chữ thường: tên bang trong dữ liệu viết hoa toàn bộ.",
+					"read": ["4 dòng, đều là Kangra, dân số nông thôn 1.423.794."],
+					"remark": "Chỉ huyện Kangra của Himachal Pradesh vượt 1 triệu dân nông thôn (1.423.794), và xuất hiện 4 lần vì mỗi năm một dòng.",
+					"howRemark": [
+						"Nêu số dòng và giá trị nổi bật nhất của kết quả.",
+						"So một dòng với dòng khác hoặc với mức chung.",
+						"Nói kết quả trả lời câu hỏi thế nào, và lưu ý đơn vị (lakh) hoặc điều kiện lọc."
+					]
 				},
 				"en": {
 					"think": "Filter rows in Himachal Pradesh with rural population above 1 million.",
 					"steps": ["WHERE TotalPopulationRural > 1000000 AND srcStateName = 'HIMACHAL PRADESH'.", "Result: 4 rows, all Kangra district (1,423,794 rural population) across four years."],
 					"code": "SELECT rowID, srcStateName, srcDistrictName, TotalPopulationRural\nFROM farmersinsurancedata\nWHERE TotalPopulationRural > 1000000 AND srcStateName = 'HIMACHAL PRADESH';",
 					"lotus": "Both conditions must hold to keep a row, like only taking customers in District 3 who also use the VIP package.",
-					"trap": "Case: state names in the data are fully uppercase."
+					"trap": "Case: state names in the data are fully uppercase.",
+					"read": ["4 rows, all Kangra, rural population 1,423,794."],
+					"remark": "Only Kangra in Himachal Pradesh exceeds 1 million rural people (1,423,794), appearing 4 times because there is one row per year.",
+					"howRemark": [
+						"State the row count and the most notable value.",
+						"Compare one row with another or with the overall level.",
+						"Say how it answers the question, noting the unit (lakh) or filter."
+					]
 				}
 			},
 			"Q5": {
@@ -32379,7 +34845,14 @@ var assignments = [
 					],
 					"code": "SELECT srcStateName, srcDistrictName, SUM(FarmersPremiumAmount) AS FarmersPremiumAmount\nFROM farmersinsurancedata\nWHERE srcYear = 2018\nGROUP BY srcStateName, srcDistrictName\nORDER BY FarmersPremiumAmount ASC;",
 					"lotus": "Như doanh thu từng chi nhánh trong một tháng, xếp từ thấp lên cao.",
-					"trap": "Dòng đầu đều là 0: nhiều huyện Karnataka chưa có phí, nên xem trước khi kết luận «huyện này thấp nhất»."
+					"trap": "Dòng đầu đều là 0: nhiều huyện Karnataka chưa có phí, nên xem trước khi kết luận «huyện này thấp nhất».",
+					"read": ["525 dòng; xếp tăng dần nên đầu bảng là các huyện có phí bằng 0."],
+					"remark": "Nhiều huyện Karnataka có tổng phí nông dân bằng 0 năm 2018 (525 huyện trong bảng), nghĩa là chưa có dữ liệu hoặc không thu phí, không phải miễn phí thật.",
+					"howRemark": [
+						"Nêu số dòng và giá trị nổi bật nhất của kết quả.",
+						"So một dòng với dòng khác hoặc với mức chung.",
+						"Nói kết quả trả lời câu hỏi thế nào, và lưu ý đơn vị (lakh) hoặc điều kiện lọc."
+					]
 				},
 				"en": {
 					"think": "Total premium farmers paid per district in 2018, ordered ascending.",
@@ -32390,7 +34863,14 @@ var assignments = [
 					],
 					"code": "SELECT srcStateName, srcDistrictName, SUM(FarmersPremiumAmount) AS FarmersPremiumAmount\nFROM farmersinsurancedata\nWHERE srcYear = 2018\nGROUP BY srcStateName, srcDistrictName\nORDER BY FarmersPremiumAmount ASC;",
 					"lotus": "Like branch revenue for one month, sorted low to high.",
-					"trap": "The first rows are all 0: many Karnataka districts have no premium yet, so check before concluding “this district is lowest”."
+					"trap": "The first rows are all 0: many Karnataka districts have no premium yet, so check before concluding “this district is lowest”.",
+					"read": ["525 rows; sorted ascending, so the top shows districts with zero premium."],
+					"remark": "Many Karnataka districts show a farmers premium of 0 for 2018 (525 districts in the table), meaning missing data or no charge, not truly free.",
+					"howRemark": [
+						"State the row count and the most notable value.",
+						"Compare one row with another or with the overall level.",
+						"Say how it answers the question, noting the unit (lakh) or filter."
+					]
 				}
 			},
 			"Q6": {
@@ -32403,7 +34883,14 @@ var assignments = [
 					],
 					"code": "SELECT srcStateName, SUM(TotalFarmersCovered) AS TotalFarmersCovered, SUM(GrossPremiumAmountToBePaid) AS GrossPremium\nFROM farmersinsurancedata\nWHERE InsuredLandArea > 5.0 AND srcYear = 2018\nGROUP BY srcStateName\nORDER BY TotalFarmersCovered DESC;",
 					"lotus": "Lọc trước rồi mới cộng theo nhóm: WHERE chạy trước GROUP BY.",
-					"trap": "Đặt điều kiện trên tổng (SUM) vào WHERE thì lỗi: điều kiện trên tổng phải dùng HAVING."
+					"trap": "Đặt điều kiện trên tổng (SUM) vào WHERE thì lỗi: điều kiện trên tổng phải dùng HAVING.",
+					"read": ["17 dòng: bang, tổng nông dân và tổng phí gộp (lakh).", "Chỉ gồm bản ghi có diện tích bảo hiểm trên 5."],
+					"remark": "Uttar Pradesh có nhiều nông dân nhất (2,61 triệu) nhưng phí gộp (70.173) thấp hơn Madhya Pradesh (155.228) hay Tamil Nadu (157.822) với ít nông dân hơn; phí trên đầu người rất khác nhau giữa các bang.",
+					"howRemark": [
+						"Nêu số dòng và giá trị nổi bật nhất của kết quả.",
+						"So một dòng với dòng khác hoặc với mức chung.",
+						"Nói kết quả trả lời câu hỏi thế nào, và lưu ý đơn vị (lakh) hoặc điều kiện lọc."
+					]
 				},
 				"en": {
 					"think": "Farmers and gross premium by state, only records with insured land area above 5.0 in 2018.",
@@ -32414,7 +34901,14 @@ var assignments = [
 					],
 					"code": "SELECT srcStateName, SUM(TotalFarmersCovered) AS TotalFarmersCovered, SUM(GrossPremiumAmountToBePaid) AS GrossPremium\nFROM farmersinsurancedata\nWHERE InsuredLandArea > 5.0 AND srcYear = 2018\nGROUP BY srcStateName\nORDER BY TotalFarmersCovered DESC;",
 					"lotus": "Filter first, then sum per group: WHERE runs before GROUP BY.",
-					"trap": "Putting a condition on a sum (SUM) in WHERE errors: conditions on sums need HAVING."
+					"trap": "Putting a condition on a sum (SUM) in WHERE errors: conditions on sums need HAVING.",
+					"read": ["17 rows: state, total farmers and gross premium (lakh).", "Only records with insured area above 5."],
+					"remark": "Uttar Pradesh has the most farmers (2.61 million) but a gross premium (70,173) below Madhya Pradesh (155,228) or Tamil Nadu (157,822) with fewer farmers; premium per head differs a lot across states.",
+					"howRemark": [
+						"State the row count and the most notable value.",
+						"Compare one row with another or with the overall level.",
+						"Say how it answers the question, noting the unit (lakh) or filter."
+					]
 				}
 			},
 			"Q7": {
@@ -32423,14 +34917,28 @@ var assignments = [
 					"steps": ["GROUP BY srcYear.", "AVG(InsuredLandArea)."],
 					"code": "SELECT srcYear, AVG(InsuredLandArea) AS AvgInsuredLandArea\nFROM farmersinsurancedata\nGROUP BY srcYear\nORDER BY srcYear;",
 					"lotus": "Như số khách trung bình mỗi ngày theo từng tháng.",
-					"trap": "Đơn vị diện tích là nghìn ha (hệ số 1.000), nên 37,9 nghĩa là khoảng 37.900 ha mỗi bản ghi."
+					"trap": "Đơn vị diện tích là nghìn ha (hệ số 1.000), nên 37,9 nghĩa là khoảng 37.900 ha mỗi bản ghi.",
+					"read": ["4 dòng, mỗi năm một giá trị trung bình diện tích."],
+					"remark": "Diện tích bảo hiểm trung bình khoảng 38 mỗi năm, riêng 2020 nhảy lên 46,9; cần xem 2020 có bản ghi bất thường không trước khi kết luận xu hướng.",
+					"howRemark": [
+						"Nêu số dòng và giá trị nổi bật nhất của kết quả.",
+						"So một dòng với dòng khác hoặc với mức chung.",
+						"Nói kết quả trả lời câu hỏi thế nào, và lưu ý đơn vị (lakh) hoặc điều kiện lọc."
+					]
 				},
 				"en": {
 					"think": "Average insured land area per year.",
 					"steps": ["GROUP BY srcYear.", "AVG(InsuredLandArea)."],
 					"code": "SELECT srcYear, AVG(InsuredLandArea) AS AvgInsuredLandArea\nFROM farmersinsurancedata\nGROUP BY srcYear\nORDER BY srcYear;",
 					"lotus": "Like average customers per day for each month.",
-					"trap": "Area unit is thousand ha (factor 1,000), so 37.9 means about 37,900 ha per record."
+					"trap": "Area unit is thousand ha (factor 1,000), so 37.9 means about 37,900 ha per record.",
+					"read": ["4 rows, one average area per year."],
+					"remark": "Average insured area is about 38 each year, but 2020 jumps to 46.9; check 2020 for unusual records before concluding a trend.",
+					"howRemark": [
+						"State the row count and the most notable value.",
+						"Compare one row with another or with the overall level.",
+						"Say how it answers the question, noting the unit (lakh) or filter."
+					]
 				}
 			},
 			"Q8": {
@@ -32443,7 +34951,14 @@ var assignments = [
 					],
 					"code": "SELECT srcDistrictName, SUM(TotalFarmersCovered) AS TotalFarmersCovered\nFROM farmersinsurancedata\nWHERE InsuranceUnits > 0\nGROUP BY srcDistrictName\nORDER BY TotalFarmersCovered DESC;",
 					"lotus": "Chỉ tính những ca đã thực sự diễn ra (đơn vị > 0).",
-					"trap": "Nhiều huyện trùng tên ở các bang khác nhau: nên GROUP BY cả srcStateName nếu cần chính xác."
+					"trap": "Nhiều huyện trùng tên ở các bang khác nhau: nên GROUP BY cả srcStateName nếu cần chính xác.",
+					"read": ["558 dòng; mỗi dòng là một huyện với tổng nông dân, giảm dần."],
+					"remark": "Bid (1,43 triệu), Latur (1,18 triệu) và Nanded (739.712), đều ở Maharashtra, dẫn đầu; số nông dân tập trung ở vài huyện.",
+					"howRemark": [
+						"Nêu số dòng và giá trị nổi bật nhất của kết quả.",
+						"So một dòng với dòng khác hoặc với mức chung.",
+						"Nói kết quả trả lời câu hỏi thế nào, và lưu ý đơn vị (lakh) hoặc điều kiện lọc."
+					]
 				},
 				"en": {
 					"think": "Total farmers per district, only records where Insurance units is above 0.",
@@ -32454,7 +34969,14 @@ var assignments = [
 					],
 					"code": "SELECT srcDistrictName, SUM(TotalFarmersCovered) AS TotalFarmersCovered\nFROM farmersinsurancedata\nWHERE InsuranceUnits > 0\nGROUP BY srcDistrictName\nORDER BY TotalFarmersCovered DESC;",
 					"lotus": "Count only cases that really happened (units > 0).",
-					"trap": "Several districts share a name across states: GROUP BY srcStateName too if you need exactness."
+					"trap": "Several districts share a name across states: GROUP BY srcStateName too if you need exactness.",
+					"read": ["558 rows; each row is a district with total farmers, descending."],
+					"remark": "Bid (1.43 million), Latur (1.18 million) and Nanded (739,712), all in Maharashtra, lead; farmers are concentrated in a few districts.",
+					"howRemark": [
+						"State the row count and the most notable value.",
+						"Compare one row with another or with the overall level.",
+						"Say how it answers the question, noting the unit (lakh) or filter."
+					]
 				}
 			},
 			"Q9": {
@@ -32467,7 +34989,14 @@ var assignments = [
 					],
 					"code": "SELECT srcStateName,\n       SUM(FarmersPremiumAmount) AS FarmersPremium, SUM(StatePremiumAmount) AS StatePremium, SUM(GOVPremiumAmount) AS GovPremium,\n       SUM(TotalFarmersCovered) AS TotalFarmersCovered\nFROM farmersinsurancedata\nWHERE SumInsured > 5   -- 500,000 INR = 5 lakh, dữ liệu lưu theo đơn vị lakh\nGROUP BY srcStateName\nORDER BY TotalFarmersCovered DESC;",
 					"lotus": "Như giá hiển thị theo nghìn đồng: 500 nghĩa là 500.000 đồng, phải đổi đơn vị trước khi so.",
-					"trap": "Viết SumInsured > 500000 mà quên hệ số 100.000 sẽ gần như loại hết dữ liệu."
+					"trap": "Viết SumInsured > 500000 mà quên hệ số 100.000 sẽ gần như loại hết dữ liệu.",
+					"read": ["26 dòng: phí nông dân, phí bang, phí chính phủ và tổng nông dân theo bang (lakh).", "Lọc SumInsured > 5 vì 500.000 rupee = 5 lakh."],
+					"remark": "Madhya Pradesh có phí lớn nhất (nông dân 139.861, bang 399.901, chính phủ 399.901); phần nông dân tự trả nhỏ hơn nhiều so với bang và chính phủ cộng lại, nên hệ thống được trợ cấp nặng.",
+					"howRemark": [
+						"Nêu số dòng và giá trị nổi bật nhất của kết quả.",
+						"So một dòng với dòng khác hoặc với mức chung.",
+						"Nói kết quả trả lời câu hỏi thế nào, và lưu ý đơn vị (lakh) hoặc điều kiện lọc."
+					]
 				},
 				"en": {
 					"think": "Total premiums per state, only records with SumInsured above 500,000. Mind the scaling factor.",
@@ -32478,7 +35007,14 @@ var assignments = [
 					],
 					"code": "SELECT srcStateName,\n       SUM(FarmersPremiumAmount) AS FarmersPremium, SUM(StatePremiumAmount) AS StatePremium, SUM(GOVPremiumAmount) AS GovPremium,\n       SUM(TotalFarmersCovered) AS TotalFarmersCovered\nFROM farmersinsurancedata\nWHERE SumInsured > 5   -- 500,000 INR = 5 lakh, dữ liệu lưu theo đơn vị lakh\nGROUP BY srcStateName\nORDER BY TotalFarmersCovered DESC;",
 					"lotus": "Like prices shown in thousands: 500 means 500,000 dong, convert before comparing.",
-					"trap": "Writing SumInsured > 500000 and forgetting the 100,000 factor drops nearly all the data."
+					"trap": "Writing SumInsured > 500000 and forgetting the 100,000 factor drops nearly all the data.",
+					"read": ["26 rows: farmers premium, state premium, government premium and total farmers per state (lakh).", "Filter SumInsured > 5 since 500,000 rupees = 5 lakh."],
+					"remark": "Madhya Pradesh has the largest premiums (farmers 139,861, state 399,901, government 399,901); the farmers' share is far below the state and government combined, so the scheme is heavily subsidised.",
+					"howRemark": [
+						"State the row count and the most notable value.",
+						"Compare one row with another or with the overall level.",
+						"Say how it answers the question, noting the unit (lakh) or filter."
+					]
 				}
 			},
 			"Q10": {
@@ -32492,7 +35028,14 @@ var assignments = [
 					],
 					"code": "SELECT srcDistrictName, TotalPopulation\nFROM farmersinsurancedata\nWHERE srcYear = 2020\nORDER BY TotalPopulation DESC\nLIMIT 5;",
 					"lotus": "Như năm chi nhánh có nhiều khách nhất trong tháng.",
-					"trap": "Quên WHERE sẽ trộn bốn năm và cùng một huyện xuất hiện nhiều lần."
+					"trap": "Quên WHERE sẽ trộn bốn năm và cùng một huyện xuất hiện nhiều lần.",
+					"read": ["5 dòng: huyện và dân số năm 2020."],
+					"remark": "Bengaluru Urban (9,62 triệu) và Pune (9,43 triệu) đông dân nhất, rồi Thane (8,07 triệu); toàn là các huyện đô thị lớn.",
+					"howRemark": [
+						"Nêu số dòng và giá trị nổi bật nhất của kết quả.",
+						"So một dòng với dòng khác hoặc với mức chung.",
+						"Nói kết quả trả lời câu hỏi thế nào, và lưu ý đơn vị (lakh) hoặc điều kiện lọc."
+					]
 				},
 				"en": {
 					"think": "The five districts with the highest population in 2020.",
@@ -32504,7 +35047,14 @@ var assignments = [
 					],
 					"code": "SELECT srcDistrictName, TotalPopulation\nFROM farmersinsurancedata\nWHERE srcYear = 2020\nORDER BY TotalPopulation DESC\nLIMIT 5;",
 					"lotus": "Like the five branches with the most customers in a month.",
-					"trap": "Forgetting WHERE mixes four years and the same district appears several times."
+					"trap": "Forgetting WHERE mixes four years and the same district appears several times.",
+					"read": ["5 rows: district and population for 2020."],
+					"remark": "Bengaluru Urban (9.62 million) and Pune (9.43 million) are most populous, then Thane (8.07 million); all large urban districts.",
+					"howRemark": [
+						"State the row count and the most notable value.",
+						"Compare one row with another or with the overall level.",
+						"Say how it answers the question, noting the unit (lakh) or filter."
+					]
 				}
 			},
 			"Q11": {
@@ -32517,7 +35067,14 @@ var assignments = [
 					],
 					"code": "SELECT srcStateName, srcDistrictName, SumInsured, FarmersPremiumAmount\nFROM farmersinsurancedata\nWHERE FarmersPremiumAmount > 0\nORDER BY FarmersPremiumAmount ASC, SumInsured ASC\nLIMIT 10;",
 					"lotus": "Bỏ những gói chưa phát sinh doanh thu, rồi lấy những gói nhỏ nhất.",
-					"trap": "Câu hỏi nói «sắp theo SumInsured rồi phí» nhưng ý chính là phí thấp nhất: đọc kỹ thứ tự ưu tiên."
+					"trap": "Câu hỏi nói «sắp theo SumInsured rồi phí» nhưng ý chính là phí thấp nhất: đọc kỹ thứ tự ưu tiên.",
+					"read": ["10 dòng: huyện có phí nhỏ nhưng khác 0, xếp theo SumInsured rồi phí."],
+					"remark": "Các huyện Karnataka như Kalaburgi, Kolar và Davangere có SumInsured chỉ 0,004–0,006 lakh: giá trị cực nhỏ, có thể là dữ liệu chưa đầy đủ hơn là bảo hiểm thật.",
+					"howRemark": [
+						"Nêu số dòng và giá trị nổi bật nhất của kết quả.",
+						"So một dòng với dòng khác hoặc với mức chung.",
+						"Nói kết quả trả lời câu hỏi thế nào, và lưu ý đơn vị (lakh) hoặc điều kiện lọc."
+					]
 				},
 				"en": {
 					"think": "Ten districts with the lowest nonzero farmers' premium, ordered by sum insured then premium.",
@@ -32528,7 +35085,14 @@ var assignments = [
 					],
 					"code": "SELECT srcStateName, srcDistrictName, SumInsured, FarmersPremiumAmount\nFROM farmersinsurancedata\nWHERE FarmersPremiumAmount > 0\nORDER BY FarmersPremiumAmount ASC, SumInsured ASC\nLIMIT 10;",
 					"lotus": "Skip packages with no revenue yet, then take the smallest.",
-					"trap": "The question says “ordered by SumInsured then premium” but the main idea is lowest premium: read the order of priority carefully."
+					"trap": "The question says “ordered by SumInsured then premium” but the main idea is lowest premium: read the order of priority carefully.",
+					"read": ["10 rows: districts with small but non-zero premium, ordered by SumInsured then premium."],
+					"remark": "Karnataka districts such as Kalaburgi, Kolar and Davangere have SumInsured of only 0.004–0.006 lakh: tiny values, more likely incomplete data than real insurance.",
+					"howRemark": [
+						"State the row count and the most notable value.",
+						"Compare one row with another or with the overall level.",
+						"Say how it answers the question, noting the unit (lakh) or filter."
+					]
 				}
 			},
 			"Q12": {
@@ -32541,7 +35105,14 @@ var assignments = [
 					],
 					"code": "SELECT srcStateName, srcYear,\n       SUM(TotalFarmersCovered) * 1.0 / SUM(TotalPopulation) AS ratio\nFROM farmersinsurancedata\nGROUP BY srcStateName, srcYear\nORDER BY ratio DESC\nLIMIT 3;",
 					"lotus": "Như tỷ lệ khách mua gói trên tổng số khách đi qua từng chi nhánh.",
-					"trap": "Chia hai số nguyên trong một số hệ SQL cho kết quả nguyên (0). Nhân 1.0 trước."
+					"trap": "Chia hai số nguyên trong một số hệ SQL cho kết quả nguyên (0). Nhân 1.0 trước.",
+					"read": ["3 dòng: bang, năm và tỷ lệ nông dân được bảo hiểm trên dân số."],
+					"remark": "Chhattisgarh năm 2021 cao nhất (5,0% dân số), rồi Tripura 2020 (4,7%) và 2021 (4,6%): ngay cả bang cao nhất cũng chỉ bảo hiểm khoảng 5% dân số.",
+					"howRemark": [
+						"Nêu số dòng và giá trị nổi bật nhất của kết quả.",
+						"So một dòng với dòng khác hoặc với mức chung.",
+						"Nói kết quả trả lời câu hỏi thế nào, và lưu ý đơn vị (lakh) hoặc điều kiện lọc."
+					]
 				},
 				"en": {
 					"think": "The three state-year pairs with the highest ratio of insured farmers to population.",
@@ -32552,7 +35123,14 @@ var assignments = [
 					],
 					"code": "SELECT srcStateName, srcYear,\n       SUM(TotalFarmersCovered) * 1.0 / SUM(TotalPopulation) AS ratio\nFROM farmersinsurancedata\nGROUP BY srcStateName, srcYear\nORDER BY ratio DESC\nLIMIT 3;",
 					"lotus": "Like the share of visitors who buy a package out of all who pass each branch.",
-					"trap": "Integer division in some SQL engines gives 0. Multiply by 1.0 first."
+					"trap": "Integer division in some SQL engines gives 0. Multiply by 1.0 first.",
+					"read": ["3 rows: state, year and ratio of insured farmers to population."],
+					"remark": "Chhattisgarh in 2021 is highest (5.0% of population), then Tripura 2020 (4.7%) and 2021 (4.6%): even the top state insures only about 5% of its population.",
+					"howRemark": [
+						"State the row count and the most notable value.",
+						"Compare one row with another or with the overall level.",
+						"Say how it answers the question, noting the unit (lakh) or filter."
+					]
 				}
 			},
 			"Q13": {
@@ -32565,7 +35143,14 @@ var assignments = [
 					],
 					"code": "SELECT DISTINCT srcStateName, SUBSTR(srcStateName, 1, 3) AS StateShortName\nFROM farmersinsurancedata\nORDER BY srcStateName;",
 					"lotus": "Như tạo mã chi nhánh từ ba chữ đầu: hai tên có thể trùng mã.",
-					"trap": "Hai bang cho cùng mã «AND»: mã rút gọn không đảm bảo duy nhất."
+					"trap": "Hai bang cho cùng mã «AND»: mã rút gọn không đảm bảo duy nhất.",
+					"read": ["27 dòng: bang và tên viết tắt 3 chữ cái đầu."],
+					"remark": "Có trùng tên viết tắt: Andaman and Nicobar Islands và Andhra Pradesh đều là AND, nên 3 chữ cái đầu không đủ làm mã duy nhất.",
+					"howRemark": [
+						"Nêu số dòng và giá trị nổi bật nhất của kết quả.",
+						"So một dòng với dòng khác hoặc với mức chung.",
+						"Nói kết quả trả lời câu hỏi thế nào, và lưu ý đơn vị (lakh) hoặc điều kiện lọc."
+					]
 				},
 				"en": {
 					"think": "Build a short name from the first 3 characters of each state.",
@@ -32576,7 +35161,14 @@ var assignments = [
 					],
 					"code": "SELECT DISTINCT srcStateName, SUBSTR(srcStateName, 1, 3) AS StateShortName\nFROM farmersinsurancedata\nORDER BY srcStateName;",
 					"lotus": "Like building branch codes from the first three letters: two names can collide.",
-					"trap": "Two states share the code “AND”: a shortened code is not guaranteed unique."
+					"trap": "Two states share the code “AND”: a shortened code is not guaranteed unique.",
+					"read": ["27 rows: state and 3-letter short name."],
+					"remark": "Short names collide: Andaman and Nicobar Islands and Andhra Pradesh are both AND, so the first 3 letters are not unique.",
+					"howRemark": [
+						"State the row count and the most notable value.",
+						"Compare one row with another or with the overall level.",
+						"Say how it answers the question, noting the unit (lakh) or filter."
+					]
 				}
 			},
 			"Q14": {
@@ -32589,7 +35181,14 @@ var assignments = [
 					],
 					"code": "SELECT DISTINCT srcDistrictName FROM farmersinsurancedata WHERE srcDistrictName LIKE 'B%' ORDER BY srcDistrictName;",
 					"lotus": "Như lọc khách có tên bắt đầu bằng B.",
-					"trap": "LIKE 'B%' trong MySQL không phân biệt hoa thường."
+					"trap": "LIKE 'B%' trong MySQL không phân biệt hoa thường.",
+					"read": ["60 dòng: tên huyện bắt đầu bằng B."],
+					"remark": "Có 60 huyện bắt đầu bằng B (Bagalkot, Bageshwar, Baghpat...): phép lọc bằng LIKE 'B%' hoạt động đúng.",
+					"howRemark": [
+						"Nêu số dòng và giá trị nổi bật nhất của kết quả.",
+						"So một dòng với dòng khác hoặc với mức chung.",
+						"Nói kết quả trả lời câu hỏi thế nào, và lưu ý đơn vị (lakh) hoặc điều kiện lọc."
+					]
 				},
 				"en": {
 					"think": "Districts whose names start with B.",
@@ -32600,7 +35199,14 @@ var assignments = [
 					],
 					"code": "SELECT DISTINCT srcDistrictName FROM farmersinsurancedata WHERE srcDistrictName LIKE 'B%' ORDER BY srcDistrictName;",
 					"lotus": "Like filtering customers whose names start with B.",
-					"trap": "LIKE 'B%' in MySQL is case-insensitive."
+					"trap": "LIKE 'B%' in MySQL is case-insensitive.",
+					"read": ["60 rows: district names starting with B."],
+					"remark": "60 districts start with B (Bagalkot, Bageshwar, Baghpat...): the LIKE 'B%' filter works.",
+					"howRemark": [
+						"State the row count and the most notable value.",
+						"Compare one row with another or with the overall level.",
+						"Say how it answers the question, noting the unit (lakh) or filter."
+					]
 				}
 			},
 			"Q15": {
@@ -32613,7 +35219,14 @@ var assignments = [
 					],
 					"code": "SELECT DISTINCT srcStateName, srcDistrictName FROM farmersinsurancedata WHERE srcDistrictName LIKE '%pur' ORDER BY srcStateName, srcDistrictName;",
 					"lotus": "Dấu % đứng trước nghĩa là «bất kỳ gì rồi kết thúc bằng pur».",
-					"trap": "'%pur%' sẽ khớp cả tên chứa «pur» ở giữa. Câu hỏi chỉ muốn ở cuối."
+					"trap": "'%pur%' sẽ khớp cả tên chứa «pur» ở giữa. Câu hỏi chỉ muốn ở cuối.",
+					"read": ["59 dòng: bang và huyện có tên kết thúc bằng pur."],
+					"remark": "Có 59 huyện kết thúc bằng «pur» (Anantapur, Lakhimpur, Raipur...), rải trên nhiều bang như Chhattisgarh và Assam.",
+					"howRemark": [
+						"Nêu số dòng và giá trị nổi bật nhất của kết quả.",
+						"So một dòng với dòng khác hoặc với mức chung.",
+						"Nói kết quả trả lời câu hỏi thế nào, và lưu ý đơn vị (lakh) hoặc điều kiện lọc."
+					]
 				},
 				"en": {
 					"think": "State and district where the district name ends with “pur”.",
@@ -32624,7 +35237,14 @@ var assignments = [
 					],
 					"code": "SELECT DISTINCT srcStateName, srcDistrictName FROM farmersinsurancedata WHERE srcDistrictName LIKE '%pur' ORDER BY srcStateName, srcDistrictName;",
 					"lotus": "A leading % means “anything, ending in pur”.",
-					"trap": "'%pur%' also matches “pur” in the middle. The question wants only the end."
+					"trap": "'%pur%' also matches “pur” in the middle. The question wants only the end.",
+					"read": ["59 rows: states and districts whose names end in pur."],
+					"remark": "59 districts end in “pur” (Anantapur, Lakhimpur, Raipur...), spread across states like Chhattisgarh and Assam.",
+					"howRemark": [
+						"State the row count and the most notable value.",
+						"Compare one row with another or with the overall level.",
+						"Say how it answers the question, noting the unit (lakh) or filter."
+					]
 				}
 			},
 			"Q16": {
@@ -32637,7 +35257,14 @@ var assignments = [
 					],
 					"code": "SELECT a.srcStateName, a.srcDistrictName, SUM(a.FarmersPremiumAmount) AS FarmersPremiumAmount\nFROM farmersinsurancedata a\nINNER JOIN (SELECT srcStateName, srcDistrictName FROM farmersinsurancedata WHERE InsuranceUnits > 10\n            GROUP BY srcStateName, srcDistrictName) b\n  ON a.srcStateName = b.srcStateName AND a.srcDistrictName = b.srcDistrictName\nGROUP BY a.srcStateName, a.srcDistrictName\nORDER BY FarmersPremiumAmount DESC;",
 					"lotus": "Như chọn danh sách chi nhánh có ngày nào đó vượt 10 ca, rồi cộng doanh thu cả năm của những chi nhánh đó.",
-					"trap": "Join chỉ theo tên huyện bỏ qua bang sẽ ghép nhầm huyện trùng tên."
+					"trap": "Join chỉ theo tên huyện bỏ qua bang sẽ ghép nhầm huyện trùng tên.",
+					"read": ["491 dòng: huyện và phí nông dân của những huyện có Insurance units trên 10."],
+					"remark": "Bid (14.529), Ujjain (12.385) và Latur (11.700) có phí nông dân lớn nhất trong 491 dòng thỏa điều kiện.",
+					"howRemark": [
+						"Nêu số dòng và giá trị nổi bật nhất của kết quả.",
+						"So một dòng với dòng khác hoặc với mức chung.",
+						"Nói kết quả trả lời câu hỏi thế nào, và lưu ý đơn vị (lakh) hoặc điều kiện lọc."
+					]
 				},
 				"en": {
 					"think": "INNER JOIN to total farmers' premium for districts with Insurance units above 10 in some year.",
@@ -32648,7 +35275,14 @@ var assignments = [
 					],
 					"code": "SELECT a.srcStateName, a.srcDistrictName, SUM(a.FarmersPremiumAmount) AS FarmersPremiumAmount\nFROM farmersinsurancedata a\nINNER JOIN (SELECT srcStateName, srcDistrictName FROM farmersinsurancedata WHERE InsuranceUnits > 10\n            GROUP BY srcStateName, srcDistrictName) b\n  ON a.srcStateName = b.srcStateName AND a.srcDistrictName = b.srcDistrictName\nGROUP BY a.srcStateName, a.srcDistrictName\nORDER BY FarmersPremiumAmount DESC;",
 					"lotus": "Like picking branches that exceeded 10 cases on some day, then summing those branches' revenue for the whole year.",
-					"trap": "Joining on district name only, ignoring state, mismatches districts sharing a name."
+					"trap": "Joining on district name only, ignoring state, mismatches districts sharing a name.",
+					"read": ["491 rows: districts and farmers premium for those with Insurance units above 10."],
+					"remark": "Bid (14,529), Ujjain (12,385) and Latur (11,700) have the largest farmers premium among the 491 rows meeting the condition.",
+					"howRemark": [
+						"State the row count and the most notable value.",
+						"Compare one row with another or with the overall level.",
+						"Say how it answers the question, noting the unit (lakh) or filter."
+					]
 				}
 			},
 			"Q17": {
@@ -32661,7 +35295,14 @@ var assignments = [
 					],
 					"code": "SELECT f.srcStateName, f.srcDistrictName, f.Year_, f.TotalPopulation, m.MaxPremium\nFROM farmersinsurancedata f\nJOIN (SELECT srcStateName, srcDistrictName, MAX(FarmersPremiumAmount) AS MaxPremium\n      FROM farmersinsurancedata GROUP BY srcStateName, srcDistrictName\n      HAVING MAX(FarmersPremiumAmount) > 2000) m   -- 20 crore = 2000 lakh\n  ON f.srcStateName = m.srcStateName AND f.srcDistrictName = m.srcDistrictName\nORDER BY m.MaxPremium DESC;",
 					"lotus": "Như tìm tháng doanh thu cao nhất của mỗi chi nhánh rồi chỉ giữ chi nhánh có đỉnh vượt một ngưỡng.",
-					"trap": "Đổi crore thành lakh sai: 1 crore = 100 lakh, nên 20 crore là 2000 lakh, không phải 20."
+					"trap": "Đổi crore thành lakh sai: 1 crore = 100 lakh, nên 20 crore là 2000 lakh, không phải 20.",
+					"read": ["132 dòng: huyện, năm, dân số và mức phí cao nhất mọi năm của huyện.", "Cột Year_ là chữ dài nên mỗi huyện lặp qua các năm."],
+					"remark": "Bid có mức phí cao nhất 7.244 và dân số 2.583.421, lặp lại mỗi năm vì MaxPremium tính trên mọi năm; điều kiện trên 20 crore tương đương trên 2.000 lakh.",
+					"howRemark": [
+						"Nêu số dòng và giá trị nổi bật nhất của kết quả.",
+						"So một dòng với dòng khác hoặc với mức chung.",
+						"Nói kết quả trả lời câu hỏi thế nào, và lưu ý đơn vị (lakh) hoặc điều kiện lọc."
+					]
 				},
 				"en": {
 					"think": "For each district: name, year, population and the highest farmers' premium over all years; only districts whose peak exceeds 20 crore.",
@@ -32672,7 +35313,14 @@ var assignments = [
 					],
 					"code": "SELECT f.srcStateName, f.srcDistrictName, f.Year_, f.TotalPopulation, m.MaxPremium\nFROM farmersinsurancedata f\nJOIN (SELECT srcStateName, srcDistrictName, MAX(FarmersPremiumAmount) AS MaxPremium\n      FROM farmersinsurancedata GROUP BY srcStateName, srcDistrictName\n      HAVING MAX(FarmersPremiumAmount) > 2000) m   -- 20 crore = 2000 lakh\n  ON f.srcStateName = m.srcStateName AND f.srcDistrictName = m.srcDistrictName\nORDER BY m.MaxPremium DESC;",
 					"lotus": "Like finding each branch's best revenue month, then keeping only branches whose peak exceeds a threshold.",
-					"trap": "Converting crore to lakh wrongly: 1 crore = 100 lakh, so 20 crore is 2,000 lakh, not 20."
+					"trap": "Converting crore to lakh wrongly: 1 crore = 100 lakh, so 20 crore is 2,000 lakh, not 20.",
+					"read": ["132 rows: district, year, population and the district's maximum premium over all years.", "Year_ is long text so each district repeats across years."],
+					"remark": "Bid has a maximum premium of 7,244 and population 2,583,421, repeated each year because MaxPremium spans all years; the 20 crore condition equals 2,000 lakh.",
+					"howRemark": [
+						"State the row count and the most notable value.",
+						"Compare one row with another or with the overall level.",
+						"Say how it answers the question, noting the unit (lakh) or filter."
+					]
 				}
 			},
 			"Q18": {
@@ -32686,7 +35334,14 @@ var assignments = [
 					],
 					"code": "SELECT srcStateName, srcDistrictName,\n       SUM(FarmersPremiumAmount) AS TotalFarmersPremium, AVG(TotalPopulation) AS AvgPopulation\nFROM farmersinsurancedata\nGROUP BY srcStateName, srcDistrictName\nHAVING SUM(FarmersPremiumAmount) > 10000   -- 100 crore = 10000 lakh\nORDER BY TotalFarmersPremium DESC;",
 					"lotus": "Như chỉ giữ chi nhánh có tổng doanh thu cả bốn năm vượt mốc 100 crore.",
-					"trap": "Điều kiện trên tổng phải đặt ở HAVING, không phải WHERE."
+					"trap": "Điều kiện trên tổng phải đặt ở HAVING, không phải WHERE.",
+					"read": ["3 dòng: huyện có tổng phí trên 100 crore (10.000 lakh) kèm dân số trung bình."],
+					"remark": "Chỉ ba huyện vượt 100 crore: Bid (14.529), Ujjain (12.385) và Latur (11.700), đều là huyện đông dân (2–2,6 triệu).",
+					"howRemark": [
+						"Nêu số dòng và giá trị nổi bật nhất của kết quả.",
+						"So một dòng với dòng khác hoặc với mức chung.",
+						"Nói kết quả trả lời câu hỏi thế nào, và lưu ý đơn vị (lakh) hoặc điều kiện lọc."
+					]
 				},
 				"en": {
 					"think": "LEFT JOIN population with farmer data; return total premium and average population per district, only districts above 100 crore total, sorted descending.",
@@ -32698,7 +35353,14 @@ var assignments = [
 					],
 					"code": "SELECT srcStateName, srcDistrictName,\n       SUM(FarmersPremiumAmount) AS TotalFarmersPremium, AVG(TotalPopulation) AS AvgPopulation\nFROM farmersinsurancedata\nGROUP BY srcStateName, srcDistrictName\nHAVING SUM(FarmersPremiumAmount) > 10000   -- 100 crore = 10000 lakh\nORDER BY TotalFarmersPremium DESC;",
 					"lotus": "Like keeping only branches whose four-year total revenue exceeds 100 crore.",
-					"trap": "A condition on a total goes in HAVING, not WHERE."
+					"trap": "A condition on a total goes in HAVING, not WHERE.",
+					"read": ["3 rows: districts with total premium above 100 crore (10,000 lakh) with average population."],
+					"remark": "Only three districts exceed 100 crore: Bid (14,529), Ujjain (12,385) and Latur (11,700), all populous (2–2.6 million).",
+					"howRemark": [
+						"State the row count and the most notable value.",
+						"Compare one row with another or with the overall level.",
+						"Say how it answers the question, noting the unit (lakh) or filter."
+					]
 				}
 			},
 			"Q19": {
@@ -32711,7 +35373,14 @@ var assignments = [
 					],
 					"code": "SELECT DISTINCT srcDistrictName\nFROM farmersinsurancedata\nWHERE TotalFarmersCovered > (SELECT AVG(TotalFarmersCovered) FROM farmersinsurancedata)\nORDER BY srcDistrictName;",
 					"lotus": "Như tìm chi nhánh có số khách trên trung bình toàn chuỗi.",
-					"trap": "Trung bình tính trên mọi bản ghi, không theo từng huyện: đọc kỹ đề."
+					"trap": "Trung bình tính trên mọi bản ghi, không theo từng huyện: đọc kỹ đề.",
+					"read": ["251 dòng: huyện có số nông dân lớn hơn mức trung bình toàn bộ bản ghi."],
+					"remark": "251 huyện trên trung bình, tức một phần đáng kể huyện nằm trên mức chung; tên mẫu gồm Agra, Ajmer, Alwar.",
+					"howRemark": [
+						"Nêu số dòng và giá trị nổi bật nhất của kết quả.",
+						"So một dòng với dòng khác hoặc với mức chung.",
+						"Nói kết quả trả lời câu hỏi thế nào, và lưu ý đơn vị (lakh) hoặc điều kiện lọc."
+					]
 				},
 				"en": {
 					"think": "Districts whose farmers covered exceed the average over all records.",
@@ -32722,7 +35391,14 @@ var assignments = [
 					],
 					"code": "SELECT DISTINCT srcDistrictName\nFROM farmersinsurancedata\nWHERE TotalFarmersCovered > (SELECT AVG(TotalFarmersCovered) FROM farmersinsurancedata)\nORDER BY srcDistrictName;",
 					"lotus": "Like finding branches with above-chain-average customers.",
-					"trap": "The average is over all records, not per district: read the question carefully."
+					"trap": "The average is over all records, not per district: read the question carefully.",
+					"read": ["251 rows: districts with farmers above the average of all records."],
+					"remark": "251 districts are above average, a sizeable share; sample names include Agra, Ajmer, Alwar.",
+					"howRemark": [
+						"State the row count and the most notable value.",
+						"Compare one row with another or with the overall level.",
+						"Say how it answers the question, noting the unit (lakh) or filter."
+					]
 				}
 			},
 			"Q20": {
@@ -32735,7 +35411,14 @@ var assignments = [
 					],
 					"code": "SELECT DISTINCT srcStateName\nFROM farmersinsurancedata\nWHERE SumInsured > (SELECT SumInsured FROM farmersinsurancedata ORDER BY FarmersPremiumAmount DESC LIMIT 1);",
 					"lotus": "Nếu gói đắt nhất cũng là gói có giá trị cao nhất thì không gói nào vượt nó.",
-					"trap": "Kết quả trống không phải lỗi: kiểm tra dữ liệu để hiểu vì sao."
+					"trap": "Kết quả trống không phải lỗi: kiểm tra dữ liệu để hiểu vì sao.",
+					"read": ["Kết quả 0 dòng: bảng rỗng."],
+					"remark": "Không có bang nào có SumInsured cao hơn bản ghi có phí nông dân cao nhất, vì bản ghi đó đã có SumInsured lớn nhất; kết quả rỗng là đúng, không phải lỗi.",
+					"howRemark": [
+						"Nói rõ 0 dòng và vì sao.",
+						"Kiểm điều kiện so sánh.",
+						"Phân biệt rỗng đúng với lỗi truy vấn."
+					]
 				},
 				"en": {
 					"think": "States with SumInsured above that of the record with the highest farmers' premium.",
@@ -32746,7 +35429,14 @@ var assignments = [
 					],
 					"code": "SELECT DISTINCT srcStateName\nFROM farmersinsurancedata\nWHERE SumInsured > (SELECT SumInsured FROM farmersinsurancedata ORDER BY FarmersPremiumAmount DESC LIMIT 1);",
 					"lotus": "If the priciest package also has the highest value, nothing exceeds it.",
-					"trap": "An empty result is not an error: inspect the data to see why."
+					"trap": "An empty result is not an error: inspect the data to see why.",
+					"read": ["Result is 0 rows: an empty table."],
+					"remark": "No state has a SumInsured above that of the record with the highest farmers premium, since that record already has the largest SumInsured; the empty result is correct, not an error.",
+					"howRemark": [
+						"Say clearly it is 0 rows and why.",
+						"Check the comparison condition.",
+						"Distinguish a correct empty result from a query bug."
+					]
 				}
 			},
 			"Q21": {
@@ -32759,7 +35449,14 @@ var assignments = [
 					],
 					"code": "SELECT DISTINCT srcDistrictName\nFROM farmersinsurancedata\nWHERE FarmersPremiumAmount > (\n    SELECT AVG(FarmersPremiumAmount) FROM farmersinsurancedata\n    WHERE srcStateName = (SELECT srcStateName FROM farmersinsurancedata\n                          GROUP BY srcStateName ORDER BY SUM(TotalPopulation) DESC LIMIT 1))\nORDER BY srcDistrictName;",
 					"lotus": "Như so doanh thu từng chi nhánh với trung bình của khu vực đông khách nhất.",
-					"trap": "Hai tầng bảng con lồng nhau: viết từng tầng riêng, chạy thử rồi mới ghép."
+					"trap": "Hai tầng bảng con lồng nhau: viết từng tầng riêng, chạy thử rồi mới ghép.",
+					"read": ["246 dòng: huyện có phí nông dân cao hơn mức trung bình của bang đông dân nhất."],
+					"remark": "246 huyện vượt mức trung bình của bang đông dân nhất; so với Q19 (251) con số gần nhau.",
+					"howRemark": [
+						"Nêu số dòng và giá trị nổi bật nhất của kết quả.",
+						"So một dòng với dòng khác hoặc với mức chung.",
+						"Nói kết quả trả lời câu hỏi thế nào, và lưu ý đơn vị (lakh) hoặc điều kiện lọc."
+					]
 				},
 				"en": {
 					"think": "Districts whose farmers' premium exceeds the average of the most populous state.",
@@ -32770,7 +35467,14 @@ var assignments = [
 					],
 					"code": "SELECT DISTINCT srcDistrictName\nFROM farmersinsurancedata\nWHERE FarmersPremiumAmount > (\n    SELECT AVG(FarmersPremiumAmount) FROM farmersinsurancedata\n    WHERE srcStateName = (SELECT srcStateName FROM farmersinsurancedata\n                          GROUP BY srcStateName ORDER BY SUM(TotalPopulation) DESC LIMIT 1))\nORDER BY srcDistrictName;",
 					"lotus": "Like comparing each branch's revenue with the average of the area with the most customers.",
-					"trap": "Two nested subquery levels: write each separately, test, then combine."
+					"trap": "Two nested subquery levels: write each separately, test, then combine.",
+					"read": ["246 rows: districts whose farmers premium exceeds the average of the most populous state."],
+					"remark": "246 districts exceed the most populous state's average; close to Q19's 251.",
+					"howRemark": [
+						"State the row count and the most notable value.",
+						"Compare one row with another or with the overall level.",
+						"Say how it answers the question, noting the unit (lakh) or filter."
+					]
 				}
 			},
 			"Q22": {
@@ -32779,14 +35483,28 @@ var assignments = [
 					"steps": ["ROW_NUMBER() OVER (ORDER BY TotalFarmersCovered DESC).", "Mỗi dòng nhận một số duy nhất, kể cả khi bằng nhau."],
 					"code": "SELECT srcStateName, srcDistrictName, TotalFarmersCovered,\n       ROW_NUMBER() OVER (ORDER BY TotalFarmersCovered DESC) AS row_num\nFROM farmersinsurancedata\nLIMIT 10;",
 					"lotus": "Như đánh số thứ tự các ngày theo số khách từ đông nhất.",
-					"trap": "ROW_NUMBER không cho hai dòng cùng số dù giá trị bằng nhau, khác RANK."
+					"trap": "ROW_NUMBER không cho hai dòng cùng số dù giá trị bằng nhau, khác RANK.",
+					"read": ["10 dòng: mỗi dòng có row_num theo số nông dân giảm dần."],
+					"remark": "Bản ghi số 1 là Bid (548.572 nông dân), 2 là Nanded (426.801), 3 là Latur (407.452); row_num đánh số duy nhất kể cả khi lặp huyện (Bid lại ở hạng 4).",
+					"howRemark": [
+						"Nêu số dòng và giá trị nổi bật nhất của kết quả.",
+						"So một dòng với dòng khác hoặc với mức chung.",
+						"Nói kết quả trả lời câu hỏi thế nào, và lưu ý đơn vị (lakh) hoặc điều kiện lọc."
+					]
 				},
 				"en": {
 					"think": "Number each row by farmers covered descending.",
 					"steps": ["ROW_NUMBER() OVER (ORDER BY TotalFarmersCovered DESC).", "Each row gets a unique number, even on ties."],
 					"code": "SELECT srcStateName, srcDistrictName, TotalFarmersCovered,\n       ROW_NUMBER() OVER (ORDER BY TotalFarmersCovered DESC) AS row_num\nFROM farmersinsurancedata\nLIMIT 10;",
 					"lotus": "Like numbering days by customers, busiest first.",
-					"trap": "ROW_NUMBER never gives two rows the same number even on ties, unlike RANK."
+					"trap": "ROW_NUMBER never gives two rows the same number even on ties, unlike RANK.",
+					"read": ["10 rows: each row has row_num by farmers descending."],
+					"remark": "Rank 1 is Bid (548,572 farmers), 2 is Nanded (426,801), 3 is Latur (407,452); row_num numbers uniquely even when a district repeats (Bid again at 4).",
+					"howRemark": [
+						"State the row count and the most notable value.",
+						"Compare one row with another or with the overall level.",
+						"Say how it answers the question, noting the unit (lakh) or filter."
+					]
 				}
 			},
 			"Q23": {
@@ -32795,14 +35513,28 @@ var assignments = [
 					"steps": ["RANK() OVER (PARTITION BY srcStateName ORDER BY SumInsured DESC).", "PARTITION BY chia nhóm theo bang, hạng tính lại từ 1 trong mỗi bang."],
 					"code": "SELECT srcStateName, srcDistrictName, SumInsured,\n       RANK() OVER (PARTITION BY srcStateName ORDER BY SumInsured DESC) AS rnk\nFROM farmersinsurancedata\nORDER BY srcStateName, rnk\nLIMIT 12;",
 					"lotus": "Như xếp hạng chi nhánh theo doanh thu bên trong từng quận.",
-					"trap": "Quên PARTITION BY sẽ xếp một bảng hạng chung cho cả nước."
+					"trap": "Quên PARTITION BY sẽ xếp một bảng hạng chung cho cả nước.",
+					"read": ["12 dòng đầu: rnk là hạng SumInsured trong từng bang, bắt đầu lại từ 1 ở mỗi bang."],
+					"remark": "Trong Andaman and Nicobar, North and Middle Andaman hạng 1 (180,54) và South Andaman hạng 2 (12,02); hạng được tính riêng trong mỗi bang.",
+					"howRemark": [
+						"Nêu số dòng và giá trị nổi bật nhất của kết quả.",
+						"So một dòng với dòng khác hoặc với mức chung.",
+						"Nói kết quả trả lời câu hỏi thế nào, và lưu ý đơn vị (lakh) hoặc điều kiện lọc."
+					]
 				},
 				"en": {
 					"think": "Rank districts by SumInsured descending within each state.",
 					"steps": ["RANK() OVER (PARTITION BY srcStateName ORDER BY SumInsured DESC).", "PARTITION BY groups by state; the rank restarts from 1 in each state."],
 					"code": "SELECT srcStateName, srcDistrictName, SumInsured,\n       RANK() OVER (PARTITION BY srcStateName ORDER BY SumInsured DESC) AS rnk\nFROM farmersinsurancedata\nORDER BY srcStateName, rnk\nLIMIT 12;",
 					"lotus": "Like ranking branches by revenue inside each district.",
-					"trap": "Forgetting PARTITION BY gives one national ranking."
+					"trap": "Forgetting PARTITION BY gives one national ranking.",
+					"read": ["First 12 rows: rnk is the SumInsured rank within each state, restarting at 1 per state."],
+					"remark": "In Andaman and Nicobar, North and Middle Andaman ranks 1 (180.54) and South Andaman 2 (12.02); ranks are computed within each state.",
+					"howRemark": [
+						"State the row count and the most notable value.",
+						"Compare one row with another or with the overall level.",
+						"Say how it answers the question, noting the unit (lakh) or filter."
+					]
 				}
 			},
 			"Q24": {
@@ -32811,14 +35543,28 @@ var assignments = [
 					"steps": ["SUM(FarmersPremiumAmount) OVER (PARTITION BY srcStateName, srcDistrictName ORDER BY srcYear).", "ORDER BY trong OVER tạo tổng dồn."],
 					"code": "SELECT srcStateName, srcDistrictName, srcYear, FarmersPremiumAmount,\n       SUM(FarmersPremiumAmount) OVER (PARTITION BY srcStateName, srcDistrictName ORDER BY srcYear) AS cumulative_premium\nFROM farmersinsurancedata\nORDER BY srcStateName, srcDistrictName, srcYear\nLIMIT 12;",
 					"lotus": "Như doanh thu cộng dồn từng tháng của một chi nhánh: tháng 3 = tháng 1 + 2 + 3.",
-					"trap": "Không có ORDER BY trong OVER thì ra tổng cả nhóm cho mọi dòng, không phải cộng dồn."
+					"trap": "Không có ORDER BY trong OVER thì ra tổng cả nhóm cho mọi dòng, không phải cộng dồn.",
+					"read": ["12 dòng: phí theo năm và cột cumulative_premium là tổng cộng dồn."],
+					"remark": "Nicobars: 0,003 năm 2020 rồi 0,014 năm 2021, cộng dồn thành 0,017; cột cộng dồn luôn tăng hoặc giữ nguyên theo năm.",
+					"howRemark": [
+						"Nêu số dòng và giá trị nổi bật nhất của kết quả.",
+						"So một dòng với dòng khác hoặc với mức chung.",
+						"Nói kết quả trả lời câu hỏi thế nào, và lưu ý đơn vị (lakh) hoặc điều kiện lọc."
+					]
 				},
 				"en": {
 					"think": "Cumulative sum of farmers' premium per district, ascending by year, within each state.",
 					"steps": ["SUM(FarmersPremiumAmount) OVER (PARTITION BY srcStateName, srcDistrictName ORDER BY srcYear).", "ORDER BY inside OVER creates the running total."],
 					"code": "SELECT srcStateName, srcDistrictName, srcYear, FarmersPremiumAmount,\n       SUM(FarmersPremiumAmount) OVER (PARTITION BY srcStateName, srcDistrictName ORDER BY srcYear) AS cumulative_premium\nFROM farmersinsurancedata\nORDER BY srcStateName, srcDistrictName, srcYear\nLIMIT 12;",
 					"lotus": "Like a branch's running revenue by month: month 3 = months 1 + 2 + 3.",
-					"trap": "Without ORDER BY in OVER you get the whole group's total on every row, not a running one."
+					"trap": "Without ORDER BY in OVER you get the whole group's total on every row, not a running one.",
+					"read": ["12 rows: premium by year and cumulative_premium is the running total."],
+					"remark": "Nicobars: 0.003 in 2020 then 0.014 in 2021, accumulating to 0.017; the cumulative column never falls with year.",
+					"howRemark": [
+						"State the row count and the most notable value.",
+						"Compare one row with another or with the overall level.",
+						"Say how it answers the question, noting the unit (lakh) or filter."
+					]
 				}
 			},
 			"Q25": {
@@ -32831,7 +35577,14 @@ var assignments = [
 					],
 					"code": "CREATE TABLE states (\n    StateCode INT PRIMARY KEY,\n    StateName VARCHAR(255)\n);\nCREATE TABLE districts (\n    DistrictCode INT PRIMARY KEY,\n    DistrictName VARCHAR(255),\n    StateCode INT\n);",
 					"lotus": "Như lập danh mục chi nhánh và danh mục quận riêng, mỗi cái có mã duy nhất.",
-					"trap": "Khoá chính không được trùng: hai dòng cùng DistrictCode sẽ bị từ chối."
+					"trap": "Khoá chính không được trùng: hai dòng cùng DistrictCode sẽ bị từ chối.",
+					"read": ["Danh sách tên bảng mới tạo: states và districts."],
+					"remark": "Đã tạo hai bảng states và districts, mỗi bảng có khoá chính riêng.",
+					"howRemark": [
+						"Nêu số dòng và giá trị nổi bật nhất của kết quả.",
+						"So một dòng với dòng khác hoặc với mức chung.",
+						"Nói kết quả trả lời câu hỏi thế nào, và lưu ý đơn vị (lakh) hoặc điều kiện lọc."
+					]
 				},
 				"en": {
 					"think": "Create two tables: districts (primary key DistrictCode) and states (primary key StateCode).",
@@ -32842,7 +35595,14 @@ var assignments = [
 					],
 					"code": "CREATE TABLE states (\n    StateCode INT PRIMARY KEY,\n    StateName VARCHAR(255)\n);\nCREATE TABLE districts (\n    DistrictCode INT PRIMARY KEY,\n    DistrictName VARCHAR(255),\n    StateCode INT\n);",
 					"lotus": "Like making a separate branch directory and district directory, each with a unique code.",
-					"trap": "A primary key cannot repeat: two rows with the same DistrictCode are rejected."
+					"trap": "A primary key cannot repeat: two rows with the same DistrictCode are rejected.",
+					"read": ["The list of newly created tables: states and districts."],
+					"remark": "Two tables states and districts were created, each with its own primary key.",
+					"howRemark": [
+						"State the row count and the most notable value.",
+						"Compare one row with another or with the overall level.",
+						"Say how it answers the question, noting the unit (lakh) or filter."
+					]
 				}
 			},
 			"Q26": {
@@ -32851,14 +35611,28 @@ var assignments = [
 					"steps": ["ALTER TABLE districts ADD CONSTRAINT fk_districts_state FOREIGN KEY (StateCode) REFERENCES states(StateCode).", "Ghi chú: SQLite không cho ALTER ADD FOREIGN KEY; ở đây kết quả kiểm tra bằng bảng tạo sẵn khoá ngoại. MySQL chạy đúng câu ALTER."],
 					"code": "-- MySQL\nALTER TABLE districts\nADD CONSTRAINT fk_districts_state FOREIGN KEY (StateCode) REFERENCES states(StateCode);",
 					"lotus": "Mỗi quận phải thuộc một chi nhánh có thật: không thể gán quận cho chi nhánh chưa tồn tại.",
-					"trap": "Chèn dòng vào districts với StateCode chưa có trong states sẽ bị từ chối."
+					"trap": "Chèn dòng vào districts với StateCode chưa có trong states sẽ bị từ chối.",
+					"read": ["Bảng kiểm tra khoá ngoại: districts.StateCode tham chiếu states.StateCode."],
+					"remark": "Khoá ngoại đã gắn: cột StateCode của districts trỏ về StateCode của states, nên không thể thêm huyện thuộc bang không tồn tại.",
+					"howRemark": [
+						"Nêu số dòng và giá trị nổi bật nhất của kết quả.",
+						"So một dòng với dòng khác hoặc với mức chung.",
+						"Nói kết quả trả lời câu hỏi thế nào, và lưu ý đơn vị (lakh) hoặc điều kiện lọc."
+					]
 				},
 				"en": {
 					"think": "Add a foreign key so districts.StateCode references states.StateCode.",
 					"steps": ["ALTER TABLE districts ADD CONSTRAINT fk_districts_state FOREIGN KEY (StateCode) REFERENCES states(StateCode).", "Note: SQLite does not allow ALTER ADD FOREIGN KEY; the check here uses a table created with the key. MySQL runs the ALTER as written."],
 					"code": "-- MySQL\nALTER TABLE districts\nADD CONSTRAINT fk_districts_state FOREIGN KEY (StateCode) REFERENCES states(StateCode);",
 					"lotus": "Every district must belong to a real branch: you cannot assign a district to a branch that does not exist.",
-					"trap": "Inserting into districts a StateCode absent from states is rejected."
+					"trap": "Inserting into districts a StateCode absent from states is rejected.",
+					"read": ["Foreign-key check table: districts.StateCode references states.StateCode."],
+					"remark": "The foreign key is in place: districts.StateCode points to states.StateCode, so a district of a non-existent state cannot be added.",
+					"howRemark": [
+						"State the row count and the most notable value.",
+						"Compare one row with another or with the overall level.",
+						"Say how it answers the question, noting the unit (lakh) or filter."
+					]
 				}
 			},
 			"Q27": {
@@ -32867,14 +35641,28 @@ var assignments = [
 					"steps": ["UPDATE ... SET FarmersPremiumAmount = 500.0 WHERE rowID = 1.", "Luôn có WHERE, rồi SELECT lại để kiểm tra."],
 					"code": "UPDATE farmersinsurancedata SET FarmersPremiumAmount = 500.0 WHERE rowID = 1;",
 					"lotus": "Như sửa một booking cụ thể bằng mã booking của nó.",
-					"trap": "UPDATE không có WHERE sửa mọi dòng của bảng."
+					"trap": "UPDATE không có WHERE sửa mọi dòng của bảng.",
+					"read": ["Dòng «1 dòng bị ảnh hưởng» và bảng kiểm tra giá trị mới."],
+					"remark": "Cập nhật đúng 1 dòng (rowID 1), phí nông dân thành 500,0.",
+					"howRemark": [
+						"Nêu số dòng bị ảnh hưởng.",
+						"Đối chiếu giá trị mới.",
+						"Nhắc kiểm WHERE trước khi UPDATE."
+					]
 				},
 				"en": {
 					"think": "Update the farmers' premium of the row with rowID = 1 to 500.0.",
 					"steps": ["UPDATE ... SET FarmersPremiumAmount = 500.0 WHERE rowID = 1.", "Always include WHERE, then SELECT again to check."],
 					"code": "UPDATE farmersinsurancedata SET FarmersPremiumAmount = 500.0 WHERE rowID = 1;",
 					"lotus": "Like editing one specific booking by its booking ID.",
-					"trap": "UPDATE without WHERE changes every row of the table."
+					"trap": "UPDATE without WHERE changes every row of the table.",
+					"read": ["The line “1 row affected” and a check table of the new value."],
+					"remark": "Exactly 1 row updated (rowID 1), farmers premium now 500.0.",
+					"howRemark": [
+						"State the rows affected.",
+						"Check the new value.",
+						"Remind to check WHERE before UPDATE."
+					]
 				}
 			},
 			"Q28": {
@@ -32883,14 +35671,28 @@ var assignments = [
 					"steps": ["UPDATE ... SET srcYear = 2021 WHERE srcStateName = 'HIMACHAL PRADESH'.", "Kiểm tra bằng GROUP BY năm."],
 					"code": "UPDATE farmersinsurancedata SET srcYear = 2021 WHERE srcStateName = 'HIMACHAL PRADESH';",
 					"lotus": "Như đổi ngày cho cả lô booking của một chi nhánh.",
-					"trap": "Cập nhật hàng loạt khó hoàn tác: SELECT với cùng WHERE trước để đếm số dòng."
+					"trap": "Cập nhật hàng loạt khó hoàn tác: SELECT với cùng WHERE trước để đếm số dòng.",
+					"read": ["«40 dòng bị ảnh hưởng» và bảng đếm cho thấy cả 40 dòng Himachal Pradesh đã sang 2021."],
+					"remark": "40 dòng của Himachal Pradesh đều được đổi sang năm 2021; bảng kiểm tra xác nhận không còn năm khác.",
+					"howRemark": [
+						"Nêu số dòng bị ảnh hưởng.",
+						"Đối chiếu bằng truy vấn kiểm tra.",
+						"Nói dữ liệu gốc đã đổi."
+					]
 				},
 				"en": {
 					"think": "Change the year to 2021 for all Himachal Pradesh rows.",
 					"steps": ["UPDATE ... SET srcYear = 2021 WHERE srcStateName = 'HIMACHAL PRADESH'.", "Check with GROUP BY year."],
 					"code": "UPDATE farmersinsurancedata SET srcYear = 2021 WHERE srcStateName = 'HIMACHAL PRADESH';",
 					"lotus": "Like changing the date for a whole batch of one branch's bookings.",
-					"trap": "Bulk updates are hard to undo: SELECT with the same WHERE first to count rows."
+					"trap": "Bulk updates are hard to undo: SELECT with the same WHERE first to count rows.",
+					"read": ["“40 rows affected” and a count table showing all 40 Himachal Pradesh rows now at 2021."],
+					"remark": "All 40 Himachal Pradesh rows were changed to 2021; the check table confirms no other year remains.",
+					"howRemark": [
+						"State the rows affected.",
+						"Verify with a check query.",
+						"Say the data has changed."
+					]
 				}
 			},
 			"Q29": {
@@ -32899,14 +35701,28 @@ var assignments = [
 					"steps": ["DELETE FROM ... WHERE TotalFarmersCovered < 10000 AND srcYear = 2020.", "Chạy SELECT COUNT với cùng WHERE trước để biết sẽ xóa bao nhiêu."],
 					"code": "DELETE FROM farmersinsurancedata WHERE TotalFarmersCovered < 10000 AND srcYear = 2020;",
 					"lotus": "Như xóa các booking nhỏ của một tháng: phải chắc chắn trước khi xóa.",
-					"trap": "DELETE không có WHERE xóa sạch bảng. Dùng cùng WHERE với SELECT để xem trước."
+					"trap": "DELETE không có WHERE xóa sạch bảng. Dùng cùng WHERE với SELECT để xem trước.",
+					"read": ["«184 dòng bị ảnh hưởng» và rows_left còn 1.686 dòng."],
+					"remark": "Xoá 184 dòng có dưới 10.000 nông dân năm 2020; bảng còn 1.686 dòng. Xoá không đảo ngược nên luôn SELECT trước bằng cùng điều kiện.",
+					"howRemark": [
+						"Nêu số dòng xoá và còn lại.",
+						"Đối chiếu tổng trước và sau.",
+						"Nhắc SELECT thử trước khi DELETE."
+					]
 				},
 				"en": {
 					"think": "Delete rows with fewer than 10,000 farmers in 2020.",
 					"steps": ["DELETE FROM ... WHERE TotalFarmersCovered < 10000 AND srcYear = 2020.", "Run SELECT COUNT with the same WHERE first to know how many will go."],
 					"code": "DELETE FROM farmersinsurancedata WHERE TotalFarmersCovered < 10000 AND srcYear = 2020;",
 					"lotus": "Like deleting a month's small bookings: be sure before deleting.",
-					"trap": "DELETE without WHERE wipes the table. Preview with SELECT using the same WHERE."
+					"trap": "DELETE without WHERE wipes the table. Preview with SELECT using the same WHERE.",
+					"read": ["“184 rows affected” and rows_left shows 1,686 rows."],
+					"remark": "Deleted 184 rows with under 10,000 farmers in 2020; 1,686 rows remain. Delete is irreversible so always SELECT first with the same condition.",
+					"howRemark": [
+						"State rows deleted and remaining.",
+						"Reconcile totals before and after.",
+						"Remind to SELECT first before DELETE."
+					]
 				}
 			}
 		},
