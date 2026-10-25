@@ -1,5 +1,5 @@
 import { Fragment, useState, useSyncExternalStore, type ReactNode } from "react";
-import type { Assignment, Cell, Guide } from "@/data/assign/types";
+import type { Assignment, Cell, Guide, Result } from "@/data/assign/types";
 import { getProgress, getServerProgress, subscribeProgress } from "@/lib/progress";
 
 const text = {
@@ -9,6 +9,8 @@ const text = {
     think: "Nghĩ trước khi gõ",
     steps: "Các bước",
     code: "Khung code gợi ý",
+    result: "Kết quả chạy trên file của bạn",
+    ran: "Code đã chạy (xem thêm)",
     lotus: "Ở Lotus Spa",
     trap: "Dễ sai ở đâu",
     rule: "Starter không bị đổi nội dung hay thứ tự. Khung bên dưới mỗi mục chỉ là phần đi kèm, nên mở lại file bài tập cũ vẫn khớp từng ô.",
@@ -22,6 +24,8 @@ const text = {
     think: "Think before typing",
     steps: "Steps",
     code: "Suggested code skeleton",
+    result: "Result on your file",
+    ran: "Code that ran (optional)",
     lotus: "At Lotus Spa",
     trap: "Where it goes wrong",
     rule: "The starter is never changed in content or order. The box under each task is only a companion, so reopening an old assignment file still matches cell by cell.",
@@ -97,7 +101,7 @@ function Md({ src }: { src: string }) {
   return <>{out}</>;
 }
 
-function GuideBox({ g, t }: { g: Guide; t: (typeof text)["vi"] | (typeof text)["en"] }) {
+function GuideBox({ g, r, t }: { g: Guide; r?: Result; t: (typeof text)["vi"] | (typeof text)["en"] }) {
   const [open, setOpen] = useState(true);
   return (
     <section className="my-3 rounded-card border border-line bg-card p-4">
@@ -120,8 +124,24 @@ function GuideBox({ g, t }: { g: Guide; t: (typeof text)["vi"] | (typeof text)["
               </li>
             ))}
           </ol>
-          <h4 className="mt-4 text-sm font-medium">{t.code}</h4>
-          <pre className="mt-1 overflow-x-auto rounded-xl bg-paper p-3 text-sm">{g.code}</pre>
+          {r ? (
+            <div className="mt-4">
+              <h4 className="text-sm font-medium">{t.result}</h4>
+              {r.imgs.map((src) => (
+                <img key={src} src={src} alt="" loading="lazy" className="mt-2 w-full rounded-xl border border-line bg-white" />
+              ))}
+              {r.text ? <pre className="mt-2 overflow-x-auto rounded-xl bg-paper p-3 text-sm">{r.text}</pre> : null}
+              <details className="mt-2">
+                <summary className="min-h-11 cursor-pointer text-sm text-muted">{t.ran}</summary>
+                <pre className="mt-1 overflow-x-auto rounded-xl bg-paper p-3 text-sm">{r.code}</pre>
+              </details>
+            </div>
+          ) : (
+            <>
+              <h4 className="mt-4 text-sm font-medium">{t.code}</h4>
+              <pre className="mt-1 overflow-x-auto rounded-xl bg-paper p-3 text-sm">{g.code}</pre>
+            </>
+          )}
           <div className="mt-4 rounded-xl border-l-4 border-accent bg-paper p-3">
             <p className="text-xs uppercase tracking-widest text-muted">{t.lotus}</p>
             <p className="mt-1 leading-relaxed">{g.lotus}</p>
@@ -164,7 +184,7 @@ export function AssignBody({ a }: { a: Assignment }) {
           <Fragment key={i}>
             {c.ref ? <span id={`t-${c.ref}`} /> : null}
             <CellView c={c} t={t} />
-            {c.ref && a.guides[c.ref] ? <GuideBox g={a.guides[c.ref][lang]} t={t} /> : null}
+            {c.ref && a.guides[c.ref] ? <GuideBox g={a.guides[c.ref][lang]} r={a.results?.[c.ref]} t={t} /> : null}
           </Fragment>
         ))}
       </div>

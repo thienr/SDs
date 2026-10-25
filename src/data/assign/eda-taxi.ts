@@ -3,7 +3,9 @@ import type { Assignment } from "@/data/assign/types";
 export const asg: Assignment = {
  "id": "eda-taxi",
  "course": "C2",
- "concepts": ["d-bf9615ba3a8e"],
+ "concepts": [
+  "d-bf9615ba3a8e"
+ ],
  "title": [
   "EDA: Phân tích chuyến taxi NYC",
   "EDA: NYC Taxi trip analysis"
@@ -749,7 +751,7 @@ export const asg: Assignment = {
      "Tạo cột ngày và giờ từ tpep_pickup_datetime.",
      "Với mỗi ngày, mỗi giờ: lấy sample(frac=0.05, random_state=42).",
      "Nối kết quả của các giờ rồi các ngày thành một bảng của tháng, rồi nối 12 tháng.",
-     "Lưu ra parquet và đếm số dòng: khoảng 250.000 đến 300.000."
+     "Lưu ra parquet và đếm số dòng. Với dữ liệu đầy đủ 38,3 triệu chuyến, 5% ra khoảng 1,9 triệu dòng; muốn còn 250.000 đến 300.000 như đề gợi ý thì lấy khoảng 0,7%. Nhớ dùng đúng tỷ lệ này ở bài 3.2.3."
     ],
     "code": "df = pd.DataFrame()\nfor file_name in file_list:\n    month = pd.read_parquet(file_path)\n    month['date'] = month['tpep_pickup_datetime'].dt.date\n    month['hour'] = month['tpep_pickup_datetime'].dt.hour\n    parts = []\n    for (d, h), grp in month.groupby(['date', 'hour']):\n        parts.append(grp.sample(frac=0.05, random_state=42))\n    df = pd.concat([df] + parts)\ndf = df.drop(columns=['date', 'hour'])",
     "lotus": "Sổ booking Lotus Spa có 12 tháng. Lấy 5% theo từng ngày và từng giờ giữ được cả giờ vắng lẫn giờ đông. Nếu chỉ lấy 5% theo giờ chung cho cả năm, giờ nào của ngày nào cũng bị trộn lẫn.",
@@ -762,7 +764,7 @@ export const asg: Assignment = {
      "Create a date and an hour column from tpep_pickup_datetime.",
      "For each date and hour: take sample(frac=0.05, random_state=42).",
      "Concatenate the hours, then the days, into one month table, then the 12 months.",
-     "Save to parquet and count rows: about 250,000 to 300,000."
+     "Save to parquet and count rows. With the full 38.3 million trips, 5% gives about 1.9 million rows; to land at 250,000 to 300,000 as the brief suggests, sample about 0.7%. Use the same fraction in task 3.2.3."
     ],
     "code": "df = pd.DataFrame()\nfor file_name in file_list:\n    month = pd.read_parquet(file_path)\n    month['date'] = month['tpep_pickup_datetime'].dt.date\n    month['hour'] = month['tpep_pickup_datetime'].dt.hour\n    parts = []\n    for (d, h), grp in month.groupby(['date', 'hour']):\n        parts.append(grp.sample(frac=0.05, random_state=42))\n    df = pd.concat([df] + parts)\ndf = df.drop(columns=['date', 'hour'])",
     "lotus": "The Lotus Spa booking log covers 12 months. Taking 5% by each day and each hour keeps both quiet and busy hours. Taking 5% by hour across the whole year would blend every day together.",
@@ -1758,6 +1760,240 @@ export const asg: Assignment = {
     "lotus": "The golden window 18:00 to 20:00 is busy but priced like lunch: try raising it, keep quiet-hour prices. Watch next week to see whether bookings drop by more than you accept.",
     "trap": "Raising prices without setting an acceptable drop in bookings is a gamble."
    }
+  }
+ },
+ "results": {
+  "1.1.1": {
+   "code": "import pandas as pd, numpy as np, matplotlib.pyplot as plt, seaborn as sns, geopandas as gpd, glob\nframes = []\ntotal_rows = 0\nfor f in sorted(glob.glob('/tmp/asg/taxi/yellow_tripdata_2023-*.parquet')):\n    m = pd.read_parquet(f)\n    total_rows += len(m)\n    m['date'] = m['tpep_pickup_datetime'].dt.date\n    m['hour'] = m['tpep_pickup_datetime'].dt.hour\n    s = m.groupby(['date', 'hour'], group_keys=False).sample(frac=0.05, random_state=42)\n    frames.append(s.drop(columns=['date', 'hour']))\n    print(f.split('_')[-1], len(m), '->', len(s))\ndf = pd.concat(frames, ignore_index=True)\nsample_fraction = len(df) / total_rows\nprint('tổng số chuyến cả năm:', total_rows, '| mẫu:', len(df), '| tỷ lệ lấy mẫu:', round(sample_fraction, 4))",
+   "text": "2023-01.parquet 3066766 -> 153336\n2023-02.parquet 2913955 -> 145690\n2023-03.parquet 3403766 -> 170184\n2023-04.parquet 3288250 -> 164410\n2023-05.parquet 3513649 -> 175683\n2023-06.parquet 3307234 -> 165362\n2023-07.parquet 2907108 -> 145348\n2023-08.parquet 2824209 -> 141219\n2023-09.parquet 2846722 -> 142340\n2023-10.parquet 3522285 -> 176117\n2023-11.parquet 3339715 -> 166986\n2023-12.parquet 3376567 -> 168836\ntổng số chuyến cả năm: 38310226 | mẫu: 1915511 | tỷ lệ lấy mẫu: 0.05",
+   "imgs": []
+  },
+  "2.1.1": {
+   "code": "df = df[(df['tpep_pickup_datetime'].dt.year == 2023)].reset_index(drop=True)\ndf.info()",
+   "text": "<class 'pandas.DataFrame'>\nRangeIndex: 1915510 entries, 0 to 1915509\nData columns (total 20 columns):\n #   Column                 Dtype         \n---  ------                 -----         \n 0   VendorID               int64         \n 1   tpep_pickup_datetime   datetime64[us]\n 2   tpep_dropoff_datetime  datetime64[us]\n 3   passenger_count        float64       \n 4   trip_distance          float64       \n 5   RatecodeID             float64       \n 6   store_and_fwd_flag     str           \n 7   PULocationID           int64         \n 8   DOLocationID           int64         \n 9   payment_type           int64         \n 10  fare_amount            float64       \n 11  extra                  float64       \n 12  mta_tax                float64       \n 13  tip_amount             float64       \n 14  tolls_amount           float64       \n 15  improvement_surcharge  float64       \n 16  total_amount           float64       \n 17  congestion_surcharge   float64       \n 18  airport_fee            float64       \n 19  Airport_fee            float64       \ndtypes: datetime64[us](2), float64(13), int64(4), str(1)\nmemory usage: 294.3 MB",
+   "imgs": []
+  },
+  "2.1.2": {
+   "code": "print([c for c in df.columns if 'irport' in c])\ndf['airport_fee'] = df['airport_fee'].fillna(df['Airport_fee']) if 'Airport_fee' in df.columns else df['airport_fee']\ndf = df.drop(columns=[c for c in ['Airport_fee'] if c in df.columns])\nprint(df['airport_fee'].describe().round(2))",
+   "text": "['airport_fee', 'Airport_fee']\ncount    1849775.00\nmean           0.14\nstd            0.47\nmin           -1.75\n25%            0.00\n50%            0.00\n75%            0.00\nmax            1.75\nName: airport_fee, dtype: float64",
+   "imgs": []
+  },
+  "2.1.3": {
+   "code": "money = ['fare_amount', 'extra', 'mta_tax', 'tip_amount', 'tolls_amount', 'improvement_surcharge', 'total_amount', 'congestion_surcharge', 'airport_fee']\nneg = df[money].lt(0).sum()\nprint(neg[neg > 0])\nprint(df.loc[df['fare_amount'] < 0, 'RatecodeID'].value_counts(dropna=False).head())\nfor c in money: df[c] = df[c].abs()",
+   "text": "fare_amount              19059\nextra                     9527\nmta_tax                  18251\ntip_amount                  94\ntolls_amount              1250\nimprovement_surcharge    18790\ntotal_amount             18801\ncongestion_surcharge     15156\nairport_fee               2490\ndtype: int64\nRatecodeID\n1.0    16695\n2.0     1344\n5.0      359\nNaN      358\n3.0      198\nName: count, dtype: int64",
+   "imgs": []
+  },
+  "2.2.1": {
+   "code": "print((df.isnull().mean() * 100).round(2)[df.isnull().sum() > 0])",
+   "text": "passenger_count         3.43\nRatecodeID              3.43\nstore_and_fwd_flag      3.43\ncongestion_surcharge    3.43\nairport_fee             3.43\ndtype: float64",
+   "imgs": []
+  },
+  "2.2.2": {
+   "code": "print(df['passenger_count'].value_counts(dropna=False).sort_index())\ndf['passenger_count'] = df['passenger_count'].fillna(df['passenger_count'].median())\ndf.loc[df['passenger_count'] == 0, 'passenger_count'] = df['passenger_count'].median()",
+   "text": "passenger_count\n0.0      28990\n1.0    1390732\n2.0     280855\n3.0      69463\n4.0      39502\n5.0      24376\n6.0      15829\n7.0          8\n8.0         17\n9.0          3\nNaN      65735\nName: count, dtype: int64",
+   "imgs": []
+  },
+  "2.2.3": {
+   "code": "print(df['RatecodeID'].value_counts(dropna=False))\ndf['RatecodeID'] = df['RatecodeID'].fillna(df['RatecodeID'].mode()[0])",
+   "text": "RatecodeID\n1.0     1744049\n2.0       73959\nNaN       65735\n5.0       10846\n99.0      10649\n3.0        6391\n4.0        3880\n6.0           1\nName: count, dtype: int64",
+   "imgs": []
+  },
+  "2.2.4": {
+   "code": "print(df['congestion_surcharge'].value_counts(dropna=False))\ndf['congestion_surcharge'] = df['congestion_surcharge'].fillna(df['congestion_surcharge'].mode()[0])\ndf['airport_fee'] = df['airport_fee'].fillna(0)\nprint(df.isnull().sum().sum(), 'ô trống còn lại')",
+   "text": "congestion_surcharge\n2.5    1705676\n0.0     144099\nNaN      65735\nName: count, dtype: int64\n65735 ô trống còn lại",
+   "imgs": []
+  },
+  "2.3.1": {
+   "code": "df['trip_duration'] = (df['tpep_dropoff_datetime'] - df['tpep_pickup_datetime']).dt.total_seconds() / 60\nprint(df[['trip_distance','fare_amount','tip_amount','total_amount','trip_duration']].describe().round(1).to_string())\nn0 = len(df)\ndf = df[df['passenger_count'] <= 6]\ndf = df[~((df['trip_distance'] < 0.1) & (df['fare_amount'] > 300))]\ndf = df[~((df['trip_distance'] == 0) & (df['fare_amount'] == 0) & (df['PULocationID'] != df['DOLocationID']))]\ndf = df[(df['trip_duration'] > 0) & (df['trip_duration'] < 24 * 60)]\ndf = df[df['trip_distance'] < 100]\ndf = df[df['fare_amount'] < 500]\ndf = df[df['payment_type'] != 0]\ndf = df.reset_index(drop=True)\nprint('bỏ', n0 - len(df), 'dòng lỗi, còn', len(df))",
+   "text": "       trip_distance  fare_amount  tip_amount  total_amount  trip_duration\ncount      1915510.0    1915510.0   1915510.0     1915510.0      1915510.0\nmean             4.0         20.0         3.5          29.0           17.4\nstd            199.0        105.1         4.1         105.9           40.6\nmin              0.0          0.0         0.0           0.0          -58.6\n25%              1.0          9.3         1.0          16.0            7.6\n50%              1.8         13.5         2.8          21.0           12.7\n75%              3.4         22.6         4.4          31.0           20.7\nmax         191945.0     143163.4       444.0      143167.4         7352.1\nbỏ 66539 dòng lỗi, còn 1848971",
+   "imgs": []
+  },
+  "3.1.1": {
+   "code": "df['pickup_hour'] = df['tpep_pickup_datetime'].dt.hour\ndf['pickup_day'] = df['tpep_pickup_datetime'].dt.day_name()\ndf['pickup_month'] = df['tpep_pickup_datetime'].dt.month\ncats = ['VendorID', 'RatecodeID', 'PULocationID', 'DOLocationID', 'payment_type']\nprint('Phân loại: categorical =', cats, '| numerical = passenger_count, trip_distance, trip_duration, các cột tiền')",
+   "text": "Phân loại: categorical = ['VendorID', 'RatecodeID', 'PULocationID', 'DOLocationID', 'payment_type'] | numerical = passenger_count, trip_distance, trip_duration, các cột tiền",
+   "imgs": []
+  },
+  "3.1.2": {
+   "code": "fig, ax = plt.subplots(1, 3, figsize=(17, 4))\ndf['pickup_hour'].value_counts().sort_index().plot(kind='bar', ax=ax[0], title='Chuyến theo giờ')\norder = ['Monday','Tuesday','Wednesday','Thursday','Friday','Saturday','Sunday']\ndf['pickup_day'].value_counts().reindex(order).plot(kind='bar', ax=ax[1], title='Chuyến theo thứ')\ndf['pickup_month'].value_counts().sort_index().plot(kind='bar', ax=ax[2], title='Chuyến theo tháng')\nplt.tight_layout()\nprint('giờ đông nhất:', df['pickup_hour'].value_counts().idxmax(), '| thứ đông nhất:', df['pickup_day'].value_counts().idxmax(), '| tháng đông nhất:', df['pickup_month'].value_counts().idxmax())",
+   "text": "giờ đông nhất: 18 | thứ đông nhất: Thursday | tháng đông nhất: 5",
+   "imgs": [
+    "/assign/eda-taxi/3_1_2-1.png"
+   ]
+  },
+  "3.1.3": {
+   "code": "cols = ['fare_amount', 'tip_amount', 'total_amount', 'trip_distance']\nprint((df[cols] == 0).sum())\nnz = df[(df[['fare_amount', 'total_amount']] > 0).all(axis=1)].copy()\nprint(len(df), '->', len(nz))",
+   "text": "fare_amount         576\ntip_amount       426710\ntotal_amount        251\ntrip_distance     23540\ndtype: int64\n1848971 -> 1848395",
+   "imgs": []
+  },
+  "3.1.4": {
+   "code": "monthly = nz.groupby('pickup_month')['total_amount'].sum() * (1 / sample_fraction)\n(monthly / 1e6).plot(kind='bar', title='Doanh thu theo tháng (triệu USD, đã nhân ngược tỷ lệ mẫu)')\nprint((monthly / 1e6).round(1).to_string())",
+   "text": "pickup_month\n1      81.9\n2      77.4\n3      93.3\n4      91.7\n5     100.2\n6      93.7\n7      82.4\n8      79.9\n9      81.7\n10    100.2\n11     93.6\n12     93.0",
+   "imgs": [
+    "/assign/eda-taxi/3_1_4-1.png"
+   ]
+  },
+  "3.1.5": {
+   "code": "nz['quarter'] = nz['tpep_pickup_datetime'].dt.quarter\nq = nz.groupby('quarter')['total_amount'].sum()\nprint((q / q.sum() * 100).round(1).to_string())\n(q / q.sum()).plot(kind='pie', autopct='%1.1f%%', title='Tỷ trọng doanh thu theo quý')",
+   "text": "quarter\n1    23.6\n2    26.7\n3    22.8\n4    26.8",
+   "imgs": [
+    "/assign/eda-taxi/3_1_5-1.png"
+   ]
+  },
+  "3.1.6": {
+   "code": "d = nz[nz['trip_distance'] > 0]\nd2 = d.sample(8000, random_state=1)\nsns.scatterplot(data=d2, x='trip_distance', y='fare_amount', alpha=0.3)\nprint('tương quan distance - fare:', round(d['trip_distance'].corr(d['fare_amount']), 3))",
+   "text": "tương quan distance - fare: 0.944",
+   "imgs": [
+    "/assign/eda-taxi/3_1_6-1.png"
+   ]
+  },
+  "3.1.7": {
+   "code": "s = nz.sample(8000, random_state=2)\nfig, ax = plt.subplots(1, 3, figsize=(17, 4))\nsns.scatterplot(data=s, x='trip_duration', y='fare_amount', alpha=0.3, ax=ax[0])\nsns.boxplot(data=s, x='passenger_count', y='fare_amount', ax=ax[1])\nsns.scatterplot(data=s, x='trip_distance', y='tip_amount', alpha=0.3, ax=ax[2])\nprint('fare ~ duration', round(nz['fare_amount'].corr(nz['trip_duration']), 3))\nprint('fare ~ passengers', round(nz['fare_amount'].corr(nz['passenger_count']), 3))\nprint('tip ~ distance', round(nz['tip_amount'].corr(nz['trip_distance']), 3))",
+   "text": "fare ~ duration 0.271\nfare ~ passengers 0.047\ntip ~ distance 0.568",
+   "imgs": [
+    "/assign/eda-taxi/3_1_7-1.png"
+   ]
+  },
+  "3.1.8": {
+   "code": "pt = df['payment_type'].map({1: 'Thẻ tín dụng', 2: 'Tiền mặt', 3: 'Miễn phí', 4: 'Tranh chấp'}).value_counts()\nprint((pt / pt.sum() * 100).round(1).to_string())\npt.plot(kind='bar', title='Hình thức thanh toán')",
+   "text": "payment_type\nThẻ tín dụng    80.7\nTiền mặt        17.3\nTranh chấp       1.3\nMiễn phí         0.7",
+   "imgs": [
+    "/assign/eda-taxi/3_1_8-1.png"
+   ]
+  },
+  "3.1.9": {
+   "code": "import zipfile\nzipfile.ZipFile('/tmp/asg/taxi/taxi_zones.zip').extractall('/tmp/asg/taxi/zones')\nzones = gpd.read_file(glob.glob('/tmp/asg/taxi/zones/**/taxi_zones.shp', recursive=True)[0])\nprint(zones.head(3).drop(columns='geometry').to_string())\nzones.plot(figsize=(6, 6))",
+   "text": "   OBJECTID  Shape_Leng  Shape_Area                     zone  LocationID borough\n0         1    0.116357    0.000782           Newark Airport           1     EWR\n1         2    0.433470    0.004866              Jamaica Bay           2  Queens\n2         3    0.084341    0.000314  Allerton/Pelham Gardens           3   Bronx",
+   "imgs": [
+    "/assign/eda-taxi/3_1_9-1.png"
+   ]
+  },
+  "3.1.10": {
+   "code": "merged = df.merge(zones[['LocationID', 'zone', 'borough']], left_on='PULocationID', right_on='LocationID', how='left')\nprint(merged[['PULocationID', 'zone', 'borough']].head())",
+   "text": "   PULocationID             zone    borough\n0            68     East Chelsea  Manhattan\n1           170      Murray Hill  Manhattan\n2            79     East Village  Manhattan\n3           148  Lower East Side  Manhattan\n4           161   Midtown Center  Manhattan",
+   "imgs": []
+  },
+  "3.1.11": {
+   "code": "trips_per_zone = merged.groupby('PULocationID').size().rename('trips')\nprint(trips_per_zone.sort_values(ascending=False).head(8))",
+   "text": "PULocationID\n132    99363\n237    87916\n161    86783\n236    77704\n162    66773\n138    64839\n186    64517\n230    62028\nName: trips, dtype: int64",
+   "imgs": []
+  },
+  "3.1.12": {
+   "code": "zones_with_trips = zones.merge(trips_per_zone, left_on='LocationID', right_index=True, how='left').fillna({'trips': 0})\nprint(zones_with_trips[['zone', 'borough', 'trips']].sort_values('trips', ascending=False).head(8).to_string(index=False))",
+   "text": "                        zone   borough   trips\n                 JFK Airport    Queens 99363.0\n       Upper East Side South Manhattan 87916.0\n              Midtown Center Manhattan 86783.0\n       Upper East Side North Manhattan 77704.0\n                Midtown East Manhattan 66773.0\n           LaGuardia Airport    Queens 64839.0\nPenn Station/Madison Sq West Manhattan 64517.0\n   Times Sq/Theatre District Manhattan 62028.0",
+   "imgs": []
+  },
+  "3.1.13": {
+   "code": "fig, ax = plt.subplots(1, 1, figsize=(10, 10))\nzones_with_trips.plot(column='trips', ax=ax, legend=True, cmap='YlOrRd', legend_kwds={'label': 'Số chuyến đón (mẫu)', 'orientation': 'horizontal'})\nax.set_axis_off()",
+   "text": "",
+   "imgs": [
+    "/assign/eda-taxi/3_1_13-1.png"
+   ]
+  },
+  "3.2.1": {
+   "code": "d = nz[nz['trip_distance'] > 0].copy()\nd['speed'] = d['trip_distance'] / (d['trip_duration'] / 60)\nd = d[d['speed'] < 80]\nsp = d.groupby('pickup_hour')['speed'].mean()\nsp.plot(marker='o', title='Tốc độ trung bình (dặm/giờ) theo giờ')\nroute = d.groupby(['PULocationID', 'DOLocationID', 'pickup_hour']).agg(n=('speed', 'size'), speed=('speed', 'mean')).reset_index()\nroute = route[route['n'] >= 30].sort_values('speed').head(8)\nprint(sp.round(1).to_string())\nprint(route.round(1).to_string(index=False))",
+   "text": "pickup_hour\n0     14.7\n1     14.6\n2     14.7\n3     15.6\n4     18.6\n5     20.5\n6     16.9\n7     13.3\n8     11.3\n9     11.0\n10    10.6\n11    10.1\n12    10.0\n13    10.0\n14     9.8\n15     9.5\n16     9.7\n17     9.6\n18    10.1\n19    11.2\n20    12.3\n21    12.8\n22    13.2\n23    14.3\n PULocationID  DOLocationID  pickup_hour   n  speed\n          186           186           11  30    3.7\n          186           186           13  38    3.7\n          100           100           19  30    3.7\n          186           100           16  71    3.8\n          186           186           15  32    3.8\n          186           100           13  91    3.9\n          186           230           13 312    3.9\n          230           230           17 145    3.9",
+   "imgs": [
+    "/assign/eda-taxi/3_2_1-1.png"
+   ]
+  },
+  "3.2.2": {
+   "code": "h = df['pickup_hour'].value_counts().sort_index()\nh.plot(kind='bar', title='Số chuyến mỗi giờ (mẫu)')\nprint('giờ đông nhất:', h.idxmax(), 'với', h.max(), 'chuyến trong mẫu')",
+   "text": "giờ đông nhất: 18 với 130555 chuyến trong mẫu",
+   "imgs": [
+    "/assign/eda-taxi/3_2_2-1.png"
+   ]
+  },
+  "3.2.3": {
+   "code": "top5 = (h.sort_values(ascending=False).head(5) / sample_fraction).round(0)\nprint(top5.astype(int).to_string())",
+   "text": "pickup_hour\n18    2611100\n17    2497340\n19    2339440\n16    2307620\n15    2306240",
+   "imgs": []
+  },
+  "3.2.4": {
+   "code": "df['is_weekend'] = df['tpep_pickup_datetime'].dt.dayofweek >= 5\nt = df.groupby(['pickup_hour', 'is_weekend']).size().unstack()\nt.columns = ['Ngày thường', 'Cuối tuần']\n(t / t.sum()).plot(title='Tỷ trọng chuyến theo giờ: ngày thường và cuối tuần')",
+   "text": "",
+   "imgs": [
+    "/assign/eda-taxi/3_2_4-1.png"
+   ]
+  },
+  "3.2.5": {
+   "code": "pu = merged.groupby('PULocationID').size().sort_values(ascending=False).head(10)\ndo = df.groupby('DOLocationID').size().sort_values(ascending=False).head(10)\nnames = zones.set_index('LocationID')['zone']\nprint('Top 10 điểm đón:'); print(pd.DataFrame({'zone': names[pu.index].values, 'trips': pu.values}).to_string(index=False))\nprint('Top 10 điểm trả:'); print(pd.DataFrame({'zone': names[do.index].values, 'trips': do.values}).to_string(index=False))\nhp = df[df['PULocationID'].isin(pu.index[:5])].groupby(['pickup_hour', 'PULocationID']).size().unstack()\nhp.columns = [names.get(c, c) for c in hp.columns]\nhp.plot(figsize=(11, 4), title='Giờ đón tại 5 khu đông nhất')",
+   "text": "Top 10 điểm đón:\n                        zone  trips\n                 JFK Airport  99363\n       Upper East Side South  87916\n              Midtown Center  86783\n       Upper East Side North  77704\n                Midtown East  66773\n           LaGuardia Airport  64839\nPenn Station/Madison Sq West  64517\n   Times Sq/Theatre District  62028\n         Lincoln Square East  60845\n                 Murray Hill  55076\nTop 10 điểm trả:\n                     zone  trips\n    Upper East Side North  81437\n    Upper East Side South  78448\n           Midtown Center  72124\nTimes Sq/Theatre District  57357\n              Murray Hill  54985\n             Midtown East  52590\n      Lincoln Square East  51779\n    Upper West Side South  51481\n          Lenox Hill West  48877\n             East Chelsea  46791",
+   "imgs": [
+    "/assign/eda-taxi/3_2_5-1.png"
+   ]
+  },
+  "3.2.6": {
+   "code": "pc = df.groupby('PULocationID').size(); dc = df.groupby('DOLocationID').size()\nr = (pc / dc).dropna(); r = r[(pc.reindex(r.index) >= 50) & (dc.reindex(r.index) >= 50)]\ntab = pd.DataFrame({'zone': names.reindex(r.index).fillna('Unknown').values, 'pickup/dropoff': r.values}, index=r.index)\nprint('Cao nhất:'); print(tab.sort_values('pickup/dropoff', ascending=False).head(10).round(2).to_string(index=False))\nprint('Thấp nhất:'); print(tab.sort_values('pickup/dropoff').head(10).round(2).to_string(index=False))",
+   "text": "Cao nhất:\n                        zone  pickup/dropoff\n               East Elmhurst            7.83\n                 JFK Airport            4.48\n           LaGuardia Airport            2.88\nPenn Station/Madison Sq West            1.57\n     Greenwich Village South            1.39\n                Central Park            1.35\n                West Village            1.32\n                Midtown East            1.27\n            Garment District            1.21\n              Midtown Center            1.20\nThấp nhất:\n                    zone  pickup/dropoff\n          Newark Airport            0.05\n              Greenpoint            0.06\n                Flushing            0.06\nWashington Heights North            0.06\n            Clinton Hill            0.07\n          Bushwick South            0.07\n                  Inwood            0.07\n        Roosevelt Island            0.08\n      South Williamsburg            0.08\n          Bushwick North            0.08",
+   "imgs": []
+  },
+  "3.2.7": {
+   "code": "night = df[(df['pickup_hour'] >= 23) | (df['pickup_hour'] < 5)]\nnpu = night.groupby('PULocationID').size().sort_values(ascending=False).head(10)\nndo = night.groupby('DOLocationID').size().sort_values(ascending=False).head(10)\nprint('Đón đêm:'); print(pd.DataFrame({'zone': names[npu.index].values, 'trips': npu.values}).to_string(index=False))\nprint('Trả đêm:'); print(pd.DataFrame({'zone': names[ndo.index].values, 'trips': ndo.values}).to_string(index=False))",
+   "text": "Đón đêm:\n                        zone  trips\n                East Village  15416\n                 JFK Airport  13870\n                West Village  12498\n                Clinton East   9721\n             Lower East Side   9665\n     Greenwich Village South   9016\n   Times Sq/Theatre District   7929\nPenn Station/Madison Sq West   6355\n           LaGuardia Airport   6090\n               Midtown South   6046\nTrả đêm:\n                     zone  trips\n             East Village   8360\n             Clinton East   6813\n              Murray Hill   6152\n             East Chelsea   5667\n                 Gramercy   5517\n          Lenox Hill West   5129\n             West Village   4995\n           Yorkville West   4970\nTimes Sq/Theatre District   4426\n          Lower East Side   4399",
+   "imgs": []
+  },
+  "3.2.8": {
+   "code": "nh = (nz['pickup_hour'] >= 23) | (nz['pickup_hour'] < 5)\nshare = nz.groupby(nh)['total_amount'].sum(); share = share / share.sum() * 100\nprint('Doanh thu ban ngày:', round(share[False], 1), '% | ban đêm (23h-5h):', round(share[True], 1), '%')\nshare.rename({False: 'Ban ngày', True: 'Ban đêm'}).plot(kind='bar', title='Tỷ trọng doanh thu (%)')",
+   "text": "Doanh thu ban ngày: 88.6 % | ban đêm (23h-5h): 11.4 %",
+   "imgs": [
+    "/assign/eda-taxi/3_2_8-1.png"
+   ]
+  },
+  "3.2.9": {
+   "code": "d = nz[nz['trip_distance'] > 0.5].copy()\nd['fare_per_mile'] = d['fare_amount'] / d['trip_distance']\nd = d[d['fare_per_mile'] < 100]\ng = d.groupby('passenger_count')['fare_per_mile'].mean()\nout = pd.DataFrame({'fare/mile': g, 'fare/mile/người': g / g.index})\nprint(out.round(2).to_string())\nout['fare/mile/người'].plot(kind='bar', title='Giá mỗi dặm mỗi hành khách')",
+   "text": "                 fare/mile  fare/mile/người\npassenger_count                            \n1.0                   7.49             7.49\n2.0                   7.33             3.66\n3.0                   7.47             2.49\n4.0                   7.48             1.87\n5.0                   7.36             1.47\n6.0                   7.47             1.24",
+   "imgs": [
+    "/assign/eda-taxi/3_2_9-1.png"
+   ]
+  },
+  "3.2.10": {
+   "code": "fig, ax = plt.subplots(1, 2, figsize=(14, 4))\nd.groupby('pickup_hour')['fare_per_mile'].mean().plot(marker='o', ax=ax[0], title='Giá/dặm theo giờ')\nd.groupby('pickup_day')['fare_per_mile'].mean().reindex(order).plot(kind='bar', ax=ax[1], title='Giá/dặm theo thứ')\nprint(d.groupby('pickup_hour')['fare_per_mile'].mean().round(2).to_string())",
+   "text": "pickup_hour\n0     6.30\n1     6.24\n2     6.16\n3     6.02\n4     5.75\n5     5.66\n6     6.02\n7     6.71\n8     7.41\n9     7.68\n10    7.80\n11    8.06\n12    8.16\n13    8.07\n14    8.04\n15    8.07\n16    8.00\n17    8.01\n18    7.83\n19    7.45\n20    6.97\n21    6.79\n22    6.64\n23    6.41",
+   "imgs": [
+    "/assign/eda-taxi/3_2_10-1.png"
+   ]
+  },
+  "3.2.11": {
+   "code": "v = d.groupby(['pickup_hour', 'VendorID'])['fare_per_mile'].mean().unstack()\nv.plot(title='Giá/dặm theo giờ của từng hãng (VendorID)')\nprint(d.groupby('VendorID')['fare_per_mile'].mean().round(2))",
+   "text": "VendorID\n1    7.42\n2    7.47\nName: fare_per_mile, dtype: float64",
+   "imgs": [
+    "/assign/eda-taxi/3_2_11-1.png"
+   ]
+  },
+  "3.2.12": {
+   "code": "d['tier'] = pd.cut(d['trip_distance'], [0, 2, 5, 1000], labels=['đến 2 dặm', '2 đến 5 dặm', 'trên 5 dặm'])\nt = d.groupby(['tier', 'VendorID'], observed=True)['fare_per_mile'].mean().unstack()\nprint(t.round(2).to_string())\nt.plot(kind='bar', title='Giá/dặm theo cự ly và hãng')",
+   "text": "VendorID        1     2\ntier                   \nđến 2 dặm    8.85  9.02\n2 đến 5 dặm  6.39  6.55\ntrên 5 dặm   4.42  4.50",
+   "imgs": [
+    "/assign/eda-taxi/3_2_12-1.png"
+   ]
+  },
+  "3.2.13": {
+   "code": "x = nz[(nz['payment_type'] == 1) & (nz['fare_amount'] > 0)].copy()\nx['tip_pct'] = x['tip_amount'] / x['fare_amount'] * 100\nx = x[x['tip_pct'] < 100]\nfig, ax = plt.subplots(1, 3, figsize=(17, 4))\nx.groupby(pd.cut(x['trip_distance'], [0, 1, 2, 5, 10, 100]), observed=True)['tip_pct'].mean().plot(kind='bar', ax=ax[0], title='Tip % theo cự ly')\nx.groupby('passenger_count')['tip_pct'].mean().plot(kind='bar', ax=ax[1], title='Tip % theo số khách')\nx.groupby('pickup_hour')['tip_pct'].mean().plot(marker='o', ax=ax[2], title='Tip % theo giờ')\nprint('tip trung bình (khách trả thẻ):', round(x['tip_pct'].mean(), 1), '%')",
+   "text": "tip trung bình (khách trả thẻ): 24.6 %",
+   "imgs": [
+    "/assign/eda-taxi/3_2_13-1.png"
+   ]
+  },
+  "3.2.14": {
+   "code": "pv = df.pivot_table(index='pickup_hour', columns='pickup_day', values='passenger_count', aggfunc='mean')[order]\nsns.heatmap(pv, cmap='YlGnBu', annot=False)\nprint(pv.round(2).iloc[[0, 6, 12, 18, 23]].to_string())",
+   "text": "pickup_day   Monday  Tuesday  Wednesday  Thursday  Friday  Saturday  Sunday\npickup_hour                                                                \n0              1.41     1.35       1.34      1.36    1.39      1.45    1.48\n6              1.26     1.26       1.21      1.24    1.24      1.31    1.36\n12             1.37     1.33       1.33      1.34    1.37      1.45    1.47\n18             1.35     1.33       1.33      1.35    1.42      1.51    1.46\n23             1.38     1.38       1.37      1.38    1.47      1.53    1.40",
+   "imgs": [
+    "/assign/eda-taxi/3_2_14-1.png"
+   ]
+  },
+  "3.2.15": {
+   "code": "pz = df.groupby('PULocationID').agg(avg=('passenger_count', 'mean'), n=('passenger_count', 'size'))\npz = pz[pz['n'] >= 100]\nprint(pz.sort_values('avg', ascending=False).head(5).assign(zone=lambda t: names.reindex(t.index).fillna('Unknown').values).round(2).to_string())\nzz = zones.merge(pz['avg'], left_on='LocationID', right_index=True, how='left')\nfig, ax = plt.subplots(figsize=(8, 8)); zz.plot(column='avg', ax=ax, legend=True, cmap='PuBu', missing_kwds={'color': '#eeeeee'}); ax.set_axis_off()",
+   "text": "               avg     n                zone\nPULocationID                                \n12            1.82   837        Battery Park\n195           1.71   196            Red Hook\n66            1.69   481  DUMBO/Vinegar Hill\n1             1.69   284      Newark Airport\n265           1.56  1018             Unknown",
+   "imgs": [
+    "/assign/eda-taxi/3_2_15-1.png"
+   ]
+  },
+  "3.2.16": {
+   "code": "ex = {'extra': df['extra'] > 0, 'congestion_surcharge': df['congestion_surcharge'] > 0, 'airport_fee': df['airport_fee'] > 0, 'tolls': df['tolls_amount'] > 0}\nrate = pd.Series({k: v.mean() * 100 for k, v in ex.items()})\nprint(rate.round(1).to_string())\nfig, ax = plt.subplots(1, 2, figsize=(14, 4))\nrate.plot(kind='bar', ax=ax[0], title='% chuyến có phụ phí')\ndf.groupby('pickup_hour').apply(lambda t: (t['extra'] > 0).mean() * 100).plot(ax=ax[1], title='% chuyến có phụ phí extra theo giờ')",
+   "text": "extra                   61.6\ncongestion_surcharge    92.2\nairport_fee              8.9\ntolls                    8.2",
+   "imgs": [
+    "/assign/eda-taxi/3_2_16-1.png"
+   ]
   }
  }
 };
