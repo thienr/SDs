@@ -1,6 +1,6 @@
 import { Link, useRouterState } from "@tanstack/react-router";
 import { useEffect, useSyncExternalStore, type ReactNode } from "react";
-import { BookOpen, Moon, Search, Settings, Sun, TableOfContents } from "lucide-react";
+import { BookOpen, Moon, Network, Search, Settings, Sun, TableOfContents } from "lucide-react";
 import { MapBar } from "@/components/map-bar";
 import { getProgress, getServerProgress, hydrateProgress, setLang, subscribeProgress, toggleTheme, type Lang } from "@/lib/progress";
 import { hydrateRaw } from "@/lib/raw-store";
@@ -8,6 +8,7 @@ import { hydrateCms } from "@/lib/cms-store";
 
 const links = [
   { to: "/", vi: "Học", en: "Study", icon: BookOpen },
+  { to: "/ban-do", vi: "Bản đồ", en: "Map", icon: Network },
   { to: "/tim-kiem", vi: "Tìm", en: "Search", icon: Search },
   { to: "/cong-thuc", vi: "Công thức", en: "Formulas", icon: TableOfContents },
   { to: "/do-phu", vi: "Độ phủ", en: "Coverage", icon: TableOfContents },
@@ -88,7 +89,7 @@ export function AppShell({ children }: { children: ReactNode }) {
           <main className="px-4 pb-24 pt-4 md:px-8 md:pb-16 md:pt-8">{children}</main>
         </div>
       </div>
-      <nav className="fixed inset-x-0 bottom-0 z-20 grid grid-cols-4 border-t border-line bg-card md:hidden">
+      <nav className="fixed inset-x-0 bottom-0 z-20 grid grid-cols-5 border-t border-line bg-card md:hidden">
         {links.map((link) => {
           const Icon = link.icon;
           const on = pathname === link.to;
