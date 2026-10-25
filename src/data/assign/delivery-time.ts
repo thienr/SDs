@@ -808,7 +808,7 @@ export const asg: Assignment = {
    "vi": {
     "think": "Bỏ vài cột tương quan yếu với y để mô hình gọn hơn. Ghi lý do cho từng cột.",
     "steps": [
-     "Chọn 3 đến 5 cột có |tương quan| nhỏ với time_taken, trong file của bạn như min_item_price (khoảng 0,02) và store_primary_category (khoảng 0,03).",
+     "Chọn 3 đến 5 cột có |tương quan| nhỏ với time_taken, trong file của bạn như min_item_price (khoảng 0,02) và day (khoảng 0,05); store_primary_category có 73 nhóm nên cũng bỏ cho gọn.",
      "Chỉ bỏ ở tập train, rồi bỏ đúng các cột đó ở validation (bài 4.3).",
      "Tương quan thấp theo đường thẳng chưa chắc là vô dụng: ghi chú điều đó."
     ],
@@ -819,7 +819,7 @@ export const asg: Assignment = {
    "en": {
     "think": "Drop a few weakly correlated columns for a leaner model. Write down the reason for each.",
     "steps": [
-     "Pick 3 to 5 columns with small |correlation| with time_taken, in your file such as min_item_price (about 0.02) and store_primary_category (about 0.03).",
+     "Pick 3 to 5 columns with small |correlation| with time_taken, in your file such as min_item_price (about 0.02) and day (about 0.05); store_primary_category has 73 groups so it is dropped for leanness too.",
      "Drop on train, then drop exactly the same columns on validation (task 4.3).",
      "Low linear correlation does not mean useless: note that."
     ],
@@ -1053,7 +1053,7 @@ export const asg: Assignment = {
     "think": "RFE bỏ dần từng biến yếu nhất. Chọn số biến mà thêm nữa cũng không cải thiện đáng kể.",
     "steps": [
      "Vòng lặp n_features_to_select từ 1 đến số cột; mỗi lần fit RFE rồi tính điểm trên validation.",
-     "Vẽ điểm theo số biến và chọn khuỷu (nơi đường bắt đầu phẳng). Đề gợi ý 8 biến.",
+     "Vẽ điểm theo số biến và chọn khuỷu (nơi đường bắt đầu phẳng). Đề gợi ý 8 biến, nhưng khi tính cả cột dummy thì đường cong phẳng ở khoảng 12 biến (R² trên validation ≈ 0,89).",
      "Dựng mô hình cuối với số biến đó và liệt kê các biến được giữ."
     ],
     "code": "from sklearn.feature_selection import RFE\nscores = {}\nfor k in range(1, X_train.shape[1] + 1):\n    rfe = RFE(LinearRegression(), n_features_to_select=k).fit(X_train, y_train)\n    cols = X_train.columns[rfe.support_]\n    m = LinearRegression().fit(X_train[cols], y_train)\n    scores[k] = r2_score(y_test, m.predict(X_test[cols]))\npd.Series(scores).plot(marker='o')",
@@ -1064,7 +1064,7 @@ export const asg: Assignment = {
     "think": "RFE drops the weakest feature one at a time. Choose the number of features beyond which adding more barely helps.",
     "steps": [
      "Loop n_features_to_select from 1 to the column count; for each, fit RFE and score on validation.",
-     "Plot the score against the number of features and choose the elbow (where the line flattens). The brief hints at 8 features.",
+     "Plot the score against the number of features and choose the elbow (where the line flattens). The brief hints at 8 features, but counting dummy columns the curve flattens around 12 (validation R² ≈ 0.89).",
      "Build the final model with that many features and list the kept ones."
     ],
     "code": "from sklearn.feature_selection import RFE\nscores = {}\nfor k in range(1, X_train.shape[1] + 1):\n    rfe = RFE(LinearRegression(), n_features_to_select=k).fit(X_train, y_train)\n    cols = X_train.columns[rfe.support_]\n    m = LinearRegression().fit(X_train[cols], y_train)\n    scores[k] = r2_score(y_test, m.predict(X_test[cols]))\npd.Series(scores).plot(marker='o')",
@@ -1104,10 +1104,10 @@ export const asg: Assignment = {
     "steps": [
      "Hệ số chuẩn hóa: so độ mạnh giữa các biến (đơn vị là độ lệch chuẩn).",
      "Hệ số gốc = hệ số chuẩn hóa chia cho độ lệch chuẩn của biến đó (scaler.scale_).",
-     "Diễn giải theo đơn vị gốc: tăng 1 món (total_items) thì thời gian chờ đổi bao nhiêu phút, giữ các biến khác cố định.",
+     "Diễn giải theo đơn vị gốc: tăng 1 đơn vị (ví dụ distance) thì thời gian chờ đổi bao nhiêu phút, giữ các biến khác cố định.",
      "Chú ý dấu và độ lớn."
     ],
-    "code": "coef_scaled = pd.Series(final_model.coef_, index=cols)\nscale = pd.Series(scaler.scale_, index=num)\ncoef_orig = coef_scaled[cols.intersection(num)] / scale[cols.intersection(num)]\nprint(pd.DataFrame({'scaled': coef_scaled, 'original': coef_orig}))\n# effect of +1 total_items on time_taken: coef_orig['total_items'] minutes",
+    "code": "coef_scaled = pd.Series(final_model.coef_, index=cols)\nscale = pd.Series(scaler.scale_, index=num)\ncoef_orig = coef_scaled[cols.intersection(num)] / scale[cols.intersection(num)]\nprint(pd.DataFrame({'scaled': coef_scaled, 'original': coef_orig}))\n# effect of +1 distance on time_taken: coef_orig['distance'] minutes",
     "lotus": "Nếu hệ số gốc của số đơn đang chờ là 0,1 thì thêm 10 đơn đang chờ làm khách chờ thêm khoảng 1 phút, giữ mọi thứ khác không đổi.",
     "trap": "Hệ số chuẩn hóa so được độ mạnh, nhưng muốn nói «thêm 1 đơn thì mấy phút» phải dùng hệ số thang gốc."
    },
@@ -1116,10 +1116,10 @@ export const asg: Assignment = {
     "steps": [
      "Scaled coefficients: compare strength across features (unit is standard deviations).",
      "Original coefficient = scaled coefficient divided by the feature's standard deviation (scaler.scale_).",
-     "Interpret in original units: one more item (total_items) changes the wait by how many minutes, holding other features fixed.",
+     "Interpret in original units: one more unit (for example distance) changes the wait by how many minutes, holding other features fixed.",
      "Mind sign and size."
     ],
-    "code": "coef_scaled = pd.Series(final_model.coef_, index=cols)\nscale = pd.Series(scaler.scale_, index=num)\ncoef_orig = coef_scaled[cols.intersection(num)] / scale[cols.intersection(num)]\nprint(pd.DataFrame({'scaled': coef_scaled, 'original': coef_orig}))\n# effect of +1 total_items on time_taken: coef_orig['total_items'] minutes",
+    "code": "coef_scaled = pd.Series(final_model.coef_, index=cols)\nscale = pd.Series(scaler.scale_, index=num)\ncoef_orig = coef_scaled[cols.intersection(num)] / scale[cols.intersection(num)]\nprint(pd.DataFrame({'scaled': coef_scaled, 'original': coef_orig}))\n# effect of +1 distance on time_taken: coef_orig['distance'] minutes",
     "lotus": "If the original coefficient for pending orders is 0.1, then 10 more pending orders add about 1 minute to the wait, holding everything else constant.",
     "trap": "Scaled coefficients compare strength, but to say “one more order is how many minutes” you need the original-scale coefficient."
    }
@@ -1369,6 +1369,151 @@ export const asg: Assignment = {
     "lotus": "If the model underguesses at every peak hour, residuals by hour show a shape and you are missing an hour-related feature.",
     "trap": "Saying only “residuals should be around 0” without saying which shapes are bad signs."
    }
+  }
+ },
+ "results": {
+  "2.1.1": {
+   "code": "import pandas as pd, numpy as np, matplotlib.pyplot as plt, seaborn as sns\ndf = pd.read_csv('/tmp/asg/all/1/Delivery_Starter/porter_data_1.csv')\ndf['created_at'] = pd.to_datetime(df['created_at'])\ndf['actual_delivery_time'] = pd.to_datetime(df['actual_delivery_time'])\nprint(df[['created_at','actual_delivery_time']].dtypes)\nprint(df[['created_at','actual_delivery_time']].head(3))",
+   "text": "created_at              datetime64[us]\nactual_delivery_time    datetime64[us]\ndtype: object\n           created_at actual_delivery_time\n0 2015-02-06 22:24:17  2015-02-06 23:11:17\n1 2015-02-10 21:49:25  2015-02-10 22:33:25\n2 2015-02-16 00:11:35  2015-02-16 01:06:35",
+   "imgs": []
+  },
+  "2.1.2": {
+   "code": "cat_cols = ['market_id', 'order_protocol', 'store_primary_category']\ndf[cat_cols] = df[cat_cols].astype('category')\nprint(df[cat_cols].nunique())",
+   "text": "market_id                  6\norder_protocol             7\nstore_primary_category    73\ndtype: int64",
+   "imgs": []
+  },
+  "2.2.1": {
+   "code": "df['time_taken'] = (df['actual_delivery_time'] - df['created_at']).dt.total_seconds() / 60\nprint(df['time_taken'].describe().round(1))",
+   "text": "count    175777.0\nmean         46.2\nstd           9.3\nmin          32.0\n25%          39.0\n50%          45.0\n75%          52.0\nmax         110.0\nName: time_taken, dtype: float64",
+   "imgs": []
+  },
+  "2.2.2": {
+   "code": "df['hour'] = df['created_at'].dt.hour\ndf['day'] = df['created_at'].dt.dayofweek\ndf['isWeekend'] = (df['day'] >= 5).astype('category')\nprint(df.groupby('hour')['time_taken'].mean().round(1).to_string())\ndf = df.drop(columns=['created_at', 'actual_delivery_time'])\ndf.groupby('hour')['time_taken'].mean().plot(marker='o', title='Thời gian giao trung bình theo giờ (phút)')",
+   "text": "hour\n0     46.4\n1     47.7\n2     50.7\n3     50.2\n4     46.0\n5     44.4\n6     45.0\n7     44.7\n8     46.5\n14    46.3\n15    45.3\n16    44.2\n17    43.6\n18    42.4\n19    43.5\n20    41.7\n21    40.1\n22    40.7\n23    41.3",
+   "imgs": [
+    "/assign/delivery-time/2_2_2-1.png"
+   ]
+  },
+  "2.3.1": {
+   "code": "y = df['time_taken']\nX = df.drop(columns=['time_taken'])\nprint(X.shape, y.shape)",
+   "text": "(175777, 15) (175777,)",
+   "imgs": []
+  },
+  "2.3.2": {
+   "code": "from sklearn.model_selection import train_test_split\nX_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)\nprint(len(X_train), len(X_test))",
+   "text": "140621 35156",
+   "imgs": []
+  },
+  "3.1.1": {
+   "code": "num_cols = X_train.select_dtypes(include='number').columns.drop(['hour','day'])\nX_train[num_cols].hist(bins=40, figsize=(14, 9))\nplt.tight_layout()\nprint((X_train[num_cols] < 0).sum())",
+   "text": "total_items                  0\nsubtotal                     0\nnum_distinct_items           0\nmin_item_price              11\nmax_item_price               0\ntotal_onshift_dashers       20\ntotal_busy_dashers          16\ntotal_outstanding_orders    34\ndistance                     0\ndtype: int64",
+   "imgs": [
+    "/assign/delivery-time/3_1_1-1.png"
+   ]
+  },
+  "3.1.2": {
+   "code": "fig, ax = plt.subplots(1, 4, figsize=(16, 3.5))\nfor a, c in zip(ax, ['market_id', 'order_protocol', 'isWeekend']):\n    X_train[c].value_counts().sort_index().plot(kind='bar', ax=a, title=c)\nX_train['store_primary_category'].value_counts().head(15).plot(kind='bar', ax=ax[3], title='top 15 store_primary_category')\nplt.tight_layout()",
+   "text": "",
+   "imgs": [
+    "/assign/delivery-time/3_1_2-1.png"
+   ]
+  },
+  "3.1.3": {
+   "code": "sns.histplot(y_train, bins=40, kde=True)\nprint(y_train.describe().round(1))",
+   "text": "count    140621.0\nmean         46.2\nstd           9.3\nmin          32.0\n25%          39.0\n50%          45.0\n75%          52.0\nmax         110.0\nName: time_taken, dtype: float64",
+   "imgs": [
+    "/assign/delivery-time/3_1_3-1.png"
+   ]
+  },
+  "3.2.1": {
+   "code": "train = X_train.copy(); train['time_taken'] = y_train\nsample = train.sample(5000, random_state=42)\nfig, ax = plt.subplots(1, 3, figsize=(16, 4))\nfor a, c in zip(ax, ['distance', 'subtotal', 'total_outstanding_orders']):\n    sns.scatterplot(data=sample, x=c, y='time_taken', alpha=0.3, ax=a)\nplt.figure(figsize=(10, 4)); sns.boxplot(data=train, x='hour', y='time_taken')",
+   "text": "",
+   "imgs": [
+    "/assign/delivery-time/3_2_1-1.png",
+    "/assign/delivery-time/3_2_1-2.png"
+   ]
+  },
+  "3.3.1": {
+   "code": "corr = train.select_dtypes(include='number').corr()\nplt.figure(figsize=(11, 8))\nsns.heatmap(corr, annot=True, fmt='.2f', cmap='coolwarm', center=0)\nprint(corr['time_taken'].sort_values().round(3).to_string())",
+   "text": "hour                       -0.346\nmin_item_price              0.021\nday                         0.045\ntotal_onshift_dashers       0.172\ntotal_busy_dashers          0.207\ntotal_items                 0.221\nmax_item_price              0.255\nnum_distinct_items          0.313\ntotal_outstanding_orders    0.385\nsubtotal                    0.413\ndistance                    0.461\ntime_taken                  1.000",
+   "imgs": [
+    "/assign/delivery-time/3_3_1-1.png"
+   ]
+  },
+  "3.3.2": {
+   "code": "weak = ['min_item_price', 'store_primary_category']\nX_train = X_train.drop(columns=weak)\nX_test = X_test.drop(columns=weak)\nprint(list(X_train.columns))",
+   "text": "['market_id', 'order_protocol', 'total_items', 'subtotal', 'num_distinct_items', 'max_item_price', 'total_onshift_dashers', 'total_busy_dashers', 'total_outstanding_orders', 'distance', 'hour', 'day', 'isWeekend']",
+   "imgs": []
+  },
+  "3.4.1": {
+   "code": "train = X_train.copy(); train['time_taken'] = y_train\nfig, ax = plt.subplots(1, 4, figsize=(16, 3))\nfor a, c in zip(ax, ['time_taken', 'total_items', 'subtotal', 'distance']):\n    sns.boxplot(x=train[c], ax=a)\nprint(train[['total_items','subtotal','distance']].max())",
+   "text": "total_items      411.00\nsubtotal       26800.00\ndistance          83.52\ndtype: float64",
+   "imgs": [
+    "/assign/delivery-time/3_4_1-1.png"
+   ]
+  },
+  "3.4.2": {
+   "code": "n0 = len(train)\nneg = ['total_onshift_dashers', 'total_busy_dashers', 'total_outstanding_orders']\ntrain = train[(train[neg] >= 0).all(axis=1)]\nn1 = len(train)\nfor c in ['total_items', 'subtotal', 'distance']:\n    hi = train[c].quantile(0.99)\n    train = train[train[c] <= hi]\nprint('bỏ vì giá trị âm:', n0 - n1, '| bỏ vì điểm xa (phân vị 99):', n1 - len(train), '| còn lại:', len(train))\ncaps = {c: X_train[c].quantile(0.99) for c in ['total_items', 'subtotal', 'distance']}\ny_train = train['time_taken']; X_train = train.drop(columns=['time_taken'])",
+   "text": "bỏ vì giá trị âm: 65 | bỏ vì điểm xa (phân vị 99): 4124 | còn lại: 136432",
+   "imgs": []
+  },
+  "4.1.1": {
+   "code": "X_test[['total_items','subtotal','distance','total_outstanding_orders']].hist(bins=40, figsize=(12, 6))\nplt.tight_layout()",
+   "text": "",
+   "imgs": [
+    "/assign/delivery-time/4_1_1-1.png"
+   ]
+  },
+  "4.1.2": {
+   "code": "print(pd.concat([X_train['market_id'].value_counts(normalize=True), X_test['market_id'].value_counts(normalize=True)], axis=1, keys=['train','valid']).round(3))",
+   "text": "           train  valid\nmarket_id              \n2.0        0.306  0.306\n4.0        0.261  0.263\n1.0        0.209  0.212\n3.0        0.121  0.118\n5.0        0.099  0.097\n6.0        0.004  0.004",
+   "imgs": []
+  },
+  "4.1.3": {
+   "code": "print(y_train.describe().round(1)); print(y_test.describe().round(1))",
+   "text": "count    136432.0\nmean         45.9\nstd           9.1\nmin          32.0\n25%          39.0\n50%          45.0\n75%          51.0\nmax         105.0\nName: time_taken, dtype: float64\ncount    35156.0\nmean        46.2\nstd          9.4\nmin         32.0\n25%         39.0\n50%         45.0\n75%         52.0\nmax        103.0\nName: time_taken, dtype: float64",
+   "imgs": []
+  },
+  "4.2": {
+   "code": "val = X_test.copy(); val['time_taken'] = y_test\nsns.scatterplot(data=val.sample(5000, random_state=42), x='distance', y='time_taken', alpha=0.3)",
+   "text": "",
+   "imgs": [
+    "/assign/delivery-time/4_2-1.png"
+   ]
+  },
+  "4.3": {
+   "code": "neg = ['total_onshift_dashers', 'total_busy_dashers', 'total_outstanding_orders']\nmask = (X_test[neg] >= 0).all(axis=1)\nX_test, y_test = X_test[mask], y_test[mask]\nprint(list(X_train.columns) == list(X_test.columns), len(X_test))",
+   "text": "True 35143",
+   "imgs": []
+  },
+  "5.1": {
+   "code": "from sklearn.preprocessing import StandardScaler\nnum = X_train.select_dtypes(include='number').columns\nscaler = StandardScaler()\nXtr = X_train.copy(); Xte = X_test.copy()\nXtr[num] = scaler.fit_transform(X_train[num]); Xte[num] = scaler.transform(X_test[num])\nXtr = pd.get_dummies(Xtr, drop_first=True).astype(float); Xte = pd.get_dummies(Xte, drop_first=True).astype(float)\nXte = Xte.reindex(columns=Xtr.columns, fill_value=0)\nprint(Xtr[num].describe().loc[['mean','std']].round(2))",
+   "text": "      total_items  subtotal  num_distinct_items  ...  distance  hour  day\nmean         -0.0       0.0                 0.0  ...      -0.0  -0.0 -0.0\nstd           1.0       1.0                 1.0  ...       1.0   1.0  1.0\n\n[2 rows x 10 columns]",
+   "imgs": []
+  },
+  "5.2": {
+   "code": "from sklearn.linear_model import LinearRegression\nfrom sklearn.metrics import r2_score, mean_squared_error\nlr = LinearRegression().fit(Xtr, y_train)\nfor name, X_, y_ in [('train', Xtr, y_train), ('valid', Xte, y_test)]:\n    p = lr.predict(X_)\n    print(name, 'R2', round(r2_score(y_, p), 3), 'RMSE', round(mean_squared_error(y_, p) ** 0.5, 2))",
+   "text": "train R2 0.9 RMSE 2.87\nvalid R2 0.903 RMSE 2.91",
+   "imgs": []
+  },
+  "5.3": {
+   "code": "from sklearn.feature_selection import RFE\nscores = {}\nfor k in range(1, Xtr.shape[1] + 1):\n    rfe = RFE(LinearRegression(), n_features_to_select=k).fit(Xtr, y_train)\n    cols = Xtr.columns[rfe.support_]\n    m = LinearRegression().fit(Xtr[cols], y_train)\n    scores[k] = r2_score(y_test, m.predict(Xte[cols]))\ns = pd.Series(scores)\ns.plot(marker='o', title='R2 trên validation theo số biến (RFE)'); plt.xlabel('số biến')\nprint(s.round(4).to_string())",
+   "text": "1     0.1469\n2     0.4415\n3     0.4652\n4     0.6732\n5     0.6921\n6     0.7083\n7     0.7162\n8     0.7165\n9     0.7272\n10    0.8499\n11    0.8580\n12    0.8925\n13    0.8961\n14    0.8961\n15    0.8961\n16    0.8971\n17    0.8994\n18    0.8999\n19    0.9018\n20    0.9026\n21    0.9031\n22    0.9031",
+   "imgs": [
+    "/assign/delivery-time/5_3-1.png"
+   ]
+  },
+  "6.1": {
+   "code": "k = 12\nrfe = RFE(LinearRegression(), n_features_to_select=k).fit(Xtr, y_train)\ncols = Xtr.columns[rfe.support_]\nfinal_model = LinearRegression().fit(Xtr[cols], y_train)\npred = final_model.predict(Xte[cols]); res = y_test - pred\nprint('12 biến được giữ:', list(cols))\nprint('R2 valid', round(r2_score(y_test, pred), 3))\nimport statsmodels.api as sm\nfig, ax = plt.subplots(1, 3, figsize=(16, 4))\nax[0].scatter(pred, res, alpha=0.1); ax[0].axhline(0, color='r'); ax[0].set_title('Phần dư theo dự đoán')\nsm.qqplot(res, line='45', fit=True, ax=ax[1]); ax[1].set_title('Q-Q plot')\nsns.histplot(res, bins=40, kde=True, ax=ax[2]); ax[2].set_title('Histogram phần dư')",
+   "text": "12 biến được giữ: ['subtotal', 'total_onshift_dashers', 'total_busy_dashers', 'total_outstanding_orders', 'distance', 'hour', 'market_id_2.0', 'market_id_3.0', 'market_id_4.0', 'market_id_5.0', 'market_id_6.0', 'order_protocol_5.0']\nR2 valid 0.892",
+   "imgs": [
+    "/assign/delivery-time/6_1-1.png"
+   ]
+  },
+  "6.2": {
+   "code": "num_in = [c for c in cols if c in num]\ncoef_scaled = pd.Series(final_model.coef_, index=cols)\nscale = pd.Series(scaler.scale_, index=num)\norig = coef_scaled[num_in] / scale[num_in]\nprint(pd.DataFrame({'scaled': coef_scaled[num_in], 'original': orig}).round(4).to_string())\nprint()\nfor c in ['total_items', 'distance']:\n    if c in orig.index: print(f'+1 đơn vị {c} -> thời gian giao đổi {orig[c]:+.3f} phút')",
+   "text": "                           scaled  original\nsubtotal                   2.6932    0.0017\ntotal_onshift_dashers    -11.9243   -0.3448\ntotal_busy_dashers        -4.2311   -0.1314\ntotal_outstanding_orders  18.1520    0.3440\ndistance                   4.0891    0.4827\nhour                      -1.9116   -0.2202\n\n+1 đơn vị distance -> thời gian giao đổi +0.483 phút",
+   "imgs": []
   }
  }
 };
