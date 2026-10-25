@@ -25,8 +25,8 @@ Mọi mục «Làm từng bước với số thật» (`src/data/walk/*.ts`) n�
 ## Dòng thời gian
 1. **Tháng 1 (C0):** chị Lan giao việc: «form tháng 12 giảm, xem giúp chị». Hiểu việc, Excel.
 2. **Tháng 2 (C1):** chuyển sang Python cho 36 tuần dữ liệu.
-3. **Tháng 3 (Toán, mô tả, C2 theo đúng thứ tự trong app):** kiểm định giả thuyết (trang đích mới) → EDA → xác suất, lấy mẫu, khoảng tin cậy. Lời kể kiểm định không được giả định người đọc đã học xác suất.
-4. **Tháng 4 (C2 tiếp):** SQL (cơ bản, nâng cao). Hồi quy chi tiêu → form thuộc C3.
+3. **Tháng 3 (Toán, mô tả, C2 phần 1):** EDA, xác suất, lấy mẫu, khoảng tin cậy (đúng thứ tự upGrad: EDA → Inferential Statistics).
+4. **Tháng 4 (C2 phần 2):** kiểm định giả thuyết (trang đích mới, đứng SAU xác suất), rồi SQL. Hồi quy chi tiêu → form thuộc C3.
 5. **Tháng 5–6 (C3):** dự đoán hội viên rời, phân nhóm khách, đo mô hình.
 6. **Tháng 7–8 (C4):** mô hình mạnh hơn, dự báo chuỗi thời gian, văn bản.
 7. **Tháng 9–10 (C5):** vẽ biểu đồ, kể chuyện cho chị Lan.
