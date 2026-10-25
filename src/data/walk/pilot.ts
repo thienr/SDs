@@ -20,6 +20,7 @@ export type Walk = { vi: WalkText; en: WalkText; visual?: Visual };
 export const pilotWalks: Record<string, Walk> = {
   bayes: {
     vi: {
+      story: "Tháng 3, công cụ cảnh báo của Lotus Spa gắn cờ 121 hội viên trong 1000 người. Chị Lan hỏi: «Người bị gắn cờ có thật sự sắp rời không?» Đó là xác suất có điều kiện.",
       words: [
         ["Xác suất ban đầu (prior)", "Khả năng một khách bất kỳ sắp rời, tính trước khi có bất kỳ cảnh báo nào."],
         ["Bắt đúng", "Trong những khách thật sự sắp rời, công cụ gắn cờ được bao nhiêu phần trăm."],
@@ -38,6 +39,7 @@ export const pilotWalks: Record<string, Walk> = {
       check: ["Nếu tỷ lệ khách sắp rời là 20% thay vì 5%, xác suất sau tăng hay giảm? Con số khoảng bao nhiêu?", "Tăng. 200 người sắp rời, 90% là 180 báo đúng. 800 người ở lại, 8% là 64 báo nhầm. 180 ÷ (180 + 64) ≈ 74%."],
     },
     en: {
+      story: "In March, Lotus Spa's alert tool flags 121 of 1,000 members. Ms. Lan asks: “Is a flagged member really about to leave?” That is conditional probability.",
       words: [
         ["Prior", "How likely a random customer is to leave, before any alert exists."],
         ["Catches correctly", "Of those who really are leaving, the percentage the tool flags."],
@@ -58,6 +60,7 @@ export const pilotWalks: Record<string, Walk> = {
   },
   ci: {
     vi: {
+      story: "Tháng 3, chị Lan hỏi: «Form trung bình mỗi tuần là bao nhiêu, chắc đến đâu?» Bạn dùng 36 tuần dữ liệu để dựng một khoảng quanh con số 50.",
       words: [
         ["Trung bình mẫu", "Trung bình của những tuần bạn đã đo được."],
         ["Độ lệch chuẩn σ", "Mức các tuần thường lệch khỏi trung bình bao xa. Ở đây giả sử đã biết σ = 12."],
@@ -76,6 +79,7 @@ export const pilotWalks: Record<string, Walk> = {
       check: ["Nếu đo 144 tuần thay vì 36 tuần (gấp 4 lần), khoảng sẽ rộng gấp mấy so với trước?", "Hẹp đi một nửa. SE = 12 ÷ 12 = 1, nửa độ rộng = 1,96, khoảng từ 48,04 đến 51,96. Gấp 4 lần mẫu thì khoảng hẹp đi 2 lần."],
     },
     en: {
+      story: "In March, Ms. Lan asks: “What is the average weekly form count, and how sure are we?” You use 36 weeks of data to build a range around the figure 50.",
       words: [
         ["Sample mean", "The average of the weeks you actually measured."],
         ["Standard deviation σ", "How far weeks typically stray from the average. Here we assume σ = 12 is known."],
@@ -96,6 +100,7 @@ export const pilotWalks: Record<string, Walk> = {
   },
   "tree-gini": {
     vi: {
+      story: "Tháng 6, bạn để máy tự đặt câu hỏi nhằm tách hội viên sắp rời khỏi người ở lại. Gini là thước chấm xem một câu hỏi tốt đến đâu.",
       words: [
         ["Nút", "Một nhóm khách đang xét. Nút gốc là cả nhóm trước khi chia."],
         ["Gini", "Mức «lẫn lộn» của nhóm. Bằng 0 khi cả nhóm cùng một nhãn. Lớn nhất là 0,5 khi hai nhãn chia đôi. Công thức: 1 − p² − q²."],
@@ -113,6 +118,7 @@ export const pilotWalks: Record<string, Walk> = {
       check: ["Nếu một câu hỏi tách hoàn hảo (nhánh trái 40 người ở, nhánh phải 60 người rời), Gini sau khi chia bằng bao nhiêu?", "0. Mỗi nhánh chỉ có một nhãn nên Gini mỗi nhánh bằng 0, trung bình cũng 0. Mức giảm là 0,48."],
     },
     en: {
+      story: "In June, you let the machine ask its own questions to separate members about to leave from those staying. Gini is the ruler for how good a question is.",
       words: [
         ["Node", "A group of customers under consideration. The root node is the whole group before any split."],
         ["Gini", "How “mixed” a group is. It is 0 when the whole group has one label. The maximum is 0.5 when two labels split 50/50. Formula: 1 − p² − q²."],
@@ -132,6 +138,7 @@ export const pilotWalks: Record<string, Walk> = {
   },
   "nlp-tfidf": {
     vi: {
+      story: "Tháng 6, hội viên viết đánh giá tự do. Bạn muốn biết từ nào đặc trưng cho từng đánh giá, thay vì từ nào chỉ xuất hiện nhiều.",
       words: [
         ["TF (tần suất từ)", "Từ đó chiếm bao nhiêu phần trong văn bản này. Một từ xuất hiện 1 lần trong văn bản 5 từ thì TF = 1 ÷ 5 = 0,2."],
         ["df (số văn bản chứa từ)", "Từ đó có mặt ở bao nhiêu văn bản trong bộ sưu tập."],
@@ -149,6 +156,7 @@ export const pilotWalks: Record<string, Walk> = {
       check: ["Nếu một từ có mặt ở cả 4 văn bản thì điểm TF-IDF của nó là bao nhiêu?", "0. IDF = ln(4 ÷ 4) = ln 1 = 0, nên TF × 0 = 0 dù từ đó lặp lại bao nhiêu lần."],
     },
     en: {
+      story: "In June, members write free-text reviews. You want to know which words are distinctive for each review, rather than which words merely appear a lot.",
       words: [
         ["TF (term frequency)", "What share of this text the word takes up. A word appearing once in a 5-word text has TF = 1 ÷ 5 = 0.2."],
         ["df (document frequency)", "How many documents in the collection contain the word."],
@@ -168,6 +176,7 @@ export const pilotWalks: Record<string, Walk> = {
   },
   "slr-assume": {
     vi: {
+      story: "Tháng 5, bạn đã có đường thẳng với R² cao. Trước khi tin nó, bạn kiểm xem giả định «đường thẳng» có đúng không bằng cách đọc phần dư.",
       words: [
         ["Phần dư", "Giá trị thật trừ giá trị đường thẳng dự đoán. Dương nghĩa là điểm nằm trên đường, âm nghĩa là nằm dưới."],
         ["R²", "Phần biến động của y mà đường thẳng giải thích được. Gần 1 nghĩa là bám sát, nhưng chưa nói đường có đúng dạng hay không."],
@@ -185,6 +194,7 @@ export const pilotWalks: Record<string, Walk> = {
       check: ["Phần dư thấy được hình phễu (càng sang phải càng xòe rộng) cho biết giả định nào bị phá?", "Phương sai không đều: độ nhiễu tăng theo x. Hệ số vẫn tính ra được, nhưng khoảng tin cậy và p-value sẽ không đáng tin."],
     },
     en: {
+      story: "In May, you have a line with a high R². Before trusting it, you check whether the “straight line” assumption holds by reading the residuals.",
       words: [
         ["Residual", "The actual value minus the value the line predicts. Positive means the point is above the line, negative means below."],
         ["R²", "The share of y's variation the line explains. Close to 1 means a tight fit, but it does not say the line has the right shape."],
@@ -204,6 +214,7 @@ export const pilotWalks: Record<string, Walk> = {
   },
   "or-solv": {
     vi: {
+      story: "Tháng 11, chị Lan hỏi giá bán và cách chia ngân sách tối ưu. Bạn dùng solver, nhưng cần biết khi nào nó đáng tin.",
       words: [
         ["Ràng buộc", "Giới hạn bạn phải tuân theo, ví dụ tổng ngân sách không quá 4."],
         ["Vùng khả thi", "Tập mọi phương án thỏa tất cả ràng buộc."],
@@ -223,6 +234,7 @@ export const pilotWalks: Record<string, Walk> = {
       check: ["Bạn chạy solver ở bài cong từ 3 điểm xuất phát (10, 30, 60). Ra 55, 55, 70. Bạn kết luận gì và làm gì tiếp?", "Chưa thể gọi 55 là tối ưu toàn cục vì có kết quả 70 tốt hơn. Nên thử thêm nhiều điểm xuất phát và lấy kết quả tốt nhất, đồng thời nói rõ đây là cực trị cục bộ."],
     },
     en: {
+      story: "In November, Ms. Lan asks about pricing and the best way to split the budget. You use a solver, but need to know when to trust it.",
       words: [
         ["Constraint", "A limit you must obey, for example total budget no more than 4."],
         ["Feasible region", "The set of all plans that satisfy every constraint."],
