@@ -6,6 +6,7 @@ import { conceptCopy, conceptNeighbors, getConcept, type Concept } from "@/data/
 import { gapCopy, gapNeighbors, getGapConcept, stitchAfter, type GapConcept } from "@/data/gap";
 import { getMlConcept, mlConcepts, mlCopy, type MlConcept } from "@/data/ml";
 import type { Lang } from "@/lib/progress";
+import { overviews } from "@/data/overview";
 import { applyRaw } from "@/lib/raw-store";
 import type { RawText } from "@/lib/raw-format";
 
@@ -92,7 +93,8 @@ export function studyNeighbors(id: string): { prev: StudyConcept | null; next: S
 export function studyCopy(concept: StudyConcept, lang: Lang, bare = false): RawText {
   const base = bareCopy(concept, lang);
   if (bare) return base;
-  return applyRaw(concept.id, lang, base);
+  const ov = overviews[concept.id];
+  return applyRaw(concept.id, lang, ov ? { ...base, title: ov.title } : base);
 }
 
 function bareCopy(concept: StudyConcept, lang: Lang): RawText {

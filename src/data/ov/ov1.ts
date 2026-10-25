@@ -1,0 +1,73 @@
+import type { Overview } from "@/data/ov/types";
+import { CODE, DEF, GO, H, NOTE, P, UL } from "@/data/ov/h";
+
+export const ov1: Record<string, Overview> = {
+  "d-06c6cb761b4d": {
+    title: "Khung giải quyết bài toán lập trình: hiểu, lập kế hoạch, cài đặt, kiểm thử, tối ưu",
+    lead: "Giải bài toán lập trình là một quy trình có phương pháp chứ không phải một cảm hứng. Buổi này (tùy chọn) trình bày một khung năm bước áp dụng cho mọi bài, rồi dùng khung đó giải ba bài kinh điển: Two Sum, Valid Brackets và Roman Numerals. Khung này bắt nguồn từ tư duy giải toán của G. Pólya (hiểu bài – lập kế hoạch – thực hiện – nhìn lại) và là thứ nhà tuyển dụng quan sát trong phỏng vấn kỹ thuật.",
+    blocks: [
+      H("1. Năm bước của khung"),
+      DEF(
+        ["Hiểu bài toán", "Diễn đạt lại đề bằng lời của mình, xác định đầu vào, đầu ra, ràng buộc (kích thước, kiểu dữ liệu, có trùng lặp hay không), và tự viết 2–3 ví dụ nhỏ bằng tay. Nếu chưa nói lại được đề thì chưa nên viết dòng code nào."],
+        ["Lập kế hoạch", "Chọn cấu trúc dữ liệu và thuật toán trước khi gõ. Bắt đầu bằng cách đơn giản nhất chạy đúng (brute force), ghi nhận độ phức tạp của nó, rồi mới tìm cách làm tốt hơn. Viết kế hoạch bằng giả mã (pseudocode) 3–6 dòng."],
+        ["Cài đặt", "Chuyển giả mã thành code theo từng khối nhỏ, đặt tên biến nói lên ý nghĩa, tách hàm khi một khối làm hai việc."],
+        ["Kiểm thử", "Chạy trên ví dụ đã viết ở bước 1, rồi trên các trường hợp biên: đầu vào rỗng, một phần tử, phần tử trùng, giá trị âm hoặc bằng 0, đầu vào lớn nhất cho phép."],
+        ["Tối ưu", "Hỏi: thời gian và bộ nhớ hiện tại là bao nhiêu (ký hiệu Big-O)? Có thể đổi bộ nhớ lấy thời gian (dùng dictionary/set) hoặc ngược lại không? Chỉ tối ưu sau khi đã đúng."],
+      ),
+      H("2. Độ phức tạp: thước đo để so sánh lời giải"),
+      P("Độ phức tạp thời gian cho biết số thao tác tăng thế nào theo kích thước đầu vào n. O(n) nghĩa là tăng tỷ lệ thuận; O(n²) nghĩa là gấp đôi dữ liệu thì chậm gấp bốn; O(1) nghĩa là không đổi. Độ phức tạp không gian đo lượng bộ nhớ phụ thêm. Hai thước này thường đánh đổi nhau, và 'tối ưu' luôn phải nói rõ là tối ưu theo thước nào."),
+      H("3. Bài mẫu 1 – Two Sum"),
+      P("Đề: cho danh sách số nguyên nums và số target, trả về chỉ số của hai phần tử có tổng bằng target. Hiểu: có đúng một đáp án, không dùng một phần tử hai lần. Kế hoạch ban đầu: hai vòng lặp lồng nhau thử mọi cặp, thời gian O(n²), bộ nhớ O(1). Ý tối ưu: với mỗi số x, ta cần target − x; nếu đã lưu các số đã thấy vào dictionary (giá trị → chỉ số), việc tra mất O(1)."),
+      CODE("def two_sum(nums, target):\n    seen = {}                      # giá trị -> chỉ số\n    for i, x in enumerate(nums):\n        need = target - x\n        if need in seen:\n            return [seen[need], i]\n        seen[x] = i\n    return []"),
+      P("Kết quả: thời gian O(n), bộ nhớ O(n). Trường hợp biên cần thử: hai số bằng nhau như [3, 3] với target 6 (vì sao đúng? vì ta tra trước khi lưu x, nên không dùng một phần tử hai lần), và số âm."),
+      H("4. Bài mẫu 2 – Valid Brackets"),
+      P("Đề: chuỗi chỉ gồm ngoặc ()[]{} có hợp lệ không, tức mỗi ngoặc mở được đóng đúng loại và đúng thứ tự. Quan sát then chốt: ngoặc mở sau cùng phải đóng trước tiên. Tính chất 'vào sau, ra trước' (LIFO) chính là cấu trúc ngăn xếp (stack), mà list trong Python làm được bằng append và pop."),
+      CODE("def valid(s):\n    pair = {')': '(', ']': '[', '}': '{'}\n    st = []\n    for ch in s:\n        if ch in pair:\n            if not st or st.pop() != pair[ch]:\n                return False\n        else:\n            st.append(ch)\n    return not st                  # ngăn xếp phải rỗng"),
+      P("Thời gian O(n), bộ nhớ O(n). Các trường hợp biên: chuỗi rỗng (hợp lệ), chỉ có ngoặc đóng, thừa ngoặc mở ở cuối (vì thế dòng cuối phải kiểm tra ngăn xếp rỗng)."),
+      H("5. Bài mẫu 3 – Roman Numerals"),
+      P("Đề: đổi số La Mã sang số nguyên. Quy tắc: các ký hiệu I=1, V=5, X=10, L=50, C=100, D=500, M=1000 được cộng lại, trừ khi một ký hiệu nhỏ đứng trước ký hiệu lớn hơn (IV=4, IX=9, XL=40, CM=900) thì ký hiệu nhỏ bị trừ. Kế hoạch: duyệt từ trái sang phải, nếu giá trị hiện tại nhỏ hơn giá trị ngay sau thì trừ, ngược lại thì cộng."),
+      CODE("def roman(s):\n    v = {'I':1,'V':5,'X':10,'L':50,'C':100,'D':500,'M':1000}\n    total = 0\n    for i, ch in enumerate(s):\n        if i + 1 < len(s) and v[ch] < v[s[i + 1]]:\n            total -= v[ch]\n        else:\n            total += v[ch]\n    return total"),
+      P("Kiểm thử: 'III' = 3, 'LVIII' = 58, 'MCMXCIV' = 1994. Thời gian O(n), bộ nhớ O(1) vì bảng tra có kích thước cố định."),
+      H("6. Cách luyện để thành thói quen"),
+      UL(
+        "Với mỗi bài, viết ra giấy: đầu vào – đầu ra – ví dụ – kế hoạch – độ phức tạp, trước khi mở trình soạn thảo.",
+        "Luôn làm lời giải 'ngây thơ' trước, rồi hỏi 'phép toán nào bị lặp lại?' để tìm cấu trúc dữ liệu giúp bỏ lặp (thường là dictionary hoặc set).",
+        "Sau khi chạy đúng, viết một câu: 'Giải bằng X, thời gian O(?), bộ nhớ O(?)' — đó cũng là câu bạn sẽ nói khi phỏng vấn.",
+      ),
+      NOTE("Buổi này là tùy chọn: kỹ năng nền của nó (vòng lặp, hàm, dictionary, list) đã học ở C1. Hãy mở các thẻ bên dưới nếu cần nhắc lại."),
+      GO("py-loop", "py-fn", "py-dict", "py-list", "py-set"),
+    ],
+  },
+  "d-0f66fde9dc0c": {
+    title: "Các bài Python kinh điển và mẫu hình giải: dictionary, ngăn xếp, hai con trỏ",
+    lead: "Buổi tùy chọn này cho bạn xem các 'mẫu hình' (pattern) lặp đi lặp lại trong những bài Python nổi tiếng. Người giải giỏi không nhớ lời giải của từng bài mà nhận ra bài thuộc mẫu hình nào. Trang này tóm tắt các mẫu hình thường gặp để bạn có bản đồ trước khi vào luyện.",
+    blocks: [
+      H("1. Vì sao nên học theo mẫu hình"),
+      P("Số bài lập trình thì vô hạn, nhưng số kỹ thuật cốt lõi thì hữu hạn. Mỗi mẫu hình gắn với một cấu trúc dữ liệu và một dấu hiệu nhận biết trong đề. Khi gặp bài mới, bạn hỏi: 'đề có dấu hiệu của mẫu hình nào?' thay vì bắt đầu từ trang giấy trắng."),
+      H("2. Bảng mẫu hình thường gặp"),
+      DEF(
+        ["Tra cứu nhanh bằng dictionary / set", "Dấu hiệu: cần biết 'phần tử này đã xuất hiện chưa', đếm tần suất, tìm cặp bù (Two Sum). Lợi ích: đổi vòng lặp lồng O(n²) thành một lượt O(n)."],
+        ["Ngăn xếp (stack)", "Dấu hiệu: có cấu trúc lồng nhau, 'cái mở sau đóng trước' (ngoặc, thẻ HTML, biểu thức). Thao tác: append khi mở, pop khi đóng."],
+        ["Hai con trỏ (two pointers)", "Dấu hiệu: dãy đã sắp xếp hoặc cần so sánh hai đầu (kiểm tra chuỗi đối xứng, tìm cặp trong dãy sắp xếp). Hai chỉ số đi từ hai đầu vào giữa, thời gian O(n)."],
+        ["Cửa sổ trượt (sliding window)", "Dấu hiệu: tìm đoạn con liên tiếp thỏa điều kiện (tổng lớn nhất của k phần tử liên tiếp). Cập nhật tổng bằng cách thêm phần tử mới, bớt phần tử cũ thay vì tính lại."],
+        ["Sắp xếp rồi quét", "Dấu hiệu: cần ghép nhóm, loại trùng, tìm khoảng chồng. Sắp xếp O(n log n) thường làm phần còn lại đơn giản."],
+        ["Đệ quy / chia nhỏ", "Dấu hiệu: bài toán lớn gồm bài toán nhỏ cùng dạng (giai thừa, Fibonacci, duyệt cây). Cần điều kiện dừng rõ ràng; có thể thêm bộ nhớ đệm (memo) để tránh tính lặp."],
+      ),
+      H("3. Ví dụ: chuỗi đối xứng (palindrome) bằng hai con trỏ"),
+      CODE("def is_pal(s):\n    s = [c.lower() for c in s if c.isalnum()]\n    i, j = 0, len(s) - 1\n    while i < j:\n        if s[i] != s[j]:\n            return False\n        i += 1; j -= 1\n    return True"),
+      P("Thời gian O(n), bộ nhớ O(n) do bước làm sạch chuỗi. Điểm cần chú ý: làm sạch dữ liệu (bỏ dấu cách, đổi chữ thường) là một bước của bài, không phải chi tiết phụ."),
+      H("4. Ví dụ: đếm tần suất bằng dictionary"),
+      CODE("def freq(words):\n    d = {}\n    for w in words:\n        d[w] = d.get(w, 0) + 1   # get tránh KeyError\n    return d"),
+      P("Đây chính là nền của bag-of-words trong NLP và của groupby trong pandas: nhiều công cụ cao cấp thực chất là mẫu hình này được đóng gói."),
+      H("5. Quy trình khi gặp bài mới"),
+      UL(
+        "Đọc đề, viết lại bằng lời mình, liệt kê đầu vào/đầu ra/ràng buộc.",
+        "Tự hỏi: dữ liệu có thứ tự không? Có cần nhớ những gì đã thấy không? Có cấu trúc lồng không?",
+        "Chọn mẫu hình gần nhất, viết giả mã, rồi mới cài đặt và thử các trường hợp biên.",
+        "Ghi độ phức tạp và so với lời giải ngây thơ để biết mình đã cải thiện được gì.",
+      ),
+      NOTE("Khung năm bước tổng quát nằm ở buổi S1 Problem-Solving Framework; trang này là phần bổ sung về mẫu hình."),
+      GO("py-dict", "py-list", "py-loop", "py-set", "py-str"),
+    ],
+  },
+};
