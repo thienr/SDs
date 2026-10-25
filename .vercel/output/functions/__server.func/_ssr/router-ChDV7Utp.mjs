@@ -3,7 +3,7 @@ import { c as lessons, o as getLesson, r as courses$1 } from "./catalog-DhneT6we
 import { J as require_react, S as require_jsx_runtime, _ as lazyRouteComponent, b as Link, d as Scripts, f as HeadContent, g as Outlet, h as createRouter, p as useRouterState, v as createFileRoute, x as useRouter, y as createRootRoute } from "../_libs/@tanstack/react-router+[...].mjs";
 import { a as Settings, c as Network, d as Map$1, i as Sun, l as Moon, m as BookOpen, n as TriangleAlert, o as Search, r as TableOfContents, t as X } from "../_libs/lucide-react.mjs";
 import { a as union, i as string, n as number, r as object, t as literal } from "../_libs/zod.mjs";
-//#region node_modules/.nitro/vite/services/ssr/assets/router-wfChfhbC.js
+//#region node_modules/.nitro/vite/services/ssr/assets/router-ChDV7Utp.js
 var import_react = /* @__PURE__ */ __toESM(require_react());
 var import_jsx_runtime = require_jsx_runtime();
 var __defProp = Object.defineProperty;
@@ -20011,19 +20011,19 @@ function RootComponent() {
 		] })]
 	});
 }
-var $$splitComponentImporter$9 = () => import("./routes-CBAUZrcv.mjs");
+var $$splitComponentImporter$9 = () => import("./routes-GNcKXPiV.mjs");
 var Route$11 = createFileRoute("/")({ component: lazyRouteComponent($$splitComponentImporter$9, "component") });
-var $$splitComponentImporter$8 = () => import("./ban-do-Dww3tqC8.mjs");
+var $$splitComponentImporter$8 = () => import("./ban-do-CBs_KZcT.mjs");
 var Route$10 = createFileRoute("/ban-do")({ component: lazyRouteComponent($$splitComponentImporter$8, "component") });
-var $$splitComponentImporter$7 = () => import("./cong-thuc-MOlFt60A.mjs");
+var $$splitComponentImporter$7 = () => import("./cong-thuc-Djd9qmo6.mjs");
 var Route$9 = createFileRoute("/cong-thuc")({ component: lazyRouteComponent($$splitComponentImporter$7, "component") });
 var $$splitComponentImporter$6 = () => import("./do-phu-kafhI8o9.mjs");
 var Route$8 = createFileRoute("/do-phu")({ component: lazyRouteComponent($$splitComponentImporter$6, "component") });
-var $$splitComponentImporter$5 = () => import("./goc-BxK7wc6N.mjs");
+var $$splitComponentImporter$5 = () => import("./goc-0WvOtzCa.mjs");
 var Route$7 = createFileRoute("/goc")({ component: lazyRouteComponent($$splitComponentImporter$5, "component") });
 var $$splitComponentImporter$4 = () => import("./tim-kiem-7KFEY_R2.mjs");
 var Route$6 = createFileRoute("/tim-kiem")({ component: lazyRouteComponent($$splitComponentImporter$4, "component") });
-var $$splitComponentImporter$3 = () => import("./tu-dien-C8OtTF4J.mjs");
+var $$splitComponentImporter$3 = () => import("./tu-dien-DiF4yJjy.mjs");
 var Route$5 = createFileRoute("/tu-dien")({ component: lazyRouteComponent($$splitComponentImporter$3, "component") });
 var CORS = {
 	"access-control-allow-origin": "*",
@@ -22688,11 +22688,11 @@ var Route$3 = createFileRoute("/api/so-muc")({ server: { handlers: {
 	POST: ({ request }) => handleSoMucPost(request),
 	OPTIONS: () => apiEmpty(204)
 } } });
-var $$splitComponentImporter$2 = () => import("./bai._lessonId-DG24xjnZ.mjs");
+var $$splitComponentImporter$2 = () => import("./bai._lessonId-BpggtJIk.mjs");
 var Route$2 = createFileRoute("/bai/$lessonId")({ component: lazyRouteComponent($$splitComponentImporter$2, "component") });
-var $$splitComponentImporter$1 = () => import("./khai-niem._conceptId-NBZH16LQ.mjs");
+var $$splitComponentImporter$1 = () => import("./khai-niem._conceptId-DFp6K4NI.mjs");
 var Route$1 = createFileRoute("/khai-niem/$conceptId")({ component: lazyRouteComponent($$splitComponentImporter$1, "component") });
-var $$splitComponentImporter = () => import("./khoa._courseId-DQRZmC9j.mjs");
+var $$splitComponentImporter = () => import("./khoa._courseId-Pit4bQ7E.mjs");
 var Route = createFileRoute("/khoa/$courseId")({ component: lazyRouteComponent($$splitComponentImporter, "component") });
 var rootRouteChildren = {
 	IndexRoute: Route$11.update({

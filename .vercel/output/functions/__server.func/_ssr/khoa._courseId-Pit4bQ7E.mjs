@@ -1,9 +1,9 @@
 import { o as __toESM } from "../_runtime.mjs";
 import { a as getCourse, c as lessons, o as getLesson } from "./catalog-DhneT6we.mjs";
 import { J as require_react, S as require_jsx_runtime, b as Link } from "../_libs/@tanstack/react-router+[...].mjs";
-import { B as subscribeRaw, F as getRawVersion, H as sessionConcepts, I as getServerRawVersion, O as subscribeProgress, R as rawIsEdited, b as getServerProgress, g as subscribeCms, j as studyListTitle, m as getServerCmsVersion, n as Route, p as getCmsVersion, w as lessonStatus, y as getProgress } from "./router-wfChfhbC.mjs";
-import { i as liveCourse, o as liveModule, s as liveSession } from "./cms-live-BOICpRyN.mjs";
-//#region node_modules/.nitro/vite/services/ssr/assets/khoa._courseId-DQRZmC9j.js
+import { B as subscribeRaw, F as getRawVersion, H as sessionConcepts, I as getServerRawVersion, O as subscribeProgress, R as rawIsEdited, b as getServerProgress, g as subscribeCms, j as studyListTitle, m as getServerCmsVersion, n as Route, p as getCmsVersion, w as lessonStatus, y as getProgress } from "./router-ChDV7Utp.mjs";
+import { i as liveCourse, o as liveModule, s as liveSession } from "./cms-live-CeGUOABH.mjs";
+//#region node_modules/.nitro/vite/services/ssr/assets/khoa._courseId-Pit4bQ7E.js
 var import_react = /* @__PURE__ */ __toESM(require_react());
 var import_jsx_runtime = require_jsx_runtime();
 var trackOnly = /* @__PURE__ */ new Set([

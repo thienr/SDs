@@ -1,11 +1,11 @@
 import { o as __toESM } from "../_runtime.mjs";
 import { n as course_default } from "./catalog-DhneT6we.mjs";
 import { J as require_react, S as require_jsx_runtime, b as Link } from "../_libs/@tanstack/react-router+[...].mjs";
-import { A as studyCopy, B as subscribeRaw, F as getRawVersion, I as getServerRawVersion, M as studyNeighbors, O as subscribeProgress, V as overviews, b as getServerProgress, j as studyListTitle, k as getStudy, r as Route$1, y as getProgress } from "./router-wfChfhbC.mjs";
-import { n as Range, r as Sim, t as Lab } from "./labs-xAV1baJM.mjs";
+import { A as studyCopy, B as subscribeRaw, F as getRawVersion, I as getServerRawVersion, M as studyNeighbors, O as subscribeProgress, V as overviews, b as getServerProgress, j as studyListTitle, k as getStudy, r as Route$1, y as getProgress } from "./router-ChDV7Utp.mjs";
+import { n as Range, r as Sim, t as Lab } from "./labs-BI6IiBg8.mjs";
 import { t as Tex } from "./tex-t3KOuum9.mjs";
-import { o as relatedOf } from "./map-mqMVhiyE.mjs";
-//#region node_modules/.nitro/vite/services/ssr/assets/khai-niem._conceptId-NBZH16LQ.js
+import { o as relatedOf } from "./map-CTRSjqA6.mjs";
+//#region node_modules/.nitro/vite/services/ssr/assets/khai-niem._conceptId-DFp6K4NI.js
 var import_react = /* @__PURE__ */ __toESM(require_react());
 var import_jsx_runtime = require_jsx_runtime();
 var ui$1 = {
@@ -23770,6 +23770,22 @@ function OverviewBody({ ov, lang }) {
 	})] });
 }
 var PROGRAM = "https://www.upgrad.com/lxp/learner/program-detail/697d8895ff9c0627b932ccb2/study-plan";
+var COURSE = {
+	"c-779b43bacf62": "672db5befb27d12d151f3edd",
+	"c-7780a48d5816": "67518350c9ece813b02afcee",
+	"c-1f3e0f37b6e5": "67567d47fb27d12d15486ebb",
+	"c-f3c8d7aa3721": "67595d3162fde39221665d8f",
+	"c-3365bb99f989": "676140aec69258144e725f01",
+	"c-5ebd125743f2": "676140c7c69258144e72620b",
+	"c-cca6e1fa1c5f": "676140d6d64659fd90672eab",
+	"c-0598c14acf8d": "67812ea0c6ef7082b97095bc",
+	"c-75c5d36b41f2": "6784d84e818080e6fc212279",
+	"c-96d004f30def": "679cb18b4f6f8f7dcfb5dbcd",
+	"c-a0c17afb8849": "679cb3029144c42ea540c2b0",
+	"c-7ffadedb3906": "68b802efc749b7db358e838d",
+	"c-7e0b1f4942db": "68b8031ec749b7db358e8ddc",
+	"c-cbba2e56c4a9": "68b803411ba4eacbe08ce4e0"
+};
 function UpgradLink({ concept, lang }) {
 	const cid = concept.courseId;
 	const c = course_default.courses.find((x) => x.id === cid);
@@ -23793,15 +23809,15 @@ function UpgradLink({ concept, lang }) {
 				children: path
 			}),
 			/* @__PURE__ */ (0, import_jsx_runtime.jsx)("a", {
-				href: PROGRAM,
+				href: cid && COURSE[cid] ? `${PROGRAM}/${COURSE[cid]}` : PROGRAM,
 				target: "_blank",
 				rel: "noreferrer",
 				className: "mt-3 inline-flex min-h-11 items-center rounded-full bg-ink px-5 text-sm text-paper",
-				children: lang === "en" ? "Open upGrad Study Plan" : "Mở Study Plan trên upGrad"
+				children: lang === "en" ? "Open this course on upGrad" : "Mở đúng khóa này trên upGrad"
 			}),
 			/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
 				className: "mt-2 text-xs text-muted",
-				children: lang === "en" ? "Opens your study plan; follow the path above to the session." : "Mở Study Plan của chương trình; đi theo dòng chỉ đường ở trên để tới đúng buổi."
+				children: lang === "en" ? "Opens the course page; follow the path above to the session. If it shows a login error, sign in at upgrad.com first, then click again." : "Mở trang khóa học; đi theo dòng chỉ đường ở trên để tới đúng buổi. Nếu báo lỗi đăng nhập, hãy đăng nhập upgrad.com trước rồi bấm lại."
 			})
 		]
 	});
