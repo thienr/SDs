@@ -1,9 +1,9 @@
 import { o as __toESM } from "../_runtime.mjs";
 import { J as require_react, S as require_jsx_runtime, b as Link } from "../_libs/@tanstack/react-router+[...].mjs";
-import { A as studyCopy, B as subscribeRaw, F as getRawVersion, I as getServerRawVersion, M as studyNeighbors, O as subscribeProgress, b as getServerProgress, k as getStudy, r as Route$1, y as getProgress } from "./router-Blq7BJ8l.mjs";
-import { n as Range, r as Sim, t as Lab } from "./labs-Dp37dV0d.mjs";
+import { A as studyCopy, B as subscribeRaw, F as getRawVersion, I as getServerRawVersion, M as studyNeighbors, O as subscribeProgress, b as getServerProgress, k as getStudy, r as Route$1, y as getProgress } from "./router-Cmae0Fsu.mjs";
+import { n as Range, r as Sim, t as Lab } from "./labs-DQmdhYN4.mjs";
 import { t as Tex } from "./tex-t3KOuum9.mjs";
-//#region node_modules/.nitro/vite/services/ssr/assets/khai-niem._conceptId-h98HV1s3.js
+//#region node_modules/.nitro/vite/services/ssr/assets/khai-niem._conceptId-4JvGE-Sf.js
 var import_react = /* @__PURE__ */ __toESM(require_react());
 var import_jsx_runtime = require_jsx_runtime();
 var wideBeats = {
@@ -3737,8 +3737,8 @@ var heads = {
 		prior: "Nối với cái trước",
 		see: "Nhìn cái này",
 		plain: "Nói cho dễ",
-		example: "Ví dụ",
-		use: "Cách dùng",
+		example: "Tình huống (mọi số là số minh họa)",
+		use: "Khi nào dùng",
 		precise: "Nói cho đúng",
 		more: "Kéo thêm",
 		prev: "Từ trước",
@@ -3749,8 +3749,8 @@ var heads = {
 		prior: "How it links",
 		see: "Look at this",
 		plain: "In plain words",
-		example: "Example",
-		use: "How to use it",
+		example: "Situation (all numbers are illustrations)",
+		use: "When to use it",
 		precise: "The precise version",
 		more: "Try it",
 		prev: "Previous",
