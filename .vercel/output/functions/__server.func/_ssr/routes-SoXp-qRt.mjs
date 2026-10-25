@@ -1,9 +1,9 @@
 import { o as __toESM } from "../_runtime.mjs";
 import { a as getLesson, n as courses, u as stats } from "./catalog-BshCFI1J.mjs";
 import { J as require_react, S as require_jsx_runtime, b as Link } from "../_libs/@tanstack/react-router+[...].mjs";
-import { D as progressSnapshot, O as subscribeProgress, S as importProgress, V as sessionConcepts, _ as countSeen, b as getServerProgress, g as subscribeCms, m as getServerCmsVersion, p as getCmsVersion, x as hydrateProgress, y as getProgress } from "./router-DqjNNuBZ.mjs";
-import { i as liveCourse } from "./cms-live-Dr2vvj3z.mjs";
-//#region node_modules/.nitro/vite/services/ssr/assets/routes-DJ_x_VBF.js
+import { D as progressSnapshot, O as subscribeProgress, S as importProgress, V as sessionConcepts, _ as countSeen, b as getServerProgress, g as subscribeCms, m as getServerCmsVersion, p as getCmsVersion, x as hydrateProgress, y as getProgress } from "./router-DiRh9ive.mjs";
+import { i as liveCourse } from "./cms-live-BASbyt35.mjs";
+//#region node_modules/.nitro/vite/services/ssr/assets/routes-SoXp-qRt.js
 var import_react = /* @__PURE__ */ __toESM(require_react());
 var import_jsx_runtime = require_jsx_runtime();
 function Home() {

@@ -1,10 +1,10 @@
 import { o as __toESM } from "../_runtime.mjs";
 import { J as require_react, S as require_jsx_runtime, b as Link } from "../_libs/@tanstack/react-router+[...].mjs";
-import { A as studyCopy, B as subscribeRaw, F as getRawVersion, I as getServerRawVersion, M as studyNeighbors, O as subscribeProgress, b as getServerProgress, j as studyListTitle, k as getStudy, r as Route$1, y as getProgress } from "./router-DqjNNuBZ.mjs";
-import { n as Range, r as Sim, t as Lab } from "./labs-pHZNVlXl.mjs";
+import { A as studyCopy, B as subscribeRaw, F as getRawVersion, I as getServerRawVersion, M as studyNeighbors, O as subscribeProgress, b as getServerProgress, j as studyListTitle, k as getStudy, r as Route$1, y as getProgress } from "./router-DiRh9ive.mjs";
+import { n as Range, r as Sim, t as Lab } from "./labs-Cbr09uji.mjs";
 import { t as Tex } from "./tex-t3KOuum9.mjs";
-import { o as relatedOf } from "./map-DVFQHhi3.mjs";
-//#region node_modules/.nitro/vite/services/ssr/assets/khai-niem._conceptId-CQE8vaUs.js
+import { o as relatedOf } from "./map-BFzflMqG.mjs";
+//#region node_modules/.nitro/vite/services/ssr/assets/khai-niem._conceptId-Cj5GIBlx.js
 var import_react = /* @__PURE__ */ __toESM(require_react());
 var import_jsx_runtime = require_jsx_runtime();
 var ui$1 = {
@@ -23609,3124 +23609,5227 @@ function AssignBody({ a }) {
 		]
 	});
 }
-var assignments = [{
-	"id": "eda-taxi",
-	"course": "C2",
-	"concepts": ["d-bf9615ba3a8e"],
-	"title": ["EDA: Phân tích chuyến taxi NYC", "EDA: NYC Taxi trip analysis"],
-	"file": "EDA_Assg_NYC_Taxi_Starter.ipynb",
-	"story": ["Dữ liệu thật là taxi New York, nhưng bạn đọc nó bằng con mắt của Lotus Spa: «chuyến» là một lượt đặt lịch, «vùng» là một chi nhánh, «giờ đón» là giờ khách vào. Mỗi mục có một ví dụ nhỏ để thấy câu hỏi của bài này trông thế nào ở spa.", "The real data is New York taxis, but you read it through Lotus Spa's eyes: a “trip” is a booking, a “zone” is a branch, a “pickup hour” is when the customer arrives. Each task has a small example to show what this task's question looks like at the spa."],
-	"cells": [
-		{
-			"t": "md",
-			"s": "# **New York City Yellow Taxi Data**"
-		},
-		{
-			"t": "md",
-			"s": "## Objective\nIn this case study you will be learning exploratory data analysis (EDA) with the help of a dataset on yellow taxi rides in New York City. This will enable you to understand why EDA is an important step in the process of data science and machine learning."
-		},
-		{
-			"t": "md",
-			"s": "## **Problem Statement**\nAs an analyst at an upcoming taxi operation in NYC, you are tasked to use the 2023 taxi trip data to uncover insights that could help optimise taxi operations. The goal is to analyse patterns in the data that can inform strategic decisions to improve service efficiency, maximise revenue, and enhance passenger experience."
-		},
-		{
-			"t": "md",
-			"s": "## Tasks\nYou need to perform the following steps for successfully completing this assignment:\n1. Data Loading\n2. Data Cleaning\n3. Exploratory Analysis: Bivariate and Multivariate\n4. Creating Visualisations to Support the Analysis\n5. Deriving Insights and Stating Conclusions"
-		},
-		{
-			"t": "md",
-			"s": "---"
-		},
-		{
-			"t": "md",
-			"s": "**NOTE:** The marks given along with headings and sub-headings are cumulative marks for those particular headings/sub-headings.<br>\n\nThe actual marks for each task are specified within the tasks themselves.\n\nFor example, marks given with heading *2* or sub-heading *2.1* are the cumulative marks, for your reference only. <br>\n\nThe marks you will receive for completing tasks are given with the tasks.\n\nSuppose the marks for two tasks are: 3 marks for 2.1.1 and 2 marks for 3.2.2, or\n* 2.1.1 [3 marks]\n* 3.2.2 [2 marks]\n\nthen, you will earn 3 marks for completing task 2.1.1 and 2 marks for completing task 3.2.2.\n"
-		},
-		{
-			"t": "md",
-			"s": "---"
-		},
-		{
-			"t": "md",
-			"s": "## Data Understanding\nThe yellow taxi trip records include fields capturing pick-up and drop-off dates/times, pick-up and drop-off locations, trip distances, itemized fares, rate types, payment types, and driver-reported passenger counts.\n\nThe data is stored in Parquet format (*.parquet*). The dataset is from 2009 to 2024. However, for this assignment, we will only be using the data from 2023.\n\nThe data for each month is present in a different parquet file. You will get twelve files for each of the months in 2023.\n\nThe data was collected and provided to the NYC Taxi and Limousine Commission (TLC) by technology providers like vendors and taxi hailing apps. <br>\n\nYou can find the link to the TLC trip records page here: https://www.nyc.gov/site/tlc/about/tlc-trip-record-data.page"
-		},
-		{
-			"t": "md",
-			"s": "###  Data Description\nYou can find the data description here: [Data Dictionary](https://www.nyc.gov/assets/tlc/downloads/pdf/data_dictionary_trip_records_yellow.pdf)"
-		},
-		{
-			"t": "md",
-			"s": "**Trip Records**\n\n\n\n|Field Name       |description |\n|:----------------|:-----------|\n| VendorID | A code indicating the TPEP provider that provided the record. <br> 1= Creative Mobile Technologies, LLC; <br> 2= VeriFone Inc. |\n| tpep_pickup_datetime | The date and time when the meter was engaged.  |\n| tpep_dropoff_datetime | The date and time when the meter was disengaged.   |\n| Passenger_count | The number of passengers in the vehicle. <br> This is a driver-entered value. |\n| Trip_distance | The elapsed trip distance in miles reported by the taximeter. |\n| PULocationID | TLC Taxi Zone in which the taximeter was engaged |\n| DOLocationID | TLC Taxi Zone in which the taximeter was disengaged |\n|RateCodeID |The final rate code in effect at the end of the trip.<br> 1 = Standard rate <br> 2 = JFK <br> 3 = Newark <br>4 = Nassau or Westchester <br>5 = Negotiated fare <br>6 = Group ride |\n|Store_and_fwd_flag |This flag indicates whether the trip record was held in vehicle memory before sending to the vendor, aka “store and forward,” because the vehicle did not have a connection to the server.  <br>Y= store and forward trip <br>N= not a store and forward trip |\n|Payment_type| A numeric code signifying how the passenger paid for the trip. <br> 1 = Credit card <br>2 = Cash <br>3 = No charge <br>4 = Dispute <br>5 = Unknown <br>6 = Voided trip |\n|Fare_amount| The time-and-distance fare calculated by the meter. <br>Extra Miscellaneous extras and surcharges.  Currently, this only includes the 0.50 and 1 USD rush hour and overnight charges. |\n|MTA_tax |0.50 USD MTA tax that is automatically triggered based on the metered rate in use. |\n|Improvement_surcharge | 0.30 USD improvement surcharge assessed trips at the flag drop. The improvement surcharge began being levied in 2015. |\n|Tip_amount |Tip amount – This field is automatically populated for credit card tips. Cash tips are not included. |\n| Tolls_amount | Total amount of all tolls paid in trip.  |\n| total_amount | The total amount charged to passengers. Does not include cash tips. |\n|Congestion_Surcharge |Total amount collected in trip for NYS congestion surcharge. |\n| Airport_fee | 1.25 USD for pick up only at LaGuardia and John F. Kennedy Airports|\n\nAlthough the amounts of extra charges and taxes applied are specified in the data dictionary, you will see that some cases have different values of these charges in the actual data."
-		},
-		{
-			"t": "md",
-			"s": "**Taxi Zones**\n\nEach of the trip records contains a field corresponding to the location of the pickup or drop-off of the trip, populated by numbers ranging from 1-263.\n\nThese numbers correspond to taxi zones, which may be downloaded as a table or map/shapefile and matched to the trip records using a join.\n\nThis is covered in more detail in later sections."
-		},
-		{
-			"t": "md",
-			"s": "---"
-		},
-		{
-			"t": "md",
-			"s": "## **1** Data Preparation\n\n<font color = red>[5 marks]</font> <br>"
-		},
-		{
-			"t": "md",
-			"s": "### Import Libraries"
-		},
-		{
-			"t": "code",
-			"s": "# Import warnings\n\n"
-		},
-		{
-			"t": "code",
-			"s": "# Import the libraries you will be using for analysis\n\n"
-		},
-		{
-			"t": "code",
-			"s": "# Recommended versions\n# numpy version: 1.26.4\n# pandas version: 2.2.2\n# matplotlib version: 3.10.0\n# seaborn version: 0.13.2\n\n# Check versions\nprint(\"numpy version:\", np.__version__)\nprint(\"pandas version:\", pd.__version__)\nprint(\"matplotlib version:\", plt.matplotlib.__version__)\nprint(\"seaborn version:\", sns.__version__)"
-		},
-		{
-			"t": "md",
-			"s": "### **1.1** Load the dataset\n<font color = red>[5 marks]</font> <br>"
-		},
-		{
-			"t": "md",
-			"s": "You will see twelve files, one for each month.\n\nTo read parquet files with Pandas, you have to follow a similar syntax as that for CSV files.\n\n`df = pd.read_parquet('file.parquet')`"
-		},
-		{
-			"t": "code",
-			"s": "# Try loading one file\n\n# df = pd.read_parquet('2023-1.parquet')\n# df.info()"
-		},
-		{
-			"t": "md",
-			"s": "How many rows are there? Do you think handling such a large number of rows is computationally feasible when we have to combine the data for all twelve months into one?\n\nTo handle this, we need to sample a fraction of data from each of the files. How to go about that? Think of a way to select only some portion of the data from each month's file that accurately represents the trends."
-		},
-		{
-			"t": "md",
-			"s": "#### Sampling the Data\n> One way is to take a small percentage of entries for pickup in every hour of a date. So, for all the days in a month, we can iterate through the hours and select 5% values randomly from those. Use `tpep_pickup_datetime` for this. Separate date and hour from the datetime values and then for each date, select some fraction of trips for each of the 24 hours.\n\nTo sample data, you can use the `sample()` method. Follow this syntax:\n\n```Python\n# sampled_data is an empty DF to keep appending sampled data of each hour\n# hour_data is the DF of entries for an hour 'X' on a date 'Y'\n\nsample = hour_data.sample(frac = 0.05, random_state = 42)\n# sample 0.05 of the hour_data\n# random_state is just a seed for sampling, you can define it yourself\n\nsampled_data = pd.concat([sampled_data, sample]) # adding data for this hour to the DF\n```\n\nThis *sampled_data* will contain 5% values selected at random from each hour.\n\nNote that the code given above is only the part that will be used for sampling and not the complete code required for sampling and combining the data files.\n\nKeep in mind that you sample by date AND hour, not just hour. (Why?)"
-		},
-		{
-			"t": "md",
-			"s": "---"
-		},
-		{
-			"t": "md",
-			"s": "**1.1.1** <font color = red>[5 marks]</font> <br>\nFigure out how to sample and combine the files.",
-			"ref": "1.1.1"
-		},
-		{
-			"t": "md",
-			"s": "**Note:** It is not mandatory to use the method specified above. While sampling, you only need to make sure that your sampled data represents the overall data of all the months accurately."
-		},
-		{
-			"t": "code",
-			"s": "# Sample the data\n# It is recommmended to not load all the files at once to avoid memory overload"
-		},
-		{
-			"t": "code",
-			"s": "# from google.colab import drive\n# drive.mount('/content/drive')"
-		},
-		{
-			"t": "code",
-			"s": "# Take a small percentage of entries from each hour of every date.\n# Iterating through the monthly data:\n#   read a month file -> day -> hour: append sampled data -> move to next hour -> move to next day after 24 hours -> move to next month file\n# Create a single dataframe for the year combining all the monthly data\n\n# Select the folder having data files\nimport os\n\n# Select the folder having data files\nos.chdir('/content/Assignments/EDA/data_NYC_Taxi/trip_records')\n\n# Create a list of all the twelve files to read\nfile_list = os.listdir()\n\n# initialise an empty dataframe\ndf = pd.DataFrame()\n\n\n# iterate through the list of files and sample one by one:\nfor file_name in file_list:\n    try:\n        # file path for the current file\n        file_path = os.path.join(os.getcwd(), file_name)\n\n        # Reading the current file\n\n\n\n        # We will store the sampled data for the current date in this df by appending the sampled data from each hour to this\n        # After completing iteration through each date, we will append this data to the final dataframe.\n        sampled_data = pd.DataFrame()\n\n        # Loop through dates and then loop through every hour of each date\n\n            # Iterate through each hour of the selected date\n\n                # Sample 5% of the hourly data randomly\n\n                # add data of this hour to the dataframe\n\n        # Concatenate the sampled data of all the dates to a single dataframe\n        df = # we initialised this empty DF earlier\n\n    except Exception as e:\n        print(f\"Error reading file {file_name}: {e}\")"
-		},
-		{
-			"t": "md",
-			"s": "After combining the data files into one DataFrame, convert the new DataFrame to a CSV or parquet file and store it to use directly.\n\nIdeally, you can try keeping the total entries to around 250,000 to 300,000."
-		},
-		{
-			"t": "code",
-			"s": "# Store the df in csv/parquet\n# df.to_parquet('')"
-		},
-		{
-			"t": "md",
-			"s": "## **2** Data Cleaning\n<font color = red>[30 marks]</font> <br>"
-		},
-		{
-			"t": "md",
-			"s": "Now we can load the new data directly."
-		},
-		{
-			"t": "code",
-			"s": "# Load the new data file\n\n"
-		},
-		{
-			"t": "code",
-			"s": "# df.head()"
-		},
-		{
-			"t": "code",
-			"s": "# df.info()"
-		},
-		{
-			"t": "md",
-			"s": "#### **2.1** Fixing Columns\n<font color = red>[10 marks]</font> <br>\n\nFix/drop any columns as you seem necessary in the below sections"
-		},
-		{
-			"t": "md",
-			"s": "**2.1.1** <font color = red>[2 marks]</font> <br>\n\nFix the index and drop unnecessary columns",
-			"ref": "2.1.1"
-		},
-		{
-			"t": "code",
-			"s": "# Fix the index and drop any columns that are not needed\n\n"
-		},
-		{
-			"t": "md",
-			"s": "**2.1.2** <font color = red>[3 marks]</font> <br>\nThere are two airport fee columns. This is possibly an error in naming columns. Let's see whether these can be combined into a single column.",
-			"ref": "2.1.2"
-		},
-		{
-			"t": "code",
-			"s": "# Combine the two airport fee columns\n\n"
-		},
-		{
-			"t": "md",
-			"s": "**2.1.3** <font color = red>[5 marks]</font> <br>\nFix columns with negative (monetary) values",
-			"ref": "2.1.3"
-		},
-		{
-			"t": "code",
-			"s": "# check where values of fare amount are negative\n\n"
-		},
-		{
-			"t": "md",
-			"s": "Did you notice something different in the `RatecodeID` column for above records?"
-		},
-		{
-			"t": "code",
-			"s": "# Analyse RatecodeID for the negative fare amounts\n\n"
-		},
-		{
-			"t": "code",
-			"s": "# Find which columns have negative values\n\n"
-		},
-		{
-			"t": "code",
-			"s": "# fix these negative values\n\n"
-		},
-		{
-			"t": "md",
-			"s": "### **2.2** Handling Missing Values\n<font color = red>[10 marks]</font> <br>"
-		},
-		{
-			"t": "md",
-			"s": "**2.2.1**  <font color = red>[2 marks]</font> <br>\nFind the proportion of missing values in each column\n\n\n",
-			"ref": "2.2.1"
-		},
-		{
-			"t": "code",
-			"s": "# Find the proportion of missing values in each column\n\n"
-		},
-		{
-			"t": "md",
-			"s": "**2.2.2**  <font color = red>[3 marks]</font> <br>\nHandling missing values in `passenger_count`",
-			"ref": "2.2.2"
-		},
-		{
-			"t": "code",
-			"s": "# Display the rows with null values\n# Impute NaN values in 'passenger_count'\n"
-		},
-		{
-			"t": "md",
-			"s": "Did you find zeroes in passenger_count? Handle these."
-		},
-		{
-			"t": "md",
-			"s": "**2.2.3**  <font color = red>[2 marks]</font> <br>\nHandle missing values in `RatecodeID`",
-			"ref": "2.2.3"
-		},
-		{
-			"t": "code",
-			"s": "# Fix missing values in 'RatecodeID'\n"
-		},
-		{
-			"t": "md",
-			"s": "**2.2.4**  <font color = red>[3 marks]</font> <br>\nImpute NaN in `congestion_surcharge`",
-			"ref": "2.2.4"
-		},
-		{
-			"t": "code",
-			"s": "# handle null values in congestion_surcharge\n\n\n"
-		},
-		{
-			"t": "md",
-			"s": "Are there missing values in other columns? Did you find NaN values in some other set of columns? Handle those missing values below."
-		},
-		{
-			"t": "code",
-			"s": "# Handle any remaining missing values\n\n"
-		},
-		{
-			"t": "md",
-			"s": "### **2.3** Handling Outliers\n<font color = red>[10 marks]</font> <br>"
-		},
-		{
-			"t": "md",
-			"s": "Before we start fixing outliers, let's perform outlier analysis."
-		},
-		{
-			"t": "code",
-			"s": "# Describe the data and check if there are any potential outliers present\n# Check for potential out of place values in various columns\n\n"
-		},
-		{
-			"t": "md",
-			"s": "**2.3.1**  <font color = red>[10 marks]</font> <br>\nBased on the above analysis, it seems that some of the outliers are present due to errors in registering the trips. Fix the outliers.\n\nSome points you can look for:\n- Entries where `trip_distance` is nearly 0 and `fare_amount` is more than 300\n- Entries where `trip_distance` and `fare_amount` are 0 but the pickup and dropoff zones are different (both distance and fare should not be zero for different zones)\n- Entries where `trip_distance` is more than 250  miles.\n- Entries where `payment_type` is 0 (there is no payment_type 0 defined in the data dictionary)\n\nThese are just some suggestions. You can handle outliers in any way you wish, using the insights from above outlier analysis.",
-			"ref": "2.3.1"
-		},
-		{
-			"t": "md",
-			"s": "How will you fix each of these values? Which ones will you drop and which ones will you replace?"
-		},
-		{
-			"t": "md",
-			"s": "First, let us remove 7+ passenger counts as there are very less instances."
-		},
-		{
-			"t": "code",
-			"s": "# remove passenger_count > 6\n"
-		},
-		{
-			"t": "code",
-			"s": "# Continue with outlier handling\n\n"
-		},
-		{
-			"t": "code",
-			"s": "# Do any columns need standardising?\n\n"
-		},
-		{
-			"t": "md",
-			"s": "## **3** Exploratory Data Analysis\n<font color = red>[90 marks]</font> <br>"
-		},
-		{
-			"t": "code",
-			"s": "df.columns.tolist()"
-		},
-		{
-			"t": "md",
-			"s": "#### **3.1** General EDA: Finding Patterns and Trends\n<font color = red>[40 marks]</font> <br>"
-		},
-		{
-			"t": "md",
-			"s": "**3.1.1** <font color = red>[3 marks]</font> <br>\nCategorise the varaibles into Numerical or Categorical.\n* `VendorID`:\n* `tpep_pickup_datetime`:\n* `tpep_dropoff_datetime`:\n* `passenger_count`:\n* `trip_distance`:\n* `RatecodeID`:\n* `PULocationID`:\n* `DOLocationID`:\n* `payment_type`:\n* `pickup_hour`:\n* `trip_duration`:\n\n\nThe following monetary parameters belong in the same category, is it categorical or numerical?\n\n\n* `fare_amount`\n* `extra`\n* `mta_tax`\n* `tip_amount`\n* `tolls_amount`\n* `improvement_surcharge`\n* `total_amount`\n* `congestion_surcharge`\n* `airport_fee`",
-			"ref": "3.1.1"
-		},
-		{
-			"t": "md",
-			"s": "##### Temporal Analysis"
-		},
-		{
-			"t": "md",
-			"s": "**3.1.2** <font color = red>[5 marks]</font> <br>\nAnalyse the distribution of taxi pickups by hours, days of the week, and months.",
-			"ref": "3.1.2"
-		},
-		{
-			"t": "code",
-			"s": "# Find and show the hourly trends in taxi pickups\n\n"
-		},
-		{
-			"t": "code",
-			"s": "# Find and show the daily trends in taxi pickups (days of the week)\n\n"
-		},
-		{
-			"t": "code",
-			"s": "# Show the monthly trends in pickups\n\n"
-		},
-		{
-			"t": "md",
-			"s": "##### Financial Analysis"
-		},
-		{
-			"t": "md",
-			"s": "Take a look at the financial parameters like `fare_amount`, `tip_amount`, `total_amount`, and also `trip_distance`. Do these contain zero/negative values?"
-		},
-		{
-			"t": "code",
-			"s": "# Analyse the above parameters\n\n"
-		},
-		{
-			"t": "md",
-			"s": "Do you think it is beneficial to create a copy DataFrame leaving out the zero values from these?"
-		},
-		{
-			"t": "md",
-			"s": "**3.1.3** <font color = red>[2 marks]</font> <br>\nFilter out the zero values from the above columns.\n\n**Note:** The distance might be 0 in cases where pickup and drop is in the same zone. Do you think it is suitable to drop such cases of zero distance?",
-			"ref": "3.1.3"
-		},
-		{
-			"t": "code",
-			"s": "# Create a df with non zero entries for the selected parameters.\n\n"
-		},
-		{
-			"t": "md",
-			"s": "**3.1.4** <font color = red>[3 marks]</font> <br>\nAnalyse the monthly revenue (`total_amount`) trend",
-			"ref": "3.1.4"
-		},
-		{
-			"t": "code",
-			"s": "# Group data by month and analyse monthly revenue\n\n"
-		},
-		{
-			"t": "md",
-			"s": "**3.1.5** <font color = red>[3 marks]</font> <br>\nShow the proportion of each quarter of the year in the revenue",
-			"ref": "3.1.5"
-		},
-		{
-			"t": "code",
-			"s": "# Calculate proportion of each quarter\n\n"
-		},
-		{
-			"t": "md",
-			"s": "**3.1.6** <font color = red>[3 marks]</font> <br>\nVisualise the relationship between `trip_distance` and `fare_amount`. Also find the correlation value for these two.\n\n**Hint:** You can leave out the trips with trip_distance = 0",
-			"ref": "3.1.6"
-		},
-		{
-			"t": "code",
-			"s": "# Show how trip fare is affected by distance\n\n"
-		},
-		{
-			"t": "md",
-			"s": "**3.1.7** <font color = red>[5 marks]</font> <br>\nFind and visualise the correlation between:\n1. `fare_amount` and trip duration (pickup time to dropoff time)\n2. `fare_amount` and `passenger_count`\n3. `tip_amount` and `trip_distance`",
-			"ref": "3.1.7"
-		},
-		{
-			"t": "code",
-			"s": "# Show relationship between fare and trip duration\n\n"
-		},
-		{
-			"t": "code",
-			"s": "# Show relationship between fare and number of passengers\n\n"
-		},
-		{
-			"t": "code",
-			"s": "# Show relationship between tip and trip distance\n\n"
-		},
-		{
-			"t": "md",
-			"s": "**3.1.8** <font color = red>[3 marks]</font> <br>\nAnalyse the distribution of different payment types (`payment_type`)",
-			"ref": "3.1.8"
-		},
-		{
-			"t": "code",
-			"s": "# Analyse the distribution of different payment types (payment_type).\n\n\n"
-		},
-		{
-			"t": "md",
-			"s": "- 1= Credit card\n- 2= Cash\n- 3= No charge\n- 4= Dispute\n\n"
-		},
-		{
-			"t": "md",
-			"s": "##### Geographical Analysis"
-		},
-		{
-			"t": "md",
-			"s": "For this, you have to use the *taxi_zones.shp* file from the *taxi_zones* folder.\n\nThere would be multiple files inside the folder (such as *.shx, .sbx, .sbn* etc). You do not need to import/read any of the files other than the shapefile, *taxi_zones.shp*.\n\nDo not change any folder structure - all the files need to be present inside the folder for it to work.\n\nThe folder structure should look like this:\n```\nTaxi Zones\n|- taxi_zones.shp.xml\n|- taxi_zones.prj\n|- taxi_zones.sbn\n|- taxi_zones.shp\n|- taxi_zones.dbf\n|- taxi_zones.shx\n|- taxi_zones.sbx\n\n ```\n\n You only need to read the `taxi_zones.shp` file. The *shp* file will utilise the other files by itself."
-		},
-		{
-			"t": "md",
-			"s": "We will use the *GeoPandas* library for geopgraphical analysis\n```\nimport geopandas as gpd\n```\n\nMore about geopandas and shapefiles: [About](https://geopandas.org/en/stable/about.html)\n\n\nReading the shapefile is very similar to *Pandas*. Use `gpd.read_file()` function to load the data (*taxi_zones.shp*) as a GeoDataFrame. Documentation: [Reading and Writing Files](https://geopandas.org/en/stable/docs/user_guide/io.html)"
-		},
-		{
-			"t": "code",
-			"s": "# !pip install geopandas"
-		},
-		{
-			"t": "md",
-			"s": "**3.1.9** <font color = red>[2 marks]</font> <br>\nLoad the shapefile and display it.",
-			"ref": "3.1.9"
-		},
-		{
-			"t": "code",
-			"s": "# import geopandas as gpd\n\n\n# Read the shapefile using geopandas\nzones = # read the .shp file using gpd\nzones.head()"
-		},
-		{
-			"t": "md",
-			"s": "Now, if you look at the DataFrame created, you will see columns like: `OBJECTID`,`Shape_Leng`, `Shape_Area`, `zone`, `LocationID`, `borough`, `geometry`.\n<br><br>\n\nNow, the `locationID` here is also what we are using to mark pickup and drop zones in the trip records.\n\nThe geometric parameters like shape length, shape area and geometry are used to plot the zones on a map.\n\nThis can be easily done using the `plot()` method."
-		},
-		{
-			"t": "code",
-			"s": "# print(zones.info())\n# zones.plot()"
-		},
-		{
-			"t": "md",
-			"s": "Now, you have to merge the trip records and zones data using the location IDs.\n\n"
-		},
-		{
-			"t": "md",
-			"s": "**3.1.10** <font color = red>[3 marks]</font> <br>\nMerge the zones data into trip data using the `locationID` and `PULocationID` columns.",
-			"ref": "3.1.10"
-		},
-		{
-			"t": "code",
-			"s": "# Merge zones and trip records using locationID and PULocationID\n\n"
-		},
-		{
-			"t": "md",
-			"s": "**3.1.11** <font color = red>[3 marks]</font> <br>\nGroup data by location IDs to find the total number of trips per location ID",
-			"ref": "3.1.11"
-		},
-		{
-			"t": "code",
-			"s": "# Group data by location and calculate the number of trips\n\n"
-		},
-		{
-			"t": "md",
-			"s": "**3.1.12** <font color = red>[2 marks]</font> <br>\nNow, use the grouped data to add number of trips to the GeoDataFrame.\n\nWe will use this to plot a map of zones showing total trips per zone.",
-			"ref": "3.1.12"
-		},
-		{
-			"t": "code",
-			"s": "# Merge trip counts back to the zones GeoDataFrame\n\n\n"
-		},
-		{
-			"t": "md",
-			"s": "The next step is creating a color map (choropleth map) showing zones by the number of trips taken.\n\nAgain, you can use the `zones.plot()` method for this. [Plot Method GPD](https://geopandas.org/en/stable/docs/reference/api/geopandas.GeoDataFrame.plot.html#geopandas.GeoDataFrame.plot)\n\nBut first, you need to define the figure and axis for the plot.\n\n`fig, ax = plt.subplots(1, 1, figsize = (12, 10))`\n\nThis function creates a figure (fig) and a single subplot (ax)\n\n---"
-		},
-		{
-			"t": "md",
-			"s": "After setting up the figure and axis, we can proceed to plot the GeoDataFrame on this axis. This is done in the next step where we use the plot method of the GeoDataFrame.\n\nYou can define the following parameters in the `zones.plot()` method:\n```\ncolumn = '',\nax = ax,\nlegend = True,\nlegend_kwds = {'label': \"label\", 'orientation': \"<horizontal/vertical>\"}\n```\n\nTo display the plot, use `plt.show()`."
-		},
-		{
-			"t": "md",
-			"s": "**3.1.13** <font color = red>[3 marks]</font> <br>\nPlot a color-coded map showing zone-wise trips",
-			"ref": "3.1.13"
-		},
-		{
-			"t": "code",
-			"s": "# Define figure and axis\n\n\n# Plot the map and display it\n\n"
-		},
-		{
-			"t": "code",
-			"s": "# can you try displaying the zones DF sorted by the number of trips?\n\n"
-		},
-		{
-			"t": "md",
-			"s": "Here we have completed the temporal, financial and geographical analysis on the trip records.\n\n**Compile your findings from general analysis below:**"
-		},
-		{
-			"t": "md",
-			"s": "You can consider the following points:\n\n* Busiest hours, days and months\n* Trends in revenue collected\n* Trends in quarterly revenue\n* How fare depends on trip distance, trip duration and passenger counts\n* How tip amount depends on trip distance\n* Busiest zones\n"
-		},
-		{
-			"t": "md",
-			"s": "#### **3.2** Detailed EDA: Insights and Strategies\n<font color = red>[50 marks]</font> <br>"
-		},
-		{
-			"t": "md",
-			"s": "Having performed basic analyses for finding trends and patterns, we will now move on to some detailed analysis focussed on operational efficiency, pricing strategies, and customer experience."
-		},
-		{
-			"t": "md",
-			"s": "##### Operational Efficiency"
-		},
-		{
-			"t": "md",
-			"s": "Analyze variations by time of day and location to identify bottlenecks or inefficiencies in routes"
-		},
-		{
-			"t": "md",
-			"s": "**3.2.1** <font color = red>[3 marks]</font> <br>\nIdentify slow routes by calculating the average time taken by cabs to get from one zone to another at different hours of the day.",
-			"ref": "3.2.1"
-		},
-		{
-			"t": "md",
-			"s": "Speed on a route *X* for hour *Y* = (*distance of the route X / average trip duration for hour Y*)"
-		},
-		{
-			"t": "code",
-			"s": "# Find routes which have the slowest speeds at different times of the day\n\n"
-		},
-		{
-			"t": "md",
-			"s": "How does identifying high-traffic, high-demand routes help us?"
-		},
-		{
-			"t": "md",
-			"s": "**3.2.2** <font color = red>[3 marks]</font> <br>\nCalculate the number of trips at each hour of the day and visualise them. Find the busiest hour and show the number of trips for that hour.",
-			"ref": "3.2.2"
-		},
-		{
-			"t": "code",
-			"s": "# Visualise the number of trips per hour and find the busiest hour\n\n"
-		},
-		{
-			"t": "md",
-			"s": "Remember, we took a fraction of trips. To find the actual number, you have to scale the number up by the sampling ratio."
-		},
-		{
-			"t": "md",
-			"s": "**3.2.3** <font color = red>[2 mark]</font> <br>\nFind the actual number of trips in the five busiest hours",
-			"ref": "3.2.3"
-		},
-		{
-			"t": "code",
-			"s": "# Scale up the number of trips\n\n# Fill in the value of your sampling fraction and use that to scale up the numbers\nsample_fraction =\n\n"
-		},
-		{
-			"t": "md",
-			"s": "**3.2.4** <font color = red>[3 marks]</font> <br>\nCompare hourly traffic pattern on weekdays. Also compare for weekend.",
-			"ref": "3.2.4"
-		},
-		{
-			"t": "code",
-			"s": "# Compare traffic trends for the week days and weekends\n\n"
-		},
-		{
-			"t": "md",
-			"s": "What can you infer from the above patterns? How will finding busy and quiet hours for each day help us?"
-		},
-		{
-			"t": "md",
-			"s": "**3.2.5** <font color = red>[3 marks]</font> <br>\nIdentify top 10 zones with high hourly pickups. Do the same for hourly dropoffs. Show pickup and dropoff trends in these zones.",
-			"ref": "3.2.5"
-		},
-		{
-			"t": "code",
-			"s": "# Find top 10 pickup and dropoff zones\n\n"
-		},
-		{
-			"t": "md",
-			"s": "**3.2.6** <font color = red>[3 marks]</font> <br>\nFind the ratio of pickups and dropoffs in each zone. Display the 10 highest (pickup/drop) and 10 lowest (pickup/drop) ratios.",
-			"ref": "3.2.6"
-		},
-		{
-			"t": "code",
-			"s": "# Find the top 10 and bottom 10 pickup/dropoff ratios\n\n"
-		},
-		{
-			"t": "md",
-			"s": "**3.2.7** <font color = red>[3 marks]</font> <br>\nIdentify zones with high pickup and dropoff traffic during night hours (11PM to 5AM)",
-			"ref": "3.2.7"
-		},
-		{
-			"t": "code",
-			"s": "# During night hours (11pm to 5am) find the top 10 pickup and dropoff zones\n# Note that the top zones should be of night hours and not the overall top zones\n\n"
-		},
-		{
-			"t": "md",
-			"s": "Now, let us find the revenue share for the night time hours and the day time hours. After this, we will move to deciding a pricing strategy.\n\n**3.2.8** <font color = red>[2 marks]</font> <br>\nFind the revenue share for nighttime and daytime hours.",
-			"ref": "3.2.8"
-		},
-		{
-			"t": "code",
-			"s": "# Filter for night hours (11 PM to 5 AM)\n\n"
-		},
-		{
-			"t": "md",
-			"s": "##### Pricing Strategy"
-		},
-		{
-			"t": "md",
-			"s": "**3.2.9** <font color = red>[2 marks]</font> <br>\nFor the different passenger counts, find the average fare per mile per passenger.\n\nFor instance, suppose the average fare per mile for trips with 3 passengers is 3 USD/mile, then the fare per mile per passenger will be 1 USD/mile.",
-			"ref": "3.2.9"
-		},
-		{
-			"t": "code",
-			"s": "# Analyse the fare per mile per passenger for different passenger counts\n\n\n"
-		},
-		{
-			"t": "md",
-			"s": "**3.2.10** <font color = red>[3 marks]</font> <br>\nFind the average fare per mile by hours of the day and by days of the week",
-			"ref": "3.2.10"
-		},
-		{
-			"t": "code",
-			"s": "# Compare the average fare per mile for different days and for different times of the day\n\n"
-		},
-		{
-			"t": "md",
-			"s": "**3.2.11** <font color = red>[3 marks]</font> <br>\nAnalyse the average fare per mile for the different vendors for different hours of the day",
-			"ref": "3.2.11"
-		},
-		{
-			"t": "code",
-			"s": "# Compare fare per mile for different vendors\n\n"
-		},
-		{
-			"t": "md",
-			"s": "**3.2.12** <font color = red>[5 marks]</font> <br>\nCompare the fare rates of the different vendors in a tiered fashion. Analyse the average fare per mile for distances upto 2 miles. Analyse the fare per mile for distances from 2 to 5 miles. And then for distances more than 5 miles.\n",
-			"ref": "3.2.12"
-		},
-		{
-			"t": "code",
-			"s": "# Defining distance tiers\n\n"
-		},
-		{
-			"t": "md",
-			"s": "##### Customer Experience and Other Factors"
-		},
-		{
-			"t": "md",
-			"s": "**3.2.13** <font color = red>[5 marks]</font> <br>\nAnalyse average tip percentages based on trip distances, passenger counts and time of pickup. What factors lead to low tip percentages?",
-			"ref": "3.2.13"
-		},
-		{
-			"t": "code",
-			"s": "#  Analyze tip percentages based on distances, passenger counts and pickup times\n\n"
-		},
-		{
-			"t": "md",
-			"s": "Additional analysis [optional]: Let's try comparing cases of low tips with cases of high tips to find out if we find a clear aspect that drives up the tipping behaviours"
-		},
-		{
-			"t": "code",
-			"s": "# Compare trips with tip percentage < 10% to trips with tip percentage > 25%\n\n"
-		},
-		{
-			"t": "md",
-			"s": "**3.2.14** <font color = red>[3 marks]</font> <br>\nAnalyse the variation of passenger count across hours and days of the week.",
-			"ref": "3.2.14"
-		},
-		{
-			"t": "code",
-			"s": "# See how passenger count varies across hours and days\n\n\n"
-		},
-		{
-			"t": "md",
-			"s": "**3.2.15** <font color = red>[2 marks]</font> <br>\nAnalyse the variation of passenger counts across zones",
-			"ref": "3.2.15"
-		},
-		{
-			"t": "code",
-			"s": "# How does passenger count vary across zones\n\n"
-		},
-		{
-			"t": "code",
-			"s": "# For a more detailed analysis, we can use the zones_with_trips GeoDataFrame\n# Create a new column for the average passenger count in each zone.\n\n"
-		},
-		{
-			"t": "md",
-			"s": "Find out how often surcharges/extra charges are applied to understand their prevalance"
-		},
-		{
-			"t": "md",
-			"s": "**3.2.16** <font color = red>[5 marks]</font> <br>\nAnalyse the pickup/dropoff zones or times when extra charges are applied more frequently",
-			"ref": "3.2.16"
-		},
-		{
-			"t": "code",
-			"s": "# How often is each surcharge applied?\n\n"
-		},
-		{
-			"t": "md",
-			"s": "## **4** Conclusion\n<font color = red>[15 marks]</font> <br>"
-		},
-		{
-			"t": "md",
-			"s": "### **4.1** Final Insights and Recommendations\n<font color = red>[15 marks]</font> <br>\n\nConclude your analyses here. Include all the outcomes you found based on the analysis.\n\nBased on the insights, frame a concluding story explaining suitable parameters such as location, time of the day, day of the week etc. to be kept in mind while devising a strategy to meet customer demand and optimise supply."
-		},
-		{
-			"t": "md",
-			"s": "**4.1.1** <font color = red>[5 marks]</font> <br>\nRecommendations to optimize routing and dispatching based on demand patterns and operational inefficiencies",
-			"ref": "4.1.1"
-		},
-		{
-			"t": "code",
-			"s": ""
-		},
-		{
-			"t": "md",
-			"s": "**4.1.2** <font color = red>[5 marks]</font> <br>\n\nSuggestions on strategically positioning cabs across different zones to make best use of insights uncovered by analysing trip trends across time, days and months.",
-			"ref": "4.1.2"
-		},
-		{
-			"t": "code",
-			"s": ""
-		},
-		{
-			"t": "md",
-			"s": "**4.1.3** <font color = red>[5 marks]</font> <br>\nPropose data-driven adjustments to the pricing strategy to maximize revenue while maintaining competitive rates with other vendors.",
-			"ref": "4.1.3"
-		},
-		{
-			"t": "code",
-			"s": ""
+var assignments = [
+	{
+		"id": "eda-taxi",
+		"course": "C2",
+		"concepts": ["d-bf9615ba3a8e"],
+		"title": ["EDA: Phân tích chuyến taxi NYC", "EDA: NYC Taxi trip analysis"],
+		"file": "EDA_Assg_NYC_Taxi_Starter.ipynb",
+		"story": ["Dữ liệu thật là taxi New York, nhưng bạn đọc nó bằng con mắt của Lotus Spa: «chuyến» là một lượt đặt lịch, «vùng» là một chi nhánh, «giờ đón» là giờ khách vào. Mỗi mục có một ví dụ nhỏ để thấy câu hỏi của bài này trông thế nào ở spa.", "The real data is New York taxis, but you read it through Lotus Spa's eyes: a “trip” is a booking, a “zone” is a branch, a “pickup hour” is when the customer arrives. Each task has a small example to show what this task's question looks like at the spa."],
+		"cells": [
+			{
+				"t": "md",
+				"s": "# **New York City Yellow Taxi Data**"
+			},
+			{
+				"t": "md",
+				"s": "## Objective\nIn this case study you will be learning exploratory data analysis (EDA) with the help of a dataset on yellow taxi rides in New York City. This will enable you to understand why EDA is an important step in the process of data science and machine learning."
+			},
+			{
+				"t": "md",
+				"s": "## **Problem Statement**\nAs an analyst at an upcoming taxi operation in NYC, you are tasked to use the 2023 taxi trip data to uncover insights that could help optimise taxi operations. The goal is to analyse patterns in the data that can inform strategic decisions to improve service efficiency, maximise revenue, and enhance passenger experience."
+			},
+			{
+				"t": "md",
+				"s": "## Tasks\nYou need to perform the following steps for successfully completing this assignment:\n1. Data Loading\n2. Data Cleaning\n3. Exploratory Analysis: Bivariate and Multivariate\n4. Creating Visualisations to Support the Analysis\n5. Deriving Insights and Stating Conclusions"
+			},
+			{
+				"t": "md",
+				"s": "---"
+			},
+			{
+				"t": "md",
+				"s": "**NOTE:** The marks given along with headings and sub-headings are cumulative marks for those particular headings/sub-headings.<br>\n\nThe actual marks for each task are specified within the tasks themselves.\n\nFor example, marks given with heading *2* or sub-heading *2.1* are the cumulative marks, for your reference only. <br>\n\nThe marks you will receive for completing tasks are given with the tasks.\n\nSuppose the marks for two tasks are: 3 marks for 2.1.1 and 2 marks for 3.2.2, or\n* 2.1.1 [3 marks]\n* 3.2.2 [2 marks]\n\nthen, you will earn 3 marks for completing task 2.1.1 and 2 marks for completing task 3.2.2.\n"
+			},
+			{
+				"t": "md",
+				"s": "---"
+			},
+			{
+				"t": "md",
+				"s": "## Data Understanding\nThe yellow taxi trip records include fields capturing pick-up and drop-off dates/times, pick-up and drop-off locations, trip distances, itemized fares, rate types, payment types, and driver-reported passenger counts.\n\nThe data is stored in Parquet format (*.parquet*). The dataset is from 2009 to 2024. However, for this assignment, we will only be using the data from 2023.\n\nThe data for each month is present in a different parquet file. You will get twelve files for each of the months in 2023.\n\nThe data was collected and provided to the NYC Taxi and Limousine Commission (TLC) by technology providers like vendors and taxi hailing apps. <br>\n\nYou can find the link to the TLC trip records page here: https://www.nyc.gov/site/tlc/about/tlc-trip-record-data.page"
+			},
+			{
+				"t": "md",
+				"s": "###  Data Description\nYou can find the data description here: [Data Dictionary](https://www.nyc.gov/assets/tlc/downloads/pdf/data_dictionary_trip_records_yellow.pdf)"
+			},
+			{
+				"t": "md",
+				"s": "**Trip Records**\n\n\n\n|Field Name       |description |\n|:----------------|:-----------|\n| VendorID | A code indicating the TPEP provider that provided the record. <br> 1= Creative Mobile Technologies, LLC; <br> 2= VeriFone Inc. |\n| tpep_pickup_datetime | The date and time when the meter was engaged.  |\n| tpep_dropoff_datetime | The date and time when the meter was disengaged.   |\n| Passenger_count | The number of passengers in the vehicle. <br> This is a driver-entered value. |\n| Trip_distance | The elapsed trip distance in miles reported by the taximeter. |\n| PULocationID | TLC Taxi Zone in which the taximeter was engaged |\n| DOLocationID | TLC Taxi Zone in which the taximeter was disengaged |\n|RateCodeID |The final rate code in effect at the end of the trip.<br> 1 = Standard rate <br> 2 = JFK <br> 3 = Newark <br>4 = Nassau or Westchester <br>5 = Negotiated fare <br>6 = Group ride |\n|Store_and_fwd_flag |This flag indicates whether the trip record was held in vehicle memory before sending to the vendor, aka “store and forward,” because the vehicle did not have a connection to the server.  <br>Y= store and forward trip <br>N= not a store and forward trip |\n|Payment_type| A numeric code signifying how the passenger paid for the trip. <br> 1 = Credit card <br>2 = Cash <br>3 = No charge <br>4 = Dispute <br>5 = Unknown <br>6 = Voided trip |\n|Fare_amount| The time-and-distance fare calculated by the meter. <br>Extra Miscellaneous extras and surcharges.  Currently, this only includes the 0.50 and 1 USD rush hour and overnight charges. |\n|MTA_tax |0.50 USD MTA tax that is automatically triggered based on the metered rate in use. |\n|Improvement_surcharge | 0.30 USD improvement surcharge assessed trips at the flag drop. The improvement surcharge began being levied in 2015. |\n|Tip_amount |Tip amount – This field is automatically populated for credit card tips. Cash tips are not included. |\n| Tolls_amount | Total amount of all tolls paid in trip.  |\n| total_amount | The total amount charged to passengers. Does not include cash tips. |\n|Congestion_Surcharge |Total amount collected in trip for NYS congestion surcharge. |\n| Airport_fee | 1.25 USD for pick up only at LaGuardia and John F. Kennedy Airports|\n\nAlthough the amounts of extra charges and taxes applied are specified in the data dictionary, you will see that some cases have different values of these charges in the actual data."
+			},
+			{
+				"t": "md",
+				"s": "**Taxi Zones**\n\nEach of the trip records contains a field corresponding to the location of the pickup or drop-off of the trip, populated by numbers ranging from 1-263.\n\nThese numbers correspond to taxi zones, which may be downloaded as a table or map/shapefile and matched to the trip records using a join.\n\nThis is covered in more detail in later sections."
+			},
+			{
+				"t": "md",
+				"s": "---"
+			},
+			{
+				"t": "md",
+				"s": "## **1** Data Preparation\n\n<font color = red>[5 marks]</font> <br>"
+			},
+			{
+				"t": "md",
+				"s": "### Import Libraries"
+			},
+			{
+				"t": "code",
+				"s": "# Import warnings\n\n"
+			},
+			{
+				"t": "code",
+				"s": "# Import the libraries you will be using for analysis\n\n"
+			},
+			{
+				"t": "code",
+				"s": "# Recommended versions\n# numpy version: 1.26.4\n# pandas version: 2.2.2\n# matplotlib version: 3.10.0\n# seaborn version: 0.13.2\n\n# Check versions\nprint(\"numpy version:\", np.__version__)\nprint(\"pandas version:\", pd.__version__)\nprint(\"matplotlib version:\", plt.matplotlib.__version__)\nprint(\"seaborn version:\", sns.__version__)"
+			},
+			{
+				"t": "md",
+				"s": "### **1.1** Load the dataset\n<font color = red>[5 marks]</font> <br>"
+			},
+			{
+				"t": "md",
+				"s": "You will see twelve files, one for each month.\n\nTo read parquet files with Pandas, you have to follow a similar syntax as that for CSV files.\n\n`df = pd.read_parquet('file.parquet')`"
+			},
+			{
+				"t": "code",
+				"s": "# Try loading one file\n\n# df = pd.read_parquet('2023-1.parquet')\n# df.info()"
+			},
+			{
+				"t": "md",
+				"s": "How many rows are there? Do you think handling such a large number of rows is computationally feasible when we have to combine the data for all twelve months into one?\n\nTo handle this, we need to sample a fraction of data from each of the files. How to go about that? Think of a way to select only some portion of the data from each month's file that accurately represents the trends."
+			},
+			{
+				"t": "md",
+				"s": "#### Sampling the Data\n> One way is to take a small percentage of entries for pickup in every hour of a date. So, for all the days in a month, we can iterate through the hours and select 5% values randomly from those. Use `tpep_pickup_datetime` for this. Separate date and hour from the datetime values and then for each date, select some fraction of trips for each of the 24 hours.\n\nTo sample data, you can use the `sample()` method. Follow this syntax:\n\n```Python\n# sampled_data is an empty DF to keep appending sampled data of each hour\n# hour_data is the DF of entries for an hour 'X' on a date 'Y'\n\nsample = hour_data.sample(frac = 0.05, random_state = 42)\n# sample 0.05 of the hour_data\n# random_state is just a seed for sampling, you can define it yourself\n\nsampled_data = pd.concat([sampled_data, sample]) # adding data for this hour to the DF\n```\n\nThis *sampled_data* will contain 5% values selected at random from each hour.\n\nNote that the code given above is only the part that will be used for sampling and not the complete code required for sampling and combining the data files.\n\nKeep in mind that you sample by date AND hour, not just hour. (Why?)"
+			},
+			{
+				"t": "md",
+				"s": "---"
+			},
+			{
+				"t": "md",
+				"s": "**1.1.1** <font color = red>[5 marks]</font> <br>\nFigure out how to sample and combine the files.",
+				"ref": "1.1.1"
+			},
+			{
+				"t": "md",
+				"s": "**Note:** It is not mandatory to use the method specified above. While sampling, you only need to make sure that your sampled data represents the overall data of all the months accurately."
+			},
+			{
+				"t": "code",
+				"s": "# Sample the data\n# It is recommmended to not load all the files at once to avoid memory overload"
+			},
+			{
+				"t": "code",
+				"s": "# from google.colab import drive\n# drive.mount('/content/drive')"
+			},
+			{
+				"t": "code",
+				"s": "# Take a small percentage of entries from each hour of every date.\n# Iterating through the monthly data:\n#   read a month file -> day -> hour: append sampled data -> move to next hour -> move to next day after 24 hours -> move to next month file\n# Create a single dataframe for the year combining all the monthly data\n\n# Select the folder having data files\nimport os\n\n# Select the folder having data files\nos.chdir('/content/Assignments/EDA/data_NYC_Taxi/trip_records')\n\n# Create a list of all the twelve files to read\nfile_list = os.listdir()\n\n# initialise an empty dataframe\ndf = pd.DataFrame()\n\n\n# iterate through the list of files and sample one by one:\nfor file_name in file_list:\n    try:\n        # file path for the current file\n        file_path = os.path.join(os.getcwd(), file_name)\n\n        # Reading the current file\n\n\n\n        # We will store the sampled data for the current date in this df by appending the sampled data from each hour to this\n        # After completing iteration through each date, we will append this data to the final dataframe.\n        sampled_data = pd.DataFrame()\n\n        # Loop through dates and then loop through every hour of each date\n\n            # Iterate through each hour of the selected date\n\n                # Sample 5% of the hourly data randomly\n\n                # add data of this hour to the dataframe\n\n        # Concatenate the sampled data of all the dates to a single dataframe\n        df = # we initialised this empty DF earlier\n\n    except Exception as e:\n        print(f\"Error reading file {file_name}: {e}\")"
+			},
+			{
+				"t": "md",
+				"s": "After combining the data files into one DataFrame, convert the new DataFrame to a CSV or parquet file and store it to use directly.\n\nIdeally, you can try keeping the total entries to around 250,000 to 300,000."
+			},
+			{
+				"t": "code",
+				"s": "# Store the df in csv/parquet\n# df.to_parquet('')"
+			},
+			{
+				"t": "md",
+				"s": "## **2** Data Cleaning\n<font color = red>[30 marks]</font> <br>"
+			},
+			{
+				"t": "md",
+				"s": "Now we can load the new data directly."
+			},
+			{
+				"t": "code",
+				"s": "# Load the new data file\n\n"
+			},
+			{
+				"t": "code",
+				"s": "# df.head()"
+			},
+			{
+				"t": "code",
+				"s": "# df.info()"
+			},
+			{
+				"t": "md",
+				"s": "#### **2.1** Fixing Columns\n<font color = red>[10 marks]</font> <br>\n\nFix/drop any columns as you seem necessary in the below sections"
+			},
+			{
+				"t": "md",
+				"s": "**2.1.1** <font color = red>[2 marks]</font> <br>\n\nFix the index and drop unnecessary columns",
+				"ref": "2.1.1"
+			},
+			{
+				"t": "code",
+				"s": "# Fix the index and drop any columns that are not needed\n\n"
+			},
+			{
+				"t": "md",
+				"s": "**2.1.2** <font color = red>[3 marks]</font> <br>\nThere are two airport fee columns. This is possibly an error in naming columns. Let's see whether these can be combined into a single column.",
+				"ref": "2.1.2"
+			},
+			{
+				"t": "code",
+				"s": "# Combine the two airport fee columns\n\n"
+			},
+			{
+				"t": "md",
+				"s": "**2.1.3** <font color = red>[5 marks]</font> <br>\nFix columns with negative (monetary) values",
+				"ref": "2.1.3"
+			},
+			{
+				"t": "code",
+				"s": "# check where values of fare amount are negative\n\n"
+			},
+			{
+				"t": "md",
+				"s": "Did you notice something different in the `RatecodeID` column for above records?"
+			},
+			{
+				"t": "code",
+				"s": "# Analyse RatecodeID for the negative fare amounts\n\n"
+			},
+			{
+				"t": "code",
+				"s": "# Find which columns have negative values\n\n"
+			},
+			{
+				"t": "code",
+				"s": "# fix these negative values\n\n"
+			},
+			{
+				"t": "md",
+				"s": "### **2.2** Handling Missing Values\n<font color = red>[10 marks]</font> <br>"
+			},
+			{
+				"t": "md",
+				"s": "**2.2.1**  <font color = red>[2 marks]</font> <br>\nFind the proportion of missing values in each column\n\n\n",
+				"ref": "2.2.1"
+			},
+			{
+				"t": "code",
+				"s": "# Find the proportion of missing values in each column\n\n"
+			},
+			{
+				"t": "md",
+				"s": "**2.2.2**  <font color = red>[3 marks]</font> <br>\nHandling missing values in `passenger_count`",
+				"ref": "2.2.2"
+			},
+			{
+				"t": "code",
+				"s": "# Display the rows with null values\n# Impute NaN values in 'passenger_count'\n"
+			},
+			{
+				"t": "md",
+				"s": "Did you find zeroes in passenger_count? Handle these."
+			},
+			{
+				"t": "md",
+				"s": "**2.2.3**  <font color = red>[2 marks]</font> <br>\nHandle missing values in `RatecodeID`",
+				"ref": "2.2.3"
+			},
+			{
+				"t": "code",
+				"s": "# Fix missing values in 'RatecodeID'\n"
+			},
+			{
+				"t": "md",
+				"s": "**2.2.4**  <font color = red>[3 marks]</font> <br>\nImpute NaN in `congestion_surcharge`",
+				"ref": "2.2.4"
+			},
+			{
+				"t": "code",
+				"s": "# handle null values in congestion_surcharge\n\n\n"
+			},
+			{
+				"t": "md",
+				"s": "Are there missing values in other columns? Did you find NaN values in some other set of columns? Handle those missing values below."
+			},
+			{
+				"t": "code",
+				"s": "# Handle any remaining missing values\n\n"
+			},
+			{
+				"t": "md",
+				"s": "### **2.3** Handling Outliers\n<font color = red>[10 marks]</font> <br>"
+			},
+			{
+				"t": "md",
+				"s": "Before we start fixing outliers, let's perform outlier analysis."
+			},
+			{
+				"t": "code",
+				"s": "# Describe the data and check if there are any potential outliers present\n# Check for potential out of place values in various columns\n\n"
+			},
+			{
+				"t": "md",
+				"s": "**2.3.1**  <font color = red>[10 marks]</font> <br>\nBased on the above analysis, it seems that some of the outliers are present due to errors in registering the trips. Fix the outliers.\n\nSome points you can look for:\n- Entries where `trip_distance` is nearly 0 and `fare_amount` is more than 300\n- Entries where `trip_distance` and `fare_amount` are 0 but the pickup and dropoff zones are different (both distance and fare should not be zero for different zones)\n- Entries where `trip_distance` is more than 250  miles.\n- Entries where `payment_type` is 0 (there is no payment_type 0 defined in the data dictionary)\n\nThese are just some suggestions. You can handle outliers in any way you wish, using the insights from above outlier analysis.",
+				"ref": "2.3.1"
+			},
+			{
+				"t": "md",
+				"s": "How will you fix each of these values? Which ones will you drop and which ones will you replace?"
+			},
+			{
+				"t": "md",
+				"s": "First, let us remove 7+ passenger counts as there are very less instances."
+			},
+			{
+				"t": "code",
+				"s": "# remove passenger_count > 6\n"
+			},
+			{
+				"t": "code",
+				"s": "# Continue with outlier handling\n\n"
+			},
+			{
+				"t": "code",
+				"s": "# Do any columns need standardising?\n\n"
+			},
+			{
+				"t": "md",
+				"s": "## **3** Exploratory Data Analysis\n<font color = red>[90 marks]</font> <br>"
+			},
+			{
+				"t": "code",
+				"s": "df.columns.tolist()"
+			},
+			{
+				"t": "md",
+				"s": "#### **3.1** General EDA: Finding Patterns and Trends\n<font color = red>[40 marks]</font> <br>"
+			},
+			{
+				"t": "md",
+				"s": "**3.1.1** <font color = red>[3 marks]</font> <br>\nCategorise the varaibles into Numerical or Categorical.\n* `VendorID`:\n* `tpep_pickup_datetime`:\n* `tpep_dropoff_datetime`:\n* `passenger_count`:\n* `trip_distance`:\n* `RatecodeID`:\n* `PULocationID`:\n* `DOLocationID`:\n* `payment_type`:\n* `pickup_hour`:\n* `trip_duration`:\n\n\nThe following monetary parameters belong in the same category, is it categorical or numerical?\n\n\n* `fare_amount`\n* `extra`\n* `mta_tax`\n* `tip_amount`\n* `tolls_amount`\n* `improvement_surcharge`\n* `total_amount`\n* `congestion_surcharge`\n* `airport_fee`",
+				"ref": "3.1.1"
+			},
+			{
+				"t": "md",
+				"s": "##### Temporal Analysis"
+			},
+			{
+				"t": "md",
+				"s": "**3.1.2** <font color = red>[5 marks]</font> <br>\nAnalyse the distribution of taxi pickups by hours, days of the week, and months.",
+				"ref": "3.1.2"
+			},
+			{
+				"t": "code",
+				"s": "# Find and show the hourly trends in taxi pickups\n\n"
+			},
+			{
+				"t": "code",
+				"s": "# Find and show the daily trends in taxi pickups (days of the week)\n\n"
+			},
+			{
+				"t": "code",
+				"s": "# Show the monthly trends in pickups\n\n"
+			},
+			{
+				"t": "md",
+				"s": "##### Financial Analysis"
+			},
+			{
+				"t": "md",
+				"s": "Take a look at the financial parameters like `fare_amount`, `tip_amount`, `total_amount`, and also `trip_distance`. Do these contain zero/negative values?"
+			},
+			{
+				"t": "code",
+				"s": "# Analyse the above parameters\n\n"
+			},
+			{
+				"t": "md",
+				"s": "Do you think it is beneficial to create a copy DataFrame leaving out the zero values from these?"
+			},
+			{
+				"t": "md",
+				"s": "**3.1.3** <font color = red>[2 marks]</font> <br>\nFilter out the zero values from the above columns.\n\n**Note:** The distance might be 0 in cases where pickup and drop is in the same zone. Do you think it is suitable to drop such cases of zero distance?",
+				"ref": "3.1.3"
+			},
+			{
+				"t": "code",
+				"s": "# Create a df with non zero entries for the selected parameters.\n\n"
+			},
+			{
+				"t": "md",
+				"s": "**3.1.4** <font color = red>[3 marks]</font> <br>\nAnalyse the monthly revenue (`total_amount`) trend",
+				"ref": "3.1.4"
+			},
+			{
+				"t": "code",
+				"s": "# Group data by month and analyse monthly revenue\n\n"
+			},
+			{
+				"t": "md",
+				"s": "**3.1.5** <font color = red>[3 marks]</font> <br>\nShow the proportion of each quarter of the year in the revenue",
+				"ref": "3.1.5"
+			},
+			{
+				"t": "code",
+				"s": "# Calculate proportion of each quarter\n\n"
+			},
+			{
+				"t": "md",
+				"s": "**3.1.6** <font color = red>[3 marks]</font> <br>\nVisualise the relationship between `trip_distance` and `fare_amount`. Also find the correlation value for these two.\n\n**Hint:** You can leave out the trips with trip_distance = 0",
+				"ref": "3.1.6"
+			},
+			{
+				"t": "code",
+				"s": "# Show how trip fare is affected by distance\n\n"
+			},
+			{
+				"t": "md",
+				"s": "**3.1.7** <font color = red>[5 marks]</font> <br>\nFind and visualise the correlation between:\n1. `fare_amount` and trip duration (pickup time to dropoff time)\n2. `fare_amount` and `passenger_count`\n3. `tip_amount` and `trip_distance`",
+				"ref": "3.1.7"
+			},
+			{
+				"t": "code",
+				"s": "# Show relationship between fare and trip duration\n\n"
+			},
+			{
+				"t": "code",
+				"s": "# Show relationship between fare and number of passengers\n\n"
+			},
+			{
+				"t": "code",
+				"s": "# Show relationship between tip and trip distance\n\n"
+			},
+			{
+				"t": "md",
+				"s": "**3.1.8** <font color = red>[3 marks]</font> <br>\nAnalyse the distribution of different payment types (`payment_type`)",
+				"ref": "3.1.8"
+			},
+			{
+				"t": "code",
+				"s": "# Analyse the distribution of different payment types (payment_type).\n\n\n"
+			},
+			{
+				"t": "md",
+				"s": "- 1= Credit card\n- 2= Cash\n- 3= No charge\n- 4= Dispute\n\n"
+			},
+			{
+				"t": "md",
+				"s": "##### Geographical Analysis"
+			},
+			{
+				"t": "md",
+				"s": "For this, you have to use the *taxi_zones.shp* file from the *taxi_zones* folder.\n\nThere would be multiple files inside the folder (such as *.shx, .sbx, .sbn* etc). You do not need to import/read any of the files other than the shapefile, *taxi_zones.shp*.\n\nDo not change any folder structure - all the files need to be present inside the folder for it to work.\n\nThe folder structure should look like this:\n```\nTaxi Zones\n|- taxi_zones.shp.xml\n|- taxi_zones.prj\n|- taxi_zones.sbn\n|- taxi_zones.shp\n|- taxi_zones.dbf\n|- taxi_zones.shx\n|- taxi_zones.sbx\n\n ```\n\n You only need to read the `taxi_zones.shp` file. The *shp* file will utilise the other files by itself."
+			},
+			{
+				"t": "md",
+				"s": "We will use the *GeoPandas* library for geopgraphical analysis\n```\nimport geopandas as gpd\n```\n\nMore about geopandas and shapefiles: [About](https://geopandas.org/en/stable/about.html)\n\n\nReading the shapefile is very similar to *Pandas*. Use `gpd.read_file()` function to load the data (*taxi_zones.shp*) as a GeoDataFrame. Documentation: [Reading and Writing Files](https://geopandas.org/en/stable/docs/user_guide/io.html)"
+			},
+			{
+				"t": "code",
+				"s": "# !pip install geopandas"
+			},
+			{
+				"t": "md",
+				"s": "**3.1.9** <font color = red>[2 marks]</font> <br>\nLoad the shapefile and display it.",
+				"ref": "3.1.9"
+			},
+			{
+				"t": "code",
+				"s": "# import geopandas as gpd\n\n\n# Read the shapefile using geopandas\nzones = # read the .shp file using gpd\nzones.head()"
+			},
+			{
+				"t": "md",
+				"s": "Now, if you look at the DataFrame created, you will see columns like: `OBJECTID`,`Shape_Leng`, `Shape_Area`, `zone`, `LocationID`, `borough`, `geometry`.\n<br><br>\n\nNow, the `locationID` here is also what we are using to mark pickup and drop zones in the trip records.\n\nThe geometric parameters like shape length, shape area and geometry are used to plot the zones on a map.\n\nThis can be easily done using the `plot()` method."
+			},
+			{
+				"t": "code",
+				"s": "# print(zones.info())\n# zones.plot()"
+			},
+			{
+				"t": "md",
+				"s": "Now, you have to merge the trip records and zones data using the location IDs.\n\n"
+			},
+			{
+				"t": "md",
+				"s": "**3.1.10** <font color = red>[3 marks]</font> <br>\nMerge the zones data into trip data using the `locationID` and `PULocationID` columns.",
+				"ref": "3.1.10"
+			},
+			{
+				"t": "code",
+				"s": "# Merge zones and trip records using locationID and PULocationID\n\n"
+			},
+			{
+				"t": "md",
+				"s": "**3.1.11** <font color = red>[3 marks]</font> <br>\nGroup data by location IDs to find the total number of trips per location ID",
+				"ref": "3.1.11"
+			},
+			{
+				"t": "code",
+				"s": "# Group data by location and calculate the number of trips\n\n"
+			},
+			{
+				"t": "md",
+				"s": "**3.1.12** <font color = red>[2 marks]</font> <br>\nNow, use the grouped data to add number of trips to the GeoDataFrame.\n\nWe will use this to plot a map of zones showing total trips per zone.",
+				"ref": "3.1.12"
+			},
+			{
+				"t": "code",
+				"s": "# Merge trip counts back to the zones GeoDataFrame\n\n\n"
+			},
+			{
+				"t": "md",
+				"s": "The next step is creating a color map (choropleth map) showing zones by the number of trips taken.\n\nAgain, you can use the `zones.plot()` method for this. [Plot Method GPD](https://geopandas.org/en/stable/docs/reference/api/geopandas.GeoDataFrame.plot.html#geopandas.GeoDataFrame.plot)\n\nBut first, you need to define the figure and axis for the plot.\n\n`fig, ax = plt.subplots(1, 1, figsize = (12, 10))`\n\nThis function creates a figure (fig) and a single subplot (ax)\n\n---"
+			},
+			{
+				"t": "md",
+				"s": "After setting up the figure and axis, we can proceed to plot the GeoDataFrame on this axis. This is done in the next step where we use the plot method of the GeoDataFrame.\n\nYou can define the following parameters in the `zones.plot()` method:\n```\ncolumn = '',\nax = ax,\nlegend = True,\nlegend_kwds = {'label': \"label\", 'orientation': \"<horizontal/vertical>\"}\n```\n\nTo display the plot, use `plt.show()`."
+			},
+			{
+				"t": "md",
+				"s": "**3.1.13** <font color = red>[3 marks]</font> <br>\nPlot a color-coded map showing zone-wise trips",
+				"ref": "3.1.13"
+			},
+			{
+				"t": "code",
+				"s": "# Define figure and axis\n\n\n# Plot the map and display it\n\n"
+			},
+			{
+				"t": "code",
+				"s": "# can you try displaying the zones DF sorted by the number of trips?\n\n"
+			},
+			{
+				"t": "md",
+				"s": "Here we have completed the temporal, financial and geographical analysis on the trip records.\n\n**Compile your findings from general analysis below:**"
+			},
+			{
+				"t": "md",
+				"s": "You can consider the following points:\n\n* Busiest hours, days and months\n* Trends in revenue collected\n* Trends in quarterly revenue\n* How fare depends on trip distance, trip duration and passenger counts\n* How tip amount depends on trip distance\n* Busiest zones\n"
+			},
+			{
+				"t": "md",
+				"s": "#### **3.2** Detailed EDA: Insights and Strategies\n<font color = red>[50 marks]</font> <br>"
+			},
+			{
+				"t": "md",
+				"s": "Having performed basic analyses for finding trends and patterns, we will now move on to some detailed analysis focussed on operational efficiency, pricing strategies, and customer experience."
+			},
+			{
+				"t": "md",
+				"s": "##### Operational Efficiency"
+			},
+			{
+				"t": "md",
+				"s": "Analyze variations by time of day and location to identify bottlenecks or inefficiencies in routes"
+			},
+			{
+				"t": "md",
+				"s": "**3.2.1** <font color = red>[3 marks]</font> <br>\nIdentify slow routes by calculating the average time taken by cabs to get from one zone to another at different hours of the day.",
+				"ref": "3.2.1"
+			},
+			{
+				"t": "md",
+				"s": "Speed on a route *X* for hour *Y* = (*distance of the route X / average trip duration for hour Y*)"
+			},
+			{
+				"t": "code",
+				"s": "# Find routes which have the slowest speeds at different times of the day\n\n"
+			},
+			{
+				"t": "md",
+				"s": "How does identifying high-traffic, high-demand routes help us?"
+			},
+			{
+				"t": "md",
+				"s": "**3.2.2** <font color = red>[3 marks]</font> <br>\nCalculate the number of trips at each hour of the day and visualise them. Find the busiest hour and show the number of trips for that hour.",
+				"ref": "3.2.2"
+			},
+			{
+				"t": "code",
+				"s": "# Visualise the number of trips per hour and find the busiest hour\n\n"
+			},
+			{
+				"t": "md",
+				"s": "Remember, we took a fraction of trips. To find the actual number, you have to scale the number up by the sampling ratio."
+			},
+			{
+				"t": "md",
+				"s": "**3.2.3** <font color = red>[2 mark]</font> <br>\nFind the actual number of trips in the five busiest hours",
+				"ref": "3.2.3"
+			},
+			{
+				"t": "code",
+				"s": "# Scale up the number of trips\n\n# Fill in the value of your sampling fraction and use that to scale up the numbers\nsample_fraction =\n\n"
+			},
+			{
+				"t": "md",
+				"s": "**3.2.4** <font color = red>[3 marks]</font> <br>\nCompare hourly traffic pattern on weekdays. Also compare for weekend.",
+				"ref": "3.2.4"
+			},
+			{
+				"t": "code",
+				"s": "# Compare traffic trends for the week days and weekends\n\n"
+			},
+			{
+				"t": "md",
+				"s": "What can you infer from the above patterns? How will finding busy and quiet hours for each day help us?"
+			},
+			{
+				"t": "md",
+				"s": "**3.2.5** <font color = red>[3 marks]</font> <br>\nIdentify top 10 zones with high hourly pickups. Do the same for hourly dropoffs. Show pickup and dropoff trends in these zones.",
+				"ref": "3.2.5"
+			},
+			{
+				"t": "code",
+				"s": "# Find top 10 pickup and dropoff zones\n\n"
+			},
+			{
+				"t": "md",
+				"s": "**3.2.6** <font color = red>[3 marks]</font> <br>\nFind the ratio of pickups and dropoffs in each zone. Display the 10 highest (pickup/drop) and 10 lowest (pickup/drop) ratios.",
+				"ref": "3.2.6"
+			},
+			{
+				"t": "code",
+				"s": "# Find the top 10 and bottom 10 pickup/dropoff ratios\n\n"
+			},
+			{
+				"t": "md",
+				"s": "**3.2.7** <font color = red>[3 marks]</font> <br>\nIdentify zones with high pickup and dropoff traffic during night hours (11PM to 5AM)",
+				"ref": "3.2.7"
+			},
+			{
+				"t": "code",
+				"s": "# During night hours (11pm to 5am) find the top 10 pickup and dropoff zones\n# Note that the top zones should be of night hours and not the overall top zones\n\n"
+			},
+			{
+				"t": "md",
+				"s": "Now, let us find the revenue share for the night time hours and the day time hours. After this, we will move to deciding a pricing strategy.\n\n**3.2.8** <font color = red>[2 marks]</font> <br>\nFind the revenue share for nighttime and daytime hours.",
+				"ref": "3.2.8"
+			},
+			{
+				"t": "code",
+				"s": "# Filter for night hours (11 PM to 5 AM)\n\n"
+			},
+			{
+				"t": "md",
+				"s": "##### Pricing Strategy"
+			},
+			{
+				"t": "md",
+				"s": "**3.2.9** <font color = red>[2 marks]</font> <br>\nFor the different passenger counts, find the average fare per mile per passenger.\n\nFor instance, suppose the average fare per mile for trips with 3 passengers is 3 USD/mile, then the fare per mile per passenger will be 1 USD/mile.",
+				"ref": "3.2.9"
+			},
+			{
+				"t": "code",
+				"s": "# Analyse the fare per mile per passenger for different passenger counts\n\n\n"
+			},
+			{
+				"t": "md",
+				"s": "**3.2.10** <font color = red>[3 marks]</font> <br>\nFind the average fare per mile by hours of the day and by days of the week",
+				"ref": "3.2.10"
+			},
+			{
+				"t": "code",
+				"s": "# Compare the average fare per mile for different days and for different times of the day\n\n"
+			},
+			{
+				"t": "md",
+				"s": "**3.2.11** <font color = red>[3 marks]</font> <br>\nAnalyse the average fare per mile for the different vendors for different hours of the day",
+				"ref": "3.2.11"
+			},
+			{
+				"t": "code",
+				"s": "# Compare fare per mile for different vendors\n\n"
+			},
+			{
+				"t": "md",
+				"s": "**3.2.12** <font color = red>[5 marks]</font> <br>\nCompare the fare rates of the different vendors in a tiered fashion. Analyse the average fare per mile for distances upto 2 miles. Analyse the fare per mile for distances from 2 to 5 miles. And then for distances more than 5 miles.\n",
+				"ref": "3.2.12"
+			},
+			{
+				"t": "code",
+				"s": "# Defining distance tiers\n\n"
+			},
+			{
+				"t": "md",
+				"s": "##### Customer Experience and Other Factors"
+			},
+			{
+				"t": "md",
+				"s": "**3.2.13** <font color = red>[5 marks]</font> <br>\nAnalyse average tip percentages based on trip distances, passenger counts and time of pickup. What factors lead to low tip percentages?",
+				"ref": "3.2.13"
+			},
+			{
+				"t": "code",
+				"s": "#  Analyze tip percentages based on distances, passenger counts and pickup times\n\n"
+			},
+			{
+				"t": "md",
+				"s": "Additional analysis [optional]: Let's try comparing cases of low tips with cases of high tips to find out if we find a clear aspect that drives up the tipping behaviours"
+			},
+			{
+				"t": "code",
+				"s": "# Compare trips with tip percentage < 10% to trips with tip percentage > 25%\n\n"
+			},
+			{
+				"t": "md",
+				"s": "**3.2.14** <font color = red>[3 marks]</font> <br>\nAnalyse the variation of passenger count across hours and days of the week.",
+				"ref": "3.2.14"
+			},
+			{
+				"t": "code",
+				"s": "# See how passenger count varies across hours and days\n\n\n"
+			},
+			{
+				"t": "md",
+				"s": "**3.2.15** <font color = red>[2 marks]</font> <br>\nAnalyse the variation of passenger counts across zones",
+				"ref": "3.2.15"
+			},
+			{
+				"t": "code",
+				"s": "# How does passenger count vary across zones\n\n"
+			},
+			{
+				"t": "code",
+				"s": "# For a more detailed analysis, we can use the zones_with_trips GeoDataFrame\n# Create a new column for the average passenger count in each zone.\n\n"
+			},
+			{
+				"t": "md",
+				"s": "Find out how often surcharges/extra charges are applied to understand their prevalance"
+			},
+			{
+				"t": "md",
+				"s": "**3.2.16** <font color = red>[5 marks]</font> <br>\nAnalyse the pickup/dropoff zones or times when extra charges are applied more frequently",
+				"ref": "3.2.16"
+			},
+			{
+				"t": "code",
+				"s": "# How often is each surcharge applied?\n\n"
+			},
+			{
+				"t": "md",
+				"s": "## **4** Conclusion\n<font color = red>[15 marks]</font> <br>"
+			},
+			{
+				"t": "md",
+				"s": "### **4.1** Final Insights and Recommendations\n<font color = red>[15 marks]</font> <br>\n\nConclude your analyses here. Include all the outcomes you found based on the analysis.\n\nBased on the insights, frame a concluding story explaining suitable parameters such as location, time of the day, day of the week etc. to be kept in mind while devising a strategy to meet customer demand and optimise supply."
+			},
+			{
+				"t": "md",
+				"s": "**4.1.1** <font color = red>[5 marks]</font> <br>\nRecommendations to optimize routing and dispatching based on demand patterns and operational inefficiencies",
+				"ref": "4.1.1"
+			},
+			{
+				"t": "code",
+				"s": ""
+			},
+			{
+				"t": "md",
+				"s": "**4.1.2** <font color = red>[5 marks]</font> <br>\n\nSuggestions on strategically positioning cabs across different zones to make best use of insights uncovered by analysing trip trends across time, days and months.",
+				"ref": "4.1.2"
+			},
+			{
+				"t": "code",
+				"s": ""
+			},
+			{
+				"t": "md",
+				"s": "**4.1.3** <font color = red>[5 marks]</font> <br>\nPropose data-driven adjustments to the pricing strategy to maximize revenue while maintaining competitive rates with other vendors.",
+				"ref": "4.1.3"
+			},
+			{
+				"t": "code",
+				"s": ""
+			}
+		],
+		"guides": {
+			"1.1.1": {
+				"vi": {
+					"think": "Mỗi file tháng có hàng triệu dòng. Bạn không tải hết, bạn lấy 5% của từng giờ trong từng ngày để mẫu giữ nhịp thật của cả năm.",
+					"steps": [
+						"Đọc từng file một, không đọc cả 12 file cùng lúc.",
+						"Tạo cột ngày và giờ từ tpep_pickup_datetime.",
+						"Với mỗi ngày, mỗi giờ: lấy sample(frac=0.05, random_state=42).",
+						"Nối kết quả của các giờ rồi các ngày thành một bảng của tháng, rồi nối 12 tháng.",
+						"Lưu ra parquet và đếm số dòng: khoảng 250.000 đến 300.000."
+					],
+					"code": "df = pd.DataFrame()\nfor file_name in file_list:\n    month = pd.read_parquet(file_path)\n    month['date'] = month['tpep_pickup_datetime'].dt.date\n    month['hour'] = month['tpep_pickup_datetime'].dt.hour\n    parts = []\n    for (d, h), grp in month.groupby(['date', 'hour']):\n        parts.append(grp.sample(frac=0.05, random_state=42))\n    df = pd.concat([df] + parts)\ndf = df.drop(columns=['date', 'hour'])",
+					"lotus": "Sổ booking Lotus Spa có 12 tháng. Lấy 5% theo từng ngày và từng giờ giữ được cả giờ vắng lẫn giờ đông. Nếu chỉ lấy 5% theo giờ chung cho cả năm, giờ nào của ngày nào cũng bị trộn lẫn.",
+					"trap": "Lấy mẫu theo giờ mà không theo ngày sẽ làm lệch các ngày ít xe. Ghi lại sample_fraction vì bài 3.2.3 cần nó để nhân lên."
+				},
+				"en": {
+					"think": "Each monthly file has millions of rows. You do not load everything; you take 5% of every hour of every day so the sample keeps the real rhythm of the whole year.",
+					"steps": [
+						"Read one file at a time, not all 12 at once.",
+						"Create a date and an hour column from tpep_pickup_datetime.",
+						"For each date and hour: take sample(frac=0.05, random_state=42).",
+						"Concatenate the hours, then the days, into one month table, then the 12 months.",
+						"Save to parquet and count rows: about 250,000 to 300,000."
+					],
+					"code": "df = pd.DataFrame()\nfor file_name in file_list:\n    month = pd.read_parquet(file_path)\n    month['date'] = month['tpep_pickup_datetime'].dt.date\n    month['hour'] = month['tpep_pickup_datetime'].dt.hour\n    parts = []\n    for (d, h), grp in month.groupby(['date', 'hour']):\n        parts.append(grp.sample(frac=0.05, random_state=42))\n    df = pd.concat([df] + parts)\ndf = df.drop(columns=['date', 'hour'])",
+					"lotus": "The Lotus Spa booking log covers 12 months. Taking 5% by each day and each hour keeps both quiet and busy hours. Taking 5% by hour across the whole year would blend every day together.",
+					"trap": "Sampling by hour without the date skews quiet days. Record sample_fraction because task 3.2.3 needs it to scale up."
+				}
+			},
+			"2.1.1": {
+				"vi": {
+					"think": "Sau khi nối và đọc lại, bảng có thể mang thêm cột chỉ số cũ. Bạn đặt lại chỉ số và bỏ cột không phục vụ câu hỏi.",
+					"steps": [
+						"df = df.reset_index(drop=True).",
+						"Xem df.columns và bỏ cột dư (ví dụ cột chỉ số cũ, hoặc cột mà bạn quyết định không dùng, như store_and_fwd_flag).",
+						"Ghi lý do bỏ mỗi cột trong một dòng chú thích."
+					],
+					"code": "df = df.reset_index(drop=True)\n# drop columns you will not use, with a reason for each\ndf = df.drop(columns=['store_and_fwd_flag'])",
+					"lotus": "Bảng booking có cột «mã in phiếu» không dùng cho câu hỏi nào. Bỏ nó đi và ghi lý do, để tháng sau mở lại không phải đoán.",
+					"trap": "Đừng bỏ cột chỉ vì không hiểu nó. Bỏ vì biết mình không cần."
+				},
+				"en": {
+					"think": "After combining and re-reading, the table may carry a leftover index column. You reset the index and drop columns that do not serve the question.",
+					"steps": [
+						"df = df.reset_index(drop=True).",
+						"Look at df.columns and drop extras (for example an old index column, or a column you decide not to use, such as store_and_fwd_flag).",
+						"Write one comment line giving the reason for each drop."
+					],
+					"code": "df = df.reset_index(drop=True)\n# drop columns you will not use, with a reason for each\ndf = df.drop(columns=['store_and_fwd_flag'])",
+					"lotus": "The booking table has a “receipt print code” column no question uses. Drop it and note why, so reopening next month needs no guessing.",
+					"trap": "Do not drop a column because you do not understand it. Drop it because you know you do not need it."
+				}
+			},
+			"2.1.2": {
+				"vi": {
+					"think": "Cùng một cột bị ghi hai kiểu chữ: Airport_fee và airport_fee. Tháng này dùng tên này, tháng kia dùng tên kia, nên nối lại sinh hai cột lấp nhau.",
+					"steps": [
+						"Đếm giá trị không rỗng của mỗi cột: df[['Airport_fee','airport_fee']].notna().sum().",
+						"Kiểm tra hai cột không cùng có giá trị trên một dòng.",
+						"Gộp: df['airport_fee'] = df['airport_fee'].combine_first(df['Airport_fee']).",
+						"Bỏ cột còn lại."
+					],
+					"code": "print(df[['Airport_fee', 'airport_fee']].notna().sum())\nboth = df['Airport_fee'].notna() & df['airport_fee'].notna()\nprint(both.sum())  # expect 0\ndf['airport_fee'] = df['airport_fee'].combine_first(df['Airport_fee'])\ndf = df.drop(columns=['Airport_fee'])",
+					"lotus": "Chi nhánh Quận 1 ghi «Khu_vực», chi nhánh Thủ Đức ghi «khu_vuc». Nối hai sổ lại ra hai cột nửa rỗng. Gộp thành một cột trước khi đếm.",
+					"trap": "Nếu hai cột cùng có giá trị trên một dòng thì không được gộp bằng combine_first mà không xem lại."
+				},
+				"en": {
+					"think": "The same column is spelled two ways: Airport_fee and airport_fee. One month uses one name, another month the other, so concatenation creates two complementary columns.",
+					"steps": [
+						"Count non-null values in each: df[['Airport_fee','airport_fee']].notna().sum().",
+						"Check the two never both hold a value on one row.",
+						"Merge: df['airport_fee'] = df['airport_fee'].combine_first(df['Airport_fee']).",
+						"Drop the leftover column."
+					],
+					"code": "print(df[['Airport_fee', 'airport_fee']].notna().sum())\nboth = df['Airport_fee'].notna() & df['airport_fee'].notna()\nprint(both.sum())  # expect 0\ndf['airport_fee'] = df['airport_fee'].combine_first(df['Airport_fee'])\ndf = df.drop(columns=['Airport_fee'])",
+					"lotus": "District 1 writes “Khu_vuc”, Thu Duc writes “khu_vuc”. Joining the two logs gives two half-empty columns. Merge into one before counting.",
+					"trap": "If both columns hold a value on one row, do not merge with combine_first without looking again."
+				}
+			},
+			"2.1.3": {
+				"vi": {
+					"think": "Có dòng tiền âm. Trước khi sửa, hỏi nó là gì: thường là hoàn tiền hoặc tranh chấp, không phải giá âm thật.",
+					"steps": [
+						"Lọc df[df['fare_amount'] < 0] và đếm.",
+						"Xem RatecodeID và payment_type của các dòng đó (task hỏi cột RatecodeID khác thế nào).",
+						"Tìm mọi cột tiền có giá trị âm: (df[money_cols] < 0).sum().",
+						"Quyết định: lấy trị tuyệt đối nếu số âm là hoàn tiền ghi ngược dấu; bỏ nếu là lỗi."
+					],
+					"code": "money = ['fare_amount','extra','mta_tax','tip_amount','tolls_amount','improvement_surcharge','total_amount','congestion_surcharge','airport_fee']\nprint((df[money] < 0).sum())\nneg = df[df['fare_amount'] < 0]\nprint(neg['RatecodeID'].value_counts(dropna=False))\nprint(neg['payment_type'].value_counts())\ndf[money] = df[money].abs()",
+					"lotus": "Một dòng booking ghi -650 nghìn. Đó là hoàn tiền gói A12, không phải spa trả tiền cho khách. Hiểu nó là hoàn tiền thì mới chọn lấy trị tuyệt đối hoặc giữ riêng.",
+					"trap": "Sửa dấu hàng loạt mà không nhìn các dòng đó là gì có thể che mất một nhóm giao dịch hoàn tiền."
+				},
+				"en": {
+					"think": "Some rows carry negative money. Before fixing, ask what they are: usually refunds or disputes, not truly negative prices.",
+					"steps": [
+						"Filter df[df['fare_amount'] < 0] and count.",
+						"Look at RatecodeID and payment_type for those rows (the task asks what is different in RatecodeID).",
+						"Find every money column with negatives: (df[money_cols] < 0).sum().",
+						"Decide: take the absolute value if negatives are refunds recorded with a flipped sign; drop if they are errors."
+					],
+					"code": "money = ['fare_amount','extra','mta_tax','tip_amount','tolls_amount','improvement_surcharge','total_amount','congestion_surcharge','airport_fee']\nprint((df[money] < 0).sum())\nneg = df[df['fare_amount'] < 0]\nprint(neg['RatecodeID'].value_counts(dropna=False))\nprint(neg['payment_type'].value_counts())\ndf[money] = df[money].abs()",
+					"lotus": "One booking row shows -650 thousand. It is a refund of package A12, not the spa paying the customer. Knowing it is a refund is what lets you choose absolute value or keeping it apart.",
+					"trap": "Flipping signs in bulk without looking at what those rows are can hide a whole group of refund transactions."
+				}
+			},
+			"2.2.1": {
+				"vi": {
+					"think": "Trước khi điền chỗ trống, đếm chỗ trống: cột nào thiếu bao nhiêu phần trăm.",
+					"steps": [
+						"df.isnull().mean() * 100.",
+						"Sắp xếp giảm dần và chỉ xem cột có thiếu.",
+						"Nhìn xem các cột thiếu có thiếu cùng các dòng không."
+					],
+					"code": "miss = (df.isnull().mean() * 100).sort_values(ascending=False)\nprint(miss[miss > 0])\n# do the same rows miss several columns?\ncols = ['passenger_count','RatecodeID','congestion_surcharge','airport_fee']\nprint(df[cols].isnull().all(axis=1).mean())",
+					"lotus": "Trong bảng booking, nếu «số khách», «mã gói» và «phụ phí» cùng trống trên cùng các dòng thì đó là một nguồn nhập thiếu, không phải ba lỗi riêng.",
+					"trap": "Điền từng cột riêng lẻ trước khi biết chúng thiếu cùng nhau hay không là điền khi chưa hiểu."
+				},
+				"en": {
+					"think": "Before filling blanks, count blanks: which column misses what percentage.",
+					"steps": [
+						"df.isnull().mean() * 100.",
+						"Sort descending and look only at columns with gaps.",
+						"Check whether the gappy columns miss the same rows."
+					],
+					"code": "miss = (df.isnull().mean() * 100).sort_values(ascending=False)\nprint(miss[miss > 0])\n# do the same rows miss several columns?\ncols = ['passenger_count','RatecodeID','congestion_surcharge','airport_fee']\nprint(df[cols].isnull().all(axis=1).mean())",
+					"lotus": "In the booking table, if “guests”, “package code” and “surcharge” are blank on the same rows, that is one source of missing entry, not three separate faults.",
+					"trap": "Filling each column on its own before knowing whether they are missing together is filling without understanding."
+				}
+			},
+			"2.2.2": {
+				"vi": {
+					"think": "passenger_count thiếu và có cả số 0. Số 0 khách không có nghĩa, nên coi như thiếu.",
+					"steps": [
+						"Xem các dòng NaN: df[df['passenger_count'].isnull()].head().",
+						"Đếm số 0: (df['passenger_count'] == 0).sum().",
+						"Đổi 0 thành NaN rồi điền bằng giá trị thường gặp nhất (mode), vì đây là số đếm nguyên."
+					],
+					"code": "print(df['passenger_count'].value_counts(dropna=False).sort_index())\ndf['passenger_count'] = df['passenger_count'].replace(0, np.nan)\ndf['passenger_count'] = df['passenger_count'].fillna(df['passenger_count'].mode()[0])",
+					"lotus": "Một booking ghi 0 khách thì chắc chắn nhập thiếu. Điền bằng 1 (giá trị thường gặp nhất) tốt hơn điền bằng trung bình 1,4 vì khách là số nguyên.",
+					"trap": "Điền trung bình sẽ ra 1,37 hành khách: một số không tồn tại ở đời thực."
+				},
+				"en": {
+					"think": "passenger_count has blanks and also zeros. Zero passengers has no meaning, so treat it as missing.",
+					"steps": [
+						"Look at the NaN rows: df[df['passenger_count'].isnull()].head().",
+						"Count zeros: (df['passenger_count'] == 0).sum().",
+						"Turn 0 into NaN, then fill with the most common value (mode), since it is an integer count."
+					],
+					"code": "print(df['passenger_count'].value_counts(dropna=False).sort_index())\ndf['passenger_count'] = df['passenger_count'].replace(0, np.nan)\ndf['passenger_count'] = df['passenger_count'].fillna(df['passenger_count'].mode()[0])",
+					"lotus": "A booking with 0 guests was surely entered wrongly. Filling with 1 (the most common) beats filling with a mean of 1.4 because guests are whole numbers.",
+					"trap": "Filling with the mean gives 1.37 passengers: a number that does not exist in real life."
+				}
+			},
+			"2.2.3": {
+				"vi": {
+					"think": "RatecodeID là mã, không phải số để lấy trung bình. Điền bằng mã thường gặp nhất.",
+					"steps": [
+						"Xem phân bố: df['RatecodeID'].value_counts(dropna=False).",
+						"Điền bằng mode, thường là 1 (giá chuẩn).",
+						"Kiểm tra lại không còn NaN."
+					],
+					"code": "print(df['RatecodeID'].value_counts(dropna=False))\ndf['RatecodeID'] = df['RatecodeID'].fillna(df['RatecodeID'].mode()[0])",
+					"lotus": "Mã gói là A12, B07, C03: không có «trung bình của A12 và B07». Chỉ điền bằng mã hay gặp nhất.",
+					"trap": "Trung bình của một mã vô nghĩa. Dùng mode cho cột mã."
+				},
+				"en": {
+					"think": "RatecodeID is a code, not a number to average. Fill with the most common code.",
+					"steps": [
+						"Look at the distribution: df['RatecodeID'].value_counts(dropna=False).",
+						"Fill with the mode, usually 1 (standard rate).",
+						"Check that no NaN remains."
+					],
+					"code": "print(df['RatecodeID'].value_counts(dropna=False))\ndf['RatecodeID'] = df['RatecodeID'].fillna(df['RatecodeID'].mode()[0])",
+					"lotus": "Package codes are A12, B07, C03: there is no “average of A12 and B07”. Fill only with the most common code.",
+					"trap": "The average of a code is meaningless. Use the mode for code columns."
+				}
+			},
+			"2.2.4": {
+				"vi": {
+					"think": "congestion_surcharge thiếu. Phí này chỉ áp dụng ở một số chuyến, nên 0 là một giá trị có nghĩa, không phải thiếu bừa.",
+					"steps": [
+						"Xem phân bố: df['congestion_surcharge'].value_counts(dropna=False).",
+						"Xem các dòng NaN có phải cùng các dòng thiếu RatecodeID và passenger_count không.",
+						"Điền 0 nếu coi là «không áp dụng», hoặc điền mode (thường 2.5) nếu bạn lập luận chuyến đó thuộc vùng áp phí. Ghi quyết định."
+					],
+					"code": "print(df['congestion_surcharge'].value_counts(dropna=False))\ndf['congestion_surcharge'] = df['congestion_surcharge'].fillna(df['congestion_surcharge'].mode()[0])",
+					"lotus": "Phụ phí ngoài giờ chỉ áp dụng ở vài khung giờ. Dòng thiếu phụ phí có thể là «không áp dụng» (0) hay «quên ghi» (mức thường). Hai cách điền cho ra hai tổng doanh thu khác nhau.",
+					"trap": "Chọn mode hay 0 đổi tổng phụ phí. Nói rõ mình đã chọn gì và vì sao."
+				},
+				"en": {
+					"think": "congestion_surcharge has gaps. This fee applies only to some trips, so 0 is a meaningful value, not a lazy fill.",
+					"steps": [
+						"Look at the distribution: df['congestion_surcharge'].value_counts(dropna=False).",
+						"Check whether the NaN rows are the same ones missing RatecodeID and passenger_count.",
+						"Fill with 0 if you treat it as “not applicable”, or with the mode (usually 2.5) if you argue the trip falls in a charged zone. Record the decision."
+					],
+					"code": "print(df['congestion_surcharge'].value_counts(dropna=False))\ndf['congestion_surcharge'] = df['congestion_surcharge'].fillna(df['congestion_surcharge'].mode()[0])",
+					"lotus": "The off-peak surcharge applies in only a few time windows. A row missing it may mean “not applicable” (0) or “forgot to record” (the usual rate). The two fills give different total revenue.",
+					"trap": "Choosing mode or 0 changes the surcharge total. State what you chose and why."
+				}
+			},
+			"2.3.1": {
+				"vi": {
+					"think": "Phân tích phân phối trước, rồi mới xóa. Mỗi gợi ý trong đề là một quy tắc, và mỗi quy tắc cần một quyết định: bỏ dòng hay thay giá trị.",
+					"steps": [
+						"df.describe() và xem max, min của trip_distance, fare_amount, total_amount.",
+						"Quy tắc 1: trip_distance gần 0 mà fare trên 300: bỏ (không có chuyến thật như vậy).",
+						"Quy tắc 2: cả khoảng cách và tiền bằng 0 nhưng hai vùng khác nhau: bỏ.",
+						"Quy tắc 3: trip_distance trên 250 dặm: bỏ hoặc xem kỹ.",
+						"Quy tắc 4: payment_type bằng 0 không có trong từ điển: bỏ hoặc gộp vào 5 (Unknown).",
+						"Sau cùng bỏ passenger_count lớn hơn 6 (task nói rõ), và đếm số dòng đã bỏ ở mỗi bước."
+					],
+					"code": "print(df.describe().T)\nn0 = len(df)\ndf = df[~((df['trip_distance'] < 0.1) & (df['fare_amount'] > 300))]\ndf = df[~((df['trip_distance'] == 0) & (df['fare_amount'] == 0) & (df['PULocationID'] != df['DOLocationID']))]\ndf = df[df['trip_distance'] <= 250]\ndf = df[df['payment_type'] != 0]\ndf = df[df['passenger_count'] <= 6]\nprint(n0 - len(df), 'rows removed')",
+					"lotus": "Booking ghi giá 65.000 nghìn cho 5 phút ghế massage là lỗi nhập thêm hai số 0. Bỏ nó. Booking giá 0 nhưng chi nhánh vào và ra khác nhau cũng không hợp lệ.",
+					"trap": "Bỏ quá tay làm mẫu mất thật. Ghi số dòng bỏ ở mỗi quy tắc để thấy quy tắc nào xóa nhiều."
+				},
+				"en": {
+					"think": "Analyse the distribution first, then remove. Each hint in the brief is a rule, and each rule needs a decision: drop the row or replace the value.",
+					"steps": [
+						"df.describe() and look at max and min of trip_distance, fare_amount, total_amount.",
+						"Rule 1: trip_distance near 0 but fare above 300: drop (no real trip is like that).",
+						"Rule 2: distance and fare both 0 but the two zones differ: drop.",
+						"Rule 3: trip_distance above 250 miles: drop or inspect closely.",
+						"Rule 4: payment_type 0 is not in the dictionary: drop or merge into 5 (Unknown).",
+						"Finally drop passenger_count above 6 (the task says so), and count the rows removed at each step."
+					],
+					"code": "print(df.describe().T)\nn0 = len(df)\ndf = df[~((df['trip_distance'] < 0.1) & (df['fare_amount'] > 300))]\ndf = df[~((df['trip_distance'] == 0) & (df['fare_amount'] == 0) & (df['PULocationID'] != df['DOLocationID']))]\ndf = df[df['trip_distance'] <= 250]\ndf = df[df['payment_type'] != 0]\ndf = df[df['passenger_count'] <= 6]\nprint(n0 - len(df), 'rows removed')",
+					"lotus": "A booking priced 65,000 thousand for 5 minutes of massage chair is a typing slip with two extra zeros. Drop it. A booking priced 0 whose start and end branch differ is also invalid.",
+					"trap": "Over-removing loses real data. Record rows removed at each rule to see which rule deletes the most."
+				}
+			},
+			"3.1.1": {
+				"vi": {
+					"think": "Phân loại biến trước khi vẽ: số (đo được, có khoảng cách) hay nhóm (nhãn). Mã số như VendorID trông như số nhưng là nhóm.",
+					"steps": [
+						"Hỏi: cộng hoặc lấy trung bình của cột này có nghĩa không?",
+						"Mã (VendorID, RatecodeID, PULocationID, DOLocationID, payment_type) là nhóm dù là số.",
+						"Số lượng đo được (passenger_count, trip_distance, trip_duration, pickup_hour) là số. pickup_hour có tính chu kỳ nhưng vẫn xếp là số theo đề.",
+						"Cột tiền: là số, vì cộng và trung bình có nghĩa."
+					],
+					"code": "numerical = ['passenger_count','trip_distance','pickup_hour','trip_duration']\ncategorical = ['VendorID','RatecodeID','PULocationID','DOLocationID','payment_type']\n# money columns: numerical",
+					"lotus": "Mã gói A12 hay mã chi nhánh 1, 2, 3 là nhóm. Giá 650 nghìn là số. Lấy trung bình của «mã chi nhánh» không cho ra điều gì có nghĩa.",
+					"trap": "Một cột chứa số không tự động là biến số. Hỏi xem trung bình có nghĩa không."
+				},
+				"en": {
+					"think": "Classify variables before plotting: numerical (measurable, with distances) or categorical (labels). Code numbers like VendorID look numeric but are categories.",
+					"steps": [
+						"Ask: do sums or averages of this column mean anything?",
+						"Codes (VendorID, RatecodeID, PULocationID, DOLocationID, payment_type) are categorical even though numeric.",
+						"Measured quantities (passenger_count, trip_distance, trip_duration, pickup_hour) are numerical. pickup_hour is cyclic but still numerical per the brief.",
+						"Money columns: numerical, since sums and means are meaningful."
+					],
+					"code": "numerical = ['passenger_count','trip_distance','pickup_hour','trip_duration']\ncategorical = ['VendorID','RatecodeID','PULocationID','DOLocationID','payment_type']\n# money columns: numerical",
+					"lotus": "Package code A12 or branch code 1, 2, 3 are categories. A price of 650 thousand is numerical. The average of a “branch code” means nothing.",
+					"trap": "A column holding numbers is not automatically a numerical variable. Ask whether the average means something."
+				}
+			},
+			"3.1.2": {
+				"vi": {
+					"think": "Ba lát cắt thời gian: theo giờ, theo thứ trong tuần, theo tháng. Mỗi lát cắt là một cột mới và một groupby.",
+					"steps": [
+						"Tạo pickup_hour, pickup_day (tên thứ), pickup_month từ tpep_pickup_datetime.",
+						"Đếm số chuyến theo mỗi cột và vẽ cột (bar).",
+						"Đặt thứ tự thứ trong tuần từ Monday đến Sunday, không để tự sắp theo chữ."
+					],
+					"code": "df['pickup_hour'] = df['tpep_pickup_datetime'].dt.hour\ndf['pickup_day'] = df['tpep_pickup_datetime'].dt.day_name()\ndf['pickup_month'] = df['tpep_pickup_datetime'].dt.month\ndays = ['Monday','Tuesday','Wednesday','Thursday','Friday','Saturday','Sunday']\ndf.groupby('pickup_hour').size().plot(kind='bar')\ndf['pickup_day'].value_counts().reindex(days).plot(kind='bar')\ndf.groupby('pickup_month').size().plot(kind='bar')",
+					"lotus": "Đếm booking Lotus Spa theo giờ cho thấy đỉnh ở 18:00 đến 20:00. Theo thứ cho thấy cuối tuần đông. Theo tháng cho thấy tháng 12 xuống (180 form so với 220), một câu hỏi để đào tiếp, không phải kết luận.",
+					"trap": "Thứ trong tuần mà không đặt thứ tự sẽ xếp theo bảng chữ cái: Friday đứng đầu."
+				},
+				"en": {
+					"think": "Three time cuts: by hour, by weekday, by month. Each cut is a new column and a groupby.",
+					"steps": [
+						"Create pickup_hour, pickup_day (day name), pickup_month from tpep_pickup_datetime.",
+						"Count trips by each column and draw bars.",
+						"Order weekdays Monday to Sunday, do not let them sort alphabetically."
+					],
+					"code": "df['pickup_hour'] = df['tpep_pickup_datetime'].dt.hour\ndf['pickup_day'] = df['tpep_pickup_datetime'].dt.day_name()\ndf['pickup_month'] = df['tpep_pickup_datetime'].dt.month\ndays = ['Monday','Tuesday','Wednesday','Thursday','Friday','Saturday','Sunday']\ndf.groupby('pickup_hour').size().plot(kind='bar')\ndf['pickup_day'].value_counts().reindex(days).plot(kind='bar')\ndf.groupby('pickup_month').size().plot(kind='bar')",
+					"lotus": "Counting Lotus Spa bookings by hour shows a peak at 18:00 to 20:00. By weekday it shows busy weekends. By month it shows December down (180 forms versus 220), a question to dig into, not a conclusion.",
+					"trap": "Weekdays without an order sort alphabetically: Friday comes first."
+				}
+			},
+			"3.1.3": {
+				"vi": {
+					"think": "Trước khi lọc số 0, nhìn xem có bao nhiêu và chúng là gì. Khoảng cách 0 có thể là chuyến trong cùng một vùng, không phải lỗi.",
+					"steps": [
+						"Đếm số 0 và số âm trong fare_amount, tip_amount, total_amount, trip_distance.",
+						"Lọc fare_amount > 0, total_amount > 0 (tiền thật).",
+						"Với trip_distance 0, kiểm tra PULocationID có bằng DOLocationID không rồi mới quyết định giữ hay bỏ.",
+						"Tạo một bảng sao df_nz, đừng ghi đè df."
+					],
+					"code": "cols = ['fare_amount','tip_amount','total_amount','trip_distance']\nprint((df[cols] <= 0).sum())\ndf_nz = df[(df['fare_amount'] > 0) & (df['total_amount'] > 0)].copy()\n# trip_distance == 0 may be same-zone trips: inspect before dropping\nprint(((df['trip_distance'] == 0) & (df['PULocationID'] == df['DOLocationID'])).sum())",
+					"lotus": "Booking giá 0 là tặng thử, không phải lỗi. Booking thời lượng 0 phút ở một chi nhánh có thể là hủy. Xem rồi mới quyết định bỏ hay giữ.",
+					"trap": "Bỏ mọi số 0 thì mất cả chuyến cùng vùng, một nhóm chuyến thật."
+				},
+				"en": {
+					"think": "Before filtering zeros, look at how many there are and what they are. Distance 0 may be a trip within one zone, not an error.",
+					"steps": [
+						"Count zeros and negatives in fare_amount, tip_amount, total_amount, trip_distance.",
+						"Filter fare_amount > 0, total_amount > 0 (real money).",
+						"For trip_distance 0, check whether PULocationID equals DOLocationID before deciding to keep or drop.",
+						"Create a copy df_nz, do not overwrite df."
+					],
+					"code": "cols = ['fare_amount','tip_amount','total_amount','trip_distance']\nprint((df[cols] <= 0).sum())\ndf_nz = df[(df['fare_amount'] > 0) & (df['total_amount'] > 0)].copy()\n# trip_distance == 0 may be same-zone trips: inspect before dropping\nprint(((df['trip_distance'] == 0) & (df['PULocationID'] == df['DOLocationID'])).sum())",
+					"lotus": "A booking priced 0 is a free trial, not an error. A 0-minute booking at one branch may be a cancellation. Look, then decide to drop or keep.",
+					"trap": "Dropping every zero loses same-zone trips, a real group."
+				}
+			},
+			"3.1.4": {
+				"vi": {
+					"think": "Doanh thu theo tháng là tổng total_amount theo tháng. Nhớ rằng đây là mẫu 5%, nên số tuyệt đối thấp; xu hướng mới là điều cần đọc.",
+					"steps": [
+						"Tạo cột tháng từ tpep_pickup_datetime.",
+						"df.groupby('pickup_month')['total_amount'].sum().",
+						"Vẽ đường hoặc cột, ghi tháng cao nhất và thấp nhất."
+					],
+					"code": "monthly = df.groupby('pickup_month')['total_amount'].sum()\nmonthly.plot(kind='line', marker='o')\nprint(monthly.idxmax(), monthly.idxmin())",
+					"lotus": "Doanh thu Lotus Spa theo tháng cho thấy tháng 12 thấp hơn tháng 11. Hỏi trước khi kết luận: tháng 12 có đủ ngày không, có đợt khuyến mãi nào không.",
+					"trap": "Đọc doanh thu mẫu như doanh thu thật. Mẫu 5% chỉ cho xu hướng, và con số thật cần nhân lên ở bài 3.2.3."
+				},
+				"en": {
+					"think": "Monthly revenue is the sum of total_amount by month. Remember this is a 5% sample, so absolute numbers are low; the trend is what you read.",
+					"steps": [
+						"Create the month column from tpep_pickup_datetime.",
+						"df.groupby('pickup_month')['total_amount'].sum().",
+						"Draw a line or bars, note the highest and lowest months."
+					],
+					"code": "monthly = df.groupby('pickup_month')['total_amount'].sum()\nmonthly.plot(kind='line', marker='o')\nprint(monthly.idxmax(), monthly.idxmin())",
+					"lotus": "Lotus Spa monthly revenue shows December below November. Ask before concluding: does December have all its days, was there a promotion.",
+					"trap": "Reading sample revenue as real revenue. A 5% sample gives only the trend, and the real figure needs scaling in task 3.2.3."
+				}
+			},
+			"3.1.5": {
+				"vi": {
+					"think": "Tỷ trọng mỗi quý là doanh thu quý chia cho doanh thu cả năm. Bốn số cộng lại bằng 100%.",
+					"steps": [
+						"Tạo cột quý: dt.quarter.",
+						"Cộng total_amount theo quý.",
+						"Chia cho tổng cả năm để ra tỷ trọng và vẽ biểu đồ tròn hoặc cột."
+					],
+					"code": "df['quarter'] = df['tpep_pickup_datetime'].dt.quarter\nq = df.groupby('quarter')['total_amount'].sum()\nshare = q / q.sum()\nprint(share.round(3), share.sum())\nshare.plot(kind='bar')",
+					"lotus": "Doanh thu quý 1 là 80, quý 2 là 100, quý 3 là 90, quý 4 là 130 (triệu): tổng 400, tỷ trọng 20%, 25%, 22,5%, 32,5%. Cộng lại luôn 100%.",
+					"trap": "Quên kiểm tra tổng các tỷ trọng bằng 1 là cách dễ để chia nhầm mẫu số."
+				},
+				"en": {
+					"think": "Each quarter's share is quarter revenue divided by whole-year revenue. The four numbers sum to 100%.",
+					"steps": [
+						"Create the quarter column: dt.quarter.",
+						"Sum total_amount by quarter.",
+						"Divide by the yearly total to get shares and draw a pie or bars."
+					],
+					"code": "df['quarter'] = df['tpep_pickup_datetime'].dt.quarter\nq = df.groupby('quarter')['total_amount'].sum()\nshare = q / q.sum()\nprint(share.round(3), share.sum())\nshare.plot(kind='bar')",
+					"lotus": "Quarterly revenue is 80, 100, 90, 130 (million): total 400, shares 20%, 25%, 22.5%, 32.5%. They always add up to 100%.",
+					"trap": "Forgetting to check that shares sum to 1 is an easy way to divide by the wrong denominator."
+				}
+			},
+			"3.1.6": {
+				"vi": {
+					"think": "Quan hệ giữa quãng đường và giá cước: vẽ điểm và đo tương quan. Bỏ các chuyến cách 0 dặm theo gợi ý.",
+					"steps": [
+						"Lọc trip_distance > 0.",
+						"Vẽ scatter (lấy mẫu vài nghìn điểm cho nhẹ).",
+						"Tính df[['trip_distance','fare_amount']].corr()."
+					],
+					"code": "d = df[df['trip_distance'] > 0]\nsns.scatterplot(data=d.sample(5000, random_state=42), x='trip_distance', y='fare_amount', alpha=0.3)\nprint(d[['trip_distance','fare_amount']].corr())",
+					"lotus": "Thời lượng liệu trình và giá: 60 phút 650 nghìn, 90 phút 950 nghìn. Các điểm gần một đường thẳng nên tương quan cao, nhưng không có nghĩa thời lượng là nguyên nhân của giá, vì giá được đặt theo bảng giá.",
+					"trap": "Tương quan cao không phải nguyên nhân. Giá cước tính theo quãng đường theo công thức, nên tương quan ở đây là hệ quả của công thức."
+				},
+				"en": {
+					"think": "Relationship between distance and fare: plot points and measure correlation. Drop 0-mile trips as hinted.",
+					"steps": [
+						"Filter trip_distance > 0.",
+						"Draw a scatter (sample a few thousand points to keep it light).",
+						"Compute df[['trip_distance','fare_amount']].corr()."
+					],
+					"code": "d = df[df['trip_distance'] > 0]\nsns.scatterplot(data=d.sample(5000, random_state=42), x='trip_distance', y='fare_amount', alpha=0.3)\nprint(d[['trip_distance','fare_amount']].corr())",
+					"lotus": "Session length and price: 60 minutes 650 thousand, 90 minutes 950 thousand. The points sit near a line so correlation is high, but length does not cause price, because price is set from a price list.",
+					"trap": "High correlation is not cause. Fares are computed from distance by a formula, so correlation here is a consequence of the formula."
+				}
+			},
+			"3.1.7": {
+				"vi": {
+					"think": "Ba quan hệ cần tương quan và hình: giá với thời lượng chuyến, giá với số khách, tiền boa với quãng đường.",
+					"steps": [
+						"Tạo trip_duration = (dropoff − pickup) tính bằng phút.",
+						"Lọc thời lượng hợp lý (lớn hơn 0 và nhỏ hơn vài giờ).",
+						"Vẽ từng cặp và in hệ số tương quan.",
+						"Nhớ tiền boa tiền mặt không được ghi."
+					],
+					"code": "df['trip_duration'] = (df['tpep_dropoff_datetime'] - df['tpep_pickup_datetime']).dt.total_seconds() / 60\nd = df[(df['trip_duration'] > 0) & (df['trip_duration'] < 180)]\nprint(d[['fare_amount','trip_duration']].corr())\nprint(d[['fare_amount','passenger_count']].corr())\nprint(d[['tip_amount','trip_distance']].corr())",
+					"lotus": "Giá liệu trình theo số khách trong một booking: hai khách không trả gấp đôi. Tương quan thấp ở đây nói rằng số khách không quyết định giá, không nói rằng số khách vô nghĩa.",
+					"trap": "Trip_duration âm hoặc quá lớn là lỗi giờ. Lọc trước khi tính tương quan."
+				},
+				"en": {
+					"think": "Three relationships need correlation and a picture: fare with trip duration, fare with passenger count, tip with distance.",
+					"steps": [
+						"Create trip_duration = (dropoff − pickup) in minutes.",
+						"Filter plausible durations (above 0 and below a few hours).",
+						"Plot each pair and print the correlation coefficient.",
+						"Remember cash tips are not recorded."
+					],
+					"code": "df['trip_duration'] = (df['tpep_dropoff_datetime'] - df['tpep_pickup_datetime']).dt.total_seconds() / 60\nd = df[(df['trip_duration'] > 0) & (df['trip_duration'] < 180)]\nprint(d[['fare_amount','trip_duration']].corr())\nprint(d[['fare_amount','passenger_count']].corr())\nprint(d[['tip_amount','trip_distance']].corr())",
+					"lotus": "Session price by number of guests in one booking: two guests do not pay double. Low correlation here says guest count does not set price, not that guest count is meaningless.",
+					"trap": "A negative or huge trip_duration is a time error. Filter before computing correlation."
+				}
+			},
+			"3.1.8": {
+				"vi": {
+					"think": "Phân bố loại thanh toán là đếm từng loại và chia cho tổng. Mã 1 thẻ, 2 tiền mặt, 3 miễn phí, 4 tranh chấp.",
+					"steps": [
+						"df['payment_type'].value_counts(normalize=True).",
+						"Vẽ cột hoặc tròn, gắn nhãn chữ thay cho mã.",
+						"Ghi chú: tiền boa chỉ có ở thanh toán thẻ."
+					],
+					"code": "labels = {1:'Credit card', 2:'Cash', 3:'No charge', 4:'Dispute'}\npt = df['payment_type'].map(labels).value_counts(normalize=True)\nprint(pt.round(3))\npt.plot(kind='bar')",
+					"lotus": "Lotus Spa: 70% thanh toán thẻ, 25% chuyển khoản, 5% tiền mặt. Cột tiền boa chỉ phản ánh phần thẻ và chuyển khoản.",
+					"trap": "Quên rằng cột boa không tính tiền mặt sẽ làm tỷ lệ boa thật bị thấp đi."
+				},
+				"en": {
+					"think": "The payment-type distribution is counting each type and dividing by the total. Code 1 card, 2 cash, 3 no charge, 4 dispute.",
+					"steps": [
+						"df['payment_type'].value_counts(normalize=True).",
+						"Draw bars or a pie, with text labels instead of codes.",
+						"Note: tips exist only for card payments."
+					],
+					"code": "labels = {1:'Credit card', 2:'Cash', 3:'No charge', 4:'Dispute'}\npt = df['payment_type'].map(labels).value_counts(normalize=True)\nprint(pt.round(3))\npt.plot(kind='bar')",
+					"lotus": "Lotus Spa: 70% card, 25% transfer, 5% cash. The tip column reflects only the card and transfer share.",
+					"trap": "Forgetting that the tip column omits cash makes the real tip rate look lower."
+				}
+			},
+			"3.1.9": {
+				"vi": {
+					"think": "Bản đồ vùng nằm trong file shapefile. Đọc bằng geopandas và để nguyên cấu trúc thư mục taxi_zones.",
+					"steps": [
+						"pip install geopandas nếu thiếu.",
+						"zones = gpd.read_file('taxi_zones/taxi_zones.shp').",
+						"zones.head() rồi zones.plot() để xem bản đồ."
+					],
+					"code": "import geopandas as gpd\nzones = gpd.read_file('taxi_zones/taxi_zones.shp')\nzones.head()\nzones.plot()",
+					"lotus": "Ba chi nhánh Quận 1, Quận 3 và Thủ Đức là ba vùng trên một bản đồ. Bảng vùng cho tên và mã, còn hình dạng nằm trong cột geometry.",
+					"trap": "Chuyển file .shp ra khỏi thư mục sẽ làm hỏng, vì các file đi kèm (.shx, .dbf) phải nằm cùng chỗ."
+				},
+				"en": {
+					"think": "The zone map lives in a shapefile. Read it with geopandas and keep the taxi_zones folder structure unchanged.",
+					"steps": [
+						"pip install geopandas if missing.",
+						"zones = gpd.read_file('taxi_zones/taxi_zones.shp').",
+						"zones.head() then zones.plot() to see the map."
+					],
+					"code": "import geopandas as gpd\nzones = gpd.read_file('taxi_zones/taxi_zones.shp')\nzones.head()\nzones.plot()",
+					"lotus": "The three branches District 1, District 3 and Thu Duc are three zones on one map. The zone table gives names and codes, and the shape sits in the geometry column.",
+					"trap": "Moving the .shp out of its folder breaks it, since the companion files (.shx, .dbf) must sit alongside."
+				}
+			},
+			"3.1.10": {
+				"vi": {
+					"think": "Nối bảng vùng vào bảng chuyến bằng mã vùng: LocationID bên bảng vùng, PULocationID bên bảng chuyến.",
+					"steps": [
+						"Dùng merge với left_on và right_on.",
+						"how='left' để giữ mọi chuyến.",
+						"Đếm số dòng trước và sau: phải bằng nhau."
+					],
+					"code": "n = len(df)\ndf = df.merge(zones[['LocationID','zone','borough']], left_on='PULocationID', right_on='LocationID', how='left')\nprint(n, len(df))  # must match",
+					"lotus": "Bảng booking có mã chi nhánh 1 đến 3. Bảng chi nhánh cho tên đầy đủ. Nối theo mã, giữ mọi booking.",
+					"trap": "Nếu số dòng sau nối khác số dòng trước, mã vùng trong bảng vùng bị trùng và bạn đã nhân bản chuyến."
+				},
+				"en": {
+					"think": "Join the zone table to the trip table by zone code: LocationID on the zone side, PULocationID on the trip side.",
+					"steps": [
+						"Use merge with left_on and right_on.",
+						"how='left' to keep every trip.",
+						"Count rows before and after: they must match."
+					],
+					"code": "n = len(df)\ndf = df.merge(zones[['LocationID','zone','borough']], left_on='PULocationID', right_on='LocationID', how='left')\nprint(n, len(df))  # must match",
+					"lotus": "The booking table has branch codes 1 to 3. The branch table gives full names. Join on the code, keep every booking.",
+					"trap": "If the row count differs after the join, a zone code is duplicated in the zone table and you cloned trips."
+				}
+			},
+			"3.1.11": {
+				"vi": {
+					"think": "Số chuyến theo mã vùng là một groupby đếm dòng.",
+					"steps": [
+						"df.groupby('PULocationID').size().",
+						"Đặt tên cột kết quả là trips.",
+						"Sắp xếp giảm dần để xem vùng đông nhất."
+					],
+					"code": "trips = df.groupby('PULocationID').size().reset_index(name='trips')\ntrips.sort_values('trips', ascending=False).head(10)",
+					"lotus": "Quận 1: 480 lượt, Quận 3: 300, Thủ Đức: 220 trong một tuần. Chi nhánh đông nhất không nhất thiết đem lại doanh thu cao nhất.",
+					"trap": "Đếm số chuyến khác với cộng doanh thu. Chọn đúng thứ bạn muốn đo."
+				},
+				"en": {
+					"think": "Trips per zone code is one groupby that counts rows.",
+					"steps": [
+						"df.groupby('PULocationID').size().",
+						"Name the result column trips.",
+						"Sort descending to see the busiest zones."
+					],
+					"code": "trips = df.groupby('PULocationID').size().reset_index(name='trips')\ntrips.sort_values('trips', ascending=False).head(10)",
+					"lotus": "District 1: 480 visits, District 3: 300, Thu Duc: 220 in one week. The busiest branch does not necessarily bring the highest revenue.",
+					"trap": "Counting trips differs from summing revenue. Choose exactly what you want to measure."
+				}
+			},
+			"3.1.12": {
+				"vi": {
+					"think": "Ghép số chuyến vào bảng vùng để vẽ. Vùng không có chuyến nào phải có 0, không được để trống.",
+					"steps": [
+						"zones.merge(trips, left_on='LocationID', right_on='PULocationID', how='left').",
+						"Điền 0 cho vùng không có chuyến.",
+						"Kiểm tra bảng kết quả vẫn là GeoDataFrame."
+					],
+					"code": "zones_with_trips = zones.merge(trips, left_on='LocationID', right_on='PULocationID', how='left')\nzones_with_trips['trips'] = zones_with_trips['trips'].fillna(0)\nprint(type(zones_with_trips))",
+					"lotus": "Một chi nhánh mới chưa có booking phải hiện 0, không phải biến mất khỏi bản đồ.",
+					"trap": "Trộn theo thứ tự ngược (trips.merge(zones)) có thể trả về DataFrame thường, mất khả năng vẽ bản đồ."
+				},
+				"en": {
+					"think": "Attach trip counts to the zone table so you can plot. Zones with no trips must show 0, not be left blank.",
+					"steps": [
+						"zones.merge(trips, left_on='LocationID', right_on='PULocationID', how='left').",
+						"Fill 0 for zones with no trips.",
+						"Check the result is still a GeoDataFrame."
+					],
+					"code": "zones_with_trips = zones.merge(trips, left_on='LocationID', right_on='PULocationID', how='left')\nzones_with_trips['trips'] = zones_with_trips['trips'].fillna(0)\nprint(type(zones_with_trips))",
+					"lotus": "A new branch with no bookings should show 0, not vanish from the map.",
+					"trap": "Merging in the reverse order (trips.merge(zones)) can return a plain DataFrame, losing the ability to draw the map."
+				}
+			},
+			"3.1.13": {
+				"vi": {
+					"think": "Bản đồ màu: tô vùng theo số chuyến. Đặt khung hình trước rồi vẽ lên khung đó.",
+					"steps": [
+						"fig, ax = plt.subplots(1, 1, figsize=(12, 10)).",
+						"zones_with_trips.plot(column='trips', ax=ax, legend=True, legend_kwds={...}).",
+						"plt.show().",
+						"Sau đó sắp bảng theo số chuyến giảm dần để đọc tên vùng."
+					],
+					"code": "fig, ax = plt.subplots(1, 1, figsize=(12, 10))\nzones_with_trips.plot(column='trips', ax=ax, legend=True,\n                      legend_kwds={'label': 'Number of trips', 'orientation': 'horizontal'})\nplt.show()\nzones_with_trips.sort_values('trips', ascending=False)[['zone','trips']].head(10)",
+					"lotus": "Ba chi nhánh Lotus Spa tô theo số lượt: Quận 1 đậm nhất. Bản đồ cho thấy vị trí, còn bảng đứng sau cho tên và số.",
+					"trap": "Bản đồ chỉ cho thấy thứ tự lớn nhỏ bằng màu. Số chính xác phải đọc từ bảng."
+				},
+				"en": {
+					"think": "Choropleth map: colour zones by trip count. Set the figure first, then draw onto it.",
+					"steps": [
+						"fig, ax = plt.subplots(1, 1, figsize=(12, 10)).",
+						"zones_with_trips.plot(column='trips', ax=ax, legend=True, legend_kwds={...}).",
+						"plt.show().",
+						"Then sort the table by trips descending to read zone names."
+					],
+					"code": "fig, ax = plt.subplots(1, 1, figsize=(12, 10))\nzones_with_trips.plot(column='trips', ax=ax, legend=True,\n                      legend_kwds={'label': 'Number of trips', 'orientation': 'horizontal'})\nplt.show()\nzones_with_trips.sort_values('trips', ascending=False)[['zone','trips']].head(10)",
+					"lotus": "The three Lotus Spa branches coloured by visits: District 1 darkest. The map shows position, and the table behind it gives names and numbers.",
+					"trap": "A map shows only rank order by colour. Read exact numbers from the table."
+				}
+			},
+			"3.2.1": {
+				"vi": {
+					"think": "Tốc độ của một tuyến = quãng đường chia cho thời gian trung bình. Làm theo từng cặp vùng đi, vùng đến và theo từng giờ, rồi tìm tuyến chậm nhất.",
+					"steps": [
+						"Tạo cột trip_duration (phút) nếu chưa có.",
+						"Nhóm theo PULocationID, DOLocationID, pickup_hour: trung bình trip_distance và trip_duration.",
+						"speed = distance / (duration / 60) dặm mỗi giờ.",
+						"Chỉ giữ các nhóm có đủ chuyến (ví dụ ít nhất 30), vì nhóm ít chuyến cho tốc độ nhiễu.",
+						"Sắp tăng dần để thấy các tuyến chậm nhất."
+					],
+					"code": "g = df.groupby(['PULocationID','DOLocationID','pickup_hour']).agg(\n    dist=('trip_distance','mean'), dur=('trip_duration','mean'), n=('trip_distance','size')).reset_index()\ng['speed_mph'] = g['dist'] / (g['dur'] / 60)\nslow = g[g['n'] >= 30].sort_values('speed_mph').head(10)\nprint(slow)",
+					"lotus": "Hai chi nhánh Quận 1 và Quận 3: một khách đi từ chi nhánh này sang chi nhánh kia mất bao lâu lúc 18:00 so với 10:00. Tuyến nào luôn chậm lúc 18:00 là chỗ nên dời lịch hẹn.",
+					"trap": "Một tuyến chỉ có 2 chuyến có thể đứng đầu danh sách chậm nhất chỉ vì nhiễu. Đặt ngưỡng số chuyến."
+				},
+				"en": {
+					"think": "A route's speed is distance divided by average time. Do it per pickup-and-dropoff zone pair and per hour, then find the slowest routes.",
+					"steps": [
+						"Create trip_duration (minutes) if not already there.",
+						"Group by PULocationID, DOLocationID, pickup_hour: mean trip_distance and trip_duration.",
+						"speed = distance / (duration / 60) miles per hour.",
+						"Keep only groups with enough trips (say at least 30), since small groups give noisy speeds.",
+						"Sort ascending to see the slowest routes."
+					],
+					"code": "g = df.groupby(['PULocationID','DOLocationID','pickup_hour']).agg(\n    dist=('trip_distance','mean'), dur=('trip_duration','mean'), n=('trip_distance','size')).reset_index()\ng['speed_mph'] = g['dist'] / (g['dur'] / 60)\nslow = g[g['n'] >= 30].sort_values('speed_mph').head(10)\nprint(slow)",
+					"lotus": "Two branches, District 1 and District 3: how long a customer takes from one branch to the other at 18:00 versus 10:00. A route that is always slow at 18:00 is where to shift appointments.",
+					"trap": "A route with only 2 trips can top the slowest list purely from noise. Set a trip-count threshold."
+				}
+			},
+			"3.2.2": {
+				"vi": {
+					"think": "Đếm số chuyến theo từng giờ, vẽ, và nêu giờ đông nhất cùng số chuyến của giờ đó.",
+					"steps": [
+						"hourly = df.groupby('pickup_hour').size().",
+						"hourly.plot(kind='bar').",
+						"hourly.idxmax() và hourly.max()."
+					],
+					"code": "hourly = df.groupby('pickup_hour').size()\nhourly.plot(kind='bar')\nprint(hourly.idxmax(), hourly.max())",
+					"lotus": "Giờ đông nhất của Lotus Spa là 19:00 với 62 lượt trong mẫu. Con số này là số trong mẫu, chưa phải số thật.",
+					"trap": "Báo số trong mẫu như số thật. Bài 3.2.3 nhân lên."
+				},
+				"en": {
+					"think": "Count trips per hour, draw it, and state the busiest hour with its trip count.",
+					"steps": [
+						"hourly = df.groupby('pickup_hour').size().",
+						"hourly.plot(kind='bar').",
+						"hourly.idxmax() and hourly.max()."
+					],
+					"code": "hourly = df.groupby('pickup_hour').size()\nhourly.plot(kind='bar')\nprint(hourly.idxmax(), hourly.max())",
+					"lotus": "Lotus Spa's busiest hour is 19:00 with 62 visits in the sample. That is a sample number, not the real one.",
+					"trap": "Reporting a sample number as the real one. Task 3.2.3 scales up."
+				}
+			},
+			"3.2.3": {
+				"vi": {
+					"think": "Mẫu chỉ có 5% số chuyến. Số thật = số trong mẫu chia cho tỷ lệ lấy mẫu.",
+					"steps": [
+						"sample_fraction = 0.05, đúng với tỷ lệ bạn đã dùng ở 1.1.1.",
+						"scaled = hourly / sample_fraction.",
+						"Lấy 5 giờ đông nhất: scaled.nlargest(5)."
+					],
+					"code": "sample_fraction = 0.05\nscaled = hourly / sample_fraction\nprint(scaled.nlargest(5).round(0))",
+					"lotus": "Nếu mẫu có 62 lượt lúc 19:00 và tỷ lệ lấy mẫu là 5%, số thật xấp xỉ 62 ÷ 0,05 = 1.240 lượt.",
+					"trap": "Nhân với 5 thay vì chia cho 0,05 (nhân 20) là lỗi thường gặp."
+				},
+				"en": {
+					"think": "The sample holds only 5% of trips. Real count = sample count divided by the sampling fraction.",
+					"steps": [
+						"sample_fraction = 0.05, matching what you used in 1.1.1.",
+						"scaled = hourly / sample_fraction.",
+						"Take the five busiest hours: scaled.nlargest(5)."
+					],
+					"code": "sample_fraction = 0.05\nscaled = hourly / sample_fraction\nprint(scaled.nlargest(5).round(0))",
+					"lotus": "If the sample has 62 visits at 19:00 and the sampling fraction is 5%, the real count is about 62 ÷ 0.05 = 1,240 visits.",
+					"trap": "Multiplying by 5 instead of dividing by 0.05 (multiplying by 20) is a common slip."
+				}
+			},
+			"3.2.4": {
+				"vi": {
+					"think": "So sánh hình dạng theo giờ giữa ngày thường và cuối tuần. Hai đường cùng trên một biểu đồ.",
+					"steps": [
+						"Tạo cột is_weekend: dayofweek >= 5.",
+						"Đếm theo giờ cho từng nhóm, chia cho số ngày của nhóm để so sánh công bằng.",
+						"Vẽ hai đường."
+					],
+					"code": "df['is_weekend'] = df['tpep_pickup_datetime'].dt.dayofweek >= 5\ndays = df.groupby('is_weekend')['tpep_pickup_datetime'].apply(lambda s: s.dt.date.nunique())\nby = df.groupby(['is_weekend','pickup_hour']).size().unstack(0)\n(by / days).plot()",
+					"lotus": "Lotus Spa ngày thường đông vào 18:00 đến 20:00 sau giờ làm. Cuối tuần đông vào 10:00 đến 14:00. Hai nhóm khác ngày nên phải chia cho số ngày.",
+					"trap": "So sánh số chuyến thô giữa 5 ngày thường và 2 ngày cuối tuần mà không chia cho số ngày là so lệch."
+				},
+				"en": {
+					"think": "Compare the hourly shape between weekdays and weekends. Two lines on one chart.",
+					"steps": [
+						"Create is_weekend: dayofweek >= 5.",
+						"Count per hour for each group, divide by the group's number of days for a fair comparison.",
+						"Draw two lines."
+					],
+					"code": "df['is_weekend'] = df['tpep_pickup_datetime'].dt.dayofweek >= 5\ndays = df.groupby('is_weekend')['tpep_pickup_datetime'].apply(lambda s: s.dt.date.nunique())\nby = df.groupby(['is_weekend','pickup_hour']).size().unstack(0)\n(by / days).plot()",
+					"lotus": "Lotus Spa weekdays peak 18:00 to 20:00 after work. Weekends peak 10:00 to 14:00. The two groups have different numbers of days so divide by days.",
+					"trap": "Comparing raw counts between 5 weekdays and 2 weekend days without dividing by days is a lopsided comparison."
+				}
+			},
+			"3.2.5": {
+				"vi": {
+					"think": "Mười vùng đón nhiều nhất và mười vùng trả nhiều nhất, rồi xem nhịp theo giờ của các vùng đó.",
+					"steps": [
+						"top_pu = df['PULocationID'].value_counts().head(10).index.",
+						"top_do = df['DOLocationID'].value_counts().head(10).index.",
+						"Với mỗi nhóm vùng, đếm theo giờ và vẽ."
+					],
+					"code": "top_pu = df['PULocationID'].value_counts().head(10).index\ntop_do = df['DOLocationID'].value_counts().head(10).index\nhp = df[df['PULocationID'].isin(top_pu)].groupby(['pickup_hour','PULocationID']).size().unstack()\nhp.plot(figsize=(12,5))",
+					"lotus": "Với ba chi nhánh, xem chi nhánh nào đón khách nhiều nhất và đông vào giờ nào. Chi nhánh nhiều khách đến chưa chắc là chi nhánh nhiều khách đi.",
+					"trap": "Dùng mã vùng mà không đổi sang tên vùng làm biểu đồ khó đọc. Ghép tên từ bảng zones."
+				},
+				"en": {
+					"think": "Top ten pickup zones and top ten dropoff zones, then look at the hourly rhythm of those zones.",
+					"steps": [
+						"top_pu = df['PULocationID'].value_counts().head(10).index.",
+						"top_do = df['DOLocationID'].value_counts().head(10).index.",
+						"For each group of zones, count per hour and draw."
+					],
+					"code": "top_pu = df['PULocationID'].value_counts().head(10).index\ntop_do = df['DOLocationID'].value_counts().head(10).index\nhp = df[df['PULocationID'].isin(top_pu)].groupby(['pickup_hour','PULocationID']).size().unstack()\nhp.plot(figsize=(12,5))",
+					"lotus": "With three branches, see which branch receives the most customers and at what hour. The branch customers arrive at most is not necessarily where they leave from most.",
+					"trap": "Using zone codes without switching to zone names makes the chart hard to read. Join names from the zones table."
+				}
+			},
+			"3.2.6": {
+				"vi": {
+					"think": "Tỷ lệ đón trên trả của mỗi vùng. Lớn hơn 1 là vùng xuất phát nhiều hơn điểm đến; nhỏ hơn 1 ngược lại.",
+					"steps": [
+						"pu = df['PULocationID'].value_counts(); do = df['DOLocationID'].value_counts().",
+						"ratio = (pu / do).dropna().",
+						"Chú ý vùng không có chuyến trả sẽ chia cho 0: dùng dropna và kiểm tra vô cực.",
+						"Hiển thị 10 tỷ lệ cao nhất và 10 thấp nhất."
+					],
+					"code": "pu = df['PULocationID'].value_counts()\ndo = df['DOLocationID'].value_counts()\nratio = (pu / do).replace([np.inf, -np.inf], np.nan).dropna()\nprint(ratio.nlargest(10)); print(ratio.nsmallest(10))",
+					"lotus": "Chi nhánh có 300 khách đi và 150 khách đến cho tỷ lệ 2: nhiều người rời đi hơn đến. Chi nhánh tỷ lệ 0,5 thì ngược lại.",
+					"trap": "Vùng chỉ có 1 đón và 0 trả cho tỷ lệ vô cực. Lọc số chuyến tối thiểu trước khi xếp hạng."
+				},
+				"en": {
+					"think": "Pickup-to-dropoff ratio of each zone. Above 1 means more departures than arrivals; below 1 the opposite.",
+					"steps": [
+						"pu = df['PULocationID'].value_counts(); do = df['DOLocationID'].value_counts().",
+						"ratio = (pu / do).dropna().",
+						"Mind zones with no dropoffs dividing by 0: use dropna and check for infinity.",
+						"Show the 10 highest and 10 lowest ratios."
+					],
+					"code": "pu = df['PULocationID'].value_counts()\ndo = df['DOLocationID'].value_counts()\nratio = (pu / do).replace([np.inf, -np.inf], np.nan).dropna()\nprint(ratio.nlargest(10)); print(ratio.nsmallest(10))",
+					"lotus": "A branch with 300 customers leaving and 150 arriving gives a ratio of 2: more people leave than arrive. A branch with ratio 0.5 is the opposite.",
+					"trap": "A zone with 1 pickup and 0 dropoffs gives infinity. Filter a minimum trip count before ranking."
+				}
+			},
+			"3.2.7": {
+				"vi": {
+					"think": "Giờ đêm từ 23 giờ đến 5 giờ sáng. Lọc chuyến theo giờ đêm rồi tìm top vùng đón và trả trong chính tập đó.",
+					"steps": [
+						"Định nghĩa đêm rõ ràng: pickup_hour >= 23 hoặc pickup_hour < 5 (ghi lại bạn chọn có gồm cả 5:00 hay không).",
+						"night = df[mask].",
+						"Top 10 vùng đón và trả chỉ trong night, không phải trong cả năm."
+					],
+					"code": "night = df[(df['pickup_hour'] >= 23) | (df['pickup_hour'] < 5)]\nprint(night['PULocationID'].value_counts().head(10))\nprint(night['DOLocationID'].value_counts().head(10))",
+					"lotus": "Ở khung 21:00 đến 23:00, giả sử chi nhánh Quận 1 vẫn đông còn Thủ Đức thưa. Top vùng của giờ đêm thường khác top vùng cả ngày.",
+					"trap": "Lấy top của cả năm rồi lọc giờ đêm cho kết quả khác. Lọc giờ đêm trước rồi mới xếp hạng."
+				},
+				"en": {
+					"think": "Night hours run 11 PM to 5 AM. Filter trips by night hour, then find top pickup and dropoff zones within that subset.",
+					"steps": [
+						"Define night clearly: pickup_hour >= 23 or pickup_hour < 5 (record whether you include 5:00).",
+						"night = df[mask].",
+						"Top 10 pickup and dropoff zones within night only, not across the year."
+					],
+					"code": "night = df[(df['pickup_hour'] >= 23) | (df['pickup_hour'] < 5)]\nprint(night['PULocationID'].value_counts().head(10))\nprint(night['DOLocationID'].value_counts().head(10))",
+					"lotus": "In the 21:00 to 23:00 window, suppose District 1 is still busy while Thu Duc is quiet. Late-hour top zones are often not the all-day top zones.",
+					"trap": "Taking the yearly top then filtering to night gives a different result. Filter to night first, then rank."
+				}
+			},
+			"3.2.8": {
+				"vi": {
+					"think": "Tỷ trọng doanh thu giữa đêm và ngày là doanh thu mỗi nhóm chia cho tổng.",
+					"steps": [
+						"Tạo cột is_night theo định nghĩa ở 3.2.7.",
+						"rev = df.groupby('is_night')['total_amount'].sum().",
+						"share = rev / rev.sum()."
+					],
+					"code": "df['is_night'] = (df['pickup_hour'] >= 23) | (df['pickup_hour'] < 5)\nrev = df.groupby('is_night')['total_amount'].sum()\nprint((rev / rev.sum()).round(3))",
+					"lotus": "Nếu giờ đêm cho 12 phần doanh thu trên 100, tỷ trọng đêm là 12%. Một khung giờ vắng khách vẫn có thể có giá bán cao hơn.",
+					"trap": "Dùng cùng định nghĩa đêm xuyên suốt. Đổi định nghĩa giữa các bài làm các con số không so được."
+				},
+				"en": {
+					"think": "Night versus day revenue share is each group's revenue divided by the total.",
+					"steps": [
+						"Create is_night using the definition from 3.2.7.",
+						"rev = df.groupby('is_night')['total_amount'].sum().",
+						"share = rev / rev.sum()."
+					],
+					"code": "df['is_night'] = (df['pickup_hour'] >= 23) | (df['pickup_hour'] < 5)\nrev = df.groupby('is_night')['total_amount'].sum()\nprint((rev / rev.sum()).round(3))",
+					"lotus": "If night hours bring 12 parts of revenue per 100, the night share is 12%. A quiet window can still carry a higher price.",
+					"trap": "Use one definition of night throughout. Changing it between tasks makes the numbers incomparable."
+				}
+			},
+			"3.2.9": {
+				"vi": {
+					"think": "Giá trên dặm trên hành khách: lấy giá trên dặm của chuyến, rồi chia cho số hành khách. Hai người đi chung cùng một chuyến mỗi người trả một nửa.",
+					"steps": [
+						"Chỉ giữ trip_distance > 0.",
+						"fare_per_mile = fare_amount / trip_distance.",
+						"per_passenger = fare_per_mile / passenger_count.",
+						"Trung bình theo passenger_count."
+					],
+					"code": "d = df[df['trip_distance'] > 0].copy()\nd['fare_per_mile'] = d['fare_amount'] / d['trip_distance']\nd['fpm_pp'] = d['fare_per_mile'] / d['passenger_count']\nprint(d.groupby('passenger_count')['fpm_pp'].mean())",
+					"lotus": "Gói đôi 1.200 nghìn cho hai người nghĩa là mỗi người 600 nghìn. Giá chia cho đầu người cho thấy gói đôi rẻ hơn gói lẻ bao nhiêu.",
+					"trap": "Chia cho 0 hành khách hoặc 0 dặm làm ra vô cực. Lọc trước."
+				},
+				"en": {
+					"think": "Fare per mile per passenger: take the trip's fare per mile, then divide by passenger count. Two people sharing one trip each pay half.",
+					"steps": [
+						"Keep only trip_distance > 0.",
+						"fare_per_mile = fare_amount / trip_distance.",
+						"per_passenger = fare_per_mile / passenger_count.",
+						"Average by passenger_count."
+					],
+					"code": "d = df[df['trip_distance'] > 0].copy()\nd['fare_per_mile'] = d['fare_amount'] / d['trip_distance']\nd['fpm_pp'] = d['fare_per_mile'] / d['passenger_count']\nprint(d.groupby('passenger_count')['fpm_pp'].mean())",
+					"lotus": "A couple package at 1,200 thousand for two people means 600 thousand each. Dividing by head shows how much cheaper the couple package is than single ones.",
+					"trap": "Dividing by 0 passengers or 0 miles gives infinity. Filter first."
+				}
+			},
+			"3.2.10": {
+				"vi": {
+					"think": "Giá trung bình trên dặm theo giờ trong ngày và theo thứ trong tuần.",
+					"steps": [
+						"Dùng fare_per_mile từ 3.2.9.",
+						"d.groupby('pickup_hour')['fare_per_mile'].mean() và theo pickup_day.",
+						"Vẽ hai biểu đồ."
+					],
+					"code": "d.groupby('pickup_hour')['fare_per_mile'].mean().plot()\nd.groupby('pickup_day')['fare_per_mile'].mean().reindex(days).plot(kind='bar')",
+					"lotus": "Giá bình quân mỗi phút liệu trình theo giờ: giờ vàng 18:00 đến 20:00 đắt hơn giờ trưa. Thấy rồi mới hỏi có nên giảm giá giờ thấp điểm không.",
+					"trap": "Chuyến rất ngắn làm giá trên dặm vọt lên vì cước mở cửa cố định. Cân nhắc lọc ngưỡng quãng đường."
+				},
+				"en": {
+					"think": "Average fare per mile by hour of day and by day of week.",
+					"steps": [
+						"Use fare_per_mile from 3.2.9.",
+						"d.groupby('pickup_hour')['fare_per_mile'].mean() and by pickup_day.",
+						"Draw two charts."
+					],
+					"code": "d.groupby('pickup_hour')['fare_per_mile'].mean().plot()\nd.groupby('pickup_day')['fare_per_mile'].mean().reindex(days).plot(kind='bar')",
+					"lotus": "Average price per session minute by hour: the 18:00 to 20:00 golden window costs more than lunch. After seeing it, ask whether to discount quiet hours.",
+					"trap": "Very short trips push fare per mile up because of the fixed flag-down fee. Consider a distance threshold."
+				}
+			},
+			"3.2.11": {
+				"vi": {
+					"think": "So giá trên dặm giữa hai nhà cung cấp (VendorID) theo từng giờ.",
+					"steps": [
+						"pivot: hàng là giờ, cột là VendorID, giá trị là trung bình fare_per_mile.",
+						"Vẽ hai đường.",
+						"Nhớ VendorID 1 và 2 là hai nhà cung cấp dữ liệu, không phải hai hãng taxi."
+					],
+					"code": "d.pivot_table(index='pickup_hour', columns='VendorID', values='fare_per_mile', aggfunc='mean').plot()",
+					"lotus": "Hai kênh đặt lịch (web và điện thoại) bán cùng gói với giá hiển thị khác nhau. So theo giờ để xem chênh lệch có cố định hay thay đổi.",
+					"trap": "Hai nhà cung cấp có thể phục vụ các nhóm chuyến khác nhau, nên chênh lệch không chỉ là chênh lệch giá."
+				},
+				"en": {
+					"think": "Compare fare per mile between the two vendors (VendorID) for each hour.",
+					"steps": [
+						"pivot: rows are hours, columns are VendorID, values are mean fare_per_mile.",
+						"Draw two lines.",
+						"Remember VendorID 1 and 2 are two data providers, not two taxi firms."
+					],
+					"code": "d.pivot_table(index='pickup_hour', columns='VendorID', values='fare_per_mile', aggfunc='mean').plot()",
+					"lotus": "Two booking channels (web and phone) sell the same package at different shown prices. Compare by hour to see whether the gap is fixed or changing.",
+					"trap": "The two vendors may serve different mixes of trips, so a gap is not only a price gap."
+				}
+			},
+			"3.2.12": {
+				"vi": {
+					"think": "Phân các chuyến thành ba bậc quãng đường rồi so giá trên dặm giữa hai nhà cung cấp ở mỗi bậc.",
+					"steps": [
+						"Bậc: đến 2 dặm, từ 2 đến 5 dặm, trên 5 dặm.",
+						"pd.cut với bins=[0, 2, 5, np.inf], right=True, và đặt nhãn.",
+						"Trung bình fare_per_mile theo (bậc, VendorID)."
+					],
+					"code": "d['tier'] = pd.cut(d['trip_distance'], bins=[0, 2, 5, np.inf], labels=['<=2','2-5','>5'])\nprint(d.groupby(['tier','VendorID'], observed=True)['fare_per_mile'].mean().unstack())",
+					"lotus": "Gói ngắn, vừa, dài: nhà cung cấp rẻ hơn ở bậc ngắn có thể đắt hơn ở bậc dài. Chia bậc cho thấy điều mà một con số trung bình che đi.",
+					"trap": "Biên bậc phải rõ: 2 dặm thuộc bậc nào. Với right=True thì 2 thuộc bậc đầu."
+				},
+				"en": {
+					"think": "Split trips into three distance tiers, then compare fare per mile between vendors in each tier.",
+					"steps": [
+						"Tiers: up to 2 miles, 2 to 5 miles, above 5 miles.",
+						"pd.cut with bins=[0, 2, 5, np.inf], right=True, and set labels.",
+						"Mean fare_per_mile by (tier, VendorID)."
+					],
+					"code": "d['tier'] = pd.cut(d['trip_distance'], bins=[0, 2, 5, np.inf], labels=['<=2','2-5','>5'])\nprint(d.groupby(['tier','VendorID'], observed=True)['fare_per_mile'].mean().unstack())",
+					"lotus": "Short, medium, long packages: the vendor cheaper on short ones may be dearer on long ones. Tiers reveal what one average hides.",
+					"trap": "The tier edges must be clear: which tier does 2 miles belong to. With right=True it belongs to the first."
+				}
+			},
+			"3.2.13": {
+				"vi": {
+					"think": "Phần trăm tiền boa là tiền boa chia cho tiền cước. Chỉ tính chuyến trả bằng thẻ vì tiền boa tiền mặt không được ghi.",
+					"steps": [
+						"Lọc payment_type == 1 và fare_amount > 0.",
+						"tip_pct = tip_amount / fare_amount * 100.",
+						"Trung bình theo bậc quãng đường, số hành khách, giờ đón.",
+						"Nêu các yếu tố khiến tip_pct thấp."
+					],
+					"code": "c = d[(d['payment_type'] == 1) & (d['fare_amount'] > 0)].copy()\nc['tip_pct'] = c['tip_amount'] / c['fare_amount'] * 100\nprint(c.groupby('tier', observed=True)['tip_pct'].mean())\nprint(c.groupby('passenger_count')['tip_pct'].mean())\nprint(c.groupby('pickup_hour')['tip_pct'].mean())",
+					"lotus": "Boa 50 nghìn trên giá 650 nghìn là 7,7%. Chỉ tính khách thanh toán thẻ hoặc chuyển khoản, vì tiền mặt không có trong sổ.",
+					"trap": "Tính boa cho cả chuyến tiền mặt làm tỷ lệ boa thấp giả."
+				},
+				"en": {
+					"think": "Tip percentage is tip divided by fare. Count card trips only because cash tips are not recorded.",
+					"steps": [
+						"Filter payment_type == 1 and fare_amount > 0.",
+						"tip_pct = tip_amount / fare_amount * 100.",
+						"Average by distance tier, passenger count, pickup hour.",
+						"State which factors lead to low tip_pct."
+					],
+					"code": "c = d[(d['payment_type'] == 1) & (d['fare_amount'] > 0)].copy()\nc['tip_pct'] = c['tip_amount'] / c['fare_amount'] * 100\nprint(c.groupby('tier', observed=True)['tip_pct'].mean())\nprint(c.groupby('passenger_count')['tip_pct'].mean())\nprint(c.groupby('pickup_hour')['tip_pct'].mean())",
+					"lotus": "A tip of 50 thousand on a 650 thousand price is 7.7%. Count only card or transfer customers, since cash is not in the log.",
+					"trap": "Counting cash trips makes the tip rate falsely low."
+				}
+			},
+			"3.2.14": {
+				"vi": {
+					"think": "Số hành khách thay đổi thế nào theo giờ và theo thứ trong tuần. Một bảng giờ nhân thứ cho thấy cả hai cùng lúc.",
+					"steps": [
+						"pivot_table với hàng là giờ, cột là thứ, giá trị là trung bình passenger_count.",
+						"Vẽ bản đồ nhiệt (heatmap).",
+						"Đọc ô đậm nhất."
+					],
+					"code": "pt = df.pivot_table(index='pickup_hour', columns='pickup_day', values='passenger_count', aggfunc='mean')[days]\nsns.heatmap(pt, cmap='YlOrRd')",
+					"lotus": "Số khách mỗi lượt đặt ở Lotus Spa: tối cuối tuần thường đi đôi nhiều hơn sáng thứ hai. Bản đồ nhiệt cho thấy điều đó trong một hình.",
+					"trap": "Trung bình số khách chênh nhau rất ít giữa các ô. Đừng đọc chênh lệch nhỏ như một mẫu hình."
+				},
+				"en": {
+					"think": "How passenger count varies by hour and by day of week. An hour-by-day table shows both at once.",
+					"steps": [
+						"pivot_table with hour as rows, day as columns, mean passenger_count as values.",
+						"Draw a heatmap.",
+						"Read the darkest cell."
+					],
+					"code": "pt = df.pivot_table(index='pickup_hour', columns='pickup_day', values='passenger_count', aggfunc='mean')[days]\nsns.heatmap(pt, cmap='YlOrRd')",
+					"lotus": "Guests per Lotus Spa booking: weekend evenings tend to carry more pairs than Monday mornings. A heatmap shows that in one picture.",
+					"trap": "Average guest counts differ very little between cells. Do not read a tiny difference as a pattern."
+				}
+			},
+			"3.2.15": {
+				"vi": {
+					"think": "Số hành khách trung bình ở từng vùng. Vẽ cột cho top và thêm cột vào bảng bản đồ.",
+					"steps": [
+						"avg = df.groupby('PULocationID')['passenger_count'].mean().",
+						"Gắn vào zones_with_trips theo LocationID.",
+						"Vẽ bản đồ màu theo avg_passengers."
+					],
+					"code": "avg = df.groupby('PULocationID')['passenger_count'].mean().rename('avg_passengers')\nzones_with_trips = zones_with_trips.merge(avg, left_on='LocationID', right_index=True, how='left')\nzones_with_trips.plot(column='avg_passengers', legend=True, figsize=(12,10))",
+					"lotus": "Chi nhánh có nhiều nhóm đi chung có số khách trung bình cao hơn. Biết điều đó thì chọn gói đôi hay gói nhóm cho chi nhánh nào.",
+					"trap": "Vùng ít chuyến có trung bình nhiễu. Lọc số chuyến tối thiểu hoặc ghi chú."
+				},
+				"en": {
+					"think": "Average passenger count per zone. Draw bars for the top and add a column to the map table.",
+					"steps": [
+						"avg = df.groupby('PULocationID')['passenger_count'].mean().",
+						"Attach to zones_with_trips by LocationID.",
+						"Draw a colour map by avg_passengers."
+					],
+					"code": "avg = df.groupby('PULocationID')['passenger_count'].mean().rename('avg_passengers')\nzones_with_trips = zones_with_trips.merge(avg, left_on='LocationID', right_index=True, how='left')\nzones_with_trips.plot(column='avg_passengers', legend=True, figsize=(12,10))",
+					"lotus": "A branch with many group visits has a higher average guest count. Knowing that, choose couple or group packages for which branch.",
+					"trap": "Zones with few trips have noisy averages. Filter a minimum count or add a note."
+				}
+			},
+			"3.2.16": {
+				"vi": {
+					"think": "Mức độ thường xuyên của các loại phụ phí và nơi hoặc lúc chúng được áp dụng nhiều hơn.",
+					"steps": [
+						"Với mỗi cột phụ phí (extra, mta_tax, tolls_amount, improvement_surcharge, congestion_surcharge, airport_fee): tỷ lệ chuyến có giá trị lớn hơn 0.",
+						"Nhóm theo giờ và theo vùng đón để xem phụ phí nào tập trung ở đâu.",
+						"Phụ phí sân bay chỉ có ở vùng sân bay."
+					],
+					"code": "surch = ['extra','mta_tax','tolls_amount','improvement_surcharge','congestion_surcharge','airport_fee']\nprint((df[surch] > 0).mean().round(3))\nfor col in ['extra','congestion_surcharge','airport_fee']:\n    df.assign(flag=df[col] > 0).groupby('pickup_hour')['flag'].mean().plot(label=col)",
+					"lotus": "Phụ phí giờ vàng áp dụng 18:00 đến 20:00. Đếm tỷ lệ booking có phụ phí theo giờ cho thấy phụ phí tập trung ở đâu và có đang làm khách rời đi không.",
+					"trap": "Đừng nhầm tần suất với doanh thu: một phụ phí hiếm nhưng lớn có thể quan trọng hơn một phụ phí thường xuyên nhưng nhỏ."
+				},
+				"en": {
+					"think": "How often each surcharge applies and where or when it applies more.",
+					"steps": [
+						"For each surcharge column (extra, mta_tax, tolls_amount, improvement_surcharge, congestion_surcharge, airport_fee): share of trips with a value above 0.",
+						"Group by hour and by pickup zone to see where each surcharge concentrates.",
+						"The airport fee exists only in airport zones."
+					],
+					"code": "surch = ['extra','mta_tax','tolls_amount','improvement_surcharge','congestion_surcharge','airport_fee']\nprint((df[surch] > 0).mean().round(3))\nfor col in ['extra','congestion_surcharge','airport_fee']:\n    df.assign(flag=df[col] > 0).groupby('pickup_hour')['flag'].mean().plot(label=col)",
+					"lotus": "The golden-hour surcharge applies 18:00 to 20:00. Counting the share of bookings with a surcharge by hour shows where it concentrates and whether it pushes customers away.",
+					"trap": "Do not confuse frequency with revenue: a rare but large surcharge can matter more than a frequent but small one."
+				}
+			},
+			"4.1.1": {
+				"vi": {
+					"think": "Khuyến nghị về điều phối: dựa vào mẫu hình nhu cầu và các tuyến chậm. Mỗi khuyến nghị phải trỏ về một kết quả bạn đã tính.",
+					"steps": [
+						"Nêu giờ đông (3.2.2) và các tuyến chậm (3.2.1).",
+						"Đề xuất: điều xe đến vùng và giờ nào, tránh tuyến chậm lúc nào.",
+						"Mỗi câu đi kèm một con số từ phân tích của bạn."
+					],
+					"code": "# Write your recommendations here as markdown or print statements,\n# each citing a number from your analysis, e.g.\n# print(f'Busiest hour {hourly.idxmax()}: {scaled.max():,.0f} trips -> dispatch more cabs before this hour')",
+					"lotus": "Giờ đông là 19:00 và tuyến Quận 1 sang Quận 3 chậm nhất lúc 18:00: dời một nhân viên về chi nhánh Quận 1 trước 18:00 và đẩy lịch hẹn giữa hai chi nhánh sang 16:00.",
+					"trap": "Một khuyến nghị không có con số đi kèm chỉ là ý kiến. Dẫn con số."
+				},
+				"en": {
+					"think": "Dispatch recommendations: based on demand patterns and slow routes. Each recommendation must point back to a result you computed.",
+					"steps": [
+						"State the busy hours (3.2.2) and slow routes (3.2.1).",
+						"Propose: which zones and hours to send cabs to, when to avoid slow routes.",
+						"Attach a number from your analysis to every sentence."
+					],
+					"code": "# Write your recommendations here as markdown or print statements,\n# each citing a number from your analysis, e.g.\n# print(f'Busiest hour {hourly.idxmax()}: {scaled.max():,.0f} trips -> dispatch more cabs before this hour')",
+					"lotus": "The busy hour is 19:00 and the District 1 to District 3 route is slowest at 18:00: move one staff member to District 1 before 18:00 and shift inter-branch appointments to 16:00.",
+					"trap": "A recommendation with no number is only an opinion. Cite the number."
+				}
+			},
+			"4.1.2": {
+				"vi": {
+					"think": "Đặt xe ở đâu và lúc nào dựa vào nhu cầu theo vùng, giờ, thứ và tháng. Dùng tỷ lệ đón trên trả (3.2.6) để biết vùng nào cần bù xe.",
+					"steps": [
+						"Vùng có tỷ lệ đón cao hơn trả nhiều: xe rời đi hết, cần đưa xe về.",
+						"Vùng đêm đông (3.2.7): giữ một số xe trực.",
+						"Theo tháng và thứ: tăng hoặc giảm đội xe theo mùa."
+					],
+					"code": "# Write positioning suggestions here, citing the ratio table (3.2.6),\n# the night-hours table (3.2.7) and the monthly trend (3.1.4)",
+					"lotus": "Chi nhánh Quận 1 có tỷ lệ đi trên đến là 2: đưa thêm một nhân viên về sau 18:00. Thủ Đức vắng vào tháng 12: giảm ca ở đó.",
+					"trap": "Đề xuất đặt xe ở vùng có nhiều chuyến mà không xét tỷ lệ đón trên trả sẽ làm vùng đó thừa xe."
+				},
+				"en": {
+					"think": "Where and when to position cabs based on demand by zone, hour, weekday and month. Use the pickup-to-dropoff ratio (3.2.6) to know which zones need top-ups.",
+					"steps": [
+						"A zone with pickups well above dropoffs: cabs leave and do not return, so send cabs back.",
+						"Busy night zones (3.2.7): keep some cabs on standby.",
+						"By month and weekday: grow or shrink the fleet seasonally."
+					],
+					"code": "# Write positioning suggestions here, citing the ratio table (3.2.6),\n# the night-hours table (3.2.7) and the monthly trend (3.1.4)",
+					"lotus": "District 1 has a leave-to-arrive ratio of 2: bring in one more staff member after 18:00. Thu Duc is quiet in December: cut shifts there.",
+					"trap": "Positioning cabs where there are many trips without checking the pickup-to-dropoff ratio leaves that zone with too many cabs."
+				}
+			},
+			"4.1.3": {
+				"vi": {
+					"think": "Điều chỉnh giá dựa trên dữ liệu: tăng doanh thu mà vẫn cạnh tranh với nhà cung cấp khác.",
+					"steps": [
+						"Dùng giá trên dặm theo giờ (3.2.10) và theo bậc quãng đường (3.2.12).",
+						"Đề xuất giá cao hơn ở giờ đông và ở bậc nơi bạn đang rẻ hơn đối thủ.",
+						"Giữ nguyên hoặc giảm ở giờ vắng để kéo nhu cầu.",
+						"Nêu rủi ro: giá tăng có thể làm giảm số chuyến."
+					],
+					"code": "# Write pricing adjustments here, citing fare per mile by hour (3.2.10),\n# the tier comparison (3.2.12) and the surcharge shares (3.2.16)",
+					"lotus": "Giờ vàng 18:00 đến 20:00 đông nhưng giá ngang giờ trưa: thử tăng giá ở khung đó, giữ giá giờ vắng. Theo dõi tuần sau xem số lượt đặt có giảm quá mức bạn chấp nhận không.",
+					"trap": "Tăng giá mà không đặt mức chấp nhận được cho sự sụt giảm số lượt là đánh cược."
+				},
+				"en": {
+					"think": "Data-driven pricing adjustments: raise revenue while staying competitive with other vendors.",
+					"steps": [
+						"Use fare per mile by hour (3.2.10) and by distance tier (3.2.12).",
+						"Propose higher prices at busy hours and in tiers where you are cheaper than rivals.",
+						"Hold or cut at quiet hours to lift demand.",
+						"State the risk: a higher price may reduce trips."
+					],
+					"code": "# Write pricing adjustments here, citing fare per mile by hour (3.2.10),\n# the tier comparison (3.2.12) and the surcharge shares (3.2.16)",
+					"lotus": "The golden window 18:00 to 20:00 is busy but priced like lunch: try raising it, keep quiet-hour prices. Watch next week to see whether bookings drop by more than you accept.",
+					"trap": "Raising prices without setting an acceptable drop in bookings is a gamble."
+				}
+			}
 		}
-	],
-	"guides": {
-		"1.1.1": {
-			"vi": {
-				"think": "Mỗi file tháng có hàng triệu dòng. Bạn không tải hết, bạn lấy 5% của từng giờ trong từng ngày để mẫu giữ nhịp thật của cả năm.",
-				"steps": [
-					"Đọc từng file một, không đọc cả 12 file cùng lúc.",
-					"Tạo cột ngày và giờ từ tpep_pickup_datetime.",
-					"Với mỗi ngày, mỗi giờ: lấy sample(frac=0.05, random_state=42).",
-					"Nối kết quả của các giờ rồi các ngày thành một bảng của tháng, rồi nối 12 tháng.",
-					"Lưu ra parquet và đếm số dòng: khoảng 250.000 đến 300.000."
-				],
-				"code": "df = pd.DataFrame()\nfor file_name in file_list:\n    month = pd.read_parquet(file_path)\n    month['date'] = month['tpep_pickup_datetime'].dt.date\n    month['hour'] = month['tpep_pickup_datetime'].dt.hour\n    parts = []\n    for (d, h), grp in month.groupby(['date', 'hour']):\n        parts.append(grp.sample(frac=0.05, random_state=42))\n    df = pd.concat([df] + parts)\ndf = df.drop(columns=['date', 'hour'])",
-				"lotus": "Sổ booking Lotus Spa có 12 tháng. Lấy 5% theo từng ngày và từng giờ giữ được cả giờ vắng lẫn giờ đông. Nếu chỉ lấy 5% theo giờ chung cho cả năm, giờ nào của ngày nào cũng bị trộn lẫn.",
-				"trap": "Lấy mẫu theo giờ mà không theo ngày sẽ làm lệch các ngày ít xe. Ghi lại sample_fraction vì bài 3.2.3 cần nó để nhân lên."
+	},
+	{
+		"id": "delivery-time",
+		"course": "C3 · Hồi quy tuyến tính",
+		"title": ["Bài tập: Dự đoán thời gian giao", "Assignment: Delivery Time Prediction"],
+		"file": "LR_Delivery_Time_Estimation_Starter.ipynb",
+		"story": ["Starter gốc là dữ liệu đơn giao Porter. Trong Lotus Spa: «đơn» = lượt đặt lịch, «giao hàng» = khách vào phòng, «thời gian giao» = số phút khách chờ từ lúc đặt đến lúc vào phòng. Bạn dự đoán thời gian chờ để chị Lan báo trước cho khách. Các con số «file của bạn» là số thật tính từ porter_data_1.csv.", "The original starter is Porter delivery data. In Lotus Spa: an order is a booking, delivery is the customer entering the room, delivery time is the minutes from booking to entering. You predict the wait so chị Lan can tell customers in advance. The “your file” numbers are real figures computed from porter_data_1.csv."],
+		"concepts": ["d-19f8df89941b"],
+		"cells": [
+			{
+				"t": "md",
+				"s": "# Order Delivery Time Prediction"
 			},
-			"en": {
-				"think": "Each monthly file has millions of rows. You do not load everything; you take 5% of every hour of every day so the sample keeps the real rhythm of the whole year.",
-				"steps": [
-					"Read one file at a time, not all 12 at once.",
-					"Create a date and an hour column from tpep_pickup_datetime.",
-					"For each date and hour: take sample(frac=0.05, random_state=42).",
-					"Concatenate the hours, then the days, into one month table, then the 12 months.",
-					"Save to parquet and count rows: about 250,000 to 300,000."
-				],
-				"code": "df = pd.DataFrame()\nfor file_name in file_list:\n    month = pd.read_parquet(file_path)\n    month['date'] = month['tpep_pickup_datetime'].dt.date\n    month['hour'] = month['tpep_pickup_datetime'].dt.hour\n    parts = []\n    for (d, h), grp in month.groupby(['date', 'hour']):\n        parts.append(grp.sample(frac=0.05, random_state=42))\n    df = pd.concat([df] + parts)\ndf = df.drop(columns=['date', 'hour'])",
-				"lotus": "The Lotus Spa booking log covers 12 months. Taking 5% by each day and each hour keeps both quiet and busy hours. Taking 5% by hour across the whole year would blend every day together.",
-				"trap": "Sampling by hour without the date skews quiet days. Record sample_fraction because task 3.2.3 needs it to scale up."
+			{
+				"t": "md",
+				"s": "## Objectives\nThe objective of this assignment is to build a regression model that predicts the delivery time for orders placed through Porter. The model will use various features such as the items ordered, the restaurant location, the order protocol, and the availability of delivery partners.\n\nThe key goals are:\n- Predict the delivery time for an order based on multiple input features\n- Improve delivery time predictions to optimiae operational efficiency\n- Understand the key factors influencing delivery time to enhance the model's accuracy"
+			},
+			{
+				"t": "md",
+				"s": "## Data Pipeline\nThe data pipeline for this assignment will involve the following steps:\n1. **Data Loading**\n2. **Data Preprocessing and Feature Engineering**\n3. **Exploratory Data Analysis**\n4. **Model Building**\n5. **Model Inference**"
+			},
+			{
+				"t": "md",
+				"s": "## Data Understanding\nThe dataset contains information on orders placed through Porter, with the following columns:\n\n| Field                     | Description                                                                                 |\n|---------------------------|---------------------------------------------------------------------------------------------|\n| market_id                 | Integer ID representing the market where the restaurant is located.                         |\n| created_at                | Timestamp when the order was placed.                                                        |\n| actual_delivery_time      | Timestamp when the order was delivered.                                                     |\n| store_primary_category    | Category of the restaurant (e.g., fast food, dine-in).                                      |\n| order_protocol            | Integer representing how the order was placed (e.g., via Porter, call to restaurant, etc.). |\n| total_items               | Total number of items in the order.                                                         |\n| subtotal                  | Final price of the order.                                                                   |\n| num_distinct_items        | Number of distinct items in the order.                                                      |\n| min_item_price            | Price of the cheapest item in the order.                                                    |\n| max_item_price            | Price of the most expensive item in the order.                                              |\n| total_onshift_dashers     | Number of delivery partners on duty when the order was placed.                              |\n| total_busy_dashers        | Number of delivery partners already occupied with other orders.                             |\n| total_outstanding_orders  | Number of orders pending fulfillment at the time of the order.                              |\n| distance                  | Total distance from the restaurant to the customer.                                         |\n"
+			},
+			{
+				"t": "md",
+				"s": "## **Importing Necessary Libraries**"
+			},
+			{
+				"t": "code",
+				"s": "# Import essential libraries for data manipulation and analysis\n\n"
+			},
+			{
+				"t": "md",
+				"s": "## **1. Loading the data**\nLoad 'porter_data_1.csv' as a DataFrame"
+			},
+			{
+				"t": "code",
+				"s": "# Importing the file porter_data_1.csv\n"
+			},
+			{
+				"t": "md",
+				"s": "## **2. Data Preprocessing and Feature Engineering** <font color = red>[15 marks]</font> <br>"
+			},
+			{
+				"t": "md",
+				"s": "#### **2.1 Fixing the Datatypes**  <font color = red>[5 marks]</font> <br>\nThe current timestamps are in object format and need conversion to datetime format for easier handling and intended functionality"
+			},
+			{
+				"t": "md",
+				"s": "##### **2.1.1** <font color = red>[2 marks]</font> <br>\nConvert date and time fields to appropriate data type",
+				"ref": "2.1.1"
+			},
+			{
+				"t": "code",
+				"s": "# Convert 'created_at' and 'actual_delivery_time' columns to datetime format\n\n"
+			},
+			{
+				"t": "md",
+				"s": "##### **2.1.2**  <font color = red>[3 marks]</font> <br>\nConvert categorical fields to appropriate data type",
+				"ref": "2.1.2"
+			},
+			{
+				"t": "code",
+				"s": "# Convert categorical features to category type\n\n"
+			},
+			{
+				"t": "md",
+				"s": "#### **2.2 Feature Engineering** <font color = red>[5 marks]</font> <br>\nCalculate the time taken to execute the delivery as well as extract the hour and day at which the order was placed"
+			},
+			{
+				"t": "md",
+				"s": "##### **2.2.1** <font color = red>[2 marks]</font> <br>\nCalculate the time taken using the features `actual_delivery_time` and `created_at`",
+				"ref": "2.2.1"
+			},
+			{
+				"t": "code",
+				"s": "# Calculate time taken in minutes\n"
+			},
+			{
+				"t": "md",
+				"s": "##### **2.2.2** <font color = red>[3 marks]</font> <br>\nExtract the hour at which the order was placed and which day of the week it was. Drop the unnecessary columns.",
+				"ref": "2.2.2"
+			},
+			{
+				"t": "code",
+				"s": "# Extract the hour and day of week from the 'created_at' timestamp\n\n\n# Create a categorical feature 'isWeekend'\n\n"
+			},
+			{
+				"t": "code",
+				"s": "# Drop unnecessary columns\n"
+			},
+			{
+				"t": "md",
+				"s": "#### **2.3 Creating training and validation sets** <font color = red>[5 marks]</font> <br>"
+			},
+			{
+				"t": "md",
+				"s": "##### **2.3.1** <font color = red>[2 marks]</font> <br>\n Define target and input features",
+				"ref": "2.3.1"
+			},
+			{
+				"t": "code",
+				"s": "# Define target variable (y) and features (X)\n\n"
+			},
+			{
+				"t": "md",
+				"s": "##### **2.3.2** <font color = red>[3 marks]</font> <br>\n Split the data into training and test sets",
+				"ref": "2.3.2"
+			},
+			{
+				"t": "code",
+				"s": "# Split data into training and testing sets\n\n"
+			},
+			{
+				"t": "md",
+				"s": "## **3. Exploratory Data Analysis on Training Data** <font color = red>[20 marks]</font> <br>\n1. Analyzing the correlation between variables to identify patterns and relationships\n2. Identifying and addressing outliers to ensure the integrity of the analysis\n3. Exploring the relationships between variables and examining the distribution of the data for better insights"
+			},
+			{
+				"t": "md",
+				"s": "#### **3.1 Feature Distributions** <font color = red> [7 marks]</font> <br>\n"
+			},
+			{
+				"t": "code",
+				"s": "# Define numerical and categorical columns for easy EDA and data manipulation\n\n"
+			},
+			{
+				"t": "md",
+				"s": "##### **3.1.1** <font color = red>[3 marks]</font> <br>\nPlot distributions for numerical columns in the training set to understand their spread and any skewness",
+				"ref": "3.1.1"
+			},
+			{
+				"t": "code",
+				"s": "# Plot distributions for all numerical columns\n\n"
+			},
+			{
+				"t": "md",
+				"s": "##### **3.1.2** <font color = red>[2 marks]</font> <br>\nCheck the distribution of categorical features",
+				"ref": "3.1.2"
+			},
+			{
+				"t": "code",
+				"s": "# Distribution of categorical columns\n\n"
+			},
+			{
+				"t": "md",
+				"s": "##### **3.1.3** <font color = red>[2 mark]</font> <br>\nVisualise the distribution of the target variable to understand its spread and any skewness",
+				"ref": "3.1.3"
+			},
+			{
+				"t": "code",
+				"s": "# Distribution of time_taken\n\n"
+			},
+			{
+				"t": "md",
+				"s": "#### **3.2 Relationships Between Features** <font color = red>[3 marks]</font> <br>"
+			},
+			{
+				"t": "md",
+				"s": "##### **3.2.1** <font color = red>[3 marks]</font> <br>\nScatter plots for important numerical and categorical features to observe how they relate to `time_taken`",
+				"ref": "3.2.1"
+			},
+			{
+				"t": "code",
+				"s": "# Scatter plot to visualise the relationship between time_taken and other features\n\n"
+			},
+			{
+				"t": "code",
+				"s": "# Show the distribution of time_taken for different hours\n\n"
+			},
+			{
+				"t": "md",
+				"s": "#### **3.3 Correlation Analysis** <font color = red>[5 marks]</font> <br>\nCheck correlations between numerical features to identify which variables are strongly related to `time_taken`"
+			},
+			{
+				"t": "md",
+				"s": "##### **3.3.1** <font color = red>[3 marks]</font> <br>\nPlot a heatmap to display correlations",
+				"ref": "3.3.1"
+			},
+			{
+				"t": "code",
+				"s": "# Plot the heatmap of the correlation matrix\n\n"
+			},
+			{
+				"t": "md",
+				"s": "##### **3.3.2** <font color = red>[2 marks]</font> <br>\nDrop the columns with weak correlations with the target variable",
+				"ref": "3.3.2"
+			},
+			{
+				"t": "code",
+				"s": "# Drop 3-5 weakly correlated columns from training dataset\n\n"
+			},
+			{
+				"t": "md",
+				"s": "#### **3.4 Handling the Outliers** <font color = red>[5 marks]</font> <br>\n\n"
+			},
+			{
+				"t": "md",
+				"s": "##### **3.4.1** <font color = red>[2 marks]</font> <br>\nVisualise potential outliers for the target variable and other numerical features using boxplots",
+				"ref": "3.4.1"
+			},
+			{
+				"t": "code",
+				"s": "# Boxplot for time_taken\n\n"
+			},
+			{
+				"t": "md",
+				"s": "##### **3.4.2** <font color = red>[3 marks]</font> <br>\nHandle outliers present in all columns",
+				"ref": "3.4.2"
+			},
+			{
+				"t": "code",
+				"s": "# Handle outliers\n\n"
+			},
+			{
+				"t": "md",
+				"s": "## **4. Exploratory Data Analysis on Validation Data** <font color = red>[optional]</font> <br>\nOptionally, perform EDA on test data to see if the distribution match with the training data"
+			},
+			{
+				"t": "code",
+				"s": "# Define numerical and categorical columns for easy EDA and data manipulation\n\n"
+			},
+			{
+				"t": "md",
+				"s": "#### **4.1 Feature Distributions**\n"
+			},
+			{
+				"t": "md",
+				"s": "##### **4.1.1**\nPlot distributions for numerical columns in the validation set to understand their spread and any skewness",
+				"ref": "4.1.1"
+			},
+			{
+				"t": "code",
+				"s": "# Plot distributions for all numerical columns\n\n"
+			},
+			{
+				"t": "md",
+				"s": "##### **4.1.2**\nCheck the distribution of categorical features",
+				"ref": "4.1.2"
+			},
+			{
+				"t": "code",
+				"s": "# Distribution of categorical columns\n\n"
+			},
+			{
+				"t": "md",
+				"s": "##### **4.1.3**\nVisualise the distribution of the target variable to understand its spread and any skewness",
+				"ref": "4.1.3"
+			},
+			{
+				"t": "code",
+				"s": "# Distribution of time_taken\n\n"
+			},
+			{
+				"t": "md",
+				"s": "#### **4.2 Relationships Between Features**\nScatter plots for numerical features to observe how they relate to each other, especially to `time_taken`",
+				"ref": "4.2"
+			},
+			{
+				"t": "code",
+				"s": "# Scatter plot to visualise the relationship between time_taken and other features\n\n"
+			},
+			{
+				"t": "md",
+				"s": "#### **4.3** Drop the columns with weak correlations with the target variable",
+				"ref": "4.3"
+			},
+			{
+				"t": "code",
+				"s": "# Drop the weakly correlated columns from training dataset\n\n"
+			},
+			{
+				"t": "md",
+				"s": "## **5. Model Building** <font color = red>[15 marks]</font> <br>"
+			},
+			{
+				"t": "md",
+				"s": "#### **Import Necessary Libraries**"
+			},
+			{
+				"t": "code",
+				"s": "# Import libraries\n\n"
+			},
+			{
+				"t": "md",
+				"s": "#### **5.1 Feature Scaling** <font color = red>[3 marks]</font> <br>",
+				"ref": "5.1"
+			},
+			{
+				"t": "code",
+				"s": "# Apply scaling to the numerical columns\n\n"
+			},
+			{
+				"t": "md",
+				"s": "Note that linear regression is agnostic to feature scaling. However, with feature scaling, we get the coefficients to be somewhat on the same scale so that it becomes easier to compare them."
+			},
+			{
+				"t": "md",
+				"s": "#### **5.2 Build a linear regression model** <font color = red>[5 marks]</font> <br>",
+				"ref": "5.2"
+			},
+			{
+				"t": "md",
+				"s": "You can choose from the libraries *statsmodels* and *scikit-learn* to build the model."
+			},
+			{
+				"t": "code",
+				"s": "# Create/Initialise the model\n"
+			},
+			{
+				"t": "code",
+				"s": "# Train the model using the training data\n"
+			},
+			{
+				"t": "code",
+				"s": "# Make predictions\n"
+			},
+			{
+				"t": "code",
+				"s": "# Find results for evaluation metrics\n\n"
+			},
+			{
+				"t": "md",
+				"s": "Note that we have 12 (depending on how you select features) training features. However, not all of them would be useful. Let's say we want to take the most relevant 8 features.\n\nWe will use Recursive Feature Elimination (RFE) here.\n\nFor this, you can look at the coefficients / p-values of features from the model summary and perform feature elimination, or you can use the RFE module provided with *scikit-learn*."
+			},
+			{
+				"t": "md",
+				"s": "#### **5.3 Build the model and fit RFE to select the most important features** <font color = red>[7 marks]</font> <br>",
+				"ref": "5.3"
+			},
+			{
+				"t": "md",
+				"s": "For RFE, we will start with all features and use\nthe RFE method to recursively reduce the number of features one-by-one.\n\nAfter analysing the results of these iterations, we select the one that has a good balance between performance and number of features."
+			},
+			{
+				"t": "code",
+				"s": "# Loop through the number of features and test the model\n\n"
+			},
+			{
+				"t": "code",
+				"s": "# Build the final model with selected number of features\n\n"
+			},
+			{
+				"t": "md",
+				"s": "## **6. Results and Inference** <font color = red>[5 marks]</font> <br>"
+			},
+			{
+				"t": "md",
+				"s": "#### **6.1 Perform Residual Analysis** <font color = red>[3 marks]</font> <br>",
+				"ref": "6.1"
+			},
+			{
+				"t": "code",
+				"s": "# Perform residual analysis using plots like residuals vs predicted values, Q-Q plot and residual histogram\n\n"
+			},
+			{
+				"t": "md",
+				"s": "[Your inferences here:]\n\n"
+			},
+			{
+				"t": "md",
+				"s": "#### **6.2 Perform Coefficient Analysis** <font color = red>[2 marks]</font> <br>",
+				"ref": "6.2"
+			},
+			{
+				"t": "md",
+				"s": "Perform coefficient analysis to find how changes in features affect the target.\nAlso, the features were scaled, so interpret the scaled and unscaled coefficients to understand the impact of feature changes on delivery time.\n"
+			},
+			{
+				"t": "code",
+				"s": "# Compare the scaled vs unscaled features used in the final model\n\n"
+			},
+			{
+				"t": "md",
+				"s": "Additionally, we can analyse the effect of a unit change in a feature. In other words, because we have scaled the features, a unit change in the features will not translate directly to the model. Use scaled and unscaled coefficients to find how will a unit change in a feature affect the target."
+			},
+			{
+				"t": "code",
+				"s": "# Analyze the effect of a unit change in a feature, say 'total_items'\n\n"
+			},
+			{
+				"t": "md",
+				"s": "Note:\nThe coefficients on the original scale might differ greatly in magnitude from the scaled coefficients, but they both describe the same relationships between variables.\n\nInterpretation is key: Focus on the direction and magnitude of the coefficients on the original scale to understand the impact of each variable on the response variable in the original units."
+			},
+			{
+				"t": "md",
+				"s": "Include conclusions in your report document."
+			},
+			{
+				"t": "md",
+				"s": "## Subjective Questions <font color = red>[20 marks]</font>"
+			},
+			{
+				"t": "md",
+				"s": "Answer the following questions only in the notebook. Include the visualisations/methodologies/insights/outcomes from all the above steps in your report."
+			},
+			{
+				"t": "md",
+				"s": "#### Subjective Questions based on Assignment"
+			},
+			{
+				"t": "md",
+				"s": "##### **Question 1.** <font color = red>[2 marks]</font> <br>\n\nAre there any categorical variables in the data? From your analysis of the categorical variables from the dataset, what could you infer about their effect on the dependent variable?",
+				"ref": "Q1"
+			},
+			{
+				"t": "md",
+				"s": "**Answer:**\n>"
+			},
+			{
+				"t": "md",
+				"s": "\n\n---\n\n"
+			},
+			{
+				"t": "md",
+				"s": "##### **Question 2.** <font color = red>[1 marks]</font> <br>\nWhat does `test_size = 0.2` refer to during splitting the data into training and test sets?",
+				"ref": "Q2"
+			},
+			{
+				"t": "md",
+				"s": "**Answer:**\n>"
+			},
+			{
+				"t": "md",
+				"s": "\n\n---\n\n"
+			},
+			{
+				"t": "md",
+				"s": "##### **Question 3.** <font color = red>[1 marks]</font> <br>\nLooking at the heatmap, which one has the highest correlation with the target variable?  ",
+				"ref": "Q3"
+			},
+			{
+				"t": "md",
+				"s": "**Answer:**\n>"
+			},
+			{
+				"t": "md",
+				"s": "\n\n---\n\n"
+			},
+			{
+				"t": "md",
+				"s": "##### **Question 4.** <font color = red>[2 marks]</font> <br>\nWhat was your approach to detect the outliers? How did you address them?",
+				"ref": "Q4"
+			},
+			{
+				"t": "md",
+				"s": "**Answer:**\n\n>"
+			},
+			{
+				"t": "md",
+				"s": "\n\n---\n\n"
+			},
+			{
+				"t": "md",
+				"s": "##### **Question 5.** <font color = red>[2 marks]</font> <br>\nBased on the final model, which are the top 3 features significantly affecting the delivery time?",
+				"ref": "Q5"
+			},
+			{
+				"t": "md",
+				"s": "**Answer:**\n>"
+			},
+			{
+				"t": "md",
+				"s": "\n\n---\n\n"
+			},
+			{
+				"t": "md",
+				"s": "#### General Subjective Questions"
+			},
+			{
+				"t": "md",
+				"s": "##### **Question 6.** <font color = red>[3 marks]</font> <br>\nExplain the linear regression algorithm in detail",
+				"ref": "Q6"
+			},
+			{
+				"t": "md",
+				"s": "**Answer:**\n>\n"
+			},
+			{
+				"t": "md",
+				"s": "\n\n---\n\n"
+			},
+			{
+				"t": "md",
+				"s": "##### **Question 7.** <font color = red>[2 marks]</font> <br>\nExplain the difference between simple linear regression and multiple linear regression",
+				"ref": "Q7"
+			},
+			{
+				"t": "md",
+				"s": "**Answer:**\n>"
+			},
+			{
+				"t": "md",
+				"s": "\n\n---\n\n"
+			},
+			{
+				"t": "md",
+				"s": "##### **Question 8.** <font color = red>[2 marks]</font> <br>\nWhat is the role of the cost function in linear regression, and how is it minimized?",
+				"ref": "Q8"
+			},
+			{
+				"t": "md",
+				"s": "**Answer:**\n>\n"
+			},
+			{
+				"t": "md",
+				"s": "\n\n---\n\n"
+			},
+			{
+				"t": "md",
+				"s": "##### **Question 9.** <font color = red>[2 marks]</font> <br>\nExplain the difference between overfitting and underfitting.\n\n",
+				"ref": "Q9"
+			},
+			{
+				"t": "md",
+				"s": "**Answer:**\n\n>"
+			},
+			{
+				"t": "md",
+				"s": "\n\n---\n\n"
+			},
+			{
+				"t": "md",
+				"s": "##### **Question 10.** <font color = red>[3 marks]</font> <br>\nHow do residual plots help in diagnosing a linear regression model?",
+				"ref": "Q10"
+			},
+			{
+				"t": "md",
+				"s": "**Answer:**\n>"
 			}
-		},
-		"2.1.1": {
-			"vi": {
-				"think": "Sau khi nối và đọc lại, bảng có thể mang thêm cột chỉ số cũ. Bạn đặt lại chỉ số và bỏ cột không phục vụ câu hỏi.",
-				"steps": [
-					"df = df.reset_index(drop=True).",
-					"Xem df.columns và bỏ cột dư (ví dụ cột chỉ số cũ, hoặc cột mà bạn quyết định không dùng, như store_and_fwd_flag).",
-					"Ghi lý do bỏ mỗi cột trong một dòng chú thích."
-				],
-				"code": "df = df.reset_index(drop=True)\n# drop columns you will not use, with a reason for each\ndf = df.drop(columns=['store_and_fwd_flag'])",
-				"lotus": "Bảng booking có cột «mã in phiếu» không dùng cho câu hỏi nào. Bỏ nó đi và ghi lý do, để tháng sau mở lại không phải đoán.",
-				"trap": "Đừng bỏ cột chỉ vì không hiểu nó. Bỏ vì biết mình không cần."
+		],
+		"guides": {
+			"2.1.1": {
+				"vi": {
+					"think": "Hai cột thời gian đang là chữ. Muốn trừ được hai mốc giờ, phải đổi sang datetime.",
+					"steps": [
+						"pd.to_datetime cho created_at và actual_delivery_time.",
+						"Kiểm tra df.dtypes: hai cột phải là datetime64.",
+						"Đếm số giá trị lỗi bằng errors='coerce' nếu nghi có dòng sai định dạng."
+					],
+					"code": "df['created_at'] = pd.to_datetime(df['created_at'])\ndf['actual_delivery_time'] = pd.to_datetime(df['actual_delivery_time'])\nprint(df[['created_at','actual_delivery_time']].dtypes)",
+					"lotus": "Sổ booking ghi giờ đặt là chữ «2026-11-03 19:05». Phải đổi thành giờ thật thì mới tính được khách chờ bao lâu.",
+					"trap": "Trừ hai cột chữ sẽ báo lỗi hoặc ra kết quả vô nghĩa."
+				},
+				"en": {
+					"think": "Both time columns are text. To subtract two timestamps they must become datetime.",
+					"steps": [
+						"pd.to_datetime for created_at and actual_delivery_time.",
+						"Check df.dtypes: both must be datetime64.",
+						"Use errors='coerce' and count failures if some rows may be malformed."
+					],
+					"code": "df['created_at'] = pd.to_datetime(df['created_at'])\ndf['actual_delivery_time'] = pd.to_datetime(df['actual_delivery_time'])\nprint(df[['created_at','actual_delivery_time']].dtypes)",
+					"lotus": "The booking log stores the order time as text “2026-11-03 19:05”. It must become a real time before you can compute how long the customer waited.",
+					"trap": "Subtracting two text columns errors out or gives nonsense."
+				}
 			},
-			"en": {
-				"think": "After combining and re-reading, the table may carry a leftover index column. You reset the index and drop columns that do not serve the question.",
-				"steps": [
-					"df = df.reset_index(drop=True).",
-					"Look at df.columns and drop extras (for example an old index column, or a column you decide not to use, such as store_and_fwd_flag).",
-					"Write one comment line giving the reason for each drop."
-				],
-				"code": "df = df.reset_index(drop=True)\n# drop columns you will not use, with a reason for each\ndf = df.drop(columns=['store_and_fwd_flag'])",
-				"lotus": "The booking table has a “receipt print code” column no question uses. Drop it and note why, so reopening next month needs no guessing.",
-				"trap": "Do not drop a column because you do not understand it. Drop it because you know you do not need it."
+			"2.1.2": {
+				"vi": {
+					"think": "market_id, order_protocol, store_primary_category là mã, không phải số để cộng trừ. Đổi sang kiểu category để mô hình và biểu đồ coi chúng là nhóm.",
+					"steps": [
+						"Liệt kê cột mã: market_id, order_protocol, store_primary_category.",
+						"Đổi bằng astype('category').",
+						"Trong file của bạn: market_id có 6 giá trị, order_protocol có 7, store_primary_category có 73."
+					],
+					"code": "cat_cols = ['market_id', 'order_protocol', 'store_primary_category']\ndf[cat_cols] = df[cat_cols].astype('category')\nprint(df[cat_cols].nunique())",
+					"lotus": "Mã chi nhánh 1, 2, 3 không có «hơn kém». Mã gói A12, B07, C03 cũng vậy. Đổi sang nhóm để máy không tự coi 3 là gấp 3 lần 1.",
+					"trap": "Để mã ở kiểu số thì hồi quy sẽ gán một hệ số chung cho mã, như thể mã 6 gấp 6 lần mã 1."
+				},
+				"en": {
+					"think": "market_id, order_protocol, store_primary_category are codes, not numbers to add or subtract. Convert to category so models and charts treat them as groups.",
+					"steps": [
+						"List the code columns: market_id, order_protocol, store_primary_category.",
+						"Convert with astype('category').",
+						"In your file: market_id has 6 values, order_protocol 7, store_primary_category 73."
+					],
+					"code": "cat_cols = ['market_id', 'order_protocol', 'store_primary_category']\ndf[cat_cols] = df[cat_cols].astype('category')\nprint(df[cat_cols].nunique())",
+					"lotus": "Branch codes 1, 2, 3 have no “more or less”. Package codes A12, B07, C03 likewise. Convert to category so the machine does not treat 3 as three times 1.",
+					"trap": "Leaving codes numeric makes regression assign one coefficient to the code, as if code 6 were six times code 1."
+				}
+			},
+			"2.2.1": {
+				"vi": {
+					"think": "Thời gian giao là hiệu hai mốc giờ, tính bằng phút. Đây là biến mục tiêu của cả bài.",
+					"steps": [
+						"(actual_delivery_time − created_at).dt.total_seconds() / 60.",
+						"Xem describe(): trong file của bạn trung bình khoảng 46,2 phút, trung vị 45, từ 32 đến 110.",
+						"Kiểm tra không có giá trị âm."
+					],
+					"code": "df['time_taken'] = (df['actual_delivery_time'] - df['created_at']).dt.total_seconds() / 60\nprint(df['time_taken'].describe().round(1))",
+					"lotus": "Khách đặt lúc 19:05 và vào phòng lúc 19:50 là 45 phút chờ. Đây là con số mô hình sẽ cố đoán trước.",
+					"trap": "Dùng .dt.seconds thay vì total_seconds làm mất phần ngày khi chênh qua nửa đêm."
+				},
+				"en": {
+					"think": "Delivery time is the difference of the two timestamps, in minutes. It is the target of the whole assignment.",
+					"steps": [
+						"(actual_delivery_time − created_at).dt.total_seconds() / 60.",
+						"Check describe(): in your file the mean is about 46.2 minutes, median 45, from 32 to 110.",
+						"Check there are no negative values."
+					],
+					"code": "df['time_taken'] = (df['actual_delivery_time'] - df['created_at']).dt.total_seconds() / 60\nprint(df['time_taken'].describe().round(1))",
+					"lotus": "A customer books at 19:05 and enters the room at 19:50: a 45-minute wait. That is the number the model will try to predict ahead of time.",
+					"trap": "Using .dt.seconds instead of total_seconds drops the day part when the gap crosses midnight."
+				}
+			},
+			"2.2.2": {
+				"vi": {
+					"think": "Giờ đặt và thứ trong tuần là hai tín hiệu về nhịp nhu cầu. Thêm cờ cuối tuần, rồi bỏ cột không còn cần.",
+					"steps": [
+						"hour = created_at.dt.hour; day = created_at.dt.dayofweek.",
+						"isWeekend = day >= 5 (kiểu category).",
+						"Bỏ created_at, actual_delivery_time vì thông tin đã chuyển vào time_taken, hour, day."
+					],
+					"code": "df['hour'] = df['created_at'].dt.hour\ndf['day'] = df['created_at'].dt.dayofweek\ndf['isWeekend'] = (df['day'] >= 5).astype('category')\ndf = df.drop(columns=['created_at', 'actual_delivery_time'])",
+					"lotus": "Giờ đặt 19:00 và thứ bảy cho biết khách đông hay vắng. Trong file của bạn, đơn đặt lúc 2 đến 3 giờ sáng chờ lâu nhất (khoảng 50 phút), còn buổi tối khoảng 40 đến 42 phút.",
+					"trap": "Giữ lại actual_delivery_time khi dự đoán là rò rỉ đáp án: bạn đã biết kết quả trước khi đoán."
+				},
+				"en": {
+					"think": "Order hour and weekday are signals of demand rhythm. Add a weekend flag, then drop columns no longer needed.",
+					"steps": [
+						"hour = created_at.dt.hour; day = created_at.dt.dayofweek.",
+						"isWeekend = day >= 5 (category type).",
+						"Drop created_at and actual_delivery_time since their information moved into time_taken, hour, day."
+					],
+					"code": "df['hour'] = df['created_at'].dt.hour\ndf['day'] = df['created_at'].dt.dayofweek\ndf['isWeekend'] = (df['day'] >= 5).astype('category')\ndf = df.drop(columns=['created_at', 'actual_delivery_time'])",
+					"lotus": "Order hour 19:00 and Saturday tell you whether customers are many or few. In your file, orders at 2 to 3 AM wait longest (about 50 minutes), evenings about 40 to 42.",
+					"trap": "Keeping actual_delivery_time when predicting leaks the answer: you already know the result before guessing."
+				}
+			},
+			"2.3.1": {
+				"vi": {
+					"think": "Tách biến mục tiêu y (time_taken) khỏi các biến đầu vào X. Mọi thứ còn lại là X.",
+					"steps": [
+						"y = df['time_taken'].",
+						"X = df.drop(columns=['time_taken']).",
+						"Kiểm tra X không còn time_taken, và cả hai cùng số dòng."
+					],
+					"code": "y = df['time_taken']\nX = df.drop(columns=['time_taken'])\nprint(X.shape, y.shape)",
+					"lotus": "Câu hỏi là «chờ bao lâu». Đáp án (y) đi một bên, mọi thông tin biết trước lúc đặt (X) đi một bên.",
+					"trap": "Để time_taken lọt vào X làm mô hình đạt điểm gần tuyệt đối, một kết quả giả."
+				},
+				"en": {
+					"think": "Separate the target y (time_taken) from the input features X. Everything else is X.",
+					"steps": [
+						"y = df['time_taken'].",
+						"X = df.drop(columns=['time_taken']).",
+						"Check X no longer has time_taken and both have the same row count."
+					],
+					"code": "y = df['time_taken']\nX = df.drop(columns=['time_taken'])\nprint(X.shape, y.shape)",
+					"lotus": "The question is “how long to wait”. The answer (y) goes one side, everything known before booking (X) the other.",
+					"trap": "Letting time_taken slip into X gives a near-perfect score, a fake result."
+				}
+			},
+			"2.3.2": {
+				"vi": {
+					"think": "Chia train và test trước khi khám phá, để phần test thật sự là dữ liệu chưa từng thấy.",
+					"steps": [
+						"train_test_split(X, y, test_size=0.2, random_state=42).",
+						"Kiểm tra kích thước: file của bạn có 175.777 dòng, 80% là khoảng 140.600 dòng train.",
+						"Mọi EDA ở bước 3 chỉ làm trên tập train."
+					],
+					"code": "from sklearn.model_selection import train_test_split\nX_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)\nprint(len(X_train), len(X_test))",
+					"lotus": "Giống như bạn nhìn sổ booking quý 1 để rút quy luật, rồi thử đoán quý 2 mà chưa xem. Nếu xem cả hai trước, phép đoán không còn là phép đoán.",
+					"trap": "Khám phá trên toàn bộ dữ liệu rồi mới chia làm lộ thông tin của test vào các quyết định của bạn."
+				},
+				"en": {
+					"think": "Split train and test before exploring so the test set is genuinely unseen.",
+					"steps": [
+						"train_test_split(X, y, test_size=0.2, random_state=42).",
+						"Check sizes: your file has 175,777 rows, 80% is about 140,600 training rows.",
+						"All EDA in step 3 uses the training set only."
+					],
+					"code": "from sklearn.model_selection import train_test_split\nX_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)\nprint(len(X_train), len(X_test))",
+					"lotus": "Like studying Q1's booking log to find a rule, then predicting Q2 without looking. If you looked at both first, the prediction is no longer a prediction.",
+					"trap": "Exploring all the data before splitting leaks test information into your decisions."
+				}
+			},
+			"3.1.1": {
+				"vi": {
+					"think": "Vẽ phân phối từng cột số trên tập train để thấy độ lệch và các giá trị lạ.",
+					"steps": [
+						"Tách numerical_cols và categorical_cols.",
+						"Vẽ histogram từng cột số (hoặc lưới subplot).",
+						"Ghi chú cột nào lệch phải (total_items, subtotal, distance) và có giá trị âm vô lý (min_item_price, total_onshift_dashers, total_busy_dashers, total_outstanding_orders)."
+					],
+					"code": "num_cols = X_train.select_dtypes(include='number').columns\nX_train[num_cols].hist(bins=40, figsize=(14, 10))",
+					"lotus": "Nếu số khách mỗi booking lệch phải (đa số 1 đến 2 người, vài nhóm 15 người) thì biết trước rằng vài điểm rất xa sẽ kéo đường hồi quy.",
+					"trap": "Trong file của bạn có số nhân viên trực âm, một lỗi nhập, không phải dữ liệu thật. Hình phân phối là chỗ thấy nó."
+				},
+				"en": {
+					"think": "Plot each numeric column's distribution on the training set to see skewness and odd values.",
+					"steps": [
+						"Separate numerical_cols and categorical_cols.",
+						"Draw a histogram per numeric column (or a subplot grid).",
+						"Note columns skewed right (total_items, subtotal, distance) and nonsensical negatives (min_item_price, total_onshift_dashers, total_busy_dashers, total_outstanding_orders)."
+					],
+					"code": "num_cols = X_train.select_dtypes(include='number').columns\nX_train[num_cols].hist(bins=40, figsize=(14, 10))",
+					"lotus": "If guests per booking are right-skewed (most 1 to 2, a few groups of 15), you know in advance a few far points will pull the regression line.",
+					"trap": "Your file has a negative count of staff on shift, an entry error, not real data. The distribution plot is where you see it."
+				}
+			},
+			"3.1.2": {
+				"vi": {
+					"think": "Phân phối các cột nhóm: mỗi nhóm có bao nhiêu đơn. Nhóm quá ít đơn sẽ cho hệ số không ổn định.",
+					"steps": [
+						"value_counts() hoặc countplot cho market_id, order_protocol, isWeekend.",
+						"store_primary_category có 73 nhóm: chỉ vẽ top 15 hoặc nhìn bảng đếm.",
+						"Ghi nhóm chiếm quá ít."
+					],
+					"code": "for c in ['market_id', 'order_protocol', 'isWeekend']:\n    X_train[c].value_counts().sort_index().plot(kind='bar', title=c)\n    plt.show()\nX_train['store_primary_category'].value_counts().head(15)",
+					"lotus": "Ba chi nhánh mà một chi nhánh chỉ có 20 booking thì hệ số của chi nhánh đó là số của 20 người.",
+					"trap": "Vẽ 73 cột của store_primary_category vào một biểu đồ cho ra một khối chữ không đọc được."
+				},
+				"en": {
+					"think": "Distribution of categorical columns: how many orders per group. Groups with very few orders give unstable coefficients.",
+					"steps": [
+						"value_counts() or countplot for market_id, order_protocol, isWeekend.",
+						"store_primary_category has 73 groups: plot only the top 15 or read the count table.",
+						"Note groups that are too small."
+					],
+					"code": "for c in ['market_id', 'order_protocol', 'isWeekend']:\n    X_train[c].value_counts().sort_index().plot(kind='bar', title=c)\n    plt.show()\nX_train['store_primary_category'].value_counts().head(15)",
+					"lotus": "Of three branches, if one has only 20 bookings, that branch's coefficient is the number of 20 people.",
+					"trap": "Drawing all 73 bars of store_primary_category in one chart gives an unreadable block of text."
+				}
+			},
+			"3.1.3": {
+				"vi": {
+					"think": "Phân phối biến mục tiêu: nó lệch không, có đuôi dài không.",
+					"steps": [
+						"Histogram và boxplot của y_train (hoặc time_taken).",
+						"Trong file của bạn: trung bình 46,2, trung vị 45, độ lệch chuẩn 9,3, từ 32 đến 110 phút: lệch phải nhẹ, đuôi dài đến 110.",
+						"Cân nhắc điều đó ảnh hưởng thế nào đến giả định phần dư."
+					],
+					"code": "sns.histplot(y_train, bins=40, kde=True)\nplt.show()\nprint(y_train.describe().round(1))",
+					"lotus": "Phần lớn khách chờ 40 đến 50 phút, vài người chờ 110. Vài người chờ rất lâu kéo trung bình lên cao hơn trung vị.",
+					"trap": "Trung bình cao hơn trung vị là dấu hiệu lệch phải. Đừng chỉ nhìn trung bình."
+				},
+				"en": {
+					"think": "Distribution of the target: is it skewed, does it have a long tail.",
+					"steps": [
+						"Histogram and boxplot of y_train (or time_taken).",
+						"In your file: mean 46.2, median 45, standard deviation 9.3, from 32 to 110 minutes: mild right skew with a tail to 110.",
+						"Consider how this affects the residual assumptions."
+					],
+					"code": "sns.histplot(y_train, bins=40, kde=True)\nplt.show()\nprint(y_train.describe().round(1))",
+					"lotus": "Most customers wait 40 to 50 minutes, a few wait 110. A few very long waits pull the mean above the median.",
+					"trap": "A mean above the median signals right skew. Do not look at the mean alone."
+				}
+			},
+			"3.2.1": {
+				"vi": {
+					"think": "Biểu đồ phân tán giữa time_taken và các biến số quan trọng, cùng phân phối time_taken theo giờ.",
+					"steps": [
+						"Ghép X_train và y_train thành một bảng train.",
+						"scatter time_taken theo distance, subtotal, total_outstanding_orders (lấy mẫu vài nghìn điểm).",
+						"boxplot time_taken theo hour để thấy nhịp theo giờ."
+					],
+					"code": "train = X_train.copy(); train['time_taken'] = y_train\nsample = train.sample(5000, random_state=42)\nsns.scatterplot(data=sample, x='distance', y='time_taken', alpha=0.3)\nplt.show()\nsns.boxplot(data=train, x='hour', y='time_taken')",
+					"lotus": "Càng nhiều đơn đang chờ xử lý, khách càng chờ lâu: ở file của bạn, tương quan giữa total_outstanding_orders và time_taken khoảng 0,39 và distance khoảng 0,46.",
+					"trap": "Scatter hơn 100.000 điểm thành một khối đen. Lấy mẫu hoặc dùng alpha."
+				},
+				"en": {
+					"think": "Scatter plots between time_taken and the important numeric features, and the distribution of time_taken by hour.",
+					"steps": [
+						"Join X_train and y_train into one training table.",
+						"Scatter time_taken against distance, subtotal, total_outstanding_orders (sample a few thousand points).",
+						"Boxplot time_taken by hour to see the hourly rhythm."
+					],
+					"code": "train = X_train.copy(); train['time_taken'] = y_train\nsample = train.sample(5000, random_state=42)\nsns.scatterplot(data=sample, x='distance', y='time_taken', alpha=0.3)\nplt.show()\nsns.boxplot(data=train, x='hour', y='time_taken')",
+					"lotus": "The more orders pending, the longer the customer waits: in your file, correlation of total_outstanding_orders with time_taken is about 0.39 and of distance about 0.46.",
+					"trap": "Scattering over 100,000 points makes a black block. Sample or use alpha."
+				}
+			},
+			"3.3.1": {
+				"vi": {
+					"think": "Bản đồ nhiệt tương quan cho thấy biến số nào đi cùng time_taken mạnh nhất.",
+					"steps": [
+						"corr = train.select_dtypes('number').corr().",
+						"sns.heatmap(corr, annot=True, cmap='coolwarm', center=0).",
+						"Đọc hàng time_taken. Trong file của bạn mạnh nhất là distance (khoảng 0,46), subtotal (khoảng 0,41), total_outstanding_orders (khoảng 0,39)."
+					],
+					"code": "corr = train.select_dtypes(include='number').corr()\nplt.figure(figsize=(12, 9))\nsns.heatmap(corr, annot=True, fmt='.2f', cmap='coolwarm', center=0)\nprint(corr['time_taken'].sort_values())",
+					"lotus": "Các số ở hàng thời gian chờ cho biết yếu tố nào đáng đưa vào mô hình trước: khoảng cách, giá trị đơn, số đơn đang chờ.",
+					"trap": "Hệ số tương quan giữa hai biến đầu vào cao (ví dụ subtotal và total_items) là tín hiệu đa cộng tuyến, không phải một phát hiện."
+				},
+				"en": {
+					"think": "A correlation heatmap shows which numeric features move most with time_taken.",
+					"steps": [
+						"corr = train.select_dtypes('number').corr().",
+						"sns.heatmap(corr, annot=True, cmap='coolwarm', center=0).",
+						"Read the time_taken row. In your file the strongest are distance (about 0.46), subtotal (about 0.41), total_outstanding_orders (about 0.39)."
+					],
+					"code": "corr = train.select_dtypes(include='number').corr()\nplt.figure(figsize=(12, 9))\nsns.heatmap(corr, annot=True, fmt='.2f', cmap='coolwarm', center=0)\nprint(corr['time_taken'].sort_values())",
+					"lotus": "The numbers in the wait-time row tell you which factors deserve the model first: distance, order value, pending orders.",
+					"trap": "High correlation between two input features (for example subtotal and total_items) signals multicollinearity, not a discovery."
+				}
+			},
+			"3.3.2": {
+				"vi": {
+					"think": "Bỏ vài cột tương quan yếu với y để mô hình gọn hơn. Ghi lý do cho từng cột.",
+					"steps": [
+						"Chọn 3 đến 5 cột có |tương quan| nhỏ với time_taken, trong file của bạn như min_item_price (khoảng 0,02) và store_primary_category (khoảng 0,03).",
+						"Chỉ bỏ ở tập train, rồi bỏ đúng các cột đó ở validation (bài 4.3).",
+						"Tương quan thấp theo đường thẳng chưa chắc là vô dụng: ghi chú điều đó."
+					],
+					"code": "weak = ['min_item_price', 'store_primary_category']  # pick 3-5 and justify\nX_train = X_train.drop(columns=weak)\nX_test = X_test.drop(columns=weak)",
+					"lotus": "Mã in phiếu không liên quan thời gian chờ thì bỏ. Nhưng nếu cột có quan hệ cong hay theo nhóm, tương quan đường thẳng thấp có thể đánh lừa.",
+					"trap": "Bỏ cột ở train mà quên bỏ ở test làm số cột hai bên khác nhau và mô hình báo lỗi khi dự đoán."
+				},
+				"en": {
+					"think": "Drop a few weakly correlated columns for a leaner model. Write down the reason for each.",
+					"steps": [
+						"Pick 3 to 5 columns with small |correlation| with time_taken, in your file such as min_item_price (about 0.02) and store_primary_category (about 0.03).",
+						"Drop on train, then drop exactly the same columns on validation (task 4.3).",
+						"Low linear correlation does not mean useless: note that."
+					],
+					"code": "weak = ['min_item_price', 'store_primary_category']  # pick 3-5 and justify\nX_train = X_train.drop(columns=weak)\nX_test = X_test.drop(columns=weak)",
+					"lotus": "A receipt print code unrelated to wait time gets dropped. But if a column relates by curve or by group, a low linear correlation can mislead.",
+					"trap": "Dropping on train but forgetting on test leaves different column counts and the model errors at prediction."
+				}
+			},
+			"3.4.1": {
+				"vi": {
+					"think": "Boxplot để nhìn thấy các điểm xa của time_taken và các biến số.",
+					"steps": [
+						"sns.boxplot cho time_taken.",
+						"Boxplot các cột số khác (total_items, subtotal, distance, các cột nhân viên).",
+						"Ghi các điểm xa: trong file của bạn total_items tới 411 và distance tới 83,52."
+					],
+					"code": "sns.boxplot(x=y_train)\nplt.show()\nfor c in ['total_items', 'subtotal', 'distance']:\n    sns.boxplot(x=X_train[c]); plt.show()",
+					"lotus": "Một booking 411 gói hay 83 km là một điểm xa. Nó có thể là một khách hàng doanh nghiệp thật hoặc một lỗi nhập, và bạn cần biết nó là cái nào trước khi bỏ.",
+					"trap": "Boxplot chỉ gắn cờ điểm xa. Nó không nói điểm đó là lỗi."
+				},
+				"en": {
+					"think": "Boxplots to see outliers in time_taken and the numeric features.",
+					"steps": [
+						"sns.boxplot for time_taken.",
+						"Boxplots for the other numeric columns (total_items, subtotal, distance, the staff columns).",
+						"Note outliers: in your file total_items reaches 411 and distance reaches 83.52."
+					],
+					"code": "sns.boxplot(x=y_train)\nplt.show()\nfor c in ['total_items', 'subtotal', 'distance']:\n    sns.boxplot(x=X_train[c]); plt.show()",
+					"lotus": "A booking of 411 packages or 83 km is an outlier. It may be a real corporate customer or an entry error, and you need to know which before dropping it.",
+					"trap": "A boxplot only flags outliers. It does not say the point is an error."
+				}
+			},
+			"3.4.2": {
+				"vi": {
+					"think": "Xử lý điểm xa: mỗi quy tắc cần một lý do, và phải áp dụng cùng cách cho validation.",
+					"steps": [
+						"Giá trị không thể có (số nhân viên âm, giá âm): lỗi, bỏ dòng hoặc sửa.",
+						"Điểm xa thật nhưng hiếm (total_items 411): cân nhắc giới hạn bằng IQR hoặc phân vị 99.",
+						"Ghi số dòng bị bỏ ở mỗi quy tắc.",
+						"Chỉ tính ngưỡng trên train, rồi dùng cùng ngưỡng ở validation."
+					],
+					"code": "train = X_train.copy(); train['time_taken'] = y_train\nn0 = len(train)\nneg = ['total_onshift_dashers', 'total_busy_dashers', 'total_outstanding_orders']\ntrain = train[(train[neg] >= 0).all(axis=1)]\nfor c in ['total_items', 'subtotal', 'distance']:\n    hi = train[c].quantile(0.99)\n    train = train[train[c] <= hi]\nprint(n0 - len(train), 'rows removed')",
+					"lotus": "Số nhân viên âm bỏ hẳn. Một booking 411 gói giữ lại thì kéo hệ số, bỏ đi thì mô hình không còn thấy khách doanh nghiệp. Quyết định nào cũng phải ghi lý do.",
+					"trap": "Tính ngưỡng trên cả train và validation cùng lúc rò rỉ thông tin. Tính trên train rồi mang sang."
+				},
+				"en": {
+					"think": "Handling outliers: each rule needs a reason and must be applied the same way to validation.",
+					"steps": [
+						"Impossible values (negative staff counts, negative prices): errors, drop rows or fix.",
+						"Real but rare outliers (total_items 411): consider capping by IQR or the 99th percentile.",
+						"Record rows removed at each rule.",
+						"Compute thresholds on train only, then reuse them on validation."
+					],
+					"code": "train = X_train.copy(); train['time_taken'] = y_train\nn0 = len(train)\nneg = ['total_onshift_dashers', 'total_busy_dashers', 'total_outstanding_orders']\ntrain = train[(train[neg] >= 0).all(axis=1)]\nfor c in ['total_items', 'subtotal', 'distance']:\n    hi = train[c].quantile(0.99)\n    train = train[train[c] <= hi]\nprint(n0 - len(train), 'rows removed')",
+					"lotus": "A negative staff count is dropped outright. A 411-package booking kept pulls the coefficient, dropped means the model no longer sees corporate customers. Either decision needs a recorded reason.",
+					"trap": "Computing thresholds on train and validation together leaks information. Compute on train and carry over."
+				}
+			},
+			"4.1.1": {
+				"vi": {
+					"think": "Phần 4 là tùy chọn: lặp lại EDA trên validation để xem hình dạng dữ liệu có giống train không.",
+					"steps": [
+						"Làm đúng các bước 3.1 trên tập validation (vẽ lại phân phối số).",
+						"So sánh bằng mắt với biểu đồ ở train.",
+						"Nếu khác nhiều, chia chưa ngẫu nhiên hoặc dữ liệu có thay đổi theo thời gian."
+					],
+					"code": "num_cols_v = X_test.select_dtypes(include='number').columns\nX_test[num_cols_v].hist(bins=40, figsize=(14, 10))",
+					"lotus": "Sổ booking tháng 11 và tháng 12 nên có hình dạng giống nhau. Nếu giờ đông của tháng 12 khác hẳn thì một mô hình luyện từ tháng 11 sẽ đoán sai.",
+					"trap": "Ở phần này chỉ nhìn, không điều chỉnh train theo những gì thấy ở validation."
+				},
+				"en": {
+					"think": "Part 4 is optional: repeat EDA on validation to see whether the data's shape matches train.",
+					"steps": [
+						"Repeat the 3.1 steps on the validation set (redraw numeric distributions).",
+						"Compare by eye with the train charts.",
+						"If very different, the split was not random or the data drifts over time."
+					],
+					"code": "num_cols_v = X_test.select_dtypes(include='number').columns\nX_test[num_cols_v].hist(bins=40, figsize=(14, 10))",
+					"lotus": "The November and December booking logs should look alike. If December's busy hours differ a lot, a model trained on November will guess wrong.",
+					"trap": "In this part only look; do not adjust train based on what you see in validation."
+				}
+			},
+			"4.1.2": {
+				"vi": {
+					"think": "Phân phối các cột nhóm ở validation, so với train.",
+					"steps": [
+						"value_counts(normalize=True) ở cả hai tập.",
+						"So tỷ lệ từng nhóm: lệch vài điểm phần trăm là bình thường.",
+						"Nhóm xuất hiện ở validation mà không có ở train sẽ gây lỗi khi dự đoán."
+					],
+					"code": "pd.concat([X_train['market_id'].value_counts(normalize=True), X_test['market_id'].value_counts(normalize=True)], axis=1, keys=['train','valid'])",
+					"lotus": "Tỷ lệ chi nhánh trong train và validation phải gần nhau. Nếu Thủ Đức chỉ có ở validation, mô hình chưa từng thấy nó.",
+					"trap": "Một nhóm mới ở validation làm get_dummies sinh cột khác nhau giữa hai tập."
+				},
+				"en": {
+					"think": "Distribution of categorical columns in validation versus train.",
+					"steps": [
+						"value_counts(normalize=True) on both sets.",
+						"Compare each group's share: a few percentage points apart is normal.",
+						"A group present in validation but absent in train will break prediction."
+					],
+					"code": "pd.concat([X_train['market_id'].value_counts(normalize=True), X_test['market_id'].value_counts(normalize=True)], axis=1, keys=['train','valid'])",
+					"lotus": "Branch shares in train and validation should be close. If Thu Duc exists only in validation, the model has never seen it.",
+					"trap": "A new group in validation makes get_dummies produce different columns between the two sets."
+				}
+			},
+			"4.1.3": {
+				"vi": {
+					"think": "Phân phối biến mục tiêu ở validation: so với train.",
+					"steps": [
+						"Vẽ histogram y_test, đặt cạnh y_train.",
+						"So trung bình và độ lệch chuẩn: file của bạn có train gần trung bình 46,2 phút.",
+						"Hai số này gần nhau thì chia ngẫu nhiên là hợp lý."
+					],
+					"code": "print(y_train.describe().round(1)); print(y_test.describe().round(1))",
+					"lotus": "Thời gian chờ trung bình của tháng 11 và tháng 12 mà khác nhau nhiều thì có chuyện gì đó khác ngoài ngẫu nhiên.",
+					"trap": "Hai trung bình lệch vài phút là bình thường với mẫu lớn, nhưng lệch nhiều là dấu hiệu chia chưa tốt."
+				},
+				"en": {
+					"think": "Target distribution in validation versus train.",
+					"steps": [
+						"Draw a histogram of y_test next to y_train.",
+						"Compare mean and standard deviation: your train mean is near 46.2 minutes.",
+						"If close, the random split is reasonable."
+					],
+					"code": "print(y_train.describe().round(1)); print(y_test.describe().round(1))",
+					"lotus": "If average wait differs a lot between November and December, something other than chance is going on.",
+					"trap": "A few minutes' gap is normal in a large sample, but a big one signals a poor split."
+				}
+			},
+			"4.2": {
+				"vi": {
+					"think": "Phân tán giữa time_taken và các biến số ở validation, để so với train.",
+					"steps": [
+						"Ghép X_test và y_test.",
+						"Vẽ scatter distance và subtotal với time_taken.",
+						"So hình dạng với train."
+					],
+					"code": "val = X_test.copy(); val['time_taken'] = y_test\nsns.scatterplot(data=val.sample(5000, random_state=42), x='distance', y='time_taken', alpha=0.3)",
+					"lotus": "Quan hệ giữa khoảng cách và thời gian chờ ở validation phải đi cùng chiều với train.",
+					"trap": "Nếu chiều quan hệ đảo ngược giữa train và validation thì mô hình sẽ không khái quát hóa."
+				},
+				"en": {
+					"think": "Scatter time_taken against numeric features on validation, to compare with train.",
+					"steps": [
+						"Join X_test and y_test.",
+						"Scatter distance and subtotal against time_taken.",
+						"Compare shape with train."
+					],
+					"code": "val = X_test.copy(); val['time_taken'] = y_test\nsns.scatterplot(data=val.sample(5000, random_state=42), x='distance', y='time_taken', alpha=0.3)",
+					"lotus": "The relation between distance and wait on validation should run the same direction as train.",
+					"trap": "If the relation direction reverses between train and validation, the model will not generalise."
+				}
+			},
+			"4.3": {
+				"vi": {
+					"think": "Bỏ đúng những cột đã bỏ ở train (bài 3.3.2) khỏi validation.",
+					"steps": [
+						"Dùng cùng danh sách weak đã chọn.",
+						"X_test = X_test.drop(columns=weak).",
+						"Kiểm tra X_train.columns bằng X_test.columns."
+					],
+					"code": "X_test = X_test.drop(columns=weak, errors='ignore')\nprint(list(X_train.columns) == list(X_test.columns))",
+					"lotus": "Hai sổ phải có cùng các cột theo cùng thứ tự, nếu không phép so sánh táo với cam.",
+					"trap": "Thứ tự cột khác nhau làm sai kết quả dự đoán mà không báo lỗi."
+				},
+				"en": {
+					"think": "Drop exactly the columns dropped on train (task 3.3.2) from validation.",
+					"steps": [
+						"Use the same weak list.",
+						"X_test = X_test.drop(columns=weak).",
+						"Check X_train.columns equals X_test.columns."
+					],
+					"code": "X_test = X_test.drop(columns=weak, errors='ignore')\nprint(list(X_train.columns) == list(X_test.columns))",
+					"lotus": "The two logs must have the same columns in the same order, or the comparison is apples to oranges.",
+					"trap": "A different column order corrupts predictions without raising an error."
+				}
+			},
+			"5.1": {
+				"vi": {
+					"think": "Chuẩn hóa thang đo để các hệ số so sánh được với nhau. Hồi quy tuyến tính không cần chuẩn hóa, nhưng hệ số sẽ dễ đọc hơn.",
+					"steps": [
+						"Dùng StandardScaler hoặc MinMaxScaler cho các cột số.",
+						"fit trên train, rồi transform cả train và validation (không fit lại trên validation).",
+						"Giữ lại bộ scaler để quy đổi hệ số về thang gốc ở 6.2."
+					],
+					"code": "from sklearn.preprocessing import StandardScaler\nnum = X_train.select_dtypes(include='number').columns\nscaler = StandardScaler()\nX_train[num] = scaler.fit_transform(X_train[num])\nX_test[num] = scaler.transform(X_test[num])",
+					"lotus": "Khoảng cách tính bằng km (0 đến 83) và giá trị đơn tính bằng nghìn (0 đến 26.800) có thang rất khác. Chuẩn hóa để hệ số của hai biến đặt cạnh nhau được.",
+					"trap": "fit scaler trên cả train và validation làm lộ trung bình và độ lệch chuẩn của validation."
+				},
+				"en": {
+					"think": "Put features on a common scale so coefficients are comparable. Linear regression does not need scaling, but coefficients become easier to read.",
+					"steps": [
+						"Use StandardScaler or MinMaxScaler on numeric columns.",
+						"fit on train, then transform both train and validation (do not refit on validation).",
+						"Keep the scaler to convert coefficients back to the original scale in 6.2."
+					],
+					"code": "from sklearn.preprocessing import StandardScaler\nnum = X_train.select_dtypes(include='number').columns\nscaler = StandardScaler()\nX_train[num] = scaler.fit_transform(X_train[num])\nX_test[num] = scaler.transform(X_test[num])",
+					"lotus": "Distance in km (0 to 83) and order value in thousands (0 to 26,800) have very different scales. Scale so their coefficients sit side by side.",
+					"trap": "Fitting the scaler on train and validation together leaks validation's mean and standard deviation."
+				}
+			},
+			"5.2": {
+				"vi": {
+					"think": "Dựng hồi quy tuyến tính bằng statsmodels hoặc scikit-learn, huấn luyện, dự đoán, rồi đo.",
+					"steps": [
+						"Chuyển cột nhóm thành dummy (get_dummies, drop_first=True) trước khi fit.",
+						"LinearRegression().fit(X_train, y_train).",
+						"Dự đoán trên cả train và validation.",
+						"Đo R², RMSE (và MAE nếu muốn) trên cả hai tập."
+					],
+					"code": "from sklearn.linear_model import LinearRegression\nfrom sklearn.metrics import r2_score, mean_squared_error\nlr = LinearRegression().fit(X_train, y_train)\nfor name, X, y in [('train', X_train, y_train), ('valid', X_test, y_test)]:\n    p = lr.predict(X)\n    print(name, 'R2', round(r2_score(y, p), 3), 'RMSE', round(mean_squared_error(y, p) ** 0.5, 2))",
+					"lotus": "Mô hình đoán khách chờ 47 phút trong khi thực tế là 45. RMSE là cỡ sai lệch trung bình của những lần đoán như vậy, tính bằng phút.",
+					"trap": "R² cao ở train mà thấp ở validation là quá khớp. Luôn nhìn cả hai."
+				},
+				"en": {
+					"think": "Build a linear regression with statsmodels or scikit-learn, train, predict, then measure.",
+					"steps": [
+						"Turn categorical columns into dummies (get_dummies, drop_first=True) before fitting.",
+						"LinearRegression().fit(X_train, y_train).",
+						"Predict on both train and validation.",
+						"Measure R² and RMSE (and MAE if you like) on both sets."
+					],
+					"code": "from sklearn.linear_model import LinearRegression\nfrom sklearn.metrics import r2_score, mean_squared_error\nlr = LinearRegression().fit(X_train, y_train)\nfor name, X, y in [('train', X_train, y_train), ('valid', X_test, y_test)]:\n    p = lr.predict(X)\n    print(name, 'R2', round(r2_score(y, p), 3), 'RMSE', round(mean_squared_error(y, p) ** 0.5, 2))",
+					"lotus": "The model guesses a 47-minute wait when the real one is 45. RMSE is the typical size of such misses, in minutes.",
+					"trap": "High R² on train and low on validation is overfitting. Always look at both."
+				}
+			},
+			"5.3": {
+				"vi": {
+					"think": "RFE bỏ dần từng biến yếu nhất. Chọn số biến mà thêm nữa cũng không cải thiện đáng kể.",
+					"steps": [
+						"Vòng lặp n_features_to_select từ 1 đến số cột; mỗi lần fit RFE rồi tính điểm trên validation.",
+						"Vẽ điểm theo số biến và chọn khuỷu (nơi đường bắt đầu phẳng). Đề gợi ý 8 biến.",
+						"Dựng mô hình cuối với số biến đó và liệt kê các biến được giữ."
+					],
+					"code": "from sklearn.feature_selection import RFE\nscores = {}\nfor k in range(1, X_train.shape[1] + 1):\n    rfe = RFE(LinearRegression(), n_features_to_select=k).fit(X_train, y_train)\n    cols = X_train.columns[rfe.support_]\n    m = LinearRegression().fit(X_train[cols], y_train)\n    scores[k] = r2_score(y_test, m.predict(X_test[cols]))\npd.Series(scores).plot(marker='o')",
+					"lotus": "Giống chọn bao nhiêu hạng mục để đưa vào bảng khảo sát: sau mức nào đó thêm câu hỏi không làm thông tin tăng thêm bao nhiêu.",
+					"trap": "Chọn số biến theo điểm trên train luôn chọn nhiều nhất. Dùng điểm trên validation."
+				},
+				"en": {
+					"think": "RFE drops the weakest feature one at a time. Choose the number of features beyond which adding more barely helps.",
+					"steps": [
+						"Loop n_features_to_select from 1 to the column count; for each, fit RFE and score on validation.",
+						"Plot the score against the number of features and choose the elbow (where the line flattens). The brief hints at 8 features.",
+						"Build the final model with that many features and list the kept ones."
+					],
+					"code": "from sklearn.feature_selection import RFE\nscores = {}\nfor k in range(1, X_train.shape[1] + 1):\n    rfe = RFE(LinearRegression(), n_features_to_select=k).fit(X_train, y_train)\n    cols = X_train.columns[rfe.support_]\n    m = LinearRegression().fit(X_train[cols], y_train)\n    scores[k] = r2_score(y_test, m.predict(X_test[cols]))\npd.Series(scores).plot(marker='o')",
+					"lotus": "Like choosing how many items to put on a survey: beyond some level, extra questions add little information.",
+					"trap": "Choosing the number by train score always picks the most. Use validation score."
+				}
+			},
+			"6.1": {
+				"vi": {
+					"think": "Phân tích phần dư: vẽ phần dư theo giá trị dự đoán, Q-Q plot và histogram phần dư để kiểm tra các giả định của hồi quy.",
+					"steps": [
+						"residual = y_test − dự đoán.",
+						"Phần dư theo dự đoán: phải rải quanh 0 không có hình dạng (nếu loe hình phễu là phương sai không đều).",
+						"Q-Q plot và histogram: gần chuông chuẩn thì giả định chuẩn hợp lý.",
+						"Viết nhận xét vào ô [Your inferences here:]."
+					],
+					"code": "pred = final_model.predict(X_test[cols])\nres = y_test - pred\nplt.scatter(pred, res, alpha=0.2); plt.axhline(0, color='r'); plt.show()\nimport statsmodels.api as sm\nsm.qqplot(res, line='45', fit=True); plt.show()\nsns.histplot(res, bins=40, kde=True)",
+					"lotus": "Nếu mô hình luôn đoán thấp cho khách chờ rất lâu (phần dư dương lớn ở bên phải) thì có một nhóm đơn mà mô hình chưa hiểu.",
+					"trap": "Chỉ nhìn R² mà bỏ qua phần dư bỏ lỡ các mẫu hình cho thấy mô hình sai ở đâu."
+				},
+				"en": {
+					"think": "Residual analysis: plot residuals against predictions, a Q-Q plot and a residual histogram to check regression assumptions.",
+					"steps": [
+						"residual = y_test − prediction.",
+						"Residuals vs predicted: should scatter around 0 with no shape (a funnel means uneven variance).",
+						"Q-Q plot and histogram: near a bell shape means the normality assumption is reasonable.",
+						"Write your findings in the [Your inferences here:] cell."
+					],
+					"code": "pred = final_model.predict(X_test[cols])\nres = y_test - pred\nplt.scatter(pred, res, alpha=0.2); plt.axhline(0, color='r'); plt.show()\nimport statsmodels.api as sm\nsm.qqplot(res, line='45', fit=True); plt.show()\nsns.histplot(res, bins=40, kde=True)",
+					"lotus": "If the model always underguesses for very long waits (large positive residuals on the right) there is a group of orders the model does not understand.",
+					"trap": "Looking at R² only and skipping residuals misses patterns that show where the model is wrong."
+				}
+			},
+			"6.2": {
+				"vi": {
+					"think": "Phân tích hệ số: so sánh hệ số trên dữ liệu đã chuẩn hóa và hệ số quy đổi về thang gốc, rồi nói một đơn vị thay đổi của một biến làm time_taken đổi bao nhiêu phút.",
+					"steps": [
+						"Hệ số chuẩn hóa: so độ mạnh giữa các biến (đơn vị là độ lệch chuẩn).",
+						"Hệ số gốc = hệ số chuẩn hóa chia cho độ lệch chuẩn của biến đó (scaler.scale_).",
+						"Diễn giải theo đơn vị gốc: tăng 1 món (total_items) thì thời gian chờ đổi bao nhiêu phút, giữ các biến khác cố định.",
+						"Chú ý dấu và độ lớn."
+					],
+					"code": "coef_scaled = pd.Series(final_model.coef_, index=cols)\nscale = pd.Series(scaler.scale_, index=num)\ncoef_orig = coef_scaled[cols.intersection(num)] / scale[cols.intersection(num)]\nprint(pd.DataFrame({'scaled': coef_scaled, 'original': coef_orig}))\n# effect of +1 total_items on time_taken: coef_orig['total_items'] minutes",
+					"lotus": "Nếu hệ số gốc của số đơn đang chờ là 0,1 thì thêm 10 đơn đang chờ làm khách chờ thêm khoảng 1 phút, giữ mọi thứ khác không đổi.",
+					"trap": "Hệ số chuẩn hóa so được độ mạnh, nhưng muốn nói «thêm 1 đơn thì mấy phút» phải dùng hệ số thang gốc."
+				},
+				"en": {
+					"think": "Coefficient analysis: compare coefficients on standardised data with coefficients converted to the original scale, then say how much one unit of a feature changes time_taken in minutes.",
+					"steps": [
+						"Scaled coefficients: compare strength across features (unit is standard deviations).",
+						"Original coefficient = scaled coefficient divided by the feature's standard deviation (scaler.scale_).",
+						"Interpret in original units: one more item (total_items) changes the wait by how many minutes, holding other features fixed.",
+						"Mind sign and size."
+					],
+					"code": "coef_scaled = pd.Series(final_model.coef_, index=cols)\nscale = pd.Series(scaler.scale_, index=num)\ncoef_orig = coef_scaled[cols.intersection(num)] / scale[cols.intersection(num)]\nprint(pd.DataFrame({'scaled': coef_scaled, 'original': coef_orig}))\n# effect of +1 total_items on time_taken: coef_orig['total_items'] minutes",
+					"lotus": "If the original coefficient for pending orders is 0.1, then 10 more pending orders add about 1 minute to the wait, holding everything else constant.",
+					"trap": "Scaled coefficients compare strength, but to say “one more order is how many minutes” you need the original-scale coefficient."
+				}
+			},
+			"Q1": {
+				"vi": {
+					"think": "Có cột nhóm nào, và từ các biểu đồ của bạn có thể nói gì về ảnh hưởng lên thời gian giao?",
+					"steps": [
+						"Liệt kê các cột nhóm: market_id, order_protocol, store_primary_category, isWeekend (và hour nếu coi là nhóm).",
+						"Dựa vào biểu đồ 3.1.2 và boxplot theo nhóm: nhóm nào có time_taken trung bình khác rõ.",
+						"Nói chắc chắn hay dè dặt tùy mức khác biệt."
+					],
+					"code": "# Câu trả lời viết bằng chữ trong ô Answer của notebook",
+					"lotus": "Chi nhánh nào có thời gian chờ trung bình cao hơn rõ rệt thì chi nhánh là một yếu tố, không chỉ là nhãn.",
+					"trap": "Nói «ảnh hưởng» chỉ từ một biểu đồ đếm số đơn mà không so time_taken theo nhóm là chưa trả lời câu hỏi."
+				},
+				"en": {
+					"think": "Which categorical columns exist, and what can your charts say about their effect on delivery time?",
+					"steps": [
+						"List the categorical columns: market_id, order_protocol, store_primary_category, isWeekend (and hour if you treat it as a group).",
+						"Use the 3.1.2 charts and per-group boxplots: which groups have a clearly different mean time_taken.",
+						"State firmly or cautiously depending on the size of the gap."
+					],
+					"code": "# Write the answer in words in the notebook's Answer cell",
+					"lotus": "A branch with a clearly higher average wait means branch is a factor, not just a label.",
+					"trap": "Claiming “effect” from a count chart alone, without comparing time_taken by group, does not answer the question."
+				}
+			},
+			"Q2": {
+				"vi": {
+					"think": "test_size = 0.2 nghĩa là gì?",
+					"steps": [
+						"20% số dòng dành cho tập kiểm tra, 80% còn lại để huấn luyện.",
+						"Với file của bạn: 175.777 dòng, khoảng 35.100 dòng cho test.",
+						"Vai trò: đo mô hình trên dữ liệu chưa từng thấy."
+					],
+					"code": "# Câu trả lời viết bằng chữ trong ô Answer của notebook",
+					"lotus": "Giống để một phần sổ booking sang một bên để thử đoán sau khi đã rút quy luật từ phần còn lại.",
+					"trap": "Nhầm 0,2 là 2 hoặc 20 dòng thay vì 20% số dòng."
+				},
+				"en": {
+					"think": "What does test_size = 0.2 mean?",
+					"steps": [
+						"20% of rows are held out for testing, the other 80% for training.",
+						"In your file: 175,777 rows, about 35,100 for test.",
+						"Role: measure the model on data it has never seen."
+					],
+					"code": "# Write the answer in words in the notebook's Answer cell",
+					"lotus": "Like setting part of the booking log aside to test guesses after learning the rule from the rest.",
+					"trap": "Mistaking 0.2 for 2 or 20 rows instead of 20% of rows."
+				}
+			},
+			"Q3": {
+				"vi": {
+					"think": "Trên bản đồ nhiệt, biến nào có tương quan cao nhất với biến mục tiêu?",
+					"steps": [
+						"Đọc hàng time_taken của heatmap.",
+						"Trong file của bạn, mạnh nhất là distance (khoảng 0,46), rồi subtotal (khoảng 0,41).",
+						"Nêu cả số và dấu. Nhớ kết quả của bạn phụ thuộc vào các bước làm sạch bạn đã chọn."
+					],
+					"code": "# Câu trả lời viết bằng chữ trong ô Answer của notebook",
+					"lotus": "Yếu tố đi cùng thời gian chờ mạnh nhất cho bạn biết nên đưa vào mô hình trước.",
+					"trap": "Trả lời bằng tên biến mà không nêu số hệ số. Dẫn cả hai."
+				},
+				"en": {
+					"think": "On the heatmap, which feature has the highest correlation with the target?",
+					"steps": [
+						"Read the time_taken row of the heatmap.",
+						"In your file the strongest is distance (about 0.46), then subtotal (about 0.41).",
+						"Give both number and sign. Remember your result depends on the cleaning choices you made."
+					],
+					"code": "# Write the answer in words in the notebook's Answer cell",
+					"lotus": "The factor that moves most with wait time tells you what to put in the model first.",
+					"trap": "Answering with the feature name but no coefficient. Cite both."
+				}
+			},
+			"Q4": {
+				"vi": {
+					"think": "Bạn phát hiện điểm xa bằng cách nào và xử lý ra sao?",
+					"steps": [
+						"Nêu phương pháp: boxplot, IQR hoặc phân vị 99, kiểm tra giá trị không thể có (âm).",
+						"Nêu quy tắc cho từng loại: bỏ lỗi nhập, giới hạn điểm xa hiếm.",
+						"Ghi số dòng bị bỏ và vì sao chọn vậy."
+					],
+					"code": "# Câu trả lời viết bằng chữ trong ô Answer của notebook",
+					"lotus": "Số nhân viên âm bỏ hẳn, booking 411 gói giới hạn ở mức phân vị 99. Hai quy tắc khác nhau vì hai nguyên nhân khác nhau.",
+					"trap": "Nói «tôi bỏ điểm xa» chung chung mà không nói bỏ theo quy tắc nào."
+				},
+				"en": {
+					"think": "How did you detect outliers and how did you handle them?",
+					"steps": [
+						"State the method: boxplot, IQR or 99th percentile, checking impossible (negative) values.",
+						"State the rule per type: drop entry errors, cap rare extremes.",
+						"Record rows removed and why you chose so."
+					],
+					"code": "# Write the answer in words in the notebook's Answer cell",
+					"lotus": "A negative staff count is dropped, a 411-package booking is capped at the 99th percentile. Two rules because two different causes.",
+					"trap": "Saying “I removed outliers” without saying by what rule."
+				}
+			},
+			"Q5": {
+				"vi": {
+					"think": "Dựa trên mô hình cuối, ba biến nào ảnh hưởng đáng kể nhất đến thời gian giao?",
+					"steps": [
+						"Lấy hệ số đã chuẩn hóa của mô hình cuối (6.2).",
+						"Xếp theo trị tuyệt đối, lấy ba biến đầu.",
+						"Nêu dấu và ý nghĩa của từng biến."
+					],
+					"code": "# Câu trả lời viết bằng chữ trong ô Answer của notebook",
+					"lotus": "Ba yếu tố đầu bảng cho bạn biết nên can thiệp vào đâu để rút ngắn thời gian chờ.",
+					"trap": "Xếp theo hệ số chưa chuẩn hóa so sánh táo với cam, vì thang đo khác nhau."
+				},
+				"en": {
+					"think": "Based on the final model, which three features most significantly affect delivery time?",
+					"steps": [
+						"Take the final model's standardised coefficients (6.2).",
+						"Rank by absolute value and take the top three.",
+						"State sign and meaning for each."
+					],
+					"code": "# Write the answer in words in the notebook's Answer cell",
+					"lotus": "The top three factors tell you where to intervene to shorten the wait.",
+					"trap": "Ranking by unscaled coefficients compares apples with oranges, since scales differ."
+				}
+			},
+			"Q6": {
+				"vi": {
+					"think": "Giải thích chi tiết thuật toán hồi quy tuyến tính.",
+					"steps": [
+						"Mô hình: y = β0 + β1x1 + … + ε.",
+						"Tìm β sao cho tổng bình phương sai số nhỏ nhất (bình phương tối thiểu).",
+						"Các giả định: tuyến tính, sai số độc lập, phương sai đều, sai số xấp xỉ chuẩn, không đa cộng tuyến mạnh.",
+						"Đầu ra: hệ số và dự đoán."
+					],
+					"code": "# Câu trả lời viết bằng chữ trong ô Answer của notebook",
+					"lotus": "Đường thẳng nối khoảng cách và thời gian chờ sao cho các khoảng cách dọc từ điểm đến đường nhỏ nhất.",
+					"trap": "Chỉ nói «vẽ đường thẳng qua các điểm» mà bỏ phần tối thiểu hóa sai số và các giả định."
+				},
+				"en": {
+					"think": "Explain the linear regression algorithm in detail.",
+					"steps": [
+						"Model: y = β0 + β1x1 + … + ε.",
+						"Find β minimising the sum of squared errors (least squares).",
+						"Assumptions: linearity, independent errors, equal variance, roughly normal errors, no strong multicollinearity.",
+						"Output: coefficients and predictions."
+					],
+					"code": "# Write the answer in words in the notebook's Answer cell",
+					"lotus": "A line linking distance and wait so that vertical gaps from points to the line are smallest.",
+					"trap": "Saying only “draw a line through the points” and skipping error minimisation and assumptions."
+				}
+			},
+			"Q7": {
+				"vi": {
+					"think": "Khác nhau giữa hồi quy tuyến tính đơn và đa biến?",
+					"steps": [
+						"Đơn: một biến đầu vào, y = β0 + β1x.",
+						"Đa biến: nhiều biến đầu vào, mỗi hệ số được hiểu giữ các biến khác cố định.",
+						"Đa biến cần chú ý đa cộng tuyến và chọn biến."
+					],
+					"code": "# Câu trả lời viết bằng chữ trong ô Answer của notebook",
+					"lotus": "Dự đoán thời gian chờ chỉ từ khoảng cách (đơn) so với từ khoảng cách, số đơn đang chờ và giờ đặt (đa).",
+					"trap": "Quên rằng hệ số của đa biến chỉ có nghĩa «giữ các biến khác cố định»."
+				},
+				"en": {
+					"think": "What is the difference between simple and multiple linear regression?",
+					"steps": [
+						"Simple: one input, y = β0 + β1x.",
+						"Multiple: several inputs, each coefficient read holding the others fixed.",
+						"Multiple needs attention to multicollinearity and feature selection."
+					],
+					"code": "# Write the answer in words in the notebook's Answer cell",
+					"lotus": "Predicting wait from distance alone (simple) versus from distance, pending orders and order hour (multiple).",
+					"trap": "Forgetting that a multiple-regression coefficient means “holding the others fixed”."
+				}
+			},
+			"Q8": {
+				"vi": {
+					"think": "Hàm chi phí trong hồi quy tuyến tính có vai trò gì và được tối thiểu hóa thế nào?",
+					"steps": [
+						"Hàm chi phí đo độ sai của mô hình: trung bình bình phương sai số (MSE).",
+						"Mục tiêu là chọn hệ số làm nó nhỏ nhất.",
+						"Cách tối thiểu hóa: nghiệm đóng (phương trình chuẩn) hoặc hạ gradient lặp lại."
+					],
+					"code": "# Câu trả lời viết bằng chữ trong ô Answer của notebook",
+					"lotus": "Hàm chi phí là điểm số của một cách vẽ đường: đường nào cho tổng sai lệch nhỏ hơn thì tốt hơn.",
+					"trap": "Nhầm hàm chi phí với R²: R² là thước đo sau khi huấn luyện, chi phí là thứ được tối thiểu hóa lúc huấn luyện."
+				},
+				"en": {
+					"think": "What is the role of the cost function in linear regression and how is it minimised?",
+					"steps": [
+						"The cost function measures model error: mean squared error (MSE).",
+						"The goal is to choose coefficients that make it smallest.",
+						"Minimised by the closed form (normal equation) or by iterative gradient descent."
+					],
+					"code": "# Write the answer in words in the notebook's Answer cell",
+					"lotus": "The cost function is the score of a way of drawing the line: the line with smaller total miss is better.",
+					"trap": "Confusing cost with R²: R² is a measure after training, cost is what is minimised during training."
+				}
+			},
+			"Q9": {
+				"vi": {
+					"think": "Khác nhau giữa quá khớp và chưa khớp?",
+					"steps": [
+						"Quá khớp: tốt ở train nhưng kém ở dữ liệu mới, mô hình học cả nhiễu.",
+						"Chưa khớp: kém ở cả hai, mô hình quá đơn giản.",
+						"Dấu hiệu: khoảng cách giữa điểm train và điểm validation.",
+						"Cách xử lý: bớt hoặc thêm biến, chọn mô hình khác."
+					],
+					"code": "# Câu trả lời viết bằng chữ trong ô Answer của notebook",
+					"lotus": "Một mô hình nhớ từng booking của tháng 11 (quá khớp) so với một mô hình chỉ đoán 45 phút cho mọi người (chưa khớp).",
+					"trap": "Chỉ nhìn điểm ở train rồi kết luận mô hình tốt."
+				},
+				"en": {
+					"think": "What is the difference between overfitting and underfitting?",
+					"steps": [
+						"Overfitting: good on train but poor on new data, the model learned noise too.",
+						"Underfitting: poor on both, the model is too simple.",
+						"Sign: the gap between train and validation scores.",
+						"Fixes: drop or add features, choose another model."
+					],
+					"code": "# Write the answer in words in the notebook's Answer cell",
+					"lotus": "A model memorising each November booking (overfit) versus one that guesses 45 minutes for everyone (underfit).",
+					"trap": "Judging a model good from its train score alone."
+				}
+			},
+			"Q10": {
+				"vi": {
+					"think": "Biểu đồ phần dư giúp chẩn đoán mô hình thế nào?",
+					"steps": [
+						"Phần dư theo dự đoán: có hình dạng hay hình phễu thì giả định bị vi phạm.",
+						"Q-Q plot và histogram: kiểm tra phần dư có gần chuẩn.",
+						"Phần dư theo thứ tự thời gian: phát hiện tự tương quan.",
+						"Điểm phần dư lớn bất thường chỉ ra đơn cần xem lại."
+					],
+					"code": "# Câu trả lời viết bằng chữ trong ô Answer của notebook",
+					"lotus": "Nếu mô hình đoán thấp mọi lúc ở giờ cao điểm thì phần dư theo giờ có hình dạng, và bạn thiếu một biến liên quan đến giờ.",
+					"trap": "Chỉ nói «phần dư nên quanh 0» mà không nói hình dạng nào là dấu hiệu xấu."
+				},
+				"en": {
+					"think": "How do residual plots help in diagnosing a linear regression model?",
+					"steps": [
+						"Residuals vs predicted: a pattern or funnel means assumptions are violated.",
+						"Q-Q plot and histogram: check whether residuals are near normal.",
+						"Residuals over time: detect autocorrelation.",
+						"Unusually large residuals point to orders worth reviewing."
+					],
+					"code": "# Write the answer in words in the notebook's Answer cell",
+					"lotus": "If the model underguesses at every peak hour, residuals by hour show a shape and you are missing an hour-related feature.",
+					"trap": "Saying only “residuals should be around 0” without saying which shapes are bad signs."
+				}
 			}
-		},
-		"2.1.2": {
-			"vi": {
-				"think": "Cùng một cột bị ghi hai kiểu chữ: Airport_fee và airport_fee. Tháng này dùng tên này, tháng kia dùng tên kia, nên nối lại sinh hai cột lấp nhau.",
-				"steps": [
-					"Đếm giá trị không rỗng của mỗi cột: df[['Airport_fee','airport_fee']].notna().sum().",
-					"Kiểm tra hai cột không cùng có giá trị trên một dòng.",
-					"Gộp: df['airport_fee'] = df['airport_fee'].combine_first(df['Airport_fee']).",
-					"Bỏ cột còn lại."
-				],
-				"code": "print(df[['Airport_fee', 'airport_fee']].notna().sum())\nboth = df['Airport_fee'].notna() & df['airport_fee'].notna()\nprint(both.sum())  # expect 0\ndf['airport_fee'] = df['airport_fee'].combine_first(df['Airport_fee'])\ndf = df.drop(columns=['Airport_fee'])",
-				"lotus": "Chi nhánh Quận 1 ghi «Khu_vực», chi nhánh Thủ Đức ghi «khu_vuc». Nối hai sổ lại ra hai cột nửa rỗng. Gộp thành một cột trước khi đếm.",
-				"trap": "Nếu hai cột cùng có giá trị trên một dòng thì không được gộp bằng combine_first mà không xem lại."
+		}
+	},
+	{
+		"id": "employee-retention",
+		"course": "C3 · Hồi quy logistic",
+		"title": ["Bài tập: Dự đoán nhân viên ở lại hay nghỉ", "Assignment: Predicting Employee Retention"],
+		"file": "Predicting_Employee_Retention_Starter.ipynb",
+		"story": ["Starter gốc là dữ liệu nhân sự một công ty công nghệ. Trong Lotus Spa: mỗi dòng là một nhân viên của chuỗi, Attrition = nghỉ việc hay ở lại. Bạn dự đoán ai có nguy cơ nghỉ để chị Lan kịp giữ. Các con số «file của bạn» là số thật tính từ Employee_data.csv (74.610 dòng).", "The original starter is a tech company's HR data. In Lotus Spa: each row is a staff member of the chain, Attrition = left or stayed. You predict who is at risk of leaving so chị Lan can retain them. The “your file” numbers are real figures computed from Employee_data.csv (74,610 rows)."],
+		"concepts": ["d-8a351794bf2d"],
+		"cells": [
+			{
+				"t": "md",
+				"s": "# **Predicting Employee Retention**"
 			},
-			"en": {
-				"think": "The same column is spelled two ways: Airport_fee and airport_fee. One month uses one name, another month the other, so concatenation creates two complementary columns.",
-				"steps": [
-					"Count non-null values in each: df[['Airport_fee','airport_fee']].notna().sum().",
-					"Check the two never both hold a value on one row.",
-					"Merge: df['airport_fee'] = df['airport_fee'].combine_first(df['Airport_fee']).",
-					"Drop the leftover column."
-				],
-				"code": "print(df[['Airport_fee', 'airport_fee']].notna().sum())\nboth = df['Airport_fee'].notna() & df['airport_fee'].notna()\nprint(both.sum())  # expect 0\ndf['airport_fee'] = df['airport_fee'].combine_first(df['Airport_fee'])\ndf = df.drop(columns=['Airport_fee'])",
-				"lotus": "District 1 writes “Khu_vuc”, Thu Duc writes “khu_vuc”. Joining the two logs gives two half-empty columns. Merge into one before counting.",
-				"trap": "If both columns hold a value on one row, do not merge with combine_first without looking again."
+			{
+				"t": "md",
+				"s": "### Objective\n\nThe objective of this assignment is to develop a Logistic Regression model. You will be using this model to analyse and predict binary outcomes based on the input data. This assignment aims to enhance understanding of logistic regression, including its assumptions, implementation, and evaluation, to effectively classify and interpret data.\n"
+			},
+			{
+				"t": "md",
+				"s": "### Business Objective\n\nA mid-sized technology company wants to improve its understanding of employee retention to foster a loyal and committed workforce. While the organization has traditionally focused on addressing turnover, it recognises the value of proactively identifying employees likely to stay and understanding the factors contributing to their loyalty.\n\n\nIn this assignment you’ll be building a logistic regression model to predict the likelihood of employee retention based on the data such as demographic details, job satisfaction scores, performance metrics, and tenure. The aim is to provide the HR department with actionable insights to strengthen retention strategies, create a supportive work environment, and increase the overall stability and satisfaction of the workforce."
+			},
+			{
+				"t": "md",
+				"s": "## Assignment Tasks\n\nYou need to perform the following steps to complete this assignment:\n1. Data Understanding\n2. Data Cleaning\n3. Train Validation Split\n4. EDA on training data\n5. EDA on validation data [Optional]\n6. Feature Engineering\n7. Model Building\n8. Prediction and Model Evaluation\n\n\n"
+			},
+			{
+				"t": "md",
+				"s": "## Data Dictionary\n\nThe data has 24 Columns and 74610 Rows. Following data dictionary provides the description for each column present in dataset:<br>\n\n<table>\n  <thead>\n    <tr>\n      <th>Column Name</th>\n      <th>Description</th>\n    </tr>\n  </thead>\n  <tbody>\n    <tr>\n      <td>Employee ID</td>\n      <td>A unique identifier assigned to each employee.</td>\n    </tr>\n    <tr>\n      <td>Age</td>\n      <td>The age of the employee, ranging from 18 to 60 years.</td>\n    </tr>\n    <tr>\n      <td>Gender</td>\n      <td>The gender of the employee.</td>\n    </tr>\n    <tr>\n      <td>Years at Company</td>\n      <td>The number of years the employee has been working at the company.</td>\n    </tr>\n    <tr>\n      <td>Monthly Income</td>\n      <td>The monthly salary of the employee, in dollars.</td>\n    </tr>\n    <tr>\n      <td>Job Role</td>\n      <td>The department or role the employee works in, encoded into categories such as Finance, Healthcare, Technology, Education, and Media.</td>\n    </tr>\n    <tr>\n      <td>Work-Life Balance</td>\n      <td>The employee's perceived balance between work and personal life (Poor, Below Average, Good, Excellent).</td>\n    </tr>\n    <tr>\n      <td>Job Satisfaction</td>\n      <td>The employee's satisfaction with their job (Very Low, Low, Medium, High).</td>\n    </tr>\n    <tr>\n      <td>Performance Rating</td>\n      <td>The employee's performance rating (Low, Below Average, Average, High).</td>\n    </tr>\n    <tr>\n      <td>Number of Promotions</td>\n      <td>The total number of promotions the employee has received.</td>\n    </tr>\n     </tr>\n     <tr>\n      <td>Overtime</td>\n      <td>Number of overtime hours.</td>\n    </tr>\n    <tr>\n      <td>Distance from Home</td>\n      <td>The distance between the employee's home and workplace, in miles.</td>\n    </tr>\n    <tr>\n      <td>Education Level</td>\n      <td>The highest education level attained by the employee (High School, Associate Degree, Bachelor’s Degree, Master’s Degree, PhD).</td>\n    </tr>\n    <tr>\n      <td>Marital Status</td>\n      <td>The marital status of the employee (Divorced, Married, Single).</td>\n    </tr>\n     <tr>\n      <td>Number of Dependents</td>\n      <td>Number of dependents the employee has.</td>\n    </tr>\n    <tr>\n      <td>Job Level</td>\n      <td>The job level of the employee (Entry, Mid, Senior).</td>\n    </tr>\n    <tr>\n      <td>Company Size</td>\n      <td>The size of the company the employee works for (Small, Medium, Large).</td>\n    </tr>\n    <tr>\n      <td>Company Tenure (In Months)</td>\n      <td>The total number of years the employee has been working in the industry.</td>\n    </tr>\n    <tr>\n      <td>Remote Work</td>\n      <td>Whether the employee works remotely (Yes or No).</td>\n    </tr>\n    <tr>\n      <td>Leadership Opportunities</td>\n      <td>Whether the employee has leadership opportunities (Yes or No).</td>\n    </tr>\n    <tr>\n      <td>Innovation Opportunities</td>\n      <td>Whether the employee has opportunities for innovation (Yes or No).</td>\n    </tr>\n    <tr>\n      <td>Company Reputation</td>\n      <td>The employee's perception of the company's reputation (Very Poor, Poor, Good, Excellent).</td>\n    </tr>\n    <tr>\n      <td>Employee Recognition</td>\n      <td>The level of recognition the employee receives(Very Low, Low, Medium, High).</td>\n    </tr>\n    <tr>\n      <td>Attrition</td>\n      <td>Whether the employee has left the company.</td>\n    </tr>\n  </tbody>\n</table>\n"
+			},
+			{
+				"t": "md",
+				"s": "## **1. Data Understanding**\n\nIn this step, load the dataset and check basic statistics of the data, including preview of data, dimension of data, column descriptions and data types."
+			},
+			{
+				"t": "md",
+				"s": "### **1.0 Import Libraries**"
+			},
+			{
+				"t": "code",
+				"s": "# Supress unnecessary warnings\nimport warnings\nwarnings.filterwarnings('ignore')"
+			},
+			{
+				"t": "code",
+				"s": "# Import the libraries\nimport numpy as np\nimport pandas as pd"
+			},
+			{
+				"t": "md",
+				"s": "### **1.1 Load the Data**",
+				"ref": "1.1"
+			},
+			{
+				"t": "code",
+				"s": "# Load the dataset\n"
+			},
+			{
+				"t": "code",
+				"s": "# Check the first few entries\n"
+			},
+			{
+				"t": "code",
+				"s": "# Inspect the shape of the dataset\n"
+			},
+			{
+				"t": "code",
+				"s": "# Inspect the different columns in the dataset\n"
+			},
+			{
+				"t": "md",
+				"s": "### **1.2 Check the basic statistics**",
+				"ref": "1.2"
+			},
+			{
+				"t": "code",
+				"s": "# Check the summary of the dataset\n"
+			},
+			{
+				"t": "md",
+				"s": "### **1.3 Check the data type of columns**",
+				"ref": "1.3"
+			},
+			{
+				"t": "code",
+				"s": "# Check the info to see the types of the feature variables and the null values present\n"
+			},
+			{
+				"t": "md",
+				"s": "## **2. Data Cleaning** <font color = red>[15 marks]</font>"
+			},
+			{
+				"t": "md",
+				"s": "### **2.1 Handle the missing values** <font color = red>[10 marks]</font>"
+			},
+			{
+				"t": "md",
+				"s": "2.1.1 Check the number of missing values <font color=\"red\">[2 Mark]</font>",
+				"ref": "2.1.1"
+			},
+			{
+				"t": "code",
+				"s": "# Check the number of missing values in each column\n"
+			},
+			{
+				"t": "md",
+				"s": "2.1.2 Check the percentage of missing values <font color=\"red\">[2 Marks]</font>",
+				"ref": "2.1.2"
+			},
+			{
+				"t": "code",
+				"s": "# Check the percentage of missing values in each column\n"
+			},
+			{
+				"t": "md",
+				"s": "2.1.3 Handle rows with missing values <font color=\"red\">[4 Marks]</font>",
+				"ref": "2.1.3"
+			},
+			{
+				"t": "code",
+				"s": "# Handle the missing value rows in the column\n"
+			},
+			{
+				"t": "md",
+				"s": "2.1.4 Check percentage of remaning data after missing values are removed <font color=\"red\">[2 Mark]</font>",
+				"ref": "2.1.4"
+			},
+			{
+				"t": "code",
+				"s": "# Check the percentage of remaining data after missing values are removed\n"
+			},
+			{
+				"t": "md",
+				"s": "### **2.2 Identify and handle redundant values within categorical columns (if any)** <font color = red>[3 marks]</font>",
+				"ref": "2.2"
+			},
+			{
+				"t": "md",
+				"s": "Examine the categorical columns to determine if any value or column needs to be treated"
+			},
+			{
+				"t": "code",
+				"s": "# Write a function to display the categorical columns with their unique values and check for redundant values\n"
+			},
+			{
+				"t": "code",
+				"s": "# Check the data\n"
+			},
+			{
+				"t": "md",
+				"s": "### **2.3 Drop redundant columns** <font color = red>[2 marks]</font>",
+				"ref": "2.3"
+			},
+			{
+				"t": "code",
+				"s": "# Drop redundant columns which are not required for modelling\n"
+			},
+			{
+				"t": "code",
+				"s": "# Check first few rows of data\n"
+			},
+			{
+				"t": "md",
+				"s": "## **3. Train-Validation Split** <font color = red>[5 marks]</font>"
+			},
+			{
+				"t": "md",
+				"s": "### **3.1 Import required libraries**",
+				"ref": "3.1"
+			},
+			{
+				"t": "code",
+				"s": "# Import Train Test Split\n"
+			},
+			{
+				"t": "md",
+				"s": "### **3.2 Define feature and target variables** <font color = red>[2 Mark]</font>",
+				"ref": "3.2"
+			},
+			{
+				"t": "code",
+				"s": "# Put all the feature variables in X\n\n# Put the target variable in y\n"
+			},
+			{
+				"t": "md",
+				"s": "### **3.3 Split the data** <font color=\"red\">[3 Marks]</font>",
+				"ref": "3.3"
+			},
+			{
+				"t": "code",
+				"s": "# Split the data into 70% train data and 30% validation data\n"
+			},
+			{
+				"t": "md",
+				"s": "## **4. EDA on training data** <font color = red>[20 marks]</font>"
+			},
+			{
+				"t": "md",
+				"s": "### **4.1 Perform univariate analysis** <font color = red>[6 marks]</font>"
+			},
+			{
+				"t": "md",
+				"s": "Perform univariate analysis on training data for all the numerical columns.\n\n\n"
+			},
+			{
+				"t": "md",
+				"s": "4.1.1 Select numerical columns from training data <font color = \"red\">[1 Mark]</font>",
+				"ref": "4.1.1"
+			},
+			{
+				"t": "code",
+				"s": "# Select numerical columns\n"
+			},
+			{
+				"t": "md",
+				"s": "4.1.2 Plot distribution of numerical columns <font color = \"red\">[5 Marks]</font>",
+				"ref": "4.1.2"
+			},
+			{
+				"t": "code",
+				"s": "# Plot all the numerical columns to understand their distribution\n\n# Import necessary libraries\nimport seaborn as sns\nimport matplotlib.pyplot as plt\n"
+			},
+			{
+				"t": "md",
+				"s": "### **4.2 Perform correlation analysis** <font color=\"red\">[4 Marks]</font>",
+				"ref": "4.2"
+			},
+			{
+				"t": "md",
+				"s": "Check the correlation among different numerical variables."
+			},
+			{
+				"t": "code",
+				"s": "# Create correlation matrix for numerical columns\n\n# Plot Heatmap of the correlation matrix\n"
+			},
+			{
+				"t": "md",
+				"s": "### **4.3 Check class balance** <font color=\"red\">[2 Marks]</font>",
+				"ref": "4.3"
+			},
+			{
+				"t": "md",
+				"s": "Check the distribution of target variable in training set to check class balance."
+			},
+			{
+				"t": "code",
+				"s": "# Plot a bar chart to check class balance\n"
+			},
+			{
+				"t": "md",
+				"s": "### **4.4 Perform bivariate analysis** <font color=\"red\">[8 Marks]</font>",
+				"ref": "4.4"
+			},
+			{
+				"t": "md",
+				"s": "Perform bivariate analysis on training data between all the categorical columns and target variable to  analyse how the categorical variables influence the target variable."
+			},
+			{
+				"t": "code",
+				"s": "# Plot distribution for each categorical column with target variable\n"
+			},
+			{
+				"t": "md",
+				"s": "## **5. EDA on validation data** <font color = red>[OPTIONAL]</font>"
+			},
+			{
+				"t": "md",
+				"s": "### **5.1 Perform univariate analysis**"
+			},
+			{
+				"t": "md",
+				"s": "Perform univariate analysis on validation data for all the numerical columns.\n"
+			},
+			{
+				"t": "md",
+				"s": "5.1.1 Select numerical columns from validation data",
+				"ref": "5.1.1"
+			},
+			{
+				"t": "code",
+				"s": "# Select numerical columns\n"
+			},
+			{
+				"t": "md",
+				"s": "5.1.2 Plot distribution of numerical columns",
+				"ref": "5.1.2"
+			},
+			{
+				"t": "code",
+				"s": "# Plot all the numerical columns to understand their distribution\n"
+			},
+			{
+				"t": "md",
+				"s": "### **5.2 Perform correlation analysis**",
+				"ref": "5.2"
+			},
+			{
+				"t": "md",
+				"s": "Check the correlation among different numerical variables."
+			},
+			{
+				"t": "code",
+				"s": "# Create correlation matrix for numerical columns\n\n# Plot Heatmap of the correlation matrix\n"
+			},
+			{
+				"t": "md",
+				"s": "### **5.3 Check class balance**",
+				"ref": "5.3"
+			},
+			{
+				"t": "md",
+				"s": "Check the distribution of target variable in validation data to check class balance."
+			},
+			{
+				"t": "code",
+				"s": "# Plot a bar chart to check class balance\n"
+			},
+			{
+				"t": "md",
+				"s": "### **5.4 Perform bivariate analysis**",
+				"ref": "5.4"
+			},
+			{
+				"t": "md",
+				"s": "Perform bivariate analysis on validation data between all the categorical columns and target variable to analyse how the categorical variables influence the target variable."
+			},
+			{
+				"t": "code",
+				"s": "# Plot distribution for each categorical column with target variable\n"
+			},
+			{
+				"t": "md",
+				"s": "## **6. Feature Engineering** <font color = red>[20 marks]</font>"
+			},
+			{
+				"t": "md",
+				"s": "### **6.1 Dummy variable creation** <font color = red>[15 marks]</font>\n\n\nThe next step is to deal with the categorical variables present in the data."
+			},
+			{
+				"t": "md",
+				"s": "6.1.1 Identify categorical columns where dummy variables are required <font color=\"red\">[1 Mark]</font>",
+				"ref": "6.1.1"
+			},
+			{
+				"t": "code",
+				"s": "# Check the categorical columns\n"
+			},
+			{
+				"t": "md",
+				"s": "6.1.2 Create dummy variables for independent columns in training set <font color=\"red\">[3 Marks]</font>",
+				"ref": "6.1.2"
+			},
+			{
+				"t": "code",
+				"s": "# Create dummy variables using the 'get_dummies' for independent columns\n\n# Add the results to the master DataFrame\n"
+			},
+			{
+				"t": "md",
+				"s": "Now, drop the original categorical columns and check the DataFrame"
+			},
+			{
+				"t": "code",
+				"s": "# Drop the original categorical columns and check the DataFrame\n"
+			},
+			{
+				"t": "md",
+				"s": "6.1.3 Create dummy variables for independent columns in validation set <font color=\"red\">[3 Marks]</font>",
+				"ref": "6.1.3"
+			},
+			{
+				"t": "code",
+				"s": "# Create dummy variables using the 'get_dummies' for independent columns\n\n# Add the results to the master DataFrame\n"
+			},
+			{
+				"t": "md",
+				"s": "Now, drop the original categorical columns and check the DataFrame"
+			},
+			{
+				"t": "code",
+				"s": "# Drop categorical columns and check the DataFrame\n"
+			},
+			{
+				"t": "md",
+				"s": "6.1.4 Create DataFrame for dependent column in both training and validation set <font color = \"red\">[1 Mark]</font>",
+				"ref": "6.1.4"
+			},
+			{
+				"t": "code",
+				"s": "# Convert y_train and y_validation to DataFrame to create dummy variables\n"
+			},
+			{
+				"t": "md",
+				"s": "6.1.5 Create dummy variables for dependent column in training set <font color=\"red\">[3 Marks]</font>",
+				"ref": "6.1.5"
+			},
+			{
+				"t": "code",
+				"s": "# Create dummy variables using the 'get_dummies' for dependent column\n"
+			},
+			{
+				"t": "md",
+				"s": "6.1.6 Create dummy variable for dependent column in validation set <font color = \"red\">[3 Marks]</font>",
+				"ref": "6.1.6"
+			},
+			{
+				"t": "code",
+				"s": "# Create dummy variables using the 'get_dummies' for dependent column\n"
+			},
+			{
+				"t": "md",
+				"s": "6.1.7 Drop redundant columns <font color=\"red\">[1 Mark]</font>",
+				"ref": "6.1.7"
+			},
+			{
+				"t": "code",
+				"s": "# Drop redundant columns from both train and validation\n"
+			},
+			{
+				"t": "md",
+				"s": "### **6.2 Feature scaling** <font color = red>[5 marks]</font>\n\nApply feature scaling to the numeric columns to bring them to a common range and ensure consistent scaling."
+			},
+			{
+				"t": "md",
+				"s": "6.2.1 Import required libraries <font color=\"red\">[1 Mark]</font>",
+				"ref": "6.2.1"
+			},
+			{
+				"t": "code",
+				"s": "# Import the necessary scaling tool from scikit-learn\n"
+			},
+			{
+				"t": "md",
+				"s": "6.2.2 Scale the numerical features <font color=\"red\">[4 Marks]</font>",
+				"ref": "6.2.2"
+			},
+			{
+				"t": "code",
+				"s": "# Scale the numeric features present in the training set\n\n# Scale the numerical features present in the validation set\n"
+			},
+			{
+				"t": "md",
+				"s": "## **7. Model Building** <font color = red>[40 marks]</font>"
+			},
+			{
+				"t": "md",
+				"s": "### **7.1 Feature selection** <font color = red>[5 marks]</font>\n\nAs there are a lot of variables present in the data, Recursive Feature Elimination (RFE) will be used to select the most influential features for building the model."
+			},
+			{
+				"t": "md",
+				"s": "7.1.1 Import required libraries <font color=\"red\">[1 Mark]</font>",
+				"ref": "7.1.1"
+			},
+			{
+				"t": "code",
+				"s": "# Import 'LogisticRegression' and create a LogisticRegression object\n"
+			},
+			{
+				"t": "md",
+				"s": "7.1.2 Import RFE  and select 15 variables <font color=\"red\">[3 Mark]</font>",
+				"ref": "7.1.2"
+			},
+			{
+				"t": "code",
+				"s": "# Import RFE and select 15 variables\n"
+			},
+			{
+				"t": "code",
+				"s": "# Display the features selected by RFE\n"
+			},
+			{
+				"t": "md",
+				"s": "7.1.3 Store the selected features <font color=\"red\">[1 Mark]</font>\n\n\n",
+				"ref": "7.1.3"
+			},
+			{
+				"t": "code",
+				"s": "# Put columns selected by RFE into variable 'col'\n"
+			},
+			{
+				"t": "md",
+				"s": "### **7.2 Building Logistic Regression Model** <font color = red>[20 marks]</font>\n\nNow that you have selected the variables through RFE, use these features to build a logistic regression model with statsmodels. This will allow you to assess the statistical aspects, such as p-values and VIFs, which are important for checking multicollinearity and ensuring that the predictors are not highly correlated with each other, as this could distort the model's coefficients."
+			},
+			{
+				"t": "md",
+				"s": "7.2.1 Select relevant columns on training set <font color=\"red\">[1 Mark]</font>",
+				"ref": "7.2.1"
+			},
+			{
+				"t": "code",
+				"s": "# Select only the columns selected by RFE\n"
+			},
+			{
+				"t": "code",
+				"s": "# View the training data\n"
+			},
+			{
+				"t": "md",
+				"s": "7.2.2 Add constant to training set <font color = \"red\">[1 Mark]</font>",
+				"ref": "7.2.2"
+			},
+			{
+				"t": "code",
+				"s": "# Import statsmodels and add constant to training set\n"
+			},
+			{
+				"t": "md",
+				"s": "7.2.3 Fit logistic regression model <font color=\"red\">[3 Marks]</font>",
+				"ref": "7.2.3"
+			},
+			{
+				"t": "code",
+				"s": "# Fit a logistic regression model on X_train after adding a constant and output the summary\n"
+			},
+			{
+				"t": "md",
+				"s": "**Model Interpretation**\n\nThe output summary table  will provide the features used for building model along with coefficient of each of the feature and their p-value. The p-value in a logistic regression model is used to assess the statistical significance of each coefficient. Lesser the p-value, more significant the feature is in the model.\n\nA positive coefficient will indicate that an increase in the value of feature would increase the odds of the event occurring. On the other hand, a negative coefficient means the opposite, i.e,  an increase in the value of feature would decrease the odds of the event occurring.\n\n"
+			},
+			{
+				"t": "md",
+				"s": "7.2.4 Evaluate VIF of features <font color=\"red\">[3 Marks]</font>",
+				"ref": "7.2.4"
+			},
+			{
+				"t": "code",
+				"s": "# Import 'variance_inflation_factor'\nfrom statsmodels.stats.outliers_influence import variance_inflation_factor"
+			},
+			{
+				"t": "code",
+				"s": "# Make a VIF DataFrame for all the variables present\n"
+			},
+			{
+				"t": "md",
+				"s": "Proceed to the next step if p-values and VIFs are within acceptable ranges.  If you observe high p-values or VIFs, create new cells to drop the features and retrain the model."
+			},
+			{
+				"t": "md",
+				"s": "7.2.5 Make predictions on training set <font color = \"red\">[2 Marks]</font>",
+				"ref": "7.2.5"
+			},
+			{
+				"t": "code",
+				"s": "# Predict the probabilities on the training set\n"
+			},
+			{
+				"t": "md",
+				"s": "7.2.6 Format the prediction output <font color=\"red\">[1 Mark]</font>",
+				"ref": "7.2.6"
+			},
+			{
+				"t": "code",
+				"s": "# Reshape it into an array\n"
+			},
+			{
+				"t": "md",
+				"s": "7.2.7 Create a DataFrame with the actual stayed flag and the predicted probabilities <font color=\"red\">[1 Mark]</font>",
+				"ref": "7.2.7"
+			},
+			{
+				"t": "code",
+				"s": "# Create a new DataFrame containing the actual stayed flag and the probabilities predicted by the model\n"
+			},
+			{
+				"t": "md",
+				"s": "7.2.8 Create a new column 'Predicted' with 1 if predicted probabilities are greater than 0.5 else 0 <font color = \"red\">[1 Mark]</font>",
+				"ref": "7.2.8"
+			},
+			{
+				"t": "code",
+				"s": "# Create a new column 'Predicted' with 1 if predicted probabilities are greater than 0.5 else 0\n"
+			},
+			{
+				"t": "md",
+				"s": "**Evaluation of performance of Model**\n\nEvaluate the performance of the model based on the predictions made on the training set.\n"
+			},
+			{
+				"t": "md",
+				"s": "7.2.9 Check the accuracy of the model based on the predictions made on the training set <font color = \"red\">[1 Mark]</font>",
+				"ref": "7.2.9"
+			},
+			{
+				"t": "code",
+				"s": "# Import metrics from sklearn for evaluation\nfrom sklearn import metrics\n\n# Check the overall accuracy\n"
+			},
+			{
+				"t": "md",
+				"s": "7.2.10 Create a confusion matrix based on the predictions made on the training set <font color=\"red\">[1 mark]</font>",
+				"ref": "7.2.10"
+			},
+			{
+				"t": "code",
+				"s": "# Create confusion matrix\n"
+			},
+			{
+				"t": "md",
+				"s": "7.2.11 Create variables for true positive, true negative, false positive and false negative <font color=\"red\">[1 Mark]</font>",
+				"ref": "7.2.11"
+			},
+			{
+				"t": "code",
+				"s": "# Create variables for true positive, true negative, false positive and false negative\n"
+			},
+			{
+				"t": "md",
+				"s": "7.2.12 Calculate sensitivity and specificity of model  <font color=\"red\">[2 Marks]</font>",
+				"ref": "7.2.12"
+			},
+			{
+				"t": "code",
+				"s": "# Calculate sensitivity\n"
+			},
+			{
+				"t": "code",
+				"s": "# Calculate specificity"
+			},
+			{
+				"t": "md",
+				"s": "7.2.13 Calculate precision and recall of model <font color=\"red\">[2 Marks]</font>",
+				"ref": "7.2.13"
+			},
+			{
+				"t": "code",
+				"s": "# Calculate precision\n"
+			},
+			{
+				"t": "code",
+				"s": "# Calculate recall\n"
+			},
+			{
+				"t": "md",
+				"s": "### **7.3 Find the optimal cutoff** <font color = red>[15 marks]</font>\n\nFind the optimal cutoff to improve model performance. While a default threshold of 0.5 was used for initial evaluation, optimising this threshold can enhance the model's performance.\n\nFirst, plot the ROC curve and check AUC.\n\n"
+			},
+			{
+				"t": "md",
+				"s": "7.3.1 Plot ROC curve <font color=\"red\">[3 Marks]</font>",
+				"ref": "7.3.1"
+			},
+			{
+				"t": "code",
+				"s": "# Define ROC function\n"
+			},
+			{
+				"t": "code",
+				"s": "# Call the ROC function\n"
+			},
+			{
+				"t": "md",
+				"s": "**Sensitivity and Specificity tradeoff**\n\nCheck sensitivity and specificity tradeoff to find the optimal cutoff point."
+			},
+			{
+				"t": "md",
+				"s": "7.3.2 Predict on training set at various probability cutoffs <font color=\"red\">[1 Mark]</font>",
+				"ref": "7.3.2"
+			},
+			{
+				"t": "code",
+				"s": "# Predict on training data by creating columns with different probability cutoffs to explore the impact of cutoff on model performance\n"
+			},
+			{
+				"t": "md",
+				"s": "7.3.3 Plot for accuracy, sensitivity, specificity at different probability cutoffs <font color=\"red\">[2 Marks]</font>",
+				"ref": "7.3.3"
+			},
+			{
+				"t": "code",
+				"s": "# Create a DataFrame to see the values of accuracy, sensitivity, and specificity at different values of probability cutoffs\n"
+			},
+			{
+				"t": "code",
+				"s": "# Plot accuracy, sensitivity, and specificity at different values of probability cutoffs\n"
+			},
+			{
+				"t": "md",
+				"s": "7.3.4 Create a column for final prediction based on the optimal cutoff <font color=\"red\">[2 Marks]</font>",
+				"ref": "7.3.4"
+			},
+			{
+				"t": "code",
+				"s": "# Create a column for final prediction based on the optimal cutoff\n"
+			},
+			{
+				"t": "md",
+				"s": "7.3.5 Calculate model's accuracy <font color=\"red\">[1Mark]</font>",
+				"ref": "7.3.5"
+			},
+			{
+				"t": "code",
+				"s": "# Calculate the accuracy\n"
+			},
+			{
+				"t": "md",
+				"s": "7.3.6 Create confusion matrix <font color=\"red\">[1Mark]</font>",
+				"ref": "7.3.6"
+			},
+			{
+				"t": "code",
+				"s": "# Create the confusion matrix once again\n"
+			},
+			{
+				"t": "md",
+				"s": "7.3.7 Create variables for true positive, true negative, false positive and false negative <font color=\"red\">[1Mark]</font>",
+				"ref": "7.3.7"
+			},
+			{
+				"t": "code",
+				"s": "# Create variables for true positive, true negative, false positive and false negative\n"
+			},
+			{
+				"t": "md",
+				"s": "7.3.8 Calculate sensitivity and specificity of the model <font color=\"red\">[1Mark]</font>",
+				"ref": "7.3.8"
+			},
+			{
+				"t": "code",
+				"s": "# Calculate Sensitivity\n"
+			},
+			{
+				"t": "code",
+				"s": "# Calculate Specificity\n"
+			},
+			{
+				"t": "md",
+				"s": "7.3.9 Calculate precision and recall of the model <font color=\"red\">[1Mark]</font>",
+				"ref": "7.3.9"
+			},
+			{
+				"t": "code",
+				"s": "# Calculate Precision\n"
+			},
+			{
+				"t": "code",
+				"s": "# Calculate Recall\n"
+			},
+			{
+				"t": "md",
+				"s": "**Precision and Recall tradeoff**\n\nCheck optimal cutoff value by plotting precision-recall curve, and adjust the cutoff based on the precision and recall tradeoff if required."
+			},
+			{
+				"t": "code",
+				"s": "# Import precision-recall curve function\nfrom sklearn.metrics import precision_recall_curve"
+			},
+			{
+				"t": "code",
+				"s": "# Check actual and predicted values from initial model\n"
+			},
+			{
+				"t": "md",
+				"s": "7.3.10 Plot precision-recall curve <font color=\"red\">[2 Marks]</font>",
+				"ref": "7.3.10"
+			},
+			{
+				"t": "code",
+				"s": "# Plot precision-recall curve\n"
+			},
+			{
+				"t": "md",
+				"s": "## **8. Prediction and Model Evaluation** <font color = red>[30 marks]</font>\n\nUse the model from the previous step to make predictions on the validation set with the optimal cutoff. Then evaluate the model's performance using metrics such as accuracy, sensitivity, specificity, precision, and recall."
+			},
+			{
+				"t": "md",
+				"s": "### **8.1 Make predictions over validation set** <font color = red>[15 marks]</font>"
+			},
+			{
+				"t": "md",
+				"s": "8.1.1 Select relevant features for validation set <font color=\"red\">[2 Marks]</font>\n\n",
+				"ref": "8.1.1"
+			},
+			{
+				"t": "code",
+				"s": "# Select the relevant features for validation set\n"
+			},
+			{
+				"t": "md",
+				"s": "8.1.2 Add constant to X_validation <font color=\"red\">[2 Marks]</font>",
+				"ref": "8.1.2"
+			},
+			{
+				"t": "code",
+				"s": "# Add constant to X_validation\n"
+			},
+			{
+				"t": "md",
+				"s": "8.1.3 Make predictions over validation set <font color=\"red\">[3 Marks]</font>",
+				"ref": "8.1.3"
+			},
+			{
+				"t": "code",
+				"s": "# Make predictions on the validation set and store it in the variable 'y_validation_pred'\n\n# View predictions\n"
+			},
+			{
+				"t": "md",
+				"s": "8.1.4 Create DataFrame with actual values and predicted values for validation set <font color=\"red\">[5 Marks]</font>",
+				"ref": "8.1.4"
+			},
+			{
+				"t": "code",
+				"s": "# Convert 'y_validation_pred' to a DataFrame 'predicted_probability'\n\n# Convert 'y_validation' to DataFrame 'actual'\n\n# Remove index from both DataFrames 'actual' and 'predicted_probability' to append them side by side\n"
+			},
+			{
+				"t": "md",
+				"s": "8.1.5 Predict final prediction based on the cutoff value <font color=\"red\">[3 Marks]</font>",
+				"ref": "8.1.5"
+			},
+			{
+				"t": "code",
+				"s": "# Make predictions on the validation set using the optimal cutoff and store it in a column 'final_prediction'\n\n# Check the DataFrame\n"
+			},
+			{
+				"t": "md",
+				"s": "### **8.2 Calculate accuracy of the model** <font color = red>[2 marks]</font>",
+				"ref": "8.2"
+			},
+			{
+				"t": "code",
+				"s": "# Calculate the overall accuracy\n"
+			},
+			{
+				"t": "md",
+				"s": "### **8.3 Create confusion matrix and create variables for true positive, true negative, false positive and false negative** <font color = red>[5 marks]</font>",
+				"ref": "8.3"
+			},
+			{
+				"t": "code",
+				"s": "# Create confusion matrix\n"
+			},
+			{
+				"t": "code",
+				"s": "# Create variables for true positive, true negative, false positive and false negative\n"
+			},
+			{
+				"t": "md",
+				"s": "### **8.4 Calculate sensitivity and specificity** <font color = red>[4 marks]</font>",
+				"ref": "8.4"
+			},
+			{
+				"t": "code",
+				"s": "# Calculate sensitivity\n"
+			},
+			{
+				"t": "code",
+				"s": "# Calculate specificity\n"
+			},
+			{
+				"t": "md",
+				"s": "### **8.5 Calculate precision and recall** <font color = red>[4 marks]</font>",
+				"ref": "8.5"
+			},
+			{
+				"t": "code",
+				"s": "# Calculate precision\n"
+			},
+			{
+				"t": "code",
+				"s": "# Calculate recall\n"
+			},
+			{
+				"t": "md",
+				"s": "## Conclusion\n\n"
 			}
-		},
-		"2.1.3": {
-			"vi": {
-				"think": "Có dòng tiền âm. Trước khi sửa, hỏi nó là gì: thường là hoàn tiền hoặc tranh chấp, không phải giá âm thật.",
-				"steps": [
-					"Lọc df[df['fare_amount'] < 0] và đếm.",
-					"Xem RatecodeID và payment_type của các dòng đó (task hỏi cột RatecodeID khác thế nào).",
-					"Tìm mọi cột tiền có giá trị âm: (df[money_cols] < 0).sum().",
-					"Quyết định: lấy trị tuyệt đối nếu số âm là hoàn tiền ghi ngược dấu; bỏ nếu là lỗi."
-				],
-				"code": "money = ['fare_amount','extra','mta_tax','tip_amount','tolls_amount','improvement_surcharge','total_amount','congestion_surcharge','airport_fee']\nprint((df[money] < 0).sum())\nneg = df[df['fare_amount'] < 0]\nprint(neg['RatecodeID'].value_counts(dropna=False))\nprint(neg['payment_type'].value_counts())\ndf[money] = df[money].abs()",
-				"lotus": "Một dòng booking ghi -650 nghìn. Đó là hoàn tiền gói A12, không phải spa trả tiền cho khách. Hiểu nó là hoàn tiền thì mới chọn lấy trị tuyệt đối hoặc giữ riêng.",
-				"trap": "Sửa dấu hàng loạt mà không nhìn các dòng đó là gì có thể che mất một nhóm giao dịch hoàn tiền."
+		],
+		"guides": {
+			"1.1": {
+				"vi": {
+					"think": "Đọc file CSV vào DataFrame, in vài dòng và kích thước để biết mình đang có gì.",
+					"steps": [
+						"pd.read_csv đường dẫn Employee_data.csv.",
+						"head() xem vài dòng đầu, shape xem số dòng và cột.",
+						"File của bạn có 74.610 dòng và 24 cột."
+					],
+					"code": "df = pd.read_csv('Employee_data.csv')\nprint(df.shape)\ndf.head()",
+					"lotus": "Mỗi dòng là một nhân viên của chuỗi Lotus Spa (kỹ thuật viên, lễ tân, quản lý), mỗi cột là một thông tin hồ sơ về họ. Cột cuối Attrition cho biết họ ở lại hay nghỉ.",
+					"trap": "Đường dẫn file sai thì read_csv báo FileNotFoundError. Kiểm tra file nằm cạnh notebook."
+				},
+				"en": {
+					"think": "Read the CSV into a DataFrame, print a few rows and the size to see what you have.",
+					"steps": [
+						"pd.read_csv on Employee_data.csv.",
+						"head() for the first rows, shape for rows and columns.",
+						"Your file has 74,610 rows and 24 columns."
+					],
+					"code": "df = pd.read_csv('Employee_data.csv')\nprint(df.shape)\ndf.head()",
+					"lotus": "Each row is a Lotus Spa staff member (therapist, receptionist, manager), each column a piece of their record. The last column Attrition says whether they stayed or left.",
+					"trap": "A wrong path raises FileNotFoundError. Check the file sits next to the notebook."
+				}
 			},
-			"en": {
-				"think": "Some rows carry negative money. Before fixing, ask what they are: usually refunds or disputes, not truly negative prices.",
-				"steps": [
-					"Filter df[df['fare_amount'] < 0] and count.",
-					"Look at RatecodeID and payment_type for those rows (the task asks what is different in RatecodeID).",
-					"Find every money column with negatives: (df[money_cols] < 0).sum().",
-					"Decide: take the absolute value if negatives are refunds recorded with a flipped sign; drop if they are errors."
-				],
-				"code": "money = ['fare_amount','extra','mta_tax','tip_amount','tolls_amount','improvement_surcharge','total_amount','congestion_surcharge','airport_fee']\nprint((df[money] < 0).sum())\nneg = df[df['fare_amount'] < 0]\nprint(neg['RatecodeID'].value_counts(dropna=False))\nprint(neg['payment_type'].value_counts())\ndf[money] = df[money].abs()",
-				"lotus": "One booking row shows -650 thousand. It is a refund of package A12, not the spa paying the customer. Knowing it is a refund is what lets you choose absolute value or keeping it apart.",
-				"trap": "Flipping signs in bulk without looking at what those rows are can hide a whole group of refund transactions."
-			}
-		},
-		"2.2.1": {
-			"vi": {
-				"think": "Trước khi điền chỗ trống, đếm chỗ trống: cột nào thiếu bao nhiêu phần trăm.",
-				"steps": [
-					"df.isnull().mean() * 100.",
-					"Sắp xếp giảm dần và chỉ xem cột có thiếu.",
-					"Nhìn xem các cột thiếu có thiếu cùng các dòng không."
-				],
-				"code": "miss = (df.isnull().mean() * 100).sort_values(ascending=False)\nprint(miss[miss > 0])\n# do the same rows miss several columns?\ncols = ['passenger_count','RatecodeID','congestion_surcharge','airport_fee']\nprint(df[cols].isnull().all(axis=1).mean())",
-				"lotus": "Trong bảng booking, nếu «số khách», «mã gói» và «phụ phí» cùng trống trên cùng các dòng thì đó là một nguồn nhập thiếu, không phải ba lỗi riêng.",
-				"trap": "Điền từng cột riêng lẻ trước khi biết chúng thiếu cùng nhau hay không là điền khi chưa hiểu."
+			"1.2": {
+				"vi": {
+					"think": "Xem thống kê mô tả để biết thang đo từng cột số và có giá trị lạ không.",
+					"steps": [
+						"df.describe() cho cột số.",
+						"Nhìn count: nếu nhỏ hơn 74.610 là cột có ô trống.",
+						"Nhìn max/min xem có giá trị phi lý không."
+					],
+					"code": "df.describe()",
+					"lotus": "Trong file của bạn Distance from Home chỉ có 72.698 giá trị (thiếu 1.912) và Company Tenure có 72.197 (thiếu 2.413). Tuổi từ 18 đến 59, lương tháng trung bình khoảng 7.345.",
+					"trap": "describe() mặc định chỉ hiển thị cột số, cột chữ không xuất hiện."
+				},
+				"en": {
+					"think": "Look at summary statistics to see each numeric column's scale and any odd values.",
+					"steps": [
+						"df.describe() for numeric columns.",
+						"Look at count: smaller than 74,610 means blanks.",
+						"Look at max/min for impossible values."
+					],
+					"code": "df.describe()",
+					"lotus": "In your file Distance from Home has only 72,698 values (1,912 missing) and Company Tenure 72,197 (2,413 missing). Age runs 18 to 59, mean monthly income about 7,345.",
+					"trap": "describe() shows numeric columns only by default; text columns do not appear."
+				}
 			},
-			"en": {
-				"think": "Before filling blanks, count blanks: which column misses what percentage.",
-				"steps": [
-					"df.isnull().mean() * 100.",
-					"Sort descending and look only at columns with gaps.",
-					"Check whether the gappy columns miss the same rows."
-				],
-				"code": "miss = (df.isnull().mean() * 100).sort_values(ascending=False)\nprint(miss[miss > 0])\n# do the same rows miss several columns?\ncols = ['passenger_count','RatecodeID','congestion_surcharge','airport_fee']\nprint(df[cols].isnull().all(axis=1).mean())",
-				"lotus": "In the booking table, if “guests”, “package code” and “surcharge” are blank on the same rows, that is one source of missing entry, not three separate faults.",
-				"trap": "Filling each column on its own before knowing whether they are missing together is filling without understanding."
-			}
-		},
-		"2.2.2": {
-			"vi": {
-				"think": "passenger_count thiếu và có cả số 0. Số 0 khách không có nghĩa, nên coi như thiếu.",
-				"steps": [
-					"Xem các dòng NaN: df[df['passenger_count'].isnull()].head().",
-					"Đếm số 0: (df['passenger_count'] == 0).sum().",
-					"Đổi 0 thành NaN rồi điền bằng giá trị thường gặp nhất (mode), vì đây là số đếm nguyên."
-				],
-				"code": "print(df['passenger_count'].value_counts(dropna=False).sort_index())\ndf['passenger_count'] = df['passenger_count'].replace(0, np.nan)\ndf['passenger_count'] = df['passenger_count'].fillna(df['passenger_count'].mode()[0])",
-				"lotus": "Một booking ghi 0 khách thì chắc chắn nhập thiếu. Điền bằng 1 (giá trị thường gặp nhất) tốt hơn điền bằng trung bình 1,4 vì khách là số nguyên.",
-				"trap": "Điền trung bình sẽ ra 1,37 hành khách: một số không tồn tại ở đời thực."
+			"1.3": {
+				"vi": {
+					"think": "Xem kiểu dữ liệu từng cột để biết cột nào là số, cột nào là chữ.",
+					"steps": [
+						"df.info().",
+						"Đếm số cột object/str: đó là các cột nhóm sẽ cần dummy ở bước 6.",
+						"Chú ý cột nào đúng ra là nhóm nhưng đang là số."
+					],
+					"code": "df.info()",
+					"lotus": "Giới tính, vị trí công việc, mức hài lòng, làm thêm giờ... là chữ. Tuổi, lương, số lần thăng chức là số.",
+					"trap": "Mã nhân viên là số nhưng không có ý nghĩa tính toán: đừng đưa nó vào mô hình."
+				},
+				"en": {
+					"think": "Check each column's data type to know which are numeric and which text.",
+					"steps": [
+						"df.info().",
+						"Count object/str columns: those are categorical and will need dummies in step 6.",
+						"Notice any column that should be categorical but is numeric."
+					],
+					"code": "df.info()",
+					"lotus": "Gender, job role, satisfaction, overtime... are text. Age, income, promotions are numbers.",
+					"trap": "Employee ID is numeric but meaningless for calculation: do not feed it to the model."
+				}
 			},
-			"en": {
-				"think": "passenger_count has blanks and also zeros. Zero passengers has no meaning, so treat it as missing.",
-				"steps": [
-					"Look at the NaN rows: df[df['passenger_count'].isnull()].head().",
-					"Count zeros: (df['passenger_count'] == 0).sum().",
-					"Turn 0 into NaN, then fill with the most common value (mode), since it is an integer count."
-				],
-				"code": "print(df['passenger_count'].value_counts(dropna=False).sort_index())\ndf['passenger_count'] = df['passenger_count'].replace(0, np.nan)\ndf['passenger_count'] = df['passenger_count'].fillna(df['passenger_count'].mode()[0])",
-				"lotus": "A booking with 0 guests was surely entered wrongly. Filling with 1 (the most common) beats filling with a mean of 1.4 because guests are whole numbers.",
-				"trap": "Filling with the mean gives 1.37 passengers: a number that does not exist in real life."
-			}
-		},
-		"2.2.3": {
-			"vi": {
-				"think": "RatecodeID là mã, không phải số để lấy trung bình. Điền bằng mã thường gặp nhất.",
-				"steps": [
-					"Xem phân bố: df['RatecodeID'].value_counts(dropna=False).",
-					"Điền bằng mode, thường là 1 (giá chuẩn).",
-					"Kiểm tra lại không còn NaN."
-				],
-				"code": "print(df['RatecodeID'].value_counts(dropna=False))\ndf['RatecodeID'] = df['RatecodeID'].fillna(df['RatecodeID'].mode()[0])",
-				"lotus": "Mã gói là A12, B07, C03: không có «trung bình của A12 và B07». Chỉ điền bằng mã hay gặp nhất.",
-				"trap": "Trung bình của một mã vô nghĩa. Dùng mode cho cột mã."
+			"2.1.1": {
+				"vi": {
+					"think": "Đếm ô trống ở mỗi cột.",
+					"steps": ["df.isnull().sum().", "Chỉ hai cột có thiếu: Distance from Home (1.912) và Company Tenure (2.413)."],
+					"code": "df.isnull().sum()",
+					"lotus": "Hồ sơ nhân viên thiếu khoảng cách từ nhà đến chi nhánh và thâm niên: chị Lan chưa nhập đủ.",
+					"trap": "isnull().sum() không đếm ô chứa chữ như «N/A». Với file này không có, nhưng hãy nhớ kiểm tra."
+				},
+				"en": {
+					"think": "Count blanks in each column.",
+					"steps": ["df.isnull().sum().", "Only two columns have gaps: Distance from Home (1,912) and Company Tenure (2,413)."],
+					"code": "df.isnull().sum()",
+					"lotus": "Staff records miss the distance from home to the branch and tenure: chị Lan did not fill them all in.",
+					"trap": "isnull().sum() does not count text like “N/A”. This file has none, but remember to check."
+				}
 			},
-			"en": {
-				"think": "RatecodeID is a code, not a number to average. Fill with the most common code.",
-				"steps": [
-					"Look at the distribution: df['RatecodeID'].value_counts(dropna=False).",
-					"Fill with the mode, usually 1 (standard rate).",
-					"Check that no NaN remains."
-				],
-				"code": "print(df['RatecodeID'].value_counts(dropna=False))\ndf['RatecodeID'] = df['RatecodeID'].fillna(df['RatecodeID'].mode()[0])",
-				"lotus": "Package codes are A12, B07, C03: there is no “average of A12 and B07”. Fill only with the most common code.",
-				"trap": "The average of a code is meaningless. Use the mode for code columns."
-			}
-		},
-		"2.2.4": {
-			"vi": {
-				"think": "congestion_surcharge thiếu. Phí này chỉ áp dụng ở một số chuyến, nên 0 là một giá trị có nghĩa, không phải thiếu bừa.",
-				"steps": [
-					"Xem phân bố: df['congestion_surcharge'].value_counts(dropna=False).",
-					"Xem các dòng NaN có phải cùng các dòng thiếu RatecodeID và passenger_count không.",
-					"Điền 0 nếu coi là «không áp dụng», hoặc điền mode (thường 2.5) nếu bạn lập luận chuyến đó thuộc vùng áp phí. Ghi quyết định."
-				],
-				"code": "print(df['congestion_surcharge'].value_counts(dropna=False))\ndf['congestion_surcharge'] = df['congestion_surcharge'].fillna(df['congestion_surcharge'].mode()[0])",
-				"lotus": "Phụ phí ngoài giờ chỉ áp dụng ở vài khung giờ. Dòng thiếu phụ phí có thể là «không áp dụng» (0) hay «quên ghi» (mức thường). Hai cách điền cho ra hai tổng doanh thu khác nhau.",
-				"trap": "Chọn mode hay 0 đổi tổng phụ phí. Nói rõ mình đã chọn gì và vì sao."
+			"2.1.2": {
+				"vi": {
+					"think": "Đổi số ô trống thành phần trăm để quyết định xử lý.",
+					"steps": ["df.isnull().mean() * 100.", "File của bạn: Distance 2,56%, Tenure 3,23%."],
+					"code": "(df.isnull().mean() * 100).round(2)",
+					"lotus": "Thiếu 2 đến 3% là ít. Bỏ các dòng này không làm hao đáng kể số nhân viên.",
+					"trap": "Nhìn số đếm 1.912 mà không so với tổng 74.610 dễ đánh giá sai mức độ."
+				},
+				"en": {
+					"think": "Turn the blank counts into percentages to decide how to handle them.",
+					"steps": ["df.isnull().mean() * 100.", "Your file: Distance 2.56%, Tenure 3.23%."],
+					"code": "(df.isnull().mean() * 100).round(2)",
+					"lotus": "2 to 3% missing is little. Dropping those rows does not lose many staff.",
+					"trap": "Looking at 1,912 without comparing to the 74,610 total makes it easy to misjudge the scale."
+				}
 			},
-			"en": {
-				"think": "congestion_surcharge has gaps. This fee applies only to some trips, so 0 is a meaningful value, not a lazy fill.",
-				"steps": [
-					"Look at the distribution: df['congestion_surcharge'].value_counts(dropna=False).",
-					"Check whether the NaN rows are the same ones missing RatecodeID and passenger_count.",
-					"Fill with 0 if you treat it as “not applicable”, or with the mode (usually 2.5) if you argue the trip falls in a charged zone. Record the decision."
-				],
-				"code": "print(df['congestion_surcharge'].value_counts(dropna=False))\ndf['congestion_surcharge'] = df['congestion_surcharge'].fillna(df['congestion_surcharge'].mode()[0])",
-				"lotus": "The off-peak surcharge applies in only a few time windows. A row missing it may mean “not applicable” (0) or “forgot to record” (the usual rate). The two fills give different total revenue.",
-				"trap": "Choosing mode or 0 changes the surcharge total. State what you chose and why."
-			}
-		},
-		"2.3.1": {
-			"vi": {
-				"think": "Phân tích phân phối trước, rồi mới xóa. Mỗi gợi ý trong đề là một quy tắc, và mỗi quy tắc cần một quyết định: bỏ dòng hay thay giá trị.",
-				"steps": [
-					"df.describe() và xem max, min của trip_distance, fare_amount, total_amount.",
-					"Quy tắc 1: trip_distance gần 0 mà fare trên 300: bỏ (không có chuyến thật như vậy).",
-					"Quy tắc 2: cả khoảng cách và tiền bằng 0 nhưng hai vùng khác nhau: bỏ.",
-					"Quy tắc 3: trip_distance trên 250 dặm: bỏ hoặc xem kỹ.",
-					"Quy tắc 4: payment_type bằng 0 không có trong từ điển: bỏ hoặc gộp vào 5 (Unknown).",
-					"Sau cùng bỏ passenger_count lớn hơn 6 (task nói rõ), và đếm số dòng đã bỏ ở mỗi bước."
-				],
-				"code": "print(df.describe().T)\nn0 = len(df)\ndf = df[~((df['trip_distance'] < 0.1) & (df['fare_amount'] > 300))]\ndf = df[~((df['trip_distance'] == 0) & (df['fare_amount'] == 0) & (df['PULocationID'] != df['DOLocationID']))]\ndf = df[df['trip_distance'] <= 250]\ndf = df[df['payment_type'] != 0]\ndf = df[df['passenger_count'] <= 6]\nprint(n0 - len(df), 'rows removed')",
-				"lotus": "Booking ghi giá 65.000 nghìn cho 5 phút ghế massage là lỗi nhập thêm hai số 0. Bỏ nó. Booking giá 0 nhưng chi nhánh vào và ra khác nhau cũng không hợp lệ.",
-				"trap": "Bỏ quá tay làm mẫu mất thật. Ghi số dòng bỏ ở mỗi quy tắc để thấy quy tắc nào xóa nhiều."
+			"2.1.3": {
+				"vi": {
+					"think": "Xử lý dòng thiếu. Vì tỷ lệ nhỏ, cách đơn giản và an toàn là bỏ các dòng đó.",
+					"steps": [
+						"df = df.dropna().",
+						"Ghi rõ lý do: thiếu ít, không có mẫu hình lệch.",
+						"Phương án khác là điền trung bình/trung vị, nhưng bài này cần bỏ."
+					],
+					"code": "df = df.dropna()\ndf.shape",
+					"lotus": "Bỏ những nhân viên thiếu thông tin thay vì đoán khoảng cách nhà của họ.",
+					"trap": "Gọi dropna() mà không gán lại df thì bảng không đổi."
+				},
+				"en": {
+					"think": "Handle the rows with gaps. Since the share is small, the simple and safe way is to drop them.",
+					"steps": [
+						"df = df.dropna().",
+						"State the reason: few missing, no skewed pattern.",
+						"The alternative is imputing mean/median, but here dropping is expected."
+					],
+					"code": "df = df.dropna()\ndf.shape",
+					"lotus": "Drop staff with missing info instead of guessing their distance from home.",
+					"trap": "Calling dropna() without assigning back leaves the table unchanged."
+				}
 			},
-			"en": {
-				"think": "Analyse the distribution first, then remove. Each hint in the brief is a rule, and each rule needs a decision: drop the row or replace the value.",
-				"steps": [
-					"df.describe() and look at max and min of trip_distance, fare_amount, total_amount.",
-					"Rule 1: trip_distance near 0 but fare above 300: drop (no real trip is like that).",
-					"Rule 2: distance and fare both 0 but the two zones differ: drop.",
-					"Rule 3: trip_distance above 250 miles: drop or inspect closely.",
-					"Rule 4: payment_type 0 is not in the dictionary: drop or merge into 5 (Unknown).",
-					"Finally drop passenger_count above 6 (the task says so), and count the rows removed at each step."
-				],
-				"code": "print(df.describe().T)\nn0 = len(df)\ndf = df[~((df['trip_distance'] < 0.1) & (df['fare_amount'] > 300))]\ndf = df[~((df['trip_distance'] == 0) & (df['fare_amount'] == 0) & (df['PULocationID'] != df['DOLocationID']))]\ndf = df[df['trip_distance'] <= 250]\ndf = df[df['payment_type'] != 0]\ndf = df[df['passenger_count'] <= 6]\nprint(n0 - len(df), 'rows removed')",
-				"lotus": "A booking priced 65,000 thousand for 5 minutes of massage chair is a typing slip with two extra zeros. Drop it. A booking priced 0 whose start and end branch differ is also invalid.",
-				"trap": "Over-removing loses real data. Record rows removed at each rule to see which rule deletes the most."
-			}
-		},
-		"3.1.1": {
-			"vi": {
-				"think": "Phân loại biến trước khi vẽ: số (đo được, có khoảng cách) hay nhóm (nhãn). Mã số như VendorID trông như số nhưng là nhóm.",
-				"steps": [
-					"Hỏi: cộng hoặc lấy trung bình của cột này có nghĩa không?",
-					"Mã (VendorID, RatecodeID, PULocationID, DOLocationID, payment_type) là nhóm dù là số.",
-					"Số lượng đo được (passenger_count, trip_distance, trip_duration, pickup_hour) là số. pickup_hour có tính chu kỳ nhưng vẫn xếp là số theo đề.",
-					"Cột tiền: là số, vì cộng và trung bình có nghĩa."
-				],
-				"code": "numerical = ['passenger_count','trip_distance','pickup_hour','trip_duration']\ncategorical = ['VendorID','RatecodeID','PULocationID','DOLocationID','payment_type']\n# money columns: numerical",
-				"lotus": "Mã gói A12 hay mã chi nhánh 1, 2, 3 là nhóm. Giá 650 nghìn là số. Lấy trung bình của «mã chi nhánh» không cho ra điều gì có nghĩa.",
-				"trap": "Một cột chứa số không tự động là biến số. Hỏi xem trung bình có nghĩa không."
+			"2.1.4": {
+				"vi": {
+					"think": "Tính lại phần dữ liệu còn lại sau khi bỏ dòng thiếu.",
+					"steps": ["len(df) / 74610 * 100.", "File của bạn còn 70.635 dòng, khoảng 94,7%."],
+					"code": "print(len(df), round(len(df) / 74610 * 100, 2))",
+					"lotus": "Còn gần 95% nhân viên, đủ nhiều để mô hình tin cậy.",
+					"trap": "Dùng số 74.610 cố định thay vì kích thước ban đầu đã lưu làm sai khi dữ liệu thay đổi. Lưu n_ban_dau trước."
+				},
+				"en": {
+					"think": "Compute how much data remains after dropping the rows with gaps.",
+					"steps": ["len(df) / 74610 * 100.", "Your file keeps 70,635 rows, about 94.7%."],
+					"code": "print(len(df), round(len(df) / 74610 * 100, 2))",
+					"lotus": "Nearly 95% of staff remain, plenty for a reliable model.",
+					"trap": "Hard-coding 74,610 breaks if the data changes. Save the original size first."
+				}
 			},
-			"en": {
-				"think": "Classify variables before plotting: numerical (measurable, with distances) or categorical (labels). Code numbers like VendorID look numeric but are categories.",
-				"steps": [
-					"Ask: do sums or averages of this column mean anything?",
-					"Codes (VendorID, RatecodeID, PULocationID, DOLocationID, payment_type) are categorical even though numeric.",
-					"Measured quantities (passenger_count, trip_distance, trip_duration, pickup_hour) are numerical. pickup_hour is cyclic but still numerical per the brief.",
-					"Money columns: numerical, since sums and means are meaningful."
-				],
-				"code": "numerical = ['passenger_count','trip_distance','pickup_hour','trip_duration']\ncategorical = ['VendorID','RatecodeID','PULocationID','DOLocationID','payment_type']\n# money columns: numerical",
-				"lotus": "Package code A12 or branch code 1, 2, 3 are categories. A price of 650 thousand is numerical. The average of a “branch code” means nothing.",
-				"trap": "A column holding numbers is not automatically a numerical variable. Ask whether the average means something."
-			}
-		},
-		"3.1.2": {
-			"vi": {
-				"think": "Ba lát cắt thời gian: theo giờ, theo thứ trong tuần, theo tháng. Mỗi lát cắt là một cột mới và một groupby.",
-				"steps": [
-					"Tạo pickup_hour, pickup_day (tên thứ), pickup_month từ tpep_pickup_datetime.",
-					"Đếm số chuyến theo mỗi cột và vẽ cột (bar).",
-					"Đặt thứ tự thứ trong tuần từ Monday đến Sunday, không để tự sắp theo chữ."
-				],
-				"code": "df['pickup_hour'] = df['tpep_pickup_datetime'].dt.hour\ndf['pickup_day'] = df['tpep_pickup_datetime'].dt.day_name()\ndf['pickup_month'] = df['tpep_pickup_datetime'].dt.month\ndays = ['Monday','Tuesday','Wednesday','Thursday','Friday','Saturday','Sunday']\ndf.groupby('pickup_hour').size().plot(kind='bar')\ndf['pickup_day'].value_counts().reindex(days).plot(kind='bar')\ndf.groupby('pickup_month').size().plot(kind='bar')",
-				"lotus": "Đếm booking Lotus Spa theo giờ cho thấy đỉnh ở 18:00 đến 20:00. Theo thứ cho thấy cuối tuần đông. Theo tháng cho thấy tháng 12 xuống (180 form so với 220), một câu hỏi để đào tiếp, không phải kết luận.",
-				"trap": "Thứ trong tuần mà không đặt thứ tự sẽ xếp theo bảng chữ cái: Friday đứng đầu."
+			"2.2": {
+				"vi": {
+					"think": "Tìm giá trị thừa hoặc lỗi trong cột nhóm: cùng một thứ viết hai kiểu, ký tự lỗi.",
+					"steps": [
+						"Với mỗi cột chữ, in unique() hoặc value_counts().",
+						"File của bạn: Education Level có chữ lỗi «Bachelorâ€™s Degree», «Masterâ€™s Degree» do mã hóa ký tự (dấu ’ bị vỡ).",
+						"Sửa bằng replace, hoặc ghi chú nếu bạn giữ nguyên (miễn nhất quán)."
+					],
+					"code": "for c in df.select_dtypes(include='object').columns:\n    print(c, df[c].unique())\ndf['Education Level'] = df['Education Level'].str.replace('â€™', \"'\")",
+					"lotus": "Giống bảng chấm công nơi «Cử nhân» có chỗ viết có dấu, chỗ lỗi font: máy coi là hai loại khác nhau.",
+					"trap": "Nếu sửa ở train mà quên sửa ở validation thì get_dummies tạo hai bộ cột khác nhau."
+				},
+				"en": {
+					"think": "Find redundant or wrong values in categorical columns: the same thing written two ways, broken characters.",
+					"steps": [
+						"For each text column, print unique() or value_counts().",
+						"Your file: Education Level has garbled text like “Bachelorâ€™s Degree” and “Masterâ€™s Degree” from a character encoding error.",
+						"Fix with replace, or note it if you keep it as is (as long as it is consistent)."
+					],
+					"code": "for c in df.select_dtypes(include='object').columns:\n    print(c, df[c].unique())\ndf['Education Level'] = df['Education Level'].str.replace('â€™', \"'\")",
+					"lotus": "Like a timesheet where “Bachelor” is written with the right accent in one place and a broken font in another: the machine sees two different groups.",
+					"trap": "Fixing train but not validation makes get_dummies create two different column sets."
+				}
 			},
-			"en": {
-				"think": "Three time cuts: by hour, by weekday, by month. Each cut is a new column and a groupby.",
-				"steps": [
-					"Create pickup_hour, pickup_day (day name), pickup_month from tpep_pickup_datetime.",
-					"Count trips by each column and draw bars.",
-					"Order weekdays Monday to Sunday, do not let them sort alphabetically."
-				],
-				"code": "df['pickup_hour'] = df['tpep_pickup_datetime'].dt.hour\ndf['pickup_day'] = df['tpep_pickup_datetime'].dt.day_name()\ndf['pickup_month'] = df['tpep_pickup_datetime'].dt.month\ndays = ['Monday','Tuesday','Wednesday','Thursday','Friday','Saturday','Sunday']\ndf.groupby('pickup_hour').size().plot(kind='bar')\ndf['pickup_day'].value_counts().reindex(days).plot(kind='bar')\ndf.groupby('pickup_month').size().plot(kind='bar')",
-				"lotus": "Counting Lotus Spa bookings by hour shows a peak at 18:00 to 20:00. By weekday it shows busy weekends. By month it shows December down (180 forms versus 220), a question to dig into, not a conclusion.",
-				"trap": "Weekdays without an order sort alphabetically: Friday comes first."
-			}
-		},
-		"3.1.3": {
-			"vi": {
-				"think": "Trước khi lọc số 0, nhìn xem có bao nhiêu và chúng là gì. Khoảng cách 0 có thể là chuyến trong cùng một vùng, không phải lỗi.",
-				"steps": [
-					"Đếm số 0 và số âm trong fare_amount, tip_amount, total_amount, trip_distance.",
-					"Lọc fare_amount > 0, total_amount > 0 (tiền thật).",
-					"Với trip_distance 0, kiểm tra PULocationID có bằng DOLocationID không rồi mới quyết định giữ hay bỏ.",
-					"Tạo một bảng sao df_nz, đừng ghi đè df."
-				],
-				"code": "cols = ['fare_amount','tip_amount','total_amount','trip_distance']\nprint((df[cols] <= 0).sum())\ndf_nz = df[(df['fare_amount'] > 0) & (df['total_amount'] > 0)].copy()\n# trip_distance == 0 may be same-zone trips: inspect before dropping\nprint(((df['trip_distance'] == 0) & (df['PULocationID'] == df['DOLocationID'])).sum())",
-				"lotus": "Booking giá 0 là tặng thử, không phải lỗi. Booking thời lượng 0 phút ở một chi nhánh có thể là hủy. Xem rồi mới quyết định bỏ hay giữ.",
-				"trap": "Bỏ mọi số 0 thì mất cả chuyến cùng vùng, một nhóm chuyến thật."
+			"2.3": {
+				"vi": {
+					"think": "Bỏ cột không giúp dự đoán, ví dụ mã nhân viên.",
+					"steps": [
+						"Employee ID là mã định danh duy nhất, không mang thông tin.",
+						"df = df.drop(columns=['Employee ID']).",
+						"Ghi lý do cho từng cột bỏ."
+					],
+					"code": "df = df.drop(columns=['Employee ID'])\ndf.head()",
+					"lotus": "Số thẻ nhân viên không nói gì về việc họ nghỉ hay ở. Giữ lại chỉ làm mô hình nhớ từng người.",
+					"trap": "Để mã duy nhất trong X làm mô hình học thuộc lòng, nhìn tốt trên train nhưng sai trên dữ liệu mới."
+				},
+				"en": {
+					"think": "Drop columns that do not help prediction, such as the employee ID.",
+					"steps": [
+						"Employee ID is a unique identifier carrying no information.",
+						"df = df.drop(columns=['Employee ID']).",
+						"Write a reason for each column dropped."
+					],
+					"code": "df = df.drop(columns=['Employee ID'])\ndf.head()",
+					"lotus": "A staff card number says nothing about whether they leave. Keeping it only lets the model memorise individuals.",
+					"trap": "Leaving a unique ID in X lets the model memorise: good on train, wrong on new data."
+				}
 			},
-			"en": {
-				"think": "Before filtering zeros, look at how many there are and what they are. Distance 0 may be a trip within one zone, not an error.",
-				"steps": [
-					"Count zeros and negatives in fare_amount, tip_amount, total_amount, trip_distance.",
-					"Filter fare_amount > 0, total_amount > 0 (real money).",
-					"For trip_distance 0, check whether PULocationID equals DOLocationID before deciding to keep or drop.",
-					"Create a copy df_nz, do not overwrite df."
-				],
-				"code": "cols = ['fare_amount','tip_amount','total_amount','trip_distance']\nprint((df[cols] <= 0).sum())\ndf_nz = df[(df['fare_amount'] > 0) & (df['total_amount'] > 0)].copy()\n# trip_distance == 0 may be same-zone trips: inspect before dropping\nprint(((df['trip_distance'] == 0) & (df['PULocationID'] == df['DOLocationID'])).sum())",
-				"lotus": "A booking priced 0 is a free trial, not an error. A 0-minute booking at one branch may be a cancellation. Look, then decide to drop or keep.",
-				"trap": "Dropping every zero loses same-zone trips, a real group."
-			}
-		},
-		"3.1.4": {
-			"vi": {
-				"think": "Doanh thu theo tháng là tổng total_amount theo tháng. Nhớ rằng đây là mẫu 5%, nên số tuyệt đối thấp; xu hướng mới là điều cần đọc.",
-				"steps": [
-					"Tạo cột tháng từ tpep_pickup_datetime.",
-					"df.groupby('pickup_month')['total_amount'].sum().",
-					"Vẽ đường hoặc cột, ghi tháng cao nhất và thấp nhất."
-				],
-				"code": "monthly = df.groupby('pickup_month')['total_amount'].sum()\nmonthly.plot(kind='line', marker='o')\nprint(monthly.idxmax(), monthly.idxmin())",
-				"lotus": "Doanh thu Lotus Spa theo tháng cho thấy tháng 12 thấp hơn tháng 11. Hỏi trước khi kết luận: tháng 12 có đủ ngày không, có đợt khuyến mãi nào không.",
-				"trap": "Đọc doanh thu mẫu như doanh thu thật. Mẫu 5% chỉ cho xu hướng, và con số thật cần nhân lên ở bài 3.2.3."
+			"3.1": {
+				"vi": {
+					"think": "Nạp thư viện chia dữ liệu.",
+					"steps": ["from sklearn.model_selection import train_test_split."],
+					"code": "from sklearn.model_selection import train_test_split",
+					"lotus": "Chuẩn bị công cụ để để riêng một phần nhân viên cho việc kiểm tra.",
+					"trap": "Không có."
+				},
+				"en": {
+					"think": "Import the split helper.",
+					"steps": ["from sklearn.model_selection import train_test_split."],
+					"code": "from sklearn.model_selection import train_test_split",
+					"lotus": "Get the tool ready to set aside some staff for testing.",
+					"trap": "None."
+				}
 			},
-			"en": {
-				"think": "Monthly revenue is the sum of total_amount by month. Remember this is a 5% sample, so absolute numbers are low; the trend is what you read.",
-				"steps": [
-					"Create the month column from tpep_pickup_datetime.",
-					"df.groupby('pickup_month')['total_amount'].sum().",
-					"Draw a line or bars, note the highest and lowest months."
-				],
-				"code": "monthly = df.groupby('pickup_month')['total_amount'].sum()\nmonthly.plot(kind='line', marker='o')\nprint(monthly.idxmax(), monthly.idxmin())",
-				"lotus": "Lotus Spa monthly revenue shows December below November. Ask before concluding: does December have all its days, was there a promotion.",
-				"trap": "Reading sample revenue as real revenue. A 5% sample gives only the trend, and the real figure needs scaling in task 3.2.3."
-			}
-		},
-		"3.1.5": {
-			"vi": {
-				"think": "Tỷ trọng mỗi quý là doanh thu quý chia cho doanh thu cả năm. Bốn số cộng lại bằng 100%.",
-				"steps": [
-					"Tạo cột quý: dt.quarter.",
-					"Cộng total_amount theo quý.",
-					"Chia cho tổng cả năm để ra tỷ trọng và vẽ biểu đồ tròn hoặc cột."
-				],
-				"code": "df['quarter'] = df['tpep_pickup_datetime'].dt.quarter\nq = df.groupby('quarter')['total_amount'].sum()\nshare = q / q.sum()\nprint(share.round(3), share.sum())\nshare.plot(kind='bar')",
-				"lotus": "Doanh thu quý 1 là 80, quý 2 là 100, quý 3 là 90, quý 4 là 130 (triệu): tổng 400, tỷ trọng 20%, 25%, 22,5%, 32,5%. Cộng lại luôn 100%.",
-				"trap": "Quên kiểm tra tổng các tỷ trọng bằng 1 là cách dễ để chia nhầm mẫu số."
+			"3.2": {
+				"vi": {
+					"think": "Tách X (các cột đầu vào) và y (Attrition, thứ cần đoán).",
+					"steps": [
+						"y = df['Attrition'].",
+						"X = df.drop(columns=['Attrition']).",
+						"Kiểm tra X không còn cột Attrition."
+					],
+					"code": "y = df['Attrition']\nX = df.drop(columns=['Attrition'])\nprint(X.shape, y.shape)",
+					"lotus": "Câu hỏi: nhân viên này sẽ ở lại hay nghỉ? Đáp án đi riêng một bên.",
+					"trap": "Để Attrition lọt vào X làm mô hình đạt độ chính xác gần 100% giả tạo."
+				},
+				"en": {
+					"think": "Separate X (input columns) and y (Attrition, the thing to predict).",
+					"steps": [
+						"y = df['Attrition'].",
+						"X = df.drop(columns=['Attrition']).",
+						"Check X no longer has Attrition."
+					],
+					"code": "y = df['Attrition']\nX = df.drop(columns=['Attrition'])\nprint(X.shape, y.shape)",
+					"lotus": "The question: will this staff member stay or leave? The answer goes separately.",
+					"trap": "Letting Attrition slip into X gives a fake near-100% accuracy."
+				}
 			},
-			"en": {
-				"think": "Each quarter's share is quarter revenue divided by whole-year revenue. The four numbers sum to 100%.",
-				"steps": [
-					"Create the quarter column: dt.quarter.",
-					"Sum total_amount by quarter.",
-					"Divide by the yearly total to get shares and draw a pie or bars."
-				],
-				"code": "df['quarter'] = df['tpep_pickup_datetime'].dt.quarter\nq = df.groupby('quarter')['total_amount'].sum()\nshare = q / q.sum()\nprint(share.round(3), share.sum())\nshare.plot(kind='bar')",
-				"lotus": "Quarterly revenue is 80, 100, 90, 130 (million): total 400, shares 20%, 25%, 22.5%, 32.5%. They always add up to 100%.",
-				"trap": "Forgetting to check that shares sum to 1 is an easy way to divide by the wrong denominator."
-			}
-		},
-		"3.1.6": {
-			"vi": {
-				"think": "Quan hệ giữa quãng đường và giá cước: vẽ điểm và đo tương quan. Bỏ các chuyến cách 0 dặm theo gợi ý.",
-				"steps": [
-					"Lọc trip_distance > 0.",
-					"Vẽ scatter (lấy mẫu vài nghìn điểm cho nhẹ).",
-					"Tính df[['trip_distance','fare_amount']].corr()."
-				],
-				"code": "d = df[df['trip_distance'] > 0]\nsns.scatterplot(data=d.sample(5000, random_state=42), x='trip_distance', y='fare_amount', alpha=0.3)\nprint(d[['trip_distance','fare_amount']].corr())",
-				"lotus": "Thời lượng liệu trình và giá: 60 phút 650 nghìn, 90 phút 950 nghìn. Các điểm gần một đường thẳng nên tương quan cao, nhưng không có nghĩa thời lượng là nguyên nhân của giá, vì giá được đặt theo bảng giá.",
-				"trap": "Tương quan cao không phải nguyên nhân. Giá cước tính theo quãng đường theo công thức, nên tương quan ở đây là hệ quả của công thức."
+			"3.3": {
+				"vi": {
+					"think": "Chia 70% train và 30% validation, có random_state để lặp lại được.",
+					"steps": [
+						"train_test_split(X, y, train_size=0.7, random_state=100).",
+						"Bạn có thể thêm stratify=y để giữ tỷ lệ ở/nghỉ.",
+						"File của bạn sau khi bỏ dòng thiếu: khoảng 49.400 dòng train và 21.200 validation."
+					],
+					"code": "X_train, X_validation, y_train, y_validation = train_test_split(X, y, train_size=0.7, random_state=100)\nprint(len(X_train), len(X_validation))",
+					"lotus": "Như để riêng 30% hồ sơ nhân viên để thử dự đoán sau khi học quy luật từ 70% còn lại.",
+					"trap": "Chia xong mới làm EDA và làm sạch tiếp. Làm trước thì thông tin validation đã lọt vào quyết định."
+				},
+				"en": {
+					"think": "Split 70% train and 30% validation, with random_state so it is repeatable.",
+					"steps": [
+						"train_test_split(X, y, train_size=0.7, random_state=100).",
+						"You may add stratify=y to keep the stay/leave ratio.",
+						"Your file after dropping gaps: about 49,400 train rows and 21,200 validation."
+					],
+					"code": "X_train, X_validation, y_train, y_validation = train_test_split(X, y, train_size=0.7, random_state=100)\nprint(len(X_train), len(X_validation))",
+					"lotus": "Like keeping 30% of staff records aside to test predictions after learning the rule from the other 70%.",
+					"trap": "Split first, then do EDA and further cleaning. Doing it before lets validation information leak into your decisions."
+				}
 			},
-			"en": {
-				"think": "Relationship between distance and fare: plot points and measure correlation. Drop 0-mile trips as hinted.",
-				"steps": [
-					"Filter trip_distance > 0.",
-					"Draw a scatter (sample a few thousand points to keep it light).",
-					"Compute df[['trip_distance','fare_amount']].corr()."
-				],
-				"code": "d = df[df['trip_distance'] > 0]\nsns.scatterplot(data=d.sample(5000, random_state=42), x='trip_distance', y='fare_amount', alpha=0.3)\nprint(d[['trip_distance','fare_amount']].corr())",
-				"lotus": "Session length and price: 60 minutes 650 thousand, 90 minutes 950 thousand. The points sit near a line so correlation is high, but length does not cause price, because price is set from a price list.",
-				"trap": "High correlation is not cause. Fares are computed from distance by a formula, so correlation here is a consequence of the formula."
-			}
-		},
-		"3.1.7": {
-			"vi": {
-				"think": "Ba quan hệ cần tương quan và hình: giá với thời lượng chuyến, giá với số khách, tiền boa với quãng đường.",
-				"steps": [
-					"Tạo trip_duration = (dropoff − pickup) tính bằng phút.",
-					"Lọc thời lượng hợp lý (lớn hơn 0 và nhỏ hơn vài giờ).",
-					"Vẽ từng cặp và in hệ số tương quan.",
-					"Nhớ tiền boa tiền mặt không được ghi."
-				],
-				"code": "df['trip_duration'] = (df['tpep_dropoff_datetime'] - df['tpep_pickup_datetime']).dt.total_seconds() / 60\nd = df[(df['trip_duration'] > 0) & (df['trip_duration'] < 180)]\nprint(d[['fare_amount','trip_duration']].corr())\nprint(d[['fare_amount','passenger_count']].corr())\nprint(d[['tip_amount','trip_distance']].corr())",
-				"lotus": "Giá liệu trình theo số khách trong một booking: hai khách không trả gấp đôi. Tương quan thấp ở đây nói rằng số khách không quyết định giá, không nói rằng số khách vô nghĩa.",
-				"trap": "Trip_duration âm hoặc quá lớn là lỗi giờ. Lọc trước khi tính tương quan."
+			"4.1.1": {
+				"vi": {
+					"think": "Chọn các cột số của tập train.",
+					"steps": ["X_train.select_dtypes(include='number').columns."],
+					"code": "num_cols = X_train.select_dtypes(include=['int64', 'float64']).columns\nnum_cols",
+					"lotus": "Tuổi, lương, thâm niên, số lần thăng chức, số người phụ thuộc, khoảng cách từ nhà.",
+					"trap": "Đừng lấy cột số từ toàn bộ df, hãy lấy từ X_train."
+				},
+				"en": {
+					"think": "Select the numeric columns of the training set.",
+					"steps": ["X_train.select_dtypes(include='number').columns."],
+					"code": "num_cols = X_train.select_dtypes(include=['int64', 'float64']).columns\nnum_cols",
+					"lotus": "Age, income, tenure, promotions, dependents, distance from home.",
+					"trap": "Do not take numeric columns from the whole df; take them from X_train."
+				}
 			},
-			"en": {
-				"think": "Three relationships need correlation and a picture: fare with trip duration, fare with passenger count, tip with distance.",
-				"steps": [
-					"Create trip_duration = (dropoff − pickup) in minutes.",
-					"Filter plausible durations (above 0 and below a few hours).",
-					"Plot each pair and print the correlation coefficient.",
-					"Remember cash tips are not recorded."
-				],
-				"code": "df['trip_duration'] = (df['tpep_dropoff_datetime'] - df['tpep_pickup_datetime']).dt.total_seconds() / 60\nd = df[(df['trip_duration'] > 0) & (df['trip_duration'] < 180)]\nprint(d[['fare_amount','trip_duration']].corr())\nprint(d[['fare_amount','passenger_count']].corr())\nprint(d[['tip_amount','trip_distance']].corr())",
-				"lotus": "Session price by number of guests in one booking: two guests do not pay double. Low correlation here says guest count does not set price, not that guest count is meaningless.",
-				"trap": "A negative or huge trip_duration is a time error. Filter before computing correlation."
-			}
-		},
-		"3.1.8": {
-			"vi": {
-				"think": "Phân bố loại thanh toán là đếm từng loại và chia cho tổng. Mã 1 thẻ, 2 tiền mặt, 3 miễn phí, 4 tranh chấp.",
-				"steps": [
-					"df['payment_type'].value_counts(normalize=True).",
-					"Vẽ cột hoặc tròn, gắn nhãn chữ thay cho mã.",
-					"Ghi chú: tiền boa chỉ có ở thanh toán thẻ."
-				],
-				"code": "labels = {1:'Credit card', 2:'Cash', 3:'No charge', 4:'Dispute'}\npt = df['payment_type'].map(labels).value_counts(normalize=True)\nprint(pt.round(3))\npt.plot(kind='bar')",
-				"lotus": "Lotus Spa: 70% thanh toán thẻ, 25% chuyển khoản, 5% tiền mặt. Cột tiền boa chỉ phản ánh phần thẻ và chuyển khoản.",
-				"trap": "Quên rằng cột boa không tính tiền mặt sẽ làm tỷ lệ boa thật bị thấp đi."
+			"4.1.2": {
+				"vi": {
+					"think": "Vẽ phân phối từng cột số để thấy hình dạng và điểm xa.",
+					"steps": [
+						"Histogram từng cột, có thể dùng lưới subplot.",
+						"Ghi chú cột nào lệch (Monthly Income có max tới 50.030 trong khi trung bình khoảng 7.345; Number of Dependents tới 15).",
+						"Những đỉnh bất thường gợi ý điểm xa hoặc lỗi nhập."
+					],
+					"code": "X_train[num_cols].hist(bins=30, figsize=(14, 10))\nplt.show()",
+					"lotus": "Lương của hầu hết nhân viên quanh 7.000, nhưng vài người cao gấp bảy lần: có thể là quản lý cấp cao hoặc lỗi nhập.",
+					"trap": "Nhìn một biểu đồ không đủ để kết luận lỗi. Đối chiếu với các cột khác như Job Level."
+				},
+				"en": {
+					"think": "Plot each numeric column's distribution to see shape and outliers.",
+					"steps": [
+						"A histogram per column, using a subplot grid if you like.",
+						"Note skewed columns (Monthly Income peaks at 50,030 against a mean near 7,345; Number of Dependents reaches 15).",
+						"Odd spikes suggest outliers or entry errors."
+					],
+					"code": "X_train[num_cols].hist(bins=30, figsize=(14, 10))\nplt.show()",
+					"lotus": "Most staff earn around 7,000, but a few earn seven times more: maybe senior managers or entry errors.",
+					"trap": "One chart is not enough to call it an error. Cross-check with other columns like Job Level."
+				}
 			},
-			"en": {
-				"think": "The payment-type distribution is counting each type and dividing by the total. Code 1 card, 2 cash, 3 no charge, 4 dispute.",
-				"steps": [
-					"df['payment_type'].value_counts(normalize=True).",
-					"Draw bars or a pie, with text labels instead of codes.",
-					"Note: tips exist only for card payments."
-				],
-				"code": "labels = {1:'Credit card', 2:'Cash', 3:'No charge', 4:'Dispute'}\npt = df['payment_type'].map(labels).value_counts(normalize=True)\nprint(pt.round(3))\npt.plot(kind='bar')",
-				"lotus": "Lotus Spa: 70% card, 25% transfer, 5% cash. The tip column reflects only the card and transfer share.",
-				"trap": "Forgetting that the tip column omits cash makes the real tip rate look lower."
-			}
-		},
-		"3.1.9": {
-			"vi": {
-				"think": "Bản đồ vùng nằm trong file shapefile. Đọc bằng geopandas và để nguyên cấu trúc thư mục taxi_zones.",
-				"steps": [
-					"pip install geopandas nếu thiếu.",
-					"zones = gpd.read_file('taxi_zones/taxi_zones.shp').",
-					"zones.head() rồi zones.plot() để xem bản đồ."
-				],
-				"code": "import geopandas as gpd\nzones = gpd.read_file('taxi_zones/taxi_zones.shp')\nzones.head()\nzones.plot()",
-				"lotus": "Ba chi nhánh Quận 1, Quận 3 và Thủ Đức là ba vùng trên một bản đồ. Bảng vùng cho tên và mã, còn hình dạng nằm trong cột geometry.",
-				"trap": "Chuyển file .shp ra khỏi thư mục sẽ làm hỏng, vì các file đi kèm (.shx, .dbf) phải nằm cùng chỗ."
+			"4.2": {
+				"vi": {
+					"think": "Tương quan giữa các cột số, để tìm cặp đi cùng nhau mạnh.",
+					"steps": [
+						"corr = X_train[num_cols].corr().",
+						"sns.heatmap(corr, annot=True, cmap='coolwarm').",
+						"Cặp có |tương quan| cao (ví dụ Age với Years at Company) cho thấy thông tin trùng nhau, cần nhớ khi chọn biến."
+					],
+					"code": "plt.figure(figsize=(9, 7))\nsns.heatmap(X_train[num_cols].corr(), annot=True, fmt='.2f', cmap='coolwarm', center=0)\nplt.show()",
+					"lotus": "Tuổi và số năm làm ở Lotus Spa thường tăng cùng nhau: nói gần như cùng một điều.",
+					"trap": "Tương quan chỉ đo quan hệ đường thẳng giữa hai cột số, không nói lên quan hệ với Attrition."
+				},
+				"en": {
+					"think": "Correlation among numeric columns, to find strongly related pairs.",
+					"steps": [
+						"corr = X_train[num_cols].corr().",
+						"sns.heatmap(corr, annot=True, cmap='coolwarm').",
+						"Pairs with high |correlation| (for example Age and Years at Company) carry overlapping information; remember it when selecting features."
+					],
+					"code": "plt.figure(figsize=(9, 7))\nsns.heatmap(X_train[num_cols].corr(), annot=True, fmt='.2f', cmap='coolwarm', center=0)\nplt.show()",
+					"lotus": "Age and years at Lotus Spa tend to rise together: saying nearly the same thing.",
+					"trap": "Correlation measures only the straight-line relation between two numeric columns, not the link to Attrition."
+				}
 			},
-			"en": {
-				"think": "The zone map lives in a shapefile. Read it with geopandas and keep the taxi_zones folder structure unchanged.",
-				"steps": [
-					"pip install geopandas if missing.",
-					"zones = gpd.read_file('taxi_zones/taxi_zones.shp').",
-					"zones.head() then zones.plot() to see the map."
-				],
-				"code": "import geopandas as gpd\nzones = gpd.read_file('taxi_zones/taxi_zones.shp')\nzones.head()\nzones.plot()",
-				"lotus": "The three branches District 1, District 3 and Thu Duc are three zones on one map. The zone table gives names and codes, and the shape sits in the geometry column.",
-				"trap": "Moving the .shp out of its folder breaks it, since the companion files (.shx, .dbf) must sit alongside."
-			}
-		},
-		"3.1.10": {
-			"vi": {
-				"think": "Nối bảng vùng vào bảng chuyến bằng mã vùng: LocationID bên bảng vùng, PULocationID bên bảng chuyến.",
-				"steps": [
-					"Dùng merge với left_on và right_on.",
-					"how='left' để giữ mọi chuyến.",
-					"Đếm số dòng trước và sau: phải bằng nhau."
-				],
-				"code": "n = len(df)\ndf = df.merge(zones[['LocationID','zone','borough']], left_on='PULocationID', right_on='LocationID', how='left')\nprint(n, len(df))  # must match",
-				"lotus": "Bảng booking có mã chi nhánh 1 đến 3. Bảng chi nhánh cho tên đầy đủ. Nối theo mã, giữ mọi booking.",
-				"trap": "Nếu số dòng sau nối khác số dòng trước, mã vùng trong bảng vùng bị trùng và bạn đã nhân bản chuyến."
+			"4.3": {
+				"vi": {
+					"think": "Kiểm tra cân bằng lớp của biến mục tiêu.",
+					"steps": [
+						"y_train.value_counts(normalize=True).",
+						"Vẽ bar chart.",
+						"File của bạn gần cân bằng: ở lại khoảng 52%, nghỉ khoảng 48%."
+					],
+					"code": "print(y_train.value_counts(normalize=True).round(3))\ny_train.value_counts().plot(kind='bar')",
+					"lotus": "Gần một nửa nhân viên nghỉ: số rất cao, nhưng đủ cân để dùng độ chính xác mà không sợ mô hình chỉ đoán «ở lại» cho mọi người.",
+					"trap": "Với tập mất cân bằng (95/5) độ chính xác đánh lừa. Ở đây thì không, nhưng vẫn nên xem thêm sensitivity và specificity."
+				},
+				"en": {
+					"think": "Check class balance of the target.",
+					"steps": [
+						"y_train.value_counts(normalize=True).",
+						"Draw a bar chart.",
+						"Your file is near balanced: about 52% stayed, 48% left."
+					],
+					"code": "print(y_train.value_counts(normalize=True).round(3))\ny_train.value_counts().plot(kind='bar')",
+					"lotus": "Almost half of staff leave: a very high number, but balanced enough to use accuracy without fearing the model simply says “stay” for everyone.",
+					"trap": "With an imbalanced set (95/5) accuracy misleads. Not here, but still look at sensitivity and specificity."
+				}
 			},
-			"en": {
-				"think": "Join the zone table to the trip table by zone code: LocationID on the zone side, PULocationID on the trip side.",
-				"steps": [
-					"Use merge with left_on and right_on.",
-					"how='left' to keep every trip.",
-					"Count rows before and after: they must match."
-				],
-				"code": "n = len(df)\ndf = df.merge(zones[['LocationID','zone','borough']], left_on='PULocationID', right_on='LocationID', how='left')\nprint(n, len(df))  # must match",
-				"lotus": "The booking table has branch codes 1 to 3. The branch table gives full names. Join on the code, keep every booking.",
-				"trap": "If the row count differs after the join, a zone code is duplicated in the zone table and you cloned trips."
-			}
-		},
-		"3.1.11": {
-			"vi": {
-				"think": "Số chuyến theo mã vùng là một groupby đếm dòng.",
-				"steps": [
-					"df.groupby('PULocationID').size().",
-					"Đặt tên cột kết quả là trips.",
-					"Sắp xếp giảm dần để xem vùng đông nhất."
-				],
-				"code": "trips = df.groupby('PULocationID').size().reset_index(name='trips')\ntrips.sort_values('trips', ascending=False).head(10)",
-				"lotus": "Quận 1: 480 lượt, Quận 3: 300, Thủ Đức: 220 trong một tuần. Chi nhánh đông nhất không nhất thiết đem lại doanh thu cao nhất.",
-				"trap": "Đếm số chuyến khác với cộng doanh thu. Chọn đúng thứ bạn muốn đo."
+			"4.4": {
+				"vi": {
+					"think": "Phân tích hai biến: mỗi cột nhóm ảnh hưởng thế nào đến Attrition.",
+					"steps": [
+						"Với mỗi cột nhóm vẽ countplot với hue=y_train.",
+						"Tìm nhóm có tỷ lệ nghỉ khác hẳn mức chung.",
+						"Ghi vài nhận xét: nhóm nào nghỉ nhiều, nhóm nào ở lại."
+					],
+					"code": "cat_cols = X_train.select_dtypes(include='object').columns\nfor c in cat_cols:\n    sns.countplot(data=X_train.assign(Attrition=y_train), x=c, hue='Attrition')\n    plt.xticks(rotation=45); plt.show()",
+					"lotus": "Nếu nhân viên làm thêm giờ nghỉ nhiều hơn rõ rệt so với người không làm thêm, đó là yếu tố chị Lan có thể can thiệp.",
+					"trap": "Đếm số lượng thô dễ đánh lừa khi nhóm có kích thước khác nhau. So tỷ lệ phần trăm trong từng nhóm."
+				},
+				"en": {
+					"think": "Bivariate analysis: how each categorical column affects Attrition.",
+					"steps": [
+						"For each categorical column draw a countplot with hue=y_train.",
+						"Find groups whose leave rate differs clearly from the overall rate.",
+						"Write a few observations: which groups leave more, which stay."
+					],
+					"code": "cat_cols = X_train.select_dtypes(include='object').columns\nfor c in cat_cols:\n    sns.countplot(data=X_train.assign(Attrition=y_train), x=c, hue='Attrition')\n    plt.xticks(rotation=45); plt.show()",
+					"lotus": "If staff who work overtime leave clearly more than those who do not, that is a factor chị Lan can act on.",
+					"trap": "Raw counts mislead when groups differ in size. Compare percentages within each group."
+				}
 			},
-			"en": {
-				"think": "Trips per zone code is one groupby that counts rows.",
-				"steps": [
-					"df.groupby('PULocationID').size().",
-					"Name the result column trips.",
-					"Sort descending to see the busiest zones."
-				],
-				"code": "trips = df.groupby('PULocationID').size().reset_index(name='trips')\ntrips.sort_values('trips', ascending=False).head(10)",
-				"lotus": "District 1: 480 visits, District 3: 300, Thu Duc: 220 in one week. The busiest branch does not necessarily bring the highest revenue.",
-				"trap": "Counting trips differs from summing revenue. Choose exactly what you want to measure."
-			}
-		},
-		"3.1.12": {
-			"vi": {
-				"think": "Ghép số chuyến vào bảng vùng để vẽ. Vùng không có chuyến nào phải có 0, không được để trống.",
-				"steps": [
-					"zones.merge(trips, left_on='LocationID', right_on='PULocationID', how='left').",
-					"Điền 0 cho vùng không có chuyến.",
-					"Kiểm tra bảng kết quả vẫn là GeoDataFrame."
-				],
-				"code": "zones_with_trips = zones.merge(trips, left_on='LocationID', right_on='PULocationID', how='left')\nzones_with_trips['trips'] = zones_with_trips['trips'].fillna(0)\nprint(type(zones_with_trips))",
-				"lotus": "Một chi nhánh mới chưa có booking phải hiện 0, không phải biến mất khỏi bản đồ.",
-				"trap": "Trộn theo thứ tự ngược (trips.merge(zones)) có thể trả về DataFrame thường, mất khả năng vẽ bản đồ."
+			"5.1.1": {
+				"vi": {
+					"think": "(Tùy chọn) Chọn cột số của validation.",
+					"steps": ["X_validation.select_dtypes(include='number').columns."],
+					"code": "num_cols_v = X_validation.select_dtypes(include=['int64', 'float64']).columns",
+					"lotus": "Cùng danh sách cột số như train.",
+					"trap": "Không dùng validation để chọn cột; chỉ để so sánh."
+				},
+				"en": {
+					"think": "(Optional) select numeric columns of validation.",
+					"steps": ["X_validation.select_dtypes(include='number').columns."],
+					"code": "num_cols_v = X_validation.select_dtypes(include=['int64', 'float64']).columns",
+					"lotus": "The same numeric list as train.",
+					"trap": "Do not use validation to choose columns; only to compare."
+				}
 			},
-			"en": {
-				"think": "Attach trip counts to the zone table so you can plot. Zones with no trips must show 0, not be left blank.",
-				"steps": [
-					"zones.merge(trips, left_on='LocationID', right_on='PULocationID', how='left').",
-					"Fill 0 for zones with no trips.",
-					"Check the result is still a GeoDataFrame."
-				],
-				"code": "zones_with_trips = zones.merge(trips, left_on='LocationID', right_on='PULocationID', how='left')\nzones_with_trips['trips'] = zones_with_trips['trips'].fillna(0)\nprint(type(zones_with_trips))",
-				"lotus": "A new branch with no bookings should show 0, not vanish from the map.",
-				"trap": "Merging in the reverse order (trips.merge(zones)) can return a plain DataFrame, losing the ability to draw the map."
-			}
-		},
-		"3.1.13": {
-			"vi": {
-				"think": "Bản đồ màu: tô vùng theo số chuyến. Đặt khung hình trước rồi vẽ lên khung đó.",
-				"steps": [
-					"fig, ax = plt.subplots(1, 1, figsize=(12, 10)).",
-					"zones_with_trips.plot(column='trips', ax=ax, legend=True, legend_kwds={...}).",
-					"plt.show().",
-					"Sau đó sắp bảng theo số chuyến giảm dần để đọc tên vùng."
-				],
-				"code": "fig, ax = plt.subplots(1, 1, figsize=(12, 10))\nzones_with_trips.plot(column='trips', ax=ax, legend=True,\n                      legend_kwds={'label': 'Number of trips', 'orientation': 'horizontal'})\nplt.show()\nzones_with_trips.sort_values('trips', ascending=False)[['zone','trips']].head(10)",
-				"lotus": "Ba chi nhánh Lotus Spa tô theo số lượt: Quận 1 đậm nhất. Bản đồ cho thấy vị trí, còn bảng đứng sau cho tên và số.",
-				"trap": "Bản đồ chỉ cho thấy thứ tự lớn nhỏ bằng màu. Số chính xác phải đọc từ bảng."
+			"5.1.2": {
+				"vi": {
+					"think": "(Tùy chọn) Vẽ phân phối cột số ở validation, so với train.",
+					"steps": ["Histogram từng cột.", "So hình dạng với bước 4.1.2."],
+					"code": "X_validation[num_cols_v].hist(bins=30, figsize=(14, 10))\nplt.show()",
+					"lotus": "Hai tập nên có hình dạng gần nhau.",
+					"trap": "Hình khác nhiều giữa hai tập là dấu hiệu chia chưa tốt."
+				},
+				"en": {
+					"think": "(Optional) plot numeric distributions in validation, compared to train.",
+					"steps": ["A histogram per column.", "Compare shape with step 4.1.2."],
+					"code": "X_validation[num_cols_v].hist(bins=30, figsize=(14, 10))\nplt.show()",
+					"lotus": "The two sets should look alike.",
+					"trap": "Very different shapes between the two sets signal a poor split."
+				}
 			},
-			"en": {
-				"think": "Choropleth map: colour zones by trip count. Set the figure first, then draw onto it.",
-				"steps": [
-					"fig, ax = plt.subplots(1, 1, figsize=(12, 10)).",
-					"zones_with_trips.plot(column='trips', ax=ax, legend=True, legend_kwds={...}).",
-					"plt.show().",
-					"Then sort the table by trips descending to read zone names."
-				],
-				"code": "fig, ax = plt.subplots(1, 1, figsize=(12, 10))\nzones_with_trips.plot(column='trips', ax=ax, legend=True,\n                      legend_kwds={'label': 'Number of trips', 'orientation': 'horizontal'})\nplt.show()\nzones_with_trips.sort_values('trips', ascending=False)[['zone','trips']].head(10)",
-				"lotus": "The three Lotus Spa branches coloured by visits: District 1 darkest. The map shows position, and the table behind it gives names and numbers.",
-				"trap": "A map shows only rank order by colour. Read exact numbers from the table."
-			}
-		},
-		"3.2.1": {
-			"vi": {
-				"think": "Tốc độ của một tuyến = quãng đường chia cho thời gian trung bình. Làm theo từng cặp vùng đi, vùng đến và theo từng giờ, rồi tìm tuyến chậm nhất.",
-				"steps": [
-					"Tạo cột trip_duration (phút) nếu chưa có.",
-					"Nhóm theo PULocationID, DOLocationID, pickup_hour: trung bình trip_distance và trip_duration.",
-					"speed = distance / (duration / 60) dặm mỗi giờ.",
-					"Chỉ giữ các nhóm có đủ chuyến (ví dụ ít nhất 30), vì nhóm ít chuyến cho tốc độ nhiễu.",
-					"Sắp tăng dần để thấy các tuyến chậm nhất."
-				],
-				"code": "g = df.groupby(['PULocationID','DOLocationID','pickup_hour']).agg(\n    dist=('trip_distance','mean'), dur=('trip_duration','mean'), n=('trip_distance','size')).reset_index()\ng['speed_mph'] = g['dist'] / (g['dur'] / 60)\nslow = g[g['n'] >= 30].sort_values('speed_mph').head(10)\nprint(slow)",
-				"lotus": "Hai chi nhánh Quận 1 và Quận 3: một khách đi từ chi nhánh này sang chi nhánh kia mất bao lâu lúc 18:00 so với 10:00. Tuyến nào luôn chậm lúc 18:00 là chỗ nên dời lịch hẹn.",
-				"trap": "Một tuyến chỉ có 2 chuyến có thể đứng đầu danh sách chậm nhất chỉ vì nhiễu. Đặt ngưỡng số chuyến."
+			"5.2": {
+				"vi": {
+					"think": "(Tùy chọn) Tương quan cột số ở validation.",
+					"steps": ["Làm giống 4.2 trên validation."],
+					"code": "sns.heatmap(X_validation[num_cols_v].corr(), annot=True, fmt='.2f', cmap='coolwarm', center=0)",
+					"lotus": "Mẫu tương quan nên giống train.",
+					"trap": "Tương quan khác hẳn là dấu hiệu dữ liệu không đồng nhất."
+				},
+				"en": {
+					"think": "(Optional) numeric correlation in validation.",
+					"steps": ["Repeat 4.2 on validation."],
+					"code": "sns.heatmap(X_validation[num_cols_v].corr(), annot=True, fmt='.2f', cmap='coolwarm', center=0)",
+					"lotus": "The correlation pattern should resemble train.",
+					"trap": "A very different pattern means inhomogeneous data."
+				}
 			},
-			"en": {
-				"think": "A route's speed is distance divided by average time. Do it per pickup-and-dropoff zone pair and per hour, then find the slowest routes.",
-				"steps": [
-					"Create trip_duration (minutes) if not already there.",
-					"Group by PULocationID, DOLocationID, pickup_hour: mean trip_distance and trip_duration.",
-					"speed = distance / (duration / 60) miles per hour.",
-					"Keep only groups with enough trips (say at least 30), since small groups give noisy speeds.",
-					"Sort ascending to see the slowest routes."
-				],
-				"code": "g = df.groupby(['PULocationID','DOLocationID','pickup_hour']).agg(\n    dist=('trip_distance','mean'), dur=('trip_duration','mean'), n=('trip_distance','size')).reset_index()\ng['speed_mph'] = g['dist'] / (g['dur'] / 60)\nslow = g[g['n'] >= 30].sort_values('speed_mph').head(10)\nprint(slow)",
-				"lotus": "Two branches, District 1 and District 3: how long a customer takes from one branch to the other at 18:00 versus 10:00. A route that is always slow at 18:00 is where to shift appointments.",
-				"trap": "A route with only 2 trips can top the slowest list purely from noise. Set a trip-count threshold."
-			}
-		},
-		"3.2.2": {
-			"vi": {
-				"think": "Đếm số chuyến theo từng giờ, vẽ, và nêu giờ đông nhất cùng số chuyến của giờ đó.",
-				"steps": [
-					"hourly = df.groupby('pickup_hour').size().",
-					"hourly.plot(kind='bar').",
-					"hourly.idxmax() và hourly.max()."
-				],
-				"code": "hourly = df.groupby('pickup_hour').size()\nhourly.plot(kind='bar')\nprint(hourly.idxmax(), hourly.max())",
-				"lotus": "Giờ đông nhất của Lotus Spa là 19:00 với 62 lượt trong mẫu. Con số này là số trong mẫu, chưa phải số thật.",
-				"trap": "Báo số trong mẫu như số thật. Bài 3.2.3 nhân lên."
+			"5.3": {
+				"vi": {
+					"think": "(Tùy chọn) Cân bằng lớp ở validation.",
+					"steps": ["y_validation.value_counts(normalize=True)."],
+					"code": "print(y_validation.value_counts(normalize=True).round(3))",
+					"lotus": "Tỷ lệ ở/nghỉ ở validation phải gần 52/48 của train.",
+					"trap": "Lệch vài điểm phần trăm là bình thường."
+				},
+				"en": {
+					"think": "(Optional) class balance in validation.",
+					"steps": ["y_validation.value_counts(normalize=True)."],
+					"code": "print(y_validation.value_counts(normalize=True).round(3))",
+					"lotus": "The stay/leave ratio in validation should be close to train's 52/48.",
+					"trap": "A few percentage points of gap is normal."
+				}
 			},
-			"en": {
-				"think": "Count trips per hour, draw it, and state the busiest hour with its trip count.",
-				"steps": [
-					"hourly = df.groupby('pickup_hour').size().",
-					"hourly.plot(kind='bar').",
-					"hourly.idxmax() and hourly.max()."
-				],
-				"code": "hourly = df.groupby('pickup_hour').size()\nhourly.plot(kind='bar')\nprint(hourly.idxmax(), hourly.max())",
-				"lotus": "Lotus Spa's busiest hour is 19:00 with 62 visits in the sample. That is a sample number, not the real one.",
-				"trap": "Reporting a sample number as the real one. Task 3.2.3 scales up."
-			}
-		},
-		"3.2.3": {
-			"vi": {
-				"think": "Mẫu chỉ có 5% số chuyến. Số thật = số trong mẫu chia cho tỷ lệ lấy mẫu.",
-				"steps": [
-					"sample_fraction = 0.05, đúng với tỷ lệ bạn đã dùng ở 1.1.1.",
-					"scaled = hourly / sample_fraction.",
-					"Lấy 5 giờ đông nhất: scaled.nlargest(5)."
-				],
-				"code": "sample_fraction = 0.05\nscaled = hourly / sample_fraction\nprint(scaled.nlargest(5).round(0))",
-				"lotus": "Nếu mẫu có 62 lượt lúc 19:00 và tỷ lệ lấy mẫu là 5%, số thật xấp xỉ 62 ÷ 0,05 = 1.240 lượt.",
-				"trap": "Nhân với 5 thay vì chia cho 0,05 (nhân 20) là lỗi thường gặp."
+			"5.4": {
+				"vi": {
+					"think": "(Tùy chọn) Phân tích hai biến ở validation.",
+					"steps": ["Làm giống 4.4 trên validation."],
+					"code": "cat_cols = X_validation.select_dtypes(include='object').columns\nfor c in cat_cols:\n    sns.countplot(data=X_validation.assign(Attrition=y_validation), x=c, hue='Attrition')\n    plt.xticks(rotation=45); plt.show()",
+					"lotus": "Nhóm nghỉ nhiều ở train cũng nên nghỉ nhiều ở validation.",
+					"trap": "Nếu chiều ngược nhau, mô hình sẽ không khái quát hóa."
+				},
+				"en": {
+					"think": "(Optional) bivariate analysis in validation.",
+					"steps": ["Repeat 4.4 on validation."],
+					"code": "cat_cols = X_validation.select_dtypes(include='object').columns\nfor c in cat_cols:\n    sns.countplot(data=X_validation.assign(Attrition=y_validation), x=c, hue='Attrition')\n    plt.xticks(rotation=45); plt.show()",
+					"lotus": "Groups that leave a lot in train should also leave a lot in validation.",
+					"trap": "If the direction reverses, the model will not generalise."
+				}
 			},
-			"en": {
-				"think": "The sample holds only 5% of trips. Real count = sample count divided by the sampling fraction.",
-				"steps": [
-					"sample_fraction = 0.05, matching what you used in 1.1.1.",
-					"scaled = hourly / sample_fraction.",
-					"Take the five busiest hours: scaled.nlargest(5)."
-				],
-				"code": "sample_fraction = 0.05\nscaled = hourly / sample_fraction\nprint(scaled.nlargest(5).round(0))",
-				"lotus": "If the sample has 62 visits at 19:00 and the sampling fraction is 5%, the real count is about 62 ÷ 0.05 = 1,240 visits.",
-				"trap": "Multiplying by 5 instead of dividing by 0.05 (multiplying by 20) is a common slip."
-			}
-		},
-		"3.2.4": {
-			"vi": {
-				"think": "So sánh hình dạng theo giờ giữa ngày thường và cuối tuần. Hai đường cùng trên một biểu đồ.",
-				"steps": [
-					"Tạo cột is_weekend: dayofweek >= 5.",
-					"Đếm theo giờ cho từng nhóm, chia cho số ngày của nhóm để so sánh công bằng.",
-					"Vẽ hai đường."
-				],
-				"code": "df['is_weekend'] = df['tpep_pickup_datetime'].dt.dayofweek >= 5\ndays = df.groupby('is_weekend')['tpep_pickup_datetime'].apply(lambda s: s.dt.date.nunique())\nby = df.groupby(['is_weekend','pickup_hour']).size().unstack(0)\n(by / days).plot()",
-				"lotus": "Lotus Spa ngày thường đông vào 18:00 đến 20:00 sau giờ làm. Cuối tuần đông vào 10:00 đến 14:00. Hai nhóm khác ngày nên phải chia cho số ngày.",
-				"trap": "So sánh số chuyến thô giữa 5 ngày thường và 2 ngày cuối tuần mà không chia cho số ngày là so lệch."
+			"6.1.1": {
+				"vi": {
+					"think": "Xác định cột nhóm cần tạo biến giả (dummy).",
+					"steps": ["Lấy các cột kiểu chữ của X_train.", "Gồm Gender, Job Role, Work-Life Balance, Job Satisfaction, Performance Rating, Overtime, Education Level, Marital Status, Job Level, Company Size, Remote Work, Leadership/Innovation Opportunities, Company Reputation, Employee Recognition."],
+					"code": "cat_cols = X_train.select_dtypes(include=['object']).columns\nprint(list(cat_cols))",
+					"lotus": "Mọi thông tin chữ trong hồ sơ nhân viên đều phải đổi thành số 0/1 để mô hình dùng được.",
+					"trap": "Cột chữ nhưng có thứ tự (mức hài lòng) vẫn có thể dùng dummy, chỉ là mất thông tin thứ tự."
+				},
+				"en": {
+					"think": "Identify the categorical columns that need dummy variables.",
+					"steps": ["Take the text-type columns of X_train.", "They include Gender, Job Role, Work-Life Balance, Job Satisfaction, Performance Rating, Overtime, Education Level, Marital Status, Job Level, Company Size, Remote Work, Leadership/Innovation Opportunities, Company Reputation, Employee Recognition."],
+					"code": "cat_cols = X_train.select_dtypes(include=['object']).columns\nprint(list(cat_cols))",
+					"lotus": "Every text field in a staff record must become 0/1 numbers before the model can use it.",
+					"trap": "Ordered text columns (satisfaction level) can still use dummies, but the order information is lost."
+				}
 			},
-			"en": {
-				"think": "Compare the hourly shape between weekdays and weekends. Two lines on one chart.",
-				"steps": [
-					"Create is_weekend: dayofweek >= 5.",
-					"Count per hour for each group, divide by the group's number of days for a fair comparison.",
-					"Draw two lines."
-				],
-				"code": "df['is_weekend'] = df['tpep_pickup_datetime'].dt.dayofweek >= 5\ndays = df.groupby('is_weekend')['tpep_pickup_datetime'].apply(lambda s: s.dt.date.nunique())\nby = df.groupby(['is_weekend','pickup_hour']).size().unstack(0)\n(by / days).plot()",
-				"lotus": "Lotus Spa weekdays peak 18:00 to 20:00 after work. Weekends peak 10:00 to 14:00. The two groups have different numbers of days so divide by days.",
-				"trap": "Comparing raw counts between 5 weekdays and 2 weekend days without dividing by days is a lopsided comparison."
-			}
-		},
-		"3.2.5": {
-			"vi": {
-				"think": "Mười vùng đón nhiều nhất và mười vùng trả nhiều nhất, rồi xem nhịp theo giờ của các vùng đó.",
-				"steps": [
-					"top_pu = df['PULocationID'].value_counts().head(10).index.",
-					"top_do = df['DOLocationID'].value_counts().head(10).index.",
-					"Với mỗi nhóm vùng, đếm theo giờ và vẽ."
-				],
-				"code": "top_pu = df['PULocationID'].value_counts().head(10).index\ntop_do = df['DOLocationID'].value_counts().head(10).index\nhp = df[df['PULocationID'].isin(top_pu)].groupby(['pickup_hour','PULocationID']).size().unstack()\nhp.plot(figsize=(12,5))",
-				"lotus": "Với ba chi nhánh, xem chi nhánh nào đón khách nhiều nhất và đông vào giờ nào. Chi nhánh nhiều khách đến chưa chắc là chi nhánh nhiều khách đi.",
-				"trap": "Dùng mã vùng mà không đổi sang tên vùng làm biểu đồ khó đọc. Ghép tên từ bảng zones."
+			"6.1.2": {
+				"vi": {
+					"think": "Tạo biến giả cho X_train.",
+					"steps": [
+						"pd.get_dummies(X_train[cat_cols], drop_first=True).",
+						"drop_first=True bỏ một mức để tránh trùng lặp (đa cộng tuyến hoàn hảo).",
+						"Dùng dtype=int để có 0/1 thay vì True/False."
+					],
+					"code": "dummy_train = pd.get_dummies(X_train[cat_cols], drop_first=True, dtype=int)\ndummy_train.head()",
+					"lotus": "«Overtime = Yes» thành một cột Overtime_Yes bằng 1 nếu có làm thêm giờ, bằng 0 nếu không.",
+					"trap": "Không có drop_first thì các cột cộng lại luôn bằng 1: mô hình bị trùng lặp."
+				},
+				"en": {
+					"think": "Create dummy variables for X_train.",
+					"steps": [
+						"pd.get_dummies(X_train[cat_cols], drop_first=True).",
+						"drop_first=True drops one level to avoid duplication (perfect multicollinearity).",
+						"Use dtype=int to get 0/1 instead of True/False."
+					],
+					"code": "dummy_train = pd.get_dummies(X_train[cat_cols], drop_first=True, dtype=int)\ndummy_train.head()",
+					"lotus": "“Overtime = Yes” becomes a column Overtime_Yes equal to 1 if they work overtime, 0 otherwise.",
+					"trap": "Without drop_first the columns always sum to 1: the model is redundant."
+				}
 			},
-			"en": {
-				"think": "Top ten pickup zones and top ten dropoff zones, then look at the hourly rhythm of those zones.",
-				"steps": [
-					"top_pu = df['PULocationID'].value_counts().head(10).index.",
-					"top_do = df['DOLocationID'].value_counts().head(10).index.",
-					"For each group of zones, count per hour and draw."
-				],
-				"code": "top_pu = df['PULocationID'].value_counts().head(10).index\ntop_do = df['DOLocationID'].value_counts().head(10).index\nhp = df[df['PULocationID'].isin(top_pu)].groupby(['pickup_hour','PULocationID']).size().unstack()\nhp.plot(figsize=(12,5))",
-				"lotus": "With three branches, see which branch receives the most customers and at what hour. The branch customers arrive at most is not necessarily where they leave from most.",
-				"trap": "Using zone codes without switching to zone names makes the chart hard to read. Join names from the zones table."
-			}
-		},
-		"3.2.6": {
-			"vi": {
-				"think": "Tỷ lệ đón trên trả của mỗi vùng. Lớn hơn 1 là vùng xuất phát nhiều hơn điểm đến; nhỏ hơn 1 ngược lại.",
-				"steps": [
-					"pu = df['PULocationID'].value_counts(); do = df['DOLocationID'].value_counts().",
-					"ratio = (pu / do).dropna().",
-					"Chú ý vùng không có chuyến trả sẽ chia cho 0: dùng dropna và kiểm tra vô cực.",
-					"Hiển thị 10 tỷ lệ cao nhất và 10 thấp nhất."
-				],
-				"code": "pu = df['PULocationID'].value_counts()\ndo = df['DOLocationID'].value_counts()\nratio = (pu / do).replace([np.inf, -np.inf], np.nan).dropna()\nprint(ratio.nlargest(10)); print(ratio.nsmallest(10))",
-				"lotus": "Chi nhánh có 300 khách đi và 150 khách đến cho tỷ lệ 2: nhiều người rời đi hơn đến. Chi nhánh tỷ lệ 0,5 thì ngược lại.",
-				"trap": "Vùng chỉ có 1 đón và 0 trả cho tỷ lệ vô cực. Lọc số chuyến tối thiểu trước khi xếp hạng."
+			"6.1.3": {
+				"vi": {
+					"think": "Tạo biến giả cho X_validation, cùng cách với train.",
+					"steps": ["Dùng đúng cat_cols và drop_first như train.", "Kiểm tra số cột và tên cột bằng nhau, nếu thiếu thì reindex theo cột train."],
+					"code": "dummy_val = pd.get_dummies(X_validation[cat_cols], drop_first=True, dtype=int)\ndummy_val = dummy_val.reindex(columns=dummy_train.columns, fill_value=0)",
+					"lotus": "Hai sổ nhân viên phải có cùng bộ cột 0/1.",
+					"trap": "Một mức chỉ xuất hiện ở một tập làm hai bảng khác cột. reindex xử lý việc đó."
+				},
+				"en": {
+					"think": "Create dummy variables for X_validation the same way as train.",
+					"steps": ["Use exactly the same cat_cols and drop_first as train.", "Check the column count and names match; if not, reindex to train's columns."],
+					"code": "dummy_val = pd.get_dummies(X_validation[cat_cols], drop_first=True, dtype=int)\ndummy_val = dummy_val.reindex(columns=dummy_train.columns, fill_value=0)",
+					"lotus": "The two staff logs must have the same 0/1 columns.",
+					"trap": "A level present in only one set gives mismatched columns. reindex fixes it."
+				}
 			},
-			"en": {
-				"think": "Pickup-to-dropoff ratio of each zone. Above 1 means more departures than arrivals; below 1 the opposite.",
-				"steps": [
-					"pu = df['PULocationID'].value_counts(); do = df['DOLocationID'].value_counts().",
-					"ratio = (pu / do).dropna().",
-					"Mind zones with no dropoffs dividing by 0: use dropna and check for infinity.",
-					"Show the 10 highest and 10 lowest ratios."
-				],
-				"code": "pu = df['PULocationID'].value_counts()\ndo = df['DOLocationID'].value_counts()\nratio = (pu / do).replace([np.inf, -np.inf], np.nan).dropna()\nprint(ratio.nlargest(10)); print(ratio.nsmallest(10))",
-				"lotus": "A branch with 300 customers leaving and 150 arriving gives a ratio of 2: more people leave than arrive. A branch with ratio 0.5 is the opposite.",
-				"trap": "A zone with 1 pickup and 0 dropoffs gives infinity. Filter a minimum trip count before ranking."
-			}
-		},
-		"3.2.7": {
-			"vi": {
-				"think": "Giờ đêm từ 23 giờ đến 5 giờ sáng. Lọc chuyến theo giờ đêm rồi tìm top vùng đón và trả trong chính tập đó.",
-				"steps": [
-					"Định nghĩa đêm rõ ràng: pickup_hour >= 23 hoặc pickup_hour < 5 (ghi lại bạn chọn có gồm cả 5:00 hay không).",
-					"night = df[mask].",
-					"Top 10 vùng đón và trả chỉ trong night, không phải trong cả năm."
-				],
-				"code": "night = df[(df['pickup_hour'] >= 23) | (df['pickup_hour'] < 5)]\nprint(night['PULocationID'].value_counts().head(10))\nprint(night['DOLocationID'].value_counts().head(10))",
-				"lotus": "Ở khung 21:00 đến 23:00, giả sử chi nhánh Quận 1 vẫn đông còn Thủ Đức thưa. Top vùng của giờ đêm thường khác top vùng cả ngày.",
-				"trap": "Lấy top của cả năm rồi lọc giờ đêm cho kết quả khác. Lọc giờ đêm trước rồi mới xếp hạng."
+			"6.1.4": {
+				"vi": {
+					"think": "Chuyển y_train và y_validation thành DataFrame để tạo dummy cho biến mục tiêu.",
+					"steps": ["y_train.to_frame() hoặc pd.DataFrame(y_train).", "Làm tương tự cho y_validation."],
+					"code": "y_train_df = pd.DataFrame(y_train)\ny_val_df = pd.DataFrame(y_validation)",
+					"lotus": "Cột Attrition chữ «Stayed/Left» cũng cần đổi thành 0/1.",
+					"trap": "Quên chuyển Series thành DataFrame thì get_dummies trả cột sai tên."
+				},
+				"en": {
+					"think": "Convert y_train and y_validation to DataFrames to create target dummies.",
+					"steps": ["y_train.to_frame() or pd.DataFrame(y_train).", "Do the same for y_validation."],
+					"code": "y_train_df = pd.DataFrame(y_train)\ny_val_df = pd.DataFrame(y_validation)",
+					"lotus": "The text column Attrition “Stayed/Left” must become 0/1 too.",
+					"trap": "Forgetting to make the Series a DataFrame gives get_dummies wrongly named columns."
+				}
 			},
-			"en": {
-				"think": "Night hours run 11 PM to 5 AM. Filter trips by night hour, then find top pickup and dropoff zones within that subset.",
-				"steps": [
-					"Define night clearly: pickup_hour >= 23 or pickup_hour < 5 (record whether you include 5:00).",
-					"night = df[mask].",
-					"Top 10 pickup and dropoff zones within night only, not across the year."
-				],
-				"code": "night = df[(df['pickup_hour'] >= 23) | (df['pickup_hour'] < 5)]\nprint(night['PULocationID'].value_counts().head(10))\nprint(night['DOLocationID'].value_counts().head(10))",
-				"lotus": "In the 21:00 to 23:00 window, suppose District 1 is still busy while Thu Duc is quiet. Late-hour top zones are often not the all-day top zones.",
-				"trap": "Taking the yearly top then filtering to night gives a different result. Filter to night first, then rank."
-			}
-		},
-		"3.2.8": {
-			"vi": {
-				"think": "Tỷ trọng doanh thu giữa đêm và ngày là doanh thu mỗi nhóm chia cho tổng.",
-				"steps": [
-					"Tạo cột is_night theo định nghĩa ở 3.2.7.",
-					"rev = df.groupby('is_night')['total_amount'].sum().",
-					"share = rev / rev.sum()."
-				],
-				"code": "df['is_night'] = (df['pickup_hour'] >= 23) | (df['pickup_hour'] < 5)\nrev = df.groupby('is_night')['total_amount'].sum()\nprint((rev / rev.sum()).round(3))",
-				"lotus": "Nếu giờ đêm cho 12 phần doanh thu trên 100, tỷ trọng đêm là 12%. Một khung giờ vắng khách vẫn có thể có giá bán cao hơn.",
-				"trap": "Dùng cùng định nghĩa đêm xuyên suốt. Đổi định nghĩa giữa các bài làm các con số không so được."
+			"6.1.5": {
+				"vi": {
+					"think": "Tạo biến giả cho biến mục tiêu ở train.",
+					"steps": [
+						"pd.get_dummies(y_train_df, drop_first=True).",
+						"Cột ra là Attrition_Stayed: 1 = ở lại, 0 = nghỉ.",
+						"Chú ý ý nghĩa: mô hình sẽ đoán xác suất ở lại."
+					],
+					"code": "y_train_d = pd.get_dummies(y_train_df, drop_first=True, dtype=int)\ny_train_d.head()",
+					"lotus": "Mô hình đo xác suất một nhân viên ở lại, nên 1 là ở lại.",
+					"trap": "Nhầm 1 là nghỉ làm đảo nghĩa mọi hệ số."
+				},
+				"en": {
+					"think": "Create dummy variables for the target in train.",
+					"steps": [
+						"pd.get_dummies(y_train_df, drop_first=True).",
+						"The resulting column is Attrition_Stayed: 1 = stayed, 0 = left.",
+						"Mind the meaning: the model predicts the probability of staying."
+					],
+					"code": "y_train_d = pd.get_dummies(y_train_df, drop_first=True, dtype=int)\ny_train_d.head()",
+					"lotus": "The model measures the probability a staff member stays, so 1 means stayed.",
+					"trap": "Mistaking 1 for left flips the meaning of every coefficient."
+				}
 			},
-			"en": {
-				"think": "Night versus day revenue share is each group's revenue divided by the total.",
-				"steps": [
-					"Create is_night using the definition from 3.2.7.",
-					"rev = df.groupby('is_night')['total_amount'].sum().",
-					"share = rev / rev.sum()."
-				],
-				"code": "df['is_night'] = (df['pickup_hour'] >= 23) | (df['pickup_hour'] < 5)\nrev = df.groupby('is_night')['total_amount'].sum()\nprint((rev / rev.sum()).round(3))",
-				"lotus": "If night hours bring 12 parts of revenue per 100, the night share is 12%. A quiet window can still carry a higher price.",
-				"trap": "Use one definition of night throughout. Changing it between tasks makes the numbers incomparable."
-			}
-		},
-		"3.2.9": {
-			"vi": {
-				"think": "Giá trên dặm trên hành khách: lấy giá trên dặm của chuyến, rồi chia cho số hành khách. Hai người đi chung cùng một chuyến mỗi người trả một nửa.",
-				"steps": [
-					"Chỉ giữ trip_distance > 0.",
-					"fare_per_mile = fare_amount / trip_distance.",
-					"per_passenger = fare_per_mile / passenger_count.",
-					"Trung bình theo passenger_count."
-				],
-				"code": "d = df[df['trip_distance'] > 0].copy()\nd['fare_per_mile'] = d['fare_amount'] / d['trip_distance']\nd['fpm_pp'] = d['fare_per_mile'] / d['passenger_count']\nprint(d.groupby('passenger_count')['fpm_pp'].mean())",
-				"lotus": "Gói đôi 1.200 nghìn cho hai người nghĩa là mỗi người 600 nghìn. Giá chia cho đầu người cho thấy gói đôi rẻ hơn gói lẻ bao nhiêu.",
-				"trap": "Chia cho 0 hành khách hoặc 0 dặm làm ra vô cực. Lọc trước."
+			"6.1.6": {
+				"vi": {
+					"think": "Tạo biến giả cho biến mục tiêu ở validation.",
+					"steps": ["Làm như 6.1.5 trên y_val_df."],
+					"code": "y_val_d = pd.get_dummies(y_val_df, drop_first=True, dtype=int)",
+					"lotus": "Cùng cách mã hóa với train.",
+					"trap": "Mã hóa ngược với train làm điểm đánh giá vô nghĩa."
+				},
+				"en": {
+					"think": "Create dummy variables for the target in validation.",
+					"steps": ["Do as 6.1.5 on y_val_df."],
+					"code": "y_val_d = pd.get_dummies(y_val_df, drop_first=True, dtype=int)",
+					"lotus": "Same encoding as train.",
+					"trap": "Encoding opposite to train makes evaluation meaningless."
+				}
 			},
-			"en": {
-				"think": "Fare per mile per passenger: take the trip's fare per mile, then divide by passenger count. Two people sharing one trip each pay half.",
-				"steps": [
-					"Keep only trip_distance > 0.",
-					"fare_per_mile = fare_amount / trip_distance.",
-					"per_passenger = fare_per_mile / passenger_count.",
-					"Average by passenger_count."
-				],
-				"code": "d = df[df['trip_distance'] > 0].copy()\nd['fare_per_mile'] = d['fare_amount'] / d['trip_distance']\nd['fpm_pp'] = d['fare_per_mile'] / d['passenger_count']\nprint(d.groupby('passenger_count')['fpm_pp'].mean())",
-				"lotus": "A couple package at 1,200 thousand for two people means 600 thousand each. Dividing by head shows how much cheaper the couple package is than single ones.",
-				"trap": "Dividing by 0 passengers or 0 miles gives infinity. Filter first."
-			}
-		},
-		"3.2.10": {
-			"vi": {
-				"think": "Giá trung bình trên dặm theo giờ trong ngày và theo thứ trong tuần.",
-				"steps": [
-					"Dùng fare_per_mile từ 3.2.9.",
-					"d.groupby('pickup_hour')['fare_per_mile'].mean() và theo pickup_day.",
-					"Vẽ hai biểu đồ."
-				],
-				"code": "d.groupby('pickup_hour')['fare_per_mile'].mean().plot()\nd.groupby('pickup_day')['fare_per_mile'].mean().reindex(days).plot(kind='bar')",
-				"lotus": "Giá bình quân mỗi phút liệu trình theo giờ: giờ vàng 18:00 đến 20:00 đắt hơn giờ trưa. Thấy rồi mới hỏi có nên giảm giá giờ thấp điểm không.",
-				"trap": "Chuyến rất ngắn làm giá trên dặm vọt lên vì cước mở cửa cố định. Cân nhắc lọc ngưỡng quãng đường."
+			"6.1.7": {
+				"vi": {
+					"think": "Gộp biến giả vào X và bỏ cột chữ gốc.",
+					"steps": [
+						"pd.concat([X_train, dummy_train], axis=1).",
+						"drop(columns=cat_cols).",
+						"Làm cùng cách cho validation. Kiểm tra cùng cột."
+					],
+					"code": "X_train = pd.concat([X_train.drop(columns=cat_cols), dummy_train], axis=1)\nX_validation = pd.concat([X_validation.drop(columns=cat_cols), dummy_val], axis=1)\nprint(X_train.shape, X_validation.shape)",
+					"lotus": "File của bạn có khoảng 41 cột sau bước này.",
+					"trap": "Bỏ cột gốc rồi mới concat thì thiếu cột số."
+				},
+				"en": {
+					"think": "Merge dummies into X and drop the original text columns.",
+					"steps": [
+						"pd.concat([X_train, dummy_train], axis=1).",
+						"drop(columns=cat_cols).",
+						"Do the same for validation. Check the columns match."
+					],
+					"code": "X_train = pd.concat([X_train.drop(columns=cat_cols), dummy_train], axis=1)\nX_validation = pd.concat([X_validation.drop(columns=cat_cols), dummy_val], axis=1)\nprint(X_train.shape, X_validation.shape)",
+					"lotus": "Your file has about 41 columns after this step.",
+					"trap": "Dropping the originals before concatenating loses the numeric columns."
+				}
 			},
-			"en": {
-				"think": "Average fare per mile by hour of day and by day of week.",
-				"steps": [
-					"Use fare_per_mile from 3.2.9.",
-					"d.groupby('pickup_hour')['fare_per_mile'].mean() and by pickup_day.",
-					"Draw two charts."
-				],
-				"code": "d.groupby('pickup_hour')['fare_per_mile'].mean().plot()\nd.groupby('pickup_day')['fare_per_mile'].mean().reindex(days).plot(kind='bar')",
-				"lotus": "Average price per session minute by hour: the 18:00 to 20:00 golden window costs more than lunch. After seeing it, ask whether to discount quiet hours.",
-				"trap": "Very short trips push fare per mile up because of the fixed flag-down fee. Consider a distance threshold."
-			}
-		},
-		"3.2.11": {
-			"vi": {
-				"think": "So giá trên dặm giữa hai nhà cung cấp (VendorID) theo từng giờ.",
-				"steps": [
-					"pivot: hàng là giờ, cột là VendorID, giá trị là trung bình fare_per_mile.",
-					"Vẽ hai đường.",
-					"Nhớ VendorID 1 và 2 là hai nhà cung cấp dữ liệu, không phải hai hãng taxi."
-				],
-				"code": "d.pivot_table(index='pickup_hour', columns='VendorID', values='fare_per_mile', aggfunc='mean').plot()",
-				"lotus": "Hai kênh đặt lịch (web và điện thoại) bán cùng gói với giá hiển thị khác nhau. So theo giờ để xem chênh lệch có cố định hay thay đổi.",
-				"trap": "Hai nhà cung cấp có thể phục vụ các nhóm chuyến khác nhau, nên chênh lệch không chỉ là chênh lệch giá."
+			"6.2.1": {
+				"vi": {
+					"think": "Nạp công cụ chuẩn hóa.",
+					"steps": ["from sklearn.preprocessing import StandardScaler."],
+					"code": "from sklearn.preprocessing import StandardScaler",
+					"lotus": "Chuẩn bị đưa tuổi, lương, khoảng cách về cùng thang.",
+					"trap": "Không có."
+				},
+				"en": {
+					"think": "Import the scaling tool.",
+					"steps": ["from sklearn.preprocessing import StandardScaler."],
+					"code": "from sklearn.preprocessing import StandardScaler",
+					"lotus": "Prepare to bring age, income and distance to one scale.",
+					"trap": "None."
+				}
 			},
-			"en": {
-				"think": "Compare fare per mile between the two vendors (VendorID) for each hour.",
-				"steps": [
-					"pivot: rows are hours, columns are VendorID, values are mean fare_per_mile.",
-					"Draw two lines.",
-					"Remember VendorID 1 and 2 are two data providers, not two taxi firms."
-				],
-				"code": "d.pivot_table(index='pickup_hour', columns='VendorID', values='fare_per_mile', aggfunc='mean').plot()",
-				"lotus": "Two booking channels (web and phone) sell the same package at different shown prices. Compare by hour to see whether the gap is fixed or changing.",
-				"trap": "The two vendors may serve different mixes of trips, so a gap is not only a price gap."
-			}
-		},
-		"3.2.12": {
-			"vi": {
-				"think": "Phân các chuyến thành ba bậc quãng đường rồi so giá trên dặm giữa hai nhà cung cấp ở mỗi bậc.",
-				"steps": [
-					"Bậc: đến 2 dặm, từ 2 đến 5 dặm, trên 5 dặm.",
-					"pd.cut với bins=[0, 2, 5, np.inf], right=True, và đặt nhãn.",
-					"Trung bình fare_per_mile theo (bậc, VendorID)."
-				],
-				"code": "d['tier'] = pd.cut(d['trip_distance'], bins=[0, 2, 5, np.inf], labels=['<=2','2-5','>5'])\nprint(d.groupby(['tier','VendorID'], observed=True)['fare_per_mile'].mean().unstack())",
-				"lotus": "Gói ngắn, vừa, dài: nhà cung cấp rẻ hơn ở bậc ngắn có thể đắt hơn ở bậc dài. Chia bậc cho thấy điều mà một con số trung bình che đi.",
-				"trap": "Biên bậc phải rõ: 2 dặm thuộc bậc nào. Với right=True thì 2 thuộc bậc đầu."
+			"6.2.2": {
+				"vi": {
+					"think": "Chuẩn hóa cột số: fit trên train, transform trên cả hai.",
+					"steps": [
+						"scaler = StandardScaler().",
+						"X_train[num_cols] = scaler.fit_transform(X_train[num_cols]).",
+						"X_validation[num_cols] = scaler.transform(X_validation[num_cols]) (không fit lại)."
+					],
+					"code": "scaler = StandardScaler()\nX_train[num_cols] = scaler.fit_transform(X_train[num_cols])\nX_validation[num_cols] = scaler.transform(X_validation[num_cols])",
+					"lotus": "Lương tính theo hàng nghìn, số người phụ thuộc tính theo đơn vị: phải về cùng thang thì hệ số so được.",
+					"trap": "fit scaler trên validation làm lộ trung bình và độ lệch chuẩn của validation."
+				},
+				"en": {
+					"think": "Scale numeric columns: fit on train, transform both.",
+					"steps": [
+						"scaler = StandardScaler().",
+						"X_train[num_cols] = scaler.fit_transform(X_train[num_cols]).",
+						"X_validation[num_cols] = scaler.transform(X_validation[num_cols]) (do not refit)."
+					],
+					"code": "scaler = StandardScaler()\nX_train[num_cols] = scaler.fit_transform(X_train[num_cols])\nX_validation[num_cols] = scaler.transform(X_validation[num_cols])",
+					"lotus": "Income runs in thousands and dependents in single units: they must share one scale for coefficients to be comparable.",
+					"trap": "Fitting the scaler on validation leaks validation's mean and standard deviation."
+				}
 			},
-			"en": {
-				"think": "Split trips into three distance tiers, then compare fare per mile between vendors in each tier.",
-				"steps": [
-					"Tiers: up to 2 miles, 2 to 5 miles, above 5 miles.",
-					"pd.cut with bins=[0, 2, 5, np.inf], right=True, and set labels.",
-					"Mean fare_per_mile by (tier, VendorID)."
-				],
-				"code": "d['tier'] = pd.cut(d['trip_distance'], bins=[0, 2, 5, np.inf], labels=['<=2','2-5','>5'])\nprint(d.groupby(['tier','VendorID'], observed=True)['fare_per_mile'].mean().unstack())",
-				"lotus": "Short, medium, long packages: the vendor cheaper on short ones may be dearer on long ones. Tiers reveal what one average hides.",
-				"trap": "The tier edges must be clear: which tier does 2 miles belong to. With right=True it belongs to the first."
-			}
-		},
-		"3.2.13": {
-			"vi": {
-				"think": "Phần trăm tiền boa là tiền boa chia cho tiền cước. Chỉ tính chuyến trả bằng thẻ vì tiền boa tiền mặt không được ghi.",
-				"steps": [
-					"Lọc payment_type == 1 và fare_amount > 0.",
-					"tip_pct = tip_amount / fare_amount * 100.",
-					"Trung bình theo bậc quãng đường, số hành khách, giờ đón.",
-					"Nêu các yếu tố khiến tip_pct thấp."
-				],
-				"code": "c = d[(d['payment_type'] == 1) & (d['fare_amount'] > 0)].copy()\nc['tip_pct'] = c['tip_amount'] / c['fare_amount'] * 100\nprint(c.groupby('tier', observed=True)['tip_pct'].mean())\nprint(c.groupby('passenger_count')['tip_pct'].mean())\nprint(c.groupby('pickup_hour')['tip_pct'].mean())",
-				"lotus": "Boa 50 nghìn trên giá 650 nghìn là 7,7%. Chỉ tính khách thanh toán thẻ hoặc chuyển khoản, vì tiền mặt không có trong sổ.",
-				"trap": "Tính boa cho cả chuyến tiền mặt làm tỷ lệ boa thấp giả."
+			"7.1.1": {
+				"vi": {
+					"think": "Nạp LogisticRegression và tạo đối tượng.",
+					"steps": ["from sklearn.linear_model import LogisticRegression.", "logreg = LogisticRegression()."],
+					"code": "from sklearn.linear_model import LogisticRegression\nlogreg = LogisticRegression(max_iter=1000)",
+					"lotus": "Mô hình sẽ đoán xác suất một nhân viên ở lại.",
+					"trap": "Quên max_iter có thể gặp cảnh báo chưa hội tụ."
+				},
+				"en": {
+					"think": "Import LogisticRegression and create the object.",
+					"steps": ["from sklearn.linear_model import LogisticRegression.", "logreg = LogisticRegression()."],
+					"code": "from sklearn.linear_model import LogisticRegression\nlogreg = LogisticRegression(max_iter=1000)",
+					"lotus": "The model will predict the probability a staff member stays.",
+					"trap": "Forgetting max_iter may produce a not-converged warning."
+				}
 			},
-			"en": {
-				"think": "Tip percentage is tip divided by fare. Count card trips only because cash tips are not recorded.",
-				"steps": [
-					"Filter payment_type == 1 and fare_amount > 0.",
-					"tip_pct = tip_amount / fare_amount * 100.",
-					"Average by distance tier, passenger count, pickup hour.",
-					"State which factors lead to low tip_pct."
-				],
-				"code": "c = d[(d['payment_type'] == 1) & (d['fare_amount'] > 0)].copy()\nc['tip_pct'] = c['tip_amount'] / c['fare_amount'] * 100\nprint(c.groupby('tier', observed=True)['tip_pct'].mean())\nprint(c.groupby('passenger_count')['tip_pct'].mean())\nprint(c.groupby('pickup_hour')['tip_pct'].mean())",
-				"lotus": "A tip of 50 thousand on a 650 thousand price is 7.7%. Count only card or transfer customers, since cash is not in the log.",
-				"trap": "Counting cash trips makes the tip rate falsely low."
-			}
-		},
-		"3.2.14": {
-			"vi": {
-				"think": "Số hành khách thay đổi thế nào theo giờ và theo thứ trong tuần. Một bảng giờ nhân thứ cho thấy cả hai cùng lúc.",
-				"steps": [
-					"pivot_table với hàng là giờ, cột là thứ, giá trị là trung bình passenger_count.",
-					"Vẽ bản đồ nhiệt (heatmap).",
-					"Đọc ô đậm nhất."
-				],
-				"code": "pt = df.pivot_table(index='pickup_hour', columns='pickup_day', values='passenger_count', aggfunc='mean')[days]\nsns.heatmap(pt, cmap='YlOrRd')",
-				"lotus": "Số khách mỗi lượt đặt ở Lotus Spa: tối cuối tuần thường đi đôi nhiều hơn sáng thứ hai. Bản đồ nhiệt cho thấy điều đó trong một hình.",
-				"trap": "Trung bình số khách chênh nhau rất ít giữa các ô. Đừng đọc chênh lệch nhỏ như một mẫu hình."
+			"7.1.2": {
+				"vi": {
+					"think": "Dùng RFE chọn 15 biến quan trọng nhất.",
+					"steps": [
+						"from sklearn.feature_selection import RFE.",
+						"rfe = RFE(estimator=logreg, n_features_to_select=15).",
+						"rfe.fit(X_train, y_train_d.values.ravel()).",
+						"In biến được chọn bằng rfe.support_."
+					],
+					"code": "from sklearn.feature_selection import RFE\nrfe = RFE(estimator=logreg, n_features_to_select=15)\nrfe = rfe.fit(X_train, y_train_d.values.ravel())\nX_train.columns[rfe.support_]",
+					"lotus": "Từ 41 cột còn 15. Với file của bạn, các biến thường được chọn gồm Job Level, Marital Status_Single, Remote Work_Yes, Work-Life Balance, Education Level_PhD, Job Satisfaction, Overtime_Yes.",
+					"trap": "y phải là mảng một chiều (ravel); đưa vào DataFrame cột báo cảnh báo hình dạng."
+				},
+				"en": {
+					"think": "Use RFE to choose the 15 most important features.",
+					"steps": [
+						"from sklearn.feature_selection import RFE.",
+						"rfe = RFE(estimator=logreg, n_features_to_select=15).",
+						"rfe.fit(X_train, y_train_d.values.ravel()).",
+						"Print the chosen features via rfe.support_."
+					],
+					"code": "from sklearn.feature_selection import RFE\nrfe = RFE(estimator=logreg, n_features_to_select=15)\nrfe = rfe.fit(X_train, y_train_d.values.ravel())\nX_train.columns[rfe.support_]",
+					"lotus": "From 41 columns down to 15. In your file the usual picks include Job Level, Marital Status_Single, Remote Work_Yes, Work-Life Balance, Education Level_PhD, Job Satisfaction, Overtime_Yes.",
+					"trap": "y must be one-dimensional (ravel); passing a single-column DataFrame raises a shape warning."
+				}
 			},
-			"en": {
-				"think": "How passenger count varies by hour and by day of week. An hour-by-day table shows both at once.",
-				"steps": [
-					"pivot_table with hour as rows, day as columns, mean passenger_count as values.",
-					"Draw a heatmap.",
-					"Read the darkest cell."
-				],
-				"code": "pt = df.pivot_table(index='pickup_hour', columns='pickup_day', values='passenger_count', aggfunc='mean')[days]\nsns.heatmap(pt, cmap='YlOrRd')",
-				"lotus": "Guests per Lotus Spa booking: weekend evenings tend to carry more pairs than Monday mornings. A heatmap shows that in one picture.",
-				"trap": "Average guest counts differ very little between cells. Do not read a tiny difference as a pattern."
-			}
-		},
-		"3.2.15": {
-			"vi": {
-				"think": "Số hành khách trung bình ở từng vùng. Vẽ cột cho top và thêm cột vào bảng bản đồ.",
-				"steps": [
-					"avg = df.groupby('PULocationID')['passenger_count'].mean().",
-					"Gắn vào zones_with_trips theo LocationID.",
-					"Vẽ bản đồ màu theo avg_passengers."
-				],
-				"code": "avg = df.groupby('PULocationID')['passenger_count'].mean().rename('avg_passengers')\nzones_with_trips = zones_with_trips.merge(avg, left_on='LocationID', right_index=True, how='left')\nzones_with_trips.plot(column='avg_passengers', legend=True, figsize=(12,10))",
-				"lotus": "Chi nhánh có nhiều nhóm đi chung có số khách trung bình cao hơn. Biết điều đó thì chọn gói đôi hay gói nhóm cho chi nhánh nào.",
-				"trap": "Vùng ít chuyến có trung bình nhiễu. Lọc số chuyến tối thiểu hoặc ghi chú."
+			"7.1.3": {
+				"vi": {
+					"think": "Lưu danh sách biến được chọn vào col.",
+					"steps": ["col = X_train.columns[rfe.support_]."],
+					"code": "col = X_train.columns[rfe.support_]\nlist(col)",
+					"lotus": "Đây là 15 yếu tố mô hình sẽ dùng để đoán nhân viên ở hay nghỉ.",
+					"trap": "Không có."
+				},
+				"en": {
+					"think": "Store the selected features in col.",
+					"steps": ["col = X_train.columns[rfe.support_]."],
+					"code": "col = X_train.columns[rfe.support_]\nlist(col)",
+					"lotus": "These are the 15 factors the model will use to guess stay or leave.",
+					"trap": "None."
+				}
 			},
-			"en": {
-				"think": "Average passenger count per zone. Draw bars for the top and add a column to the map table.",
-				"steps": [
-					"avg = df.groupby('PULocationID')['passenger_count'].mean().",
-					"Attach to zones_with_trips by LocationID.",
-					"Draw a colour map by avg_passengers."
-				],
-				"code": "avg = df.groupby('PULocationID')['passenger_count'].mean().rename('avg_passengers')\nzones_with_trips = zones_with_trips.merge(avg, left_on='LocationID', right_index=True, how='left')\nzones_with_trips.plot(column='avg_passengers', legend=True, figsize=(12,10))",
-				"lotus": "A branch with many group visits has a higher average guest count. Knowing that, choose couple or group packages for which branch.",
-				"trap": "Zones with few trips have noisy averages. Filter a minimum count or add a note."
-			}
-		},
-		"3.2.16": {
-			"vi": {
-				"think": "Mức độ thường xuyên của các loại phụ phí và nơi hoặc lúc chúng được áp dụng nhiều hơn.",
-				"steps": [
-					"Với mỗi cột phụ phí (extra, mta_tax, tolls_amount, improvement_surcharge, congestion_surcharge, airport_fee): tỷ lệ chuyến có giá trị lớn hơn 0.",
-					"Nhóm theo giờ và theo vùng đón để xem phụ phí nào tập trung ở đâu.",
-					"Phụ phí sân bay chỉ có ở vùng sân bay."
-				],
-				"code": "surch = ['extra','mta_tax','tolls_amount','improvement_surcharge','congestion_surcharge','airport_fee']\nprint((df[surch] > 0).mean().round(3))\nfor col in ['extra','congestion_surcharge','airport_fee']:\n    df.assign(flag=df[col] > 0).groupby('pickup_hour')['flag'].mean().plot(label=col)",
-				"lotus": "Phụ phí giờ vàng áp dụng 18:00 đến 20:00. Đếm tỷ lệ booking có phụ phí theo giờ cho thấy phụ phí tập trung ở đâu và có đang làm khách rời đi không.",
-				"trap": "Đừng nhầm tần suất với doanh thu: một phụ phí hiếm nhưng lớn có thể quan trọng hơn một phụ phí thường xuyên nhưng nhỏ."
+			"7.2.1": {
+				"vi": {
+					"think": "Lấy đúng 15 cột đã chọn ở train.",
+					"steps": ["X_train_sm = X_train[col]."],
+					"code": "X_train_rfe = X_train[col]\nX_train_rfe.head()",
+					"lotus": "Chỉ giữ 15 yếu tố đã được chọn.",
+					"trap": "Chọn nhầm cột (từ validation) làm mô hình lệch."
+				},
+				"en": {
+					"think": "Take exactly the 15 selected columns from train.",
+					"steps": ["X_train_sm = X_train[col]."],
+					"code": "X_train_rfe = X_train[col]\nX_train_rfe.head()",
+					"lotus": "Keep only the 15 chosen factors.",
+					"trap": "Selecting from validation by mistake skews the model."
+				}
 			},
-			"en": {
-				"think": "How often each surcharge applies and where or when it applies more.",
-				"steps": [
-					"For each surcharge column (extra, mta_tax, tolls_amount, improvement_surcharge, congestion_surcharge, airport_fee): share of trips with a value above 0.",
-					"Group by hour and by pickup zone to see where each surcharge concentrates.",
-					"The airport fee exists only in airport zones."
-				],
-				"code": "surch = ['extra','mta_tax','tolls_amount','improvement_surcharge','congestion_surcharge','airport_fee']\nprint((df[surch] > 0).mean().round(3))\nfor col in ['extra','congestion_surcharge','airport_fee']:\n    df.assign(flag=df[col] > 0).groupby('pickup_hour')['flag'].mean().plot(label=col)",
-				"lotus": "The golden-hour surcharge applies 18:00 to 20:00. Counting the share of bookings with a surcharge by hour shows where it concentrates and whether it pushes customers away.",
-				"trap": "Do not confuse frequency with revenue: a rare but large surcharge can matter more than a frequent but small one."
-			}
-		},
-		"4.1.1": {
-			"vi": {
-				"think": "Khuyến nghị về điều phối: dựa vào mẫu hình nhu cầu và các tuyến chậm. Mỗi khuyến nghị phải trỏ về một kết quả bạn đã tính.",
-				"steps": [
-					"Nêu giờ đông (3.2.2) và các tuyến chậm (3.2.1).",
-					"Đề xuất: điều xe đến vùng và giờ nào, tránh tuyến chậm lúc nào.",
-					"Mỗi câu đi kèm một con số từ phân tích của bạn."
-				],
-				"code": "# Write your recommendations here as markdown or print statements,\n# each citing a number from your analysis, e.g.\n# print(f'Busiest hour {hourly.idxmax()}: {scaled.max():,.0f} trips -> dispatch more cabs before this hour')",
-				"lotus": "Giờ đông là 19:00 và tuyến Quận 1 sang Quận 3 chậm nhất lúc 18:00: dời một nhân viên về chi nhánh Quận 1 trước 18:00 và đẩy lịch hẹn giữa hai chi nhánh sang 16:00.",
-				"trap": "Một khuyến nghị không có con số đi kèm chỉ là ý kiến. Dẫn con số."
+			"7.2.2": {
+				"vi": {
+					"think": "Thêm hằng số (intercept) vì statsmodels không tự thêm.",
+					"steps": ["import statsmodels.api as sm.", "X_train_sm = sm.add_constant(X_train_rfe)."],
+					"code": "import statsmodels.api as sm\nX_train_sm = sm.add_constant(X_train_rfe)",
+					"lotus": "Hằng số là xác suất cơ bản khi mọi yếu tố ở mức gốc.",
+					"trap": "Quên add_constant ép đường qua gốc, hệ số sai."
+				},
+				"en": {
+					"think": "Add the constant (intercept) since statsmodels does not.",
+					"steps": ["import statsmodels.api as sm.", "X_train_sm = sm.add_constant(X_train_rfe)."],
+					"code": "import statsmodels.api as sm\nX_train_sm = sm.add_constant(X_train_rfe)",
+					"lotus": "The constant is the baseline probability when every factor is at its reference.",
+					"trap": "Forgetting add_constant forces the line through the origin, wrong coefficients."
+				}
 			},
-			"en": {
-				"think": "Dispatch recommendations: based on demand patterns and slow routes. Each recommendation must point back to a result you computed.",
-				"steps": [
-					"State the busy hours (3.2.2) and slow routes (3.2.1).",
-					"Propose: which zones and hours to send cabs to, when to avoid slow routes.",
-					"Attach a number from your analysis to every sentence."
-				],
-				"code": "# Write your recommendations here as markdown or print statements,\n# each citing a number from your analysis, e.g.\n# print(f'Busiest hour {hourly.idxmax()}: {scaled.max():,.0f} trips -> dispatch more cabs before this hour')",
-				"lotus": "The busy hour is 19:00 and the District 1 to District 3 route is slowest at 18:00: move one staff member to District 1 before 18:00 and shift inter-branch appointments to 16:00.",
-				"trap": "A recommendation with no number is only an opinion. Cite the number."
-			}
-		},
-		"4.1.2": {
-			"vi": {
-				"think": "Đặt xe ở đâu và lúc nào dựa vào nhu cầu theo vùng, giờ, thứ và tháng. Dùng tỷ lệ đón trên trả (3.2.6) để biết vùng nào cần bù xe.",
-				"steps": [
-					"Vùng có tỷ lệ đón cao hơn trả nhiều: xe rời đi hết, cần đưa xe về.",
-					"Vùng đêm đông (3.2.7): giữ một số xe trực.",
-					"Theo tháng và thứ: tăng hoặc giảm đội xe theo mùa."
-				],
-				"code": "# Write positioning suggestions here, citing the ratio table (3.2.6),\n# the night-hours table (3.2.7) and the monthly trend (3.1.4)",
-				"lotus": "Chi nhánh Quận 1 có tỷ lệ đi trên đến là 2: đưa thêm một nhân viên về sau 18:00. Thủ Đức vắng vào tháng 12: giảm ca ở đó.",
-				"trap": "Đề xuất đặt xe ở vùng có nhiều chuyến mà không xét tỷ lệ đón trên trả sẽ làm vùng đó thừa xe."
+			"7.2.3": {
+				"vi": {
+					"think": "Huấn luyện hồi quy logistic bằng statsmodels GLM và đọc bảng kết quả.",
+					"steps": [
+						"sm.GLM(y_train_d, X_train_sm, family=sm.families.Binomial()).fit().",
+						"print(model.summary()).",
+						"Đọc cột coef (dấu và độ lớn) và P>|z| (nhỏ hơn 0,05 là có ý nghĩa)."
+					],
+					"code": "logm = sm.GLM(y_train_d, X_train_sm, family=sm.families.Binomial())\nres = logm.fit()\nprint(res.summary())",
+					"lotus": "Hệ số dương làm tăng khả năng ở lại, âm làm giảm. Ví dụ Overtime_Yes âm: làm thêm giờ làm nhân viên dễ nghỉ hơn.",
+					"trap": "Đọc coef mà bỏ qua p-value: biến p cao có thể chỉ là nhiễu."
+				},
+				"en": {
+					"think": "Train the logistic regression with statsmodels GLM and read the summary.",
+					"steps": [
+						"sm.GLM(y_train_d, X_train_sm, family=sm.families.Binomial()).fit().",
+						"print(model.summary()).",
+						"Read coef (sign and size) and P>|z| (below 0.05 is significant)."
+					],
+					"code": "logm = sm.GLM(y_train_d, X_train_sm, family=sm.families.Binomial())\nres = logm.fit()\nprint(res.summary())",
+					"lotus": "A positive coefficient raises the chance of staying, a negative one lowers it. For example a negative Overtime_Yes: overtime makes staff more likely to leave.",
+					"trap": "Reading coef but skipping p-values: a high-p feature may just be noise."
+				}
 			},
-			"en": {
-				"think": "Where and when to position cabs based on demand by zone, hour, weekday and month. Use the pickup-to-dropoff ratio (3.2.6) to know which zones need top-ups.",
-				"steps": [
-					"A zone with pickups well above dropoffs: cabs leave and do not return, so send cabs back.",
-					"Busy night zones (3.2.7): keep some cabs on standby.",
-					"By month and weekday: grow or shrink the fleet seasonally."
-				],
-				"code": "# Write positioning suggestions here, citing the ratio table (3.2.6),\n# the night-hours table (3.2.7) and the monthly trend (3.1.4)",
-				"lotus": "District 1 has a leave-to-arrive ratio of 2: bring in one more staff member after 18:00. Thu Duc is quiet in December: cut shifts there.",
-				"trap": "Positioning cabs where there are many trips without checking the pickup-to-dropoff ratio leaves that zone with too many cabs."
-			}
-		},
-		"4.1.3": {
-			"vi": {
-				"think": "Điều chỉnh giá dựa trên dữ liệu: tăng doanh thu mà vẫn cạnh tranh với nhà cung cấp khác.",
-				"steps": [
-					"Dùng giá trên dặm theo giờ (3.2.10) và theo bậc quãng đường (3.2.12).",
-					"Đề xuất giá cao hơn ở giờ đông và ở bậc nơi bạn đang rẻ hơn đối thủ.",
-					"Giữ nguyên hoặc giảm ở giờ vắng để kéo nhu cầu.",
-					"Nêu rủi ro: giá tăng có thể làm giảm số chuyến."
-				],
-				"code": "# Write pricing adjustments here, citing fare per mile by hour (3.2.10),\n# the tier comparison (3.2.12) and the surcharge shares (3.2.16)",
-				"lotus": "Giờ vàng 18:00 đến 20:00 đông nhưng giá ngang giờ trưa: thử tăng giá ở khung đó, giữ giá giờ vắng. Theo dõi tuần sau xem số lượt đặt có giảm quá mức bạn chấp nhận không.",
-				"trap": "Tăng giá mà không đặt mức chấp nhận được cho sự sụt giảm số lượt là đánh cược."
+			"7.2.4": {
+				"vi": {
+					"think": "Tính VIF để phát hiện biến chồng lấn.",
+					"steps": [
+						"from statsmodels.stats.outliers_influence import variance_inflation_factor.",
+						"VIF cho từng cột của X_train_rfe.",
+						"VIF dưới 5 là ổn; cao hơn thì cân nhắc bỏ một trong hai biến chồng nhau."
+					],
+					"code": "from statsmodels.stats.outliers_influence import variance_inflation_factor\nvif = pd.DataFrame({'Feature': X_train_rfe.columns,\n    'VIF': [variance_inflation_factor(X_train_rfe.values, i) for i in range(X_train_rfe.shape[1])]})\nvif.sort_values('VIF', ascending=False)",
+					"lotus": "VIF cao nghĩa hai yếu tố nói gần như cùng một điều, như tuổi và số năm làm.",
+					"trap": "Tính VIF trên X_train_sm có hằng số cho VIF của hằng số rất lớn. Dùng bảng không có hằng số."
+				},
+				"en": {
+					"think": "Compute VIF to detect overlapping features.",
+					"steps": [
+						"from statsmodels.stats.outliers_influence import variance_inflation_factor.",
+						"VIF for each column of X_train_rfe.",
+						"VIF below 5 is fine; higher means consider dropping one of two overlapping features."
+					],
+					"code": "from statsmodels.stats.outliers_influence import variance_inflation_factor\nvif = pd.DataFrame({'Feature': X_train_rfe.columns,\n    'VIF': [variance_inflation_factor(X_train_rfe.values, i) for i in range(X_train_rfe.shape[1])]})\nvif.sort_values('VIF', ascending=False)",
+					"lotus": "A high VIF means two factors say almost the same thing, like age and years of service.",
+					"trap": "Computing VIF on X_train_sm with the constant gives a huge VIF for the constant. Use the table without it."
+				}
 			},
-			"en": {
-				"think": "Data-driven pricing adjustments: raise revenue while staying competitive with other vendors.",
-				"steps": [
-					"Use fare per mile by hour (3.2.10) and by distance tier (3.2.12).",
-					"Propose higher prices at busy hours and in tiers where you are cheaper than rivals.",
-					"Hold or cut at quiet hours to lift demand.",
-					"State the risk: a higher price may reduce trips."
-				],
-				"code": "# Write pricing adjustments here, citing fare per mile by hour (3.2.10),\n# the tier comparison (3.2.12) and the surcharge shares (3.2.16)",
-				"lotus": "The golden window 18:00 to 20:00 is busy but priced like lunch: try raising it, keep quiet-hour prices. Watch next week to see whether bookings drop by more than you accept.",
-				"trap": "Raising prices without setting an acceptable drop in bookings is a gamble."
+			"7.2.5": {
+				"vi": {
+					"think": "Dự đoán xác suất ở lại trên tập train.",
+					"steps": ["res.predict(X_train_sm)."],
+					"code": "y_train_pred = res.predict(X_train_sm)\ny_train_pred.head()",
+					"lotus": "Mỗi nhân viên có một xác suất ở lại giữa 0 và 1.",
+					"trap": "Đưa vào X thiếu hằng số báo lỗi kích thước."
+				},
+				"en": {
+					"think": "Predict the probability of staying on the training set.",
+					"steps": ["res.predict(X_train_sm)."],
+					"code": "y_train_pred = res.predict(X_train_sm)\ny_train_pred.head()",
+					"lotus": "Each staff member gets a stay probability between 0 and 1.",
+					"trap": "Passing X without the constant raises a size error."
+				}
+			},
+			"7.2.6": {
+				"vi": {
+					"think": "Đổi kết quả dự đoán thành mảng phẳng.",
+					"steps": ["y_train_pred.values.reshape(-1)."],
+					"code": "y_train_pred_final = y_train_pred.values.reshape(-1)",
+					"lotus": "Chỉ là định dạng lại.",
+					"trap": "Mảng 2 chiều khi tạo DataFrame báo lỗi."
+				},
+				"en": {
+					"think": "Flatten the prediction into an array.",
+					"steps": ["y_train_pred.values.reshape(-1)."],
+					"code": "y_train_pred_final = y_train_pred.values.reshape(-1)",
+					"lotus": "Just a reshape.",
+					"trap": "A 2D array raises an error when building the DataFrame."
+				}
+			},
+			"7.2.7": {
+				"vi": {
+					"think": "Tạo bảng gồm giá trị thực và xác suất dự đoán.",
+					"steps": ["DataFrame có cột Stayed (thực) và Stayed_Prob (dự đoán)."],
+					"code": "y_train_pred_df = pd.DataFrame({'Stayed': y_train_d.values.reshape(-1), 'Stayed_Prob': y_train_pred_final})\ny_train_pred_df.head()",
+					"lotus": "Mỗi dòng: người đó thực ra ở hay nghỉ, và mô hình cho bao nhiêu phần trăm ở.",
+					"trap": "Hai mảng khác độ dài báo lỗi."
+				},
+				"en": {
+					"think": "Build a table of actual values and predicted probabilities.",
+					"steps": ["A DataFrame with Stayed (actual) and Stayed_Prob (predicted)."],
+					"code": "y_train_pred_df = pd.DataFrame({'Stayed': y_train_d.values.reshape(-1), 'Stayed_Prob': y_train_pred_final})\ny_train_pred_df.head()",
+					"lotus": "Each row: whether the person actually stayed or left, and the percentage the model gave to staying.",
+					"trap": "Arrays of different length raise an error."
+				}
+			},
+			"7.2.8": {
+				"vi": {
+					"think": "Tạo cột Predicted: 1 nếu xác suất lớn hơn 0,5.",
+					"steps": ["np.where(xác suất > 0.5, 1, 0)."],
+					"code": "y_train_pred_df['Predicted'] = y_train_pred_df['Stayed_Prob'].map(lambda x: 1 if x > 0.5 else 0)\ny_train_pred_df.head()",
+					"lotus": "Ngưỡng 0,5: trên 50% thì đoán là ở lại.",
+					"trap": "0,5 chỉ là mặc định, bước 7.3 sẽ tìm ngưỡng tốt hơn."
+				},
+				"en": {
+					"think": "Create Predicted: 1 if probability is above 0.5.",
+					"steps": ["np.where(probability > 0.5, 1, 0)."],
+					"code": "y_train_pred_df['Predicted'] = y_train_pred_df['Stayed_Prob'].map(lambda x: 1 if x > 0.5 else 0)\ny_train_pred_df.head()",
+					"lotus": "Threshold 0.5: above 50% predict stay.",
+					"trap": "0.5 is only a default; step 7.3 finds a better one."
+				}
+			},
+			"7.2.9": {
+				"vi": {
+					"think": "Tính độ chính xác trên train.",
+					"steps": ["metrics.accuracy_score(Stayed, Predicted)."],
+					"code": "from sklearn import metrics\nmetrics.accuracy_score(y_train_pred_df['Stayed'], y_train_pred_df['Predicted'])",
+					"lotus": "Với file của bạn kết quả khoảng 74%: ba trong bốn lần đoán đúng.",
+					"trap": "Độ chính xác đơn độc không nói kiểu sai nào. Xem bước tiếp."
+				},
+				"en": {
+					"think": "Compute accuracy on train.",
+					"steps": ["metrics.accuracy_score(Stayed, Predicted)."],
+					"code": "from sklearn import metrics\nmetrics.accuracy_score(y_train_pred_df['Stayed'], y_train_pred_df['Predicted'])",
+					"lotus": "With your file the result is about 74%: three in four guesses are right.",
+					"trap": "Accuracy alone does not say which errors. See the next step."
+				}
+			},
+			"7.2.10": {
+				"vi": {
+					"think": "Lập ma trận nhầm lẫn (confusion matrix).",
+					"steps": ["metrics.confusion_matrix(Stayed, Predicted)."],
+					"code": "confusion = metrics.confusion_matrix(y_train_pred_df['Stayed'], y_train_pred_df['Predicted'])\nprint(confusion)",
+					"lotus": "Với file của bạn khoảng 17.100 nghỉ đoán đúng, 19.400 ở đoán đúng, 6.600 nghỉ bị đoán thành ở, 6.400 ở bị đoán thành nghỉ.",
+					"trap": "Thứ tự hàng và cột: hàng là thực tế, cột là dự đoán."
+				},
+				"en": {
+					"think": "Build the confusion matrix.",
+					"steps": ["metrics.confusion_matrix(Stayed, Predicted)."],
+					"code": "confusion = metrics.confusion_matrix(y_train_pred_df['Stayed'], y_train_pred_df['Predicted'])\nprint(confusion)",
+					"lotus": "In your file roughly 17,100 leavers correct, 19,400 stayers correct, 6,600 leavers guessed as staying, 6,400 stayers guessed as leaving.",
+					"trap": "Order: rows are actual, columns are predicted."
+				}
+			},
+			"7.2.11": {
+				"vi": {
+					"think": "Đặt tên cho bốn ô: TP, TN, FP, FN.",
+					"steps": [
+						"TP: thực ở, đoán ở. TN: thực nghỉ, đoán nghỉ.",
+						"FP: thực nghỉ, đoán ở. FN: thực ở, đoán nghỉ.",
+						"Lấy từ confusion[hàng, cột]."
+					],
+					"code": "TN, FP, FN, TP = confusion.ravel()\nprint(TP, TN, FP, FN)",
+					"lotus": "FP là nguy hiểm nhất: nhân viên sắp nghỉ mà mô hình nói sẽ ở, chị Lan không kịp giữ.",
+					"trap": "Nhầm ô nào là FP, FN đảo ngược mọi chỉ số."
+				},
+				"en": {
+					"think": "Name the four cells: TP, TN, FP, FN.",
+					"steps": [
+						"TP: actually stayed, guessed stayed. TN: actually left, guessed left.",
+						"FP: actually left, guessed stayed. FN: actually stayed, guessed left.",
+						"Read from confusion[row, col]."
+					],
+					"code": "TN, FP, FN, TP = confusion.ravel()\nprint(TP, TN, FP, FN)",
+					"lotus": "FP is the most dangerous: a staff member about to leave but the model says stay, chị Lan has no time to keep them.",
+					"trap": "Confusing which cell is FP or FN reverses every metric."
+				}
+			},
+			"7.2.12": {
+				"vi": {
+					"think": "Tính sensitivity (độ nhạy) và specificity (độ đặc hiệu).",
+					"steps": ["Sensitivity = TP / (TP + FN): trong số người ở lại thật, đoán đúng bao nhiêu.", "Specificity = TN / (TN + FP): trong số người nghỉ thật, đoán đúng bao nhiêu."],
+					"code": "sensitivity = TP / (TP + FN)\nspecificity = TN / (TN + FP)\nprint(round(sensitivity, 3), round(specificity, 3))",
+					"lotus": "Specificity cho biết mô hình bắt được bao nhiêu phần người sắp nghỉ.",
+					"trap": "Đổi chỗ công thức hai chỉ số cho kết quả đảo."
+				},
+				"en": {
+					"think": "Compute sensitivity and specificity.",
+					"steps": ["Sensitivity = TP / (TP + FN): of those who really stay, how many are caught.", "Specificity = TN / (TN + FP): of those who really leave, how many are caught."],
+					"code": "sensitivity = TP / (TP + FN)\nspecificity = TN / (TN + FP)\nprint(round(sensitivity, 3), round(specificity, 3))",
+					"lotus": "Specificity tells how much of those about to leave the model catches.",
+					"trap": "Swapping the two formulas inverts the result."
+				}
+			},
+			"7.2.13": {
+				"vi": {
+					"think": "Tính precision và recall.",
+					"steps": ["Precision = TP / (TP + FP): trong số đoán ở, bao nhiêu thật sự ở.", "Recall = TP / (TP + FN), bằng sensitivity."],
+					"code": "precision = TP / (TP + FP)\nrecall = TP / (TP + FN)\nprint(round(precision, 3), round(recall, 3))",
+					"lotus": "Precision cho biết khi mô hình nói «người này sẽ ở», đúng bao nhiêu phần.",
+					"trap": "Recall và sensitivity là một thứ, đừng tính hai kết quả khác nhau."
+				},
+				"en": {
+					"think": "Compute precision and recall.",
+					"steps": ["Precision = TP / (TP + FP): of those guessed to stay, how many really stay.", "Recall = TP / (TP + FN), equal to sensitivity."],
+					"code": "precision = TP / (TP + FP)\nrecall = TP / (TP + FN)\nprint(round(precision, 3), round(recall, 3))",
+					"lotus": "Precision tells how often “this person will stay” is right.",
+					"trap": "Recall and sensitivity are the same thing; do not compute two different results."
+				}
+			},
+			"7.3.1": {
+				"vi": {
+					"think": "Vẽ đường ROC và tính AUC.",
+					"steps": [
+						"metrics.roc_curve(Stayed, Stayed_Prob, drop_intermediate=False).",
+						"Vẽ FPR theo TPR, thêm đường chéo.",
+						"AUC càng gần 1 càng tốt, 0,5 là đoán bừa."
+					],
+					"code": "def draw_roc(actual, probs):\n    fpr, tpr, thr = metrics.roc_curve(actual, probs, drop_intermediate=False)\n    auc = metrics.roc_auc_score(actual, probs)\n    plt.plot(fpr, tpr, label=f'AUC = {auc:.2f}'); plt.plot([0, 1], [0, 1], 'k--')\n    plt.xlabel('FPR'); plt.ylabel('TPR'); plt.legend(); plt.show()\ndraw_roc(y_train_pred_df['Stayed'], y_train_pred_df['Stayed_Prob'])",
+					"lotus": "Đường càng sát góc trên trái thì mô hình càng phân biệt tốt người ở và người nghỉ.",
+					"trap": "Đường sát đường chéo thì không tốt hơn đoán bằng đồng xu."
+				},
+				"en": {
+					"think": "Plot the ROC curve and compute AUC.",
+					"steps": [
+						"metrics.roc_curve(Stayed, Stayed_Prob, drop_intermediate=False).",
+						"Plot FPR against TPR, add the diagonal.",
+						"AUC closer to 1 is better, 0.5 is guessing."
+					],
+					"code": "def draw_roc(actual, probs):\n    fpr, tpr, thr = metrics.roc_curve(actual, probs, drop_intermediate=False)\n    auc = metrics.roc_auc_score(actual, probs)\n    plt.plot(fpr, tpr, label=f'AUC = {auc:.2f}'); plt.plot([0, 1], [0, 1], 'k--')\n    plt.xlabel('FPR'); plt.ylabel('TPR'); plt.legend(); plt.show()\ndraw_roc(y_train_pred_df['Stayed'], y_train_pred_df['Stayed_Prob'])",
+					"lotus": "The closer the curve hugs the top-left, the better the model separates stayers from leavers.",
+					"trap": "A curve near the diagonal is no better than a coin flip."
+				}
+			},
+			"7.3.2": {
+				"vi": {
+					"think": "Dự đoán ở nhiều ngưỡng xác suất từ 0,0 đến 0,9.",
+					"steps": ["Vòng lặp i trong [0.0, 0.1, ..., 0.9].", "Mỗi lần tạo một cột Stayed_Prob > i."],
+					"code": "numbers = [float(x) / 10 for x in range(10)]\nfor i in numbers:\n    y_train_pred_df[i] = y_train_pred_df['Stayed_Prob'].map(lambda x: 1 if x > i else 0)\ny_train_pred_df.head()",
+					"lotus": "Thử từng ngưỡng: đoán «ở» khi trên 10%, 20%, ... để xem ngưỡng nào hợp lý.",
+					"trap": "Không có."
+				},
+				"en": {
+					"think": "Predict at several probability cutoffs from 0.0 to 0.9.",
+					"steps": ["Loop i over [0.0, 0.1, ..., 0.9].", "Each time create a column Stayed_Prob > i."],
+					"code": "numbers = [float(x) / 10 for x in range(10)]\nfor i in numbers:\n    y_train_pred_df[i] = y_train_pred_df['Stayed_Prob'].map(lambda x: 1 if x > i else 0)\ny_train_pred_df.head()",
+					"lotus": "Try each threshold: predict “stay” when above 10%, 20%, ... to see which is sensible.",
+					"trap": "None."
+				}
+			},
+			"7.3.3": {
+				"vi": {
+					"think": "Vẽ độ chính xác, sensitivity, specificity theo từng ngưỡng để chọn ngưỡng tối ưu.",
+					"steps": [
+						"Tính ba chỉ số cho từng cột ngưỡng.",
+						"Vẽ ba đường theo ngưỡng.",
+						"Ngưỡng tối ưu nằm nơi các đường cắt nhau (cân bằng sensitivity và specificity)."
+					],
+					"code": "cutoff_df = pd.DataFrame(columns=['prob', 'accuracy', 'sensi', 'speci'])\nfor i in numbers:\n    cm = metrics.confusion_matrix(y_train_pred_df['Stayed'], y_train_pred_df[i])\n    tn, fp, fn, tp = cm.ravel()\n    cutoff_df.loc[i] = [i, (tp + tn) / cm.sum(), tp / (tp + fn), tn / (tn + fp)]\ncutoff_df.plot.line(x='prob', y=['accuracy', 'sensi', 'speci'])\nplt.show()",
+					"lotus": "Ngưỡng 0,5 không nhất thiết là tốt nhất; với file của bạn ngưỡng tối ưu thường quanh 0,5 vì hai lớp gần cân bằng.",
+					"trap": "Chọn ngưỡng chỉ theo độ chính xác bỏ qua sensitivity và specificity."
+				},
+				"en": {
+					"think": "Plot accuracy, sensitivity and specificity per threshold to choose the optimal cutoff.",
+					"steps": [
+						"Compute the three metrics for each threshold column.",
+						"Plot three lines against the threshold.",
+						"The optimal cutoff sits where the lines cross (balanced sensitivity and specificity)."
+					],
+					"code": "cutoff_df = pd.DataFrame(columns=['prob', 'accuracy', 'sensi', 'speci'])\nfor i in numbers:\n    cm = metrics.confusion_matrix(y_train_pred_df['Stayed'], y_train_pred_df[i])\n    tn, fp, fn, tp = cm.ravel()\n    cutoff_df.loc[i] = [i, (tp + tn) / cm.sum(), tp / (tp + fn), tn / (tn + fp)]\ncutoff_df.plot.line(x='prob', y=['accuracy', 'sensi', 'speci'])\nplt.show()",
+					"lotus": "0.5 is not necessarily best; with your file the optimum is usually near 0.5 because the two classes are near balanced.",
+					"trap": "Choosing the threshold by accuracy only ignores sensitivity and specificity."
+				}
+			},
+			"7.3.4": {
+				"vi": {
+					"think": "Tạo cột dự đoán cuối theo ngưỡng tối ưu.",
+					"steps": ["Chọn ngưỡng (ví dụ 0,5) rồi tạo cột final_predicted."],
+					"code": "cutoff = 0.5  # use the value you read from the plot\ny_train_pred_df['final_predicted'] = y_train_pred_df['Stayed_Prob'].map(lambda x: 1 if x > cutoff else 0)",
+					"lotus": "Từ giờ, mô hình nói «ở» khi xác suất vượt ngưỡng này.",
+					"trap": "Hard-code ngưỡng rồi quên đổi sau khi đổi mô hình."
+				},
+				"en": {
+					"think": "Create the final prediction column using the optimal cutoff.",
+					"steps": ["Choose the cutoff (for example 0.5) then create final_predicted."],
+					"code": "cutoff = 0.5  # use the value you read from the plot\ny_train_pred_df['final_predicted'] = y_train_pred_df['Stayed_Prob'].map(lambda x: 1 if x > cutoff else 0)",
+					"lotus": "From now on the model says “stay” when probability exceeds this threshold.",
+					"trap": "Hard-coding the cutoff and forgetting to update it after changing the model."
+				}
+			},
+			"7.3.5": {
+				"vi": {
+					"think": "Độ chính xác với ngưỡng mới.",
+					"steps": ["accuracy_score(Stayed, final_predicted)."],
+					"code": "metrics.accuracy_score(y_train_pred_df['Stayed'], y_train_pred_df['final_predicted'])",
+					"lotus": "So với 7.2.9: ngưỡng tối ưu có thể không đổi nhiều nếu 0,5 đã gần tối ưu.",
+					"trap": "Không có."
+				},
+				"en": {
+					"think": "Accuracy with the new cutoff.",
+					"steps": ["accuracy_score(Stayed, final_predicted)."],
+					"code": "metrics.accuracy_score(y_train_pred_df['Stayed'], y_train_pred_df['final_predicted'])",
+					"lotus": "Compare with 7.2.9: the optimal cutoff may barely change if 0.5 was already near optimal.",
+					"trap": "None."
+				}
+			},
+			"7.3.6": {
+				"vi": {
+					"think": "Ma trận nhầm lẫn với ngưỡng mới.",
+					"steps": ["confusion_matrix(Stayed, final_predicted)."],
+					"code": "confusion2 = metrics.confusion_matrix(y_train_pred_df['Stayed'], y_train_pred_df['final_predicted'])\nprint(confusion2)",
+					"lotus": "Số người nghỉ bị bỏ sót (FP) thay đổi thế nào khi đổi ngưỡng.",
+					"trap": "Không có."
+				},
+				"en": {
+					"think": "Confusion matrix with the new cutoff.",
+					"steps": ["confusion_matrix(Stayed, final_predicted)."],
+					"code": "confusion2 = metrics.confusion_matrix(y_train_pred_df['Stayed'], y_train_pred_df['final_predicted'])\nprint(confusion2)",
+					"lotus": "How the number of missed leavers (FP) changes when the threshold changes.",
+					"trap": "None."
+				}
+			},
+			"7.3.7": {
+				"vi": {
+					"think": "TP, TN, FP, FN cho ngưỡng mới.",
+					"steps": ["ravel() ma trận mới."],
+					"code": "TN, FP, FN, TP = confusion2.ravel()",
+					"lotus": "Như 7.2.11.",
+					"trap": "Nhớ cập nhật biến, đừng dùng biến cũ."
+				},
+				"en": {
+					"think": "TP, TN, FP, FN for the new cutoff.",
+					"steps": ["ravel() the new matrix."],
+					"code": "TN, FP, FN, TP = confusion2.ravel()",
+					"lotus": "As in 7.2.11.",
+					"trap": "Remember to update the variables; do not reuse the old ones."
+				}
+			},
+			"7.3.8": {
+				"vi": {
+					"think": "Sensitivity và specificity cho ngưỡng mới.",
+					"steps": ["Dùng công thức như 7.2.12."],
+					"code": "sensitivity = TP / (TP + FN)\nspecificity = TN / (TN + FP)\nprint(round(sensitivity, 3), round(specificity, 3))",
+					"lotus": "Cân bằng hơn giữa bắt người sắp nghỉ và đoán đúng người ở lại.",
+					"trap": "Không có."
+				},
+				"en": {
+					"think": "Sensitivity and specificity for the new cutoff.",
+					"steps": ["Use the formulas from 7.2.12."],
+					"code": "sensitivity = TP / (TP + FN)\nspecificity = TN / (TN + FP)\nprint(round(sensitivity, 3), round(specificity, 3))",
+					"lotus": "More balance between catching leavers and correctly guessing stayers.",
+					"trap": "None."
+				}
+			},
+			"7.3.9": {
+				"vi": {
+					"think": "Precision và recall cho ngưỡng mới.",
+					"steps": ["Dùng công thức như 7.2.13."],
+					"code": "precision = TP / (TP + FP)\nrecall = TP / (TP + FN)\nprint(round(precision, 3), round(recall, 3))",
+					"lotus": "Khi nâng ngưỡng precision thường tăng còn recall giảm.",
+					"trap": "Không có."
+				},
+				"en": {
+					"think": "Precision and recall for the new cutoff.",
+					"steps": ["Use the formulas from 7.2.13."],
+					"code": "precision = TP / (TP + FP)\nrecall = TP / (TP + FN)\nprint(round(precision, 3), round(recall, 3))",
+					"lotus": "Raising the threshold usually lifts precision and lowers recall.",
+					"trap": "None."
+				}
+			},
+			"7.3.10": {
+				"vi": {
+					"think": "Vẽ đường precision-recall và chọn lại ngưỡng nếu cần.",
+					"steps": [
+						"precision_recall_curve(Stayed, Stayed_Prob).",
+						"Vẽ precision và recall theo ngưỡng.",
+						"Điểm cắt nhau là ngưỡng cân bằng hai chỉ số."
+					],
+					"code": "from sklearn.metrics import precision_recall_curve\np, r, t = precision_recall_curve(y_train_pred_df['Stayed'], y_train_pred_df['Stayed_Prob'])\nplt.plot(t, p[:-1], 'g', label='precision'); plt.plot(t, r[:-1], 'r', label='recall'); plt.legend(); plt.show()",
+					"lotus": "Nếu chị Lan cần bắt nhiều người sắp nghỉ hơn (chấp nhận báo động nhầm) thì chỉnh ngưỡng theo hướng đó.",
+					"trap": "p và r dài hơn t một phần tử; dùng p[:-1], r[:-1]."
+				},
+				"en": {
+					"think": "Plot the precision-recall curve and re-pick the cutoff if needed.",
+					"steps": [
+						"precision_recall_curve(Stayed, Stayed_Prob).",
+						"Plot precision and recall against the threshold.",
+						"Where they cross is the balanced threshold."
+					],
+					"code": "from sklearn.metrics import precision_recall_curve\np, r, t = precision_recall_curve(y_train_pred_df['Stayed'], y_train_pred_df['Stayed_Prob'])\nplt.plot(t, p[:-1], 'g', label='precision'); plt.plot(t, r[:-1], 'r', label='recall'); plt.legend(); plt.show()",
+					"lotus": "If chị Lan needs to catch more leavers (accepting false alarms) shift the threshold that way.",
+					"trap": "p and r are one element longer than t; use p[:-1], r[:-1]."
+				}
+			},
+			"8.1.1": {
+				"vi": {
+					"think": "Chọn đúng 15 cột cho validation.",
+					"steps": ["X_validation[col]."],
+					"code": "X_validation_rfe = X_validation[col]",
+					"lotus": "Cùng 15 yếu tố như train.",
+					"trap": "Chọn cột khác train làm dự đoán sai."
+				},
+				"en": {
+					"think": "Select the same 15 columns for validation.",
+					"steps": ["X_validation[col]."],
+					"code": "X_validation_rfe = X_validation[col]",
+					"lotus": "The same 15 factors as train.",
+					"trap": "Selecting different columns than train makes predictions wrong."
+				}
+			},
+			"8.1.2": {
+				"vi": {
+					"think": "Thêm hằng số vào validation.",
+					"steps": ["sm.add_constant(X_validation_rfe)."],
+					"code": "X_validation_sm = sm.add_constant(X_validation_rfe)",
+					"lotus": "Cùng cấu trúc như train.",
+					"trap": "Thiếu hằng số báo lỗi kích thước."
+				},
+				"en": {
+					"think": "Add the constant to validation.",
+					"steps": ["sm.add_constant(X_validation_rfe)."],
+					"code": "X_validation_sm = sm.add_constant(X_validation_rfe)",
+					"lotus": "Same structure as train.",
+					"trap": "Missing the constant raises a size error."
+				}
+			},
+			"8.1.3": {
+				"vi": {
+					"think": "Dự đoán xác suất trên validation.",
+					"steps": ["res.predict(X_validation_sm)."],
+					"code": "y_validation_pred = res.predict(X_validation_sm)",
+					"lotus": "Mô hình đoán người nhân viên chưa từng thấy.",
+					"trap": "Dùng mô hình đã huấn luyện lại bằng validation là gian lận."
+				},
+				"en": {
+					"think": "Predict probabilities on validation.",
+					"steps": ["res.predict(X_validation_sm)."],
+					"code": "y_validation_pred = res.predict(X_validation_sm)",
+					"lotus": "The model guesses staff it has never seen.",
+					"trap": "Retraining on validation is cheating."
+				}
+			},
+			"8.1.4": {
+				"vi": {
+					"think": "Tạo bảng thực tế và dự đoán cho validation.",
+					"steps": ["Giống 7.2.7 cho validation."],
+					"code": "y_validation_pred_df = pd.DataFrame({'Stayed': y_val_d.values.reshape(-1), 'Stayed_Prob': y_validation_pred.values.reshape(-1)})\ny_validation_pred_df.head()",
+					"lotus": "Mỗi nhân viên có xác suất ở lại dự đoán.",
+					"trap": "Hai mảng khác độ dài báo lỗi."
+				},
+				"en": {
+					"think": "Build the actual-vs-predicted table for validation.",
+					"steps": ["As 7.2.7 for validation."],
+					"code": "y_validation_pred_df = pd.DataFrame({'Stayed': y_val_d.values.reshape(-1), 'Stayed_Prob': y_validation_pred.values.reshape(-1)})\ny_validation_pred_df.head()",
+					"lotus": "Each staff member has a predicted stay probability.",
+					"trap": "Arrays of different length raise an error."
+				}
+			},
+			"8.1.5": {
+				"vi": {
+					"think": "Dự đoán cuối theo ngưỡng đã chọn trên train.",
+					"steps": ["Dùng cùng cutoff như 7.3.4."],
+					"code": "y_validation_pred_df['final_predicted'] = y_validation_pred_df['Stayed_Prob'].map(lambda x: 1 if x > cutoff else 0)",
+					"lotus": "Dùng cùng ngưỡng, không chọn lại ngưỡng trên validation.",
+					"trap": "Chọn ngưỡng trên validation là rò rỉ thông tin."
+				},
+				"en": {
+					"think": "Final prediction using the cutoff chosen on train.",
+					"steps": ["Use the same cutoff as 7.3.4."],
+					"code": "y_validation_pred_df['final_predicted'] = y_validation_pred_df['Stayed_Prob'].map(lambda x: 1 if x > cutoff else 0)",
+					"lotus": "Use the same cutoff, do not re-choose it on validation.",
+					"trap": "Choosing the cutoff on validation leaks information."
+				}
+			},
+			"8.2": {
+				"vi": {
+					"think": "Độ chính xác trên validation.",
+					"steps": ["accuracy_score trên validation."],
+					"code": "metrics.accuracy_score(y_validation_pred_df['Stayed'], y_validation_pred_df['final_predicted'])",
+					"lotus": "Gần với độ chính xác train (khoảng 74%) thì mô hình không quá khớp.",
+					"trap": "Chênh nhiều giữa train và validation là quá khớp."
+				},
+				"en": {
+					"think": "Accuracy on validation.",
+					"steps": ["accuracy_score on validation."],
+					"code": "metrics.accuracy_score(y_validation_pred_df['Stayed'], y_validation_pred_df['final_predicted'])",
+					"lotus": "Close to train accuracy (about 74%) means no overfitting.",
+					"trap": "A big train-validation gap signals overfitting."
+				}
+			},
+			"8.3": {
+				"vi": {
+					"think": "Ma trận nhầm lẫn và TP, TN, FP, FN trên validation.",
+					"steps": ["confusion_matrix và ravel()."],
+					"code": "cm_val = metrics.confusion_matrix(y_validation_pred_df['Stayed'], y_validation_pred_df['final_predicted'])\nTN, FP, FN, TP = cm_val.ravel()\nprint(cm_val)",
+					"lotus": "Số liệu tương tự train nhưng với 21.200 nhân viên chưa từng thấy.",
+					"trap": "Không có."
+				},
+				"en": {
+					"think": "Confusion matrix and TP, TN, FP, FN on validation.",
+					"steps": ["confusion_matrix and ravel()."],
+					"code": "cm_val = metrics.confusion_matrix(y_validation_pred_df['Stayed'], y_validation_pred_df['final_predicted'])\nTN, FP, FN, TP = cm_val.ravel()\nprint(cm_val)",
+					"lotus": "Numbers like train but for 21,200 unseen staff.",
+					"trap": "None."
+				}
+			},
+			"8.4": {
+				"vi": {
+					"think": "Sensitivity và specificity trên validation.",
+					"steps": ["Công thức như 7.2.12."],
+					"code": "sensitivity = TP / (TP + FN)\nspecificity = TN / (TN + FP)\nprint(round(sensitivity, 3), round(specificity, 3))",
+					"lotus": "So với train để thấy mô hình giữ vững không.",
+					"trap": "Không có."
+				},
+				"en": {
+					"think": "Sensitivity and specificity on validation.",
+					"steps": ["Formulas as 7.2.12."],
+					"code": "sensitivity = TP / (TP + FN)\nspecificity = TN / (TN + FP)\nprint(round(sensitivity, 3), round(specificity, 3))",
+					"lotus": "Compare with train to see whether the model holds up.",
+					"trap": "None."
+				}
+			},
+			"8.5": {
+				"vi": {
+					"think": "Precision và recall trên validation.",
+					"steps": ["Công thức như 7.2.13."],
+					"code": "precision = TP / (TP + FP)\nrecall = TP / (TP + FN)\nprint(round(precision, 3), round(recall, 3))",
+					"lotus": "Kết luận ở ô cuối: mô hình có đủ tốt để chị Lan dùng báo trước nhân viên có nguy cơ nghỉ không.",
+					"trap": "Kết luận chỉ bằng một chỉ số."
+				},
+				"en": {
+					"think": "Precision and recall on validation.",
+					"steps": ["Formulas as 7.2.13."],
+					"code": "precision = TP / (TP + FP)\nrecall = TP / (TP + FN)\nprint(round(precision, 3), round(recall, 3))",
+					"lotus": "Conclude in the last cell: is the model good enough for chị Lan to flag staff at risk of leaving.",
+					"trap": "Concluding from a single metric."
+				}
 			}
 		}
 	}
-}, {
-	"id": "delivery-time",
-	"course": "C3 · Hồi quy tuyến tính",
-	"title": ["Bài tập: Dự đoán thời gian giao", "Assignment: Delivery Time Prediction"],
-	"file": "LR_Delivery_Time_Estimation_Starter.ipynb",
-	"story": ["Starter gốc là dữ liệu đơn giao Porter. Trong Lotus Spa: «đơn» = lượt đặt lịch, «giao hàng» = khách vào phòng, «thời gian giao» = số phút khách chờ từ lúc đặt đến lúc vào phòng. Bạn dự đoán thời gian chờ để chị Lan báo trước cho khách. Các con số «file của bạn» là số thật tính từ porter_data_1.csv.", "The original starter is Porter delivery data. In Lotus Spa: an order is a booking, delivery is the customer entering the room, delivery time is the minutes from booking to entering. You predict the wait so chị Lan can tell customers in advance. The “your file” numbers are real figures computed from porter_data_1.csv."],
-	"concepts": ["d-19f8df89941b"],
-	"cells": [
-		{
-			"t": "md",
-			"s": "# Order Delivery Time Prediction"
-		},
-		{
-			"t": "md",
-			"s": "## Objectives\nThe objective of this assignment is to build a regression model that predicts the delivery time for orders placed through Porter. The model will use various features such as the items ordered, the restaurant location, the order protocol, and the availability of delivery partners.\n\nThe key goals are:\n- Predict the delivery time for an order based on multiple input features\n- Improve delivery time predictions to optimiae operational efficiency\n- Understand the key factors influencing delivery time to enhance the model's accuracy"
-		},
-		{
-			"t": "md",
-			"s": "## Data Pipeline\nThe data pipeline for this assignment will involve the following steps:\n1. **Data Loading**\n2. **Data Preprocessing and Feature Engineering**\n3. **Exploratory Data Analysis**\n4. **Model Building**\n5. **Model Inference**"
-		},
-		{
-			"t": "md",
-			"s": "## Data Understanding\nThe dataset contains information on orders placed through Porter, with the following columns:\n\n| Field                     | Description                                                                                 |\n|---------------------------|---------------------------------------------------------------------------------------------|\n| market_id                 | Integer ID representing the market where the restaurant is located.                         |\n| created_at                | Timestamp when the order was placed.                                                        |\n| actual_delivery_time      | Timestamp when the order was delivered.                                                     |\n| store_primary_category    | Category of the restaurant (e.g., fast food, dine-in).                                      |\n| order_protocol            | Integer representing how the order was placed (e.g., via Porter, call to restaurant, etc.). |\n| total_items               | Total number of items in the order.                                                         |\n| subtotal                  | Final price of the order.                                                                   |\n| num_distinct_items        | Number of distinct items in the order.                                                      |\n| min_item_price            | Price of the cheapest item in the order.                                                    |\n| max_item_price            | Price of the most expensive item in the order.                                              |\n| total_onshift_dashers     | Number of delivery partners on duty when the order was placed.                              |\n| total_busy_dashers        | Number of delivery partners already occupied with other orders.                             |\n| total_outstanding_orders  | Number of orders pending fulfillment at the time of the order.                              |\n| distance                  | Total distance from the restaurant to the customer.                                         |\n"
-		},
-		{
-			"t": "md",
-			"s": "## **Importing Necessary Libraries**"
-		},
-		{
-			"t": "code",
-			"s": "# Import essential libraries for data manipulation and analysis\n\n"
-		},
-		{
-			"t": "md",
-			"s": "## **1. Loading the data**\nLoad 'porter_data_1.csv' as a DataFrame"
-		},
-		{
-			"t": "code",
-			"s": "# Importing the file porter_data_1.csv\n"
-		},
-		{
-			"t": "md",
-			"s": "## **2. Data Preprocessing and Feature Engineering** <font color = red>[15 marks]</font> <br>"
-		},
-		{
-			"t": "md",
-			"s": "#### **2.1 Fixing the Datatypes**  <font color = red>[5 marks]</font> <br>\nThe current timestamps are in object format and need conversion to datetime format for easier handling and intended functionality"
-		},
-		{
-			"t": "md",
-			"s": "##### **2.1.1** <font color = red>[2 marks]</font> <br>\nConvert date and time fields to appropriate data type",
-			"ref": "2.1.1"
-		},
-		{
-			"t": "code",
-			"s": "# Convert 'created_at' and 'actual_delivery_time' columns to datetime format\n\n"
-		},
-		{
-			"t": "md",
-			"s": "##### **2.1.2**  <font color = red>[3 marks]</font> <br>\nConvert categorical fields to appropriate data type",
-			"ref": "2.1.2"
-		},
-		{
-			"t": "code",
-			"s": "# Convert categorical features to category type\n\n"
-		},
-		{
-			"t": "md",
-			"s": "#### **2.2 Feature Engineering** <font color = red>[5 marks]</font> <br>\nCalculate the time taken to execute the delivery as well as extract the hour and day at which the order was placed"
-		},
-		{
-			"t": "md",
-			"s": "##### **2.2.1** <font color = red>[2 marks]</font> <br>\nCalculate the time taken using the features `actual_delivery_time` and `created_at`",
-			"ref": "2.2.1"
-		},
-		{
-			"t": "code",
-			"s": "# Calculate time taken in minutes\n"
-		},
-		{
-			"t": "md",
-			"s": "##### **2.2.2** <font color = red>[3 marks]</font> <br>\nExtract the hour at which the order was placed and which day of the week it was. Drop the unnecessary columns.",
-			"ref": "2.2.2"
-		},
-		{
-			"t": "code",
-			"s": "# Extract the hour and day of week from the 'created_at' timestamp\n\n\n# Create a categorical feature 'isWeekend'\n\n"
-		},
-		{
-			"t": "code",
-			"s": "# Drop unnecessary columns\n"
-		},
-		{
-			"t": "md",
-			"s": "#### **2.3 Creating training and validation sets** <font color = red>[5 marks]</font> <br>"
-		},
-		{
-			"t": "md",
-			"s": "##### **2.3.1** <font color = red>[2 marks]</font> <br>\n Define target and input features",
-			"ref": "2.3.1"
-		},
-		{
-			"t": "code",
-			"s": "# Define target variable (y) and features (X)\n\n"
-		},
-		{
-			"t": "md",
-			"s": "##### **2.3.2** <font color = red>[3 marks]</font> <br>\n Split the data into training and test sets",
-			"ref": "2.3.2"
-		},
-		{
-			"t": "code",
-			"s": "# Split data into training and testing sets\n\n"
-		},
-		{
-			"t": "md",
-			"s": "## **3. Exploratory Data Analysis on Training Data** <font color = red>[20 marks]</font> <br>\n1. Analyzing the correlation between variables to identify patterns and relationships\n2. Identifying and addressing outliers to ensure the integrity of the analysis\n3. Exploring the relationships between variables and examining the distribution of the data for better insights"
-		},
-		{
-			"t": "md",
-			"s": "#### **3.1 Feature Distributions** <font color = red> [7 marks]</font> <br>\n"
-		},
-		{
-			"t": "code",
-			"s": "# Define numerical and categorical columns for easy EDA and data manipulation\n\n"
-		},
-		{
-			"t": "md",
-			"s": "##### **3.1.1** <font color = red>[3 marks]</font> <br>\nPlot distributions for numerical columns in the training set to understand their spread and any skewness",
-			"ref": "3.1.1"
-		},
-		{
-			"t": "code",
-			"s": "# Plot distributions for all numerical columns\n\n"
-		},
-		{
-			"t": "md",
-			"s": "##### **3.1.2** <font color = red>[2 marks]</font> <br>\nCheck the distribution of categorical features",
-			"ref": "3.1.2"
-		},
-		{
-			"t": "code",
-			"s": "# Distribution of categorical columns\n\n"
-		},
-		{
-			"t": "md",
-			"s": "##### **3.1.3** <font color = red>[2 mark]</font> <br>\nVisualise the distribution of the target variable to understand its spread and any skewness",
-			"ref": "3.1.3"
-		},
-		{
-			"t": "code",
-			"s": "# Distribution of time_taken\n\n"
-		},
-		{
-			"t": "md",
-			"s": "#### **3.2 Relationships Between Features** <font color = red>[3 marks]</font> <br>"
-		},
-		{
-			"t": "md",
-			"s": "##### **3.2.1** <font color = red>[3 marks]</font> <br>\nScatter plots for important numerical and categorical features to observe how they relate to `time_taken`",
-			"ref": "3.2.1"
-		},
-		{
-			"t": "code",
-			"s": "# Scatter plot to visualise the relationship between time_taken and other features\n\n"
-		},
-		{
-			"t": "code",
-			"s": "# Show the distribution of time_taken for different hours\n\n"
-		},
-		{
-			"t": "md",
-			"s": "#### **3.3 Correlation Analysis** <font color = red>[5 marks]</font> <br>\nCheck correlations between numerical features to identify which variables are strongly related to `time_taken`"
-		},
-		{
-			"t": "md",
-			"s": "##### **3.3.1** <font color = red>[3 marks]</font> <br>\nPlot a heatmap to display correlations",
-			"ref": "3.3.1"
-		},
-		{
-			"t": "code",
-			"s": "# Plot the heatmap of the correlation matrix\n\n"
-		},
-		{
-			"t": "md",
-			"s": "##### **3.3.2** <font color = red>[2 marks]</font> <br>\nDrop the columns with weak correlations with the target variable",
-			"ref": "3.3.2"
-		},
-		{
-			"t": "code",
-			"s": "# Drop 3-5 weakly correlated columns from training dataset\n\n"
-		},
-		{
-			"t": "md",
-			"s": "#### **3.4 Handling the Outliers** <font color = red>[5 marks]</font> <br>\n\n"
-		},
-		{
-			"t": "md",
-			"s": "##### **3.4.1** <font color = red>[2 marks]</font> <br>\nVisualise potential outliers for the target variable and other numerical features using boxplots",
-			"ref": "3.4.1"
-		},
-		{
-			"t": "code",
-			"s": "# Boxplot for time_taken\n\n"
-		},
-		{
-			"t": "md",
-			"s": "##### **3.4.2** <font color = red>[3 marks]</font> <br>\nHandle outliers present in all columns",
-			"ref": "3.4.2"
-		},
-		{
-			"t": "code",
-			"s": "# Handle outliers\n\n"
-		},
-		{
-			"t": "md",
-			"s": "## **4. Exploratory Data Analysis on Validation Data** <font color = red>[optional]</font> <br>\nOptionally, perform EDA on test data to see if the distribution match with the training data"
-		},
-		{
-			"t": "code",
-			"s": "# Define numerical and categorical columns for easy EDA and data manipulation\n\n"
-		},
-		{
-			"t": "md",
-			"s": "#### **4.1 Feature Distributions**\n"
-		},
-		{
-			"t": "md",
-			"s": "##### **4.1.1**\nPlot distributions for numerical columns in the validation set to understand their spread and any skewness",
-			"ref": "4.1.1"
-		},
-		{
-			"t": "code",
-			"s": "# Plot distributions for all numerical columns\n\n"
-		},
-		{
-			"t": "md",
-			"s": "##### **4.1.2**\nCheck the distribution of categorical features",
-			"ref": "4.1.2"
-		},
-		{
-			"t": "code",
-			"s": "# Distribution of categorical columns\n\n"
-		},
-		{
-			"t": "md",
-			"s": "##### **4.1.3**\nVisualise the distribution of the target variable to understand its spread and any skewness",
-			"ref": "4.1.3"
-		},
-		{
-			"t": "code",
-			"s": "# Distribution of time_taken\n\n"
-		},
-		{
-			"t": "md",
-			"s": "#### **4.2 Relationships Between Features**\nScatter plots for numerical features to observe how they relate to each other, especially to `time_taken`",
-			"ref": "4.2"
-		},
-		{
-			"t": "code",
-			"s": "# Scatter plot to visualise the relationship between time_taken and other features\n\n"
-		},
-		{
-			"t": "md",
-			"s": "#### **4.3** Drop the columns with weak correlations with the target variable",
-			"ref": "4.3"
-		},
-		{
-			"t": "code",
-			"s": "# Drop the weakly correlated columns from training dataset\n\n"
-		},
-		{
-			"t": "md",
-			"s": "## **5. Model Building** <font color = red>[15 marks]</font> <br>"
-		},
-		{
-			"t": "md",
-			"s": "#### **Import Necessary Libraries**"
-		},
-		{
-			"t": "code",
-			"s": "# Import libraries\n\n"
-		},
-		{
-			"t": "md",
-			"s": "#### **5.1 Feature Scaling** <font color = red>[3 marks]</font> <br>",
-			"ref": "5.1"
-		},
-		{
-			"t": "code",
-			"s": "# Apply scaling to the numerical columns\n\n"
-		},
-		{
-			"t": "md",
-			"s": "Note that linear regression is agnostic to feature scaling. However, with feature scaling, we get the coefficients to be somewhat on the same scale so that it becomes easier to compare them."
-		},
-		{
-			"t": "md",
-			"s": "#### **5.2 Build a linear regression model** <font color = red>[5 marks]</font> <br>",
-			"ref": "5.2"
-		},
-		{
-			"t": "md",
-			"s": "You can choose from the libraries *statsmodels* and *scikit-learn* to build the model."
-		},
-		{
-			"t": "code",
-			"s": "# Create/Initialise the model\n"
-		},
-		{
-			"t": "code",
-			"s": "# Train the model using the training data\n"
-		},
-		{
-			"t": "code",
-			"s": "# Make predictions\n"
-		},
-		{
-			"t": "code",
-			"s": "# Find results for evaluation metrics\n\n"
-		},
-		{
-			"t": "md",
-			"s": "Note that we have 12 (depending on how you select features) training features. However, not all of them would be useful. Let's say we want to take the most relevant 8 features.\n\nWe will use Recursive Feature Elimination (RFE) here.\n\nFor this, you can look at the coefficients / p-values of features from the model summary and perform feature elimination, or you can use the RFE module provided with *scikit-learn*."
-		},
-		{
-			"t": "md",
-			"s": "#### **5.3 Build the model and fit RFE to select the most important features** <font color = red>[7 marks]</font> <br>",
-			"ref": "5.3"
-		},
-		{
-			"t": "md",
-			"s": "For RFE, we will start with all features and use\nthe RFE method to recursively reduce the number of features one-by-one.\n\nAfter analysing the results of these iterations, we select the one that has a good balance between performance and number of features."
-		},
-		{
-			"t": "code",
-			"s": "# Loop through the number of features and test the model\n\n"
-		},
-		{
-			"t": "code",
-			"s": "# Build the final model with selected number of features\n\n"
-		},
-		{
-			"t": "md",
-			"s": "## **6. Results and Inference** <font color = red>[5 marks]</font> <br>"
-		},
-		{
-			"t": "md",
-			"s": "#### **6.1 Perform Residual Analysis** <font color = red>[3 marks]</font> <br>",
-			"ref": "6.1"
-		},
-		{
-			"t": "code",
-			"s": "# Perform residual analysis using plots like residuals vs predicted values, Q-Q plot and residual histogram\n\n"
-		},
-		{
-			"t": "md",
-			"s": "[Your inferences here:]\n\n"
-		},
-		{
-			"t": "md",
-			"s": "#### **6.2 Perform Coefficient Analysis** <font color = red>[2 marks]</font> <br>",
-			"ref": "6.2"
-		},
-		{
-			"t": "md",
-			"s": "Perform coefficient analysis to find how changes in features affect the target.\nAlso, the features were scaled, so interpret the scaled and unscaled coefficients to understand the impact of feature changes on delivery time.\n"
-		},
-		{
-			"t": "code",
-			"s": "# Compare the scaled vs unscaled features used in the final model\n\n"
-		},
-		{
-			"t": "md",
-			"s": "Additionally, we can analyse the effect of a unit change in a feature. In other words, because we have scaled the features, a unit change in the features will not translate directly to the model. Use scaled and unscaled coefficients to find how will a unit change in a feature affect the target."
-		},
-		{
-			"t": "code",
-			"s": "# Analyze the effect of a unit change in a feature, say 'total_items'\n\n"
-		},
-		{
-			"t": "md",
-			"s": "Note:\nThe coefficients on the original scale might differ greatly in magnitude from the scaled coefficients, but they both describe the same relationships between variables.\n\nInterpretation is key: Focus on the direction and magnitude of the coefficients on the original scale to understand the impact of each variable on the response variable in the original units."
-		},
-		{
-			"t": "md",
-			"s": "Include conclusions in your report document."
-		},
-		{
-			"t": "md",
-			"s": "## Subjective Questions <font color = red>[20 marks]</font>"
-		},
-		{
-			"t": "md",
-			"s": "Answer the following questions only in the notebook. Include the visualisations/methodologies/insights/outcomes from all the above steps in your report."
-		},
-		{
-			"t": "md",
-			"s": "#### Subjective Questions based on Assignment"
-		},
-		{
-			"t": "md",
-			"s": "##### **Question 1.** <font color = red>[2 marks]</font> <br>\n\nAre there any categorical variables in the data? From your analysis of the categorical variables from the dataset, what could you infer about their effect on the dependent variable?",
-			"ref": "Q1"
-		},
-		{
-			"t": "md",
-			"s": "**Answer:**\n>"
-		},
-		{
-			"t": "md",
-			"s": "\n\n---\n\n"
-		},
-		{
-			"t": "md",
-			"s": "##### **Question 2.** <font color = red>[1 marks]</font> <br>\nWhat does `test_size = 0.2` refer to during splitting the data into training and test sets?",
-			"ref": "Q2"
-		},
-		{
-			"t": "md",
-			"s": "**Answer:**\n>"
-		},
-		{
-			"t": "md",
-			"s": "\n\n---\n\n"
-		},
-		{
-			"t": "md",
-			"s": "##### **Question 3.** <font color = red>[1 marks]</font> <br>\nLooking at the heatmap, which one has the highest correlation with the target variable?  ",
-			"ref": "Q3"
-		},
-		{
-			"t": "md",
-			"s": "**Answer:**\n>"
-		},
-		{
-			"t": "md",
-			"s": "\n\n---\n\n"
-		},
-		{
-			"t": "md",
-			"s": "##### **Question 4.** <font color = red>[2 marks]</font> <br>\nWhat was your approach to detect the outliers? How did you address them?",
-			"ref": "Q4"
-		},
-		{
-			"t": "md",
-			"s": "**Answer:**\n\n>"
-		},
-		{
-			"t": "md",
-			"s": "\n\n---\n\n"
-		},
-		{
-			"t": "md",
-			"s": "##### **Question 5.** <font color = red>[2 marks]</font> <br>\nBased on the final model, which are the top 3 features significantly affecting the delivery time?",
-			"ref": "Q5"
-		},
-		{
-			"t": "md",
-			"s": "**Answer:**\n>"
-		},
-		{
-			"t": "md",
-			"s": "\n\n---\n\n"
-		},
-		{
-			"t": "md",
-			"s": "#### General Subjective Questions"
-		},
-		{
-			"t": "md",
-			"s": "##### **Question 6.** <font color = red>[3 marks]</font> <br>\nExplain the linear regression algorithm in detail",
-			"ref": "Q6"
-		},
-		{
-			"t": "md",
-			"s": "**Answer:**\n>\n"
-		},
-		{
-			"t": "md",
-			"s": "\n\n---\n\n"
-		},
-		{
-			"t": "md",
-			"s": "##### **Question 7.** <font color = red>[2 marks]</font> <br>\nExplain the difference between simple linear regression and multiple linear regression",
-			"ref": "Q7"
-		},
-		{
-			"t": "md",
-			"s": "**Answer:**\n>"
-		},
-		{
-			"t": "md",
-			"s": "\n\n---\n\n"
-		},
-		{
-			"t": "md",
-			"s": "##### **Question 8.** <font color = red>[2 marks]</font> <br>\nWhat is the role of the cost function in linear regression, and how is it minimized?",
-			"ref": "Q8"
-		},
-		{
-			"t": "md",
-			"s": "**Answer:**\n>\n"
-		},
-		{
-			"t": "md",
-			"s": "\n\n---\n\n"
-		},
-		{
-			"t": "md",
-			"s": "##### **Question 9.** <font color = red>[2 marks]</font> <br>\nExplain the difference between overfitting and underfitting.\n\n",
-			"ref": "Q9"
-		},
-		{
-			"t": "md",
-			"s": "**Answer:**\n\n>"
-		},
-		{
-			"t": "md",
-			"s": "\n\n---\n\n"
-		},
-		{
-			"t": "md",
-			"s": "##### **Question 10.** <font color = red>[3 marks]</font> <br>\nHow do residual plots help in diagnosing a linear regression model?",
-			"ref": "Q10"
-		},
-		{
-			"t": "md",
-			"s": "**Answer:**\n>"
-		}
-	],
-	"guides": {
-		"2.1.1": {
-			"vi": {
-				"think": "Hai cột thời gian đang là chữ. Muốn trừ được hai mốc giờ, phải đổi sang datetime.",
-				"steps": [
-					"pd.to_datetime cho created_at và actual_delivery_time.",
-					"Kiểm tra df.dtypes: hai cột phải là datetime64.",
-					"Đếm số giá trị lỗi bằng errors='coerce' nếu nghi có dòng sai định dạng."
-				],
-				"code": "df['created_at'] = pd.to_datetime(df['created_at'])\ndf['actual_delivery_time'] = pd.to_datetime(df['actual_delivery_time'])\nprint(df[['created_at','actual_delivery_time']].dtypes)",
-				"lotus": "Sổ booking ghi giờ đặt là chữ «2026-11-03 19:05». Phải đổi thành giờ thật thì mới tính được khách chờ bao lâu.",
-				"trap": "Trừ hai cột chữ sẽ báo lỗi hoặc ra kết quả vô nghĩa."
-			},
-			"en": {
-				"think": "Both time columns are text. To subtract two timestamps they must become datetime.",
-				"steps": [
-					"pd.to_datetime for created_at and actual_delivery_time.",
-					"Check df.dtypes: both must be datetime64.",
-					"Use errors='coerce' and count failures if some rows may be malformed."
-				],
-				"code": "df['created_at'] = pd.to_datetime(df['created_at'])\ndf['actual_delivery_time'] = pd.to_datetime(df['actual_delivery_time'])\nprint(df[['created_at','actual_delivery_time']].dtypes)",
-				"lotus": "The booking log stores the order time as text “2026-11-03 19:05”. It must become a real time before you can compute how long the customer waited.",
-				"trap": "Subtracting two text columns errors out or gives nonsense."
-			}
-		},
-		"2.1.2": {
-			"vi": {
-				"think": "market_id, order_protocol, store_primary_category là mã, không phải số để cộng trừ. Đổi sang kiểu category để mô hình và biểu đồ coi chúng là nhóm.",
-				"steps": [
-					"Liệt kê cột mã: market_id, order_protocol, store_primary_category.",
-					"Đổi bằng astype('category').",
-					"Trong file của bạn: market_id có 6 giá trị, order_protocol có 7, store_primary_category có 73."
-				],
-				"code": "cat_cols = ['market_id', 'order_protocol', 'store_primary_category']\ndf[cat_cols] = df[cat_cols].astype('category')\nprint(df[cat_cols].nunique())",
-				"lotus": "Mã chi nhánh 1, 2, 3 không có «hơn kém». Mã gói A12, B07, C03 cũng vậy. Đổi sang nhóm để máy không tự coi 3 là gấp 3 lần 1.",
-				"trap": "Để mã ở kiểu số thì hồi quy sẽ gán một hệ số chung cho mã, như thể mã 6 gấp 6 lần mã 1."
-			},
-			"en": {
-				"think": "market_id, order_protocol, store_primary_category are codes, not numbers to add or subtract. Convert to category so models and charts treat them as groups.",
-				"steps": [
-					"List the code columns: market_id, order_protocol, store_primary_category.",
-					"Convert with astype('category').",
-					"In your file: market_id has 6 values, order_protocol 7, store_primary_category 73."
-				],
-				"code": "cat_cols = ['market_id', 'order_protocol', 'store_primary_category']\ndf[cat_cols] = df[cat_cols].astype('category')\nprint(df[cat_cols].nunique())",
-				"lotus": "Branch codes 1, 2, 3 have no “more or less”. Package codes A12, B07, C03 likewise. Convert to category so the machine does not treat 3 as three times 1.",
-				"trap": "Leaving codes numeric makes regression assign one coefficient to the code, as if code 6 were six times code 1."
-			}
-		},
-		"2.2.1": {
-			"vi": {
-				"think": "Thời gian giao là hiệu hai mốc giờ, tính bằng phút. Đây là biến mục tiêu của cả bài.",
-				"steps": [
-					"(actual_delivery_time − created_at).dt.total_seconds() / 60.",
-					"Xem describe(): trong file của bạn trung bình khoảng 46,2 phút, trung vị 45, từ 32 đến 110.",
-					"Kiểm tra không có giá trị âm."
-				],
-				"code": "df['time_taken'] = (df['actual_delivery_time'] - df['created_at']).dt.total_seconds() / 60\nprint(df['time_taken'].describe().round(1))",
-				"lotus": "Khách đặt lúc 19:05 và vào phòng lúc 19:50 là 45 phút chờ. Đây là con số mô hình sẽ cố đoán trước.",
-				"trap": "Dùng .dt.seconds thay vì total_seconds làm mất phần ngày khi chênh qua nửa đêm."
-			},
-			"en": {
-				"think": "Delivery time is the difference of the two timestamps, in minutes. It is the target of the whole assignment.",
-				"steps": [
-					"(actual_delivery_time − created_at).dt.total_seconds() / 60.",
-					"Check describe(): in your file the mean is about 46.2 minutes, median 45, from 32 to 110.",
-					"Check there are no negative values."
-				],
-				"code": "df['time_taken'] = (df['actual_delivery_time'] - df['created_at']).dt.total_seconds() / 60\nprint(df['time_taken'].describe().round(1))",
-				"lotus": "A customer books at 19:05 and enters the room at 19:50: a 45-minute wait. That is the number the model will try to predict ahead of time.",
-				"trap": "Using .dt.seconds instead of total_seconds drops the day part when the gap crosses midnight."
-			}
-		},
-		"2.2.2": {
-			"vi": {
-				"think": "Giờ đặt và thứ trong tuần là hai tín hiệu về nhịp nhu cầu. Thêm cờ cuối tuần, rồi bỏ cột không còn cần.",
-				"steps": [
-					"hour = created_at.dt.hour; day = created_at.dt.dayofweek.",
-					"isWeekend = day >= 5 (kiểu category).",
-					"Bỏ created_at, actual_delivery_time vì thông tin đã chuyển vào time_taken, hour, day."
-				],
-				"code": "df['hour'] = df['created_at'].dt.hour\ndf['day'] = df['created_at'].dt.dayofweek\ndf['isWeekend'] = (df['day'] >= 5).astype('category')\ndf = df.drop(columns=['created_at', 'actual_delivery_time'])",
-				"lotus": "Giờ đặt 19:00 và thứ bảy cho biết khách đông hay vắng. Trong file của bạn, đơn đặt lúc 2 đến 3 giờ sáng chờ lâu nhất (khoảng 50 phút), còn buổi tối khoảng 40 đến 42 phút.",
-				"trap": "Giữ lại actual_delivery_time khi dự đoán là rò rỉ đáp án: bạn đã biết kết quả trước khi đoán."
-			},
-			"en": {
-				"think": "Order hour and weekday are signals of demand rhythm. Add a weekend flag, then drop columns no longer needed.",
-				"steps": [
-					"hour = created_at.dt.hour; day = created_at.dt.dayofweek.",
-					"isWeekend = day >= 5 (category type).",
-					"Drop created_at and actual_delivery_time since their information moved into time_taken, hour, day."
-				],
-				"code": "df['hour'] = df['created_at'].dt.hour\ndf['day'] = df['created_at'].dt.dayofweek\ndf['isWeekend'] = (df['day'] >= 5).astype('category')\ndf = df.drop(columns=['created_at', 'actual_delivery_time'])",
-				"lotus": "Order hour 19:00 and Saturday tell you whether customers are many or few. In your file, orders at 2 to 3 AM wait longest (about 50 minutes), evenings about 40 to 42.",
-				"trap": "Keeping actual_delivery_time when predicting leaks the answer: you already know the result before guessing."
-			}
-		},
-		"2.3.1": {
-			"vi": {
-				"think": "Tách biến mục tiêu y (time_taken) khỏi các biến đầu vào X. Mọi thứ còn lại là X.",
-				"steps": [
-					"y = df['time_taken'].",
-					"X = df.drop(columns=['time_taken']).",
-					"Kiểm tra X không còn time_taken, và cả hai cùng số dòng."
-				],
-				"code": "y = df['time_taken']\nX = df.drop(columns=['time_taken'])\nprint(X.shape, y.shape)",
-				"lotus": "Câu hỏi là «chờ bao lâu». Đáp án (y) đi một bên, mọi thông tin biết trước lúc đặt (X) đi một bên.",
-				"trap": "Để time_taken lọt vào X làm mô hình đạt điểm gần tuyệt đối, một kết quả giả."
-			},
-			"en": {
-				"think": "Separate the target y (time_taken) from the input features X. Everything else is X.",
-				"steps": [
-					"y = df['time_taken'].",
-					"X = df.drop(columns=['time_taken']).",
-					"Check X no longer has time_taken and both have the same row count."
-				],
-				"code": "y = df['time_taken']\nX = df.drop(columns=['time_taken'])\nprint(X.shape, y.shape)",
-				"lotus": "The question is “how long to wait”. The answer (y) goes one side, everything known before booking (X) the other.",
-				"trap": "Letting time_taken slip into X gives a near-perfect score, a fake result."
-			}
-		},
-		"2.3.2": {
-			"vi": {
-				"think": "Chia train và test trước khi khám phá, để phần test thật sự là dữ liệu chưa từng thấy.",
-				"steps": [
-					"train_test_split(X, y, test_size=0.2, random_state=42).",
-					"Kiểm tra kích thước: file của bạn có 175.777 dòng, 80% là khoảng 140.600 dòng train.",
-					"Mọi EDA ở bước 3 chỉ làm trên tập train."
-				],
-				"code": "from sklearn.model_selection import train_test_split\nX_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)\nprint(len(X_train), len(X_test))",
-				"lotus": "Giống như bạn nhìn sổ booking quý 1 để rút quy luật, rồi thử đoán quý 2 mà chưa xem. Nếu xem cả hai trước, phép đoán không còn là phép đoán.",
-				"trap": "Khám phá trên toàn bộ dữ liệu rồi mới chia làm lộ thông tin của test vào các quyết định của bạn."
-			},
-			"en": {
-				"think": "Split train and test before exploring so the test set is genuinely unseen.",
-				"steps": [
-					"train_test_split(X, y, test_size=0.2, random_state=42).",
-					"Check sizes: your file has 175,777 rows, 80% is about 140,600 training rows.",
-					"All EDA in step 3 uses the training set only."
-				],
-				"code": "from sklearn.model_selection import train_test_split\nX_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)\nprint(len(X_train), len(X_test))",
-				"lotus": "Like studying Q1's booking log to find a rule, then predicting Q2 without looking. If you looked at both first, the prediction is no longer a prediction.",
-				"trap": "Exploring all the data before splitting leaks test information into your decisions."
-			}
-		},
-		"3.1.1": {
-			"vi": {
-				"think": "Vẽ phân phối từng cột số trên tập train để thấy độ lệch và các giá trị lạ.",
-				"steps": [
-					"Tách numerical_cols và categorical_cols.",
-					"Vẽ histogram từng cột số (hoặc lưới subplot).",
-					"Ghi chú cột nào lệch phải (total_items, subtotal, distance) và có giá trị âm vô lý (min_item_price, total_onshift_dashers, total_busy_dashers, total_outstanding_orders)."
-				],
-				"code": "num_cols = X_train.select_dtypes(include='number').columns\nX_train[num_cols].hist(bins=40, figsize=(14, 10))",
-				"lotus": "Nếu số khách mỗi booking lệch phải (đa số 1 đến 2 người, vài nhóm 15 người) thì biết trước rằng vài điểm rất xa sẽ kéo đường hồi quy.",
-				"trap": "Trong file của bạn có số nhân viên trực âm, một lỗi nhập, không phải dữ liệu thật. Hình phân phối là chỗ thấy nó."
-			},
-			"en": {
-				"think": "Plot each numeric column's distribution on the training set to see skewness and odd values.",
-				"steps": [
-					"Separate numerical_cols and categorical_cols.",
-					"Draw a histogram per numeric column (or a subplot grid).",
-					"Note columns skewed right (total_items, subtotal, distance) and nonsensical negatives (min_item_price, total_onshift_dashers, total_busy_dashers, total_outstanding_orders)."
-				],
-				"code": "num_cols = X_train.select_dtypes(include='number').columns\nX_train[num_cols].hist(bins=40, figsize=(14, 10))",
-				"lotus": "If guests per booking are right-skewed (most 1 to 2, a few groups of 15), you know in advance a few far points will pull the regression line.",
-				"trap": "Your file has a negative count of staff on shift, an entry error, not real data. The distribution plot is where you see it."
-			}
-		},
-		"3.1.2": {
-			"vi": {
-				"think": "Phân phối các cột nhóm: mỗi nhóm có bao nhiêu đơn. Nhóm quá ít đơn sẽ cho hệ số không ổn định.",
-				"steps": [
-					"value_counts() hoặc countplot cho market_id, order_protocol, isWeekend.",
-					"store_primary_category có 73 nhóm: chỉ vẽ top 15 hoặc nhìn bảng đếm.",
-					"Ghi nhóm chiếm quá ít."
-				],
-				"code": "for c in ['market_id', 'order_protocol', 'isWeekend']:\n    X_train[c].value_counts().sort_index().plot(kind='bar', title=c)\n    plt.show()\nX_train['store_primary_category'].value_counts().head(15)",
-				"lotus": "Ba chi nhánh mà một chi nhánh chỉ có 20 booking thì hệ số của chi nhánh đó là số của 20 người.",
-				"trap": "Vẽ 73 cột của store_primary_category vào một biểu đồ cho ra một khối chữ không đọc được."
-			},
-			"en": {
-				"think": "Distribution of categorical columns: how many orders per group. Groups with very few orders give unstable coefficients.",
-				"steps": [
-					"value_counts() or countplot for market_id, order_protocol, isWeekend.",
-					"store_primary_category has 73 groups: plot only the top 15 or read the count table.",
-					"Note groups that are too small."
-				],
-				"code": "for c in ['market_id', 'order_protocol', 'isWeekend']:\n    X_train[c].value_counts().sort_index().plot(kind='bar', title=c)\n    plt.show()\nX_train['store_primary_category'].value_counts().head(15)",
-				"lotus": "Of three branches, if one has only 20 bookings, that branch's coefficient is the number of 20 people.",
-				"trap": "Drawing all 73 bars of store_primary_category in one chart gives an unreadable block of text."
-			}
-		},
-		"3.1.3": {
-			"vi": {
-				"think": "Phân phối biến mục tiêu: nó lệch không, có đuôi dài không.",
-				"steps": [
-					"Histogram và boxplot của y_train (hoặc time_taken).",
-					"Trong file của bạn: trung bình 46,2, trung vị 45, độ lệch chuẩn 9,3, từ 32 đến 110 phút: lệch phải nhẹ, đuôi dài đến 110.",
-					"Cân nhắc điều đó ảnh hưởng thế nào đến giả định phần dư."
-				],
-				"code": "sns.histplot(y_train, bins=40, kde=True)\nplt.show()\nprint(y_train.describe().round(1))",
-				"lotus": "Phần lớn khách chờ 40 đến 50 phút, vài người chờ 110. Vài người chờ rất lâu kéo trung bình lên cao hơn trung vị.",
-				"trap": "Trung bình cao hơn trung vị là dấu hiệu lệch phải. Đừng chỉ nhìn trung bình."
-			},
-			"en": {
-				"think": "Distribution of the target: is it skewed, does it have a long tail.",
-				"steps": [
-					"Histogram and boxplot of y_train (or time_taken).",
-					"In your file: mean 46.2, median 45, standard deviation 9.3, from 32 to 110 minutes: mild right skew with a tail to 110.",
-					"Consider how this affects the residual assumptions."
-				],
-				"code": "sns.histplot(y_train, bins=40, kde=True)\nplt.show()\nprint(y_train.describe().round(1))",
-				"lotus": "Most customers wait 40 to 50 minutes, a few wait 110. A few very long waits pull the mean above the median.",
-				"trap": "A mean above the median signals right skew. Do not look at the mean alone."
-			}
-		},
-		"3.2.1": {
-			"vi": {
-				"think": "Biểu đồ phân tán giữa time_taken và các biến số quan trọng, cùng phân phối time_taken theo giờ.",
-				"steps": [
-					"Ghép X_train và y_train thành một bảng train.",
-					"scatter time_taken theo distance, subtotal, total_outstanding_orders (lấy mẫu vài nghìn điểm).",
-					"boxplot time_taken theo hour để thấy nhịp theo giờ."
-				],
-				"code": "train = X_train.copy(); train['time_taken'] = y_train\nsample = train.sample(5000, random_state=42)\nsns.scatterplot(data=sample, x='distance', y='time_taken', alpha=0.3)\nplt.show()\nsns.boxplot(data=train, x='hour', y='time_taken')",
-				"lotus": "Càng nhiều đơn đang chờ xử lý, khách càng chờ lâu: ở file của bạn, tương quan giữa total_outstanding_orders và time_taken khoảng 0,39 và distance khoảng 0,46.",
-				"trap": "Scatter hơn 100.000 điểm thành một khối đen. Lấy mẫu hoặc dùng alpha."
-			},
-			"en": {
-				"think": "Scatter plots between time_taken and the important numeric features, and the distribution of time_taken by hour.",
-				"steps": [
-					"Join X_train and y_train into one training table.",
-					"Scatter time_taken against distance, subtotal, total_outstanding_orders (sample a few thousand points).",
-					"Boxplot time_taken by hour to see the hourly rhythm."
-				],
-				"code": "train = X_train.copy(); train['time_taken'] = y_train\nsample = train.sample(5000, random_state=42)\nsns.scatterplot(data=sample, x='distance', y='time_taken', alpha=0.3)\nplt.show()\nsns.boxplot(data=train, x='hour', y='time_taken')",
-				"lotus": "The more orders pending, the longer the customer waits: in your file, correlation of total_outstanding_orders with time_taken is about 0.39 and of distance about 0.46.",
-				"trap": "Scattering over 100,000 points makes a black block. Sample or use alpha."
-			}
-		},
-		"3.3.1": {
-			"vi": {
-				"think": "Bản đồ nhiệt tương quan cho thấy biến số nào đi cùng time_taken mạnh nhất.",
-				"steps": [
-					"corr = train.select_dtypes('number').corr().",
-					"sns.heatmap(corr, annot=True, cmap='coolwarm', center=0).",
-					"Đọc hàng time_taken. Trong file của bạn mạnh nhất là distance (khoảng 0,46), subtotal (khoảng 0,41), total_outstanding_orders (khoảng 0,39)."
-				],
-				"code": "corr = train.select_dtypes(include='number').corr()\nplt.figure(figsize=(12, 9))\nsns.heatmap(corr, annot=True, fmt='.2f', cmap='coolwarm', center=0)\nprint(corr['time_taken'].sort_values())",
-				"lotus": "Các số ở hàng thời gian chờ cho biết yếu tố nào đáng đưa vào mô hình trước: khoảng cách, giá trị đơn, số đơn đang chờ.",
-				"trap": "Hệ số tương quan giữa hai biến đầu vào cao (ví dụ subtotal và total_items) là tín hiệu đa cộng tuyến, không phải một phát hiện."
-			},
-			"en": {
-				"think": "A correlation heatmap shows which numeric features move most with time_taken.",
-				"steps": [
-					"corr = train.select_dtypes('number').corr().",
-					"sns.heatmap(corr, annot=True, cmap='coolwarm', center=0).",
-					"Read the time_taken row. In your file the strongest are distance (about 0.46), subtotal (about 0.41), total_outstanding_orders (about 0.39)."
-				],
-				"code": "corr = train.select_dtypes(include='number').corr()\nplt.figure(figsize=(12, 9))\nsns.heatmap(corr, annot=True, fmt='.2f', cmap='coolwarm', center=0)\nprint(corr['time_taken'].sort_values())",
-				"lotus": "The numbers in the wait-time row tell you which factors deserve the model first: distance, order value, pending orders.",
-				"trap": "High correlation between two input features (for example subtotal and total_items) signals multicollinearity, not a discovery."
-			}
-		},
-		"3.3.2": {
-			"vi": {
-				"think": "Bỏ vài cột tương quan yếu với y để mô hình gọn hơn. Ghi lý do cho từng cột.",
-				"steps": [
-					"Chọn 3 đến 5 cột có |tương quan| nhỏ với time_taken, trong file của bạn như min_item_price (khoảng 0,02) và store_primary_category (khoảng 0,03).",
-					"Chỉ bỏ ở tập train, rồi bỏ đúng các cột đó ở validation (bài 4.3).",
-					"Tương quan thấp theo đường thẳng chưa chắc là vô dụng: ghi chú điều đó."
-				],
-				"code": "weak = ['min_item_price', 'store_primary_category']  # pick 3-5 and justify\nX_train = X_train.drop(columns=weak)\nX_test = X_test.drop(columns=weak)",
-				"lotus": "Mã in phiếu không liên quan thời gian chờ thì bỏ. Nhưng nếu cột có quan hệ cong hay theo nhóm, tương quan đường thẳng thấp có thể đánh lừa.",
-				"trap": "Bỏ cột ở train mà quên bỏ ở test làm số cột hai bên khác nhau và mô hình báo lỗi khi dự đoán."
-			},
-			"en": {
-				"think": "Drop a few weakly correlated columns for a leaner model. Write down the reason for each.",
-				"steps": [
-					"Pick 3 to 5 columns with small |correlation| with time_taken, in your file such as min_item_price (about 0.02) and store_primary_category (about 0.03).",
-					"Drop on train, then drop exactly the same columns on validation (task 4.3).",
-					"Low linear correlation does not mean useless: note that."
-				],
-				"code": "weak = ['min_item_price', 'store_primary_category']  # pick 3-5 and justify\nX_train = X_train.drop(columns=weak)\nX_test = X_test.drop(columns=weak)",
-				"lotus": "A receipt print code unrelated to wait time gets dropped. But if a column relates by curve or by group, a low linear correlation can mislead.",
-				"trap": "Dropping on train but forgetting on test leaves different column counts and the model errors at prediction."
-			}
-		},
-		"3.4.1": {
-			"vi": {
-				"think": "Boxplot để nhìn thấy các điểm xa của time_taken và các biến số.",
-				"steps": [
-					"sns.boxplot cho time_taken.",
-					"Boxplot các cột số khác (total_items, subtotal, distance, các cột nhân viên).",
-					"Ghi các điểm xa: trong file của bạn total_items tới 411 và distance tới 83,52."
-				],
-				"code": "sns.boxplot(x=y_train)\nplt.show()\nfor c in ['total_items', 'subtotal', 'distance']:\n    sns.boxplot(x=X_train[c]); plt.show()",
-				"lotus": "Một booking 411 gói hay 83 km là một điểm xa. Nó có thể là một khách hàng doanh nghiệp thật hoặc một lỗi nhập, và bạn cần biết nó là cái nào trước khi bỏ.",
-				"trap": "Boxplot chỉ gắn cờ điểm xa. Nó không nói điểm đó là lỗi."
-			},
-			"en": {
-				"think": "Boxplots to see outliers in time_taken and the numeric features.",
-				"steps": [
-					"sns.boxplot for time_taken.",
-					"Boxplots for the other numeric columns (total_items, subtotal, distance, the staff columns).",
-					"Note outliers: in your file total_items reaches 411 and distance reaches 83.52."
-				],
-				"code": "sns.boxplot(x=y_train)\nplt.show()\nfor c in ['total_items', 'subtotal', 'distance']:\n    sns.boxplot(x=X_train[c]); plt.show()",
-				"lotus": "A booking of 411 packages or 83 km is an outlier. It may be a real corporate customer or an entry error, and you need to know which before dropping it.",
-				"trap": "A boxplot only flags outliers. It does not say the point is an error."
-			}
-		},
-		"3.4.2": {
-			"vi": {
-				"think": "Xử lý điểm xa: mỗi quy tắc cần một lý do, và phải áp dụng cùng cách cho validation.",
-				"steps": [
-					"Giá trị không thể có (số nhân viên âm, giá âm): lỗi, bỏ dòng hoặc sửa.",
-					"Điểm xa thật nhưng hiếm (total_items 411): cân nhắc giới hạn bằng IQR hoặc phân vị 99.",
-					"Ghi số dòng bị bỏ ở mỗi quy tắc.",
-					"Chỉ tính ngưỡng trên train, rồi dùng cùng ngưỡng ở validation."
-				],
-				"code": "train = X_train.copy(); train['time_taken'] = y_train\nn0 = len(train)\nneg = ['total_onshift_dashers', 'total_busy_dashers', 'total_outstanding_orders']\ntrain = train[(train[neg] >= 0).all(axis=1)]\nfor c in ['total_items', 'subtotal', 'distance']:\n    hi = train[c].quantile(0.99)\n    train = train[train[c] <= hi]\nprint(n0 - len(train), 'rows removed')",
-				"lotus": "Số nhân viên âm bỏ hẳn. Một booking 411 gói giữ lại thì kéo hệ số, bỏ đi thì mô hình không còn thấy khách doanh nghiệp. Quyết định nào cũng phải ghi lý do.",
-				"trap": "Tính ngưỡng trên cả train và validation cùng lúc rò rỉ thông tin. Tính trên train rồi mang sang."
-			},
-			"en": {
-				"think": "Handling outliers: each rule needs a reason and must be applied the same way to validation.",
-				"steps": [
-					"Impossible values (negative staff counts, negative prices): errors, drop rows or fix.",
-					"Real but rare outliers (total_items 411): consider capping by IQR or the 99th percentile.",
-					"Record rows removed at each rule.",
-					"Compute thresholds on train only, then reuse them on validation."
-				],
-				"code": "train = X_train.copy(); train['time_taken'] = y_train\nn0 = len(train)\nneg = ['total_onshift_dashers', 'total_busy_dashers', 'total_outstanding_orders']\ntrain = train[(train[neg] >= 0).all(axis=1)]\nfor c in ['total_items', 'subtotal', 'distance']:\n    hi = train[c].quantile(0.99)\n    train = train[train[c] <= hi]\nprint(n0 - len(train), 'rows removed')",
-				"lotus": "A negative staff count is dropped outright. A 411-package booking kept pulls the coefficient, dropped means the model no longer sees corporate customers. Either decision needs a recorded reason.",
-				"trap": "Computing thresholds on train and validation together leaks information. Compute on train and carry over."
-			}
-		},
-		"4.1.1": {
-			"vi": {
-				"think": "Phần 4 là tùy chọn: lặp lại EDA trên validation để xem hình dạng dữ liệu có giống train không.",
-				"steps": [
-					"Làm đúng các bước 3.1 trên tập validation (vẽ lại phân phối số).",
-					"So sánh bằng mắt với biểu đồ ở train.",
-					"Nếu khác nhiều, chia chưa ngẫu nhiên hoặc dữ liệu có thay đổi theo thời gian."
-				],
-				"code": "num_cols_v = X_test.select_dtypes(include='number').columns\nX_test[num_cols_v].hist(bins=40, figsize=(14, 10))",
-				"lotus": "Sổ booking tháng 11 và tháng 12 nên có hình dạng giống nhau. Nếu giờ đông của tháng 12 khác hẳn thì một mô hình luyện từ tháng 11 sẽ đoán sai.",
-				"trap": "Ở phần này chỉ nhìn, không điều chỉnh train theo những gì thấy ở validation."
-			},
-			"en": {
-				"think": "Part 4 is optional: repeat EDA on validation to see whether the data's shape matches train.",
-				"steps": [
-					"Repeat the 3.1 steps on the validation set (redraw numeric distributions).",
-					"Compare by eye with the train charts.",
-					"If very different, the split was not random or the data drifts over time."
-				],
-				"code": "num_cols_v = X_test.select_dtypes(include='number').columns\nX_test[num_cols_v].hist(bins=40, figsize=(14, 10))",
-				"lotus": "The November and December booking logs should look alike. If December's busy hours differ a lot, a model trained on November will guess wrong.",
-				"trap": "In this part only look; do not adjust train based on what you see in validation."
-			}
-		},
-		"4.1.2": {
-			"vi": {
-				"think": "Phân phối các cột nhóm ở validation, so với train.",
-				"steps": [
-					"value_counts(normalize=True) ở cả hai tập.",
-					"So tỷ lệ từng nhóm: lệch vài điểm phần trăm là bình thường.",
-					"Nhóm xuất hiện ở validation mà không có ở train sẽ gây lỗi khi dự đoán."
-				],
-				"code": "pd.concat([X_train['market_id'].value_counts(normalize=True), X_test['market_id'].value_counts(normalize=True)], axis=1, keys=['train','valid'])",
-				"lotus": "Tỷ lệ chi nhánh trong train và validation phải gần nhau. Nếu Thủ Đức chỉ có ở validation, mô hình chưa từng thấy nó.",
-				"trap": "Một nhóm mới ở validation làm get_dummies sinh cột khác nhau giữa hai tập."
-			},
-			"en": {
-				"think": "Distribution of categorical columns in validation versus train.",
-				"steps": [
-					"value_counts(normalize=True) on both sets.",
-					"Compare each group's share: a few percentage points apart is normal.",
-					"A group present in validation but absent in train will break prediction."
-				],
-				"code": "pd.concat([X_train['market_id'].value_counts(normalize=True), X_test['market_id'].value_counts(normalize=True)], axis=1, keys=['train','valid'])",
-				"lotus": "Branch shares in train and validation should be close. If Thu Duc exists only in validation, the model has never seen it.",
-				"trap": "A new group in validation makes get_dummies produce different columns between the two sets."
-			}
-		},
-		"4.1.3": {
-			"vi": {
-				"think": "Phân phối biến mục tiêu ở validation: so với train.",
-				"steps": [
-					"Vẽ histogram y_test, đặt cạnh y_train.",
-					"So trung bình và độ lệch chuẩn: file của bạn có train gần trung bình 46,2 phút.",
-					"Hai số này gần nhau thì chia ngẫu nhiên là hợp lý."
-				],
-				"code": "print(y_train.describe().round(1)); print(y_test.describe().round(1))",
-				"lotus": "Thời gian chờ trung bình của tháng 11 và tháng 12 mà khác nhau nhiều thì có chuyện gì đó khác ngoài ngẫu nhiên.",
-				"trap": "Hai trung bình lệch vài phút là bình thường với mẫu lớn, nhưng lệch nhiều là dấu hiệu chia chưa tốt."
-			},
-			"en": {
-				"think": "Target distribution in validation versus train.",
-				"steps": [
-					"Draw a histogram of y_test next to y_train.",
-					"Compare mean and standard deviation: your train mean is near 46.2 minutes.",
-					"If close, the random split is reasonable."
-				],
-				"code": "print(y_train.describe().round(1)); print(y_test.describe().round(1))",
-				"lotus": "If average wait differs a lot between November and December, something other than chance is going on.",
-				"trap": "A few minutes' gap is normal in a large sample, but a big one signals a poor split."
-			}
-		},
-		"4.2": {
-			"vi": {
-				"think": "Phân tán giữa time_taken và các biến số ở validation, để so với train.",
-				"steps": [
-					"Ghép X_test và y_test.",
-					"Vẽ scatter distance và subtotal với time_taken.",
-					"So hình dạng với train."
-				],
-				"code": "val = X_test.copy(); val['time_taken'] = y_test\nsns.scatterplot(data=val.sample(5000, random_state=42), x='distance', y='time_taken', alpha=0.3)",
-				"lotus": "Quan hệ giữa khoảng cách và thời gian chờ ở validation phải đi cùng chiều với train.",
-				"trap": "Nếu chiều quan hệ đảo ngược giữa train và validation thì mô hình sẽ không khái quát hóa."
-			},
-			"en": {
-				"think": "Scatter time_taken against numeric features on validation, to compare with train.",
-				"steps": [
-					"Join X_test and y_test.",
-					"Scatter distance and subtotal against time_taken.",
-					"Compare shape with train."
-				],
-				"code": "val = X_test.copy(); val['time_taken'] = y_test\nsns.scatterplot(data=val.sample(5000, random_state=42), x='distance', y='time_taken', alpha=0.3)",
-				"lotus": "The relation between distance and wait on validation should run the same direction as train.",
-				"trap": "If the relation direction reverses between train and validation, the model will not generalise."
-			}
-		},
-		"4.3": {
-			"vi": {
-				"think": "Bỏ đúng những cột đã bỏ ở train (bài 3.3.2) khỏi validation.",
-				"steps": [
-					"Dùng cùng danh sách weak đã chọn.",
-					"X_test = X_test.drop(columns=weak).",
-					"Kiểm tra X_train.columns bằng X_test.columns."
-				],
-				"code": "X_test = X_test.drop(columns=weak, errors='ignore')\nprint(list(X_train.columns) == list(X_test.columns))",
-				"lotus": "Hai sổ phải có cùng các cột theo cùng thứ tự, nếu không phép so sánh táo với cam.",
-				"trap": "Thứ tự cột khác nhau làm sai kết quả dự đoán mà không báo lỗi."
-			},
-			"en": {
-				"think": "Drop exactly the columns dropped on train (task 3.3.2) from validation.",
-				"steps": [
-					"Use the same weak list.",
-					"X_test = X_test.drop(columns=weak).",
-					"Check X_train.columns equals X_test.columns."
-				],
-				"code": "X_test = X_test.drop(columns=weak, errors='ignore')\nprint(list(X_train.columns) == list(X_test.columns))",
-				"lotus": "The two logs must have the same columns in the same order, or the comparison is apples to oranges.",
-				"trap": "A different column order corrupts predictions without raising an error."
-			}
-		},
-		"5.1": {
-			"vi": {
-				"think": "Chuẩn hóa thang đo để các hệ số so sánh được với nhau. Hồi quy tuyến tính không cần chuẩn hóa, nhưng hệ số sẽ dễ đọc hơn.",
-				"steps": [
-					"Dùng StandardScaler hoặc MinMaxScaler cho các cột số.",
-					"fit trên train, rồi transform cả train và validation (không fit lại trên validation).",
-					"Giữ lại bộ scaler để quy đổi hệ số về thang gốc ở 6.2."
-				],
-				"code": "from sklearn.preprocessing import StandardScaler\nnum = X_train.select_dtypes(include='number').columns\nscaler = StandardScaler()\nX_train[num] = scaler.fit_transform(X_train[num])\nX_test[num] = scaler.transform(X_test[num])",
-				"lotus": "Khoảng cách tính bằng km (0 đến 83) và giá trị đơn tính bằng nghìn (0 đến 26.800) có thang rất khác. Chuẩn hóa để hệ số của hai biến đặt cạnh nhau được.",
-				"trap": "fit scaler trên cả train và validation làm lộ trung bình và độ lệch chuẩn của validation."
-			},
-			"en": {
-				"think": "Put features on a common scale so coefficients are comparable. Linear regression does not need scaling, but coefficients become easier to read.",
-				"steps": [
-					"Use StandardScaler or MinMaxScaler on numeric columns.",
-					"fit on train, then transform both train and validation (do not refit on validation).",
-					"Keep the scaler to convert coefficients back to the original scale in 6.2."
-				],
-				"code": "from sklearn.preprocessing import StandardScaler\nnum = X_train.select_dtypes(include='number').columns\nscaler = StandardScaler()\nX_train[num] = scaler.fit_transform(X_train[num])\nX_test[num] = scaler.transform(X_test[num])",
-				"lotus": "Distance in km (0 to 83) and order value in thousands (0 to 26,800) have very different scales. Scale so their coefficients sit side by side.",
-				"trap": "Fitting the scaler on train and validation together leaks validation's mean and standard deviation."
-			}
-		},
-		"5.2": {
-			"vi": {
-				"think": "Dựng hồi quy tuyến tính bằng statsmodels hoặc scikit-learn, huấn luyện, dự đoán, rồi đo.",
-				"steps": [
-					"Chuyển cột nhóm thành dummy (get_dummies, drop_first=True) trước khi fit.",
-					"LinearRegression().fit(X_train, y_train).",
-					"Dự đoán trên cả train và validation.",
-					"Đo R², RMSE (và MAE nếu muốn) trên cả hai tập."
-				],
-				"code": "from sklearn.linear_model import LinearRegression\nfrom sklearn.metrics import r2_score, mean_squared_error\nlr = LinearRegression().fit(X_train, y_train)\nfor name, X, y in [('train', X_train, y_train), ('valid', X_test, y_test)]:\n    p = lr.predict(X)\n    print(name, 'R2', round(r2_score(y, p), 3), 'RMSE', round(mean_squared_error(y, p) ** 0.5, 2))",
-				"lotus": "Mô hình đoán khách chờ 47 phút trong khi thực tế là 45. RMSE là cỡ sai lệch trung bình của những lần đoán như vậy, tính bằng phút.",
-				"trap": "R² cao ở train mà thấp ở validation là quá khớp. Luôn nhìn cả hai."
-			},
-			"en": {
-				"think": "Build a linear regression with statsmodels or scikit-learn, train, predict, then measure.",
-				"steps": [
-					"Turn categorical columns into dummies (get_dummies, drop_first=True) before fitting.",
-					"LinearRegression().fit(X_train, y_train).",
-					"Predict on both train and validation.",
-					"Measure R² and RMSE (and MAE if you like) on both sets."
-				],
-				"code": "from sklearn.linear_model import LinearRegression\nfrom sklearn.metrics import r2_score, mean_squared_error\nlr = LinearRegression().fit(X_train, y_train)\nfor name, X, y in [('train', X_train, y_train), ('valid', X_test, y_test)]:\n    p = lr.predict(X)\n    print(name, 'R2', round(r2_score(y, p), 3), 'RMSE', round(mean_squared_error(y, p) ** 0.5, 2))",
-				"lotus": "The model guesses a 47-minute wait when the real one is 45. RMSE is the typical size of such misses, in minutes.",
-				"trap": "High R² on train and low on validation is overfitting. Always look at both."
-			}
-		},
-		"5.3": {
-			"vi": {
-				"think": "RFE bỏ dần từng biến yếu nhất. Chọn số biến mà thêm nữa cũng không cải thiện đáng kể.",
-				"steps": [
-					"Vòng lặp n_features_to_select từ 1 đến số cột; mỗi lần fit RFE rồi tính điểm trên validation.",
-					"Vẽ điểm theo số biến và chọn khuỷu (nơi đường bắt đầu phẳng). Đề gợi ý 8 biến.",
-					"Dựng mô hình cuối với số biến đó và liệt kê các biến được giữ."
-				],
-				"code": "from sklearn.feature_selection import RFE\nscores = {}\nfor k in range(1, X_train.shape[1] + 1):\n    rfe = RFE(LinearRegression(), n_features_to_select=k).fit(X_train, y_train)\n    cols = X_train.columns[rfe.support_]\n    m = LinearRegression().fit(X_train[cols], y_train)\n    scores[k] = r2_score(y_test, m.predict(X_test[cols]))\npd.Series(scores).plot(marker='o')",
-				"lotus": "Giống chọn bao nhiêu hạng mục để đưa vào bảng khảo sát: sau mức nào đó thêm câu hỏi không làm thông tin tăng thêm bao nhiêu.",
-				"trap": "Chọn số biến theo điểm trên train luôn chọn nhiều nhất. Dùng điểm trên validation."
-			},
-			"en": {
-				"think": "RFE drops the weakest feature one at a time. Choose the number of features beyond which adding more barely helps.",
-				"steps": [
-					"Loop n_features_to_select from 1 to the column count; for each, fit RFE and score on validation.",
-					"Plot the score against the number of features and choose the elbow (where the line flattens). The brief hints at 8 features.",
-					"Build the final model with that many features and list the kept ones."
-				],
-				"code": "from sklearn.feature_selection import RFE\nscores = {}\nfor k in range(1, X_train.shape[1] + 1):\n    rfe = RFE(LinearRegression(), n_features_to_select=k).fit(X_train, y_train)\n    cols = X_train.columns[rfe.support_]\n    m = LinearRegression().fit(X_train[cols], y_train)\n    scores[k] = r2_score(y_test, m.predict(X_test[cols]))\npd.Series(scores).plot(marker='o')",
-				"lotus": "Like choosing how many items to put on a survey: beyond some level, extra questions add little information.",
-				"trap": "Choosing the number by train score always picks the most. Use validation score."
-			}
-		},
-		"6.1": {
-			"vi": {
-				"think": "Phân tích phần dư: vẽ phần dư theo giá trị dự đoán, Q-Q plot và histogram phần dư để kiểm tra các giả định của hồi quy.",
-				"steps": [
-					"residual = y_test − dự đoán.",
-					"Phần dư theo dự đoán: phải rải quanh 0 không có hình dạng (nếu loe hình phễu là phương sai không đều).",
-					"Q-Q plot và histogram: gần chuông chuẩn thì giả định chuẩn hợp lý.",
-					"Viết nhận xét vào ô [Your inferences here:]."
-				],
-				"code": "pred = final_model.predict(X_test[cols])\nres = y_test - pred\nplt.scatter(pred, res, alpha=0.2); plt.axhline(0, color='r'); plt.show()\nimport statsmodels.api as sm\nsm.qqplot(res, line='45', fit=True); plt.show()\nsns.histplot(res, bins=40, kde=True)",
-				"lotus": "Nếu mô hình luôn đoán thấp cho khách chờ rất lâu (phần dư dương lớn ở bên phải) thì có một nhóm đơn mà mô hình chưa hiểu.",
-				"trap": "Chỉ nhìn R² mà bỏ qua phần dư bỏ lỡ các mẫu hình cho thấy mô hình sai ở đâu."
-			},
-			"en": {
-				"think": "Residual analysis: plot residuals against predictions, a Q-Q plot and a residual histogram to check regression assumptions.",
-				"steps": [
-					"residual = y_test − prediction.",
-					"Residuals vs predicted: should scatter around 0 with no shape (a funnel means uneven variance).",
-					"Q-Q plot and histogram: near a bell shape means the normality assumption is reasonable.",
-					"Write your findings in the [Your inferences here:] cell."
-				],
-				"code": "pred = final_model.predict(X_test[cols])\nres = y_test - pred\nplt.scatter(pred, res, alpha=0.2); plt.axhline(0, color='r'); plt.show()\nimport statsmodels.api as sm\nsm.qqplot(res, line='45', fit=True); plt.show()\nsns.histplot(res, bins=40, kde=True)",
-				"lotus": "If the model always underguesses for very long waits (large positive residuals on the right) there is a group of orders the model does not understand.",
-				"trap": "Looking at R² only and skipping residuals misses patterns that show where the model is wrong."
-			}
-		},
-		"6.2": {
-			"vi": {
-				"think": "Phân tích hệ số: so sánh hệ số trên dữ liệu đã chuẩn hóa và hệ số quy đổi về thang gốc, rồi nói một đơn vị thay đổi của một biến làm time_taken đổi bao nhiêu phút.",
-				"steps": [
-					"Hệ số chuẩn hóa: so độ mạnh giữa các biến (đơn vị là độ lệch chuẩn).",
-					"Hệ số gốc = hệ số chuẩn hóa chia cho độ lệch chuẩn của biến đó (scaler.scale_).",
-					"Diễn giải theo đơn vị gốc: tăng 1 món (total_items) thì thời gian chờ đổi bao nhiêu phút, giữ các biến khác cố định.",
-					"Chú ý dấu và độ lớn."
-				],
-				"code": "coef_scaled = pd.Series(final_model.coef_, index=cols)\nscale = pd.Series(scaler.scale_, index=num)\ncoef_orig = coef_scaled[cols.intersection(num)] / scale[cols.intersection(num)]\nprint(pd.DataFrame({'scaled': coef_scaled, 'original': coef_orig}))\n# effect of +1 total_items on time_taken: coef_orig['total_items'] minutes",
-				"lotus": "Nếu hệ số gốc của số đơn đang chờ là 0,1 thì thêm 10 đơn đang chờ làm khách chờ thêm khoảng 1 phút, giữ mọi thứ khác không đổi.",
-				"trap": "Hệ số chuẩn hóa so được độ mạnh, nhưng muốn nói «thêm 1 đơn thì mấy phút» phải dùng hệ số thang gốc."
-			},
-			"en": {
-				"think": "Coefficient analysis: compare coefficients on standardised data with coefficients converted to the original scale, then say how much one unit of a feature changes time_taken in minutes.",
-				"steps": [
-					"Scaled coefficients: compare strength across features (unit is standard deviations).",
-					"Original coefficient = scaled coefficient divided by the feature's standard deviation (scaler.scale_).",
-					"Interpret in original units: one more item (total_items) changes the wait by how many minutes, holding other features fixed.",
-					"Mind sign and size."
-				],
-				"code": "coef_scaled = pd.Series(final_model.coef_, index=cols)\nscale = pd.Series(scaler.scale_, index=num)\ncoef_orig = coef_scaled[cols.intersection(num)] / scale[cols.intersection(num)]\nprint(pd.DataFrame({'scaled': coef_scaled, 'original': coef_orig}))\n# effect of +1 total_items on time_taken: coef_orig['total_items'] minutes",
-				"lotus": "If the original coefficient for pending orders is 0.1, then 10 more pending orders add about 1 minute to the wait, holding everything else constant.",
-				"trap": "Scaled coefficients compare strength, but to say “one more order is how many minutes” you need the original-scale coefficient."
-			}
-		},
-		"Q1": {
-			"vi": {
-				"think": "Có cột nhóm nào, và từ các biểu đồ của bạn có thể nói gì về ảnh hưởng lên thời gian giao?",
-				"steps": [
-					"Liệt kê các cột nhóm: market_id, order_protocol, store_primary_category, isWeekend (và hour nếu coi là nhóm).",
-					"Dựa vào biểu đồ 3.1.2 và boxplot theo nhóm: nhóm nào có time_taken trung bình khác rõ.",
-					"Nói chắc chắn hay dè dặt tùy mức khác biệt."
-				],
-				"code": "# Câu trả lời viết bằng chữ trong ô Answer của notebook",
-				"lotus": "Chi nhánh nào có thời gian chờ trung bình cao hơn rõ rệt thì chi nhánh là một yếu tố, không chỉ là nhãn.",
-				"trap": "Nói «ảnh hưởng» chỉ từ một biểu đồ đếm số đơn mà không so time_taken theo nhóm là chưa trả lời câu hỏi."
-			},
-			"en": {
-				"think": "Which categorical columns exist, and what can your charts say about their effect on delivery time?",
-				"steps": [
-					"List the categorical columns: market_id, order_protocol, store_primary_category, isWeekend (and hour if you treat it as a group).",
-					"Use the 3.1.2 charts and per-group boxplots: which groups have a clearly different mean time_taken.",
-					"State firmly or cautiously depending on the size of the gap."
-				],
-				"code": "# Write the answer in words in the notebook's Answer cell",
-				"lotus": "A branch with a clearly higher average wait means branch is a factor, not just a label.",
-				"trap": "Claiming “effect” from a count chart alone, without comparing time_taken by group, does not answer the question."
-			}
-		},
-		"Q2": {
-			"vi": {
-				"think": "test_size = 0.2 nghĩa là gì?",
-				"steps": [
-					"20% số dòng dành cho tập kiểm tra, 80% còn lại để huấn luyện.",
-					"Với file của bạn: 175.777 dòng, khoảng 35.100 dòng cho test.",
-					"Vai trò: đo mô hình trên dữ liệu chưa từng thấy."
-				],
-				"code": "# Câu trả lời viết bằng chữ trong ô Answer của notebook",
-				"lotus": "Giống để một phần sổ booking sang một bên để thử đoán sau khi đã rút quy luật từ phần còn lại.",
-				"trap": "Nhầm 0,2 là 2 hoặc 20 dòng thay vì 20% số dòng."
-			},
-			"en": {
-				"think": "What does test_size = 0.2 mean?",
-				"steps": [
-					"20% of rows are held out for testing, the other 80% for training.",
-					"In your file: 175,777 rows, about 35,100 for test.",
-					"Role: measure the model on data it has never seen."
-				],
-				"code": "# Write the answer in words in the notebook's Answer cell",
-				"lotus": "Like setting part of the booking log aside to test guesses after learning the rule from the rest.",
-				"trap": "Mistaking 0.2 for 2 or 20 rows instead of 20% of rows."
-			}
-		},
-		"Q3": {
-			"vi": {
-				"think": "Trên bản đồ nhiệt, biến nào có tương quan cao nhất với biến mục tiêu?",
-				"steps": [
-					"Đọc hàng time_taken của heatmap.",
-					"Trong file của bạn, mạnh nhất là distance (khoảng 0,46), rồi subtotal (khoảng 0,41).",
-					"Nêu cả số và dấu. Nhớ kết quả của bạn phụ thuộc vào các bước làm sạch bạn đã chọn."
-				],
-				"code": "# Câu trả lời viết bằng chữ trong ô Answer của notebook",
-				"lotus": "Yếu tố đi cùng thời gian chờ mạnh nhất cho bạn biết nên đưa vào mô hình trước.",
-				"trap": "Trả lời bằng tên biến mà không nêu số hệ số. Dẫn cả hai."
-			},
-			"en": {
-				"think": "On the heatmap, which feature has the highest correlation with the target?",
-				"steps": [
-					"Read the time_taken row of the heatmap.",
-					"In your file the strongest is distance (about 0.46), then subtotal (about 0.41).",
-					"Give both number and sign. Remember your result depends on the cleaning choices you made."
-				],
-				"code": "# Write the answer in words in the notebook's Answer cell",
-				"lotus": "The factor that moves most with wait time tells you what to put in the model first.",
-				"trap": "Answering with the feature name but no coefficient. Cite both."
-			}
-		},
-		"Q4": {
-			"vi": {
-				"think": "Bạn phát hiện điểm xa bằng cách nào và xử lý ra sao?",
-				"steps": [
-					"Nêu phương pháp: boxplot, IQR hoặc phân vị 99, kiểm tra giá trị không thể có (âm).",
-					"Nêu quy tắc cho từng loại: bỏ lỗi nhập, giới hạn điểm xa hiếm.",
-					"Ghi số dòng bị bỏ và vì sao chọn vậy."
-				],
-				"code": "# Câu trả lời viết bằng chữ trong ô Answer của notebook",
-				"lotus": "Số nhân viên âm bỏ hẳn, booking 411 gói giới hạn ở mức phân vị 99. Hai quy tắc khác nhau vì hai nguyên nhân khác nhau.",
-				"trap": "Nói «tôi bỏ điểm xa» chung chung mà không nói bỏ theo quy tắc nào."
-			},
-			"en": {
-				"think": "How did you detect outliers and how did you handle them?",
-				"steps": [
-					"State the method: boxplot, IQR or 99th percentile, checking impossible (negative) values.",
-					"State the rule per type: drop entry errors, cap rare extremes.",
-					"Record rows removed and why you chose so."
-				],
-				"code": "# Write the answer in words in the notebook's Answer cell",
-				"lotus": "A negative staff count is dropped, a 411-package booking is capped at the 99th percentile. Two rules because two different causes.",
-				"trap": "Saying “I removed outliers” without saying by what rule."
-			}
-		},
-		"Q5": {
-			"vi": {
-				"think": "Dựa trên mô hình cuối, ba biến nào ảnh hưởng đáng kể nhất đến thời gian giao?",
-				"steps": [
-					"Lấy hệ số đã chuẩn hóa của mô hình cuối (6.2).",
-					"Xếp theo trị tuyệt đối, lấy ba biến đầu.",
-					"Nêu dấu và ý nghĩa của từng biến."
-				],
-				"code": "# Câu trả lời viết bằng chữ trong ô Answer của notebook",
-				"lotus": "Ba yếu tố đầu bảng cho bạn biết nên can thiệp vào đâu để rút ngắn thời gian chờ.",
-				"trap": "Xếp theo hệ số chưa chuẩn hóa so sánh táo với cam, vì thang đo khác nhau."
-			},
-			"en": {
-				"think": "Based on the final model, which three features most significantly affect delivery time?",
-				"steps": [
-					"Take the final model's standardised coefficients (6.2).",
-					"Rank by absolute value and take the top three.",
-					"State sign and meaning for each."
-				],
-				"code": "# Write the answer in words in the notebook's Answer cell",
-				"lotus": "The top three factors tell you where to intervene to shorten the wait.",
-				"trap": "Ranking by unscaled coefficients compares apples with oranges, since scales differ."
-			}
-		},
-		"Q6": {
-			"vi": {
-				"think": "Giải thích chi tiết thuật toán hồi quy tuyến tính.",
-				"steps": [
-					"Mô hình: y = β0 + β1x1 + … + ε.",
-					"Tìm β sao cho tổng bình phương sai số nhỏ nhất (bình phương tối thiểu).",
-					"Các giả định: tuyến tính, sai số độc lập, phương sai đều, sai số xấp xỉ chuẩn, không đa cộng tuyến mạnh.",
-					"Đầu ra: hệ số và dự đoán."
-				],
-				"code": "# Câu trả lời viết bằng chữ trong ô Answer của notebook",
-				"lotus": "Đường thẳng nối khoảng cách và thời gian chờ sao cho các khoảng cách dọc từ điểm đến đường nhỏ nhất.",
-				"trap": "Chỉ nói «vẽ đường thẳng qua các điểm» mà bỏ phần tối thiểu hóa sai số và các giả định."
-			},
-			"en": {
-				"think": "Explain the linear regression algorithm in detail.",
-				"steps": [
-					"Model: y = β0 + β1x1 + … + ε.",
-					"Find β minimising the sum of squared errors (least squares).",
-					"Assumptions: linearity, independent errors, equal variance, roughly normal errors, no strong multicollinearity.",
-					"Output: coefficients and predictions."
-				],
-				"code": "# Write the answer in words in the notebook's Answer cell",
-				"lotus": "A line linking distance and wait so that vertical gaps from points to the line are smallest.",
-				"trap": "Saying only “draw a line through the points” and skipping error minimisation and assumptions."
-			}
-		},
-		"Q7": {
-			"vi": {
-				"think": "Khác nhau giữa hồi quy tuyến tính đơn và đa biến?",
-				"steps": [
-					"Đơn: một biến đầu vào, y = β0 + β1x.",
-					"Đa biến: nhiều biến đầu vào, mỗi hệ số được hiểu giữ các biến khác cố định.",
-					"Đa biến cần chú ý đa cộng tuyến và chọn biến."
-				],
-				"code": "# Câu trả lời viết bằng chữ trong ô Answer của notebook",
-				"lotus": "Dự đoán thời gian chờ chỉ từ khoảng cách (đơn) so với từ khoảng cách, số đơn đang chờ và giờ đặt (đa).",
-				"trap": "Quên rằng hệ số của đa biến chỉ có nghĩa «giữ các biến khác cố định»."
-			},
-			"en": {
-				"think": "What is the difference between simple and multiple linear regression?",
-				"steps": [
-					"Simple: one input, y = β0 + β1x.",
-					"Multiple: several inputs, each coefficient read holding the others fixed.",
-					"Multiple needs attention to multicollinearity and feature selection."
-				],
-				"code": "# Write the answer in words in the notebook's Answer cell",
-				"lotus": "Predicting wait from distance alone (simple) versus from distance, pending orders and order hour (multiple).",
-				"trap": "Forgetting that a multiple-regression coefficient means “holding the others fixed”."
-			}
-		},
-		"Q8": {
-			"vi": {
-				"think": "Hàm chi phí trong hồi quy tuyến tính có vai trò gì và được tối thiểu hóa thế nào?",
-				"steps": [
-					"Hàm chi phí đo độ sai của mô hình: trung bình bình phương sai số (MSE).",
-					"Mục tiêu là chọn hệ số làm nó nhỏ nhất.",
-					"Cách tối thiểu hóa: nghiệm đóng (phương trình chuẩn) hoặc hạ gradient lặp lại."
-				],
-				"code": "# Câu trả lời viết bằng chữ trong ô Answer của notebook",
-				"lotus": "Hàm chi phí là điểm số của một cách vẽ đường: đường nào cho tổng sai lệch nhỏ hơn thì tốt hơn.",
-				"trap": "Nhầm hàm chi phí với R²: R² là thước đo sau khi huấn luyện, chi phí là thứ được tối thiểu hóa lúc huấn luyện."
-			},
-			"en": {
-				"think": "What is the role of the cost function in linear regression and how is it minimised?",
-				"steps": [
-					"The cost function measures model error: mean squared error (MSE).",
-					"The goal is to choose coefficients that make it smallest.",
-					"Minimised by the closed form (normal equation) or by iterative gradient descent."
-				],
-				"code": "# Write the answer in words in the notebook's Answer cell",
-				"lotus": "The cost function is the score of a way of drawing the line: the line with smaller total miss is better.",
-				"trap": "Confusing cost with R²: R² is a measure after training, cost is what is minimised during training."
-			}
-		},
-		"Q9": {
-			"vi": {
-				"think": "Khác nhau giữa quá khớp và chưa khớp?",
-				"steps": [
-					"Quá khớp: tốt ở train nhưng kém ở dữ liệu mới, mô hình học cả nhiễu.",
-					"Chưa khớp: kém ở cả hai, mô hình quá đơn giản.",
-					"Dấu hiệu: khoảng cách giữa điểm train và điểm validation.",
-					"Cách xử lý: bớt hoặc thêm biến, chọn mô hình khác."
-				],
-				"code": "# Câu trả lời viết bằng chữ trong ô Answer của notebook",
-				"lotus": "Một mô hình nhớ từng booking của tháng 11 (quá khớp) so với một mô hình chỉ đoán 45 phút cho mọi người (chưa khớp).",
-				"trap": "Chỉ nhìn điểm ở train rồi kết luận mô hình tốt."
-			},
-			"en": {
-				"think": "What is the difference between overfitting and underfitting?",
-				"steps": [
-					"Overfitting: good on train but poor on new data, the model learned noise too.",
-					"Underfitting: poor on both, the model is too simple.",
-					"Sign: the gap between train and validation scores.",
-					"Fixes: drop or add features, choose another model."
-				],
-				"code": "# Write the answer in words in the notebook's Answer cell",
-				"lotus": "A model memorising each November booking (overfit) versus one that guesses 45 minutes for everyone (underfit).",
-				"trap": "Judging a model good from its train score alone."
-			}
-		},
-		"Q10": {
-			"vi": {
-				"think": "Biểu đồ phần dư giúp chẩn đoán mô hình thế nào?",
-				"steps": [
-					"Phần dư theo dự đoán: có hình dạng hay hình phễu thì giả định bị vi phạm.",
-					"Q-Q plot và histogram: kiểm tra phần dư có gần chuẩn.",
-					"Phần dư theo thứ tự thời gian: phát hiện tự tương quan.",
-					"Điểm phần dư lớn bất thường chỉ ra đơn cần xem lại."
-				],
-				"code": "# Câu trả lời viết bằng chữ trong ô Answer của notebook",
-				"lotus": "Nếu mô hình đoán thấp mọi lúc ở giờ cao điểm thì phần dư theo giờ có hình dạng, và bạn thiếu một biến liên quan đến giờ.",
-				"trap": "Chỉ nói «phần dư nên quanh 0» mà không nói hình dạng nào là dấu hiệu xấu."
-			},
-			"en": {
-				"think": "How do residual plots help in diagnosing a linear regression model?",
-				"steps": [
-					"Residuals vs predicted: a pattern or funnel means assumptions are violated.",
-					"Q-Q plot and histogram: check whether residuals are near normal.",
-					"Residuals over time: detect autocorrelation.",
-					"Unusually large residuals point to orders worth reviewing."
-				],
-				"code": "# Write the answer in words in the notebook's Answer cell",
-				"lotus": "If the model underguesses at every peak hour, residuals by hour show a shape and you are missing an hour-related feature.",
-				"trap": "Saying only “residuals should be around 0” without saying which shapes are bad signs."
-			}
-		}
-	}
-}];
+];
 var getAssignmentByConcept = (conceptId) => assignments.find((a) => a.concepts.includes(conceptId));
 var heads = {
 	vi: {
