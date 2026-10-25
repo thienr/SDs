@@ -6,6 +6,7 @@ import { demos } from "@/data/demos";
 import { Sim } from "@/components/sims/labs";
 import { InferWidget } from "@/components/sims/infer-widgets";
 import { Tex } from "@/components/tex";
+import { walks, type WalkText } from "@/data/walk";
 import { relatedOf } from "@/data/map";
 import { studyCopy, studyListTitle, studyNeighbors, type StudyConcept } from "@/data/study";
 import { getProgress, getServerProgress, subscribeProgress } from "@/lib/progress";
@@ -27,6 +28,13 @@ const heads = {
     onMap: "Xem trên bản đồ",
     v2d: "Đồ thị kéo được",
     v3d: "Cảnh 3D",
+    walk: "Làm từng bước với số thật",
+    words: "Từ cần biết",
+    problem: "Bài toán",
+    steps: "Từng bước",
+    say: "Kết luận bằng lời",
+    check: "Tự kiểm tra",
+    reveal: "Xem đáp án",
   },
   en: {
     why: "What you use it for",
@@ -43,8 +51,55 @@ const heads = {
     onMap: "See on the map",
     v2d: "Interactive chart",
     v3d: "3D scene",
+    walk: "Worked step by step with real numbers",
+    words: "Words you need",
+    problem: "The problem",
+    steps: "Step by step",
+    say: "The conclusion in words",
+    check: "Check yourself",
+    reveal: "Show answer",
   },
 } as const;
+
+function WalkBlock({ walk, head }: { walk: WalkText; head: Record<string, string> }) {
+  const [open, setOpen] = useState(false);
+  return (
+    <section className="mt-8 rounded-card border border-line bg-card p-4">
+      <h2 className="text-xs uppercase tracking-widest text-muted">{head.walk}</h2>
+      <h3 className="mt-3 text-sm font-medium">{head.words}</h3>
+      <dl className="mt-1 space-y-2">
+        {walk.words.map(([term, meaning]) => (
+          <div key={term}>
+            <dt className="font-medium">{term}</dt>
+            <dd className="leading-relaxed text-muted">{meaning}</dd>
+          </div>
+        ))}
+      </dl>
+      <h3 className="mt-5 text-sm font-medium">{head.problem}</h3>
+      <p className="mt-1 leading-relaxed">{walk.problem}</p>
+      <h3 className="mt-5 text-sm font-medium">{head.steps}</h3>
+      <ol className="mt-2 space-y-3">
+        {walk.steps.map(([title, body], i) => (
+          <li key={title} className="flex gap-3">
+            <span className="font-display text-2xl leading-none text-accent">{i + 1}</span>
+            <div>
+              <p className="font-medium">{title}</p>
+              <p className="leading-relaxed">{body}</p>
+            </div>
+          </li>
+        ))}
+      </ol>
+      <h3 className="mt-5 text-sm font-medium">{head.say}</h3>
+      <p className="mt-1 leading-relaxed">{walk.say}</p>
+      <h3 className="mt-5 text-sm font-medium">{head.check}</h3>
+      <p className="mt-1 leading-relaxed">{walk.check[0]}</p>
+      <button type="button" className="mt-2 min-h-11 rounded-full border border-line px-4 text-sm" onClick={() => setOpen((v) => !v)}>
+        {open ? "−" : head.reveal}
+      </button>
+      {open ? <p className="mt-2 rounded-xl bg-paper p-3 leading-relaxed">{walk.check[1]}</p> : null}
+    </section>
+  );
+}
 
 export function ConceptView({ concept }: { concept: StudyConcept }) {
   const progress = useSyncExternalStore(subscribeProgress, getProgress, getServerProgress);
@@ -113,6 +168,8 @@ export function ConceptView({ concept }: { concept: StudyConcept }) {
         <h2 className="text-xs uppercase tracking-widest text-muted">{head.example}</h2>
         <p className="mt-2 leading-relaxed">{text.situation}</p>
       </section>
+
+      {walks[concept.id] ? <WalkBlock walk={walks[concept.id][lang]} head={head} /> : null}
 
       <section className="mt-8">
         <h2 className="text-xs uppercase tracking-widest text-muted">{head.use}</h2>
