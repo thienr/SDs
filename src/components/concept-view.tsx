@@ -9,6 +9,9 @@ import { Tex } from "@/components/tex";
 import { walks, type Visual, type WalkText } from "@/data/walk";
 import { WalkVisual } from "@/components/walk-visual";
 import { AssignBody } from "@/components/assign-view";
+import { OverviewBody } from "@/components/overview-view";
+import { UpgradLink } from "@/components/upgrad-link";
+import { overviews } from "@/data/overview";
 import { getAssignmentByConcept } from "@/data/assign";
 import { relatedOf } from "@/data/map";
 import { studyCopy, studyListTitle, studyNeighbors, type StudyConcept } from "@/data/study";
@@ -127,6 +130,7 @@ export function ConceptView({ concept }: { concept: StudyConcept }) {
   const hasLab = Boolean(concept.sim) && !hasDemo;
   const [view, setView] = useState<"2d" | "3d">("2d");
   const asg = getAssignmentByConcept(concept.id);
+  const ov = overviews[concept.id];
   return (
     <article className="reading mx-auto">
       <p className="text-xs uppercase tracking-widest text-muted">{concept.eyebrow} · {concept.session}</p>
@@ -138,6 +142,8 @@ export function ConceptView({ concept }: { concept: StudyConcept }) {
 
       {asg ? (
         <AssignBody a={asg} />
+      ) : ov ? (
+        <OverviewBody ov={ov} lang={lang} />
       ) : (
         <>
       <section className="mt-6 rounded-card border border-line bg-card p-4">
@@ -257,6 +263,8 @@ export function ConceptView({ concept }: { concept: StudyConcept }) {
 
         </>
       )}
+
+      <UpgradLink concept={concept} lang={lang} />
 
       <div className="mt-8 grid gap-3 sm:grid-cols-2">
         {near.prev && prevText ? (
