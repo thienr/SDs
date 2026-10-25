@@ -1,10 +1,10 @@
 import { o as __toESM } from "../_runtime.mjs";
 import { J as require_react, S as require_jsx_runtime, b as Link } from "../_libs/@tanstack/react-router+[...].mjs";
-import { A as studyCopy, B as subscribeRaw, F as getRawVersion, I as getServerRawVersion, M as studyNeighbors, O as subscribeProgress, b as getServerProgress, j as studyListTitle, k as getStudy, r as Route$1, y as getProgress } from "./router-BQTkODUb.mjs";
-import { n as Range, r as Sim, t as Lab } from "./labs-o_JKy24n.mjs";
+import { A as studyCopy, B as subscribeRaw, F as getRawVersion, I as getServerRawVersion, M as studyNeighbors, O as subscribeProgress, b as getServerProgress, j as studyListTitle, k as getStudy, r as Route$1, y as getProgress } from "./router-BJ4vBz0O.mjs";
+import { n as Range, r as Sim, t as Lab } from "./labs-DBcEdh9D.mjs";
 import { t as Tex } from "./tex-t3KOuum9.mjs";
-import { o as relatedOf } from "./map-BcZ7aO81.mjs";
-//#region node_modules/.nitro/vite/services/ssr/assets/khai-niem._conceptId-BBkNAgAh.js
+import { o as relatedOf } from "./map-DfXwoYxi.mjs";
+//#region node_modules/.nitro/vite/services/ssr/assets/khai-niem._conceptId-D5n9G60r.js
 var import_react = /* @__PURE__ */ __toESM(require_react());
 var import_jsx_runtime = require_jsx_runtime();
 var ui$1 = {
@@ -10557,7 +10557,7 @@ var pilotWalks = {
 	}
 };
 /** C0: hiểu việc, giải quyết vấn đề, Excel. Tháng 1 ở Lotus Spa. */
-var base$3 = {
+var base$4 = {
 	"c0-order": {
 		vi: {
 			story: "Tháng 1, Lotus Spa (3 chi nhánh: Quận 1, Quận 3, Thủ Đức). Chị Lan, chủ chuỗi, gọi bạn vào phòng: «Form đặt hẹn tháng 12 giảm, em xem giúp chị.» Đây là việc đầu tiên của bạn, và cả năm tới bạn sẽ đi cùng câu chuyện này.",
@@ -11195,7 +11195,7 @@ var base$3 = {
 		}
 	}
 };
-var visuals$3 = {
+var visuals$4 = {
 	"c0-order": {
 		kind: "bars",
 		title: ["Form theo tháng", "Forms by month"],
@@ -11474,12 +11474,12 @@ var visuals$3 = {
 		note: ["Mã 25 không có: tìm gần đúng lấy dòng mã 20.", "Code 25 is missing: approximate match takes the code 20 row."]
 	}
 };
-var c0Walks = Object.fromEntries(Object.entries(base$3).map(([id, w]) => [id, visuals$3[id] ? {
+var c0Walks = Object.fromEntries(Object.entries(base$4).map(([id, w]) => [id, visuals$4[id] ? {
 	...w,
-	visual: visuals$3[id]
+	visual: visuals$4[id]
 } : w]));
 /** C1: Python cho khoa học dữ liệu. Tháng 2 ở Lotus Spa. */
-var base$2 = {
+var base$3 = {
 	"py-run": {
 		vi: {
 			story: "Tháng 2. Excel đã cho bạn thấy hạn chế: file 12 tuần × 3 kênh quá nhiều để làm tay. Bạn mở notebook Python đầu tiên và tính lại CPA tuần này (chi 15 triệu, 50 form).",
@@ -12103,7 +12103,7 @@ var base$2 = {
 		}
 	}
 };
-var visuals$2 = {
+var visuals$3 = {
 	"py-run": {
 		kind: "table",
 		title: ["Notebook sau khi sửa forms nhưng chưa chạy lại ô 2", "Notebook after editing forms but not re-running cell 2"],
@@ -12306,12 +12306,12 @@ var visuals$2 = {
 		note: ["Tổng 151 form, cùng tổng với 50 + 50 + 51 theo tuần.", "Total 151 forms, the same as 50 + 50 + 51 by week."]
 	}
 };
-var c1Walks = Object.fromEntries(Object.entries(base$2).map(([id, w]) => [id, visuals$2[id] ? {
+var c1Walks = Object.fromEntries(Object.entries(base$3).map(([id, w]) => [id, visuals$3[id] ? {
 	...w,
-	visual: visuals$2[id]
+	visual: visuals$3[id]
 } : w]));
 /** Toán cho khoa học dữ liệu. Tháng 3 ở Lotus Spa: mọi phép toán đều tính trên số form, chi phí, giá gói của spa. */
-var base$1 = {
+var base$2 = {
 	"math-vec": {
 		vi: {
 			story: "Tháng 3. Chị Lan hỏi: «Em hay nói tới mô hình, mà bên trong nó là gì?» Bạn bắt đầu từ khối nhỏ nhất: một dãy số có thứ tự, chính là số form tuần này theo ba kênh.",
@@ -12985,7 +12985,7 @@ var base$1 = {
 		}
 	}
 };
-var visuals$1 = {
+var visuals$2 = {
 	"math-vec": {
 		kind: "bars",
 		title: ["Véctơ form tuần này f = (18, 20, 12)", "This week's forms vector f = (18, 20, 12)"],
@@ -13230,12 +13230,12 @@ var visuals$1 = {
 		mark: [[1, 3]]
 	}
 };
-var mathWalks = Object.fromEntries(Object.entries(base$1).map(([id, w]) => [id, visuals$1[id] ? {
+var mathWalks = Object.fromEntries(Object.entries(base$2).map(([id, w]) => [id, visuals$2[id] ? {
 	...w,
-	visual: visuals$1[id]
+	visual: visuals$2[id]
 } : w]));
 /** Thống kê mô tả. Tháng 3 ở Lotus Spa. Dãy chính D: form 9 tuần gần đây, tuần cuối có đợt khuyến mãi. */
-var base = {
+var base$1 = {
 	"ds-type": {
 		vi: {
 			story: "Tháng 3. Thảo gửi bảng khảo sát hội viên. Trước khi tính gì, bạn gọi tên kiểu của từng cột, vì kiểu quyết định phép tính nào có nghĩa.",
@@ -13579,7 +13579,7 @@ var base = {
 		}
 	}
 };
-var visuals = {
+var visuals$1 = {
 	"ds-type": {
 		kind: "table",
 		title: ["Bốn cột, ba kiểu", "Four columns, three types"],
@@ -13760,7 +13760,1635 @@ var visuals = {
 		]
 	}
 };
-var dsWalks = Object.fromEntries(Object.entries(base).map(([id, w]) => [id, visuals[id] ? {
+var dsWalks = Object.fromEntries(Object.entries(base$1).map(([id, w]) => [id, visuals$1[id] ? {
+	...w,
+	visual: visuals$1[id]
+} : w]));
+/** C2 phần 1: EDA, xác suất, lấy mẫu. Tháng 3 ở Lotus Spa. */
+var base = {
+	"eda-ask": {
+		vi: {
+			story: "Tháng 3, bạn mở lại câu hỏi từ đầu năm: form tháng 12 giảm 40 (220 xuống 180). Trước khi vẽ biểu đồ nào, bạn phải có câu hỏi cụ thể để dữ liệu trả lời.",
+			words: [["EDA", "Khám phá dữ liệu: xem dữ liệu để hiểu nó nói gì, trước khi dùng mô hình."], ["Câu hỏi dẫn đường", "Một câu hỏi hẹp quyết định bạn nhìn cột nào, tính gì."]],
+			problem: "Form tháng 11 theo kênh: GDN 80, Meta 85, TikTok 55 (tổng 220). Tháng 12: GDN 78, Meta 62, TikTok 40 (tổng 180). Câu hỏi: «giảm 40 form đến từ kênh nào?» Trả lời nó bằng số.",
+			steps: [
+				["Tính mức giảm từng kênh", "GDN: 78 − 80 = −2. Meta: 62 − 85 = −23. TikTok: 40 − 55 = −15."],
+				["Kiểm tra tổng", "−2 − 23 − 15 = −40, khớp với 220 → 180."],
+				["Tính phần đóng góp", "Meta 23 ÷ 40 = 57,5%; TikTok 15 ÷ 40 = 37,5%; GDN 2 ÷ 40 = 5%."],
+				["Đọc", "Hơn một nửa mức giảm đến từ Meta. GDN gần như đứng yên."],
+				["Câu hỏi tiếp theo", "Vì sao Meta giảm 23? Câu hỏi này dẫn bạn tới các thẻ sau: bảng có đúng không, có tuần nào lạ không."]
+			],
+			say: "Nếu vẽ biểu đồ tổng form theo tháng, bạn chỉ thấy cột giảm mà không biết tại sao. Với câu hỏi «kênh nào», chỉ cần ba phép trừ là biết phải nhìn vào Meta. Câu hỏi tốt chọn giùm bạn biểu đồ và phép tính.",
+			check: ["Nếu Meta giảm 23 nhưng GDN tăng 10 và TikTok giảm 27, tổng vẫn −40. Kênh nào là điểm cần nhìn?", "TikTok, vì −27 là mức giảm lớn nhất. Tổng giống nhau nhưng câu trả lời «kênh nào» đổi theo từng số."]
+		},
+		en: {
+			story: "March: you reopen the question from the start of the year: December forms fell by 40 (220 to 180). Before drawing any chart you need a specific question for the data to answer.",
+			words: [["EDA", "Exploratory data analysis: looking at the data to understand what it says before using a model."], ["Guiding question", "A narrow question that decides which column you look at and what you compute."]],
+			problem: "November forms by channel: GDN 80, Meta 85, TikTok 55 (total 220). December: GDN 78, Meta 62, TikTok 40 (total 180). Question: “which channel did the 40-form drop come from?” Answer it with numbers.",
+			steps: [
+				["Compute each channel's change", "GDN: 78 − 80 = −2. Meta: 62 − 85 = −23. TikTok: 40 − 55 = −15."],
+				["Check the total", "−2 − 23 − 15 = −40, matching 220 → 180."],
+				["Compute each share of the drop", "Meta 23 ÷ 40 = 57.5%; TikTok 15 ÷ 40 = 37.5%; GDN 2 ÷ 40 = 5%."],
+				["Read", "More than half the drop came from Meta. GDN barely moved."],
+				["Next question", "Why did Meta fall by 23? That question leads you to the cards ahead: is the table right, is any week odd."]
+			],
+			say: "If you drew a chart of total forms by month you would only see a falling bar without knowing why. With the question “which channel”, three subtractions tell you to look at Meta. A good question picks the chart and the calculation for you.",
+			check: ["If Meta fell by 23 but GDN rose by 10 and TikTok fell by 27, the total is still −40. Which channel is the one to look at?", "TikTok, because −27 is the largest fall. The total is the same but the answer to “which channel” changes with each number."]
+		}
+	},
+	"eda-src": {
+		vi: {
+			story: "Để tìm hiểu vì sao Meta giảm, bạn mở bảng form của hệ thống. Trước khi tin các con số, bạn hỏi: mỗi dòng trong bảng này ghi cái gì?",
+			words: [["Nguồn dữ liệu", "Nơi bảng đến từ đâu và ghi lại sự kiện gì."], ["Lượt gửi và người", "Hệ thống ghi mỗi lần bấm gửi, không ghi mỗi khách."]],
+			problem: "Bảng form tháng 12 có 180 dòng. Mỗi dòng có số điện thoại, kênh, giờ gửi. Chị Lan hỏi «tháng 12 có bao nhiêu khách đặt hẹn?» Bảng này trả lời được câu đó chưa?",
+			steps: [
+				["Đọc cách hệ thống ghi", "Mỗi lần bấm «Gửi» tạo một dòng, dù cùng một người bấm hai lần."],
+				["Tìm dấu hiệu", "Hai dòng cùng số 0901… lúc 10:02 và 10:04 từ cùng kênh Meta là cùng một khách bấm lại."],
+				["Đối chiếu câu hỏi", "Chị Lan hỏi số khách. 180 là số lượt gửi, không phải số khách."],
+				["Kết luận", "Chưa trả lời được. Phải đếm số điện thoại khác nhau mới ra số khách (thẻ tiếp theo)."]
+			],
+			say: "Hai con số 180 lượt và 174 khách có thể khác nhau. Một báo cáo nói «180 khách» sẽ đúng ở nhãn «lượt», sai ở nhãn «khách». Câu hỏi đầu tiên về mọi bảng là: một dòng đại diện cho cái gì.",
+			check: ["Bảng chi phí quảng cáo có mỗi dòng là một kênh trong một tuần. Dòng ở đó đại diện cho gì?", "Một cặp (kênh, tuần), không phải một khách hay một lượt gửi. Cộng chúng cho tổng chi, không cho số khách."]
+		},
+		en: {
+			story: "To find out why Meta fell, you open the system's form table. Before trusting any number you ask: what does each row of this table record?",
+			words: [["Data source", "Where the table comes from and which event it records."], ["Submission versus person", "The system records every click of Send, not every customer."]],
+			problem: "December's form table has 180 rows. Each row has a phone number, channel and send time. Ms. Lan asks “how many customers booked in December?” Can this table answer that yet?",
+			steps: [
+				["Read how the system records", "Each click of “Send” creates a row, even if the same person clicks twice."],
+				["Look for a sign", "Two rows with the same number 0901… at 10:02 and 10:04 from the same channel Meta are one customer clicking again."],
+				["Match against the question", "Ms. Lan asks for customers. 180 is the number of submissions, not customers."],
+				["Conclusion", "Not yet answerable. You must count distinct phone numbers to get customers (next card)."]
+			],
+			say: "The two numbers 180 submissions and 174 customers can differ. A report saying “180 customers” is right under the label “submissions” and wrong under “customers”. The first question for every table is: what does a row stand for.",
+			check: ["The ad-spend table has one row per channel per week. What does a row stand for there?", "A (channel, week) pair, not a customer or a submission. Adding them gives total spend, not a count of customers."]
+		}
+	},
+	"eda-type": {
+		vi: {
+			story: "Bạn lấy bảng form ra làm việc, và hai cột gây rắc rối ngay: cột ngày gửi và cột số điện thoại.",
+			words: [["Kiểu ngày", "Giá trị được hiểu là thời điểm, sắp xếp theo thời gian."], ["Chữ trông như số", "Số điện thoại có số 0 đầu, mã chi nhánh: nhìn là số nhưng là nhãn."]],
+			problem: "Cột ngày được lưu dạng chữ: \"9/12\", \"10/12\", \"2/1\". Cột điện thoại đọc thành số: 0901234567 thành 901234567. Sắp xếp theo ngày ra thứ tự nào, và số điện thoại bị mất gì?",
+			steps: [
+				["Sắp xếp ngày dạng chữ", "So từng ký tự từ trái: \"10/12\" < \"2/1\" < \"9/12\" (vì '1' < '2' < '9')."],
+				["Đọc kết quả", "Thứ tự đúng thời gian là 9/12, 10/12, 2/1 (sang năm mới). Dạng chữ đưa ra 10/12, 2/1, 9/12: sai."],
+				["Sửa", "Đổi sang kiểu ngày, ví dụ 2025-12-09, 2025-12-10, 2026-01-02. Sắp xếp bây giờ đúng."],
+				["Số điện thoại", "0901234567 đọc thành số thì mất số 0 đầu: 901234567. Cột này phải để dạng chữ."]
+			],
+			say: "Một cột «nhìn là ngày» hay «nhìn là số» chưa chắc có kiểu đó. Sắp xếp sai thứ tự ngày làm biểu đồ theo thời gian đảo lộn, còn số điện thoại mất số 0 làm hai khách khác nhau trùng nhau. Kiểu của cột quyết định phép nào đúng.",
+			check: ["Có nên tính trung bình cột số điện thoại không?", "Không. Số điện thoại là nhãn, trung bình của hai số điện thoại không có nghĩa gì."]
+		},
+		en: {
+			story: "You take the form table to work on, and two columns cause trouble at once: the send date and the phone number.",
+			words: [["Date type", "A value understood as a moment, sorted by time."], ["Text that looks like a number", "Phone numbers with a leading 0, branch codes: they look numeric but are labels."]],
+			problem: "The date column is stored as text: \"9/12\", \"10/12\", \"2/1\". The phone column was read as numbers: 0901234567 became 901234567. What order does sorting by date give, and what did the phone numbers lose?",
+			steps: [
+				["Sort the text dates", "Compare character by character from the left: \"10/12\" < \"2/1\" < \"9/12\" (because '1' < '2' < '9')."],
+				["Read the result", "The correct time order is 9/12, 10/12, 2/1 (into the new year). Text sorting gives 10/12, 2/1, 9/12: wrong."],
+				["Fix", "Convert to a date type, e.g. 2025-12-09, 2025-12-10, 2026-01-02. Sorting is now right."],
+				["Phone numbers", "0901234567 read as a number loses the leading 0: 901234567. This column must stay as text."]
+			],
+			say: "A column that “looks like a date” or “looks like a number” need not be that type. Wrong date order scrambles a chart over time, and a phone number that loses its 0 can make two different customers collide. The column's type decides which operations are right.",
+			check: ["Should you average the phone number column?", "No. A phone number is a label; the average of two phone numbers means nothing."]
+		}
+	},
+	"eda-row": {
+		vi: {
+			story: "Bạn đã biết mỗi dòng là một lượt gửi. Giờ cần số khách thật cho Meta: gộp các dòng của cùng một người.",
+			words: [["Dòng trùng", "Nhiều dòng thuộc cùng một thực thể."], ["Đếm khác nhau", "Đếm số giá trị khác nhau (distinct) thay vì số dòng."]],
+			problem: "Bảng mẫu có 5 dòng: (A, Meta), (B, GDN), (A, Meta), (C, TikTok), (D, Meta), trong đó A là cùng một khách bấm hai lần. Đếm số lượt và số khách của Meta.",
+			steps: [
+				["Đếm dòng Meta", "Có 3 dòng Meta: A, A, D."],
+				["Đếm khách Meta khác nhau", "A xuất hiện hai lần nhưng là một người: {A, D} có 2 khách."],
+				["So sánh", "3 lượt nhưng 2 khách: đếm theo dòng thổi phồng 50%."],
+				["Đối chiếu với tháng 12", "180 lượt, trong đó 6 khách bấm hai lần: 180 − 6 = 174 khách."]
+			],
+			say: "Nếu chia chi phí cho 180 lượt thì CPA bị thấp giả; chia cho 174 khách mới đúng. Mỗi lần thấy tổng «đẹp», hỏi lại xem có dòng nào bị đếm hai lần không.",
+			check: ["Nếu bảng ghi mỗi khách một dòng nhưng có cột «số gói mua», cộng cột đó cho ra gì?", "Tổng số gói. Vì mỗi dòng là một khách nên không bị nhân đôi."]
+		},
+		en: {
+			story: "You know each row is a submission. Now you need the real customer count for Meta: merge the rows of the same person.",
+			words: [["Duplicate rows", "Several rows belonging to one entity."], ["Distinct count", "Counting the number of different values instead of the number of rows."]],
+			problem: "A sample table has 5 rows: (A, Meta), (B, GDN), (A, Meta), (C, TikTok), (D, Meta), where A is one customer who clicked twice. Count Meta's submissions and customers.",
+			steps: [
+				["Count Meta rows", "There are 3 Meta rows: A, A, D."],
+				["Count distinct Meta customers", "A appears twice but is one person: {A, D} has 2 customers."],
+				["Compare", "3 submissions but 2 customers: counting by row inflates by 50%."],
+				["Match December", "180 submissions, of which 6 customers clicked twice: 180 − 6 = 174 customers."]
+			],
+			say: "If you divide spend by 180 submissions, CPA looks falsely low; dividing by 174 customers is right. Whenever a total looks “nice”, ask whether any row has been counted twice.",
+			check: ["If the table has one row per customer with a “packages bought” column, what does summing that column give?", "The total packages. Because each row is one customer, nothing is doubled."]
+		}
+	},
+	"eda-miss": {
+		vi: {
+			story: "Cột «thời gian điền form (giây)» có hai ô trống vì hệ thống không ghi được cho một số khách. Cách bạn tính trung bình sẽ quyết định kết luận về độ dễ điền của form.",
+			words: [["Giá trị thiếu", "Ô không có dữ liệu. Khác số 0."], ["Bỏ qua và coi là 0", "Hai cách xử lý cho kết quả khác nhau."]],
+			problem: "Thời gian điền (giây) của 5 khách: 40, 55, (trống), 62, (trống). Tính trung bình bằng hai cách: bỏ ô trống ra khỏi phép tính và coi ô trống là 0.",
+			steps: [
+				["Bỏ ô trống", "Dùng 3 giá trị có số: (40 + 55 + 62) ÷ 3 = 157 ÷ 3 ≈ 52,3 giây."],
+				["Coi ô trống là 0", "(40 + 55 + 0 + 62 + 0) ÷ 5 = 157 ÷ 5 = 31,4 giây."],
+				["So sánh", "52,3 so với 31,4: coi trống là 0 kéo trung bình xuống 21 giây, khiến form trông dễ điền hơn thật."],
+				["Xử lý đúng", "Chỉ tính trên các giá trị có, và ghi chú «2 trên 5 khách thiếu»; hỏi vì sao thiếu (có thể là khách chưa điền xong)."]
+			],
+			say: "Hai khách không ghi được thời gian không phải là hai khách điền trong 0 giây. Coi ô trống là 0 làm trung bình giảm gần 40% và dẫn tới kết luận sai. Ô trống là thông tin «chưa biết», cần đánh dấu chứ không điền bừa.",
+			check: ["Nếu 2 ô trống thật ra là khách bỏ dở form, bỏ chúng đi có làm lệch trung bình không?", "Có thể có. Người bỏ dở thường là người thấy form khó, nên bỏ họ làm thời gian trung bình trông thấp hơn thực tế. Phải ghi rõ giới hạn này."]
+		},
+		en: {
+			story: "The “form fill time (seconds)” column has two blanks because the system could not record it for some customers. How you average it will decide the conclusion about how easy the form is.",
+			words: [["Missing value", "A cell with no data. Different from 0."], ["Skip versus treat as 0", "Two ways of handling it give different results."]],
+			problem: "Fill time (seconds) of 5 customers: 40, 55, (blank), 62, (blank). Compute the average two ways: leave blanks out of the calculation and treat blanks as 0.",
+			steps: [
+				["Leave blanks out", "Use the 3 values with numbers: (40 + 55 + 62) ÷ 3 = 157 ÷ 3 ≈ 52.3 seconds."],
+				["Treat blanks as 0", "(40 + 55 + 0 + 62 + 0) ÷ 5 = 157 ÷ 5 = 31.4 seconds."],
+				["Compare", "52.3 versus 31.4: treating blanks as 0 drags the average down by 21 seconds, making the form look easier to fill than it is."],
+				["Handle it right", "Compute only over the values present and note “2 of 5 customers missing”; ask why they are missing (perhaps customers who did not finish)."]
+			],
+			say: "Two customers whose time was not recorded are not two customers who filled in 0 seconds. Treating blanks as 0 cuts the average by almost 40% and leads to a wrong conclusion. A blank is “unknown” information, to be flagged and not filled in carelessly.",
+			check: ["If the 2 blanks are really customers who abandoned the form, does dropping them skew the average?", "It may. People who abandon often found the form hard, so dropping them makes the average time look lower than reality. This limit must be stated."]
+		}
+	},
+	"eda-out": {
+		vi: {
+			story: "Trong cột thời gian điền form có một khách mất 1200 giây (20 phút), rất xa 5 khách còn lại. Bạn phải quyết định xóa hay giữ.",
+			words: [["Giá trị ngoại lai", "Giá trị rất xa phần còn lại của dãy."], ["Xa không có nghĩa là sai", "Phải hỏi vì sao nó xa trước khi xóa."]],
+			problem: "Thời gian điền (giây) của 6 khách: 40, 55, 52, 60, 48, 1200. Tính trung bình và trung vị có và không có 1200, rồi quyết định.",
+			steps: [
+				["Trung bình có 1200", "(40 + 55 + 52 + 60 + 48 + 1200) ÷ 6 = 1455 ÷ 6 = 242,5 giây."],
+				["Trung bình không có 1200", "255 ÷ 5 = 51 giây."],
+				["Trung vị có 1200", "Sắp xếp 40, 48, 52, 55, 60, 1200: (52 + 55) ÷ 2 = 53,5 giây."],
+				["Hỏi vì sao 1200", "Có thể khách mở form rồi bỏ đi pha trà (dữ liệu «sạch» nhưng không phản ánh thời gian điền thật). Đó là lý do để loại khỏi phép tính này, không phải vì «xa»."],
+				["Quyết định", "Giữ dòng trong bảng, nhưng khi tính thời gian điền thì báo trung vị 53,5 giây hoặc lọc có ghi rõ lý do."]
+			],
+			say: "Trung bình 242,5 giây sẽ khiến chị Lan nghĩ form mất 4 phút, trong khi 5 khách trong 6 mất khoảng 1 phút. Xóa lặng lẽ không phải câu trả lời: giữ lại, giải thích, và chọn thước đo (trung vị) không bị một điểm kéo.",
+			check: ["Nếu khách 1200 giây hóa ra là người cao tuổi thật sự điền chậm, có nên loại không?", "Không. Họ là một nhóm khách thật mà spa cần phục vụ, và form của họ khó dùng. Loại họ làm mất đúng thông tin cần biết."]
+		},
+		en: {
+			story: "In the form-fill-time column one customer took 1200 seconds (20 minutes), far from the other 5. You must decide whether to delete or keep it.",
+			words: [["Outlier", "A value far from the rest of the series."], ["Far does not mean wrong", "You must ask why it is far before deleting."]],
+			problem: "Fill times (seconds) of 6 customers: 40, 55, 52, 60, 48, 1200. Compute the mean and median with and without 1200, then decide.",
+			steps: [
+				["Mean with 1200", "(40 + 55 + 52 + 60 + 48 + 1200) ÷ 6 = 1455 ÷ 6 = 242.5 seconds."],
+				["Mean without 1200", "255 ÷ 5 = 51 seconds."],
+				["Median with 1200", "Sorted 40, 48, 52, 55, 60, 1200: (52 + 55) ÷ 2 = 53.5 seconds."],
+				["Ask why 1200", "Perhaps the customer opened the form and left to make tea (a “clean” record but not reflecting real fill time). That is a reason to exclude it from this calculation, not because it is “far”."],
+				["Decide", "Keep the row in the table, but when computing fill time report the median 53.5 seconds or filter with the reason stated."]
+			],
+			say: "A mean of 242.5 seconds would make Ms. Lan think the form takes 4 minutes, while 5 of the 6 customers took about 1 minute. Silent deletion is not the answer: keep it, explain it, and choose a measure (the median) that one point cannot pull.",
+			check: ["If the 1200-second customer turns out to be an elderly person who really fills slowly, should you exclude them?", "No. They are a real group of customers the spa must serve, and the form is hard for them. Excluding them removes exactly the information you need."]
+		}
+	},
+	"eda-scale": {
+		vi: {
+			story: "Tuần này form là 74 và chi phí là 18 triệu, cả hai đều cao hơn thường lệ. Bạn muốn biết cái nào bất thường hơn, dù một là «form» và một là «triệu đồng».",
+			words: [["Điểm z", "(giá trị − trung bình) ÷ độ lệch chuẩn. Cho biết cách trung bình bao nhiêu độ lệch chuẩn."], ["Cùng một thước", "Sau khi chuẩn hóa, hai cột có đơn vị khác nhau so sánh được."]],
+			problem: "36 tuần: form có trung bình 50, độ lệch chuẩn 12. Chi phí có trung bình 15 triệu, độ lệch chuẩn 1,5. Tuần này form 74, chi 18 triệu. So sánh mức bất thường.",
+			steps: [
+				["z của form", "(74 − 50) ÷ 12 = 24 ÷ 12 = 2,0."],
+				["z của chi phí", "(18 − 15) ÷ 1,5 = 3 ÷ 1,5 = 2,0."],
+				["So sánh", "Cùng z = 2,0: hai con số bất thường như nhau, dù chênh 24 form và 3 triệu."],
+				["Đọc", "Cả hai cách trung bình 2 độ lệch chuẩn, một mức đủ hiếm để chú ý (khoảng 2,3% tuần có thể cao tới vậy)."]
+			],
+			say: "Chênh lệch 24 và 3 không so được vì khác đơn vị, nhưng z cùng bằng 2,0 thì so được. Chuẩn hóa z còn giúp các mô hình sau này không bị cột có số lớn (như form) át cột số nhỏ (như triệu đồng).",
+			check: ["Nếu chi phí tuần này là 13,5 triệu thì z là bao nhiêu?", "(13,5 − 15) ÷ 1,5 = −1,0: thấp hơn trung bình 1 độ lệch chuẩn. Dấu âm là phía dưới trung bình."]
+		},
+		en: {
+			story: "This week forms are 74 and spend is 18 million, both above usual. You want to know which is more unusual, even though one is “forms” and one is “million dong”.",
+			words: [["z-score", "(value − mean) ÷ standard deviation. It says how many standard deviations from the mean."], ["One common ruler", "After standardising, columns with different units become comparable."]],
+			problem: "Over 36 weeks, forms have mean 50 and standard deviation 12. Spend has mean 15 million and standard deviation 1.5. This week forms are 74 and spend is 18 million. Compare how unusual they are.",
+			steps: [
+				["z of forms", "(74 − 50) ÷ 12 = 24 ÷ 12 = 2.0."],
+				["z of spend", "(18 − 15) ÷ 1.5 = 3 ÷ 1.5 = 2.0."],
+				["Compare", "The same z = 2.0: the two numbers are equally unusual, though the gaps are 24 forms and 3 million."],
+				["Read", "Both are 2 standard deviations above the mean, rare enough to notice (about 2.3% of weeks can be this high)."]
+			],
+			say: "The gaps 24 and 3 cannot be compared because the units differ, but z both equal to 2.0 can. Standardising with z also stops later models from letting a column of big numbers (like forms) swamp a column of small ones (like million dong).",
+			check: ["If this week's spend were 13.5 million, what is z?", "(13.5 − 15) ÷ 1.5 = −1.0: one standard deviation below the mean. The negative sign means below the mean."]
+		}
+	},
+	"eda-bad": {
+		vi: {
+			story: "Khi tính tỷ lệ form theo kênh, bạn gặp một dòng cho tỷ lệ 200%. Đó là điểm xa hay là giá trị không thể có?",
+			words: [["Giá trị không hợp lệ", "Giá trị vi phạm quy tắc của dữ liệu (ví dụ form nhiều hơn click)."], ["Bộ lọc kiểm tra", "Một quy tắc viết trước để loại hoặc đánh dấu dòng không hợp lệ."]],
+			problem: "Bảng tỷ lệ form = form ÷ click: GDN 18/900, Meta 20/800, TikTok 12/800, và một dòng Zalo 6/3. Tính từng tỷ lệ và quyết định dòng nào hợp lệ.",
+			steps: [
+				["GDN", "18 ÷ 900 = 2,0%."],
+				["Meta và TikTok", "20 ÷ 800 = 2,5%; 12 ÷ 800 = 1,5%."],
+				["Zalo", "6 ÷ 3 = 200%."],
+				["Viết quy tắc", "Một form luôn đến từ một click, nên form ≤ click. Dòng Zalo vi phạm vì 6 > 3."],
+				["Xử lý", "Đánh dấu dòng Zalo là không hợp lệ (nhiều khả năng lỗi gắn nhãn click), không đưa vào tính trung bình, và báo cho người giữ hệ thống."]
+			],
+			say: "200% không phải «điểm xa» mà là điều không thể xảy ra, khác với một tuần form tăng gấp đôi vẫn có thể thật. Với giá trị không thể có, quy tắc viết ra giúp lần sau tự bắt được lỗi, chứ không dựa vào mắt.",
+			check: ["Tỷ lệ form 0% có hợp lệ không?", "Có thể hợp lệ: một kênh có click nhưng chưa có form nào. Nhưng nếu click bằng 0 thì chia 0 và phải kiểm tra riêng."]
+		},
+		en: {
+			story: "When computing form rate by channel, you hit one row giving 200%. Is that an outlier or an impossible value?",
+			words: [["Invalid value", "A value that breaks a rule of the data (for example more forms than clicks)."], ["Validation filter", "A rule written beforehand to remove or flag invalid rows."]],
+			problem: "A form-rate table = forms ÷ clicks: GDN 18/900, Meta 20/800, TikTok 12/800, and a Zalo row 6/3. Compute each rate and decide which rows are valid.",
+			steps: [
+				["GDN", "18 ÷ 900 = 2.0%."],
+				["Meta and TikTok", "20 ÷ 800 = 2.5%; 12 ÷ 800 = 1.5%."],
+				["Zalo", "6 ÷ 3 = 200%."],
+				["Write the rule", "A form always comes from a click, so forms ≤ clicks. The Zalo row breaks it since 6 > 3."],
+				["Handle it", "Flag the Zalo row as invalid (likely a click-tagging fault), keep it out of averages, and tell the person who maintains the system."]
+			],
+			say: "200% is not an “outlier” but something that cannot happen, unlike a week where forms doubled, which could still be real. For impossible values a written rule catches the error automatically next time, rather than relying on eyes.",
+			check: ["Is a form rate of 0% valid?", "It can be: a channel with clicks but no forms yet. But if clicks are 0 you divide by 0 and must check separately."]
+		}
+	},
+	"eda-cat": {
+		vi: {
+			story: "Với dữ liệu form tháng 12 theo kênh, bạn muốn tả cột kênh (chữ không thứ tự). Phép tính phù hợp là đếm và chia tỷ lệ, không phải trung bình hay nối chuỗi.",
+			words: [["Cột chữ không thứ tự", "Giá trị là nhãn, không có hơn kém: kênh, chi nhánh."], ["Tần suất và tỷ lệ", "Số lần mỗi nhãn xuất hiện và phần của tổng."]],
+			problem: "Form tháng 12 theo kênh: GDN 78, Meta 62, TikTok 40 (tổng 180). Mô tả cột kênh bằng số và chọn biểu đồ.",
+			steps: [
+				["Đếm", "GDN 78, Meta 62, TikTok 40."],
+				["Kiểm tra tổng", "78 + 62 + 40 = 180, khớp với tổng form."],
+				["Chia tỷ lệ", "GDN 78 ÷ 180 ≈ 43,3%; Meta 62 ÷ 180 ≈ 34,4%; TikTok 40 ÷ 180 ≈ 22,2%."],
+				["Chọn biểu đồ", "Biểu đồ cột (ba nhóm rời nhau), sắp theo thứ tự lớn đến nhỏ."],
+				["Điều không làm", "Không tính trung bình của ba kênh và không nối \"GDN\" + \"Meta\": chữ chỉ để đếm."]
+			],
+			say: "GDN chiếm 43,3% form tháng 12, dù tháng trước nó là 36,4% (80/220). Một cột chữ chỉ cho bạn đếm và so tỷ lệ, vậy nên việc chính là nhìn xem phần của mỗi nhãn thay đổi thế nào.",
+			check: ["Tháng 11, tỷ lệ của Meta là bao nhiêu và đã đổi thế nào?", "85 ÷ 220 ≈ 38,6% xuống 34,4%, giảm khoảng 4 điểm phần trăm. Tỷ lệ thay đổi dù số tuyệt đối khác nhau."]
+		},
+		en: {
+			story: "With December's forms by channel, you want to describe the channel column (unordered text). The right operations are counting and shares, not averaging or concatenating.",
+			words: [["Unordered text column", "Values are labels with no better or worse: channel, branch."], ["Frequency and share", "How often each label appears and its part of the total."]],
+			problem: "December forms by channel: GDN 78, Meta 62, TikTok 40 (total 180). Describe the channel column with numbers and choose a chart.",
+			steps: [
+				["Count", "GDN 78, Meta 62, TikTok 40."],
+				["Check the total", "78 + 62 + 40 = 180, matching total forms."],
+				["Compute shares", "GDN 78 ÷ 180 ≈ 43.3%; Meta 62 ÷ 180 ≈ 34.4%; TikTok 40 ÷ 180 ≈ 22.2%."],
+				["Choose a chart", "A bar chart (three separate groups), sorted largest to smallest."],
+				["What not to do", "Do not average the three channels and do not join \"GDN\" + \"Meta\": text is for counting only."]
+			],
+			say: "GDN holds 43.3% of December's forms, although last month it was 36.4% (80/220). A text column only lets you count and compare shares, so the main job is to see how each label's share changes.",
+			check: ["In November, what was Meta's share and how did it change?", "85 ÷ 220 ≈ 38.6% down to 34.4%, about 4 percentage points lower. The share changes even though the absolute numbers differ."]
+		}
+	},
+	"eda-ord": {
+		vi: {
+			story: "Spa gửi khảo sát cho 20 hội viên, chấm từ 1 đến 5 sao. Cột này là chữ có thứ tự: 5 sao hơn 4 sao, nhưng khoảng cách không đều.",
+			words: [["Cột có thứ tự", "Giá trị có hơn kém nhưng khoảng cách giữa các bậc không đều."], ["Trung vị theo bậc", "Bậc đứng giữa khi sắp xếp."]],
+			problem: "20 đánh giá: 1 sao: 1 người, 2 sao: 2, 3 sao: 3, 4 sao: 6, 5 sao: 8. Tìm trung vị, mode và trung bình. Điều nào đáng tin?",
+			steps: [
+				["Kiểm tra tổng", "1 + 2 + 3 + 6 + 8 = 20."],
+				["Trung vị", "Giá trị thứ 10 và 11 là điểm giữa. Cộng dồn: 1, 3, 6, 12 người đến hết 4 sao, nên cả vị trí 10 và 11 đều là 4 sao. Trung vị là 4."],
+				["Mode", "5 sao có 8 người, nhiều nhất."],
+				["Trung bình", "(1×1 + 2×2 + 3×3 + 6×4 + 8×5) ÷ 20 = (1 + 4 + 9 + 24 + 40) ÷ 20 = 78 ÷ 20 = 3,9."],
+				["Đọc", "Trung vị 4 và mode 5 đáng tin vì không cần giả định khoảng cách đều. Trung bình 3,9 chỉ là gợi ý."]
+			],
+			say: "Báo «hội viên chấm 3,9 sao» nghe chính xác nhưng giả định rằng khoảng giữa 3 và 4 sao bằng khoảng giữa 4 và 5. Cách trung thực hơn: «một nửa số hội viên chấm 4 sao trở lên» (14 trên 20 là 70% chấm 4 hoặc 5).",
+			check: ["Bao nhiêu phần trăm chấm 4 sao trở lên?", "(6 + 8) ÷ 20 = 14 ÷ 20 = 70%."]
+		},
+		en: {
+			story: "The spa sends a survey to 20 members, rated 1 to 5 stars. This column is ordered text: 5 stars beats 4, but the gaps are uneven.",
+			words: [["Ordered column", "Values have better and worse but the gaps between levels are uneven."], ["Median by level", "The level in the middle when sorted."]],
+			problem: "20 ratings: 1 star: 1 person, 2 stars: 2, 3 stars: 3, 4 stars: 6, 5 stars: 8. Find the median, mode and mean. Which can you trust?",
+			steps: [
+				["Check the total", "1 + 2 + 3 + 6 + 8 = 20."],
+				["Median", "The 10th and 11th values are the middle. Cumulative: 1, 3, 6, 12 people through 4 stars, so both positions 10 and 11 are 4 stars. Median is 4."],
+				["Mode", "5 stars has 8 people, the most."],
+				["Mean", "(1×1 + 2×2 + 3×3 + 6×4 + 8×5) ÷ 20 = (1 + 4 + 9 + 24 + 40) ÷ 20 = 78 ÷ 20 = 3.9."],
+				["Read", "Median 4 and mode 5 are trustworthy because they need no assumption of equal gaps. The mean 3.9 is only a hint."]
+			],
+			say: "Reporting “members rate us 3.9 stars” sounds precise but assumes the gap between 3 and 4 stars equals that between 4 and 5. A more honest way: “70% of members rate 4 stars or more” (14 of 20 gave 4 or 5).",
+			check: ["What percent rated 4 stars or more?", "(6 + 8) ÷ 20 = 14 ÷ 20 = 70%."]
+		}
+	},
+	"eda-num": {
+		vi: {
+			story: "Bạn xem chi tiêu hằng tháng của 10 hội viên. Trung bình và trung vị cho hai câu chuyện khác nhau, và khoảng cách giữa chúng là dấu hiệu.",
+			words: [["Đuôi dài", "Một vài giá trị rất lớn kéo dãy dài về một phía."], ["Khoảng cách trung bình và trung vị", "Trung bình lớn hơn trung vị nhiều thường báo hiệu đuôi phải."]],
+			problem: "Chi tiêu tháng (nghìn đồng) của 10 hội viên: 300, 300, 350, 400, 400, 450, 500, 500, 600, 3200. Tính trung bình, trung vị và đọc.",
+			steps: [
+				["Tổng", "300 + 300 + 350 + 400 + 400 + 450 + 500 + 500 + 600 + 3200 = 7000."],
+				["Trung bình", "7000 ÷ 10 = 700 nghìn."],
+				["Trung vị", "Giữa là hai giá trị thứ 5 và 6: (400 + 450) ÷ 2 = 425 nghìn."],
+				["So sánh", "700 so với 425: trung bình cao hơn gần 65%."],
+				["Đọc", "Một hội viên chi 3200 kéo trung bình lên. Chín người còn lại chi từ 300 đến 600."]
+			],
+			say: "Khi trung bình lớn hơn trung vị nhiều, dữ liệu có đuôi. Báo 700 nghìn là «hội viên điển hình» sẽ làm chị Lan đặt giá gói quá cao. Báo trung vị 425 và riêng nhóm hội viên chi lớn là cách mô tả đúng hơn.",
+			check: ["Nếu hội viên chi 3200 bỏ đi, trung bình mới là bao nhiêu?", "3800 ÷ 9 ≈ 422 nghìn, sát trung vị 425. Cho thấy đuôi là nguyên nhân của khoảng cách."]
+		},
+		en: {
+			story: "You look at the monthly spend of 10 members. The mean and median tell two different stories, and the gap between them is a sign.",
+			words: [["Long tail", "A few very large values stretch the series far to one side."], ["Gap between mean and median", "A mean much larger than the median usually signals a right tail."]],
+			problem: "Monthly spend (thousand dong) of 10 members: 300, 300, 350, 400, 400, 450, 500, 500, 600, 3200. Compute the mean and median and read them.",
+			steps: [
+				["Total", "300 + 300 + 350 + 400 + 400 + 450 + 500 + 500 + 600 + 3200 = 7000."],
+				["Mean", "7000 ÷ 10 = 700 thousand."],
+				["Median", "The middle is the 5th and 6th values: (400 + 450) ÷ 2 = 425 thousand."],
+				["Compare", "700 versus 425: the mean is almost 65% higher."],
+				["Read", "One member spending 3200 pulls the mean up. The other nine spend between 300 and 600."]
+			],
+			say: "When the mean is much larger than the median, the data has a tail. Reporting 700 thousand as the “typical member” would make Ms. Lan price packages too high. Reporting the median 425 and the big-spending group separately describes it better.",
+			check: ["If the member spending 3200 is removed, what is the new mean?", "3800 ÷ 9 ≈ 422 thousand, close to the median 425. This shows the tail caused the gap."]
+		}
+	},
+	"eda-r": {
+		vi: {
+			story: "Bạn thấy mô hình ngân sách TikTok từ thẻ đạo hàm: form tăng rồi giảm. Hỏi «ngân sách và form có tương quan không» cho ra một kết quả đáng ngạc nhiên.",
+			words: [["Hệ số r", "Đo mức hai cột đi cùng nhau theo một đường thẳng."], ["r = 0", "Không có quan hệ đường thẳng, nhưng vẫn có thể có quan hệ cong."]],
+			problem: "Ngân sách x = 3, 4, 5, 6, 7 (triệu) cho form f = 10,5; 12; 12,5; 12; 10,5. Tính r giữa x và f rồi đọc.",
+			steps: [
+				["Trung bình", "x̄ = 5; f̄ = (10,5 + 12 + 12,5 + 12 + 10,5) ÷ 5 = 57,5 ÷ 5 = 11,5."],
+				["Tích độ lệch", "(−2)(−1) + (−1)(0,5) + (0)(1) + (1)(0,5) + (2)(−1) = 2 − 0,5 + 0 + 0,5 − 2 = 0."],
+				["Tính r", "Tử số 0, nên r = 0."],
+				["Đọc", "r = 0 nhưng form phụ thuộc chặt vào ngân sách (tăng đến 5 triệu rồi giảm). Quan hệ cong triệt tiêu r."],
+				["Việc cần làm", "Luôn vẽ biểu đồ điểm cùng với r."]
+			],
+			say: "Nếu chỉ nhìn r = 0, bạn kết luận «ngân sách không ảnh hưởng form», sai hoàn toàn. r chỉ đo quan hệ đường thẳng. Mọi hệ số tương quan phải đi cùng một hình.",
+			check: ["r = 0,9 có nghĩa là một đường thẳng chính xác không?", "Không. r cao chỉ nói hai cột đi cùng nhau rất đều, còn các điểm vẫn dao động quanh đường."]
+		},
+		en: {
+			story: "You saw the TikTok budget model from the derivative card: forms rise then fall. Asking “do budget and forms correlate” gives a surprising result.",
+			words: [["Coefficient r", "Measures how much two columns move together along a straight line."], ["r = 0", "No straight-line relationship, though a curved one may still exist."]],
+			problem: "Budget x = 3, 4, 5, 6, 7 (million) gives forms f = 10.5; 12; 12.5; 12; 10.5. Compute r between x and f and read it.",
+			steps: [
+				["Means", "x̄ = 5; f̄ = (10.5 + 12 + 12.5 + 12 + 10.5) ÷ 5 = 57.5 ÷ 5 = 11.5."],
+				["Product of deviations", "(−2)(−1) + (−1)(0.5) + (0)(1) + (1)(0.5) + (2)(−1) = 2 − 0.5 + 0 + 0.5 − 2 = 0."],
+				["Compute r", "The numerator is 0, so r = 0."],
+				["Read", "r = 0 yet forms depend tightly on budget (rising to 5 million then falling). The curved relationship cancels r."],
+				["What to do", "Always draw a scatter plot along with r."]
+			],
+			say: "Looking at r = 0 alone you would conclude “budget does not affect forms”, completely wrong. r only measures straight-line relationships. Every correlation coefficient must travel with a picture.",
+			check: ["Does r = 0.9 mean an exact straight line?", "No. A high r only says the two columns move together very consistently, while points still wobble around the line."]
+		}
+	},
+	"eda-cause": {
+		vi: {
+			story: "Thảo nói: «Tuần nào chi nhiều thì form nhiều, vậy cứ chi thêm». Bạn kiểm tra xem hai cột cùng tăng là do nhau hay do một lý do khác.",
+			words: [["Nhân quả", "A làm cho B thay đổi."], ["Biến gây nhiễu", "Yếu tố thứ ba làm cả hai cột cùng tăng."]],
+			problem: "Tuần thường: chi 15 triệu, form 50. Tuần trước Tết (chi tăng): chi 18 triệu, form 74. Tuần Tết năm trước (chi vẫn 15): form 68. Chi thêm có phải lý do form tăng không?",
+			steps: [
+				["Đọc mối liên hệ", "Chi 15 → 18 và form 50 → 74: cùng tăng, có tương quan dương."],
+				["Tìm tuần so sánh", "Tuần Tết năm trước chi vẫn 15 nhưng form 68 so với thường 50: tăng 18 mà chi không đổi."],
+				["Gọi tên yếu tố thứ ba", "Dịp Tết làm khách đặt nhiều hơn, và cũng làm Thảo chi nhiều hơn. Tết là biến gây nhiễu."],
+				["Kết luận", "Chưa thể nói chi thêm gây ra form tăng. Cần so tuần chi thêm nhưng không phải dịp Tết."]
+			],
+			say: "Nếu tin ngay «chi thêm là form thêm», bạn tăng ngân sách 20% mà không đảm bảo form tăng ở tuần thường. Hai cột cùng đi lên là một bằng chứng chưa phải bằng chứng đủ. Thử nghiệm so tuần chi thêm với tuần không chi thêm mới trả lời được.",
+			check: ["Làm thế nào để thử nghiệm xem chi thêm có gây ra form thêm?", "Chọn hai nhóm tương đương (ví dụ hai chi nhánh) và chỉ tăng chi một nhóm trong cùng thời gian, rồi so form."]
+		},
+		en: {
+			story: "Thao says: “Weeks with more spend have more forms, so just spend more”. You check whether the two columns rising together is due to each other or to another reason.",
+			words: [["Causation", "A makes B change."], ["Confounder", "A third factor that makes both columns rise."]],
+			problem: "A normal week: spend 15 million, forms 50. A pre-Tet week (spend raised): spend 18 million, forms 74. Last year's Tet week (spend still 15): forms 68. Is extra spend the reason forms rose?",
+			steps: [
+				["Read the relationship", "Spend 15 → 18 and forms 50 → 74: rising together, a positive correlation."],
+				["Find a comparison week", "Last year's Tet week had spend still at 15 but forms of 68 against normal 50: up 18 with no change in spend."],
+				["Name the third factor", "The Tet season makes customers book more and also makes Thao spend more. Tet is a confounder."],
+				["Conclusion", "You cannot yet say extra spend causes forms to rise. You need to compare a week with extra spend that is not a Tet period."]
+			],
+			say: "If you believe “more spend means more forms” straight away, you raise the budget 20% with no guarantee forms rise in a normal week. Two columns rising together is evidence but not enough. An experiment comparing extra-spend weeks to no-extra-spend weeks is what answers it.",
+			check: ["How could you test whether extra spend causes more forms?", "Choose two comparable groups (for example two branches) and raise spend in only one over the same period, then compare forms."]
+		}
+	},
+	"eda-group": {
+		vi: {
+			story: "Bạn nhớ 85% click TikTok đến từ điện thoại. Giờ so thời gian điền form giữa điện thoại và máy tính để xem form có khó dùng trên điện thoại không.",
+			words: [["So sánh theo nhóm", "Tính cùng một thước (trung bình, trung vị) cho từng nhóm của cột chữ."]],
+			problem: "Thời gian điền (giây): điện thoại 60, 70, 80; máy tính 40, 45, 50. Tính trung bình từng nhóm và chênh lệch.",
+			steps: [
+				["Điện thoại", "(60 + 70 + 80) ÷ 3 = 210 ÷ 3 = 70 giây."],
+				["Máy tính", "(40 + 45 + 50) ÷ 3 = 135 ÷ 3 = 45 giây."],
+				["Chênh lệch", "70 − 45 = 25 giây, tức điện thoại chậm hơn khoảng 56%."],
+				["Đọc", "Form khó điền hơn trên điện thoại, đúng chỗ 85% click TikTok đang đến."]
+			],
+			say: "Một con số trung bình chung cho cả hai nhóm (57,5 giây) sẽ che mất sự khác biệt. So theo nhóm giúp chỉ đúng nơi cần sửa: giao diện điện thoại. Mỗi nhóm chỉ có 3 khách nên đây là gợi ý, chưa phải kết luận chắc.",
+			check: ["Trung bình chung của cả 6 khách là bao nhiêu?", "(210 + 135) ÷ 6 = 345 ÷ 6 = 57,5 giây, nằm giữa hai nhóm và không nói gì về điện thoại."]
+		},
+		en: {
+			story: "You remember 85% of TikTok clicks come from phones. Now you compare form fill time between phones and computers to see whether the form is hard to use on phones.",
+			words: [["Group comparison", "Compute the same measure (mean, median) for each group of the text column."]],
+			problem: "Fill time (seconds): phone 60, 70, 80; computer 40, 45, 50. Compute each group's mean and the difference.",
+			steps: [
+				["Phone", "(60 + 70 + 80) ÷ 3 = 210 ÷ 3 = 70 seconds."],
+				["Computer", "(40 + 45 + 50) ÷ 3 = 135 ÷ 3 = 45 seconds."],
+				["Difference", "70 − 45 = 25 seconds, so phones are about 56% slower."],
+				["Read", "The form is harder to fill on phones, exactly where 85% of TikTok clicks are arriving."]
+			],
+			say: "A single overall average for both groups (57.5 seconds) would hide the difference. Comparing by group points to the right place to fix: the phone interface. With only 3 customers per group this is a hint, not a firm conclusion.",
+			check: ["What is the overall mean of all 6 customers?", "(210 + 135) ÷ 6 = 345 ÷ 6 = 57.5 seconds, between the two groups and saying nothing about phones."]
+		}
+	},
+	"eda-tab": {
+		vi: {
+			story: "Bạn có số click theo kênh và thiết bị. Chị Lan hỏi «TikTok có bao nhiêu phần trăm là điện thoại?» và Thảo hỏi «điện thoại có bao nhiêu phần trăm là TikTok?». Hai câu hỏi khác nhau.",
+			words: [["Bảng chéo", "Bảng đếm hai cột chữ cùng lúc."], ["Phần trăm theo hàng và theo cột", "Mẫu số khác nhau cho hai câu hỏi khác nhau."]],
+			problem: "Click: GDN điện thoại 450, máy tính 450; Meta 560 và 240; TikTok 680 và 120. Tính (a) phần trăm điện thoại trong TikTok, (b) phần trăm TikTok trong click điện thoại.",
+			steps: [
+				["Tổng hàng TikTok", "680 + 120 = 800."],
+				["(a) Theo hàng", "680 ÷ 800 = 85%."],
+				["Tổng cột điện thoại", "450 + 560 + 680 = 1690."],
+				["(b) Theo cột", "680 ÷ 1690 ≈ 40,2%."],
+				["Đọc", "85% click TikTok là điện thoại, nhưng chỉ 40% click điện thoại là TikTok."]
+			],
+			say: "Cùng ô 680 mà hai câu hỏi cho 85% và 40,2%. Nếu không nói rõ «phần của cái gì», người đọc hiểu nhầm. Mẫu số phải là phần đứng sau chữ «trong» của câu hỏi.",
+			check: ["Phần trăm máy tính trong click Meta là bao nhiêu?", "240 ÷ 800 = 30%. Mẫu số là tổng hàng Meta (800)."]
+		},
+		en: {
+			story: "You have clicks by channel and device. Ms. Lan asks “what percent of TikTok is phone?” and Thao asks “what percent of phone is TikTok?”. These are different questions.",
+			words: [["Cross table", "A table counting two text columns at once."], ["Row versus column percent", "Different denominators for different questions."]],
+			problem: "Clicks: GDN phone 450, computer 450; Meta 560 and 240; TikTok 680 and 120. Compute (a) the percent of TikTok that is phone, (b) the percent of phone clicks that are TikTok.",
+			steps: [
+				["TikTok row total", "680 + 120 = 800."],
+				["(a) By row", "680 ÷ 800 = 85%."],
+				["Phone column total", "450 + 560 + 680 = 1690."],
+				["(b) By column", "680 ÷ 1690 ≈ 40.2%."],
+				["Read", "85% of TikTok clicks are phone, but only 40% of phone clicks are TikTok."]
+			],
+			say: "The same cell 680 gives 85% and 40.2% for two questions. Without saying “percent of what”, readers misunderstand. The denominator must be the part after the word “of” in the question.",
+			check: ["What percent of Meta clicks are computer?", "240 ÷ 800 = 30%. The denominator is the Meta row total (800)."]
+		}
+	},
+	"eda-flip": {
+		vi: {
+			story: "Sau khi sửa trang đích, Thảo thử trang mới. Tổng tỷ lệ form của trang mới thấp hơn trang cũ, nhưng khi tách theo thiết bị thì trang mới tốt hơn ở cả hai. Đây là nghịch lý Simpson.",
+			words: [["Nghịch lý Simpson", "Gộp các nhóm lại cho kết luận ngược với từng nhóm, vì tỷ trọng các nhóm khác nhau."], ["Tỷ trọng nhóm", "Phần mỗi nhóm trong tổng, ở đây là phần điện thoại và máy tính trong click."]],
+			problem: "Trang cũ: điện thoại 100 click 2 form, máy tính 400 click 20 form. Trang mới: điện thoại 400 click 12 form, máy tính 100 click 6 form. So tỷ lệ form tổng và từng nhóm.",
+			steps: [
+				["Trang cũ theo nhóm", "Điện thoại 2 ÷ 100 = 2%. Máy tính 20 ÷ 400 = 5%."],
+				["Trang mới theo nhóm", "Điện thoại 12 ÷ 400 = 3%. Máy tính 6 ÷ 100 = 6%."],
+				["So từng nhóm", "Trang mới tốt hơn ở điện thoại (3% so với 2%) và ở máy tính (6% so với 5%)."],
+				["Gộp trang cũ", "(2 + 20) ÷ (100 + 400) = 22 ÷ 500 = 4,4%."],
+				["Gộp trang mới", "(12 + 6) ÷ (400 + 100) = 18 ÷ 500 = 3,6%."],
+				["Đọc", "Gộp lại thì mới thấp hơn (3,6% so với 4,4%) vì trang mới nhận nhiều click điện thoại hơn (400 so với 100), và điện thoại vốn có tỷ lệ thấp."]
+			],
+			say: "Hai kết luận ngược nhau đều đúng số, chỉ khác mẫu số. Trang mới thật sự tốt hơn ở mỗi loại thiết bị, nhưng tổng thấp hơn vì lượng điện thoại tăng (do TikTok). Khi gộp cho kết luận ngược nhóm, hãy tách theo nhóm trước khi quyết định.",
+			check: ["Nếu hai trang nhận cùng 250 click điện thoại và 250 máy tính, tỷ lệ tổng của trang mới là bao nhiêu?", "Điện thoại 3% × 250 = 7,5 và máy tính 6% × 250 = 15: (7,5 + 15) ÷ 500 = 4,5%. Cao hơn trang cũ (2% × 250 + 5% × 250 = 17,5 → 3,5%)."]
+		},
+		en: {
+			story: "After the landing-page fix, Thao tries the new page. The new page's overall form rate is lower than the old one, yet split by device the new page is better in both. This is Simpson's paradox.",
+			words: [["Simpson's paradox", "Combining groups gives the opposite conclusion to each group, because the groups' weights differ."], ["Group weight", "Each group's share of the total, here the share of phone and computer clicks."]],
+			problem: "Old page: phone 100 clicks 2 forms, computer 400 clicks 20 forms. New page: phone 400 clicks 12 forms, computer 100 clicks 6 forms. Compare the overall and per-group form rates.",
+			steps: [
+				["Old page by group", "Phone 2 ÷ 100 = 2%. Computer 20 ÷ 400 = 5%."],
+				["New page by group", "Phone 12 ÷ 400 = 3%. Computer 6 ÷ 100 = 6%."],
+				["Compare each group", "The new page is better on phone (3% vs 2%) and on computer (6% vs 5%)."],
+				["Combine the old page", "(2 + 20) ÷ (100 + 400) = 22 ÷ 500 = 4.4%."],
+				["Combine the new page", "(12 + 6) ÷ (400 + 100) = 18 ÷ 500 = 3.6%."],
+				["Read", "Combined, the new one is lower (3.6% vs 4.4%) because the new page receives more phone clicks (400 vs 100), and phones naturally have a lower rate."]
+			],
+			say: "Both opposite conclusions are numerically right, differing only in the denominator. The new page really is better on each device type, but the total is lower because phone volume rose (due to TikTok). When combining gives a conclusion opposite to the groups, split by group before deciding.",
+			check: ["If both pages received the same 250 phone and 250 computer clicks, what is the new page's overall rate?", "Phone 3% × 250 = 7.5 and computer 6% × 250 = 15: (7.5 + 15) ÷ 500 = 4.5%. Higher than the old page (2% × 250 + 5% × 250 = 17.5 → 3.5%)."]
+		}
+	},
+	"infer-intro": {
+		vi: {
+			story: "Chị Lan không thể xem hết dữ liệu mọi tuần. Bạn có 36 tuần quá khứ và muốn nói điều gì đó về tuần tới. Đó là dùng mẫu để nói về tổng thể.",
+			words: [
+				["Tổng thể", "Toàn bộ cái ta muốn nói tới, ví dụ mọi tuần spa sẽ hoạt động."],
+				["Mẫu", "Phần ta thực sự quan sát, ví dụ 36 tuần đã qua."],
+				["Suy luận", "Dùng mẫu để nói về tổng thể, kèm mức không chắc chắn."]
+			],
+			problem: "36 tuần đã qua có trung bình form 50 và độ lệch chuẩn 12. Chị Lan hỏi «tuần tới sẽ có bao nhiêu form?» Bạn không nên trả lời «đúng 50». Hãy trả lời như một suy luận.",
+			steps: [
+				["Xác định mẫu và tổng thể", "Mẫu: 36 tuần đã qua. Tổng thể: mọi tuần trong tương lai."],
+				["Mẫu cho một ước lượng", "Trung bình 50 là ước lượng tốt nhất cho tuần tới."],
+				["Mẫu cho mức dao động", "Độ lệch chuẩn 12 nói một tuần thường lệch khoảng 12 form."],
+				["Phát biểu như suy luận", "«Tuần tới có thể khoảng 50, thường nằm trong 38 đến 62 (một độ lệch chuẩn), và có thể lệch xa hơn.»"]
+			],
+			say: "Một con số duy nhất như «50» che khuất mức không chắc chắn. Suy luận nghĩa là nói cả con số và độ rộng của nó. Phần còn lại của C2 dạy cách nói điều này chính xác.",
+			check: ["Nếu chỉ có 4 tuần dữ liệu thay vì 36, bạn thay đổi gì khi phát biểu?", "Bạn tin ít hơn: khoảng không chắc chắn rộng hơn, vì mẫu nhỏ cho ước lượng kém chắc."]
+		},
+		en: {
+			story: "Ms. Lan cannot look at every week of data. You have 36 past weeks and want to say something about next week. That is using a sample to speak about a population.",
+			words: [
+				["Population", "Everything we want to speak about, for example every week the spa will operate."],
+				["Sample", "The part we actually observe, for example the 36 past weeks."],
+				["Inference", "Using a sample to speak about the population, with a measure of uncertainty."]
+			],
+			problem: "The past 36 weeks have mean forms 50 and standard deviation 12. Ms. Lan asks “how many forms will next week have?” You should not answer “exactly 50”. Answer as an inference.",
+			steps: [
+				["Identify sample and population", "Sample: the 36 past weeks. Population: every future week."],
+				["The sample gives an estimate", "A mean of 50 is the best estimate for next week."],
+				["The sample gives the wobble", "A standard deviation of 12 says a week typically departs from 50 by about 12 forms."],
+				["Phrase it as an inference", "“Next week may be around 50, usually within 38 to 62 (one standard deviation), and could stray further.”"]
+			],
+			say: "A single number like “50” hides uncertainty. Inference means stating both the number and its width. The rest of C2 teaches how to say this precisely.",
+			check: ["If you had only 4 weeks of data instead of 36, what changes in your statement?", "You trust it less: the uncertainty range is wider, because a small sample gives a less sure estimate."]
+		}
+	},
+	"permut": {
+		vi: {
+			story: "Spa Quận 1 cần xếp ca trực cho ba kỹ thuật viên và chọn ba người từ năm người vào ba ca khác nhau. Thứ tự có ý nghĩa vì ca sáng khác ca tối.",
+			words: [["Hoán vị", "Cách xếp có thứ tự."], ["P(n, k)", "n × (n−1) × … gồm k thừa số: chọn k từ n có thứ tự."]],
+			problem: "Có 5 kỹ thuật viên, chọn 3 người xếp vào ca sáng, ca chiều, ca tối. Có bao nhiêu cách? Và xếp 3 người đã chọn vào 3 ca có bao nhiêu cách?",
+			steps: [
+				["Ca sáng", "5 lựa chọn."],
+				["Ca chiều", "Còn 4 người."],
+				["Ca tối", "Còn 3 người."],
+				["Nhân", "5 × 4 × 3 = 60 cách."],
+				["Chỉ xếp 3 người đã chọn", "3! = 3 × 2 × 1 = 6 cách."]
+			],
+			say: "60 cách vì thứ tự quan trọng: An sáng, Bình chiều khác Bình sáng, An chiều. Số 60 gồm cả việc chọn ai lẫn việc xếp ai vào ca nào.",
+			check: ["Có bao nhiêu cách xếp 5 người vào 5 ca khác nhau?", "5! = 120 cách."]
+		},
+		en: {
+			story: "The District 1 spa needs to roster three technicians and pick three of five people for three different shifts. Order matters because the morning shift differs from the evening one.",
+			words: [["Permutation", "An ordered arrangement."], ["P(n, k)", "n × (n−1) × … with k factors: choosing k from n in order."]],
+			problem: "There are 5 technicians; pick 3 and place them in the morning, afternoon and evening shifts. How many ways? And how many ways to arrange the 3 already chosen into the 3 shifts?",
+			steps: [
+				["Morning shift", "5 choices."],
+				["Afternoon shift", "4 people left."],
+				["Evening shift", "3 people left."],
+				["Multiply", "5 × 4 × 3 = 60 ways."],
+				["Only arranging the 3 already chosen", "3! = 3 × 2 × 1 = 6 ways."]
+			],
+			say: "60 ways because order matters: An morning, Binh afternoon differs from Binh morning, An afternoon. The 60 includes both choosing who and placing who in which shift.",
+			check: ["How many ways to arrange 5 people into 5 different shifts?", "5! = 120 ways."]
+		}
+	},
+	"combin": {
+		vi: {
+			story: "Chị Lan muốn chọn 3 trong 5 kỹ thuật viên đi đào tạo, không phân biệt thứ tự. Bạn đếm số nhóm khác nhau.",
+			words: [["Tổ hợp", "Cách chọn không quan tâm thứ tự."], ["C(n, k)", "P(n, k) chia cho k!."]],
+			problem: "Chọn 3 người từ 5 kỹ thuật viên đi đào tạo. Có bao nhiêu nhóm khác nhau? Liên hệ với 60 cách xếp ca ở thẻ hoán vị.",
+			steps: [
+				["Số cách chọn có thứ tự", "5 × 4 × 3 = 60."],
+				["Mỗi nhóm bị đếm mấy lần", "Mỗi nhóm 3 người xếp được 3! = 6 thứ tự."],
+				["Chia", "60 ÷ 6 = 10 nhóm."],
+				["Kiểm tra bằng công thức", "C(5, 3) = 5! ÷ (3! × 2!) = 120 ÷ (6 × 2) = 10."],
+				["Kiểm tra đối xứng", "C(5, 2) cũng bằng 10: chọn 3 người đi cũng là chọn 2 người ở lại."]
+			],
+			say: "10 nhóm khác 60 cách xếp ca vì cùng một nhóm {An, Bình, Chi} chỉ là một lựa chọn, dù xếp ca theo 6 cách. Dùng tổ hợp khi chỉ cần biết ai được chọn.",
+			check: ["Chọn 2 trong 5 người để làm quản lý ca, có bao nhiêu nhóm?", "C(5, 2) = 5 × 4 ÷ 2 = 10 nhóm."]
+		},
+		en: {
+			story: "Ms. Lan wants to pick 3 of the 5 technicians for training, regardless of order. You count the different groups.",
+			words: [["Combination", "A selection where order does not matter."], ["C(n, k)", "P(n, k) divided by k!."]],
+			problem: "Choose 3 of 5 technicians for training. How many different groups? Relate it to the 60 shift arrangements in the permutation card.",
+			steps: [
+				["Ordered selections", "5 × 4 × 3 = 60."],
+				["How many times each group is counted", "Each group of 3 can be ordered in 3! = 6 ways."],
+				["Divide", "60 ÷ 6 = 10 groups."],
+				["Check by formula", "C(5, 3) = 5! ÷ (3! × 2!) = 120 ÷ (6 × 2) = 10."],
+				["Check the symmetry", "C(5, 2) is also 10: choosing 3 to go is the same as choosing 2 to stay."]
+			],
+			say: "10 groups, unlike the 60 shift arrangements, because the same group {An, Binh, Chi} is just one choice even though the shifts can be assigned 6 ways. Use combinations when you only need to know who is chosen.",
+			check: ["Choose 2 of 5 people to manage shifts; how many groups?", "C(5, 2) = 5 × 4 ÷ 2 = 10 groups."]
+		}
+	},
+	"prob-def": {
+		vi: {
+			story: "Chị Lan hỏi: «Một lượt đặt hẹn tại Quận 1 thường là gói nào?» Bạn dùng bảng đặt hẹn 200 lượt tuần trước để gán xác suất cho từng gói.",
+			words: [["Xác suất", "Số từ 0 đến 1 đo khả năng xảy ra: số trường hợp thuận lợi chia tổng số trường hợp."]],
+			problem: "Tuần trước Quận 1 có 200 lượt đặt: 120 gói 60 phút, 50 gói 90 phút đá nóng, 30 ghế massage. Tính xác suất một lượt bất kỳ là mỗi gói và kiểm tra tổng.",
+			steps: [
+				["60 phút", "120 ÷ 200 = 0,60."],
+				["90 phút", "50 ÷ 200 = 0,25."],
+				["Ghế massage", "30 ÷ 200 = 0,15."],
+				["Kiểm tra tổng", "0,60 + 0,25 + 0,15 = 1,00. Tất cả các khả năng cộng lại bằng 1."],
+				["Đọc", "Cứ 100 lượt, khoảng 60 lượt là gói 60 phút."]
+			],
+			say: "Xác suất từ tần suất tuần trước chỉ là ước lượng cho tuần sau, không phải sự thật vĩnh viễn. Hai tính chất kiểm tra nhanh: mỗi xác suất từ 0 đến 1 và tổng mọi khả năng bằng 1.",
+			check: ["Nếu một người báo 0,6 + 0,3 + 0,2 cho ba gói thì sai ở đâu?", "Tổng là 1,1, lớn hơn 1. Xác suất của các khả năng loại trừ nhau phải cộng đúng bằng 1."]
+		},
+		en: {
+			story: "Ms. Lan asks: “Which package is a District 1 booking usually?” You use last week's 200 bookings to assign a probability to each package.",
+			words: [["Probability", "A number from 0 to 1 measuring likelihood: favourable cases divided by all cases."]],
+			problem: "Last week District 1 had 200 bookings: 120 for the 60-minute package, 50 for the 90-minute hot-stone package, 30 for the massage chair. Compute the probability that a random booking is each and check the total.",
+			steps: [
+				["60 minutes", "120 ÷ 200 = 0.60."],
+				["90 minutes", "50 ÷ 200 = 0.25."],
+				["Massage chair", "30 ÷ 200 = 0.15."],
+				["Check the total", "0.60 + 0.25 + 0.15 = 1.00. All possibilities add up to 1."],
+				["Read", "In every 100 bookings, about 60 are the 60-minute package."]
+			],
+			say: "A probability from last week's frequency is only an estimate for next week, not a permanent truth. Two quick checks: each probability lies from 0 to 1 and the total of all possibilities is 1.",
+			check: ["If someone reports 0.6 + 0.3 + 0.2 for the three packages, what is wrong?", "The total is 1.1, over 1. Probabilities of mutually exclusive possibilities must add up to exactly 1."]
+		}
+	},
+	"events": {
+		vi: {
+			story: "Với bảng đặt hẹn Quận 1, bạn cần phân biệt hai loại cặp sự kiện: những cặp không thể cùng xảy ra và những cặp có thể.",
+			words: [["Loại trừ nhau", "Hai biến cố không thể cùng xảy ra trong một lần thử."], ["Có thể cùng xảy ra", "Hai biến cố có phần chung."]],
+			problem: "Một lượt đặt hẹn chọn đúng một gói. Hỏi: (a) «chọn 60 phút» và «chọn ghế massage» có thể cùng xảy ra không? (b) «chọn 60 phút» và «đặt bằng điện thoại» có thể cùng xảy ra không?",
+			steps: [
+				["Cặp (a)", "Một lượt chỉ chọn đúng một gói, nên không thể vừa 60 phút vừa ghế: loại trừ nhau."],
+				["Xác suất chung của (a)", "P(60 phút và ghế) = 0."],
+				["Cặp (b)", "Gói và thiết bị là hai thứ khác nhau; một lượt có thể vừa chọn 60 phút vừa đặt bằng điện thoại."],
+				["Xác suất chung của (b)", "Có thể lớn hơn 0, ví dụ 0,3 (khách chọn 60 phút và dùng điện thoại)."]
+			],
+			say: "Loại trừ nhau và có thể cùng xảy ra dẫn đến hai công thức cộng khác nhau ở thẻ kế tiếp. Nhìn nhanh: nếu một lần thử có thể thỏa cả hai điều kiện thì chúng không loại trừ nhau.",
+			check: ["«Đặt vào buổi sáng» và «đặt vào buổi tối» có loại trừ nhau không?", "Có, nếu mỗi lượt chỉ có một giờ đặt. Một lượt không thể vừa sáng vừa tối."]
+		},
+		en: {
+			story: "With the District 1 booking table you need to tell two kinds of event pairs apart: those that cannot happen together and those that can.",
+			words: [["Mutually exclusive", "Two events that cannot both happen in one trial."], ["Can happen together", "Two events with a shared part."]],
+			problem: "A booking picks exactly one package. Ask: (a) can “picks 60 minutes” and “picks massage chair” happen together? (b) can “picks 60 minutes” and “booked by phone” happen together?",
+			steps: [
+				["Pair (a)", "A booking picks exactly one package, so it cannot be both 60 minutes and chair: mutually exclusive."],
+				["Joint probability of (a)", "P(60 minutes and chair) = 0."],
+				["Pair (b)", "Package and device are different things; one booking can pick 60 minutes and be booked by phone."],
+				["Joint probability of (b)", "Can be above 0, for example 0.3 (a customer picks 60 minutes and uses a phone)."]
+			],
+			say: "Mutually exclusive and able to happen together lead to two different addition formulas in the next card. A quick look: if one trial can satisfy both conditions they are not mutually exclusive.",
+			check: ["Are “books in the morning” and “books in the evening” mutually exclusive?", "Yes, if each booking has a single time. One booking cannot be both morning and evening."]
+		}
+	},
+	"add-rule": {
+		vi: {
+			story: "Chị Lan muốn gửi ưu đãi cho khách đặt 60 phút hoặc ghế massage, và riêng Thảo muốn gửi cho khách đặt 60 phút hoặc dùng điện thoại. Hai trường hợp dùng hai công thức khác nhau.",
+			words: [["Quy tắc cộng khi loại trừ", "P(A hoặc B) = P(A) + P(B)."], ["Quy tắc cộng chung", "P(A hoặc B) = P(A) + P(B) − P(A và B)."]],
+			problem: "P(60 phút) = 0,60, P(ghế massage) = 0,15, P(điện thoại) = 0,50, và P(60 phút và điện thoại) = 0,30. Tính P(60 phút hoặc ghế) và P(60 phút hoặc điện thoại).",
+			steps: [
+				["60 phút hoặc ghế (loại trừ)", "0,60 + 0,15 = 0,75."],
+				["60 phút hoặc điện thoại: cộng", "0,60 + 0,50 = 1,10, lớn hơn 1, nên chắc chắn có đếm đôi."],
+				["Trừ phần chung", "1,10 − 0,30 = 0,80."],
+				["Kiểm tra", "Chỉ 60 phút: 0,30; chỉ điện thoại: 0,20; cả hai: 0,30. 0,30 + 0,20 + 0,30 = 0,80 ✓."]
+			],
+			say: "Nếu quên trừ 0,30, kết quả 1,10 vượt 1, một dấu hiệu rõ ràng của lỗi. Hai nhóm loại trừ thì không có phần chung để trừ. Trước khi cộng, luôn hỏi: hai nhóm này có phần chung không?",
+			check: ["Nếu P(A hoặc B) = 0,8, P(A) = 0,5, P(B) = 0,6, thì P(A và B) bằng bao nhiêu?", "0,5 + 0,6 − 0,8 = 0,3."]
+		},
+		en: {
+			story: "Ms. Lan wants to send an offer to customers who book the 60-minute package or the massage chair, and Thao separately wants to send to those who book 60 minutes or use a phone. The two cases use two different formulas.",
+			words: [["Addition rule for exclusive events", "P(A or B) = P(A) + P(B)."], ["General addition rule", "P(A or B) = P(A) + P(B) − P(A and B)."]],
+			problem: "P(60 minutes) = 0.60, P(massage chair) = 0.15, P(phone) = 0.50, and P(60 minutes and phone) = 0.30. Compute P(60 minutes or chair) and P(60 minutes or phone).",
+			steps: [
+				["60 minutes or chair (exclusive)", "0.60 + 0.15 = 0.75."],
+				["60 minutes or phone: add", "0.60 + 0.50 = 1.10, above 1, so something is certainly double-counted."],
+				["Subtract the overlap", "1.10 − 0.30 = 0.80."],
+				["Check", "Only 60 minutes: 0.30; only phone: 0.20; both: 0.30. 0.30 + 0.20 + 0.30 = 0.80 ✓."]
+			],
+			say: "If you forget to subtract 0.30, the result 1.10 exceeds 1, a clear sign of error. Exclusive groups have no overlap to subtract. Before adding, always ask: do these two groups overlap?",
+			check: ["If P(A or B) = 0.8, P(A) = 0.5, P(B) = 0.6, what is P(A and B)?", "0.5 + 0.6 − 0.8 = 0.3."]
+		}
+	},
+	"mul-rule": {
+		vi: {
+			story: "Thảo hỏi: «Trong các lượt đặt, bao nhiêu phần vừa chọn 90 phút vừa đặt bằng điện thoại?» Có hai cách tính, và chỉ một cách đúng nếu hai điều không độc lập.",
+			words: [["Quy tắc nhân", "P(A và B) = P(A) × P(B | A)."], ["Độc lập", "Biết A không đổi xác suất B, nên P(B | A) = P(B)."]],
+			problem: "P(90 phút) = 0,25 và P(điện thoại) = 0,50. Trong số lượt đặt 90 phút, 80% đặt bằng điện thoại. Tính P(90 phút và điện thoại) bằng hai cách và so sánh.",
+			steps: [
+				["Cách giả định độc lập", "0,25 × 0,50 = 0,125."],
+				["Cách dùng xác suất có điều kiện", "P(điện thoại | 90 phút) = 0,80, nên 0,25 × 0,80 = 0,20."],
+				["So sánh", "0,125 so với 0,20: giả định độc lập làm thấp đi khoảng 37%."],
+				["Kiểm tra giả định", "P(điện thoại | 90 phút) = 0,80 khác P(điện thoại) = 0,50, nên hai điều không độc lập."]
+			],
+			say: "Con số đúng là 0,20: trong 200 lượt có khoảng 40 lượt vừa 90 phút vừa dùng điện thoại, không phải 25. Chỉ nhân hai xác suất riêng khi biết chắc chúng độc lập.",
+			check: ["Nếu điện thoại và gói độc lập thật, P(90 phút | điện thoại) bằng bao nhiêu?", "Bằng P(90 phút) = 0,25. Biết khách dùng điện thoại không đổi xác suất họ chọn 90 phút."]
+		},
+		en: {
+			story: "Thao asks: “What share of bookings are both 90 minutes and by phone?” There are two ways to compute it, and only one is right if the two are not independent.",
+			words: [["Multiplication rule", "P(A and B) = P(A) × P(B | A)."], ["Independent", "Knowing A does not change B's probability, so P(B | A) = P(B)."]],
+			problem: "P(90 minutes) = 0.25 and P(phone) = 0.50. Among 90-minute bookings, 80% are by phone. Compute P(90 minutes and phone) two ways and compare.",
+			steps: [
+				["Assuming independence", "0.25 × 0.50 = 0.125."],
+				["Using conditional probability", "P(phone | 90 minutes) = 0.80, so 0.25 × 0.80 = 0.20."],
+				["Compare", "0.125 versus 0.20: assuming independence understates by about 37%."],
+				["Check the assumption", "P(phone | 90 minutes) = 0.80 differs from P(phone) = 0.50, so the two are not independent."]
+			],
+			say: "The right number is 0.20: out of 200 bookings about 40 are both 90 minutes and phone, not 25. Multiply two separate probabilities only when you know for sure they are independent.",
+			check: ["If phone and package really were independent, what would P(90 minutes | phone) be?", "It would equal P(90 minutes) = 0.25. Knowing the customer uses a phone does not change their chance of picking 90 minutes."]
+		}
+	},
+	"rv": {
+		vi: {
+			story: "Chị Lan muốn biết doanh thu mỗi lượt đặt. Bạn gán mỗi kết quả (gói) một con số (giá), biến việc chọn gói thành một biến ngẫu nhiên.",
+			words: [["Biến ngẫu nhiên", "Quy tắc gán một con số cho mỗi kết quả có thể xảy ra."], ["Giá trị của biến", "Các số có thể nhận, ví dụ 300, 500, 150."]],
+			problem: "Mỗi lượt đặt chọn một gói: 60 phút (300 nghìn), 90 phút (500 nghìn) hoặc ghế massage (150 nghìn). Gọi X là số tiền một lượt đặt. Liệt kê các giá trị và xác suất.",
+			steps: [
+				["Kết quả thành số", "X = 300 nếu 60 phút, X = 500 nếu 90 phút, X = 150 nếu ghế."],
+				["Giá trị có thể nhận", "X ∈ {150, 300, 500}."],
+				["Xác suất mỗi giá trị", "P(X = 300) = 0,60; P(X = 500) = 0,25; P(X = 150) = 0,15."],
+				["Kiểm tra tổng", "0,60 + 0,25 + 0,15 = 1."]
+			],
+			say: "Biến ngẫu nhiên biến câu chuyện (khách chọn gói nào) thành con số mà ta cộng, trung bình được. Sau khi gán X, ta hỏi được «doanh thu trung bình một lượt», điều không hỏi được khi chỉ có tên gói.",
+			check: ["X có thể bằng 400 không?", "Không. X chỉ nhận ba giá trị 150, 300, 500 nên P(X = 400) = 0."]
+		},
+		en: {
+			story: "Ms. Lan wants to know revenue per booking. You assign each outcome (package) a number (price), turning the package choice into a random variable.",
+			words: [["Random variable", "A rule assigning a number to each possible outcome."], ["Values of the variable", "The numbers it can take, for example 300, 500, 150."]],
+			problem: "Each booking picks one package: 60 minutes (300 thousand), 90 minutes (500 thousand) or massage chair (150 thousand). Let X be the amount of one booking. List the values and probabilities.",
+			steps: [
+				["Outcomes become numbers", "X = 300 if 60 minutes, X = 500 if 90 minutes, X = 150 if chair."],
+				["Possible values", "X ∈ {150, 300, 500}."],
+				["Probability of each value", "P(X = 300) = 0.60; P(X = 500) = 0.25; P(X = 150) = 0.15."],
+				["Check the total", "0.60 + 0.25 + 0.15 = 1."]
+			],
+			say: "A random variable turns a story (which package the customer picks) into a number we can add and average. Once X is assigned, we can ask for “average revenue per booking”, something we cannot ask with only package names.",
+			check: ["Can X equal 400?", "No. X takes only the three values 150, 300, 500 so P(X = 400) = 0."]
+		}
+	},
+	"dist": {
+		vi: {
+			story: "Bạn gom các giá trị của X (tiền mỗi lượt đặt) và xác suất của chúng thành một bảng, gọi là phân phối xác suất.",
+			words: [["Phân phối xác suất", "Danh sách mỗi giá trị của biến và xác suất tương ứng. Tổng bằng 1."]],
+			problem: "X = 150, 300, 500 với xác suất 0,15; 0,60; 0,25. Lập bảng, kiểm tra điều kiện hợp lệ, và tính P(X ≥ 300).",
+			steps: [
+				["Lập bảng", "X = 150 → 0,15; X = 300 → 0,60; X = 500 → 0,25."],
+				["Kiểm tra từng xác suất", "Mỗi xác suất nằm giữa 0 và 1."],
+				["Kiểm tra tổng", "0,15 + 0,60 + 0,25 = 1,00."],
+				["Tính P(X ≥ 300)", "Cộng các giá trị từ 300 trở lên: 0,60 + 0,25 = 0,85."],
+				["Đọc", "85% lượt đặt có giá từ 300 nghìn trở lên."]
+			],
+			say: "Bảng phân phối là toàn bộ thông tin về biến X. Một câu hỏi như «ít nhất 300 nghìn» chỉ là cộng các hàng thỏa điều kiện. Nếu tổng không bằng 1 thì bảng sai hoặc thiếu một giá trị.",
+			check: ["P(X < 300) bằng bao nhiêu?", "Chỉ có X = 150 nhỏ hơn 300, nên 0,15. Hoặc 1 − 0,85 = 0,15."]
+		},
+		en: {
+			story: "You gather X's values (money per booking) and their probabilities into a table, called a probability distribution.",
+			words: [["Probability distribution", "A list of every value of the variable and its probability. The total is 1."]],
+			problem: "X = 150, 300, 500 with probabilities 0.15; 0.60; 0.25. Build the table, check it is valid, and compute P(X ≥ 300).",
+			steps: [
+				["Build the table", "X = 150 → 0.15; X = 300 → 0.60; X = 500 → 0.25."],
+				["Check each probability", "Each probability lies between 0 and 1."],
+				["Check the total", "0.15 + 0.60 + 0.25 = 1.00."],
+				["Compute P(X ≥ 300)", "Add the values from 300 up: 0.60 + 0.25 = 0.85."],
+				["Read", "85% of bookings are priced at 300 thousand or more."]
+			],
+			say: "The distribution table is all the information about X. A question like “at least 300 thousand” is just adding the rows that qualify. If the total is not 1 the table is wrong or a value is missing.",
+			check: ["What is P(X < 300)?", "Only X = 150 is below 300, so 0.15. Or 1 − 0.85 = 0.15."]
+		}
+	},
+	"ev": {
+		vi: {
+			story: "Chị Lan cần dự báo doanh thu tuần của Quận 1 với 200 lượt đặt. Bạn dùng kỳ vọng của X để có doanh thu trung bình mỗi lượt.",
+			words: [["Kỳ vọng", "Trung bình có trọng số: cộng (giá trị × xác suất)."]],
+			problem: "X = 150, 300, 500 với xác suất 0,15; 0,60; 0,25. Tính E(X), rồi dự báo doanh thu 200 lượt.",
+			steps: [
+				["Nhân từng cặp", "150 × 0,15 = 22,5; 300 × 0,60 = 180; 500 × 0,25 = 125."],
+				["Cộng", "E(X) = 22,5 + 180 + 125 = 327,5 nghìn mỗi lượt."],
+				["Dự báo 200 lượt", "200 × 327,5 = 65.500 nghìn, tức 65,5 triệu."],
+				["Đọc kỳ vọng", "Không lượt nào thu đúng 327,5 nghìn; đó là mức trung bình sau nhiều lượt."]
+			],
+			say: "Kỳ vọng không phải giá trị «điển hình». Nó là mức doanh thu trung bình khi lặp lại rất nhiều lượt, đủ để lập kế hoạch tuần (65,5 triệu) nhưng không dự báo từng lượt. Đây chính là tích vô hướng của giá trị với xác suất.",
+			check: ["Nếu giá gói 90 phút tăng lên 550 nghìn (xác suất không đổi), E(X) mới là bao nhiêu?", "22,5 + 180 + 550 × 0,25 = 22,5 + 180 + 137,5 = 340 nghìn."]
+		},
+		en: {
+			story: "Ms. Lan needs to forecast District 1's weekly revenue with 200 bookings. You use X's expected value to get average revenue per booking.",
+			words: [["Expected value", "A weighted average: add (value × probability)."]],
+			problem: "X = 150, 300, 500 with probabilities 0.15; 0.60; 0.25. Compute E(X), then forecast revenue for 200 bookings.",
+			steps: [
+				["Multiply each pair", "150 × 0.15 = 22.5; 300 × 0.60 = 180; 500 × 0.25 = 125."],
+				["Add", "E(X) = 22.5 + 180 + 125 = 327.5 thousand per booking."],
+				["Forecast 200 bookings", "200 × 327.5 = 65,500 thousand, i.e. 65.5 million."],
+				["Read the expectation", "No booking brings exactly 327.5 thousand; it is the average level after many bookings."]
+			],
+			say: "The expected value is not the “typical” value. It is the average revenue level over very many bookings, enough to plan the week (65.5 million) but not to forecast each booking. It is exactly the dot product of values with probabilities.",
+			check: ["If the 90-minute package price rises to 550 thousand (probabilities unchanged), what is the new E(X)?", "22.5 + 180 + 550 × 0.25 = 22.5 + 180 + 137.5 = 340 thousand."]
+		}
+	},
+	"no-exp": {
+		vi: {
+			story: "Spa định tổ chức rút thăm: cứ 20 phiếu quà thì có 1 phiếu trúng. Bạn tính xác suất từ mô hình, trước khi có bất kỳ dữ liệu nào.",
+			words: [["Xác suất từ mô hình", "Tính từ giả định về cách sự việc xảy ra, không cần quan sát."], ["Phần bù", "Xác suất «không xảy ra» bằng 1 trừ xác suất «xảy ra»."]],
+			problem: "Mỗi lượt rút trúng với xác suất 1/20 = 0,05, độc lập giữa các lượt. Một khách rút 3 lần. Xác suất trúng ít nhất một lần là bao nhiêu?",
+			steps: [
+				["Xác suất không trúng một lần", "1 − 0,05 = 0,95."],
+				["Không trúng cả 3 lần", "0,95 × 0,95 × 0,95 = 0,857375."],
+				["Phần bù", "Trúng ít nhất một lần = 1 − 0,857375 = 0,142625."],
+				["Đọc", "Khoảng 14,3%, thấp hơn nhiều so với 3 × 5% = 15% nếu cộng tắt."]
+			],
+			say: "Phép tính này làm được trước khi quay vòng rút thăm, vì dựa trên mô hình («mỗi lượt 5%, độc lập»). Nếu giả định sai (ví dụ người phát phiếu thiên vị), kết quả sai theo. Nhớ dùng phần bù cho «ít nhất một».",
+			check: ["Vì sao 3 × 5% = 15% hơi lớn hơn 14,3%?", "Cộng tắt đếm đôi những khách trúng hai hoặc ba lần, đúng như quy tắc cộng cần trừ phần chung."]
+		},
+		en: {
+			story: "The spa plans a prize draw: 1 ticket in every 20 wins. You compute a probability from the model before any data exists.",
+			words: [["Model-based probability", "Computed from assumptions about how things happen, without observing."], ["Complement", "The probability of “not happening” equals 1 minus the probability of “happening”."]],
+			problem: "Each draw wins with probability 1/20 = 0.05, independently between draws. A customer draws 3 times. What is the probability of winning at least once?",
+			steps: [
+				["Probability of not winning once", "1 − 0.05 = 0.95."],
+				["Not winning all 3 times", "0.95 × 0.95 × 0.95 = 0.857375."],
+				["Complement", "Winning at least once = 1 − 0.857375 = 0.142625."],
+				["Read", "About 14.3%, noticeably below 3 × 5% = 15% if you add carelessly."]
+			],
+			say: "This calculation can be done before the draw is spun, because it rests on a model (“5% per draw, independent”). If the assumption is wrong (for example the ticket-giver is biased) the result is wrong too. Remember to use the complement for “at least one”.",
+			check: ["Why is 3 × 5% = 15% a little larger than 14.3%?", "Adding carelessly double-counts customers who win two or three times, exactly as the addition rule says you must subtract the overlap."]
+		}
+	},
+	"binomial": {
+		vi: {
+			story: "Bạn quay lại 5% hội viên sắp rời. Chọn ngẫu nhiên 10 hội viên, xác suất đúng một người trong họ sắp rời là bao nhiêu? Đó là phân phối nhị thức.",
+			words: [["Phân phối nhị thức", "Số lần thành công trong n lần thử độc lập, mỗi lần thành công với xác suất p."], ["C(n, k)", "Số cách chọn k lần thành công trong n lần."]],
+			problem: "n = 10 hội viên, p = 0,05 sắp rời. Tính P(0 người), P(đúng 1 người) và P(ít nhất 1 người).",
+			steps: [
+				["Công thức", "P(k) = C(10, k) × 0,05^k × 0,95^(10−k)."],
+				["P(0)", "C(10, 0) = 1; 0,95^10 ≈ 0,5987."],
+				["P(1)", "C(10, 1) = 10; 10 × 0,05 × 0,95^9 = 10 × 0,05 × 0,6302 ≈ 0,3151."],
+				["P(ít nhất 1)", "1 − P(0) = 1 − 0,5987 = 0,4013."],
+				["Đọc", "Trong 10 hội viên, khoảng 40% khả năng có ít nhất một người sắp rời, dù chỉ 5% mỗi người."]
+			],
+			say: "5% mỗi người nghe nhỏ, nhưng gom 10 người thì xác suất có ít nhất một người sắp rời lên khoảng 40%. Đó là lý do chị Lan cần theo dõi cả nhóm hội viên, không chỉ từng người một.",
+			check: ["Kỳ vọng số người sắp rời trong 10 hội viên là bao nhiêu?", "n × p = 10 × 0,05 = 0,5 người. Kỳ vọng nhỏ hơn 1 nhưng vẫn có 40% khả năng thấy ít nhất 1."]
+		},
+		en: {
+			story: "You return to the 5% of members about to leave. Pick 10 members at random: what is the probability exactly one of them is about to leave? That is a binomial distribution.",
+			words: [["Binomial distribution", "The number of successes in n independent trials, each succeeding with probability p."], ["C(n, k)", "The number of ways to pick k successes among n trials."]],
+			problem: "n = 10 members, p = 0.05 about to leave. Compute P(0 people), P(exactly 1 person) and P(at least 1 person).",
+			steps: [
+				["Formula", "P(k) = C(10, k) × 0.05^k × 0.95^(10−k)."],
+				["P(0)", "C(10, 0) = 1; 0.95^10 ≈ 0.5987."],
+				["P(1)", "C(10, 1) = 10; 10 × 0.05 × 0.95^9 = 10 × 0.05 × 0.6302 ≈ 0.3151."],
+				["P(at least 1)", "1 − P(0) = 1 − 0.5987 = 0.4013."],
+				["Read", "Among 10 members, there is about a 40% chance at least one is about to leave, though each is only 5%."]
+			],
+			say: "5% per person sounds small, but grouping 10 people lifts the chance at least one is about to leave to roughly 40%. That is why Ms. Lan needs to watch the whole group of members, not just person by person.",
+			check: ["What is the expected number about to leave among 10 members?", "n × p = 10 × 0.05 = 0.5 people. The expectation is under 1 yet there is still a 40% chance of seeing at least 1."]
+		}
+	},
+	"cdf": {
+		vi: {
+			story: "Chị Lan hỏi: «Trong 10 hội viên, xác suất có nhiều nhất 2 người sắp rời là bao nhiêu?» Bạn cộng dồn từ 0 lên 2.",
+			words: [["Xác suất tích lũy", "F(k) = P(X ≤ k): cộng dồn xác suất từ giá trị nhỏ nhất đến k."]],
+			problem: "n = 10, p = 0,05. Cho P(0) ≈ 0,5987 và P(1) ≈ 0,3151. Tính P(2) rồi F(2) = P(X ≤ 2) và P(X ≥ 3).",
+			steps: [
+				["P(2)", "C(10, 2) = 45; 45 × 0,05² × 0,95⁸ = 45 × 0,0025 × 0,6634 ≈ 0,0746."],
+				["Cộng dồn", "F(2) = 0,5987 + 0,3151 + 0,0746 = 0,9884."],
+				["Đọc", "Có khoảng 98,8% khả năng trong 10 hội viên có tối đa 2 người sắp rời."],
+				["Phần bù", "P(X ≥ 3) = 1 − 0,9884 = 0,0116, tức khoảng 1,2%."]
+			],
+			say: "Hỏi «nhiều nhất 2» thì cộng ba hàng; hỏi «từ 3 trở lên» thì lấy 1 trừ phần đã cộng. Một lần có từ 3 hội viên sắp rời trong 10 người là biến cố hiếm (1,2%), nên nếu thấy, đó là dấu hiệu bất thường.",
+			check: ["F(10) bằng bao nhiêu và vì sao?", "Bằng 1: cộng dồn mọi giá trị có thể từ 0 đến 10 thì được toàn bộ xác suất."]
+		},
+		en: {
+			story: "Ms. Lan asks: “Among 10 members, what is the probability at most 2 are about to leave?” You accumulate from 0 up to 2.",
+			words: [["Cumulative probability", "F(k) = P(X ≤ k): add up the probabilities from the smallest value to k."]],
+			problem: "n = 10, p = 0.05. Given P(0) ≈ 0.5987 and P(1) ≈ 0.3151. Compute P(2) then F(2) = P(X ≤ 2) and P(X ≥ 3).",
+			steps: [
+				["P(2)", "C(10, 2) = 45; 45 × 0.05² × 0.95⁸ = 45 × 0.0025 × 0.6634 ≈ 0.0746."],
+				["Accumulate", "F(2) = 0.5987 + 0.3151 + 0.0746 = 0.9884."],
+				["Read", "There is about a 98.8% chance that among 10 members at most 2 are about to leave."],
+				["Complement", "P(X ≥ 3) = 1 − 0.9884 = 0.0116, about 1.2%."]
+			],
+			say: "Asking “at most 2” means adding three rows; asking “3 or more” means taking 1 minus what you added. Seeing 3 or more of 10 members about to leave is a rare event (1.2%), so if seen, it signals something unusual.",
+			check: ["What is F(10) and why?", "It is 1: accumulating every possible value from 0 to 10 gives all of the probability."]
+		}
+	},
+	"pdf": {
+		vi: {
+			story: "Thời gian điền form là một con số liên tục, không phải đếm. Bạn hỏi xác suất khách điền trong một khoảng thời gian, không phải đúng một giây.",
+			words: [["Hàm mật độ", "Đường cong mà diện tích dưới nó trên một khoảng cho xác suất của khoảng đó."], ["Phân phối đều", "Mọi giá trị trong khoảng có cùng mật độ."]],
+			problem: "Giả sử thời gian điền form phân bố đều từ 30 đến 90 giây. Tìm mật độ, P(40 đến 55 giây) và P(đúng 50 giây).",
+			steps: [
+				["Mật độ", "Khoảng dài 90 − 30 = 60 giây, tổng diện tích phải bằng 1, nên mật độ = 1/60."],
+				["P(40 đến 55)", "Chiều rộng 55 − 40 = 15; diện tích = 15 × 1/60 = 0,25."],
+				["P(đúng 50 giây)", "Chiều rộng bằng 0 nên diện tích bằng 0."],
+				["Kiểm tra", "P(30 đến 90) = 60 × 1/60 = 1."]
+			],
+			say: "Với giá trị liên tục, hỏi «đúng 50,0000 giây» không có nghĩa nên xác suất là 0; chỉ hỏi được khoảng. Mật độ 1/60 không phải xác suất mà là chiều cao, xác suất là diện tích bên dưới.",
+			check: ["P(thời gian dưới 45 giây) là bao nhiêu?", "Chiều rộng 45 − 30 = 15; 15 × 1/60 = 0,25."]
+		},
+		en: {
+			story: "Form fill time is a continuous quantity, not a count. You ask the probability a customer fills within a time range, not at exactly one second.",
+			words: [["Density function", "A curve whose area under it over an interval gives that interval's probability."], ["Uniform distribution", "Every value in the interval has the same density."]],
+			problem: "Suppose fill time is uniformly distributed from 30 to 90 seconds. Find the density, P(40 to 55 seconds) and P(exactly 50 seconds).",
+			steps: [
+				["Density", "The interval is 90 − 30 = 60 seconds long, total area must be 1, so density = 1/60."],
+				["P(40 to 55)", "Width 55 − 40 = 15; area = 15 × 1/60 = 0.25."],
+				["P(exactly 50 seconds)", "Width is 0 so the area is 0."],
+				["Check", "P(30 to 90) = 60 × 1/60 = 1."]
+			],
+			say: "For a continuous value, asking “exactly 50.0000 seconds” is meaningless so the probability is 0; you can only ask about ranges. The density 1/60 is not a probability but a height; probability is the area beneath.",
+			check: ["What is P(time under 45 seconds)?", "Width 45 − 30 = 15; 15 × 1/60 = 0.25."]
+		}
+	},
+	"normal": {
+		vi: {
+			story: "Form mỗi tuần của spa dao động quanh 50 với độ lệch chuẩn 12 và có dạng hình chuông. Chị Lan hỏi «một tuần có hơn 74 form có hiếm không?»",
+			words: [["Phân phối chuẩn", "Hình chuông đối xứng, xác định bởi trung bình và độ lệch chuẩn."], ["Quy tắc 68-95-99,7", "Khoảng 68% giá trị trong 1 độ lệch chuẩn, 95% trong 2, 99,7% trong 3."]],
+			problem: "Form mỗi tuần theo phân phối chuẩn trung bình 50, độ lệch chuẩn 12. Tìm khoảng chứa khoảng 68% tuần, khoảng 95% tuần, và xác suất một tuần vượt 74.",
+			steps: [
+				["68% tuần", "50 ± 12 = từ 38 đến 62."],
+				["95% tuần", "50 ± 2 × 12 = từ 26 đến 74."],
+				["Phần ngoài 95%", "5% còn lại chia hai phía, mỗi phía khoảng 2,5%."],
+				["Vượt 74", "Một phía ngoài 2 độ lệch chuẩn, nên khoảng 2,5% (chính xác hơn 2,3%)."],
+				["Đọc", "Tuần hơn 74 form xảy ra khoảng 1 trong 40 tuần, tức hiếm nhưng không phi lý."]
+			],
+			say: "Tuần 74 form hiếm (khoảng 2,3%) và lập luận chỉ cần trung bình, độ lệch chuẩn. Phân phối chuẩn chỉ dùng được khi dữ liệu thật sự có hình chuông. Nếu form có đuôi dài (như thẻ trước) thì không áp dụng thẳng.",
+			check: ["Khoảng nào chứa khoảng 99,7% tuần?", "50 ± 3 × 12 = từ 14 đến 86."]
+		},
+		en: {
+			story: "The spa's weekly forms swing around 50 with a standard deviation of 12 and are bell-shaped. Ms. Lan asks “is a week with more than 74 forms rare?”",
+			words: [["Normal distribution", "A symmetric bell shape determined by the mean and standard deviation."], ["68-95-99.7 rule", "About 68% of values within 1 standard deviation, 95% within 2, 99.7% within 3."]],
+			problem: "Weekly forms follow a normal distribution with mean 50, standard deviation 12. Find the interval holding about 68% of weeks, about 95% of weeks, and the probability a week exceeds 74.",
+			steps: [
+				["68% of weeks", "50 ± 12 = from 38 to 62."],
+				["95% of weeks", "50 ± 2 × 12 = from 26 to 74."],
+				["Outside 95%", "The remaining 5% splits between two sides, about 2.5% each."],
+				["Exceeding 74", "One side beyond 2 standard deviations, so about 2.5% (more exactly 2.3%)."],
+				["Read", "A week above 74 forms happens about 1 week in 40: rare but not absurd."]
+			],
+			say: "A 74-form week is rare (about 2.3%), and the argument needs only the mean and standard deviation. The normal distribution only applies when the data really is bell-shaped. If forms had a long tail (as in an earlier card) it does not apply directly.",
+			check: ["Which interval holds about 99.7% of weeks?", "50 ± 3 × 12 = from 14 to 86."]
+		}
+	},
+	"zscore": {
+		vi: {
+			story: "Bạn muốn biết một tuần 62 form nằm ở đâu trong mọi tuần, mà không phải đếm lại từng tuần. Điểm z chuyển mọi giá trị về một thước chung.",
+			words: [["Điểm z", "(giá trị − trung bình) ÷ độ lệch chuẩn."], ["Bảng chuẩn", "Bảng cho P(Z ≤ z) với phân phối chuẩn có trung bình 0, độ lệch chuẩn 1."]],
+			problem: "Form mỗi tuần chuẩn với trung bình 50, độ lệch chuẩn 12. Tính z của 62, 38 và 74, rồi xác suất một tuần không vượt 62 (dùng P(Z ≤ 1) ≈ 0,8413).",
+			steps: [
+				["z của 62", "(62 − 50) ÷ 12 = 1,0."],
+				["z của 38", "(38 − 50) ÷ 12 = −1,0."],
+				["z của 74", "(74 − 50) ÷ 12 = 2,0."],
+				["P(không vượt 62)", "P(Z ≤ 1) ≈ 0,8413, tức khoảng 84,1% tuần."],
+				["P(từ 38 đến 62)", "P(Z ≤ 1) − P(Z ≤ −1) = 0,8413 − 0,1587 = 0,6826, khoảng 68%, đúng quy tắc 68."]
+			],
+			say: "Điểm z nói «cách trung bình bao nhiêu độ lệch chuẩn» nên dùng được cho bất kỳ đơn vị nào. 62 cao hơn khoảng 84% các tuần. Chuẩn hóa là bước chuẩn trước khi dùng bảng chuẩn.",
+			check: ["z của một tuần 50 form là bao nhiêu?", "(50 − 50) ÷ 12 = 0: đúng bằng trung bình."]
+		},
+		en: {
+			story: "You want to know where a 62-form week sits among all weeks without recounting each week. The z-score converts every value to a common ruler.",
+			words: [["z-score", "(value − mean) ÷ standard deviation."], ["Normal table", "A table giving P(Z ≤ z) for the normal distribution with mean 0 and standard deviation 1."]],
+			problem: "Weekly forms are normal with mean 50, standard deviation 12. Compute z for 62, 38 and 74, then the probability a week does not exceed 62 (use P(Z ≤ 1) ≈ 0.8413).",
+			steps: [
+				["z of 62", "(62 − 50) ÷ 12 = 1.0."],
+				["z of 38", "(38 − 50) ÷ 12 = −1.0."],
+				["z of 74", "(74 − 50) ÷ 12 = 2.0."],
+				["P(not above 62)", "P(Z ≤ 1) ≈ 0.8413, i.e. about 84.1% of weeks."],
+				["P(38 to 62)", "P(Z ≤ 1) − P(Z ≤ −1) = 0.8413 − 0.1587 = 0.6826, about 68%, matching the 68 rule."]
+			],
+			say: "A z-score says “how many standard deviations from the mean”, so it works for any unit. 62 is higher than about 84% of weeks. Standardising is the standard step before using the normal table.",
+			check: ["What is z for a week of 50 forms?", "(50 − 50) ÷ 12 = 0: exactly the mean."]
+		}
+	},
+	"samples": {
+		vi: {
+			story: "Thảo kiểm tra 400 lượt truy cập ngẫu nhiên trong tháng và thấy 5 form. Cả tháng có 18.000 lượt truy cập và 200 form. Mẫu 400 lượt khác cả tháng thế nào?",
+			words: [
+				["Tổng thể", "Cả tháng: 18.000 lượt."],
+				["Mẫu", "400 lượt Thảo kiểm tra."],
+				["Sai khác do mẫu", "Giá trị của mẫu lệch khỏi tổng thể chỉ vì chỉ thấy một phần."]
+			],
+			problem: "Tổng thể: 18.000 lượt, 200 form (tỷ lệ 200 ÷ 18000 ≈ 1,11%). Mẫu: 400 lượt, 5 form. So hai tỷ lệ và giải thích.",
+			steps: [
+				["Tỷ lệ tổng thể", "200 ÷ 18000 ≈ 0,0111, tức 1,11%."],
+				["Tỷ lệ mẫu", "5 ÷ 400 = 0,0125, tức 1,25%."],
+				["Chênh lệch", "1,25% − 1,11% = 0,14 điểm phần trăm."],
+				["Kỳ vọng trong mẫu", "400 × 1,11% ≈ 4,4 form, mà mẫu đếm được 5: gần."],
+				["Đọc", "Mẫu khác cả tháng một chút, đúng như dự kiến vì chỉ thấy 400 lượt trong 18.000."]
+			],
+			say: "Mẫu khác tổng thể một chút là bình thường chứ không phải lỗi đo. Ở thực tế ta không biết 1,11%, chỉ có 1,25% của mẫu, và phải ước lượng 1,11% từ đó (các thẻ kế tiếp).",
+			check: ["Nếu lấy một mẫu 400 lượt khác, tỷ lệ có đúng 1,25% không?", "Gần như chắc chắn là không. Mỗi mẫu cho một con số hơi khác nhau, đó là biến động lấy mẫu."]
+		},
+		en: {
+			story: "Thao checks 400 random visits in the month and sees 5 forms. The whole month has 18,000 visits and 200 forms. How does the 400-visit sample differ from the whole month?",
+			words: [
+				["Population", "The whole month: 18,000 visits."],
+				["Sample", "The 400 visits Thao checked."],
+				["Sampling difference", "A sample's value strays from the population simply because it sees only part."]
+			],
+			problem: "Population: 18,000 visits, 200 forms (rate 200 ÷ 18000 ≈ 1.11%). Sample: 400 visits, 5 forms. Compare the two rates and explain.",
+			steps: [
+				["Population rate", "200 ÷ 18000 ≈ 0.0111, i.e. 1.11%."],
+				["Sample rate", "5 ÷ 400 = 0.0125, i.e. 1.25%."],
+				["Difference", "1.25% − 1.11% = 0.14 percentage points."],
+				["Expected in the sample", "400 × 1.11% ≈ 4.4 forms, and the sample counted 5: close."],
+				["Read", "The sample differs a little from the whole month, as expected since it sees only 400 of 18,000 visits."]
+			],
+			say: "A sample differing from the population a little is normal and not a measurement error. In practice we do not know 1.11%, only the sample's 1.25%, and must estimate 1.11% from it (the next cards).",
+			check: ["If you take a different sample of 400 visits, will the rate be exactly 1.25%?", "Almost certainly not. Each sample gives a slightly different number; that is sampling variability."]
+		}
+	},
+	"samp-dist": {
+		vi: {
+			story: "Nếu Thảo lặp việc lấy mẫu nhiều lần, mỗi lần cho một trung bình khác. Bạn hỏi: các trung bình đó trải ra thế nào?",
+			words: [["Phân phối mẫu", "Phân phối của một thống kê (như trung bình mẫu) khi lặp việc lấy mẫu nhiều lần."], ["Sai số chuẩn", "Độ lệch chuẩn của phân phối mẫu: σ ÷ √n."]],
+			problem: "Form mỗi tuần có trung bình 50, độ lệch chuẩn 12. Lấy nhiều mẫu, mỗi mẫu 9 tuần, tính trung bình mỗi mẫu. Trung bình các trung bình mẫu và độ lệch chuẩn của chúng là bao nhiêu?",
+			steps: [
+				["Trung bình của các trung bình mẫu", "Bằng trung bình tổng thể: 50."],
+				["Sai số chuẩn", "12 ÷ √9 = 12 ÷ 3 = 4."],
+				["Đọc", "Trung bình của 9 tuần thường nằm trong 50 ± 4, tức 46 đến 54."],
+				["So sánh với một tuần", "Một tuần riêng lẻ lệch 12, còn trung bình 9 tuần chỉ lệch 4."]
+			],
+			say: "Trung bình mẫu ổn định hơn từng giá trị đơn: độ lệch chuẩn giảm từ 12 xuống 4 nhờ lấy trung bình 9 tuần. Phân phối mẫu là cầu nối giữa «mẫu của tôi» và «cả tổng thể».",
+			check: ["Sai số chuẩn nếu mẫu 36 tuần là bao nhiêu?", "12 ÷ √36 = 12 ÷ 6 = 2."]
+		},
+		en: {
+			story: "If Thao repeated the sampling many times, each time would give a different mean. You ask: how do those means spread?",
+			words: [["Sampling distribution", "The distribution of a statistic (such as the sample mean) when sampling is repeated many times."], ["Standard error", "The standard deviation of the sampling distribution: σ ÷ √n."]],
+			problem: "Weekly forms have mean 50, standard deviation 12. Take many samples, each of 9 weeks, and compute each sample's mean. What are the mean of those sample means and their standard deviation?",
+			steps: [
+				["Mean of the sample means", "Equal to the population mean: 50."],
+				["Standard error", "12 ÷ √9 = 12 ÷ 3 = 4."],
+				["Read", "The mean of 9 weeks usually lies within 50 ± 4, i.e. 46 to 54."],
+				["Compare with one week", "A single week strays by 12, while the mean of 9 weeks strays by only 4."]
+			],
+			say: "A sample mean is steadier than any single value: the standard deviation drops from 12 to 4 by averaging 9 weeks. The sampling distribution is the bridge between “my sample” and “the whole population”.",
+			check: ["What is the standard error for a sample of 36 weeks?", "12 ÷ √36 = 12 ÷ 6 = 2."]
+		}
+	},
+	"samp-props": {
+		vi: {
+			story: "Chị Lan hỏi: «Cần bao nhiêu tuần dữ liệu thì tin được trung bình?» Bạn tính sai số chuẩn cho các cỡ mẫu khác nhau.",
+			words: [["Mẫu lớn hơn", "Sai số chuẩn giảm theo √n, không theo n."]],
+			problem: "σ = 12. Tính sai số chuẩn σ ÷ √n cho n = 4, 9, 16, 36, 144, và cho biết cần gấp mấy lần dữ liệu để giảm sai số một nửa.",
+			steps: [
+				["n = 4", "12 ÷ 2 = 6."],
+				["n = 9", "12 ÷ 3 = 4."],
+				["n = 16", "12 ÷ 4 = 3."],
+				["n = 36", "12 ÷ 6 = 2."],
+				["n = 144", "12 ÷ 12 = 1."],
+				["Giảm một nửa", "Từ n = 9 (sai số 4) xuống sai số 2 cần n = 36, gấp 4 lần dữ liệu."]
+			],
+			say: "Muốn chính xác gấp đôi phải thu thập gấp bốn lần dữ liệu: lợi ích giảm dần. 4 tuần cho sai số 6, 36 tuần cho 2, và 144 tuần chỉ còn 1. Đây cũng là lý do ta không vô hạn thu thập dữ liệu.",
+			check: ["Cần mẫu bao nhiêu để sai số chuẩn bằng 1,5?", "12 ÷ √n = 1,5 nên √n = 8, n = 64 tuần."]
+		},
+		en: {
+			story: "Ms. Lan asks: “How many weeks of data do we need to trust the mean?” You compute the standard error for different sample sizes.",
+			words: [["Larger sample", "The standard error falls with √n, not with n."]],
+			problem: "σ = 12. Compute the standard error σ ÷ √n for n = 4, 9, 16, 36, 144, and say how much more data is needed to halve the error.",
+			steps: [
+				["n = 4", "12 ÷ 2 = 6."],
+				["n = 9", "12 ÷ 3 = 4."],
+				["n = 16", "12 ÷ 4 = 3."],
+				["n = 36", "12 ÷ 6 = 2."],
+				["n = 144", "12 ÷ 12 = 1."],
+				["Halving", "From n = 9 (error 4) down to error 2 needs n = 36, 4 times the data."]
+			],
+			say: "To be twice as precise you must collect four times the data: returns diminish. 4 weeks give error 6, 36 weeks give 2, and 144 weeks only reach 1. This is also why we do not collect data endlessly.",
+			check: ["What sample size gives a standard error of 1.5?", "12 ÷ √n = 1.5 so √n = 8, n = 64 weeks."]
+		}
+	},
+	"clt": {
+		vi: {
+			story: "Form theo ngày lệch hẳn: nhiều ngày ít, vài ngày rất nhiều. Dù vậy, trung bình 36 tuần vẫn có dạng hình chuông. Đó là định lý giới hạn trung tâm.",
+			words: [["Định lý giới hạn trung tâm", "Trung bình của nhiều quan sát độc lập có phân phối gần chuẩn, dù dữ liệu gốc không chuẩn."]],
+			problem: "Form mỗi tuần không chuẩn, trung bình 50, độ lệch chuẩn 12. Lấy mẫu 36 tuần. Xác suất trung bình mẫu nằm trong khoảng 48 đến 52 là bao nhiêu?",
+			steps: [
+				["Sai số chuẩn", "12 ÷ √36 = 2."],
+				["Dạng phân phối", "Theo định lý, trung bình 36 tuần gần chuẩn với trung bình 50 và độ lệch chuẩn 2."],
+				["Điểm z của 48 và 52", "(48 − 50) ÷ 2 = −1 và (52 − 50) ÷ 2 = +1."],
+				["Xác suất", "P(−1 ≤ Z ≤ 1) ≈ 0,68."],
+				["Đọc", "Khoảng 68% các mẫu 36 tuần có trung bình 48 đến 52."]
+			],
+			say: "Định lý cho phép dùng quy tắc 68-95-99,7 cho trung bình mẫu mà không cần dữ liệu gốc hình chuông. Điều kiện là mẫu đủ lớn (thường n ≥ 30) và các quan sát độc lập.",
+			check: ["Nếu mẫu chỉ 4 tuần và dữ liệu rất lệch, có dùng được định lý không?", "Không chắc. Mẫu quá nhỏ chưa đủ để trung bình tiến về hình chuông."]
+		},
+		en: {
+			story: "Daily forms are skewed: many low days, a few very high. Even so, the mean of 36 weeks still has a bell shape. That is the central limit theorem.",
+			words: [["Central limit theorem", "The mean of many independent observations is close to normal, even when the raw data is not."]],
+			problem: "Weekly forms are not normal, mean 50, standard deviation 12. Take a sample of 36 weeks. What is the probability the sample mean lies between 48 and 52?",
+			steps: [
+				["Standard error", "12 ÷ √36 = 2."],
+				["Shape of the distribution", "By the theorem, the mean of 36 weeks is close to normal with mean 50 and standard deviation 2."],
+				["z-scores of 48 and 52", "(48 − 50) ÷ 2 = −1 and (52 − 50) ÷ 2 = +1."],
+				["Probability", "P(−1 ≤ Z ≤ 1) ≈ 0.68."],
+				["Read", "About 68% of 36-week samples have a mean from 48 to 52."]
+			],
+			say: "The theorem lets you use the 68-95-99.7 rule for the sample mean without needing bell-shaped raw data. The conditions are a large enough sample (usually n ≥ 30) and independent observations.",
+			check: ["If the sample is only 4 weeks and the data very skewed, can you use the theorem?", "Not reliably. A sample that small is not enough for the mean to approach a bell shape."]
+		}
+	},
+	"clt-est": {
+		vi: {
+			story: "Chị Lan muốn một con số về form trung bình mỗi tuần, nhưng bạn biết mẫu chỉ cho một ước lượng. Bạn bọc ước lượng bằng một khoảng dựa trên sai số chuẩn.",
+			words: [["Ước lượng khoảng", "Trung bình mẫu ± hệ số × sai số chuẩn."], ["Hệ số 1,96", "Giá trị z để khoảng chứa khoảng 95% trung bình mẫu."]],
+			problem: "Trung bình mẫu 50 form, σ = 12. Tính khoảng 95% khi mẫu n = 9 tuần và khi n = 36 tuần, rồi so sánh.",
+			steps: [
+				["n = 9: sai số chuẩn", "12 ÷ 3 = 4."],
+				["n = 9: khoảng", "50 ± 1,96 × 4 = 50 ± 7,84, từ 42,16 đến 57,84."],
+				["n = 36: sai số chuẩn", "12 ÷ 6 = 2."],
+				["n = 36: khoảng", "50 ± 1,96 × 2 = 50 ± 3,92, từ 46,08 đến 53,92."],
+				["So sánh", "Mẫu lớn hơn 4 lần cho khoảng hẹp đi một nửa (15,68 xuống 7,84)."]
+			],
+			say: "Báo «50 ± 3,9» trung thực hơn «50». Ước lượng khoảng luôn đi cùng cỡ mẫu: mẫu 9 tuần cho khoảng rộng, mẫu 36 tuần khoảng hẹp hơn. Con số chính (50) không đổi, độ tin của nó thay đổi.",
+			check: ["Nếu muốn khoảng ±2 thì cần bao nhiêu tuần?", "1,96 × 12 ÷ √n = 2 nên √n = 11,76 và n ≈ 138 tuần."]
+		},
+		en: {
+			story: "Ms. Lan wants one number for average weekly forms, but you know a sample only gives an estimate. You wrap the estimate in an interval based on the standard error.",
+			words: [["Interval estimate", "Sample mean ± factor × standard error."], ["Factor 1.96", "The z value that makes the interval hold about 95% of sample means."]],
+			problem: "Sample mean 50 forms, σ = 12. Compute the 95% interval for a sample of n = 9 weeks and for n = 36 weeks, then compare.",
+			steps: [
+				["n = 9: standard error", "12 ÷ 3 = 4."],
+				["n = 9: interval", "50 ± 1.96 × 4 = 50 ± 7.84, from 42.16 to 57.84."],
+				["n = 36: standard error", "12 ÷ 6 = 2."],
+				["n = 36: interval", "50 ± 1.96 × 2 = 50 ± 3.92, from 46.08 to 53.92."],
+				["Compare", "A sample 4 times larger halves the interval width (15.68 down to 7.84)."]
+			],
+			say: "Reporting “50 ± 3.9” is more honest than “50”. An interval estimate always travels with the sample size: 9 weeks gives a wide interval, 36 weeks a narrower one. The main number (50) does not change, its reliability does.",
+			check: ["If you want an interval of ±2, how many weeks do you need?", "1.96 × 12 ÷ √n = 2 so √n = 11.76 and n ≈ 138 weeks."]
+		}
+	},
+	"samp-types": {
+		vi: {
+			story: "Thảo khảo sát hài lòng của 30 hội viên, nhưng chỉ phát phiếu ở Quận 1 vào thứ Bảy. Bạn hỏi: mẫu này có đại diện cho cả chuỗi không?",
+			words: [["Mẫu lệch", "Mẫu chọn theo cách làm một số nhóm bị thiếu hoặc thừa."], ["Mẫu phân tầng", "Lấy mẫu từ từng nhóm theo đúng tỷ trọng của nhóm."]],
+			problem: "Điểm hài lòng trung bình: Quận 1: 4,5; Quận 3: 3,8; Thủ Đức: 3,4. Tỷ trọng hội viên: Quận 1 chiếm 40%, Quận 3 chiếm 30%, Thủ Đức chiếm 30%. So điểm của mẫu chỉ ở Quận 1 với điểm theo tỷ trọng.",
+			steps: [
+				["Mẫu chỉ ở Quận 1", "Điểm trung bình mẫu là 4,5."],
+				["Điểm theo tỷ trọng", "0,40 × 4,5 + 0,30 × 3,8 + 0,30 × 3,4."],
+				["Tính", "1,80 + 1,14 + 1,02 = 3,96."],
+				["So sánh", "4,5 so với 3,96: mẫu chỉ ở Quận 1 cao hơn khoảng 0,54 điểm."],
+				["Kết luận", "Mẫu lệch cho kết luận lệch: «hội viên rất hài lòng» chỉ đúng cho Quận 1 vào thứ Bảy."]
+			],
+			say: "Mẫu lớn không sửa được mẫu lệch: phát thêm 1000 phiếu ở Quận 1 vẫn cho 4,5. Cách khắc phục là lấy mẫu từ cả ba chi nhánh theo đúng tỷ trọng (40-30-30) để điểm đại diện cho cả chuỗi.",
+			check: ["Nếu lấy cùng số phiếu ở mỗi chi nhánh (không theo tỷ trọng) thì điểm là bao nhiêu?", "(4,5 + 3,8 + 3,4) ÷ 3 = 3,9. Gần 3,96 nhưng vẫn lệch vì không theo tỷ trọng."]
+		},
+		en: {
+			story: "Thao surveys satisfaction among 30 members, but only hands out forms at District 1 on Saturday. You ask: does this sample represent the whole chain?",
+			words: [["Biased sample", "A sample chosen in a way that leaves some groups missing or over-represented."], ["Stratified sample", "Sampling from each group in proportion to the group's size."]],
+			problem: "Average satisfaction: District 1: 4.5; District 3: 3.8; Thu Duc: 3.4. Member shares: District 1 40%, District 3 30%, Thu Duc 30%. Compare the District-1-only sample's score with the weighted score.",
+			steps: [
+				["District-1-only sample", "The sample's average is 4.5."],
+				["Weighted score", "0.40 × 4.5 + 0.30 × 3.8 + 0.30 × 3.4."],
+				["Compute", "1.80 + 1.14 + 1.02 = 3.96."],
+				["Compare", "4.5 versus 3.96: the District-1-only sample is about 0.54 points higher."],
+				["Conclusion", "A biased sample gives a biased conclusion: “members are very satisfied” is only true for District 1 on Saturday."]
+			],
+			say: "A bigger sample does not fix a biased one: handing out 1,000 more forms at District 1 still gives 4.5. The remedy is to sample from all three branches in proportion (40-30-30) so the score represents the chain.",
+			check: ["If you take the same number of forms at each branch (not by share), what is the score?", "(4.5 + 3.8 + 3.4) ÷ 3 = 3.9. Close to 3.96 but still off because it ignores the shares."]
+		}
+	},
+	"samp-use": {
+		vi: {
+			story: "Chị Lan muốn biết hội viên nghĩ gì về giá mới. Gọi điện cho cả 1000 hội viên tốn kém. Bạn tính xem mẫu nhỏ đủ chính xác không và tiết kiệm bao nhiêu.",
+			words: [["Biên sai số", "Nửa chiều rộng khoảng tin cậy: 1,96 × √[p(1−p) ÷ n] cho tỷ lệ."], ["Khi nào dùng mẫu", "Khi đo cả tổng thể tốn kém hoặc không cần thiết."]],
+			problem: "Mỗi cuộc gọi tốn 20 nghìn. Gọi cả 1000 hội viên hoặc mẫu 100. Tính chi phí hai cách và biên sai số cho tỷ lệ ước lượng khoảng 50% với n = 100.",
+			steps: [
+				["Chi phí cả tổng thể", "1000 × 20 nghìn = 20 triệu."],
+				["Chi phí mẫu 100", "100 × 20 nghìn = 2 triệu."],
+				["Tiết kiệm", "20 − 2 = 18 triệu, tức 90%."],
+				["Biên sai số mẫu 100", "1,96 × √(0,5 × 0,5 ÷ 100) = 1,96 × 0,05 = 0,098, tức khoảng ±9,8%."],
+				["Quyết định", "Nếu chỉ cần biết «đa số đồng ý hay không» thì ±9,8% đủ. Nếu cần chính xác ±3% thì cần n ≈ 1067 (nhiều hơn cả tổng thể), nên khi đó gọi cả 1000."]
+			],
+			say: "Mẫu không phải lúc nào cũng tốt hơn: với tổng thể nhỏ (1000) và yêu cầu rất chính xác thì gọi hết. Với câu hỏi «đa số hay không» thì 100 cuộc gọi tiết kiệm 18 triệu và đã đủ.",
+			check: ["Nếu kết quả mẫu 100 là 62% đồng ý, có kết luận «đa số» được không?", "Khoảng 62 ± 9,8 = 52,2 đến 71,8, vẫn trên 50%, nên có thể kết luận đa số đồng ý (với độ tin 95%)."]
+		},
+		en: {
+			story: "Ms. Lan wants to know what members think of the new price. Calling all 1,000 members is expensive. You work out whether a small sample is precise enough and how much it saves.",
+			words: [["Margin of error", "Half the width of the confidence interval: 1.96 × √[p(1−p) ÷ n] for a proportion."], ["When to sample", "When measuring the whole population is costly or unnecessary."]],
+			problem: "Each call costs 20 thousand. Call all 1,000 members or a sample of 100. Compute the cost both ways and the margin of error for an estimated proportion near 50% with n = 100.",
+			steps: [
+				["Cost for the whole population", "1000 × 20 thousand = 20 million."],
+				["Cost for a sample of 100", "100 × 20 thousand = 2 million."],
+				["Saving", "20 − 2 = 18 million, i.e. 90%."],
+				["Margin of error for the sample of 100", "1.96 × √(0.5 × 0.5 ÷ 100) = 1.96 × 0.05 = 0.098, about ±9.8%."],
+				["Decide", "If you only need “does the majority agree”, ±9.8% is enough. If you need ±3% precision you would need n ≈ 1067 (more than the whole population), so then call all 1,000."]
+			],
+			say: "A sample is not always better: for a small population (1,000) and a very precise requirement, call everyone. For the question “majority or not”, 100 calls save 18 million and are enough.",
+			check: ["If the sample of 100 gives 62% agree, can you conclude “majority”?", "The range 62 ± 9.8 = 52.2 to 71.8 stays above 50%, so you can conclude a majority agree (with 95% confidence)."]
+		}
+	},
+	"joint": {
+		vi: {
+			story: "Bạn đếm 1000 hội viên theo hai chiều: sắp rời hay ở lại, và bị công cụ gắn cờ hay không. Bảng này là xác suất đồng thời, và từ đó đọc ra xác suất có điều kiện.",
+			words: [["Xác suất đồng thời", "P(A và B): phần của cả tập thỏa cả hai điều."], ["Xác suất có điều kiện", "P(A | B) = P(A và B) ÷ P(B): phần của nhóm B thỏa A."]],
+			problem: "1000 hội viên: sắp rời và bị gắn cờ 45; sắp rời không gắn cờ 5; ở lại bị gắn cờ 76; ở lại không gắn cờ 874. Tính P(rời và cờ), P(cờ), P(cờ | rời) và P(rời | cờ).",
+			steps: [
+				["Kiểm tra tổng", "45 + 5 + 76 + 874 = 1000."],
+				["P(rời và cờ)", "45 ÷ 1000 = 0,045."],
+				["P(cờ)", "(45 + 76) ÷ 1000 = 121 ÷ 1000 = 0,121."],
+				["P(cờ | rời)", "45 ÷ (45 + 5) = 45 ÷ 50 = 0,90."],
+				["P(rời | cờ)", "45 ÷ 121 ≈ 0,372, tức khoảng 37%."]
+			],
+			say: "Hai xác suất có điều kiện khác hẳn nhau: P(cờ | rời) = 90% còn P(rời | cờ) = 37%. Nhầm hai cái này là lỗi hay gặp: công cụ bắt đúng 90% người sắp rời, nhưng người bị gắn cờ chỉ có 37% là thật sự sắp rời.",
+			check: ["P(ở lại | không gắn cờ) là bao nhiêu?", "874 ÷ (5 + 874) = 874 ÷ 879 ≈ 0,994, tức 99,4%."]
+		},
+		en: {
+			story: "You count 1,000 members along two dimensions: about to leave or staying, and flagged by the tool or not. This table is joint probability, and from it you read conditional probability.",
+			words: [["Joint probability", "P(A and B): the part of the whole set satisfying both."], ["Conditional probability", "P(A | B) = P(A and B) ÷ P(B): the part of group B satisfying A."]],
+			problem: "1,000 members: about to leave and flagged 45; about to leave not flagged 5; staying flagged 76; staying not flagged 874. Compute P(leave and flag), P(flag), P(flag | leave) and P(leave | flag).",
+			steps: [
+				["Check the total", "45 + 5 + 76 + 874 = 1000."],
+				["P(leave and flag)", "45 ÷ 1000 = 0.045."],
+				["P(flag)", "(45 + 76) ÷ 1000 = 121 ÷ 1000 = 0.121."],
+				["P(flag | leave)", "45 ÷ (45 + 5) = 45 ÷ 50 = 0.90."],
+				["P(leave | flag)", "45 ÷ 121 ≈ 0.372, about 37%."]
+			],
+			say: "The two conditional probabilities are very different: P(flag | leave) = 90% while P(leave | flag) = 37%. Confusing these is a common error: the tool catches 90% of those about to leave, but only 37% of those flagged are really about to leave.",
+			check: ["What is P(stay | not flagged)?", "874 ÷ (5 + 874) = 874 ÷ 879 ≈ 0.994, i.e. 99.4%."]
+		}
+	},
+	"samp-est": {
+		vi: {
+			story: "Mẫu 400 lượt của Thảo có 5 form (1,25%). Chị Lan hỏi «vậy tỷ lệ form thật của cả tháng là bao nhiêu?» Một điểm chưa đủ, bạn cho một khoảng.",
+			words: [["Ước lượng điểm", "Một con số từ mẫu, ở đây p̂ = 1,25%."], ["Ước lượng khoảng", "Khoảng quanh ước lượng điểm, thể hiện mức không chắc chắn."]],
+			problem: "Mẫu n = 400 lượt, 5 form: p̂ = 0,0125. Tính sai số chuẩn √[p̂(1−p̂) ÷ n] và khoảng tin cậy 95%, rồi so với giá trị thật 1,11%.",
+			steps: [
+				["Sai số chuẩn", "√(0,0125 × 0,9875 ÷ 400) = √(0,00003086) ≈ 0,005555."],
+				["Biên sai số", "1,96 × 0,005555 ≈ 0,0109, tức khoảng 1,09%."],
+				["Khoảng 95%", "1,25% ± 1,09% = từ 0,16% đến 2,34%."],
+				["So với thật", "1,11% nằm trong khoảng đó."],
+				["Đọc", "Một điểm 1,25% nghe chính xác, nhưng khoảng 0,16% đến 2,34% rộng gấp nhiều lần chính con số, vì mẫu chỉ có 5 form."]
+			],
+			say: "Khoảng rộng nói rằng 400 lượt với 5 form chưa đủ để chắc chắn. Muốn khoảng hẹp hơn cần nhiều lượt hơn. Báo cả điểm lẫn khoảng, thay vì chỉ «1,25%», là cách báo cáo trung thực.",
+			check: ["Nếu mẫu là 4000 lượt với 50 form (cùng 1,25%), khoảng 95% thế nào?", "Sai số chuẩn √(0,0125 × 0,9875 ÷ 4000) ≈ 0,00176, biên 1,96 × 0,00176 ≈ 0,35%: khoảng 0,90% đến 1,60%, hẹp hơn nhiều."]
+		},
+		en: {
+			story: "Thao's sample of 400 visits has 5 forms (1.25%). Ms. Lan asks “so what is the true form rate for the whole month?” A single point is not enough; you give an interval.",
+			words: [["Point estimate", "A single number from the sample, here p̂ = 1.25%."], ["Interval estimate", "A range around the point estimate showing the uncertainty."]],
+			problem: "Sample n = 400 visits, 5 forms: p̂ = 0.0125. Compute the standard error √[p̂(1−p̂) ÷ n] and the 95% confidence interval, then compare with the true value 1.11%.",
+			steps: [
+				["Standard error", "√(0.0125 × 0.9875 ÷ 400) = √(0.00003086) ≈ 0.005555."],
+				["Margin of error", "1.96 × 0.005555 ≈ 0.0109, about 1.09%."],
+				["95% interval", "1.25% ± 1.09% = from 0.16% to 2.34%."],
+				["Compare with truth", "1.11% lies within that interval."],
+				["Read", "A single 1.25% sounds precise, but the interval 0.16% to 2.34% is many times as wide as the number itself, because the sample has only 5 forms."]
+			],
+			say: "The wide interval says 400 visits with 5 forms is not enough to be sure. To narrow it you need more visits. Reporting both the point and the interval, instead of just “1.25%”, is honest reporting.",
+			check: ["If the sample is 4,000 visits with 50 forms (the same 1.25%), what is the 95% interval?", "Standard error √(0.0125 × 0.9875 ÷ 4000) ≈ 0.00176, margin 1.96 × 0.00176 ≈ 0.35%: from 0.90% to 1.60%, much narrower."]
+		}
+	}
+};
+var visuals = {
+	"eda-ask": {
+		kind: "table",
+		title: ["Form theo kênh, tháng 11 và tháng 12", "Forms by channel, November and December"],
+		head: [
+			["Kênh", "Channel"],
+			["Th.11", "Nov"],
+			["Th.12", "Dec"],
+			["Chênh", "Change"]
+		],
+		rows: [
+			[
+				"GDN",
+				80,
+				78,
+				-2
+			],
+			[
+				"Meta",
+				85,
+				62,
+				-23
+			],
+			[
+				"TikTok",
+				55,
+				40,
+				-15
+			],
+			[
+				"Tổng / Total",
+				220,
+				180,
+				-40
+			]
+		],
+		mark: [[1, 3]]
+	},
+	"eda-row": {
+		kind: "table",
+		title: ["Một khách A có hai dòng", "Customer A has two rows"],
+		head: [["Khách", "Customer"], ["Kênh", "Channel"]],
+		rows: [
+			["A", "Meta"],
+			["B", "GDN"],
+			["A", "Meta"],
+			["C", "TikTok"],
+			["D", "Meta"]
+		],
+		mark: [[0, 0], [2, 0]],
+		note: ["Meta: 3 dòng nhưng 2 khách.", "Meta: 3 rows but 2 customers."]
+	},
+	"eda-out": {
+		kind: "bars",
+		title: ["Thời gian điền form (giây)", "Form fill time (seconds)"],
+		items: [
+			{
+				label: ["K1", "C1"],
+				value: 40
+			},
+			{
+				label: ["K2", "C2"],
+				value: 55
+			},
+			{
+				label: ["K3", "C3"],
+				value: 52
+			},
+			{
+				label: ["K4", "C4"],
+				value: 60
+			},
+			{
+				label: ["K5", "C5"],
+				value: 48
+			},
+			{
+				label: ["K6", "C6"],
+				value: 1200
+			}
+		]
+	},
+	"eda-bad": {
+		kind: "table",
+		title: ["Tỷ lệ form theo kênh", "Form rate by channel"],
+		head: [
+			["Kênh", "Channel"],
+			["Form", "Forms"],
+			["Click", "Clicks"],
+			["Tỷ lệ", "Rate"]
+		],
+		rows: [
+			[
+				"GDN",
+				18,
+				900,
+				"2,0%"
+			],
+			[
+				"Meta",
+				20,
+				800,
+				"2,5%"
+			],
+			[
+				"TikTok",
+				12,
+				800,
+				"1,5%"
+			],
+			[
+				"Zalo",
+				6,
+				3,
+				"200%"
+			]
+		],
+		mark: [[3, 3]]
+	},
+	"eda-cat": {
+		kind: "bars",
+		title: ["Form tháng 12 theo kênh", "December forms by channel"],
+		items: [
+			{
+				label: ["GDN", "GDN"],
+				value: 78
+			},
+			{
+				label: ["Meta", "Meta"],
+				value: 62
+			},
+			{
+				label: ["TikTok", "TikTok"],
+				value: 40
+			}
+		]
+	},
+	"eda-ord": {
+		kind: "bars",
+		title: ["20 đánh giá theo số sao", "20 ratings by stars"],
+		items: [
+			{
+				label: ["1★", "1★"],
+				value: 1
+			},
+			{
+				label: ["2★", "2★"],
+				value: 2
+			},
+			{
+				label: ["3★", "3★"],
+				value: 3
+			},
+			{
+				label: ["4★", "4★"],
+				value: 6
+			},
+			{
+				label: ["5★", "5★"],
+				value: 8
+			}
+		]
+	},
+	"eda-tab": {
+		kind: "table",
+		title: ["Click theo kênh và thiết bị", "Clicks by channel and device"],
+		head: [
+			["Kênh", "Channel"],
+			["Điện thoại", "Phone"],
+			["Máy tính", "Computer"],
+			["Tổng", "Total"]
+		],
+		rows: [
+			[
+				"GDN",
+				450,
+				450,
+				900
+			],
+			[
+				"Meta",
+				560,
+				240,
+				800
+			],
+			[
+				"TikTok",
+				680,
+				120,
+				800
+			],
+			[
+				"Tổng / Total",
+				1690,
+				810,
+				2500
+			]
+		],
+		mark: [[2, 1]]
+	},
+	"eda-flip": {
+		kind: "table",
+		title: ["Nghịch lý Simpson: tỷ lệ form", "Simpson's paradox: form rate"],
+		head: [
+			["", ""],
+			["Trang cũ", "Old page"],
+			["Trang mới", "New page"]
+		],
+		rows: [
+			[
+				"Điện thoại / Phone",
+				"2/100 = 2%",
+				"12/400 = 3%"
+			],
+			[
+				"Máy tính / Computer",
+				"20/400 = 5%",
+				"6/100 = 6%"
+			],
+			[
+				"Gộp / Combined",
+				"22/500 = 4,4%",
+				"18/500 = 3,6%"
+			]
+		],
+		mark: [[2, 2]]
+	},
+	"prob-def": {
+		kind: "bars",
+		title: ["200 lượt đặt Quận 1 theo gói", "200 District 1 bookings by package"],
+		items: [
+			{
+				label: ["60'", "60'"],
+				value: 120
+			},
+			{
+				label: ["90'", "90'"],
+				value: 50
+			},
+			{
+				label: ["Ghế/Chair", "Ghế/Chair"],
+				value: 30
+			}
+		]
+	},
+	"dist": {
+		kind: "bars",
+		title: ["Phân phối của X (xác suất)", "Distribution of X (probability)"],
+		items: [
+			{
+				label: ["150", "150"],
+				value: .15
+			},
+			{
+				label: ["300", "300"],
+				value: .6
+			},
+			{
+				label: ["500", "500"],
+				value: .25
+			}
+		]
+	},
+	"ev": {
+		kind: "table",
+		title: ["E(X) = Σ giá trị × xác suất", "E(X) = Σ value × probability"],
+		head: [
+			["X", "X"],
+			["Xác suất", "Probability"],
+			["X × xác suất", "X × probability"]
+		],
+		rows: [
+			[
+				150,
+				.15,
+				22.5
+			],
+			[
+				300,
+				.6,
+				180
+			],
+			[
+				500,
+				.25,
+				125
+			],
+			[
+				"Tổng / Sum",
+				1,
+				327.5
+			]
+		],
+		mark: [[3, 2]]
+	},
+	"binomial": {
+		kind: "bars",
+		title: ["Số hội viên sắp rời trong 10 người (xác suất)", "Members about to leave among 10 (probability)"],
+		items: [
+			{
+				label: ["0", "0"],
+				value: .5987
+			},
+			{
+				label: ["1", "1"],
+				value: .3151
+			},
+			{
+				label: ["2", "2"],
+				value: .0746
+			},
+			{
+				label: ["3+", "3+"],
+				value: .0116
+			}
+		]
+	},
+	"normal": {
+		kind: "table",
+		title: ["Quy tắc 68-95-99,7 với trung bình 50, độ lệch chuẩn 12", "68-95-99.7 rule with mean 50, standard deviation 12"],
+		head: [
+			["Khoảng", "Range"],
+			["Từ", "From"],
+			["Đến", "To"],
+			["Phần", "Share"]
+		],
+		rows: [
+			[
+				"±1 SD",
+				38,
+				62,
+				"68%"
+			],
+			[
+				"±2 SD",
+				26,
+				74,
+				"95%"
+			],
+			[
+				"±3 SD",
+				14,
+				86,
+				"99,7%"
+			]
+		]
+	},
+	"samp-props": {
+		kind: "bars",
+		title: ["Sai số chuẩn theo cỡ mẫu", "Standard error by sample size"],
+		items: [
+			{
+				label: ["n=4", "n=4"],
+				value: 6
+			},
+			{
+				label: ["n=9", "n=9"],
+				value: 4
+			},
+			{
+				label: ["n=16", "n=16"],
+				value: 3
+			},
+			{
+				label: ["n=36", "n=36"],
+				value: 2
+			},
+			{
+				label: ["n=144", "n=144"],
+				value: 1
+			}
+		]
+	},
+	"joint": {
+		kind: "table",
+		title: ["1000 hội viên: sắp rời và gắn cờ", "1,000 members: about to leave and flagged"],
+		head: [
+			["", ""],
+			["Gắn cờ", "Flagged"],
+			["Không cờ", "Not flagged"],
+			["Tổng", "Total"]
+		],
+		rows: [
+			[
+				"Sắp rời / Leaving",
+				45,
+				5,
+				50
+			],
+			[
+				"Ở lại / Staying",
+				76,
+				874,
+				950
+			],
+			[
+				"Tổng / Total",
+				121,
+				879,
+				1e3
+			]
+		],
+		mark: [[0, 1]]
+	}
+};
+var c2aWalks = Object.fromEntries(Object.entries(base).map(([id, w]) => [id, visuals[id] ? {
 	...w,
 	visual: visuals[id]
 } : w]));
@@ -13769,7 +15397,8 @@ var walks = {
 	...c0Walks,
 	...c1Walks,
 	...mathWalks,
-	...dsWalks
+	...dsWalks,
+	...c2aWalks
 };
 /** Hình minh họa trong mục «Làm từng bước»: bảng tính, biểu đồ cột, biểu đồ đường. Dùng màu từ token của app. */
 function WalkVisual({ v, lang }) {

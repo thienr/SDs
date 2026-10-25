@@ -1,6 +1,6 @@
 import { a as getLesson, n as courses, s as lessons } from "./catalog-BobPw5DT.mjs";
-import { a as courseHead, c as batchCms, d as cmsGet, f as cmsIsEdited, h as setCmsPatch, o as moduleHead, s as sessionHead } from "./router-BQTkODUb.mjs";
-//#region node_modules/.nitro/vite/services/ssr/assets/cms-live-CodUMgzR.js
+import { a as courseHead, c as batchCms, d as cmsGet, f as cmsIsEdited, h as setCmsPatch, o as moduleHead, s as sessionHead } from "./router-BJ4vBz0O.mjs";
+//#region node_modules/.nitro/vite/services/ssr/assets/cms-live-DjmzNLTd.js
 var emptyHead = {
 	why: "",
 	plain: "",
