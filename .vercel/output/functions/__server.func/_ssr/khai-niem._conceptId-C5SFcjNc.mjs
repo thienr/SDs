@@ -1,10 +1,10 @@
 import { o as __toESM } from "../_runtime.mjs";
 import { J as require_react, S as require_jsx_runtime, b as Link } from "../_libs/@tanstack/react-router+[...].mjs";
-import { A as studyCopy, B as subscribeRaw, F as getRawVersion, I as getServerRawVersion, M as studyNeighbors, O as subscribeProgress, b as getServerProgress, j as studyListTitle, k as getStudy, r as Route$1, y as getProgress } from "./router-DR-xBwkB.mjs";
-import { n as Range, r as Sim, t as Lab } from "./labs-vOr4xm3E.mjs";
+import { A as studyCopy, B as subscribeRaw, F as getRawVersion, I as getServerRawVersion, M as studyNeighbors, O as subscribeProgress, b as getServerProgress, j as studyListTitle, k as getStudy, r as Route$1, y as getProgress } from "./router-BvTO9tP1.mjs";
+import { n as Range, r as Sim, t as Lab } from "./labs-c30ptvA5.mjs";
 import { t as Tex } from "./tex-t3KOuum9.mjs";
-import { o as relatedOf } from "./map-CnVneEl0.mjs";
-//#region node_modules/.nitro/vite/services/ssr/assets/khai-niem._conceptId-DiByRtCp.js
+import { o as relatedOf } from "./map-D9uTMUAz.mjs";
+//#region node_modules/.nitro/vite/services/ssr/assets/khai-niem._conceptId-C5SFcjNc.js
 var import_react = /* @__PURE__ */ __toESM(require_react());
 var import_jsx_runtime = require_jsx_runtime();
 var ui$1 = {
@@ -10557,7 +10557,7 @@ var pilotWalks = {
 	}
 };
 /** C0: hiểu việc, giải quyết vấn đề, Excel. Tháng 1 ở Lotus Spa. */
-var base$5 = {
+var base$6 = {
 	"c0-order": {
 		vi: {
 			story: "Tháng 1, Lotus Spa (3 chi nhánh: Quận 1, Quận 3, Thủ Đức). Chị Lan, chủ chuỗi, gọi bạn vào phòng: «Form đặt hẹn tháng 12 giảm, em xem giúp chị.» Đây là việc đầu tiên của bạn, và cả năm tới bạn sẽ đi cùng câu chuyện này.",
@@ -11195,7 +11195,7 @@ var base$5 = {
 		}
 	}
 };
-var visuals$5 = {
+var visuals$6 = {
 	"c0-order": {
 		kind: "bars",
 		title: ["Form theo tháng", "Forms by month"],
@@ -11474,12 +11474,12 @@ var visuals$5 = {
 		note: ["Mã 25 không có: tìm gần đúng lấy dòng mã 20.", "Code 25 is missing: approximate match takes the code 20 row."]
 	}
 };
-var c0Walks = Object.fromEntries(Object.entries(base$5).map(([id, w]) => [id, visuals$5[id] ? {
+var c0Walks = Object.fromEntries(Object.entries(base$6).map(([id, w]) => [id, visuals$6[id] ? {
 	...w,
-	visual: visuals$5[id]
+	visual: visuals$6[id]
 } : w]));
 /** C1: Python cho khoa học dữ liệu. Tháng 2 ở Lotus Spa. */
-var base$4 = {
+var base$5 = {
 	"py-run": {
 		vi: {
 			story: "Tháng 2. Excel đã cho bạn thấy hạn chế: file 12 tuần × 3 kênh quá nhiều để làm tay. Bạn mở notebook Python đầu tiên và tính lại CPA tuần này (chi 15 triệu, 50 form).",
@@ -12103,7 +12103,7 @@ var base$4 = {
 		}
 	}
 };
-var visuals$4 = {
+var visuals$5 = {
 	"py-run": {
 		kind: "table",
 		title: ["Notebook sau khi sửa forms nhưng chưa chạy lại ô 2", "Notebook after editing forms but not re-running cell 2"],
@@ -12306,12 +12306,12 @@ var visuals$4 = {
 		note: ["Tổng 151 form, cùng tổng với 50 + 50 + 51 theo tuần.", "Total 151 forms, the same as 50 + 50 + 51 by week."]
 	}
 };
-var c1Walks = Object.fromEntries(Object.entries(base$4).map(([id, w]) => [id, visuals$4[id] ? {
+var c1Walks = Object.fromEntries(Object.entries(base$5).map(([id, w]) => [id, visuals$5[id] ? {
 	...w,
-	visual: visuals$4[id]
+	visual: visuals$5[id]
 } : w]));
 /** Toán cho khoa học dữ liệu. Tháng 3 ở Lotus Spa: mọi phép toán đều tính trên số form, chi phí, giá gói của spa. */
-var base$3 = {
+var base$4 = {
 	"math-vec": {
 		vi: {
 			story: "Tháng 3. Chị Lan hỏi: «Em hay nói tới mô hình, mà bên trong nó là gì?» Bạn bắt đầu từ khối nhỏ nhất: một dãy số có thứ tự, chính là số form tuần này theo ba kênh.",
@@ -12985,7 +12985,7 @@ var base$3 = {
 		}
 	}
 };
-var visuals$3 = {
+var visuals$4 = {
 	"math-vec": {
 		kind: "bars",
 		title: ["Véctơ form tuần này f = (18, 20, 12)", "This week's forms vector f = (18, 20, 12)"],
@@ -13230,12 +13230,12 @@ var visuals$3 = {
 		mark: [[1, 3]]
 	}
 };
-var mathWalks = Object.fromEntries(Object.entries(base$3).map(([id, w]) => [id, visuals$3[id] ? {
+var mathWalks = Object.fromEntries(Object.entries(base$4).map(([id, w]) => [id, visuals$4[id] ? {
 	...w,
-	visual: visuals$3[id]
+	visual: visuals$4[id]
 } : w]));
 /** Thống kê mô tả. Tháng 3 ở Lotus Spa. Dãy chính D: form 9 tuần gần đây, tuần cuối có đợt khuyến mãi. */
-var base$2 = {
+var base$3 = {
 	"ds-type": {
 		vi: {
 			story: "Tháng 3. Thảo gửi bảng khảo sát hội viên. Trước khi tính gì, bạn gọi tên kiểu của từng cột, vì kiểu quyết định phép tính nào có nghĩa.",
@@ -13579,7 +13579,7 @@ var base$2 = {
 		}
 	}
 };
-var visuals$2 = {
+var visuals$3 = {
 	"ds-type": {
 		kind: "table",
 		title: ["Bốn cột, ba kiểu", "Four columns, three types"],
@@ -13760,12 +13760,12 @@ var visuals$2 = {
 		]
 	}
 };
-var dsWalks = Object.fromEntries(Object.entries(base$2).map(([id, w]) => [id, visuals$2[id] ? {
+var dsWalks = Object.fromEntries(Object.entries(base$3).map(([id, w]) => [id, visuals$3[id] ? {
 	...w,
-	visual: visuals$2[id]
+	visual: visuals$3[id]
 } : w]));
 /** C2 phần 1: EDA, xác suất, lấy mẫu. Tháng 3 ở Lotus Spa. */
-var base$1 = {
+var base$2 = {
 	"eda-ask": {
 		vi: {
 			story: "Tháng 3, bạn mở lại câu hỏi từ đầu năm: form tháng 12 giảm 40 (220 xuống 180). Trước khi vẽ biểu đồ nào, bạn phải có câu hỏi cụ thể để dữ liệu trả lời.",
@@ -14983,7 +14983,7 @@ var base$1 = {
 		}
 	}
 };
-var visuals$1 = {
+var visuals$2 = {
 	"eda-ask": {
 		kind: "table",
 		title: ["Form theo kênh, tháng 11 và tháng 12", "Forms by channel, November and December"],
@@ -15388,12 +15388,12 @@ var visuals$1 = {
 		mark: [[0, 1]]
 	}
 };
-var c2aWalks = Object.fromEntries(Object.entries(base$1).map(([id, w]) => [id, visuals$1[id] ? {
+var c2aWalks = Object.fromEntries(Object.entries(base$2).map(([id, w]) => [id, visuals$2[id] ? {
 	...w,
-	visual: visuals$1[id]
+	visual: visuals$2[id]
 } : w]));
 /** C2 phần 2a: kiểm định giả thuyết. Tháng 4 ở Lotus Spa: trang đích mới B so với trang cũ A. */
-var base = {
+var base$1 = {
 	"ht-rule": {
 		vi: {
 			story: "Tháng 4, Thảo làm trang đích mới (B) và cho chạy song song với trang cũ (A), mỗi trang 2.000 người xem. Trước khi mở số, bạn phải chốt luật quyết định, nếu không sẽ vô thức chọn luật theo kết quả.",
@@ -15727,7 +15727,7 @@ var base = {
 		}
 	}
 };
-var visuals = {
+var visuals$1 = {
 	"ht-t": {
 		kind: "bars",
 		title: ["Vạch bác bỏ và t quan sát", "Cut-offs and observed t"],
@@ -15866,7 +15866,913 @@ var visuals = {
 		mark: [[2, 4]]
 	}
 };
-var c2bWalks = Object.fromEntries(Object.entries(base).map(([id, w]) => [id, visuals[id] ? {
+var c2bWalks = Object.fromEntries(Object.entries(base$1).map(([id, w]) => [id, visuals$1[id] ? {
+	...w,
+	visual: visuals$1[id]
+} : w]));
+/**
+* C2: SQL (MySQL cơ bản + SQL nâng cao). Cuối tháng 4: bạn dựng báo cáo cho Lotus Spa.
+* Bảng chính: weekly(week, channel, spend, forms) = 3 tuần x 3 kênh, tổng form 151.
+*/
+var base = {
+	"sql-wh": {
+		vi: {
+			story: "Cuối tháng 4, chị Lan hỏi doanh thu 18 tháng theo chi nhánh. Hệ thống đặt hẹn của spa là nơi thu ngân đang ghi từng lượt, và bạn phải trả lời mà không làm chậm nó.",
+			words: [["Hệ thống đang ghi (OLTP)", "Cơ sở dữ liệu phục vụ công việc hằng ngày, tối ưu cho ghi nhanh từng dòng."], ["Kho dữ liệu", "Bản sao đã gom lại để phân tích, giữ lịch sử dài."]],
+			problem: "Hệ thống đặt hẹn chỉ giữ 90 ngày gần nhất. Chị Lan cần 18 tháng (khoảng 540 ngày). Hệ thống đủ trả lời chưa? Kho dữ liệu cần làm gì?",
+			steps: [
+				["Tính phần lịch sử có sẵn", "90 ÷ 540 = 1/6, khoảng 16,7% giai đoạn cần hỏi."],
+				["Đọc", "83,3% giai đoạn đã bị xóa khỏi hệ thống đặt hẹn. Truy vấn sẽ cho doanh thu thấp giả."],
+				["Việc kho làm", "Mỗi đêm sao chép các lượt mới sang kho và không xóa. Sau 18 tháng kho giữ đủ 540 ngày."],
+				["Lợi ích thứ hai", "Truy vấn nặng chạy trên kho nên thu ngân không bị chậm."]
+			],
+			say: "Hỏi doanh thu 18 tháng trên hệ thống đang ghi chỉ cho ra 16,7% sự thật. Muốn trả lời đúng cần kho dữ liệu giữ lịch sử đầy đủ.",
+			check: ["Nếu hệ thống giữ 180 ngày, phần được phủ là bao nhiêu?", "180 ÷ 540 = 1/3, khoảng 33%. Vẫn chưa đủ."]
+		},
+		en: {
+			story: "At the end of April, Ms. Lan asks for 18 months of revenue by branch. The spa's booking system is where cashiers are recording each visit right now, and you must answer without slowing it.",
+			words: [["Operational system (OLTP)", "The database serving daily work, tuned for fast single-row writes."], ["Data warehouse", "A gathered copy for analysis, keeping long history."]],
+			problem: "The booking system keeps only the last 90 days. Ms. Lan needs 18 months (about 540 days). Is the system enough? What does the warehouse need to do?",
+			steps: [
+				["Compute the history available", "90 ÷ 540 = 1/6, about 16.7% of the period asked."],
+				["Read", "83.3% of the period has been deleted from the booking system. The query would give falsely low revenue."],
+				["What the warehouse does", "Each night it copies new visits across and never deletes. After 18 months it holds the full 540 days."],
+				["Second benefit", "Heavy queries run on the warehouse so the cashiers are not slowed."]
+			],
+			say: "Asking for 18-month revenue on the operational system gives only 16.7% of the truth. A correct answer needs a warehouse holding full history.",
+			check: ["If the system kept 180 days, what share is covered?", "180 ÷ 540 = 1/3, about 33%. Still not enough."]
+		}
+	},
+	"sql-star": {
+		vi: {
+			story: "Bạn dựng kho cho báo cáo quảng cáo. Mỗi dòng bảng giữa là số form của một kênh trong một tuần, còn tên kênh nằm ở bảng riêng.",
+			words: [
+				["Bảng sự kiện (fact)", "Bảng giữa, mỗi dòng là một sự kiện đo được."],
+				["Bảng danh mục (dimension)", "Bảng quanh nó, mô tả kênh, tuần, chiến dịch."],
+				["Hạt (grain)", "Một dòng đại diện cho cái gì."]
+			],
+			problem: "Bảng giữa weekly có 3 tuần × 3 kênh = 9 dòng, mỗi dòng có channel_id và forms. Tổng form là bao nhiêu? Nếu nối với bảng danh mục mà mỗi kênh có 2 dòng mô tả thì sao?",
+			steps: [
+				["Hạt", "Một dòng = một kênh trong một tuần: 3 × 3 = 9 dòng."],
+				["Tổng form", "GDN 18 + 17 + 19 = 54; Meta 20 + 21 + 20 = 61; TikTok 12 + 12 + 12 = 36. Tổng 151."],
+				["Nối danh mục 1 dòng mỗi kênh", "9 dòng nối ra 9 dòng. Tổng vẫn 151."],
+				["Nối danh mục 2 dòng mỗi kênh", "9 × 2 = 18 dòng, SUM(forms) = 302, gấp đôi."]
+			],
+			say: "Khi tổng bỗng gấp đôi, hãy nghi hạt đã bị trộn: bảng danh mục phải có đúng một dòng cho mỗi khóa. Sơ đồ sao giữ hạt rõ ràng để mọi tổng tin được.",
+			check: ["Bảng giữa có 3 tuần × 3 kênh. Nếu thêm 1 chi nhánh, 9 dòng thành bao nhiêu nếu mỗi chi nhánh có số riêng?", "27 dòng (3 × 3 × 3). Hạt giờ là kênh × tuần × chi nhánh."]
+		},
+		en: {
+			story: "You build the warehouse for the ads report. Each row of the middle table is one channel's forms in one week, while the channel names live in a separate table.",
+			words: [
+				["Fact table", "The middle table, each row one measured event."],
+				["Dimension table", "The surrounding tables describing channel, week, campaign."],
+				["Grain", "What one row stands for."]
+			],
+			problem: "The middle table weekly has 3 weeks × 3 channels = 9 rows, each with channel_id and forms. What is the total forms? What if you join a dimension table that has 2 description rows per channel?",
+			steps: [
+				["Grain", "One row = one channel in one week: 3 × 3 = 9 rows."],
+				["Total forms", "GDN 18 + 17 + 19 = 54; Meta 20 + 21 + 20 = 61; TikTok 12 + 12 + 12 = 36. Total 151."],
+				["Join a dimension with 1 row per channel", "9 rows join to 9 rows. The total stays 151."],
+				["Join a dimension with 2 rows per channel", "9 × 2 = 18 rows, SUM(forms) = 302, doubled."]
+			],
+			say: "When a total suddenly doubles, suspect the grain was mixed: a dimension table must have exactly one row per key. A star schema keeps the grain clear so every total can be trusted.",
+			check: ["The middle table has 3 weeks × 3 channels. If you add 3 branches, each with its own numbers, how many rows?", "27 rows (3 × 3 × 3). The grain is now channel × week × branch."]
+		}
+	},
+	"sql-key": {
+		vi: {
+			story: "Khi nối form với chiến dịch, bạn thấy 6 form có campaign_id = 884, mã không có trong bảng chiến dịch.",
+			words: [["Khóa chính", "Cột định danh duy nhất một dòng trong bảng."], ["Khóa ngoại", "Cột trỏ tới khóa chính của bảng khác, buộc phải có thật."]],
+			problem: "Form theo chiến dịch: 881: 60, 882: 55, 883: 30, 884: 6 (tổng 151). Bảng chiến dịch chỉ có 881, 882, 883. INNER JOIN cho tổng form bao nhiêu và mất đi gì?",
+			steps: [
+				["Tổng form thật", "60 + 55 + 30 + 6 = 151."],
+				["INNER JOIN", "Dòng 884 không có đối tác nên bị loại: 60 + 55 + 30 = 145."],
+				["Mất", "151 − 145 = 6 form, khoảng 4%. Báo cáo thiếu mà không báo lỗi."],
+				["Khóa ngoại sửa gì", "Với khóa ngoại, hệ thống từ chối ghi form có campaign_id = 884 ngay từ đầu."]
+			],
+			say: "Không có khóa ngoại, 6 form lặng lẽ biến mất khỏi mọi báo cáo có nối. Khóa ngoại biến lỗi âm thầm thành lỗi báo ngay lúc ghi.",
+			check: ["Cột nào nên là khóa chính của bảng chiến dịch?", "campaign_id, vì mỗi chiến dịch có một mã duy nhất, không trùng."]
+		},
+		en: {
+			story: "When joining forms to campaigns you see 6 forms with campaign_id = 884, a code missing from the campaign table.",
+			words: [["Primary key", "The column uniquely identifying a row in the table."], ["Foreign key", "A column pointing to another table's primary key, required to exist."]],
+			problem: "Forms by campaign: 881: 60, 882: 55, 883: 30, 884: 6 (total 151). The campaign table has only 881, 882, 883. What total does INNER JOIN give and what is lost?",
+			steps: [
+				["True total forms", "60 + 55 + 30 + 6 = 151."],
+				["INNER JOIN", "Row 884 has no partner and is dropped: 60 + 55 + 30 = 145."],
+				["Lost", "151 − 145 = 6 forms, about 4%. The report is short with no error shown."],
+				["What a foreign key fixes", "With a foreign key the system refuses to record a form with campaign_id = 884 in the first place."]
+			],
+			say: "Without a foreign key, 6 forms silently vanish from every report with a join. A foreign key turns a silent error into an error raised at write time.",
+			check: ["Which column should be the primary key of the campaign table?", "campaign_id, because each campaign has a unique code, no duplicates."]
+		}
+	},
+	"sql-ddl": {
+		vi: {
+			story: "Bạn cần thêm cột kênh vào bảng chi tiêu và sửa số chi của một tuần. Hai việc nghe giống nhau nhưng thuộc hai loại lệnh.",
+			words: [["DDL", "Lệnh đổi khung bảng: CREATE, ALTER, DROP."], ["DML", "Lệnh đổi dữ liệu trong bảng: INSERT, UPDATE, DELETE."]],
+			problem: "Bảng weekly có 9 dòng. (a) ALTER TABLE thêm cột note. (b) UPDATE spend = 4,5 cho TikTok tuần 2. (c) Quên WHERE: UPDATE weekly SET spend = 4,5. Mỗi lệnh ảnh hưởng bao nhiêu dòng?",
+			steps: [
+				["(a) ALTER thêm cột", "Đổi khung: cả 9 dòng có một ô note mới, ban đầu NULL."],
+				["(b) UPDATE có WHERE", "WHERE channel = 'TikTok' AND week = 2 chọn 1 dòng. Đổi 1 dòng."],
+				["(c) UPDATE không WHERE", "Không có điều kiện thì mọi dòng bị chọn: cả 9 dòng có spend = 4,5. GDN 6 và Meta 5 bị ghi đè."],
+				["Thói quen an toàn", "Chạy SELECT với cùng WHERE trước để đếm: nếu ra 1 dòng thì mới UPDATE."]
+			],
+			say: "Lệnh quên WHERE sai 8 dòng mà không báo gì. Phân biệt DDL (đổi khung) và DML (đổi dòng) giúp bạn biết lệnh nào có thể làm hỏng cả bảng.",
+			check: ["DROP TABLE weekly là DDL hay DML?", "DDL: nó đổi khung, xóa luôn cả bảng và 9 dòng."]
+		},
+		en: {
+			story: "You need to add a channel column to the spend table and fix one week's spend. The two jobs sound alike but belong to two kinds of command.",
+			words: [["DDL", "Commands changing the table's frame: CREATE, ALTER, DROP."], ["DML", "Commands changing the data in the table: INSERT, UPDATE, DELETE."]],
+			problem: "The weekly table has 9 rows. (a) ALTER TABLE adds a note column. (b) UPDATE spend = 4.5 for TikTok week 2. (c) Forgetting WHERE: UPDATE weekly SET spend = 4.5. How many rows does each command affect?",
+			steps: [
+				["(a) ALTER adds a column", "Frame change: all 9 rows get a new note cell, initially NULL."],
+				["(b) UPDATE with WHERE", "WHERE channel = 'TikTok' AND week = 2 picks 1 row. Changes 1 row."],
+				["(c) UPDATE without WHERE", "With no condition every row is selected: all 9 rows get spend = 4.5. GDN's 6 and Meta's 5 are overwritten."],
+				["Safe habit", "Run a SELECT with the same WHERE first to count: if it returns 1 row, then UPDATE."]
+			],
+			say: "The command missing WHERE damages 8 extra rows without saying anything. Telling DDL (change the frame) from DML (change the rows) shows which commands can wreck the whole table.",
+			check: ["Is DROP TABLE weekly DDL or DML?", "DDL: it changes the frame, deleting the whole table and its 9 rows."]
+		}
+	},
+	"sql-run": {
+		vi: {
+			story: "Bạn viết câu hỏi «kênh nào có tổng form trên 0» và máy báo lỗi ở WHERE. Lý do là máy không đọc từ chữ SELECT.",
+			words: [["Thứ tự thực thi", "FROM → WHERE → GROUP BY → HAVING → SELECT → ORDER BY."]],
+			problem: "SELECT channel, SUM(forms) AS total FROM weekly WHERE total > 0 GROUP BY channel. Vì sao lỗi, và sửa thế nào? Cho 9 dòng, tổng GDN 54, Meta 61, TikTok 36.",
+			steps: [
+				["FROM", "Lấy bảng weekly: 9 dòng."],
+				["WHERE", "Lọc từng dòng. Lúc này chưa có cột total (SELECT chưa chạy), nên lỗi."],
+				["GROUP BY", "Nhóm 9 dòng thành 3 nhóm: GDN, Meta, TikTok."],
+				["HAVING", "Lọc nhóm. Đây mới là nơi dùng được tổng: HAVING SUM(forms) > 0."],
+				["SELECT, rồi ORDER BY", "Lúc này total mới có: GDN 54, Meta 61, TikTok 36. ORDER BY total dùng được tên đó."]
+			],
+			say: "WHERE chạy trước khi tổng tồn tại, nên nó không thể lọc theo tổng. Biết thứ tự thực thi giúp bạn đoán vì sao một tên không dùng được ở một mệnh đề.",
+			check: ["ORDER BY total có dùng được tên total không?", "Có, vì ORDER BY chạy sau SELECT."]
+		},
+		en: {
+			story: "You write the question “which channels have total forms above 0” and the engine errors at WHERE. The reason is the engine does not read starting from the word SELECT.",
+			words: [["Execution order", "FROM → WHERE → GROUP BY → HAVING → SELECT → ORDER BY."]],
+			problem: "SELECT channel, SUM(forms) AS total FROM weekly WHERE total > 0 GROUP BY channel. Why does it fail and how do you fix it? Given 9 rows, totals GDN 54, Meta 61, TikTok 36.",
+			steps: [
+				["FROM", "Take the weekly table: 9 rows."],
+				["WHERE", "Filters row by row. At this point there is no total column (SELECT has not run), hence the error."],
+				["GROUP BY", "Group the 9 rows into 3 groups: GDN, Meta, TikTok."],
+				["HAVING", "Filters groups. This is where a total can be used: HAVING SUM(forms) > 0."],
+				["SELECT, then ORDER BY", "Only now does total exist: GDN 54, Meta 61, TikTok 36. ORDER BY total can use that name."]
+			],
+			say: "WHERE runs before the total exists, so it cannot filter by a total. Knowing the execution order helps you predict why a name cannot be used in a clause.",
+			check: ["Can ORDER BY total use the name total?", "Yes, because ORDER BY runs after SELECT."]
+		}
+	},
+	"sql-having": {
+		vi: {
+			story: "Chị Lan chỉ muốn xem các kênh có tổng form trên 40 trong 3 tuần. WHERE lọc dòng, HAVING lọc nhóm, và hai câu cho kết quả khác nhau.",
+			words: [["WHERE", "Lọc từng dòng trước khi nhóm."], ["HAVING", "Lọc từng nhóm sau khi tính tổng."]],
+			problem: "Tổng form 3 tuần: GDN 54, Meta 61, TikTok 36. HAVING SUM(forms) > 40 giữ kênh nào? Nếu thêm WHERE week >= 2 thì sao? (tuần 2 và 3: GDN 17 + 19 = 36, Meta 21 + 20 = 41, TikTok 12 + 12 = 24)",
+			steps: [
+				["Chỉ HAVING", "54 > 40, 61 > 40, 36 không. Giữ GDN và Meta, bỏ TikTok."],
+				["WHERE week >= 2 trước", "Bỏ các dòng tuần 1 (18, 20, 12) trước khi nhóm."],
+				["Tổng sau lọc dòng", "GDN 36, Meta 41, TikTok 24."],
+				["HAVING > 40 sau đó", "Chỉ Meta (41) còn."]
+			],
+			say: "Cùng điều kiện «> 40» nhưng đặt ở hai chỗ cho hai kết quả (GDN và Meta so với chỉ Meta), vì WHERE đổi dữ liệu đầu vào còn HAVING chỉ lọc kết quả. Chọn chỗ đặt theo câu hỏi.",
+			check: ["Điều kiện «chỉ tính tuần có chi tiêu > 0» đặt ở WHERE hay HAVING?", "WHERE, vì nó nói về từng dòng, không phải tổng nhóm."]
+		},
+		en: {
+			story: "Ms. Lan only wants channels with total forms above 40 over the 3 weeks. WHERE filters rows, HAVING filters groups, and the two give different results.",
+			words: [["WHERE", "Filters each row before grouping."], ["HAVING", "Filters each group after totals are computed."]],
+			problem: "3-week form totals: GDN 54, Meta 61, TikTok 36. Which channels does HAVING SUM(forms) > 40 keep? What if you add WHERE week >= 2? (weeks 2 and 3: GDN 17 + 19 = 36, Meta 21 + 20 = 41, TikTok 12 + 12 = 24)",
+			steps: [
+				["HAVING only", "54 > 40, 61 > 40, 36 is not. Keep GDN and Meta, drop TikTok."],
+				["WHERE week >= 2 first", "Drop week 1 rows (18, 20, 12) before grouping."],
+				["Totals after row filter", "GDN 36, Meta 41, TikTok 24."],
+				["HAVING > 40 afterwards", "Only Meta (41) remains."]
+			],
+			say: "The same condition “> 40” placed in two spots gives two results (GDN and Meta versus only Meta), because WHERE changes the input data while HAVING only filters the output. Choose the spot by the question.",
+			check: ["Is the condition “count only weeks with spend > 0” placed in WHERE or HAVING?", "WHERE, because it is about each row, not the group total."]
+		}
+	},
+	"sql-count": {
+		vi: {
+			story: "Chi tiêu TikTok tuần 3 bị thiếu trong file xuất. Bạn tính tổng và trung bình trên cột có ô trống.",
+			words: [
+				["NULL", "Ô không có giá trị. Không phải 0."],
+				["COUNT(*)", "Đếm dòng."],
+				["COUNT(cột)", "Đếm ô có giá trị."]
+			],
+			problem: "Chi tiêu TikTok 4 tuần (triệu): 4, 4, NULL, 4. Tính COUNT(*), COUNT(spend), SUM, AVG, và so với việc coi NULL là 0.",
+			steps: [
+				["COUNT(*)", "Có 4 dòng, nên 4."],
+				["COUNT(spend)", "Chỉ 3 ô có số, nên 3."],
+				["SUM(spend)", "4 + 4 + 4 = 12 (NULL bị bỏ)."],
+				["AVG(spend)", "12 ÷ 3 = 4."],
+				["Nếu coi NULL là 0", "12 ÷ 4 = 3: trung bình thấp đi 25% vì một tuần không ghi."]
+			],
+			say: "AVG bỏ ô trống nên cho 4, còn nếu tự điền 0 thì cho 3. Chi tiêu tuần đó không phải 0, chỉ là chưa biết. Hãy chọn có chủ ý và ghi lại lý do.",
+			check: ["COUNT(*) và COUNT(spend) khác nhau cho biết điều gì?", "Số dòng có ô trống: 4 − 3 = 1 tuần thiếu."]
+		},
+		en: {
+			story: "TikTok's week-3 spend is missing in the export. You compute a total and an average on a column with a blank.",
+			words: [
+				["NULL", "A cell with no value. Not 0."],
+				["COUNT(*)", "Counts rows."],
+				["COUNT(column)", "Counts cells with a value."]
+			],
+			problem: "TikTok spend over 4 weeks (million): 4, 4, NULL, 4. Compute COUNT(*), COUNT(spend), SUM, AVG, and compare with treating NULL as 0.",
+			steps: [
+				["COUNT(*)", "There are 4 rows, so 4."],
+				["COUNT(spend)", "Only 3 cells have numbers, so 3."],
+				["SUM(spend)", "4 + 4 + 4 = 12 (NULL is skipped)."],
+				["AVG(spend)", "12 ÷ 3 = 4."],
+				["If NULL is treated as 0", "12 ÷ 4 = 3: the average is 25% lower because one week was not recorded."]
+			],
+			say: "AVG skips the blank and gives 4, while filling in 0 yourself gives 3. That week's spend was not 0, merely unknown. Choose on purpose and record the reason.",
+			check: ["What does a difference between COUNT(*) and COUNT(spend) tell you?", "The number of rows with a blank: 4 − 3 = 1 missing week."]
+		}
+	},
+	"sql-like": {
+		vi: {
+			story: "Mã form có dạng F- và hai chữ số, nhưng bảng lẫn các mã lạ. Bạn thử lọc bằng LIKE và thấy nó không chặt như bạn tưởng.",
+			words: [["LIKE", "So khớp mẫu đơn giản: % là bất kỳ chuỗi, _ là đúng một ký tự."], ["Regex", "Công cụ khớp mẫu mạnh hơn, khác nhau theo hệ thống."]],
+			problem: "Bốn mã: F-12, F-7A, F-123, G-12. WHERE code LIKE 'F-__' trả về mã nào? Có đúng là «F- và hai chữ số» không?",
+			steps: [
+				["Mẫu", "'F-__' là chữ F, dấu gạch, rồi đúng hai ký tự bất kỳ."],
+				["F-12", "Khớp (hai ký tự: 1, 2)."],
+				["F-7A", "Khớp (hai ký tự: 7, A), dù A không phải chữ số."],
+				["F-123", "Không khớp (ba ký tự sau dấu gạch). G-12 không khớp vì sai chữ đầu."],
+				["Đối chiếu", "LIKE trả 2 mã, mà chỉ F-12 đúng «hai chữ số»."]
+			],
+			say: "LIKE chỉ biết số ký tự, không biết ký tự đó là chữ số. Muốn kiểm đúng hai chữ số cần regex của đúng hệ thống đang dùng.",
+			check: ["LIKE '%12' khớp mã nào trong bốn mã?", "F-12 và G-12, vì cả hai kết thúc bằng 12."]
+		},
+		en: {
+			story: "Form codes look like F- followed by two digits, but the table has stray codes. You try filtering with LIKE and find it is not as strict as you thought.",
+			words: [["LIKE", "Simple pattern matching: % is any string, _ is exactly one character."], ["Regex", "A stronger pattern tool, varying by system."]],
+			problem: "Four codes: F-12, F-7A, F-123, G-12. Which codes does WHERE code LIKE 'F-__' return? Is that really “F- and two digits”?",
+			steps: [
+				["Pattern", "'F-__' is the letter F, a dash, then exactly two arbitrary characters."],
+				["F-12", "Matches (two characters: 1, 2)."],
+				["F-7A", "Matches (two characters: 7, A), though A is not a digit."],
+				["F-123", "Does not match (three characters after the dash). G-12 does not match due to the wrong first letter."],
+				["Compare", "LIKE returns 2 codes, yet only F-12 is truly “two digits”."]
+			],
+			say: "LIKE knows only the number of characters, not whether they are digits. To check exactly two digits you need the regex of the very system you use.",
+			check: ["Which of the four codes does LIKE '%12' match?", "F-12 and G-12, since both end in 12."]
+		}
+	},
+	"sql-date": {
+		vi: {
+			story: "Chị Lan hỏi form tháng 11. Bạn phải viết điều kiện ngày sao cho không bỏ sót form lúc cuối ngày 30.",
+			words: [["Khoảng nửa mở", "ngay >= đầu tháng AND ngay < đầu tháng sau."], ["Kiểu ngày giờ", "Có cả giờ: '2026-11-30' nghĩa là 00:00 sáng."]],
+			problem: "Có một form lúc 2026-11-30 10:30. So BETWEEN '2026-11-01' AND '2026-11-30' với ngay >= '2026-11-01' AND ngay < '2026-12-01'. Câu nào bắt được form đó?",
+			steps: [
+				["BETWEEN ... '2026-11-30'", "Cận trên là 2026-11-30 00:00. Form lúc 10:30 lớn hơn cận nên bị bỏ."],
+				["Khoảng nửa mở", "10:30 ngày 30/11 nhỏ hơn 2026-12-01 00:00 nên được giữ."],
+				["Vì sao cách này bền", "Không phụ thuộc tháng có 28, 30 hay 31 ngày."],
+				["Chữ không phải ngày", "Nếu ngày lưu thành chữ '10/11', xếp theo chữ cho thứ tự sai (xem thẻ kiểu dữ liệu)."]
+			],
+			say: "BETWEEN làm mất mọi form ngày 30 sau 00:00, một lỗi lặng lẽ. Khoảng nửa mở tránh được lỗi đó và luôn đúng với tháng bất kỳ.",
+			check: ["Tháng 2 có 28 ngày: cận trên của khoảng nửa mở tháng 2 là gì?", "ngay < '2026-03-01'."]
+		},
+		en: {
+			story: "Ms. Lan asks for November's forms. You must write the date condition so you do not miss forms at the end of the 30th.",
+			words: [["Half-open range", "date >= start of month AND date < start of next month."], ["Date-time type", "Includes the time: '2026-11-30' means 00:00 at night."]],
+			problem: "There is a form at 2026-11-30 10:30. Compare BETWEEN '2026-11-01' AND '2026-11-30' with date >= '2026-11-01' AND date < '2026-12-01'. Which catches that form?",
+			steps: [
+				["BETWEEN ... '2026-11-30'", "The upper bound is 2026-11-30 00:00. The form at 10:30 is larger and is dropped."],
+				["Half-open range", "10:30 on 30/11 is less than 2026-12-01 00:00 so it is kept."],
+				["Why this is robust", "It does not depend on the month having 28, 30 or 31 days."],
+				["Text that is not a date", "If dates are stored as text like '10/11', sorting by text gives a wrong order (see the data-type card)."]
+			],
+			say: "BETWEEN loses every form on the 30th after 00:00, a silent error. The half-open range avoids it and is right for any month.",
+			check: ["February has 28 days: what is the upper bound of the half-open range for February?", "date < '2026-03-01'."]
+		}
+	},
+	"sql-nest": {
+		vi: {
+			story: "Chị Lan hỏi kênh nào chưa có form nào. Bạn thử NOT IN với truy vấn con và nhận được kết quả trống đáng ngờ.",
+			words: [["Truy vấn con", "Một SELECT nằm trong SELECT khác."], ["NOT IN và NULL", "Nếu tập có NULL, NOT IN không trả về dòng nào."]],
+			problem: "Bảng kênh: 1 GDN, 2 TikTok, 3 Meta. Cột channel_id của bảng form chứa 1, 1, 3, NULL. WHERE id NOT IN (SELECT channel_id FROM forms) trả về gì? Còn NOT EXISTS?",
+			steps: [
+				["Tập con", "Tập là {1, 1, 3, NULL}."],
+				["Kênh 2 NOT IN tập", "2 ≠ 1, 2 ≠ 3, nhưng 2 ≠ NULL là «không biết». Cả mệnh đề là «không biết», không phải đúng."],
+				["Kết quả NOT IN", "Không dòng nào trả về, kể cả TikTok (kênh 2 thật sự chưa có form)."],
+				["NOT EXISTS", "Với từng kênh, hỏi có dòng form khớp không. Kênh 2 không có, nên trả TikTok."]
+			],
+			say: "Một NULL trong tập làm NOT IN bó tay và cho kết quả trống. NOT EXISTS hoặc LEFT JOIN ... IS NULL an toàn hơn khi cột có thể trống.",
+			check: ["Nếu cột channel_id không có NULL, NOT IN trả về gì?", "Trả TikTok (kênh 2), vì đã đúng."]
+		},
+		en: {
+			story: "Ms. Lan asks which channel has no forms at all. You try NOT IN with a subquery and get a suspicious empty result.",
+			words: [["Subquery", "A SELECT nested inside another SELECT."], ["NOT IN and NULL", "If the set contains NULL, NOT IN returns no rows."]],
+			problem: "Channel table: 1 GDN, 2 TikTok, 3 Meta. The form table's channel_id column holds 1, 1, 3, NULL. What does WHERE id NOT IN (SELECT channel_id FROM forms) return? And NOT EXISTS?",
+			steps: [
+				["The subset", "The set is {1, 1, 3, NULL}."],
+				["Channel 2 NOT IN the set", "2 ≠ 1, 2 ≠ 3, but 2 ≠ NULL is “unknown”. The whole clause is “unknown”, not true."],
+				["NOT IN result", "No rows are returned, not even TikTok (channel 2 really has no forms)."],
+				["NOT EXISTS", "For each channel, ask whether a matching form row exists. Channel 2 has none, so it returns TikTok."]
+			],
+			say: "A single NULL in the set cripples NOT IN and gives an empty result. NOT EXISTS or LEFT JOIN ... IS NULL is safer when the column can be blank.",
+			check: ["If channel_id had no NULL, what would NOT IN return?", "It would return TikTok (channel 2), correctly."]
+		}
+	},
+	"sql-join": {
+		vi: {
+			story: "Bạn nối số form với bảng giá chiến dịch để tính chi phí mỗi form. Tổng form bỗng gấp đôi.",
+			words: [["INNER JOIN", "Giữ các cặp dòng khớp khóa."], ["Nhân dòng", "Nếu khóa không duy nhất ở một phía, mỗi dòng nối ra nhiều dòng."]],
+			problem: "Chiến dịch 881 có 3 dòng form tuần (18, 17, 19; tổng 54). Bảng giá có 2 dòng cùng mã 881 (do đổi giá giữa kỳ). INNER JOIN cho bao nhiêu dòng và SUM(forms) bằng bao nhiêu?",
+			steps: [
+				["Số dòng", "3 dòng form × 2 dòng giá cùng mã = 6 dòng."],
+				["SUM(forms)", "Mỗi form xuất hiện 2 lần: 2 × (18 + 17 + 19) = 108."],
+				["So với đúng", "Đúng là 54. Báo cáo gấp đôi."],
+				["Cách sửa", "Làm bảng giá có đúng 1 dòng cho mỗi khóa, hoặc chọn dòng giá có hiệu lực trước khi nối."]
+			],
+			say: "Khi khóa không duy nhất, JOIN nhân dòng, và tổng sai mà không báo lỗi. Hãy đếm số dòng trước và sau khi nối.",
+			check: ["Nếu bảng giá có 3 dòng cùng mã, SUM(forms) là bao nhiêu?", "3 × 54 = 162."]
+		},
+		en: {
+			story: "You join forms to the campaign price table to compute cost per form. Total forms suddenly doubles.",
+			words: [["INNER JOIN", "Keeps the pairs of rows that match on the key."], ["Row multiplication", "If the key is not unique on one side, each row joins to several."]],
+			problem: "Campaign 881 has 3 weekly form rows (18, 17, 19; total 54). The price table has 2 rows with the same code 881 (a mid-period price change). How many rows does INNER JOIN give and what is SUM(forms)?",
+			steps: [
+				["Row count", "3 form rows × 2 price rows with the same code = 6 rows."],
+				["SUM(forms)", "Each form appears twice: 2 × (18 + 17 + 19) = 108."],
+				["Compare with the truth", "The truth is 54. The report is doubled."],
+				["Fix", "Make the price table have exactly 1 row per key, or pick the effective price row before joining."]
+			],
+			say: "When the key is not unique, JOIN multiplies rows and the total is wrong with no error. Count rows before and after the join.",
+			check: ["If the price table had 3 rows with the same code, what would SUM(forms) be?", "3 × 54 = 162."]
+		}
+	},
+	"sql-left": {
+		vi: {
+			story: "Chi nhánh Thủ Đức mới mở, chưa có form nào. Báo cáo theo chi nhánh phải vẫn có dòng Thủ Đức.",
+			words: [["LEFT JOIN", "Giữ mọi dòng bảng trái, nơi không khớp thì ô bên phải là NULL."]],
+			problem: "Form: Quận 1: 30, Quận 3: 20, Thủ Đức: chưa có. INNER JOIN và LEFT JOIN từ bảng chi nhánh cho mấy dòng? Trung bình form mỗi chi nhánh là bao nhiêu nếu bỏ NULL và nếu coi NULL là 0?",
+			steps: [
+				["INNER JOIN", "Thủ Đức không có đối tác: còn 2 dòng (Quận 1 và Quận 3)."],
+				["LEFT JOIN", "Giữ cả 3 chi nhánh, Thủ Đức có form là NULL."],
+				["AVG bỏ NULL", "(30 + 20) ÷ 2 = 25."],
+				["AVG coi NULL là 0", "(30 + 20 + 0) ÷ 3 ≈ 16,7."],
+				["Chọn", "Nếu Thủ Đức thật sự bằng 0 thì 16,7 đúng. Nếu chưa mở bán thì 25 đúng. Luật phải ghi ra."]
+			],
+			say: "INNER JOIN làm chi nhánh mới biến mất khỏi báo cáo. LEFT JOIN giữ nó với NULL, nhưng trống không phải 0: chọn cách tính trung bình có chủ ý.",
+			check: ["Muốn tìm chi nhánh chưa có form, thêm điều kiện nào sau LEFT JOIN?", "WHERE forms.branch_id IS NULL."]
+		},
+		en: {
+			story: "The Thu Duc branch just opened and has no forms yet. The report by branch must still have a Thu Duc row.",
+			words: [["LEFT JOIN", "Keeps every row of the left table; where there is no match the right-hand cells are NULL."]],
+			problem: "Forms: District 1: 30, District 3: 20, Thu Duc: none yet. How many rows do INNER JOIN and LEFT JOIN from the branch table give? What is the average forms per branch if NULL is skipped and if NULL is treated as 0?",
+			steps: [
+				["INNER JOIN", "Thu Duc has no partner: 2 rows remain (District 1 and District 3)."],
+				["LEFT JOIN", "All 3 branches are kept, Thu Duc's forms are NULL."],
+				["AVG skipping NULL", "(30 + 20) ÷ 2 = 25."],
+				["AVG treating NULL as 0", "(30 + 20 + 0) ÷ 3 ≈ 16.7."],
+				["Choose", "If Thu Duc really is at 0 then 16.7 is right. If it has not started selling then 25 is right. The rule must be written down."]
+			],
+			say: "INNER JOIN makes the new branch vanish from the report. LEFT JOIN keeps it with NULL, but blank is not 0: choose the averaging method on purpose.",
+			check: ["To find branches with no forms, what condition do you add after LEFT JOIN?", "WHERE forms.branch_id IS NULL."]
+		}
+	},
+	"sql-union": {
+		vi: {
+			story: "Form tháng 1 và tháng 2 nằm ở hai bảng cùng cột. Bạn muốn một danh sách chung chứ không muốn ghép ngang.",
+			words: [["UNION ALL", "Xếp dọc, giữ mọi dòng."], ["UNION", "Xếp dọc rồi bỏ dòng trùng hệt nhau."]],
+			problem: "Tháng 1 có 120 dòng, tháng 2 có 100 dòng. Có 2 cặp dòng giống nhau từng ô (hai khách thật cùng điền cùng lúc). UNION ALL và UNION cho bao nhiêu dòng?",
+			steps: [
+				["UNION ALL", "120 + 100 = 220 dòng."],
+				["UNION", "Mỗi cặp trùng gộp thành 1 dòng: 220 − 2 = 218 dòng."],
+				["Đọc", "UNION mất 2 form thật nhưng trông gọn hơn."],
+				["Chọn", "Dùng UNION ALL khi các dòng khác nhau là sự kiện riêng; UNION khi muốn danh sách giá trị khác nhau."]
+			],
+			say: "UNION lặng lẽ bỏ dòng trùng, kể cả khi đó là hai sự kiện thật. Với số đếm form, UNION ALL cho 220 đúng; UNION cho 218 sai.",
+			check: ["UNION ALL cần hai bảng thế nào?", "Cùng số cột và kiểu tương ứng, xếp theo thứ tự cột."]
+		},
+		en: {
+			story: "January's and February's forms sit in two tables with the same columns. You want one combined list, not a side-by-side join.",
+			words: [["UNION ALL", "Stack vertically, keeping every row."], ["UNION", "Stack vertically then drop identical rows."]],
+			problem: "January has 120 rows, February has 100. There are 2 pairs of rows identical cell by cell (two real customers filling in at the same moment). How many rows do UNION ALL and UNION give?",
+			steps: [
+				["UNION ALL", "120 + 100 = 220 rows."],
+				["UNION", "Each duplicate pair merges into 1: 220 − 2 = 218 rows."],
+				["Read", "UNION loses 2 real forms but looks tidier."],
+				["Choose", "Use UNION ALL when different rows are separate events; UNION when you want a list of distinct values."]
+			],
+			say: "UNION silently drops duplicate rows, even when they are two real events. For a form count, UNION ALL's 220 is right; UNION's 218 is wrong.",
+			check: ["What must two tables have for UNION ALL?", "The same number of columns with matching types, stacked in column order."]
+		}
+	},
+	"sql-win": {
+		vi: {
+			story: "Chị Lan muốn xếp hạng từng tuần của GDN nhưng vẫn thấy số form của tuần đó. GROUP BY sẽ gộp mất tuần.",
+			words: [["Hàm cửa sổ", "Tính trên một nhóm dòng nhưng giữ nguyên từng dòng, thêm một cột."], ["OVER", "Khai báo cửa sổ: xếp theo gì, chia nhóm theo gì."]],
+			problem: "GDN 3 tuần: 18, 17, 19 form. RANK() OVER (ORDER BY forms DESC) cho hạng nào mỗi tuần? GROUP BY cho bao nhiêu dòng?",
+			steps: [
+				["Xếp giảm dần", "19 (tuần 3), 18 (tuần 1), 17 (tuần 2)."],
+				["Gán hạng", "Tuần 3: hạng 1. Tuần 1: hạng 2. Tuần 2: hạng 3."],
+				["Bảng kết quả", "Vẫn 3 dòng: (1, 18, hạng 2), (2, 17, hạng 3), (3, 19, hạng 1)."],
+				["So với GROUP BY", "GROUP BY channel cho 1 dòng, mất từng tuần."]
+			],
+			say: "Hàm cửa sổ thêm cột hạng bên cạnh từng dòng, nên bạn thấy cả tuần và vị trí của nó. GROUP BY thì buộc bạn chọn: chi tiết hoặc tổng hợp, không cả hai.",
+			check: ["Hàm cửa sổ có thay đổi số dòng của bảng không?", "Không. Vẫn đúng 3 dòng, chỉ thêm một cột."]
+		},
+		en: {
+			story: "Ms. Lan wants to rank each GDN week yet still see that week's forms. GROUP BY would merge the weeks away.",
+			words: [["Window function", "Computes over a group of rows but keeps each row, adding a column."], ["OVER", "Declares the window: sorted by what, partitioned by what."]],
+			problem: "GDN over 3 weeks: 18, 17, 19 forms. What rank does RANK() OVER (ORDER BY forms DESC) give each week? How many rows does GROUP BY give?",
+			steps: [
+				["Sort descending", "19 (week 3), 18 (week 1), 17 (week 2)."],
+				["Assign ranks", "Week 3: rank 1. Week 1: rank 2. Week 2: rank 3."],
+				["Result table", "Still 3 rows: (1, 18, rank 2), (2, 17, rank 3), (3, 19, rank 1)."],
+				["Versus GROUP BY", "GROUP BY channel gives 1 row, losing the weeks."]
+			],
+			say: "A window function adds a rank column next to each row, so you see both the week and its position. GROUP BY forces a choice: detail or summary, not both.",
+			check: ["Does a window function change the number of rows in the table?", "No. Still exactly 3 rows, just one more column."]
+		}
+	},
+	"sql-rank": {
+		vi: {
+			story: "Sau chiến dịch, bốn tuần của một kênh có form 40, 40, 35, 30. Hai tuần hòa nhau và ba hàm xếp hạng đối xử với hòa khác nhau.",
+			words: [
+				["RANK", "Hòa cùng hạng, rồi nhảy số."],
+				["DENSE_RANK", "Hòa cùng hạng, không nhảy số."],
+				["ROW_NUMBER", "Luôn khác nhau, tự phá hòa."]
+			],
+			problem: "Form giảm dần: 40, 40, 35, 30. Viết hạng của mỗi tuần theo RANK, DENSE_RANK và ROW_NUMBER. Muốn «tuần tốt thứ hai» thì chọn hàm nào?",
+			steps: [
+				["RANK", "40 → 1, 40 → 1, 35 → 3, 30 → 4 (nhảy qua 2)."],
+				["DENSE_RANK", "40 → 1, 40 → 1, 35 → 2, 30 → 3."],
+				["ROW_NUMBER", "1, 2, 3, 4: hai tuần 40 được tách tùy ý."],
+				["Tuần tốt thứ hai", "Muốn mức form cao thứ hai (35) thì DENSE_RANK = 2. RANK không có hạng 2."]
+			],
+			say: "Chọn sai hàm cho tập hòa sẽ ra «tuần thứ hai» không tồn tại (RANK) hoặc bỏ một tuần 40 (ROW_NUMBER). Hãy hỏi trước: hòa thì tính sao.",
+			check: ["Có bao nhiêu dòng có RANK = 1?", "2 dòng (hai tuần 40 đều hạng 1)."]
+		},
+		en: {
+			story: "After the campaign, one channel's four weeks have forms 40, 40, 35, 30. Two weeks tie and the three ranking functions treat the tie differently.",
+			words: [
+				["RANK", "Ties share a rank, then the numbering jumps."],
+				["DENSE_RANK", "Ties share a rank, no jump."],
+				["ROW_NUMBER", "Always distinct, breaking ties arbitrarily."]
+			],
+			problem: "Forms descending: 40, 40, 35, 30. Write each week's rank by RANK, DENSE_RANK and ROW_NUMBER. To get the “second-best week” which function do you choose?",
+			steps: [
+				["RANK", "40 → 1, 40 → 1, 35 → 3, 30 → 4 (skips 2)."],
+				["DENSE_RANK", "40 → 1, 40 → 1, 35 → 2, 30 → 3."],
+				["ROW_NUMBER", "1, 2, 3, 4: the two 40-weeks are split arbitrarily."],
+				["Second-best week", "For the second-highest level (35) DENSE_RANK = 2. RANK has no rank 2."]
+			],
+			say: "Choosing the wrong function for a tied set gives a “second week” that does not exist (RANK) or drops one of the 40-weeks (ROW_NUMBER). Ask first: how are ties handled.",
+			check: ["How many rows have RANK = 1?", "2 rows (both 40-weeks are rank 1)."]
+		}
+	},
+	"sql-part": {
+		vi: {
+			story: "Bạn muốn tuần tốt nhất của từng kênh, không phải một bảng xếp hạng chung cho cả ba kênh.",
+			words: [["PARTITION BY", "Chia dòng thành nhóm, mỗi nhóm tự xếp hạng từ 1."]],
+			problem: "Form 3 tuần: GDN 18, 17, 19; Meta 20, 21, 20; TikTok 12, 12, 12. RANK() OVER (PARTITION BY channel ORDER BY forms DESC): hạng 1 của mỗi kênh là tuần nào?",
+			steps: [
+				["GDN", "Cao nhất 19: tuần 3 hạng 1."],
+				["Meta", "Cao nhất 21: tuần 2 hạng 1. Hai tuần 20 cùng hạng 2."],
+				["TikTok", "Cả ba tuần đều 12, hòa: cả ba cùng hạng 1."],
+				["Đếm hạng 1", "1 + 1 + 3 = 5 dòng hạng 1, không phải 3."]
+			],
+			say: "Mỗi kênh có hạng 1 riêng, nên không có chuyện «một tuần hạng 1 cả tài khoản». TikTok đều 12 mỗi tuần nên cả ba tuần là hạng 1. Bỏ PARTITION BY thì ba kênh trộn thành một bảng xếp hạng.",
+			check: ["Nếu bỏ PARTITION BY, hạng 1 duy nhất thuộc tuần nào?", "Meta tuần 2 (21 form, số cao nhất toàn bảng)."]
+		},
+		en: {
+			story: "You want each channel's best week, not one shared ranking across all three channels.",
+			words: [["PARTITION BY", "Split rows into groups, each group ranking itself from 1."]],
+			problem: "Forms over 3 weeks: GDN 18, 17, 19; Meta 20, 21, 20; TikTok 12, 12, 12. RANK() OVER (PARTITION BY channel ORDER BY forms DESC): which week is rank 1 for each channel?",
+			steps: [
+				["GDN", "Highest 19: week 3 is rank 1."],
+				["Meta", "Highest 21: week 2 is rank 1. The two 20-weeks tie at rank 2."],
+				["TikTok", "All three weeks are 12, tied: all three are rank 1."],
+				["Count rank-1 rows", "1 + 1 + 3 = 5 rank-1 rows, not 3."]
+			],
+			say: "Each channel has its own rank 1, so there is no “one rank-1 week for the whole account”. TikTok is 12 every week so all three weeks are rank 1. Drop PARTITION BY and the three channels blend into one ranking.",
+			check: ["If you drop PARTITION BY, which week holds the single rank 1?", "Meta week 2 (21 forms, the highest in the table)."]
+		}
+	},
+	"sql-frame": {
+		vi: {
+			story: "Bạn tính trung bình động 3 dòng gần nhất cho GDN, nhưng bảng thiếu tuần 2, và «3 dòng» không còn là «3 tuần».",
+			words: [["Khung (frame)", "Phạm vi dòng quanh dòng hiện tại mà hàm cửa sổ nhìn vào."], ["ROWS và RANGE", "ROWS đếm dòng, RANGE đếm theo giá trị (như số tuần)."]],
+			problem: "GDN có form các tuần 1, 3, 4 (tuần 2 thiếu): 18, 19, 20. AVG(forms) trên ROWS BETWEEN 2 PRECEDING AND CURRENT ROW tại tuần 4 là bao nhiêu và phủ mấy tuần lịch?",
+			steps: [
+				["Khung 3 dòng tại tuần 4", "Ba dòng: tuần 1, 3, 4."],
+				["Trung bình", "(18 + 19 + 20) ÷ 3 = 19."],
+				["Phủ bao nhiêu tuần lịch", "Từ tuần 1 đến tuần 4: 4 tuần, không phải 3."],
+				["Cách sửa", "Điền tuần 2 vào bảng (hoặc dùng RANGE theo số tuần) để «3 tuần» đúng nghĩa."]
+			],
+			say: "Con số 19 nhìn là trung bình 3 tuần nhưng thực ra gom 4 tuần lịch. Khung đếm dòng, không tự biết tuần vắng. Kiểm tra bảng đủ ngày trước khi dùng trung bình động.",
+			check: ["Với đủ 4 tuần (18, 17, 19, 20), trung bình 3 tuần tại tuần 4 là bao nhiêu?", "(17 + 19 + 20) ÷ 3 = 18,67."]
+		},
+		en: {
+			story: "You compute a moving average of the last 3 rows for GDN, but the table is missing week 2, and “3 rows” is no longer “3 weeks”.",
+			words: [["Frame", "The range of rows around the current row that the window function looks at."], ["ROWS versus RANGE", "ROWS counts rows, RANGE counts by value (such as week number)."]],
+			problem: "GDN has forms for weeks 1, 3, 4 (week 2 missing): 18, 19, 20. What is AVG(forms) over ROWS BETWEEN 2 PRECEDING AND CURRENT ROW at week 4, and how many calendar weeks does it cover?",
+			steps: [
+				["3-row frame at week 4", "Three rows: weeks 1, 3, 4."],
+				["Average", "(18 + 19 + 20) ÷ 3 = 19."],
+				["Calendar weeks covered", "From week 1 to week 4: 4 weeks, not 3."],
+				["Fix", "Fill week 2 into the table (or use RANGE by week number) so “3 weeks” means 3 weeks."]
+			],
+			say: "The number 19 looks like a 3-week average but actually gathers 4 calendar weeks. The frame counts rows and does not know about a missing week. Check the table is complete before using a moving average.",
+			check: ["With all 4 weeks (18, 17, 19, 20), what is the 3-week average at week 4?", "(17 + 19 + 20) ÷ 3 = 18.67."]
+		}
+	},
+	"sql-lag": {
+		vi: {
+			story: "Bạn muốn thay đổi form so với tuần trước của GDN. LAG lấy dòng trước, và nó chỉ là «tuần trước» nếu không thiếu tuần nào.",
+			words: [["LAG", "Lấy giá trị của dòng trước trong cửa sổ."], ["LEAD", "Lấy giá trị của dòng sau."]],
+			problem: "GDN tuần 1, 2, 3: 18, 17, 19. Tính forms − LAG(forms) mỗi tuần. Nếu tuần 2 bị thiếu thì tuần 3 thay đổi thế nào?",
+			steps: [
+				["LAG đủ tuần", "Tuần 1: NULL. Tuần 2: 18. Tuần 3: 17."],
+				["Thay đổi", "Tuần 1: không có. Tuần 2: 17 − 18 = −1. Tuần 3: 19 − 17 = +2."],
+				["Thiếu tuần 2", "Tuần 3 lấy dòng trước là tuần 1: 19 − 18 = +1."],
+				["Đọc", "+1 là thay đổi qua 2 tuần, bị gọi nhầm là thay đổi theo tuần."]
+			],
+			say: "Tuần đầu luôn là NULL vì chưa có dòng trước. Tuần vắng làm LAG nhìn xa hơn mà không báo. Với dữ liệu thiếu ngày, hãy nối với bảng lịch đầy đủ trước.",
+			check: ["LEAD(forms) tại tuần 2 (đủ tuần) là bao nhiêu?", "19, giá trị của tuần 3."]
+		},
+		en: {
+			story: "You want GDN's change in forms versus last week. LAG fetches the previous row, and it is only “last week” if no week is missing.",
+			words: [["LAG", "Fetches the previous row's value within the window."], ["LEAD", "Fetches the next row's value."]],
+			problem: "GDN weeks 1, 2, 3: 18, 17, 19. Compute forms − LAG(forms) each week. If week 2 is missing, how does week 3's change differ?",
+			steps: [
+				["LAG with all weeks", "Week 1: NULL. Week 2: 18. Week 3: 17."],
+				["Change", "Week 1: none. Week 2: 17 − 18 = −1. Week 3: 19 − 17 = +2."],
+				["Week 2 missing", "Week 3 takes the previous row, week 1: 19 − 18 = +1."],
+				["Read", "+1 is a change over 2 weeks, wrongly called a week-on-week change."]
+			],
+			say: "The first week is always NULL because no previous row exists. A missing week makes LAG look farther without warning. With missing dates, join to a complete calendar table first.",
+			check: ["What is LEAD(forms) at week 2 (all weeks present)?", "19, the value of week 3."]
+		}
+	},
+	"sql-nwin": {
+		vi: {
+			story: "Báo cáo cần tổng chạy và thay đổi so với tuần trước, cùng một cách chia kênh và xếp tuần. Bạn đặt tên cửa sổ một lần.",
+			words: [["WINDOW w AS (...)", "Đặt tên cho định nghĩa cửa sổ để nhiều hàm dùng chung."]],
+			problem: "GDN tuần 1, 2, 3: 18, 17, 19. Với WINDOW w AS (PARTITION BY channel ORDER BY week), tính SUM(forms) OVER w và LAG(forms) OVER w.",
+			steps: [
+				["Tổng chạy", "Tuần 1: 18. Tuần 2: 18 + 17 = 35. Tuần 3: 35 + 19 = 54."],
+				["LAG", "Tuần 1: NULL. Tuần 2: 18. Tuần 3: 17."],
+				["Vì sao đặt tên", "Hai hàm cùng dùng w, nên không thể lệch kênh hay thứ tự giữa hai cột."],
+				["Giới hạn", "Tên chỉ là tên. Nếu một hàm cần frame khác thì viết riêng cho hàm đó."]
+			],
+			say: "Đặt tên cửa sổ tránh sao chép định nghĩa và tránh lỗi lệch nhau giữa các cột. Kết quả vẫn giống hệt viết đầy đủ từng nơi, tên không đổi ý nghĩa.",
+			check: ["Tổng chạy tuần 3 của GDN là bao nhiêu và khớp với số nào đã biết?", "54, khớp tổng GDN 3 tuần."]
+		},
+		en: {
+			story: "The report needs a running total and the change from last week, with the same channel split and week order. You name the window once.",
+			words: [["WINDOW w AS (...)", "Gives a window definition a name so several functions share it."]],
+			problem: "GDN weeks 1, 2, 3: 18, 17, 19. With WINDOW w AS (PARTITION BY channel ORDER BY week), compute SUM(forms) OVER w and LAG(forms) OVER w.",
+			steps: [
+				["Running total", "Week 1: 18. Week 2: 18 + 17 = 35. Week 3: 35 + 19 = 54."],
+				["LAG", "Week 1: NULL. Week 2: 18. Week 3: 17."],
+				["Why name it", "Both functions use w, so the channel split and order cannot drift between the two columns."],
+				["Limit", "A name is only a name. If one function needs a different frame, write it separately for that function."]
+			],
+			say: "Naming the window avoids copying the definition and avoids drift between columns. The result is identical to writing it out in full each time; the name does not change the meaning.",
+			check: ["What is GDN's running total at week 3 and which known number does it match?", "54, matching GDN's 3-week total."]
+		}
+	},
+	"sql-case": {
+		vi: {
+			story: "Báo cáo chi tiêu cần ba bậc: thấp, vừa, cao. Bạn viết ngưỡng ngay trong câu truy vấn để mọi người cùng một luật.",
+			words: [["CASE WHEN", "Gán nhãn theo điều kiện, kiểm từ trên xuống, dừng ở điều kiện đúng đầu tiên."]],
+			problem: "Luật: dưới 5 triệu là «thấp», từ 5 đến dưới 20 triệu là «vừa», từ 20 trở lên là «cao». Chi tiêu tuần: TikTok 4, Meta 5, GDN 6. Gán bậc.",
+			steps: [
+				["TikTok 4", "4 < 5: «thấp»."],
+				["Meta 5", "5 < 5 sai, 5 < 20 đúng: «vừa». Mốc 5 thuộc bậc vừa."],
+				["GDN 6", "6 < 5 sai, 6 < 20 đúng: «vừa»."],
+				["Vì sao nên để trong CASE", "Tháng sau cùng ngưỡng nên cùng bậc. File xuất tay thì mỗi người một ngưỡng."]
+			],
+			say: "Con số đúng trên mốc là chỗ dễ sai: Meta chi đúng 5 nên rơi vào «vừa» chứ không phải «thấp». Viết luật vào CASE giúp số của tháng này và tháng sau so sánh được với nhau.",
+			check: ["Chi tiêu đúng 20 triệu thuộc bậc nào?", "«cao», vì luật «từ 20 trở lên»."]
+		},
+		en: {
+			story: "The spend report needs three tiers: low, mid, high. You write the thresholds inside the query so everyone follows the same rule.",
+			words: [["CASE WHEN", "Assigns a label by condition, checked top to bottom, stopping at the first true condition."]],
+			problem: "Rule: under 5 million is “low”, from 5 up to under 20 million is “mid”, 20 and above is “high”. Weekly spend: TikTok 4, Meta 5, GDN 6. Assign tiers.",
+			steps: [
+				["TikTok 4", "4 < 5: “low”."],
+				["Meta 5", "5 < 5 false, 5 < 20 true: “mid”. The boundary 5 belongs to mid."],
+				["GDN 6", "6 < 5 false, 6 < 20 true: “mid”."],
+				["Why keep it in CASE", "Next month uses the same threshold and so the same tier. A hand-made export gives each person their own threshold."]
+			],
+			say: "A value exactly on the boundary is where errors happen: Meta spends exactly 5 so it lands in “mid”, not “low”. Writing the rule into CASE keeps this month and next month comparable.",
+			check: ["Which tier is spend of exactly 20 million?", "“high”, since the rule says “20 and above”."]
+		}
+	},
+	"sql-proc": {
+		vi: {
+			story: "Mỗi cuối tuần bạn chạy một thủ tục «chốt tuần» để ghi tổng form vào bảng đã chốt. Chạy hai lần thì chuyện gì xảy ra?",
+			words: [["Thủ tục lưu sẵn", "Một kịch bản SQL đặt tên, có thể gồm cả SELECT lẫn INSERT, gọi bằng CALL."], ["Hàm (UDF)", "Trả về một giá trị, dùng trong câu truy vấn."]],
+			problem: "Thủ tục chốt tuần chèn 3 dòng (một dòng cho mỗi kênh) vào bảng weekly_closed. Gọi lần 1 rồi gọi lại lần 2 do nhầm. Bảng có bao nhiêu dòng và tổng form tuần 3 bằng bao nhiêu? (tuần 3: GDN 19, Meta 20, TikTok 12)",
+			steps: [
+				["Một lần gọi", "Chèn 3 dòng, tổng form tuần 3 = 19 + 20 + 12 = 51."],
+				["Gọi lần hai", "Chèn thêm 3 dòng cùng nội dung: 6 dòng."],
+				["Tổng sau lần hai", "2 × 51 = 102. Số liệu bị gấp đôi."],
+				["Cách bảo vệ", "Bắt đầu thủ tục bằng việc xóa hoặc kiểm tra tuần đã chốt, hoặc đặt khóa duy nhất (tuần, kênh)."]
+			],
+			say: "Thủ tục có tác động ghi, nên gọi lại không giống chạy lại một SELECT. Nó cũng giấu chi phí: câu truy vấn bên ngoài không cho thấy bên trong làm gì. Hãy thiết kế sao cho gọi hai lần vẫn đúng.",
+			check: ["Một view có chạy được INSERT khi truy vấn không?", "Không. View chỉ là một câu SELECT được lưu; thủ tục mới làm được việc ghi."]
+		},
+		en: {
+			story: "Every week-end you run a “close week” procedure that writes the form totals into a closed table. What happens if you run it twice?",
+			words: [["Stored procedure", "A named SQL script that can contain both SELECT and INSERT, called with CALL."], ["Function (UDF)", "Returns a single value, used inside a query."]],
+			problem: "The close-week procedure inserts 3 rows (one per channel) into weekly_closed. You call it once and then again by mistake. How many rows does the table have and what is week 3's total forms? (week 3: GDN 19, Meta 20, TikTok 12)",
+			steps: [
+				["One call", "Inserts 3 rows, week 3 total forms = 19 + 20 + 12 = 51."],
+				["Second call", "Inserts 3 more identical rows: 6 rows."],
+				["Total after the second call", "2 × 51 = 102. The figures are doubled."],
+				["Protection", "Start the procedure by deleting or checking the closed week, or set a unique key (week, channel)."]
+			],
+			say: "A procedure has a write effect, so calling it again is not like re-running a SELECT. It also hides cost: the outer query does not show what happens inside. Design it so a second call is still correct.",
+			check: ["Can a view run an INSERT when queried?", "No. A view is just a saved SELECT; a procedure is what can do the writing."]
+		}
+	},
+	"sql-cur": {
+		vi: {
+			story: "Chị Lan muốn gửi thư nhắc cho 121 hội viên bị công cụ gắn cờ. Gửi thư là tác động bên ngoài, khác hẳn việc cộng tổng form.",
+			words: [["Con trỏ (cursor)", "Đi từng dòng một trong kết quả để làm việc riêng với mỗi dòng."], ["Xử lý cả tập", "Một câu SQL làm cho mọi dòng cùng lúc."]],
+			problem: "Gắn cờ 121 hội viên (45 sắp rời + 76 báo nhầm). Việc A: gửi một thư cho từng người. Việc B: tính tổng form 3 kênh = 151. Việc nào cần con trỏ?",
+			steps: [
+				["Việc B", "Một câu SELECT SUM(forms) cho kết quả 151. Không cần vòng lặp."],
+				["Việc A", "Mỗi thư là một lệnh gửi riêng ra ngoài, nên vòng lặp 121 lần là hợp lý."],
+				["Chi phí", "Con trỏ chậm hơn câu tập hợp. Với 121 người thì nhỏ; với hàng triệu dòng thì chậm."],
+				["Thận trọng", "Nếu thư bị lỗi giữa chừng, có người đã nhận, có người chưa. Cần ghi lại ai đã gửi."]
+			],
+			say: "Chỉ dùng con trỏ khi mỗi dòng cần một tác động riêng mà SQL tập hợp không làm được. Tổng, trung bình, đếm đều là việc của một câu GROUP BY.",
+			check: ["Tính tổng form theo kênh có cần con trỏ không?", "Không. Một câu GROUP BY channel là đủ."]
+		},
+		en: {
+			story: "Ms. Lan wants to send a reminder to the 121 members flagged by the tool. Sending a message is an external action, quite unlike summing forms.",
+			words: [["Cursor", "Walks through a result one row at a time to do separate work for each row."], ["Set-based processing", "One SQL statement acting on all rows at once."]],
+			problem: "121 members flagged (45 about to leave + 76 false alarms). Job A: send one message to each person. Job B: compute total forms across 3 channels = 151. Which job needs a cursor?",
+			steps: [
+				["Job B", "One SELECT SUM(forms) gives 151. No loop needed."],
+				["Job A", "Each message is a separate send going outside, so a loop of 121 iterations is reasonable."],
+				["Cost", "A cursor is slower than a set statement. With 121 people it is small; with millions of rows it is slow."],
+				["Caution", "If sending fails halfway, some have received it and some have not. You need to record who was sent."]
+			],
+			say: "Use a cursor only when each row needs its own action that set-based SQL cannot do. Totals, averages and counts are all the job of one GROUP BY statement.",
+			check: ["Does computing total forms by channel need a cursor?", "No. One GROUP BY channel statement is enough."]
+		}
+	},
+	"sql-cte": {
+		vi: {
+			story: "Báo cáo cần tổng form từng tuần rồi lấy trung bình các tuần. Bạn đặt tên cho bước đầu để câu truy vấn đọc được.",
+			words: [["CTE (WITH)", "Đặt tên cho một câu con dùng ngay trong câu truy vấn đó."], ["View", "Một câu SELECT được lưu lại; mỗi lần gọi nó chạy lại trên dữ liệu hiện tại."]],
+			problem: "Tổng form theo tuần: tuần 1: 18 + 20 + 12 = 50; tuần 2: 17 + 21 + 12 = 50; tuần 3: 19 + 20 + 12 = 51. Dùng WITH tính trung bình các tổng tuần. Rồi nếu một form tuần 3 đến muộn, view và bản chép tay thay đổi thế nào?",
+			steps: [
+				["CTE", "WITH tong_tuan AS (SELECT week, SUM(forms) FROM weekly GROUP BY week): ra 50, 50, 51."],
+				["Câu ngoài", "Trung bình (50 + 50 + 51) ÷ 3 = 50,33."],
+				["Một form muộn", "Tuần 3 thành 52."],
+				["View", "Chạy lại trên dữ liệu hiện tại nên tuần 3 = 52."],
+				["Bản chép tay (bảng sao)", "Vẫn là 51 vì chụp tại thời điểm tạo."]
+			],
+			say: "CTE chỉ giúp đọc dễ hơn, không làm nhanh hơn hay đổi kết quả. View không phải bản sao: nó luôn thấy số mới nhất, còn bảng chép tay đóng băng ở lúc chép.",
+			check: ["View có lưu số liệu của tuần 3 ở thời điểm tạo không?", "Không. View chỉ lưu câu truy vấn, số liệu lấy lại mỗi lần gọi."]
+		},
+		en: {
+			story: "The report needs each week's form total and then the average of the weeks. You name the first step so the query reads clearly.",
+			words: [["CTE (WITH)", "Names a subquery used right within that query."], ["View", "A saved SELECT; each time it is called it re-runs on the current data."]],
+			problem: "Form totals by week: week 1: 18 + 20 + 12 = 50; week 2: 17 + 21 + 12 = 50; week 3: 19 + 20 + 12 = 51. Use WITH to average the weekly totals. Then if one week-3 form arrives late, how do a view and a hand copy change?",
+			steps: [
+				["CTE", "WITH week_total AS (SELECT week, SUM(forms) FROM weekly GROUP BY week): gives 50, 50, 51."],
+				["Outer query", "Average (50 + 50 + 51) ÷ 3 = 50.33."],
+				["A late form", "Week 3 becomes 52."],
+				["View", "Re-runs on the current data so week 3 = 52."],
+				["Hand copy (copied table)", "Still 51 because it was snapshotted at creation."]
+			],
+			say: "A CTE only helps readability; it does not speed things up or change the result. A view is not a copy: it always sees the latest numbers, while a hand-copied table freezes at the moment of copying.",
+			check: ["Does a view store week 3's figures as of its creation?", "No. A view stores only the query; figures are fetched anew each call."]
+		}
+	},
+	"sql-idx": {
+		vi: {
+			story: "Bảng form lớn dần lên 1.000.000 dòng và câu lọc theo campaign_id chậm. Bạn thêm chỉ mục, nhưng nó không sửa một lỗi nối dòng.",
+			words: [["Chỉ mục", "Cấu trúc tra cứu như mục lục, giúp tìm dòng theo cột mà không lật cả bảng."]],
+			problem: "Bảng có 1.000.000 dòng. Không chỉ mục, tìm campaign_id = 881 phải quét cả bảng. Có chỉ mục dạng cây nhị phân thì cần khoảng bao nhiêu bước? Chỉ mục có sửa lỗi nối nhân dòng 54 thành 108 không?",
+			steps: [
+				["Không chỉ mục", "Quét toàn bộ: tới 1.000.000 dòng."],
+				["Có chỉ mục", "log₂(1.000.000) ≈ 20 bước."],
+				["Tăng tốc", "1.000.000 ÷ 20 = 50.000 lần ít việc hơn."],
+				["Lỗi nối nhân dòng", "Chỉ mục chỉ tìm nhanh hơn. Nối với bảng giá có 2 dòng cùng mã vẫn cho 108, vẫn sai."],
+				["Giá phải trả", "Mỗi lần ghi phải cập nhật cả chỉ mục, nên ghi chậm hơn một chút."]
+			],
+			say: "Chỉ mục làm câu truy vấn nhanh hơn, không làm nó đúng hơn. Hãy sửa lỗi logic (khóa không duy nhất) trước, rồi mới tối ưu tốc độ.",
+			check: ["Chỉ mục có làm việc ghi (INSERT) nhanh hơn không?", "Không, thường chậm hơn một chút vì phải cập nhật thêm chỉ mục."]
+		},
+		en: {
+			story: "The form table grows to 1,000,000 rows and filtering by campaign_id is slow. You add an index, but it does not fix a row-multiplying join.",
+			words: [["Index", "A lookup structure like a table of contents, helping find rows by a column without flipping the whole table."]],
+			problem: "The table has 1,000,000 rows. Without an index, finding campaign_id = 881 means scanning the whole table. With a binary-tree index about how many steps? Does the index fix the join error that multiplies 54 into 108?",
+			steps: [
+				["No index", "Full scan: up to 1,000,000 rows."],
+				["With an index", "log₂(1,000,000) ≈ 20 steps."],
+				["Speed-up", "1,000,000 ÷ 20 = 50,000 times less work."],
+				["The multiplying join error", "An index only finds faster. Joining to a price table with 2 rows of the same code still gives 108, still wrong."],
+				["Price paid", "Every write must also update the index, so writing is a little slower."]
+			],
+			say: "An index makes a query faster, not more correct. Fix the logic error (non-unique key) first, then optimise speed.",
+			check: ["Does an index make writing (INSERT) faster?", "No, usually slightly slower since the index must also be updated."]
+		}
+	}
+};
+var visuals = {
+	"sql-star": {
+		kind: "table",
+		title: ["Bảng giữa: form theo tuần và kênh", "Middle table: forms by week and channel"],
+		head: [
+			["Kênh", "Channel"],
+			["Tuần 1", "Wk 1"],
+			["Tuần 2", "Wk 2"],
+			["Tuần 3", "Wk 3"],
+			["Tổng", "Total"]
+		],
+		rows: [
+			[
+				"GDN",
+				18,
+				17,
+				19,
+				54
+			],
+			[
+				"Meta",
+				20,
+				21,
+				20,
+				61
+			],
+			[
+				"TikTok",
+				12,
+				12,
+				12,
+				36
+			],
+			[
+				"Tổng / Total",
+				50,
+				50,
+				51,
+				151
+			]
+		],
+		mark: [[3, 4]]
+	},
+	"sql-key": {
+		kind: "bars",
+		title: ["Form theo chiến dịch (884 không có trong bảng chiến dịch)", "Forms by campaign (884 missing from the campaign table)"],
+		items: [
+			{
+				label: ["881", "881"],
+				value: 60
+			},
+			{
+				label: ["882", "882"],
+				value: 55
+			},
+			{
+				label: ["883", "883"],
+				value: 30
+			},
+			{
+				label: ["884", "884"],
+				value: 6
+			}
+		]
+	},
+	"sql-join": {
+		kind: "bars",
+		title: ["SUM(forms) của chiến dịch 881", "SUM(forms) for campaign 881"],
+		items: [{
+			label: ["Đúng", "Correct"],
+			value: 54
+		}, {
+			label: ["Sau JOIN lặp", "After duplicating JOIN"],
+			value: 108
+		}]
+	},
+	"sql-rank": {
+		kind: "table",
+		title: ["Ba hàm xếp hạng khi có hòa", "Three ranking functions with a tie"],
+		head: [
+			["Form", "Forms"],
+			["RANK", "RANK"],
+			["DENSE_RANK", "DENSE_RANK"],
+			["ROW_NUMBER", "ROW_NUMBER"]
+		],
+		rows: [
+			[
+				40,
+				1,
+				1,
+				1
+			],
+			[
+				40,
+				1,
+				1,
+				2
+			],
+			[
+				35,
+				3,
+				2,
+				3
+			],
+			[
+				30,
+				4,
+				3,
+				4
+			]
+		],
+		mark: [[2, 1], [2, 2]]
+	},
+	"sql-lag": {
+		kind: "table",
+		title: ["GDN: LAG và thay đổi theo tuần", "GDN: LAG and week-on-week change"],
+		head: [
+			["Tuần", "Week"],
+			["Form", "Forms"],
+			["LAG", "LAG"],
+			["Thay đổi", "Change"]
+		],
+		rows: [
+			[
+				1,
+				18,
+				"NULL",
+				"NULL"
+			],
+			[
+				2,
+				17,
+				18,
+				-1
+			],
+			[
+				3,
+				19,
+				17,
+				2
+			]
+		],
+		mark: [[0, 2]]
+	},
+	"sql-nwin": {
+		kind: "line",
+		title: ["Tổng chạy form GDN", "GDN running total of forms"],
+		xs: [
+			"1",
+			"2",
+			"3"
+		],
+		ys: [
+			18,
+			35,
+			54
+		]
+	},
+	"sql-cte": {
+		kind: "bars",
+		title: ["Tổng form theo tuần", "Total forms by week"],
+		items: [
+			{
+				label: ["Tuần 1", "Wk 1"],
+				value: 50
+			},
+			{
+				label: ["Tuần 2", "Wk 2"],
+				value: 50
+			},
+			{
+				label: ["Tuần 3", "Wk 3"],
+				value: 51
+			}
+		]
+	},
+	"sql-union": {
+		kind: "bars",
+		title: ["Số dòng sau khi xếp dọc", "Rows after stacking"],
+		items: [{
+			label: ["UNION ALL", "UNION ALL"],
+			value: 220
+		}, {
+			label: ["UNION", "UNION"],
+			value: 218
+		}]
+	}
+};
+var sqlWalks = Object.fromEntries(Object.entries(base).map(([id, w]) => [id, visuals[id] ? {
 	...w,
 	visual: visuals[id]
 } : w]));
@@ -15877,7 +16783,8 @@ var walks = {
 	...mathWalks,
 	...dsWalks,
 	...c2aWalks,
-	...c2bWalks
+	...c2bWalks,
+	...sqlWalks
 };
 /** Hình minh họa trong mục «Làm từng bước»: bảng tính, biểu đồ cột, biểu đồ đường. Dùng màu từ token của app. */
 function WalkVisual({ v, lang }) {

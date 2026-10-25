@@ -5,6 +5,7 @@ import { mathWalks } from "@/data/walk/math";
 import { dsWalks } from "@/data/walk/ds";
 import { c2aWalks } from "@/data/walk/c2a";
 import { c2bWalks } from "@/data/walk/c2b";
+import { sqlWalks } from "@/data/walk/sql";
 
 export type { Walk, WalkText, Visual, S };
-export const walks: Record<string, Walk> = { ...pilotWalks, ...c0Walks, ...c1Walks, ...mathWalks, ...dsWalks, ...c2aWalks, ...c2bWalks };
+export const walks: Record<string, Walk> = { ...pilotWalks, ...c0Walks, ...c1Walks, ...mathWalks, ...dsWalks, ...c2aWalks, ...c2bWalks, ...sqlWalks };
