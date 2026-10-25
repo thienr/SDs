@@ -2302,5 +2302,226 @@ export const asg: Assignment = {
     "trap": "Concluding from a single metric."
    }
   }
+ },
+ "results": {
+  "1.1": {
+   "code": "import pandas as pd, numpy as np, matplotlib.pyplot as plt, seaborn as sns\ndf = pd.read_csv('/tmp/asg/all/3/Employee_data.csv')\nprint(df.shape)\nprint(df.head(3).T.to_string())",
+   "text": "(74610, 24)\n                                           0                  1                    2\nEmployee ID                             8410              64756                30257\nAge                                       31                 59                   24\nGender                                  Male             Female               Female\nYears at Company                          19                  4                   10\nJob Role                           Education              Media           Healthcare\nMonthly Income                          5390               5534                 8159\nWork-Life Balance                  Excellent               Poor                 Good\nJob Satisfaction                      Medium               High                 High\nPerformance Rating                   Average                Low                  Low\nNumber of Promotions                       2                  3                    0\nOvertime                                  No                 No                   No\nDistance from Home                      22.0               21.0                 11.0\nEducation Level             Associate Degree  Masterâ€™s Degree  Bachelorâ€™s Degree\nMarital Status                       Married           Divorced              Married\nNumber of Dependents                       0                  3                    3\nJob Level                                Mid                Mid                  Mid\nCompany Size                          Medium             Medium               Medium\nCompany Tenure (In Months)              89.0               21.0                 74.0\nRemote Work                               No                 No                   No\nLeadership Opportunities                  No                 No                   No\nInnovation Opportunities                  No                 No                   No\nCompany Reputation                 Excellent               Fair                 Poor\nEmployee Recognition                  Medium                Low                  Low\nAttrition                             Stayed             Stayed               Stayed",
+   "imgs": []
+  },
+  "1.2": {
+   "code": "print(df.describe().round(1).T.to_string())",
+   "text": "                              count     mean      std     min      25%      50%      75%      max\nEmployee ID                 74610.0  37246.0  21505.8     1.0  18624.2  37239.5  55871.8  74498.0\nAge                         74610.0     38.5     12.1    18.0     28.0     39.0     49.0     59.0\nYears at Company            74610.0     15.7     11.2     1.0      7.0     13.0     23.0     51.0\nMonthly Income              74610.0   7344.9   2596.4  1226.0   5652.0   7348.5   8876.0  50030.0\nNumber of Promotions        74610.0      0.8      1.0     0.0      0.0      1.0      2.0      4.0\nDistance from Home          72698.0     50.0     28.5     1.0     25.0     50.0     75.0     99.0\nNumber of Dependents        74610.0      1.7      1.6     0.0      0.0      1.0      3.0     15.0\nCompany Tenure (In Months)  72197.0     55.7     25.4     2.0     36.0     56.0     76.0    128.0",
+   "imgs": []
+  },
+  "1.3": {
+   "code": "df.info()",
+   "text": "<class 'pandas.DataFrame'>\nRangeIndex: 74610 entries, 0 to 74609\nData columns (total 24 columns):\n #   Column                      Non-Null Count  Dtype  \n---  ------                      --------------  -----  \n 0   Employee ID                 74610 non-null  int64  \n 1   Age                         74610 non-null  int64  \n 2   Gender                      74610 non-null  str    \n 3   Years at Company            74610 non-null  int64  \n 4   Job Role                    74610 non-null  str    \n 5   Monthly Income              74610 non-null  int64  \n 6   Work-Life Balance           74610 non-null  str    \n 7   Job Satisfaction            74610 non-null  str    \n 8   Performance Rating          74610 non-null  str    \n 9   Number of Promotions        74610 non-null  int64  \n 10  Overtime                    74610 non-null  str    \n 11  Distance from Home          72698 non-null  float64\n 12  Education Level             74610 non-null  str    \n 13  Marital Status              74610 non-null  str    \n 14  Number of Dependents        74610 non-null  int64  \n 15  Job Level                   74610 non-null  str    \n 16  Company Size                74610 non-null  str    \n 17  Company Tenure (In Months)  72197 non-null  float64\n 18  Remote Work                 74610 non-null  str    \n 19  Leadership Opportunities    74610 non-null  str    \n 20  Innovation Opportunities    74610 non-null  str    \n 21  Company Reputation          74610 non-null  str    \n 22  Employee Recognition        74610 non-null  str    \n 23  Attrition                   74610 non-null  str    \ndtypes: float64(2), int64(6), str(16)\nmemory usage: 13.7 MB",
+   "imgs": []
+  },
+  "2.1.1": {
+   "code": "print(df.isnull().sum()[df.isnull().sum() > 0])",
+   "text": "Distance from Home            1912\nCompany Tenure (In Months)    2413\ndtype: int64",
+   "imgs": []
+  },
+  "2.1.2": {
+   "code": "print((df.isnull().mean() * 100).round(2)[df.isnull().sum() > 0])",
+   "text": "Distance from Home            2.56\nCompany Tenure (In Months)    3.23\ndtype: float64",
+   "imgs": []
+  },
+  "2.1.3": {
+   "code": "n0 = len(df)\ndf = df.dropna()\nprint(n0, '->', len(df))",
+   "text": "74610 -> 70635",
+   "imgs": []
+  },
+  "2.1.4": {
+   "code": "print(len(df), round(len(df) / n0 * 100, 2), '%')",
+   "text": "70635 94.67 %",
+   "imgs": []
+  },
+  "2.2": {
+   "code": "for c in df.select_dtypes(include='object').columns:\n    print(c, list(df[c].unique()))\ndf['Education Level'] = df['Education Level'].str.replace('â€™', \"'\")\nprint()\nprint(df['Education Level'].unique())",
+   "text": "Gender ['Male', 'Female']\nJob Role ['Education', 'Media', 'Healthcare', 'Technology', 'Finance']\nWork-Life Balance ['Excellent', 'Poor', 'Good', 'Fair']\nJob Satisfaction ['Medium', 'High', 'Very High', 'Low']\nPerformance Rating ['Average', 'Low', 'High', 'Below Average']\nOvertime ['No', 'Yes']\nEducation Level ['Associate Degree', 'Masterâ€™s Degree', 'Bachelorâ€™s Degree', 'High School', 'PhD']\nMarital Status ['Married', 'Divorced', 'Single']\nJob Level ['Mid', 'Senior', 'Entry']\nCompany Size ['Medium', 'Small', 'Large']\nRemote Work ['No', 'Yes']\nLeadership Opportunities ['No', 'Yes']\nInnovation Opportunities ['No', 'Yes']\nCompany Reputation ['Excellent', 'Fair', 'Poor', 'Good']\nEmployee Recognition ['Medium', 'Low', 'High', 'Very High']\nAttrition ['Stayed', 'Left']\n\n<StringArray>\n[ 'Associate Degree',   'Master's Degree', 'Bachelor's Degree',\n       'High School',               'PhD']\nLength: 5, dtype: str",
+   "imgs": []
+  },
+  "2.3": {
+   "code": "df = df.drop(columns=['Employee ID'])\nprint(df.shape)",
+   "text": "(70635, 23)",
+   "imgs": []
+  },
+  "3.2": {
+   "code": "y = df['Attrition']\nX = df.drop(columns=['Attrition'])\nprint(X.shape, y.shape)",
+   "text": "(70635, 22) (70635,)",
+   "imgs": []
+  },
+  "3.3": {
+   "code": "from sklearn.model_selection import train_test_split\nX_train, X_validation, y_train, y_validation = train_test_split(X, y, train_size=0.7, random_state=100)\nprint(len(X_train), len(X_validation))",
+   "text": "49444 21191",
+   "imgs": []
+  },
+  "4.1.1": {
+   "code": "num_cols = X_train.select_dtypes(include=['int64', 'float64']).columns\nprint(list(num_cols))",
+   "text": "['Age', 'Years at Company', 'Monthly Income', 'Number of Promotions', 'Distance from Home', 'Number of Dependents', 'Company Tenure (In Months)']",
+   "imgs": []
+  },
+  "4.1.2": {
+   "code": "X_train[num_cols].hist(bins=30, figsize=(14, 8)); plt.tight_layout()",
+   "text": "",
+   "imgs": [
+    "/assign/employee-retention/4_1_2-1.png"
+   ]
+  },
+  "4.2": {
+   "code": "plt.figure(figsize=(8, 6))\nsns.heatmap(X_train[num_cols].corr(), annot=True, fmt='.2f', cmap='coolwarm', center=0)",
+   "text": "",
+   "imgs": [
+    "/assign/employee-retention/4_2-1.png"
+   ]
+  },
+  "4.3": {
+   "code": "print(y_train.value_counts(normalize=True).round(3))\ny_train.value_counts().plot(kind='bar', color=['#2f6f5e', '#b5543c'])",
+   "text": "Attrition\nStayed    0.521\nLeft      0.479\nName: proportion, dtype: float64",
+   "imgs": [
+    "/assign/employee-retention/4_3-1.png"
+   ]
+  },
+  "4.4": {
+   "code": "cat_cols = X_train.select_dtypes(include='object').columns\nt = X_train.assign(Attrition=y_train)\nrate = {c: t.groupby(c)['Attrition'].apply(lambda s: (s == 'Left').mean()).round(3) for c in cat_cols}\ntop = ['Overtime', 'Marital Status', 'Job Level', 'Remote Work', 'Work-Life Balance', 'Job Satisfaction']\nfig, ax = plt.subplots(2, 3, figsize=(15, 8))\nfor a, c in zip(ax.ravel(), top):\n    rate[c].plot(kind='bar', ax=a, title=f'Tỷ lệ nghỉ theo {c}'); a.set_ylim(0, 1); a.axhline(0.479, color='r', ls='--')\nplt.tight_layout()\nfor c in top: print(c, rate[c].to_dict())",
+   "text": "Overtime {'No': 0.459, 'Yes': 0.52}\nMarital Status {'Divorced': 0.411, 'Married': 0.364, 'Single': 0.671}\nJob Level {'Entry': 0.639, 'Mid': 0.458, 'Senior': 0.202}\nRemote Work {'No': 0.528, 'Yes': 0.247}\nWork-Life Balance {'Excellent': 0.362, 'Fair': 0.577, 'Good': 0.408, 'Poor': 0.608}\nJob Satisfaction {'High': 0.454, 'Low': 0.533, 'Medium': 0.454, 'Very High': 0.535}",
+   "imgs": [
+    "/assign/employee-retention/4_4-1.png"
+   ]
+  },
+  "6.1.1": {
+   "code": "cat_cols = X_train.select_dtypes(include=['object']).columns\nprint(list(cat_cols))",
+   "text": "['Gender', 'Job Role', 'Work-Life Balance', 'Job Satisfaction', 'Performance Rating', 'Overtime', 'Education Level', 'Marital Status', 'Job Level', 'Company Size', 'Remote Work', 'Leadership Opportunities', 'Innovation Opportunities', 'Company Reputation', 'Employee Recognition']",
+   "imgs": []
+  },
+  "6.1.2": {
+   "code": "dummy_train = pd.get_dummies(X_train[cat_cols], drop_first=True, dtype=int)\nprint(dummy_train.shape)\nprint(dummy_train.head(3).T.head(12).to_string())",
+   "text": "(49444, 34)\n                                  1516   3352   59196\nGender_Male                           0      1      0\nJob Role_Finance                      0      0      0\nJob Role_Healthcare                   0      0      0\nJob Role_Media                        1      0      1\nJob Role_Technology                   0      1      0\nWork-Life Balance_Fair                0      0      0\nWork-Life Balance_Good                0      1      1\nWork-Life Balance_Poor                0      0      0\nJob Satisfaction_Low                  0      0      0\nJob Satisfaction_Medium               1      0      0\nJob Satisfaction_Very High            0      0      0\nPerformance Rating_Below Average      0      0      0",
+   "imgs": []
+  },
+  "6.1.3": {
+   "code": "dummy_val = pd.get_dummies(X_validation[cat_cols], drop_first=True, dtype=int)\ndummy_val = dummy_val.reindex(columns=dummy_train.columns, fill_value=0)\nprint(dummy_val.shape)",
+   "text": "(21191, 34)",
+   "imgs": []
+  },
+  "6.1.5": {
+   "code": "y_train_d = pd.get_dummies(pd.DataFrame(y_train), drop_first=True, dtype=int)\ny_val_d = pd.get_dummies(pd.DataFrame(y_validation), drop_first=True, dtype=int)\nprint(y_train_d.columns.tolist(), y_train_d.mean().round(3).tolist())",
+   "text": "['Attrition_Stayed'] [0.521]",
+   "imgs": []
+  },
+  "6.1.7": {
+   "code": "X_train = pd.concat([X_train.drop(columns=cat_cols), dummy_train], axis=1)\nX_validation = pd.concat([X_validation.drop(columns=cat_cols), dummy_val], axis=1)\nprint(X_train.shape, X_validation.shape)",
+   "text": "(49444, 41) (21191, 41)",
+   "imgs": []
+  },
+  "6.2.2": {
+   "code": "from sklearn.preprocessing import StandardScaler\nscaler = StandardScaler()\nX_train[num_cols] = scaler.fit_transform(X_train[num_cols])\nX_validation[num_cols] = scaler.transform(X_validation[num_cols])\nprint(X_train[num_cols].describe().loc[['mean', 'std']].round(2).to_string())",
+   "text": "      Age  Years at Company  Monthly Income  Number of Promotions  Distance from Home  Number of Dependents  Company Tenure (In Months)\nmean  0.0              -0.0            -0.0                  -0.0                -0.0                   0.0                         0.0\nstd   1.0               1.0             1.0                   1.0                 1.0                   1.0                         1.0",
+   "imgs": []
+  },
+  "7.1.2": {
+   "code": "from sklearn.linear_model import LogisticRegression\nfrom sklearn.feature_selection import RFE\nlogreg = LogisticRegression(max_iter=1000)\nrfe = RFE(estimator=logreg, n_features_to_select=15).fit(X_train, y_train_d.values.ravel())\ncol = X_train.columns[rfe.support_]\nfor c in col: print(c)",
+   "text": "Gender_Male\nWork-Life Balance_Fair\nWork-Life Balance_Poor\nJob Satisfaction_Low\nJob Satisfaction_Very High\nPerformance Rating_Below Average\nPerformance Rating_Low\nOvertime_Yes\nEducation Level_PhD\nMarital Status_Single\nJob Level_Mid\nJob Level_Senior\nRemote Work_Yes\nCompany Reputation_Fair\nCompany Reputation_Poor",
+   "imgs": []
+  },
+  "7.2.3": {
+   "code": "import statsmodels.api as sm\nX_train_rfe = X_train[col]\nX_train_sm = sm.add_constant(X_train_rfe)\nres = sm.GLM(y_train_d, X_train_sm, family=sm.families.Binomial()).fit()\nprint(res.summary().tables[1])",
+   "text": "====================================================================================================\n                                       coef    std err          z      P>|z|      [0.025      0.975]\n----------------------------------------------------------------------------------------------------\nconst                                0.2356      0.028      8.336      0.000       0.180       0.291\nGender_Male                          0.5738      0.022     25.875      0.000       0.530       0.617\nWork-Life Balance_Fair              -1.0572      0.025    -41.957      0.000      -1.107      -1.008\nWork-Life Balance_Poor              -1.2489      0.034    -37.262      0.000      -1.315      -1.183\nJob Satisfaction_Low                -0.4914      0.037    -13.282      0.000      -0.564      -0.419\nJob Satisfaction_Very High          -0.4829      0.028    -17.462      0.000      -0.537      -0.429\nPerformance Rating_Below Average    -0.3079      0.031    -10.012      0.000      -0.368      -0.248\nPerformance Rating_Low              -0.5673      0.051    -11.058      0.000      -0.668      -0.467\nOvertime_Yes                        -0.3286      0.023    -14.053      0.000      -0.374      -0.283\nEducation Level_PhD                  1.4826      0.055     27.084      0.000       1.375       1.590\nMarital Status_Single               -1.6887      0.025    -68.644      0.000      -1.737      -1.640\nJob Level_Mid                        0.9611      0.024     39.780      0.000       0.914       1.008\nJob Level_Senior                     2.5326      0.035     73.125      0.000       2.465       2.600\nRemote Work_Yes                      1.7154      0.032     53.379      0.000       1.652       1.778\nCompany Reputation_Fair             -0.5296      0.028    -18.633      0.000      -0.585      -0.474\nCompany Reputation_Poor             -0.7359      0.029    -25.758      0.000      -0.792      -0.680\n====================================================================================================",
+   "imgs": []
+  },
+  "7.2.4": {
+   "code": "from statsmodels.stats.outliers_influence import variance_inflation_factor\nvif = pd.DataFrame({'Feature': X_train_rfe.columns, 'VIF': [variance_inflation_factor(X_train_rfe.values, i) for i in range(X_train_rfe.shape[1])]})\nprint(vif.sort_values('VIF', ascending=False).round(2).to_string(index=False))",
+   "text": "                         Feature  VIF\n                Job Level_Senior 1.20\n                   Job Level_Mid 1.20\n          Work-Life Balance_Poor 1.08\n          Work-Life Balance_Fair 1.08\n         Company Reputation_Fair 1.07\n         Company Reputation_Poor 1.07\n            Job Satisfaction_Low 1.03\n      Job Satisfaction_Very High 1.03\n          Performance Rating_Low 1.01\nPerformance Rating_Below Average 1.01\n                    Overtime_Yes 1.00\n                     Gender_Male 1.00\n                 Remote Work_Yes 1.00\n           Marital Status_Single 1.00\n             Education Level_PhD 1.00",
+   "imgs": []
+  },
+  "7.2.8": {
+   "code": "from sklearn import metrics\nyp = res.predict(X_train_sm)\ntr = pd.DataFrame({'Stayed': y_train_d.values.reshape(-1), 'Stayed_Prob': yp.values.reshape(-1)})\ntr['Predicted'] = tr['Stayed_Prob'].map(lambda x: 1 if x > 0.5 else 0)\nprint(tr.head(8).round(3).to_string())",
+   "text": "   Stayed  Stayed_Prob  Predicted\n0       1        0.377          0\n1       1        0.943          1\n2       0        0.768          1\n3       0        0.437          0\n4       0        0.803          1\n5       0        0.021          0\n6       0        0.581          1\n7       1        0.806          1",
+   "imgs": []
+  },
+  "7.2.9": {
+   "code": "print('accuracy', round(metrics.accuracy_score(tr['Stayed'], tr['Predicted']), 4))",
+   "text": "accuracy 0.7387",
+   "imgs": []
+  },
+  "7.2.10": {
+   "code": "confusion = metrics.confusion_matrix(tr['Stayed'], tr['Predicted'])\nprint(pd.DataFrame(confusion, index=['thực: nghỉ', 'thực: ở'], columns=['đoán: nghỉ', 'đoán: ở']))",
+   "text": "            đoán: nghỉ  đoán: ở\nthực: nghỉ       17104     6559\nthực: ở           6359    19422",
+   "imgs": []
+  },
+  "7.2.11": {
+   "code": "TN, FP, FN, TP = confusion.ravel()\nprint('TP', TP, 'TN', TN, 'FP', FP, 'FN', FN)",
+   "text": "TP 19422 TN 17104 FP 6559 FN 6359",
+   "imgs": []
+  },
+  "7.2.12": {
+   "code": "sensitivity = TP / (TP + FN); specificity = TN / (TN + FP)\nprint('sensitivity', round(sensitivity, 3), '| specificity', round(specificity, 3))",
+   "text": "sensitivity 0.753 | specificity 0.723",
+   "imgs": []
+  },
+  "7.2.13": {
+   "code": "precision = TP / (TP + FP); recall = TP / (TP + FN)\nprint('precision', round(precision, 3), '| recall', round(recall, 3))",
+   "text": "precision 0.748 | recall 0.753",
+   "imgs": []
+  },
+  "7.3.1": {
+   "code": "fpr, tpr, thr = metrics.roc_curve(tr['Stayed'], tr['Stayed_Prob'], drop_intermediate=False)\nauc = metrics.roc_auc_score(tr['Stayed'], tr['Stayed_Prob'])\nplt.plot(fpr, tpr, label=f'AUC = {auc:.3f}'); plt.plot([0, 1], [0, 1], 'k--')\nplt.xlabel('FPR'); plt.ylabel('TPR'); plt.legend(); plt.title('ROC (train)')",
+   "text": "",
+   "imgs": [
+    "/assign/employee-retention/7_3_1-1.png"
+   ]
+  },
+  "7.3.3": {
+   "code": "numbers = [x / 10 for x in range(10)]\nfor i in numbers: tr[i] = tr['Stayed_Prob'].map(lambda x: 1 if x > i else 0)\nrows = []\nfor i in numbers:\n    tn, fp, fn, tp = metrics.confusion_matrix(tr['Stayed'], tr[i]).ravel()\n    rows.append([i, (tp + tn) / (tp + tn + fp + fn), tp / (tp + fn), tn / (tn + fp)])\ncutoff_df = pd.DataFrame(rows, columns=['prob', 'accuracy', 'sensi', 'speci'])\ncutoff_df.plot.line(x='prob', y=['accuracy', 'sensi', 'speci'])\nprint(cutoff_df.round(3).to_string(index=False))",
+   "text": " prob  accuracy  sensi  speci\n  0.0     0.521  1.000  0.000\n  0.1     0.587  0.995  0.144\n  0.2     0.659  0.961  0.330\n  0.3     0.704  0.910  0.480\n  0.4     0.731  0.839  0.613\n  0.5     0.739  0.753  0.723\n  0.6     0.729  0.644  0.822\n  0.7     0.705  0.528  0.898\n  0.8     0.660  0.388  0.958\n  0.9     0.588  0.216  0.993",
+   "imgs": [
+    "/assign/employee-retention/7_3_3-1.png"
+   ]
+  },
+  "7.3.4": {
+   "code": "cutoff = 0.5\ntr['final_predicted'] = tr['Stayed_Prob'].map(lambda x: 1 if x > cutoff else 0)\nprint('cutoff', cutoff)",
+   "text": "cutoff 0.5",
+   "imgs": []
+  },
+  "7.3.6": {
+   "code": "c2 = metrics.confusion_matrix(tr['Stayed'], tr['final_predicted'])\nprint('accuracy', round(metrics.accuracy_score(tr['Stayed'], tr['final_predicted']), 4))\nprint(c2)",
+   "text": "accuracy 0.7387\n[[17104  6559]\n [ 6359 19422]]",
+   "imgs": []
+  },
+  "7.3.10": {
+   "code": "from sklearn.metrics import precision_recall_curve\np, r, t = precision_recall_curve(tr['Stayed'], tr['Stayed_Prob'])\nplt.plot(t, p[:-1], 'g', label='precision'); plt.plot(t, r[:-1], 'r', label='recall'); plt.legend(); plt.xlabel('ngưỡng')",
+   "text": "",
+   "imgs": [
+    "/assign/employee-retention/7_3_10-1.png"
+   ]
+  },
+  "8.1.5": {
+   "code": "X_validation_sm = sm.add_constant(X_validation[col])\npv = res.predict(X_validation_sm)\nva = pd.DataFrame({'Stayed': y_val_d.values.reshape(-1), 'Stayed_Prob': pv.values.reshape(-1)})\nva['final_predicted'] = va['Stayed_Prob'].map(lambda x: 1 if x > cutoff else 0)\nprint(va.head(6).round(3).to_string())",
+   "text": "   Stayed  Stayed_Prob  final_predicted\n0       1        0.908                1\n1       1        0.941                1\n2       1        0.237                0\n3       1        0.570                1\n4       0        0.126                0\n5       1        0.555                1",
+   "imgs": []
+  },
+  "8.2": {
+   "code": "print('accuracy validation', round(metrics.accuracy_score(va['Stayed'], va['final_predicted']), 4), '| train', round(metrics.accuracy_score(tr['Stayed'], tr['final_predicted']), 4))",
+   "text": "accuracy validation 0.7357 | train 0.7387",
+   "imgs": []
+  },
+  "8.3": {
+   "code": "cm_val = metrics.confusion_matrix(va['Stayed'], va['final_predicted'])\nTN, FP, FN, TP = cm_val.ravel()\nprint(pd.DataFrame(cm_val, index=['thực: nghỉ', 'thực: ở'], columns=['đoán: nghỉ', 'đoán: ở']))",
+   "text": "            đoán: nghỉ  đoán: ở\nthực: nghỉ        7357     2805\nthực: ở           2796     8233",
+   "imgs": []
+  },
+  "8.4": {
+   "code": "print('sensitivity', round(TP / (TP + FN), 3), '| specificity', round(TN / (TN + FP), 3))",
+   "text": "sensitivity 0.746 | specificity 0.724",
+   "imgs": []
+  },
+  "8.5": {
+   "code": "print('precision', round(TP / (TP + FP), 3), '| recall', round(TP / (TP + FN), 3))",
+   "text": "precision 0.746 | recall 0.746",
+   "imgs": []
+  }
  }
 };
