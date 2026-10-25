@@ -1,10 +1,10 @@
 import { o as __toESM } from "../_runtime.mjs";
 import { J as require_react, S as require_jsx_runtime, b as Link } from "../_libs/@tanstack/react-router+[...].mjs";
-import { A as studyCopy, B as subscribeRaw, F as getRawVersion, I as getServerRawVersion, M as studyNeighbors, O as subscribeProgress, b as getServerProgress, j as studyListTitle, k as getStudy, r as Route$1, y as getProgress } from "./router-BnVwRUcb.mjs";
-import { n as Range, r as Sim, t as Lab } from "./labs-B8Vl0uWk.mjs";
+import { A as studyCopy, B as subscribeRaw, F as getRawVersion, I as getServerRawVersion, M as studyNeighbors, O as subscribeProgress, b as getServerProgress, j as studyListTitle, k as getStudy, r as Route$1, y as getProgress } from "./router-BKWLIbEa.mjs";
+import { n as Range, r as Sim, t as Lab } from "./labs-aUcU9feF.mjs";
 import { t as Tex } from "./tex-t3KOuum9.mjs";
-import { o as relatedOf } from "./map-BUOzIAst.mjs";
-//#region node_modules/.nitro/vite/services/ssr/assets/khai-niem._conceptId-DQVD3f_G.js
+import { o as relatedOf } from "./map-CdqxUwPF.mjs";
+//#region node_modules/.nitro/vite/services/ssr/assets/khai-niem._conceptId-Do6OpDBW.js
 var import_react = /* @__PURE__ */ __toESM(require_react());
 var import_jsx_runtime = require_jsx_runtime();
 var ui$1 = {
@@ -23350,6 +23350,9 @@ var text = {
 		code: "Khung code gợi ý",
 		result: "Kết quả chạy trên file của bạn",
 		ran: "Code đã chạy (xem thêm)",
+		read: "Cách đọc kết quả này",
+		remark: "Nhận xét mẫu",
+		howRemark: "Cách tự viết nhận xét",
 		lotus: "Ở Lotus Spa",
 		trap: "Dễ sai ở đâu",
 		rule: "Starter không bị đổi nội dung hay thứ tự. Khung bên dưới mỗi mục chỉ là phần đi kèm, nên mở lại file bài tập cũ vẫn khớp từng ô.",
@@ -23365,6 +23368,9 @@ var text = {
 		code: "Suggested code skeleton",
 		result: "Result on your file",
 		ran: "Code that ran (optional)",
+		read: "How to read this result",
+		remark: "Sample remark",
+		howRemark: "How to write your own remark",
 		lotus: "At Lotus Spa",
 		trap: "Where it goes wrong",
 		rule: "The starter is never changed in content or order. The box under each task is only a companion, so reopening an old assignment file still matches cell by cell.",
@@ -23546,6 +23552,42 @@ function GuideBox({ g, r, t }) {
 					className: "mt-1 overflow-x-auto rounded-xl bg-paper p-3 text-sm",
 					children: g.code
 				})] }),
+				g.read?.length ? /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+					className: "mt-4",
+					children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("h4", {
+						className: "text-sm font-medium",
+						children: t.read
+					}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("ul", {
+						className: "mt-2 list-disc space-y-1 pl-5",
+						children: g.read.map((s, i) => /* @__PURE__ */ (0, import_jsx_runtime.jsx)("li", {
+							className: "leading-relaxed",
+							children: s
+						}, i))
+					})]
+				}) : null,
+				g.remark ? /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+					className: "mt-4 rounded-xl border border-line p-3",
+					children: [
+						/* @__PURE__ */ (0, import_jsx_runtime.jsx)("h4", {
+							className: "text-sm font-medium",
+							children: t.remark
+						}),
+						/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+							className: "mt-1 leading-relaxed",
+							children: g.remark
+						}),
+						g.howRemark?.length ? /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(import_jsx_runtime.Fragment, { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("h4", {
+							className: "mt-3 text-sm font-medium",
+							children: t.howRemark
+						}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("ol", {
+							className: "mt-1 list-decimal space-y-1 pl-5",
+							children: g.howRemark.map((s, i) => /* @__PURE__ */ (0, import_jsx_runtime.jsx)("li", {
+								className: "leading-relaxed",
+								children: s
+							}, i))
+						})] }) : null
+					]
+				}) : null,
 				/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
 					className: "mt-4 rounded-xl border-l-4 border-accent bg-paper p-3",
 					children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
@@ -33117,7 +33159,18 @@ var assignments = [
 					],
 					"code": "import pandas as pd, numpy as np, matplotlib.pyplot as plt, seaborn as sns\nx = pd.read_excel('/tmp/asg/all/4/Dataset and Starter Resources/nammayatri.xlsx', sheet_name=None)\ntd, tr, du, asm, pay = x['Trip_Details'], x['Trips'], x['Duration'], x['Assembly'], x['Payment']\nfor k, v in x.items(): print(f'{k:13s}', v.shape)\n# nối: Trips (983 chuyến hoàn thành) <- Trip_Details theo tripid; mã giờ, mã thanh toán, mã khu\ndf = (td.merge(tr.drop(columns='loc_from'), on='tripid', how='left')\n        .merge(du.rename(columns={'id': 'duration', 'duration': 'hour_slot'}), on='duration', how='left')\n        .merge(pay.rename(columns={'id': 'faremethod', 'method': 'payment'}), on='faremethod', how='left')\n        .merge(asm.rename(columns={'ID': 'loc_from', 'Assembly': 'pickup_zone'}), on='loc_from', how='left')\n        .merge(asm.rename(columns={'ID': 'loc_to', 'Assembly': 'drop_zone'}), on='loc_to', how='left'))\nprint(df.shape)\nprint(df.loc[df['end_ride'] == 1, ['tripid', 'pickup_zone', 'drop_zone', 'payment', 'fare', 'distance', 'hour_slot']].head(5).to_string(index=False))",
 					"lotus": "Như ghép sổ booking (mọi yêu cầu đặt lịch) với sổ hoá đơn (chỉ những lượt đã làm xong), rồi thay mã chi nhánh/phương thức thanh toán bằng tên cho dễ đọc.",
-					"trap": "Dùng inner join: bạn mất hơn 1.100 yêu cầu bị huỷ và mọi tỷ lệ huỷ sau đó sai."
+					"trap": "Dùng inner join: bạn mất hơn 1.100 yêu cầu bị huỷ và mọi tỷ lệ huỷ sau đó sai.",
+					"read": [
+						"Dòng đầu in kích thước từng bảng: Trip_Details 2.161 dòng, Trips 983 dòng, ba bảng mã nhỏ (24, 37, 4 dòng).",
+						"Dòng «(2161, 21)» là bảng sau khi nối: số dòng không đổi nghĩa là left join không làm mất hay nhân đôi yêu cầu nào.",
+						"Năm dòng mẫu cho thấy mã đã thành chữ: nhìn cột pickup_zone, drop_zone, payment thay vì số."
+					],
+					"remark": "Sau khi nối còn nguyên 2.161 dòng nên không mất yêu cầu nào; 21 cột gồm cả thông tin tìm kiếm lẫn thông tin chuyến, và các mã đã đổi thành tên khu, giờ, cách thanh toán.",
+					"howRemark": [
+						"Số dòng sau nối phải bằng số dòng bảng gốc (2.161).",
+						"Mở vài dòng mẫu và kiểm tra tên đã thay mã đúng chưa.",
+						"Viết một câu: nối theo khoá nào, kiểu join gì, vì sao."
+					]
 				},
 				"en": {
 					"think": "Merge five tables into one flat table so every later task reads from a single place.",
@@ -33129,7 +33182,18 @@ var assignments = [
 					],
 					"code": "import pandas as pd, numpy as np, matplotlib.pyplot as plt, seaborn as sns\nx = pd.read_excel('/tmp/asg/all/4/Dataset and Starter Resources/nammayatri.xlsx', sheet_name=None)\ntd, tr, du, asm, pay = x['Trip_Details'], x['Trips'], x['Duration'], x['Assembly'], x['Payment']\nfor k, v in x.items(): print(f'{k:13s}', v.shape)\n# nối: Trips (983 chuyến hoàn thành) <- Trip_Details theo tripid; mã giờ, mã thanh toán, mã khu\ndf = (td.merge(tr.drop(columns='loc_from'), on='tripid', how='left')\n        .merge(du.rename(columns={'id': 'duration', 'duration': 'hour_slot'}), on='duration', how='left')\n        .merge(pay.rename(columns={'id': 'faremethod', 'method': 'payment'}), on='faremethod', how='left')\n        .merge(asm.rename(columns={'ID': 'loc_from', 'Assembly': 'pickup_zone'}), on='loc_from', how='left')\n        .merge(asm.rename(columns={'ID': 'loc_to', 'Assembly': 'drop_zone'}), on='loc_to', how='left'))\nprint(df.shape)\nprint(df.loc[df['end_ride'] == 1, ['tripid', 'pickup_zone', 'drop_zone', 'payment', 'fare', 'distance', 'hour_slot']].head(5).to_string(index=False))",
 					"lotus": "Like joining the booking log (every request) with the invoice log (only finished sessions), then replacing branch/payment codes with names.",
-					"trap": "An inner join drops 1,100+ cancelled requests and every cancellation rate afterwards is wrong."
+					"trap": "An inner join drops 1,100+ cancelled requests and every cancellation rate afterwards is wrong.",
+					"read": [
+						"The first lines print each table's shape: Trip_Details 2,161 rows, Trips 983, three small code tables (24, 37, 4 rows).",
+						"“(2161, 21)” is the joined table: same row count means the left join lost or duplicated no request.",
+						"Five sample rows show codes turned into words: look at pickup_zone, drop_zone, payment instead of numbers."
+					],
+					"remark": "After the join all 2,161 rows remain, so no request was lost; the 21 columns hold both search and trip info, with codes replaced by zone, hour and payment names.",
+					"howRemark": [
+						"Row count after the join must equal the base table (2,161).",
+						"Open a few sample rows and check names replaced the codes correctly.",
+						"Write one sentence: which key, which join type, why."
+					]
 				}
 			},
 			"1.2": {
@@ -33144,7 +33208,19 @@ var assignments = [
 					],
 					"code": "print('ô trống từng bảng:', {k: int(v.isna().sum().sum()) for k, v in x.items()}, '| dòng trùng:', {k: int(v.duplicated().sum()) for k, v in x.items()})\nprint('tripid là duy nhất:', td.tripid.is_unique, tr.tripid.is_unique, '| mọi chuyến của Trips có trong Trip_Details:', set(tr.tripid) <= set(td.tripid))\nprint('chuyến hoàn thành (end_ride=1):', int(td.end_ride.sum()), '= số dòng Trips:', len(tr))\n# kiểm tra logic: chuyến hoàn thành mà bị huỷ?\ndone = df[df.end_ride == 1]\nprint('hoàn thành nhưng khách huỷ:', int((done.customer_not_cancelled == 0).sum()), '| tài xế huỷ:', int((done.driver_not_cancelled == 0).sum()))\nprint('chuyến chưa hoàn thành có fare:', int(df[df.end_ride == 0].fare.notna().sum()))\nprint('khu xuất phát = Other Assemblies:', int((df.pickup_zone == 'Other Assemblies').sum()))\ndf['hour'] = df['duration'] - 1\ndf['period'] = pd.cut(df['hour'], [-1, 5, 11, 17, 23], labels=['Đêm 0-6h', 'Sáng 6-12h', 'Chiều 12-18h', 'Tối 18-24h'])\nprint(df.loc[df.end_ride == 1, 'period'].value_counts().sort_index().to_string())",
 					"lotus": "Như đối chiếu sổ trước khi chốt tháng: không dòng trống, không hoá đơn trùng, mọi hoá đơn đều có booking tương ứng.",
-					"trap": "Giữ «Other Assemblies» trong bảng xếp hạng khu rồi kết luận đó là khu tốt nhất."
+					"trap": "Giữ «Other Assemblies» trong bảng xếp hạng khu rồi kết luận đó là khu tốt nhất.",
+					"read": [
+						"Hai dòng đầu: toàn bộ giá trị 0 nghĩa là không ô trống, không dòng trùng.",
+						"«983 = 983» là phép đối chiếu: số chuyến hoàn thành khớp số dòng Trips.",
+						"Các số 0 ở «hoàn thành nhưng bị huỷ» là bằng chứng dữ liệu không mâu thuẫn.",
+						"Bảng cuối là số chuyến của 4 khung giờ, gần bằng nhau."
+					],
+					"remark": "Dữ liệu sạch: không trống, không trùng, các cờ nhất quán (983 chuyến hoàn thành đều không bị huỷ). Chỉ cần lưu ý nhóm «Other Assemblies» gồm 70 yêu cầu, và mỗi khung giờ có 231–258 chuyến.",
+					"howRemark": [
+						"Báo từng loại kiểm tra và kết quả (số dòng trống, trùng, mâu thuẫn).",
+						"Nếu có điểm cần xử lý, nói bạn đã xử lý thế nào và vì sao.",
+						"Nếu không có lỗi, vẫn viết rõ đã kiểm tra những gì."
+					]
 				},
 				"en": {
 					"think": "Check that the data is clean and logical before analysing.",
@@ -33157,7 +33233,19 @@ var assignments = [
 					],
 					"code": "print('ô trống từng bảng:', {k: int(v.isna().sum().sum()) for k, v in x.items()}, '| dòng trùng:', {k: int(v.duplicated().sum()) for k, v in x.items()})\nprint('tripid là duy nhất:', td.tripid.is_unique, tr.tripid.is_unique, '| mọi chuyến của Trips có trong Trip_Details:', set(tr.tripid) <= set(td.tripid))\nprint('chuyến hoàn thành (end_ride=1):', int(td.end_ride.sum()), '= số dòng Trips:', len(tr))\n# kiểm tra logic: chuyến hoàn thành mà bị huỷ?\ndone = df[df.end_ride == 1]\nprint('hoàn thành nhưng khách huỷ:', int((done.customer_not_cancelled == 0).sum()), '| tài xế huỷ:', int((done.driver_not_cancelled == 0).sum()))\nprint('chuyến chưa hoàn thành có fare:', int(df[df.end_ride == 0].fare.notna().sum()))\nprint('khu xuất phát = Other Assemblies:', int((df.pickup_zone == 'Other Assemblies').sum()))\ndf['hour'] = df['duration'] - 1\ndf['period'] = pd.cut(df['hour'], [-1, 5, 11, 17, 23], labels=['Đêm 0-6h', 'Sáng 6-12h', 'Chiều 12-18h', 'Tối 18-24h'])\nprint(df.loc[df.end_ride == 1, 'period'].value_counts().sort_index().to_string())",
 					"lotus": "Like reconciling the books before month end: no blank lines, no duplicate invoices, every invoice has a booking.",
-					"trap": "Leaving “Other Assemblies” in a zone ranking and calling it the best zone."
+					"trap": "Leaving “Other Assemblies” in a zone ranking and calling it the best zone.",
+					"read": [
+						"The first two lines: all zeros mean no blanks and no duplicates.",
+						"“983 = 983” is a reconciliation: completed rides match the Trips row count.",
+						"Zeros under “completed but cancelled” prove the data does not contradict itself.",
+						"The last table is ride counts for the 4 periods, close to each other."
+					],
+					"remark": "Data is clean: no blanks, no duplicates, flags consistent (all 983 completed rides were uncancelled). One note: “Other Assemblies” bundles 70 requests, and each period has 231–258 rides.",
+					"howRemark": [
+						"Report each check and its result (blank, duplicate, contradiction counts).",
+						"If something needed fixing, say how you fixed it and why.",
+						"If no errors, still state what you checked."
+					]
 				}
 			},
 			"2.1": {
@@ -33171,7 +33259,18 @@ var assignments = [
 					],
 					"code": "cat = ['pickup_zone', 'drop_zone', 'payment', 'hour_slot', 'driverid', 'custid', 'tripid']\nnum = ['fare', 'distance', 'searches', 'searches_got_estimate', 'searches_for_quotes', 'searches_got_quotes', 'customer_not_cancelled', 'driver_not_cancelled', 'otp_entered', 'end_ride']\nprint('Phân loại (categorical):', cat); print('Số (numerical):', num)\nprint(df[['fare', 'distance']].describe().round(1).to_string())",
 					"lotus": "Mã khách hàng giống số thẻ thành viên: là số nhưng không ai đi tính trung bình thẻ thành viên.",
-					"trap": "Thấy cột là số nên cho là numerical, rồi tính trung bình mã tài xế."
+					"trap": "Thấy cột là số nên cho là numerical, rồi tính trung bình mã tài xế.",
+					"read": [
+						"Hai dòng đầu liệt kê các cột theo loại; kiểm tra mỗi cột nằm đúng một nhóm.",
+						"Bảng describe chỉ có ý nghĩa với cột số: đọc count, mean, min, max.",
+						"fare chạy 44–1.500 và distance 2–27 km, nên không có giá trị âm hay phi lý."
+					],
+					"remark": "Có 7 cột phân loại và 10 cột số. Cước trung bình 764, quãng đường trung bình 14,4 km, trung vị gần bằng trung bình nên phân bố khá cân.",
+					"howRemark": [
+						"Giải thích lý do cho các cột dễ nhầm (mã tài xế, mã khách là số nhưng là nhãn).",
+						"Dùng mean và median để nói phân bố lệch hay cân.",
+						"Dùng min, max để xác nhận không có giá trị vô lý."
+					]
 				},
 				"en": {
 					"think": "Split columns into categorical (labels) and numerical (measurable).",
@@ -33183,7 +33282,18 @@ var assignments = [
 					],
 					"code": "cat = ['pickup_zone', 'drop_zone', 'payment', 'hour_slot', 'driverid', 'custid', 'tripid']\nnum = ['fare', 'distance', 'searches', 'searches_got_estimate', 'searches_for_quotes', 'searches_got_quotes', 'customer_not_cancelled', 'driver_not_cancelled', 'otp_entered', 'end_ride']\nprint('Phân loại (categorical):', cat); print('Số (numerical):', num)\nprint(df[['fare', 'distance']].describe().round(1).to_string())",
 					"lotus": "A customer id is like a membership card number: numeric, but nobody averages card numbers.",
-					"trap": "Treating any numeric-looking column as numerical and averaging driver ids."
+					"trap": "Treating any numeric-looking column as numerical and averaging driver ids.",
+					"read": [
+						"The first two lines list columns by type; check each sits in exactly one group.",
+						"describe() only makes sense for numeric columns: read count, mean, min, max.",
+						"fare spans 44–1,500 and distance 2–27 km, so no negative or absurd values."
+					],
+					"remark": "There are 7 categorical and 10 numerical columns. Mean fare is 764 and mean distance 14.4 km; median is close to mean so the distribution is fairly balanced.",
+					"howRemark": [
+						"Justify the tricky columns (driver id, customer id are numbers but labels).",
+						"Use mean vs median to say whether the distribution is skewed.",
+						"Use min and max to confirm there are no absurd values."
+					]
 				}
 			},
 			"2.2": {
@@ -33197,7 +33307,20 @@ var assignments = [
 					],
 					"code": "done = df[df.end_ride == 1]\ndemand = done.groupby('hour').size()\nfig, ax = plt.subplots(1, 2, figsize=(14, 4))\ndemand.plot(kind='bar', ax=ax[0], title='Số chuyến hoàn thành theo giờ')\npd.Series(td.merge(tr[['tripid', 'duration']], on='tripid', how='left').groupby('duration').size()).reindex(range(1, 25)).plot(ax=ax[1], title='Số chuyến hoàn thành theo mã giờ (Trips.duration)')\nplt.tight_layout()\nprint('3 giờ đông nhất:'); print(demand.sort_values(ascending=False).head(3).to_string())\nprint('giờ vắng nhất:', demand.idxmin(), demand.min(), 'chuyến')",
 					"lotus": "Như xem spa đông nhất mấy giờ: ở đây là 0h và 13h, nhưng chênh với giờ khác không quá lớn.",
-					"trap": "Kể ra 3 giờ cao điểm như thể chúng vượt trội, trong khi 53 so với 32 là chênh nhẹ."
+					"trap": "Kể ra 3 giờ cao điểm như thể chúng vượt trội, trong khi 53 so với 32 là chênh nhẹ.",
+					"read": [
+						"Biểu đồ trái: trục ngang là giờ trong ngày (0–23), trục dọc là số chuyến hoàn thành.",
+						"Tìm cột cao nhất và thấp nhất, rồi xem các cột còn lại có sát chúng không.",
+						"Biểu đồ phải là cách đếm theo mã khung giờ để đối chiếu, hình dạng phải giống biểu đồ trái.",
+						"Dòng chữ: ba giờ đông nhất và giờ vắng nhất."
+					],
+					"remark": "Đông nhất lúc 0h (53 chuyến), 13h (52) và 11h (48); vắng nhất 20h (32). Chênh nhẹ, không có hai đỉnh sáng và chiều rõ rệt.",
+					"howRemark": [
+						"Chọn thước đo cầu và nói rõ (ở đây: chuyến hoàn thành).",
+						"Nêu giờ cao nhất và thấp nhất kèm số.",
+						"Nhận xét độ chênh: lớn hay nhỏ so với mức thường.",
+						"Đề xuất: không cần tăng người đột biến theo giờ."
+					]
 				},
 				"en": {
 					"think": "Look at ride counts by hour to find peaks. Use completed rides as the demand measure.",
@@ -33209,7 +33332,20 @@ var assignments = [
 					],
 					"code": "done = df[df.end_ride == 1]\ndemand = done.groupby('hour').size()\nfig, ax = plt.subplots(1, 2, figsize=(14, 4))\ndemand.plot(kind='bar', ax=ax[0], title='Số chuyến hoàn thành theo giờ')\npd.Series(td.merge(tr[['tripid', 'duration']], on='tripid', how='left').groupby('duration').size()).reindex(range(1, 25)).plot(ax=ax[1], title='Số chuyến hoàn thành theo mã giờ (Trips.duration)')\nplt.tight_layout()\nprint('3 giờ đông nhất:'); print(demand.sort_values(ascending=False).head(3).to_string())\nprint('giờ vắng nhất:', demand.idxmin(), demand.min(), 'chuyến')",
 					"lotus": "Like asking when the spa is busiest: 00h and 13h here, but not by a lot.",
-					"trap": "Calling out three peak hours as if they stand far above the rest when 53 vs 32 is modest."
+					"trap": "Calling out three peak hours as if they stand far above the rest when 53 vs 32 is modest.",
+					"read": [
+						"Left chart: x axis is hour of day (0–23), y axis is completed rides.",
+						"Find the tallest and shortest bars, then see how close the rest are.",
+						"Right chart counts by the slot code as a cross-check; its shape should match the left.",
+						"Text: the three busiest hours and the quietest."
+					],
+					"remark": "Busiest at 00h (53 rides), 13h (52) and 11h (48); quietest at 20h (32). The gap is mild, with no clear morning and evening double peak.",
+					"howRemark": [
+						"Choose the demand measure and say so (here: completed rides).",
+						"Quote the highest and lowest hours with numbers.",
+						"Judge the spread: large or small versus the usual level.",
+						"Suggest: no need for sharp hourly staffing surges."
+					]
 				}
 			},
 			"2.3": {
@@ -33223,7 +33359,18 @@ var assignments = [
 					],
 					"code": "rev = done.groupby('period', observed=True)['fare'].sum()\nshare = rev / rev.sum() * 100\nprint(pd.DataFrame({'doanh thu': rev, '% tổng': share.round(1)}).to_string())\nrev.plot(kind='pie', autopct='%1.1f%%', title='Tỷ trọng doanh thu theo khung giờ')",
 					"lotus": "Như xem doanh thu spa chia thế nào giữa sáng, trưa, chiều, tối: gần như đều.",
-					"trap": "Kết luận «chiều là khung vàng» chỉ vì 26,6% so với 23,4%."
+					"trap": "Kết luận «chiều là khung vàng» chỉ vì 26,6% so với 23,4%.",
+					"read": [
+						"Bảng: cột «doanh thu» là tiền mỗi khung, cột «% tổng» cộng lại thành 100.",
+						"Biểu đồ tròn: so độ lớn bốn miếng với 25% mỗi miếng.",
+						"Tìm miếng lớn nhất và nhỏ nhất và xem chênh bao nhiêu điểm phần trăm."
+					],
+					"remark": "Chiều đóng góp nhiều nhất (26,6%) và tối ít nhất (23,4%); chênh chỉ 3,2 điểm phần trăm nên doanh thu gần như chia đều bốn khung.",
+					"howRemark": [
+						"Nêu tỷ trọng của khung cao nhất và thấp nhất.",
+						"Đo chênh bằng điểm phần trăm, không bằng cảm giác.",
+						"Kết luận: có hay không khung nào nổi trội."
+					]
 				},
 				"en": {
 					"think": "Compute each time period's share of total revenue.",
@@ -33235,7 +33382,18 @@ var assignments = [
 					],
 					"code": "rev = done.groupby('period', observed=True)['fare'].sum()\nshare = rev / rev.sum() * 100\nprint(pd.DataFrame({'doanh thu': rev, '% tổng': share.round(1)}).to_string())\nrev.plot(kind='pie', autopct='%1.1f%%', title='Tỷ trọng doanh thu theo khung giờ')",
 					"lotus": "Like splitting spa revenue across morning, noon, afternoon, evening: nearly even.",
-					"trap": "Declaring afternoon the golden slot over a 26.6% vs 23.4% gap."
+					"trap": "Declaring afternoon the golden slot over a 26.6% vs 23.4% gap.",
+					"read": [
+						"Table: “doanh thu” is money per period, “% tổng” sums to 100.",
+						"Pie chart: compare each slice with 25%.",
+						"Find the biggest and smallest slice and how many points apart they are."
+					],
+					"remark": "Afternoon contributes most (26.6%) and evening least (23.4%); only a 3.2-point gap, so revenue splits almost evenly across the four periods.",
+					"howRemark": [
+						"State the share of the top and bottom period.",
+						"Measure the gap in percentage points, not by feel.",
+						"Conclude whether any period stands out."
+					]
 				}
 			},
 			"2.4": {
@@ -33249,7 +33407,18 @@ var assignments = [
 					],
 					"code": "h = done.groupby('hour')['fare'].agg(['sum', 'mean', 'count'])\nprint('tương quan giờ - fare (từng chuyến):', round(done['hour'].corr(done['fare']), 3))\nprint('tương quan giờ - tổng doanh thu theo giờ:', round(h.reset_index()['hour'].corr(h['sum']), 3))\nfig, ax = plt.subplots(1, 2, figsize=(14, 4))\nh['sum'].plot(marker='o', ax=ax[0], title='Tổng doanh thu theo giờ'); h['mean'].plot(marker='o', ax=ax[1], title='Fare trung bình theo giờ')\nprint(h.round(0).sort_values('sum', ascending=False).head(4).to_string())",
 					"lotus": "Như hỏi «đặt lúc nào thì hoá đơn cao hơn?»: không, hoá đơn tuỳ dịch vụ khách chọn.",
-					"trap": "Nhìn đường doanh thu lên xuống rồi nói «giờ ảnh hưởng cước», trong khi đó chỉ là số chuyến."
+					"trap": "Nhìn đường doanh thu lên xuống rồi nói «giờ ảnh hưởng cước», trong khi đó chỉ là số chuyến.",
+					"read": [
+						"Hai số tương quan đầu: gần 0 nghĩa là gần như không có quan hệ (thang −1 đến 1).",
+						"Biểu đồ trái là tổng doanh thu theo giờ, phải là cước trung bình theo giờ: so hai hình dạng.",
+						"Bảng cuối là 4 giờ có doanh thu cao nhất kèm cước trung bình và số chuyến."
+					],
+					"remark": "Tương quan giờ – cước là −0,01 nên giờ không ảnh hưởng cước. Giờ 0h có doanh thu cao nhất (45.019) chủ yếu vì có 53 chuyến, không vì cước cao.",
+					"howRemark": [
+						"Báo hệ số tương quan và nói nó mạnh hay yếu.",
+						"Tách hai thứ dễ nhầm: doanh thu theo giờ (số chuyến) và cước mỗi chuyến.",
+						"Kết luận về cách định giá."
+					]
 				},
 				"en": {
 					"think": "Check whether trip hour relates to the fare.",
@@ -33261,7 +33430,18 @@ var assignments = [
 					],
 					"code": "h = done.groupby('hour')['fare'].agg(['sum', 'mean', 'count'])\nprint('tương quan giờ - fare (từng chuyến):', round(done['hour'].corr(done['fare']), 3))\nprint('tương quan giờ - tổng doanh thu theo giờ:', round(h.reset_index()['hour'].corr(h['sum']), 3))\nfig, ax = plt.subplots(1, 2, figsize=(14, 4))\nh['sum'].plot(marker='o', ax=ax[0], title='Tổng doanh thu theo giờ'); h['mean'].plot(marker='o', ax=ax[1], title='Fare trung bình theo giờ')\nprint(h.round(0).sort_values('sum', ascending=False).head(4).to_string())",
 					"lotus": "Like asking “does booking time change the bill?”: no, the bill depends on the service chosen.",
-					"trap": "Reading ups and downs of the revenue line as “hour affects fare” when it is just ride count."
+					"trap": "Reading ups and downs of the revenue line as “hour affects fare” when it is just ride count.",
+					"read": [
+						"The first correlation numbers: near 0 means almost no relationship (scale −1 to 1).",
+						"Left chart is total revenue by hour, right is mean fare by hour: compare the shapes.",
+						"The last table shows the 4 top-revenue hours with mean fare and ride count."
+					],
+					"remark": "Hour–fare correlation is −0.01, so hour does not affect fare. 00h has the top revenue (45,019) mainly because of 53 rides, not high fares.",
+					"howRemark": [
+						"Quote the correlation and say if it is strong or weak.",
+						"Separate two easily confused things: revenue by hour (ride count) and fare per ride.",
+						"Conclude about pricing."
+					]
 				}
 			},
 			"2.5": {
@@ -33275,7 +33455,19 @@ var assignments = [
 					],
 					"code": "pm = done['payment'].value_counts()\nprint((pm / pm.sum() * 100).round(1).to_string())\nfig, ax = plt.subplots(1, 2, figsize=(13, 4))\npm.plot(kind='bar', ax=ax[0], title='Số chuyến theo hình thức thanh toán')\ndone.pivot_table(index='period', columns='payment', values='tripid', aggfunc='count', observed=True).plot(kind='bar', stacked=True, ax=ax[1], title='Hình thức thanh toán theo khung giờ')\nplt.tight_layout()",
 					"lotus": "Như thống kê khách Lotus Spa trả tiền mặt, chuyển khoản hay quẹt thẻ: ở đây chia đều bốn phần.",
-					"trap": "Nói «thẻ tín dụng phổ biến nhất» mà không nói chênh chỉ 3 điểm phần trăm."
+					"trap": "Nói «thẻ tín dụng phổ biến nhất» mà không nói chênh chỉ 3 điểm phần trăm.",
+					"read": [
+						"Danh sách %: bốn hình thức cộng lại 100%.",
+						"Cột trái: số chuyến mỗi hình thức; so độ cao các cột.",
+						"Cột chồng phải: mỗi cột là một khung giờ, các màu là cách trả; xem tỷ lệ màu có đổi theo khung không."
+					],
+					"remark": "Thẻ tín dụng 26,7%, UPI và thẻ ghi nợ 24,7%, tiền mặt 23,9%: chênh chỉ ~3 điểm, không có cách trả nào áp đảo, và tỷ lệ gần như giống nhau ở mọi khung giờ.",
+					"howRemark": [
+						"Nêu hình thức đứng đầu và cuối kèm %.",
+						"Đo chênh bằng điểm phần trăm.",
+						"Kiểm tra theo khung giờ xem có khác không.",
+						"Kết luận cho khuyến mãi thanh toán."
+					]
 				},
 				"en": {
 					"think": "See how customers pay and whether any method dominates.",
@@ -33287,7 +33479,19 @@ var assignments = [
 					],
 					"code": "pm = done['payment'].value_counts()\nprint((pm / pm.sum() * 100).round(1).to_string())\nfig, ax = plt.subplots(1, 2, figsize=(13, 4))\npm.plot(kind='bar', ax=ax[0], title='Số chuyến theo hình thức thanh toán')\ndone.pivot_table(index='period', columns='payment', values='tripid', aggfunc='count', observed=True).plot(kind='bar', stacked=True, ax=ax[1], title='Hình thức thanh toán theo khung giờ')\nplt.tight_layout()",
 					"lotus": "Like counting Lotus Spa customers who pay cash, transfer or card: four equal quarters.",
-					"trap": "Saying “credit card is most popular” without noting the gap is only 3 points."
+					"trap": "Saying “credit card is most popular” without noting the gap is only 3 points.",
+					"read": [
+						"The % list: four methods sum to 100%.",
+						"Left bars: rides per method; compare heights.",
+						"Right stacked bars: each bar is a period, colours are methods; see if colour proportions change by period."
+					],
+					"remark": "Credit card 26.7%, UPI and debit card 24.7%, cash 23.9%: only ~3 points apart, no method dominates, and the mix is similar in every period.",
+					"howRemark": [
+						"Name the top and bottom method with %.",
+						"Measure the gap in percentage points.",
+						"Check by period whether it differs.",
+						"Conclude for payment promotions."
+					]
 				}
 			},
 			"2.6.1": {
@@ -33300,7 +33504,19 @@ var assignments = [
 					],
 					"code": "z = td.groupby('loc_from').size().rename('requests').reset_index().merge(asm.rename(columns={'ID': 'loc_from'}), on='loc_from').sort_values('requests', ascending=False)\nz.head(10).set_index('Assembly')['requests'].iloc[::-1].plot(kind='barh', title='10 khu có nhiều yêu cầu chuyến nhất')\nprint(z.head(8)[['Assembly', 'requests']].to_string(index=False))",
 					"lotus": "Như chi nhánh nhận nhiều lượt đặt lịch nhất, kể cả lịch sau đó bị huỷ.",
-					"trap": "Đếm trên bảng Trips: bạn sẽ xếp hạng theo chuyến hoàn thành, là một câu hỏi khác (xem 2.8)."
+					"trap": "Đếm trên bảng Trips: bạn sẽ xếp hạng theo chuyến hoàn thành, là một câu hỏi khác (xem 2.8).",
+					"read": [
+						"Biểu đồ ngang: mỗi thanh là một khu, thanh dài hơn là nhiều yêu cầu hơn; khu trên cùng là cao nhất.",
+						"Bảng 8 khu đầu cho số chính xác.",
+						"Nhìn khoảng cách giữa khu thứ nhất và thứ tám để biết top có nổi bật không."
+					],
+					"remark": "Mahadevapura (75), Ramanagaram (74), Gandhi Nagar (71) và Yeshwantpur (69) dẫn đầu; khoảng cách từ khu 1 đến khu 8 chỉ khoảng 10 yêu cầu nên nhu cầu phân tán, không dồn vào một khu.",
+					"howRemark": [
+						"Nêu tên 3–5 khu đầu kèm số.",
+						"Nhận xét khoảng cách giữa các khu.",
+						"Nhắc đây là số yêu cầu, chưa phải chuyến hoàn thành.",
+						"Nhớ bỏ «Other Assemblies» khi nói tên khu."
+					]
 				},
 				"en": {
 					"think": "Find the zones with the most trip requests. Use Trip_Details (all requests), not just completed.",
@@ -33311,7 +33527,19 @@ var assignments = [
 					],
 					"code": "z = td.groupby('loc_from').size().rename('requests').reset_index().merge(asm.rename(columns={'ID': 'loc_from'}), on='loc_from').sort_values('requests', ascending=False)\nz.head(10).set_index('Assembly')['requests'].iloc[::-1].plot(kind='barh', title='10 khu có nhiều yêu cầu chuyến nhất')\nprint(z.head(8)[['Assembly', 'requests']].to_string(index=False))",
 					"lotus": "Like the branch with the most booking requests, including ones later cancelled.",
-					"trap": "Counting on the Trips table: you would rank by completed rides, a different question (see 2.8)."
+					"trap": "Counting on the Trips table: you would rank by completed rides, a different question (see 2.8).",
+					"read": [
+						"Horizontal bars: each bar is a zone, longer = more requests; the top bar is the highest.",
+						"The 8-zone table gives exact numbers.",
+						"Look at the gap between 1st and 8th to see if the top stands out."
+					],
+					"remark": "Mahadevapura (75), Ramanagaram (74), Gandhi Nagar (71) and Yeshwantpur (69) lead; the gap from 1st to 8th is only about 10 requests, so demand is spread out rather than concentrated.",
+					"howRemark": [
+						"Name the top 3–5 zones with numbers.",
+						"Comment on the gaps between zones.",
+						"Remind that this counts requests, not completed rides.",
+						"Remember to exclude “Other Assemblies” when naming zones."
+					]
 				}
 			},
 			"2.6.2": {
@@ -33324,7 +33552,19 @@ var assignments = [
 					],
 					"code": "r = done.groupby('pickup_zone')['fare'].agg(['sum', 'count', 'mean']).sort_values('sum', ascending=False)\nr.head(10)['sum'].iloc[::-1].plot(kind='barh', title='10 khu có doanh thu cao nhất')\nprint(r.head(8).round(0).to_string())",
 					"lotus": "Chi nhánh đông khách nhất chưa chắc thu nhiều nhất, nếu khách ở đó làm dịch vụ rẻ.",
-					"trap": "Gán «đông = nhiều tiền»."
+					"trap": "Gán «đông = nhiều tiền».",
+					"read": [
+						"Thanh dài là doanh thu cao; bảng bên dưới có tổng (sum), số chuyến (count) và cước trung bình (mean).",
+						"So thứ hạng với biểu đồ 2.6.1: khu nào lên hoặc xuống.",
+						"Cột mean cho biết doanh thu cao vì đông chuyến hay vì cước cao."
+					],
+					"remark": "Bangalore South dẫn đầu với 30.295 (33 chuyến, cước trung bình 918); Ramanagaram có nhiều chuyến hơn (39) nhưng cước trung bình chỉ 672 nên doanh thu thấp hơn. Khu đông chưa chắc là khu nhiều tiền.",
+					"howRemark": [
+						"Nêu khu doanh thu cao nhất kèm số.",
+						"Dùng count và mean để giải thích nguồn doanh thu.",
+						"So với thứ hạng theo số yêu cầu và chỉ ra chỗ khác.",
+						"Gợi ý hành động theo từng loại khu."
+					]
 				},
 				"en": {
 					"think": "Find the pickup zones with the highest revenue.",
@@ -33335,7 +33575,19 @@ var assignments = [
 					],
 					"code": "r = done.groupby('pickup_zone')['fare'].agg(['sum', 'count', 'mean']).sort_values('sum', ascending=False)\nr.head(10)['sum'].iloc[::-1].plot(kind='barh', title='10 khu có doanh thu cao nhất')\nprint(r.head(8).round(0).to_string())",
 					"lotus": "The busiest branch need not earn the most if its customers pick cheaper services.",
-					"trap": "Assuming busy = high revenue."
+					"trap": "Assuming busy = high revenue.",
+					"read": [
+						"Long bar = high revenue; the table gives total (sum), rides (count) and mean fare (mean).",
+						"Compare the order with chart 2.6.1: which zones moved up or down.",
+						"The mean column shows whether revenue comes from many rides or high fares."
+					],
+					"remark": "Bangalore South leads with 30,295 (33 rides, mean fare 918); Ramanagaram has more rides (39) but a mean of only 672, hence lower revenue. A busy zone is not necessarily a rich one.",
+					"howRemark": [
+						"Name the top revenue zone with its figure.",
+						"Use count and mean to explain the source of revenue.",
+						"Compare with the request ranking and point out differences.",
+						"Suggest actions per type of zone."
+					]
 				}
 			},
 			"2.7": {
@@ -33349,7 +33601,18 @@ var assignments = [
 					],
 					"code": "pv = done.pivot_table(index='pickup_zone', columns='period', values='tripid', aggfunc='count', observed=True).fillna(0)\ntop = pv.sum(axis=1).sort_values(ascending=False).head(12).index\nsns.heatmap(pv.loc[top], annot=True, fmt='.0f', cmap='YlOrRd')\nprint(pv.loc[top[:6]].astype(int).to_string())",
 					"lotus": "Như xem chi nhánh nào đông vào buổi nào để xếp nhân viên.",
-					"trap": "Mỗi ô chỉ có vài chuyến, nên chênh 1–2 chuyến chỉ là ngẫu nhiên."
+					"trap": "Mỗi ô chỉ có vài chuyến, nên chênh 1–2 chuyến chỉ là ngẫu nhiên.",
+					"read": [
+						"Mỗi hàng là một khu, mỗi cột là một khung giờ, mỗi ô là số chuyến; màu đậm là nhiều.",
+						"Đọc theo hàng để biết khung mạnh của một khu, theo cột để biết khu nào mạnh vào khung đó.",
+						"Bảng chữ liệt kê 6 khu đầu để bạn kiểm số trong ô."
+					],
+					"remark": "Mỗi khu có khung mạnh riêng: Ramanagaram buổi tối (14), Bangalore South buổi chiều (13), Dasarahalli buổi sáng (11). Nhưng mỗi ô chỉ vài chuyến nên chỉ nên kết luận ở chỗ chênh rõ.",
+					"howRemark": [
+						"Chọn 2–3 khu và nêu khung mạnh nhất của từng khu kèm số.",
+						"Nhắc cỡ mẫu nhỏ mỗi ô.",
+						"Đề xuất xếp tài xế theo khu và khung giờ."
+					]
 				},
 				"en": {
 					"think": "Compare time periods across pickup zones.",
@@ -33361,7 +33624,18 @@ var assignments = [
 					],
 					"code": "pv = done.pivot_table(index='pickup_zone', columns='period', values='tripid', aggfunc='count', observed=True).fillna(0)\ntop = pv.sum(axis=1).sort_values(ascending=False).head(12).index\nsns.heatmap(pv.loc[top], annot=True, fmt='.0f', cmap='YlOrRd')\nprint(pv.loc[top[:6]].astype(int).to_string())",
 					"lotus": "Like seeing which branch is busy at which time to roster staff.",
-					"trap": "Each cell holds only a few rides, so 1–2 differences are noise."
+					"trap": "Each cell holds only a few rides, so 1–2 differences are noise.",
+					"read": [
+						"Each row is a zone, each column a period, each cell a ride count; darker = more.",
+						"Read across a row for a zone's strong period, down a column for the zones strong in that period.",
+						"The text table lists 6 zones so you can check the cell numbers."
+					],
+					"remark": "Each zone has its own strong period: Ramanagaram in the evening (14), Bangalore South in the afternoon (13), Dasarahalli in the morning (11). But each cell holds only a few rides, so conclude only where the gap is clear.",
+					"howRemark": [
+						"Pick 2–3 zones and name each one's strongest period with numbers.",
+						"Note the small sample per cell.",
+						"Suggest rostering drivers by zone and period."
+					]
 				}
 			},
 			"2.8": {
@@ -33375,7 +33649,19 @@ var assignments = [
 					],
 					"code": "t5 = done.groupby('pickup_zone').agg(trips=('tripid', 'count'), revenue=('fare', 'sum'), avg_distance=('distance', 'mean'), avg_fare=('fare', 'mean')).sort_values('trips', ascending=False).head(5)\nprint(t5.round(1).to_string())\nt5['trips'].plot(kind='bar', title='5 khu có nhiều chuyến hoàn thành nhất')\n# so sánh với tỷ lệ hoàn thành của chính khu đó\nrate = td.groupby('loc_from').agg(req=('tripid', 'count'), done=('end_ride', 'sum')).merge(asm.rename(columns={'ID': 'loc_from'}), on='loc_from').set_index('Assembly')\nprint((rate.loc[t5.index, 'done'] / rate.loc[t5.index, 'req'] * 100).round(1).rename('% yêu cầu hoàn thành').to_string())",
 					"lotus": "Như chi nhánh có nhiều lượt làm xong nhất vì vừa đông đặt lịch, vừa ít bị huỷ.",
-					"trap": "Giải thích bằng «khu đó đông dân» khi dữ liệu không có dân số."
+					"trap": "Giải thích bằng «khu đó đông dân» khi dữ liệu không có dân số.",
+					"read": [
+						"Bảng đầu: 5 khu top với chuyến, doanh thu, quãng đường và cước trung bình.",
+						"Bảng thứ hai: % yêu cầu của khu được hoàn thành, so với mức chung 45,5%.",
+						"Biểu đồ cột: độ cao 5 khu."
+					],
+					"remark": "Ramanagaram dẫn đầu (39 chuyến), tiếp theo Yeshwantpur (36). Bốn trong năm khu hoàn thành trên mức chung 45,5% (Bangalore South 57,9%); Gandhi Nagar chỉ 45,1% nên nằm trong top nhờ lượng yêu cầu lớn.",
+					"howRemark": [
+						"Nêu top 5 kèm số chuyến.",
+						"Tìm yếu tố giải thích trong dữ liệu có sẵn (tỷ lệ hoàn thành, cước, quãng đường).",
+						"Nhắc điều dữ liệu không nói được (dân số, đối thủ).",
+						"Gợi ý học từ khu hoàn thành tốt."
+					]
 				},
 				"en": {
 					"think": "Pick the top 5 zones by completed rides and find out why.",
@@ -33387,7 +33673,19 @@ var assignments = [
 					],
 					"code": "t5 = done.groupby('pickup_zone').agg(trips=('tripid', 'count'), revenue=('fare', 'sum'), avg_distance=('distance', 'mean'), avg_fare=('fare', 'mean')).sort_values('trips', ascending=False).head(5)\nprint(t5.round(1).to_string())\nt5['trips'].plot(kind='bar', title='5 khu có nhiều chuyến hoàn thành nhất')\n# so sánh với tỷ lệ hoàn thành của chính khu đó\nrate = td.groupby('loc_from').agg(req=('tripid', 'count'), done=('end_ride', 'sum')).merge(asm.rename(columns={'ID': 'loc_from'}), on='loc_from').set_index('Assembly')\nprint((rate.loc[t5.index, 'done'] / rate.loc[t5.index, 'req'] * 100).round(1).rename('% yêu cầu hoàn thành').to_string())",
 					"lotus": "Like the branch with the most finished sessions because many bookings and few cancellations.",
-					"trap": "Explaining with “it is a populous area” when the data has no population."
+					"trap": "Explaining with “it is a populous area” when the data has no population.",
+					"read": [
+						"First table: 5 top zones with rides, revenue, distance and mean fare.",
+						"Second table: share of the zone's requests completed, vs the overall 45.5%.",
+						"Bar chart: heights of the 5 zones."
+					],
+					"remark": "Ramanagaram leads (39 rides), then Yeshwantpur (36). Four of five zones complete above the 45.5% average (Bangalore South 57.9%); Gandhi Nagar is only 45.1% and ranks on sheer request volume.",
+					"howRemark": [
+						"Name the top 5 with ride counts.",
+						"Find explanations in available data (completion rate, fare, distance).",
+						"State what the data cannot say (population, competition).",
+						"Suggest learning from the best-completing zone."
+					]
 				}
 			},
 			"2.9.1": {
@@ -33401,7 +33699,19 @@ var assignments = [
 					],
 					"code": "n = len(td)\ncust = (td.customer_not_cancelled == 0).sum(); drv = (td.driver_not_cancelled == 0).sum(); ok = td.end_ride.sum()\nout = pd.Series({'Khách huỷ': cust / n * 100, 'Tài xế huỷ': drv / n * 100, 'Hoàn thành': ok / n * 100}).round(1)\nprint(out.to_string(), '\\n(tổng yêu cầu:', n, ')')\nout.plot(kind='bar', color=['#b5543c', '#d99a3e', '#2f6f5e'], title='% yêu cầu: huỷ và hoàn thành')",
 					"lotus": "Như tỷ lệ khách tự huỷ lịch, spa huỷ lịch và lượt làm xong.",
-					"trap": "Vẽ biểu đồ tròn ba phần cho tổng 100%: các cờ chồng nhau nên sai."
+					"trap": "Vẽ biểu đồ tròn ba phần cho tổng 100%: các cờ chồng nhau nên sai.",
+					"read": [
+						"Ba dòng %: mẫu số là mọi yêu cầu (2.161).",
+						"Cộng ba số được hơn 100%, đó là dấu hiệu các nhóm chồng nhau.",
+						"Biểu đồ cột có 3 cột; đừng đọc như phần của một cái bánh."
+					],
+					"remark": "Khách huỷ 48,2%, tài xế huỷ 47,2%, hoàn thành 45,5%. Gần một nửa yêu cầu bị mỗi bên huỷ nên huỷ chuyến là chỗ rò rỉ lớn nhất của dịch vụ.",
+					"howRemark": [
+						"Nêu từng tỷ lệ kèm mẫu số.",
+						"Giải thích vì sao tổng vượt 100% (cờ chồng nhau).",
+						"Nói tác động: mất bao nhiêu yêu cầu.",
+						"Đề xuất giảm huỷ từ cả hai phía."
+					]
 				},
 				"en": {
 					"think": "Compute the % of requests cancelled by customer, by driver and completed.",
@@ -33413,7 +33723,19 @@ var assignments = [
 					],
 					"code": "n = len(td)\ncust = (td.customer_not_cancelled == 0).sum(); drv = (td.driver_not_cancelled == 0).sum(); ok = td.end_ride.sum()\nout = pd.Series({'Khách huỷ': cust / n * 100, 'Tài xế huỷ': drv / n * 100, 'Hoàn thành': ok / n * 100}).round(1)\nprint(out.to_string(), '\\n(tổng yêu cầu:', n, ')')\nout.plot(kind='bar', color=['#b5543c', '#d99a3e', '#2f6f5e'], title='% yêu cầu: huỷ và hoàn thành')",
 					"lotus": "Like the share of bookings cancelled by customers, by the spa, and sessions completed.",
-					"trap": "Drawing a three-slice pie that must sum to 100%: the flags overlap."
+					"trap": "Drawing a three-slice pie that must sum to 100%: the flags overlap.",
+					"read": [
+						"Three % lines: the denominator is all requests (2,161).",
+						"They sum to more than 100%, a sign the groups overlap.",
+						"The bar chart has 3 bars; do not read it as slices of one pie."
+					],
+					"remark": "Customers cancelled 48.2%, drivers 47.2%, completed 45.5%. Nearly half of requests are cancelled by each side, so cancellations are the service's biggest leak.",
+					"howRemark": [
+						"State each rate with its denominator.",
+						"Explain why the total exceeds 100% (overlapping flags).",
+						"State the impact: how many requests are lost.",
+						"Propose reducing cancellations on both sides."
+					]
 				}
 			},
 			"2.9.2": {
@@ -33427,7 +33749,20 @@ var assignments = [
 					],
 					"code": "q = td[td.searches_for_quotes == 1]\nprint('Tìm báo giá:', len(q), '| hoàn thành:', int(q.end_ride.sum()), '|', round(q.end_ride.mean() * 100, 1), '%')\nprint('Lưu ý: giờ chỉ có ở bảng Trips (chuyến hoàn thành), nên chuyến huỷ không có giờ để chia khung giờ.')\n# thay vào đó chia theo khu xuất phát (có đủ cho mọi yêu cầu)\nzr = (q.groupby('loc_from')['end_ride'].mean() * 100).rename('pct').reset_index().merge(asm.rename(columns={'ID': 'loc_from'}), on='loc_from').set_index('Assembly')['pct'].sort_values()\nprint(zr.round(1).tail(3).to_string(), '\\n...', '\\n', zr.round(1).head(3).to_string())\nfig, ax = plt.subplots(1, 2, figsize=(13, 4))\npd.Series({'Tìm báo giá': len(q), 'Hoàn thành': int(q.end_ride.sum())}).plot(kind='bar', ax=ax[0], title='Tìm báo giá -> hoàn thành')\nzr.plot(kind='hist', bins=10, ax=ax[1], title='% hoàn thành sau khi tìm báo giá, theo khu')\nplt.tight_layout()",
 					"lotus": "Như trong số khách đã hỏi giá liệu trình, bao nhiêu người cuối cùng làm.",
-					"trap": "Chia theo khung giờ rồi bỏ qua việc chuyến huỷ không có giờ, ra tỷ lệ 100% giả."
+					"trap": "Chia theo khung giờ rồi bỏ qua việc chuyến huỷ không có giờ, ra tỷ lệ 100% giả.",
+					"read": [
+						"Dòng đầu: 1.455 người hỏi báo giá, 983 hoàn thành, 67,6%.",
+						"Biểu đồ trái: hai cột, cột «hoàn thành» thấp hơn cột «tìm báo giá».",
+						"Biểu đồ phải: mỗi cột là số khu có tỷ lệ hoàn thành trong khoảng đó; xem hình dạng tập trung ở đâu.",
+						"Dòng cuối bảng cho khu thấp nhất và cao nhất."
+					],
+					"remark": "Trong số người hỏi báo giá, 67,6% hoàn thành. Tỷ lệ giữa các khu rộng, từ 47,5% (Anekal) đến 85,7% (Yeshwantpur), phần lớn quanh 65–75%. Chuyến huỷ không có giờ nên không chia theo khung giờ được.",
+					"howRemark": [
+						"Nêu tỷ lệ chung kèm hai số tạo ra nó.",
+						"Nêu khu thấp nhất và cao nhất.",
+						"Nói rõ giới hạn dữ liệu (không có giờ cho chuyến huỷ).",
+						"Gợi ý tìm hiểu nguyên nhân ở khu thấp."
+					]
 				},
 				"en": {
 					"think": "Of people who asked for quotes, what % completed a ride, and how does it vary.",
@@ -33439,7 +33774,20 @@ var assignments = [
 					],
 					"code": "q = td[td.searches_for_quotes == 1]\nprint('Tìm báo giá:', len(q), '| hoàn thành:', int(q.end_ride.sum()), '|', round(q.end_ride.mean() * 100, 1), '%')\nprint('Lưu ý: giờ chỉ có ở bảng Trips (chuyến hoàn thành), nên chuyến huỷ không có giờ để chia khung giờ.')\n# thay vào đó chia theo khu xuất phát (có đủ cho mọi yêu cầu)\nzr = (q.groupby('loc_from')['end_ride'].mean() * 100).rename('pct').reset_index().merge(asm.rename(columns={'ID': 'loc_from'}), on='loc_from').set_index('Assembly')['pct'].sort_values()\nprint(zr.round(1).tail(3).to_string(), '\\n...', '\\n', zr.round(1).head(3).to_string())\nfig, ax = plt.subplots(1, 2, figsize=(13, 4))\npd.Series({'Tìm báo giá': len(q), 'Hoàn thành': int(q.end_ride.sum())}).plot(kind='bar', ax=ax[0], title='Tìm báo giá -> hoàn thành')\nzr.plot(kind='hist', bins=10, ax=ax[1], title='% hoàn thành sau khi tìm báo giá, theo khu')\nplt.tight_layout()",
 					"lotus": "Like how many people who asked the price of a treatment finally booked it.",
-					"trap": "Splitting by hour while ignoring that cancelled rides have no hour: a fake 100%."
+					"trap": "Splitting by hour while ignoring that cancelled rides have no hour: a fake 100%.",
+					"read": [
+						"First line: 1,455 asked for quotes, 983 completed, 67.6%.",
+						"Left chart: two bars, “completed” lower than “asked for quote”.",
+						"Right chart: each bar counts zones with a completion rate in that range; see where it clusters.",
+						"The last table lines give the lowest and highest zones."
+					],
+					"remark": "Among those who asked for quotes, 67.6% completed. Rates vary widely by zone, from 47.5% (Anekal) to 85.7% (Yeshwantpur), mostly around 65–75%. Cancelled rides have no hour, so a split by hour is impossible.",
+					"howRemark": [
+						"State the overall rate with the two numbers behind it.",
+						"Name the lowest and highest zones.",
+						"State the data limit (no hour for cancelled rides).",
+						"Suggest investigating the low zones."
+					]
 				}
 			},
 			"2.10": {
@@ -33453,7 +33801,19 @@ var assignments = [
 					],
 					"code": "zone_pick = 'Hebbal'   # tham số: chọn khu để lọc\nsub = done[done.pickup_zone == zone_pick]\nprint(f'Khu {zone_pick}:', len(sub), 'chuyến hoàn thành, doanh thu', int(sub.fare.sum()), ', fare trung bình', round(sub.fare.mean(), 0))\nsub.groupby('period', observed=True)['fare'].agg(['count', 'sum']).plot(kind='bar', title=f'{zone_pick}: chuyến và doanh thu theo khung giờ')\nprint(sub.groupby('period', observed=True)['fare'].agg(['count', 'sum']).to_string())",
 					"lotus": "Như một công tắc «chọn chi nhánh» trên báo cáo của chị Lan, chọn Quận 3 thì cả bảng đổi theo.",
-					"trap": "Lọc xong mà quên ghi lý do chọn khu đó (đề bài yêu cầu giải thích)."
+					"trap": "Lọc xong mà quên ghi lý do chọn khu đó (đề bài yêu cầu giải thích).",
+					"read": [
+						"Dòng đầu: số chuyến, doanh thu và cước trung bình của khu được chọn.",
+						"Biểu đồ: cột theo khung giờ cho khu đó.",
+						"Đổi tên khu trong code rồi chạy lại để xem khu khác."
+					],
+					"remark": "Hebbal có 31 chuyến, doanh thu 28.097 và cước trung bình 906, cao hơn mức chung 764; đông nhất buổi chiều (11 chuyến, 9.433). Chọn Hebbal vì nằm trong top doanh thu của 2.6.2.",
+					"howRemark": [
+						"Giải thích vì sao chọn khu (đề bài yêu cầu).",
+						"So các số của khu với mức chung.",
+						"Chỉ ra khung giờ mạnh của khu.",
+						"Nói lọc này giúp quyết định gì."
+					]
 				},
 				"en": {
 					"think": "Create a parameter and use it as a filter, e.g. pick a zone and view only that zone.",
@@ -33465,7 +33825,19 @@ var assignments = [
 					],
 					"code": "zone_pick = 'Hebbal'   # tham số: chọn khu để lọc\nsub = done[done.pickup_zone == zone_pick]\nprint(f'Khu {zone_pick}:', len(sub), 'chuyến hoàn thành, doanh thu', int(sub.fare.sum()), ', fare trung bình', round(sub.fare.mean(), 0))\nsub.groupby('period', observed=True)['fare'].agg(['count', 'sum']).plot(kind='bar', title=f'{zone_pick}: chuyến và doanh thu theo khung giờ')\nprint(sub.groupby('period', observed=True)['fare'].agg(['count', 'sum']).to_string())",
 					"lotus": "Like a “choose branch” switch on Lan's report: pick District 3 and the whole table follows.",
-					"trap": "Filtering and forgetting to explain why that zone was chosen (the task asks for it)."
+					"trap": "Filtering and forgetting to explain why that zone was chosen (the task asks for it).",
+					"read": [
+						"First line: rides, revenue and mean fare of the chosen zone.",
+						"Chart: bars by period for that zone.",
+						"Change the zone name in code and rerun to see another zone."
+					],
+					"remark": "Hebbal has 31 rides, revenue 28,097 and mean fare 906, above the overall 764; busiest in the afternoon (11 rides, 9,433). Hebbal was chosen because it is in the top revenue of 2.6.2.",
+					"howRemark": [
+						"Explain why you chose the zone (the task asks).",
+						"Compare the zone's numbers with the overall.",
+						"Point out the zone's strong period.",
+						"Say what decision this filter supports."
+					]
 				}
 			},
 			"3.1": {
@@ -33478,7 +33850,19 @@ var assignments = [
 					],
 					"code": "funnel = td[['searches', 'searches_got_estimate', 'searches_for_quotes', 'searches_got_quotes', 'otp_entered', 'end_ride']].sum()\nprint((funnel / funnel['searches'] * 100).round(1).to_string())\nprint('rơi nhiều nhất ở bước: tìm báo giá -> có báo giá, huỷ bởi khách', round((td.customer_not_cancelled == 0).mean() * 100, 1), '%, huỷ bởi tài xế', round((td.driver_not_cancelled == 0).mean() * 100, 1), '%')\n(funnel / funnel['searches'] * 100).plot(kind='bar', title='Phễu chuyển đổi (% so với số tìm kiếm)')",
 					"lotus": "Như chị Lan đọc phễu từ khách hỏi đến khách làm xong và chọn chỗ rò rỉ nhiều nhất để sửa trước.",
-					"trap": "Khuyến nghị chung chung không gắn số nào."
+					"trap": "Khuyến nghị chung chung không gắn số nào.",
+					"read": [
+						"Danh sách %: mỗi bước so với 100% là số tìm kiếm; đọc từ trên xuống.",
+						"Tìm bước tụt mạnh nhất: 59,1% → 45,5% (sau khi có báo giá).",
+						"Biểu đồ cột là cùng dữ liệu theo hình phễu."
+					],
+					"remark": "Phễu mất nhiều nhất sau bước có báo giá (59,1% xuống 45,5%) và vì huỷ ở cả hai phía (~48%). Khuyến nghị: giảm huỷ bằng ưu đãi và phạt tài xế, rút ngắn thời gian chờ; xếp tài xế theo khu và khung giờ mạnh; không tăng giá theo giờ vì cước không phụ thuộc giờ.",
+					"howRemark": [
+						"Chỉ ra bước tụt mạnh nhất trong phễu kèm số.",
+						"Liên kết với phát hiện khác (2.4, 2.7, 2.9.1).",
+						"Mỗi khuyến nghị phải gắn với một con số.",
+						"Sắp khuyến nghị theo tác động."
+					]
 				},
 				"en": {
 					"think": "Write operational recommendations from the real numbers found.",
@@ -33489,7 +33873,19 @@ var assignments = [
 					],
 					"code": "funnel = td[['searches', 'searches_got_estimate', 'searches_for_quotes', 'searches_got_quotes', 'otp_entered', 'end_ride']].sum()\nprint((funnel / funnel['searches'] * 100).round(1).to_string())\nprint('rơi nhiều nhất ở bước: tìm báo giá -> có báo giá, huỷ bởi khách', round((td.customer_not_cancelled == 0).mean() * 100, 1), '%, huỷ bởi tài xế', round((td.driver_not_cancelled == 0).mean() * 100, 1), '%')\n(funnel / funnel['searches'] * 100).plot(kind='bar', title='Phễu chuyển đổi (% so với số tìm kiếm)')",
 					"lotus": "Like Lan reading the funnel from enquiry to completed session and fixing the biggest leak first.",
-					"trap": "Generic advice not tied to any number."
+					"trap": "Generic advice not tied to any number.",
+					"read": [
+						"The % list: each step vs 100% = searches; read top to bottom.",
+						"Find the steepest drop: 59.1% → 45.5% (after the quote).",
+						"The bar chart is the same data as a funnel."
+					],
+					"remark": "The funnel loses most after the quote step (59.1% to 45.5%) and through two-sided cancellations (~48%). Recommend: cut cancellations with incentives and driver penalties, shorten waits; roster drivers by zone and strong period; no hourly surge since fare ignores hour.",
+					"howRemark": [
+						"Point to the steepest drop in the funnel with numbers.",
+						"Tie in other findings (2.4, 2.7, 2.9.1).",
+						"Every recommendation must hang on a number.",
+						"Order recommendations by impact."
+					]
 				}
 			},
 			"3.2": {
@@ -33503,7 +33899,19 @@ var assignments = [
 					],
 					"code": "peak = done.groupby('hour').size().sort_values(ascending=False).head(3).index.tolist()\nupi = (done.payment == 'upi').mean() * 100\nprint('Giờ cao điểm:', peak, '| UPI chiếm', round(upi, 1), '% chuyến')\nshare = done.groupby('pickup_zone')['fare'].sum().sort_values(ascending=False); share = share / share.sum() * 100\nprint('5 khu đầu chiếm', round(share.head(5).sum(), 1), '% doanh thu; 10 khu đầu', round(share.head(10).sum(), 1), '%')\nshare.head(10).iloc[::-1].plot(kind='barh', title='% doanh thu của 10 khu hàng đầu')",
 					"lotus": "Như chọn chi nhánh có tỷ lệ khách bỏ lịch cao để chạy ưu đãi, thay vì giảm giá đại trà.",
-					"trap": "Đề xuất giảm giá cho tất cả: dữ liệu cho thấy vấn đề ở huỷ chuyến chứ không ở giá."
+					"trap": "Đề xuất giảm giá cho tất cả: dữ liệu cho thấy vấn đề ở huỷ chuyến chứ không ở giá.",
+					"read": [
+						"Dòng đầu: giờ cao điểm và tỷ lệ UPI.",
+						"Dòng hai: 5 khu đầu và 10 khu đầu chiếm bao nhiêu % doanh thu.",
+						"Biểu đồ: tỷ trọng doanh thu từng khu trong top 10."
+					],
+					"remark": "5 khu đầu chỉ chiếm 18,7% doanh thu, 10 khu đầu 34,8%: doanh thu phân tán. Đề xuất ưu đãi nhắm khu hoàn thành thấp (Gandhi Nagar, Anekal), thưởng tài xế ở khu cước cao như Bangalore South, không cần khuyến mãi riêng cho một cách thanh toán.",
+					"howRemark": [
+						"Dùng tỷ trọng để nói mức tập trung.",
+						"Đề xuất nhắm vào khu hoặc nhóm cụ thể thay vì đại trà.",
+						"Gắn đề xuất với số từ các mục trước.",
+						"Nhắc đính kèm dashboard hỗ trợ."
+					]
 				},
 				"en": {
 					"think": "Suggest marketing and strategy improvements from zone, hour and payment findings.",
@@ -33515,7 +33923,19 @@ var assignments = [
 					],
 					"code": "peak = done.groupby('hour').size().sort_values(ascending=False).head(3).index.tolist()\nupi = (done.payment == 'upi').mean() * 100\nprint('Giờ cao điểm:', peak, '| UPI chiếm', round(upi, 1), '% chuyến')\nshare = done.groupby('pickup_zone')['fare'].sum().sort_values(ascending=False); share = share / share.sum() * 100\nprint('5 khu đầu chiếm', round(share.head(5).sum(), 1), '% doanh thu; 10 khu đầu', round(share.head(10).sum(), 1), '%')\nshare.head(10).iloc[::-1].plot(kind='barh', title='% doanh thu của 10 khu hàng đầu')",
 					"lotus": "Like running offers at branches with a high no-show rate instead of discounting everywhere.",
-					"trap": "Proposing blanket discounts: the data says the problem is cancellations, not price."
+					"trap": "Proposing blanket discounts: the data says the problem is cancellations, not price.",
+					"read": [
+						"First line: peak hours and the UPI share.",
+						"Second line: what % of revenue the top 5 and top 10 zones hold.",
+						"Chart: revenue share of each top-10 zone."
+					],
+					"remark": "The top 5 zones hold only 18.7% of revenue and the top 10 hold 34.8%: revenue is dispersed. Target offers at low-completion zones (Gandhi Nagar, Anekal), reward drivers in high-fare zones like Bangalore South, no payment-specific promo needed.",
+					"howRemark": [
+						"Use shares to describe concentration.",
+						"Target specific zones or groups instead of blanket offers.",
+						"Tie each proposal to numbers from earlier tasks.",
+						"Remember to attach supporting dashboards."
+					]
 				}
 			}
 		},

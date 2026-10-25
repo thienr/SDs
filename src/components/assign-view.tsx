@@ -11,6 +11,9 @@ const text = {
     code: "Khung code gợi ý",
     result: "Kết quả chạy trên file của bạn",
     ran: "Code đã chạy (xem thêm)",
+    read: "Cách đọc kết quả này",
+    remark: "Nhận xét mẫu",
+    howRemark: "Cách tự viết nhận xét",
     lotus: "Ở Lotus Spa",
     trap: "Dễ sai ở đâu",
     rule: "Starter không bị đổi nội dung hay thứ tự. Khung bên dưới mỗi mục chỉ là phần đi kèm, nên mở lại file bài tập cũ vẫn khớp từng ô.",
@@ -26,6 +29,9 @@ const text = {
     code: "Suggested code skeleton",
     result: "Result on your file",
     ran: "Code that ran (optional)",
+    read: "How to read this result",
+    remark: "Sample remark",
+    howRemark: "How to write your own remark",
     lotus: "At Lotus Spa",
     trap: "Where it goes wrong",
     rule: "The starter is never changed in content or order. The box under each task is only a companion, so reopening an old assignment file still matches cell by cell.",
@@ -142,6 +148,32 @@ function GuideBox({ g, r, t }: { g: Guide; r?: Result; t: (typeof text)["vi"] | 
               <pre className="mt-1 overflow-x-auto rounded-xl bg-paper p-3 text-sm">{g.code}</pre>
             </>
           )}
+          {g.read?.length ? (
+            <div className="mt-4">
+              <h4 className="text-sm font-medium">{t.read}</h4>
+              <ul className="mt-2 list-disc space-y-1 pl-5">
+                {g.read.map((s, i) => (
+                  <li key={i} className="leading-relaxed">{s}</li>
+                ))}
+              </ul>
+            </div>
+          ) : null}
+          {g.remark ? (
+            <div className="mt-4 rounded-xl border border-line p-3">
+              <h4 className="text-sm font-medium">{t.remark}</h4>
+              <p className="mt-1 leading-relaxed">{g.remark}</p>
+              {g.howRemark?.length ? (
+                <>
+                  <h4 className="mt-3 text-sm font-medium">{t.howRemark}</h4>
+                  <ol className="mt-1 list-decimal space-y-1 pl-5">
+                    {g.howRemark.map((s, i) => (
+                      <li key={i} className="leading-relaxed">{s}</li>
+                    ))}
+                  </ol>
+                </>
+              ) : null}
+            </div>
+          ) : null}
           <div className="mt-4 rounded-xl border-l-4 border-accent bg-paper p-3">
             <p className="text-xs uppercase tracking-widest text-muted">{t.lotus}</p>
             <p className="mt-1 leading-relaxed">{g.lotus}</p>
