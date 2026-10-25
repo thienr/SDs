@@ -2,7 +2,7 @@ import type { Visual, Walk } from "@/data/walk/pilot";
 
 /**
  * C5 (tháng 9-10, Lotus Spa): Tableau, Excel nâng cao, Power BI, framework, kể chuyện bằng dữ liệu.
- * Số cố định: form tuần GDN 18, Meta 20, TikTok 12; click 450, 500, 600 (tỷ lệ 4, 4, 2 phần trăm); chi 6, 5, 4 triệu; ngưỡng 3 phần trăm; hạn 30/11.
+ * Số cố định: form tuần GDN 18, Meta 20, TikTok 12; click 900, 800, 800 (tỷ lệ 2,0, 2,5, 1,5 phần trăm); chi 6, 5, 4 triệu; ngưỡng 2 phần trăm; hạn 30/11.
  */
 const base: Record<string, Walk> = {
  "tb-why": {
@@ -435,7 +435,7 @@ const base: Record<string, Walk> = {
  },
  "tb-calc": {
   "vi": {
-   "story": "Chị Lan hỏi «tỷ lệ form trên click của cả tuần». Thảo viết một trường tính toán, nhưng có hai cách viết cho hai con số khác nhau.",
+   "story": "Chị Lan hỏi «tỷ lệ form trên click của TikTok». Tuần thường TikTok có 12 form trên 800 click; tuần trước Thảo còn chạy một đợt thử nhỏ 6 form trên 200 click. Thảo viết một trường tính toán, nhưng có hai cách viết cho hai con số khác nhau.",
    "words": [
     [
      "Trường tính toán",
@@ -446,37 +446,37 @@ const base: Record<string, Walk> = {
      "Mỗi nhóm đóng góp theo kích thước của nó."
     ]
    ],
-   "problem": "GDN 18 form trên 450 click, Meta 20 trên 500, TikTok 12 trên 600. Tính tỷ lệ bằng hai cách.",
+   "problem": "Hai dòng của TikTok: tuần thường 12 form trên 800 click, đợt thử 6 form trên 200 click. Tính tỷ lệ bằng hai cách.",
    "steps": [
     [
-     "Tỷ lệ từng kênh",
-     "GDN 18 ÷ 450 = 4%. Meta 20 ÷ 500 = 4%. TikTok 12 ÷ 600 = 2%."
+     "Tỷ lệ từng dòng",
+     "Tuần thường 12 ÷ 800 = 1,5%. Đợt thử 6 ÷ 200 = 3,0%."
     ],
     [
      "Cách 1: trung bình các tỷ lệ",
-     "(4 + 4 + 2) ÷ 3 = 3,33%."
+     "(1,5 + 3,0) ÷ 2 = 2,25%."
     ],
     [
      "Cách 2: SUM(form) ÷ SUM(click)",
-     "(18 + 20 + 12) ÷ (450 + 500 + 600) = 50 ÷ 1550 = 3,23%."
+     "(12 + 6) ÷ (800 + 200) = 18 ÷ 1000 = 1,8%."
     ],
     [
      "Vì sao lệch",
-     "Cách 1 coi ba kênh nặng như nhau. Cách 2 để TikTok (600 click, nhiều nhất) nặng hơn."
+     "Cách 1 coi đợt thử 200 click nặng bằng tuần thường 800 click. Cách 2 để dòng nhiều click nặng hơn."
     ],
     [
      "Chọn",
-     "Câu hỏi là «tỷ lệ của cả tuần»: cách 2."
+     "Câu hỏi là «tỷ lệ của TikTok»: cách 2, vì mỗi click có giá trị như nhau."
     ]
    ],
-   "say": "Trường tính toán chỉ là công thức, không phải phép đo mới. Tỷ lệ tổng là tổng chia tổng, không phải trung bình của các tỷ lệ.",
+   "say": "Trường tính toán chỉ là công thức, không phải phép đo mới. Tỷ lệ tổng là tổng chia tổng, không phải trung bình của các tỷ lệ, nếu không đợt thử nhỏ làm đẹp con số.",
    "check": [
-    "Nếu muốn «tỷ lệ trung bình mỗi kênh» thì chọn cách nào?",
-    "Cách 1, vì câu hỏi coi mỗi kênh ngang nhau."
+    "Nếu muốn «tỷ lệ trung bình của mỗi đợt chạy» thì chọn cách nào?",
+    "Cách 1, vì câu hỏi coi mỗi đợt ngang nhau."
    ]
   },
   "en": {
-   "story": "Ms. Lan asks for “the form-to-click rate of the whole week”. Thao writes a calculated field, but there are two ways to write it that give two different numbers.",
+   "story": "Ms. Lan asks for “TikTok's form-to-click rate”. A normal week gives TikTok 12 forms from 800 clicks; last week Thao also ran a small test of 6 forms from 200 clicks. Thao writes a calculated field, but there are two ways to write it giving two different numbers.",
    "words": [
     [
      "Calculated field",
@@ -487,33 +487,33 @@ const base: Record<string, Walk> = {
      "Each group contributes by its size."
     ]
    ],
-   "problem": "GDN 18 forms from 450 clicks, Meta 20 from 500, TikTok 12 from 600. Compute the rate two ways.",
+   "problem": "Two TikTok rows: a normal week of 12 forms from 800 clicks, a test of 6 forms from 200 clicks. Compute the rate two ways.",
    "steps": [
     [
-     "Each channel's rate",
-     "GDN 18 ÷ 450 = 4%. Meta 20 ÷ 500 = 4%. TikTok 12 ÷ 600 = 2%."
+     "Each row's rate",
+     "Normal week 12 ÷ 800 = 1.5%. Test 6 ÷ 200 = 3.0%."
     ],
     [
      "Way 1: mean of the rates",
-     "(4 + 4 + 2) ÷ 3 = 3.33%."
+     "(1.5 + 3.0) ÷ 2 = 2.25%."
     ],
     [
      "Way 2: SUM(forms) ÷ SUM(clicks)",
-     "(18 + 20 + 12) ÷ (450 + 500 + 600) = 50 ÷ 1,550 = 3.23%."
+     "(12 + 6) ÷ (800 + 200) = 18 ÷ 1,000 = 1.8%."
     ],
     [
      "Why they differ",
-     "Way 1 treats the three channels as equal weight. Way 2 lets TikTok (600 clicks, the most) weigh more."
+     "Way 1 weighs the 200-click test as much as the 800-click week. Way 2 lets rows with more clicks weigh more."
     ],
     [
      "Choose",
-     "The question is “the rate of the whole week”: way 2."
+     "The question is “TikTok's rate”: way 2, because every click is worth the same."
     ]
    ],
-   "say": "A calculated field is just a formula, not a new measurement. An overall rate is total divided by total, not the mean of the rates.",
+   "say": "A calculated field is just a formula, not a new measurement. An overall rate is total divided by total, not the mean of the rates, otherwise a small test flatters the number.",
    "check": [
-    "If you wanted “the average rate per channel”, which way?",
-    "Way 1, since the question treats each channel equally."
+    "If you wanted “the average rate of each run”, which way?",
+    "Way 1, since the question treats each run equally."
    ]
   }
  },
@@ -526,7 +526,7 @@ const base: Record<string, Walk> = {
      "Hai thước đo khác đơn vị chung một hình, mỗi cái một trục."
     ]
    ],
-   "problem": "Chi mỗi tuần: GDN 6 triệu, Meta 5, TikTok 4. Tỷ lệ form/click: 4%, 4%, 2%. Dựng trang cho quyết định, gồm chi phí mỗi form.",
+   "problem": "Chi mỗi tuần: GDN 6 triệu, Meta 5, TikTok 4. Tỷ lệ form/click: 2,0%; 2,5%; 1,5%. Dựng trang cho quyết định, gồm chi phí mỗi form.",
    "steps": [
     [
      "Quyết định",
@@ -542,7 +542,7 @@ const base: Record<string, Walk> = {
     ],
     [
      "Đọc",
-     "Meta rẻ nhất mỗi form (250 nghìn). TikTok không rẻ hơn GDN và tỷ lệ chỉ 2%."
+     "Meta rẻ nhất mỗi form (250 nghìn). TikTok không rẻ hơn GDN và tỷ lệ chỉ 1,5%."
     ],
     [
      "Phần bỏ đi",
@@ -563,7 +563,7 @@ const base: Record<string, Walk> = {
      "Two measures of different units in one chart, each with its own axis."
     ]
    ],
-   "problem": "Weekly spend: GDN 6 million, Meta 5, TikTok 4. Form/click rates: 4%, 4%, 2%. Build the page for the decision, including cost per form.",
+   "problem": "Weekly spend: GDN 6 million, Meta 5, TikTok 4. Form/click rates: 2.0%, 2.5%, 1.5%. Build the page for the decision, including cost per form.",
    "steps": [
     [
      "Decision",
@@ -579,7 +579,7 @@ const base: Record<string, Walk> = {
     ],
     [
      "Read",
-     "Meta is cheapest per form (250 thousand). TikTok is no cheaper than GDN and its rate is only 2%."
+     "Meta is cheapest per form (250 thousand). TikTok is no cheaper than GDN and its rate is only 1.5%."
     ],
     [
      "What to drop",
@@ -974,7 +974,7 @@ const base: Record<string, Walk> = {
     ],
     [
      "Giới hạn 2",
-     "Macro không có thao tác nào chứa câu hỏi «có tăng ngân sách TikTok không»: tỷ lệ 2% so ngưỡng 3% vẫn do người nhìn."
+     "Macro không có thao tác nào chứa câu hỏi «có tăng ngân sách TikTok không»: tỷ lệ 1,5% so ngưỡng 2% vẫn do người nhìn."
     ]
    ],
    "say": "Macro nhân bản thao tác, không đưa ra quyết định. Dùng nó cho việc đã rõ từng bước, và kiểm lại khi hình dạng dữ liệu đổi.",
@@ -1011,7 +1011,7 @@ const base: Record<string, Walk> = {
     ],
     [
      "Limit 2",
-     "No macro action contains the question “should we raise the TikTok budget”: the 2% rate against the 3% threshold is still for a person to look at."
+     "No macro action contains the question “should we raise the TikTok budget”: the 1.5% rate against the 2% threshold is still for a person to look at."
     ]
    ],
    "say": "A macro replicates actions, it does not decide. Use it for steps that are already clear, and recheck when the shape of the data changes.",
@@ -1278,33 +1278,33 @@ const base: Record<string, Walk> = {
      "Công thức tính lại theo bộ lọc đang bật."
     ]
    ],
-   "problem": "Ba dòng: GDN 18/450, Meta 20/500, TikTok 12/600. Cột «tỷ lệ dòng» = form ÷ click. Measure = DIVIDE(SUM(form), SUM(click)). So khi không lọc và khi lọc TikTok.",
+   "problem": "Ba dòng: GDN 18 form/900 click, TikTok tuần thường 12/800, TikTok đợt thử 6/200. Cột «tỷ lệ dòng» = form ÷ click. Measure = DIVIDE(SUM(form), SUM(click)). So khi không lọc, khi lọc TikTok.",
    "steps": [
     [
      "Cột tính lưu",
-     "4%; 4%; 2%."
+     "2,0%; 1,5%; 3,0%."
     ],
     [
-     "Không lọc, trung bình cột",
-     "(4 + 4 + 2) ÷ 3 = 3,33%."
-    ],
-    [
-     "Không lọc, measure",
-     "50 ÷ 1550 = 3,23%."
+     "Lọc TikTok, trung bình cột",
+     "(1,5 + 3,0) ÷ 2 = 2,25%."
     ],
     [
      "Lọc TikTok, measure",
-     "12 ÷ 600 = 2%. Tự đổi theo lát cắt."
+     "(12 + 6) ÷ (800 + 200) = 18 ÷ 1000 = 1,8%."
+    ],
+    [
+     "Không lọc, measure",
+     "(18 + 12 + 6) ÷ (900 + 800 + 200) = 36 ÷ 1900 = 1,89%. Tự đổi theo lát cắt."
     ],
     [
      "Cột sau khi lọc",
-     "Vẫn là 2% đã lưu cho dòng đó, và trung bình các tỷ lệ không có trọng số."
+     "Vẫn là các tỷ lệ đã lưu cho từng dòng, và trung bình chúng không có trọng số."
     ]
    ],
    "say": "Measure đúng cho tỷ lệ tổng vì tính trên tổng trong bộ lọc. Cột tính dễ đưa vào lỗi «trung bình của các tỷ lệ».",
    "check": [
     "Khi lọc GDN thì measure ra bao nhiêu?",
-    "18 ÷ 450 = 4%."
+    "18 ÷ 900 = 2,0%."
    ]
   },
   "en": {
@@ -1319,33 +1319,33 @@ const base: Record<string, Walk> = {
      "A formula recomputed under the active filters."
     ]
    ],
-   "problem": "Three rows: GDN 18/450, Meta 20/500, TikTok 12/600. Column “row rate” = forms ÷ clicks. Measure = DIVIDE(SUM(forms), SUM(clicks)). Compare unfiltered and filtered to TikTok.",
+   "problem": "Three rows: GDN 18 forms/900 clicks, TikTok normal week 12/800, TikTok test 6/200. Column “row rate” = forms ÷ clicks. Measure = DIVIDE(SUM(forms), SUM(clicks)). Compare unfiltered and filtered to TikTok.",
    "steps": [
     [
      "Stored column",
-     "4%; 4%; 2%."
+     "2.0%; 1.5%; 3.0%."
     ],
     [
-     "Unfiltered, average of the column",
-     "(4 + 4 + 2) ÷ 3 = 3.33%."
-    ],
-    [
-     "Unfiltered, measure",
-     "50 ÷ 1,550 = 3.23%."
+     "Filter TikTok, average of the column",
+     "(1.5 + 3.0) ÷ 2 = 2.25%."
     ],
     [
      "Filter TikTok, measure",
-     "12 ÷ 600 = 2%. Changes with the slice."
+     "(12 + 6) ÷ (800 + 200) = 18 ÷ 1,000 = 1.8%."
+    ],
+    [
+     "Unfiltered, measure",
+     "(18 + 12 + 6) ÷ (900 + 800 + 200) = 36 ÷ 1,900 = 1.89%. Changes with the slice."
     ],
     [
      "Column after filtering",
-     "Still the 2% stored for that row, and the average of rates is unweighted."
+     "Still the per-row rates stored earlier, and their average is unweighted."
     ]
    ],
    "say": "The measure is right for an overall rate because it computes on the totals within the filter. A calculated column easily brings in the “mean of rates” error.",
    "check": [
     "When filtered to GDN what does the measure give?",
-    "18 ÷ 450 = 4%."
+    "18 ÷ 900 = 2.0%."
    ]
   }
  },
@@ -1374,7 +1374,7 @@ const base: Record<string, Walk> = {
     ],
     [
      "Đọc",
-     "Meta rẻ nhất; TikTok ngang GDN và có tỷ lệ 2%."
+     "Meta rẻ nhất; TikTok ngang GDN và có tỷ lệ 1,5%."
     ],
     [
      "Chuyển phần bỏ đi",
@@ -1411,7 +1411,7 @@ const base: Record<string, Walk> = {
     ],
     [
      "Read",
-     "Meta is cheapest; TikTok matches GDN and has a rate of 2%."
+     "Meta is cheapest; TikTok matches GDN and has a rate of 1.5%."
     ],
     [
      "Move what is dropped",
@@ -1694,7 +1694,7 @@ const base: Record<string, Walk> = {
     ],
     [
      "Problem",
-     "«Có biết kênh nào đáng tiền không?» Đáp: chưa, TikTok 12 form với 4 triệu, tỷ lệ 2%."
+     "«Có biết kênh nào đáng tiền không?» Đáp: chưa, TikTok 12 form với 4 triệu, tỷ lệ 1,5%."
     ],
     [
      "Implication",
@@ -1702,7 +1702,7 @@ const base: Record<string, Walk> = {
     ],
     [
      "Need-payoff",
-     "«Nếu có một ngưỡng để cắt thì sao?» Một ngưỡng 3% giúp chốt trong một buổi, giải phóng 16 triệu."
+     "«Nếu có một ngưỡng để cắt thì sao?» Một ngưỡng 2% giúp chốt trong một buổi, giải phóng 16 triệu."
     ],
     [
      "Cẩn thận",
@@ -1731,7 +1731,7 @@ const base: Record<string, Walk> = {
     ],
     [
      "Problem",
-     "“Do we know which channel is worth it?” Answer: not yet, TikTok 12 forms for 4 million, rate 2%."
+     "“Do we know which channel is worth it?” Answer: not yet, TikTok 12 forms for 4 million, rate 1.5%."
     ],
     [
      "Implication",
@@ -1739,7 +1739,7 @@ const base: Record<string, Walk> = {
     ],
     [
      "Need-payoff",
-     "“What if we had a threshold to cut by?” A 3% threshold lets you settle in one meeting and frees 16 million."
+     "“What if we had a threshold to cut by?” A 2% threshold lets you settle in one meeting and frees 16 million."
     ],
     [
      "Be careful",
@@ -1766,7 +1766,7 @@ const base: Record<string, Walk> = {
      "Con số đã viết ra từ trước để phán xét."
     ]
    ],
-   "problem": "Ngưỡng form/click là 3%. TikTok tuần này 12 form trên 600 click. Biến câu hỏi cảm tính thành kết luận có căn cứ.",
+   "problem": "Ngưỡng form/click là 2%. TikTok tuần này 12 form trên 800 click. Biến câu hỏi cảm tính thành kết luận có căn cứ.",
    "steps": [
     [
      "Câu hỏi cảm tính",
@@ -1778,21 +1778,21 @@ const base: Record<string, Walk> = {
     ],
     [
      "Tính",
-     "12 ÷ 600 = 2,0%."
+     "12 ÷ 800 = 1,5%."
     ],
     [
      "So ngưỡng",
-     "2,0% < 3%: dưới ngưỡng 1 điểm phần trăm."
+     "1,5% < 2%: dưới ngưỡng 0,5 điểm phần trăm."
     ],
     [
      "Kết luận",
-     "«TikTok dưới ngưỡng 3% tuần này», có căn cứ, có thể kiểm lại."
+     "«TikTok dưới ngưỡng 2% tuần này», có căn cứ, có thể kiểm lại."
     ]
    ],
    "say": "Một câu hỏi chưa phải một kết luận. Kết luận cần số đo và ngưỡng đã viết ra từ trước.",
    "check": [
-    "Nếu tuần sau TikTok có 21 form trên 600 click thì sao?",
-    "21 ÷ 600 = 3,5% ≥ 3%, không còn dưới ngưỡng."
+    "Nếu tuần sau TikTok có 20 form trên 800 click thì sao?",
+    "20 ÷ 800 = 2,5% ≥ 2%, không còn dưới ngưỡng."
    ]
   },
   "en": {
@@ -1807,7 +1807,7 @@ const base: Record<string, Walk> = {
      "A number written in advance for judging."
     ]
    ],
-   "problem": "The form/click threshold is 3%. TikTok this week has 12 forms from 600 clicks. Turn the gut-feel question into a grounded conclusion.",
+   "problem": "The form/click threshold is 2%. TikTok this week has 12 forms from 800 clicks. Turn the gut-feel question into a grounded conclusion.",
    "steps": [
     [
      "Gut-feel question",
@@ -1819,21 +1819,21 @@ const base: Record<string, Walk> = {
     ],
     [
      "Compute",
-     "12 ÷ 600 = 2.0%."
+     "12 ÷ 800 = 1.5%."
     ],
     [
      "Compare to threshold",
-     "2.0% < 3%: 1 percentage point below."
+     "1.5% < 2%: 0.5 percentage point below."
     ],
     [
      "Conclusion",
-     "“TikTok is below the 3% threshold this week”, grounded and re-checkable."
+     "“TikTok is below the 2% threshold this week”, grounded and re-checkable."
     ]
    ],
    "say": "A question is not yet a conclusion. A conclusion needs a measure and a threshold written in advance.",
    "check": [
-    "If next week TikTok has 21 forms from 600 clicks?",
-    "21 ÷ 600 = 3.5% ≥ 3%, no longer below the threshold."
+    "If next week TikTok has 20 forms from 800 clicks?",
+    "20 ÷ 800 = 2.5% ≥ 2%, no longer below the threshold."
    ]
   }
  },
@@ -1858,11 +1858,11 @@ const base: Record<string, Walk> = {
     ],
     [
      "Cách kiểm",
-     "Tỷ lệ form trên click của TikTok = 12 ÷ 600 = 2%."
+     "Tỷ lệ form trên click của TikTok = 12 ÷ 800 = 1,5%."
     ],
     [
      "So ngưỡng",
-     "2% < 3%: giả thuyết chưa được ủng hộ."
+     "1,5% < 2%: giả thuyết chưa được ủng hộ."
     ],
     [
      "Còn lại",
@@ -1895,11 +1895,11 @@ const base: Record<string, Walk> = {
     ],
     [
      "How to test",
-     "TikTok form-to-click rate = 12 ÷ 600 = 2%."
+     "TikTok form-to-click rate = 12 ÷ 800 = 1,5%."
     ],
     [
      "Compare to threshold",
-     "2% < 3%: the hypothesis is not supported."
+     "1.5% < 2%: the hypothesis is not supported."
     ],
     [
      "Remaining",
@@ -2158,15 +2158,15 @@ const base: Record<string, Walk> = {
      "Quyết định nhờ người nghe."
     ]
    ],
-   "problem": "Tỷ lệ form/click: GDN 4%, Meta 4%, TikTok 2%. Ngưỡng 3%. Viết ba phần.",
+   "problem": "Tỷ lệ form/click: GDN 2,0%, Meta 2,5%, TikTok 1,5%. Ngưỡng 2%. Viết ba phần.",
    "steps": [
     [
      "Bình thường",
-     "Hai kênh đang ở 4% form trên click."
+     "GDN 2,0% và Meta 2,5%: hai kênh đang ở hoặc trên ngưỡng 2% form trên click."
     ],
     [
      "Chỗ vướng",
-     "Tuần này TikTok chỉ còn 2%, thấp hơn ngưỡng 3% một điểm và chỉ bằng một nửa hai kênh kia (2 ÷ 4 = 50%)."
+     "Tuần này TikTok chỉ còn 1,5%, thấp hơn ngưỡng 2% nửa điểm và chỉ bằng 60% của Meta (1,5 ÷ 2,5 = 60%)."
     ],
     [
      "Việc cần chốt",
@@ -2184,7 +2184,7 @@ const base: Record<string, Walk> = {
    "say": "Ba phần là đủ: nền, vướng, chốt. Nếu thiếu phần chốt, người nghe không biết cần làm gì.",
    "check": [
     "Câu nào là «chỗ vướng» trong ví dụ này?",
-    "«Tuần này TikTok chỉ còn 2%, dưới ngưỡng 3%.»"
+    "«Tuần này TikTok chỉ còn 1,5%, dưới ngưỡng 2%.»"
    ]
   },
   "en": {
@@ -2203,15 +2203,15 @@ const base: Record<string, Walk> = {
      "What you ask the listener to settle."
     ]
    ],
-   "problem": "Form/click rate: GDN 4%, Meta 4%, TikTok 2%. Threshold 3%. Write the three parts.",
+   "problem": "Form/click rate: GDN 2.0%, Meta 2.5%, TikTok 1.5%. Threshold 2%. Write the three parts.",
    "steps": [
     [
      "Normal",
-     "Two channels sit at 4% forms per click."
+     "GDN 2.0% and Meta 2.5%: two channels at or above the 2% threshold in forms per click."
     ],
     [
      "Snag",
-     "This week TikTok is only 2%, one point below the 3% threshold and half of the other two (2 ÷ 4 = 50%)."
+     "This week TikTok is only 1.5%, half a point below the 2% threshold and only 60% of Meta (1.5 ÷ 2.5 = 60%)."
     ],
     [
      "Decision",
@@ -2229,7 +2229,7 @@ const base: Record<string, Walk> = {
    "say": "Three parts are enough: baseline, snag, decision. Without the decision part, listeners do not know what to do.",
    "check": [
     "Which sentence is the “snag” in this example?",
-    "“This week TikTok is only 2%, below the 3% threshold.”"
+    "“This week TikTok is only 1.5%, below the 2% threshold.”"
    ]
   }
  },
@@ -2394,7 +2394,7 @@ const base: Record<string, Walk> = {
      "Kết luận ở đỉnh, rồi lý do, rồi bằng chứng."
     ]
    ],
-   "problem": "Tỷ lệ TikTok 2% so ngưỡng 3%. Với 600 click cần 18 form để đạt 3%, hiện có 12. Viết ba tầng.",
+   "problem": "Tỷ lệ TikTok 1,5% so ngưỡng 2%. Với 800 click cần 16 form để đạt 2%, hiện có 12. Viết ba tầng.",
    "steps": [
     [
      "Đỉnh",
@@ -2402,11 +2402,11 @@ const base: Record<string, Walk> = {
     ],
     [
      "Lý do",
-     "Tỷ lệ form trên click 2% thấp hơn ngưỡng 3%."
+     "Tỷ lệ form trên click 1,5% thấp hơn ngưỡng 2%."
     ],
     [
      "Số cần thêm",
-     "600 × 3% = 18 form để đạt ngưỡng; hiện 12, thiếu 6 form (+50%)."
+     "800 × 2% = 16 form để đạt ngưỡng; hiện 12, thiếu 4 form (+33%)."
     ],
     [
      "Bằng chứng",
@@ -2431,7 +2431,7 @@ const base: Record<string, Walk> = {
      "Conclusion at the top, then reasons, then evidence."
     ]
    ],
-   "problem": "TikTok rate 2% against the 3% threshold. With 600 clicks, 18 forms are needed to reach 3%, there are 12. Write three levels.",
+   "problem": "TikTok rate 1.5% against the 2% threshold. With 800 clicks, 16 forms are needed to reach 2%, there are 12. Write three levels.",
    "steps": [
     [
      "Top",
@@ -2439,11 +2439,11 @@ const base: Record<string, Walk> = {
     ],
     [
      "Reason",
-     "The form-to-click rate of 2% is below the 3% threshold."
+     "The form-to-click rate of 1.5% is below the 2% threshold."
     ],
     [
      "Gap",
-     "600 × 3% = 18 forms to reach the threshold; now 12, short by 6 forms (+50%)."
+     "800 × 2% = 16 forms to reach the threshold; now 12, short by 4 forms (+33%)."
     ],
     [
      "Evidence",
@@ -2554,7 +2554,7 @@ const base: Record<string, Walk> = {
     ],
     [
      "Khung 2",
-     "Tỷ lệ so ngưỡng: cột GDN 4%, Meta 4%, TikTok 2% và đường ngưỡng 3%."
+     "Tỷ lệ so ngưỡng: cột GDN 2,0%, Meta 2,5%, TikTok 1,5% và đường ngưỡng 2%."
     ],
     [
      "Khung 3",
@@ -2591,7 +2591,7 @@ const base: Record<string, Walk> = {
     ],
     [
      "Frame 2",
-     "Rate against threshold: bars GDN 4%, Meta 4%, TikTok 2% and a 3% threshold line."
+     "Rate against threshold: bars GDN 2.0%, Meta 2.5%, TikTok 1.5% and a 2% threshold line."
     ],
     [
      "Frame 3",
@@ -2801,8 +2801,8 @@ const visuals: Record<string, Visual> = {
  "tb-calc": {
   "kind": "table",
   "title": [
-   "Hai cách tính tỷ lệ",
-   "Two ways to compute the rate"
+   "Hai cách tính tỷ lệ TikTok",
+   "Two ways to compute TikTok's rate"
   ],
   "head": [
    [
@@ -2817,11 +2817,11 @@ const visuals: Record<string, Visual> = {
   "rows": [
    [
     "Trung bình các tỷ lệ / Mean of rates",
-    "3,33%"
+    "2,25%"
    ],
    [
     "SUM / SUM",
-    "3,23%"
+    "1,8%"
    ]
   ],
   "mark": [
@@ -2859,19 +2859,19 @@ const visuals: Record<string, Visual> = {
    [
     "GDN",
     6,
-    "4%",
+    "2,0%",
     0.333
    ],
    [
     "Meta",
     5,
-    "4%",
+    "2,5%",
     0.25
    ],
    [
     "TikTok",
     4,
-    "2%",
+    "1,5%",
     0.333
    ]
   ],
@@ -3116,8 +3116,8 @@ const visuals: Record<string, Visual> = {
  "st-shape": {
   "kind": "bars",
   "title": [
-   "Tỷ lệ form/click (%), ngưỡng 3%",
-   "Form/click rate (%), threshold 3%"
+   "Tỷ lệ form/click (%), ngưỡng 2%",
+   "Form/click rate (%), threshold 2%"
   ],
   "items": [
    {
@@ -3125,21 +3125,21 @@ const visuals: Record<string, Visual> = {
      "GDN",
      "GDN"
     ],
-    "value": 4
+    "value": 2.0
    },
    {
     "label": [
      "Meta",
      "Meta"
     ],
-    "value": 4
+    "value": 2.5
    },
    {
     "label": [
      "TikTok",
      "TikTok"
     ],
-    "value": 2
+    "value": 1.5
    }
   ],
   "unit": "%"

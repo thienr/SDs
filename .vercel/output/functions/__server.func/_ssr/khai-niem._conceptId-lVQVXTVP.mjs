@@ -1,10 +1,10 @@
 import { o as __toESM } from "../_runtime.mjs";
 import { J as require_react, S as require_jsx_runtime, b as Link } from "../_libs/@tanstack/react-router+[...].mjs";
-import { A as studyCopy, B as subscribeRaw, F as getRawVersion, I as getServerRawVersion, M as studyNeighbors, O as subscribeProgress, b as getServerProgress, j as studyListTitle, k as getStudy, r as Route$1, y as getProgress } from "./router-WhILmx5X.mjs";
-import { n as Range, r as Sim, t as Lab } from "./labs-DJoBzrU9.mjs";
+import { A as studyCopy, B as subscribeRaw, F as getRawVersion, I as getServerRawVersion, M as studyNeighbors, O as subscribeProgress, b as getServerProgress, j as studyListTitle, k as getStudy, r as Route$1, y as getProgress } from "./router-DfDfgs0a.mjs";
+import { n as Range, r as Sim, t as Lab } from "./labs-Cl2IZIIh.mjs";
 import { t as Tex } from "./tex-t3KOuum9.mjs";
-import { o as relatedOf } from "./map-Dg_R9gVx.mjs";
-//#region node_modules/.nitro/vite/services/ssr/assets/khai-niem._conceptId-Bg9GBXRP.js
+import { o as relatedOf } from "./map-D_ZW9jG5.mjs";
+//#region node_modules/.nitro/vite/services/ssr/assets/khai-niem._conceptId-lVQVXTVP.js
 var import_react = /* @__PURE__ */ __toESM(require_react());
 var import_jsx_runtime = require_jsx_runtime();
 var ui$1 = {
@@ -20392,7 +20392,7 @@ var c4Walks = Object.fromEntries(Object.entries(base$1).map(([id, w]) => [id, vi
 } : w]));
 /**
 * C5 (tháng 9-10, Lotus Spa): Tableau, Excel nâng cao, Power BI, framework, kể chuyện bằng dữ liệu.
-* Số cố định: form tuần GDN 18, Meta 20, TikTok 12; click 450, 500, 600 (tỷ lệ 4, 4, 2 phần trăm); chi 6, 5, 4 triệu; ngưỡng 3 phần trăm; hạn 30/11.
+* Số cố định: form tuần GDN 18, Meta 20, TikTok 12; click 900, 800, 800 (tỷ lệ 2,0, 2,5, 1,5 phần trăm); chi 6, 5, 4 triệu; ngưỡng 2 phần trăm; hạn 30/11.
 */
 var base = {
 	"tb-why": {
@@ -20555,44 +20555,44 @@ var base = {
 	},
 	"tb-calc": {
 		"vi": {
-			"story": "Chị Lan hỏi «tỷ lệ form trên click của cả tuần». Thảo viết một trường tính toán, nhưng có hai cách viết cho hai con số khác nhau.",
+			"story": "Chị Lan hỏi «tỷ lệ form trên click của TikTok». Tuần thường TikTok có 12 form trên 800 click; tuần trước Thảo còn chạy một đợt thử nhỏ 6 form trên 200 click. Thảo viết một trường tính toán, nhưng có hai cách viết cho hai con số khác nhau.",
 			"words": [["Trường tính toán", "Một công thức bạn tự viết dựa trên các trường có sẵn."], ["Trung bình có trọng số", "Mỗi nhóm đóng góp theo kích thước của nó."]],
-			"problem": "GDN 18 form trên 450 click, Meta 20 trên 500, TikTok 12 trên 600. Tính tỷ lệ bằng hai cách.",
+			"problem": "Hai dòng của TikTok: tuần thường 12 form trên 800 click, đợt thử 6 form trên 200 click. Tính tỷ lệ bằng hai cách.",
 			"steps": [
-				["Tỷ lệ từng kênh", "GDN 18 ÷ 450 = 4%. Meta 20 ÷ 500 = 4%. TikTok 12 ÷ 600 = 2%."],
-				["Cách 1: trung bình các tỷ lệ", "(4 + 4 + 2) ÷ 3 = 3,33%."],
-				["Cách 2: SUM(form) ÷ SUM(click)", "(18 + 20 + 12) ÷ (450 + 500 + 600) = 50 ÷ 1550 = 3,23%."],
-				["Vì sao lệch", "Cách 1 coi ba kênh nặng như nhau. Cách 2 để TikTok (600 click, nhiều nhất) nặng hơn."],
-				["Chọn", "Câu hỏi là «tỷ lệ của cả tuần»: cách 2."]
+				["Tỷ lệ từng dòng", "Tuần thường 12 ÷ 800 = 1,5%. Đợt thử 6 ÷ 200 = 3,0%."],
+				["Cách 1: trung bình các tỷ lệ", "(1,5 + 3,0) ÷ 2 = 2,25%."],
+				["Cách 2: SUM(form) ÷ SUM(click)", "(12 + 6) ÷ (800 + 200) = 18 ÷ 1000 = 1,8%."],
+				["Vì sao lệch", "Cách 1 coi đợt thử 200 click nặng bằng tuần thường 800 click. Cách 2 để dòng nhiều click nặng hơn."],
+				["Chọn", "Câu hỏi là «tỷ lệ của TikTok»: cách 2, vì mỗi click có giá trị như nhau."]
 			],
-			"say": "Trường tính toán chỉ là công thức, không phải phép đo mới. Tỷ lệ tổng là tổng chia tổng, không phải trung bình của các tỷ lệ.",
-			"check": ["Nếu muốn «tỷ lệ trung bình mỗi kênh» thì chọn cách nào?", "Cách 1, vì câu hỏi coi mỗi kênh ngang nhau."]
+			"say": "Trường tính toán chỉ là công thức, không phải phép đo mới. Tỷ lệ tổng là tổng chia tổng, không phải trung bình của các tỷ lệ, nếu không đợt thử nhỏ làm đẹp con số.",
+			"check": ["Nếu muốn «tỷ lệ trung bình của mỗi đợt chạy» thì chọn cách nào?", "Cách 1, vì câu hỏi coi mỗi đợt ngang nhau."]
 		},
 		"en": {
-			"story": "Ms. Lan asks for “the form-to-click rate of the whole week”. Thao writes a calculated field, but there are two ways to write it that give two different numbers.",
+			"story": "Ms. Lan asks for “TikTok's form-to-click rate”. A normal week gives TikTok 12 forms from 800 clicks; last week Thao also ran a small test of 6 forms from 200 clicks. Thao writes a calculated field, but there are two ways to write it giving two different numbers.",
 			"words": [["Calculated field", "A formula you write from the available fields."], ["Weighted average", "Each group contributes by its size."]],
-			"problem": "GDN 18 forms from 450 clicks, Meta 20 from 500, TikTok 12 from 600. Compute the rate two ways.",
+			"problem": "Two TikTok rows: a normal week of 12 forms from 800 clicks, a test of 6 forms from 200 clicks. Compute the rate two ways.",
 			"steps": [
-				["Each channel's rate", "GDN 18 ÷ 450 = 4%. Meta 20 ÷ 500 = 4%. TikTok 12 ÷ 600 = 2%."],
-				["Way 1: mean of the rates", "(4 + 4 + 2) ÷ 3 = 3.33%."],
-				["Way 2: SUM(forms) ÷ SUM(clicks)", "(18 + 20 + 12) ÷ (450 + 500 + 600) = 50 ÷ 1,550 = 3.23%."],
-				["Why they differ", "Way 1 treats the three channels as equal weight. Way 2 lets TikTok (600 clicks, the most) weigh more."],
-				["Choose", "The question is “the rate of the whole week”: way 2."]
+				["Each row's rate", "Normal week 12 ÷ 800 = 1.5%. Test 6 ÷ 200 = 3.0%."],
+				["Way 1: mean of the rates", "(1.5 + 3.0) ÷ 2 = 2.25%."],
+				["Way 2: SUM(forms) ÷ SUM(clicks)", "(12 + 6) ÷ (800 + 200) = 18 ÷ 1,000 = 1.8%."],
+				["Why they differ", "Way 1 weighs the 200-click test as much as the 800-click week. Way 2 lets rows with more clicks weigh more."],
+				["Choose", "The question is “TikTok's rate”: way 2, because every click is worth the same."]
 			],
-			"say": "A calculated field is just a formula, not a new measurement. An overall rate is total divided by total, not the mean of the rates.",
-			"check": ["If you wanted “the average rate per channel”, which way?", "Way 1, since the question treats each channel equally."]
+			"say": "A calculated field is just a formula, not a new measurement. An overall rate is total divided by total, not the mean of the rates, otherwise a small test flatters the number.",
+			"check": ["If you wanted “the average rate of each run”, which way?", "Way 1, since the question treats each run equally."]
 		}
 	},
 	"tb-dual": {
 		"vi": {
 			"story": "Thảo muốn đưa tất cả lên một trang với tám bộ lọc. Chị Lan chỉ cần chốt một việc: có tăng ngân sách TikTok không?",
 			"words": [["Trục kép", "Hai thước đo khác đơn vị chung một hình, mỗi cái một trục."]],
-			"problem": "Chi mỗi tuần: GDN 6 triệu, Meta 5, TikTok 4. Tỷ lệ form/click: 4%, 4%, 2%. Dựng trang cho quyết định, gồm chi phí mỗi form.",
+			"problem": "Chi mỗi tuần: GDN 6 triệu, Meta 5, TikTok 4. Tỷ lệ form/click: 2,0%; 2,5%; 1,5%. Dựng trang cho quyết định, gồm chi phí mỗi form.",
 			"steps": [
 				["Quyết định", "Tăng ngân sách TikTok hay không."],
 				["Hai số cần", "Mức chi (triệu) và tỷ lệ form/click (%). Hai đơn vị khác nhau nên hai trục, mỗi trục ghi đơn vị."],
 				["Chi phí mỗi form", "GDN 6 ÷ 18 = 0,333 triệu. Meta 5 ÷ 20 = 0,25 triệu. TikTok 4 ÷ 12 = 0,333 triệu."],
-				["Đọc", "Meta rẻ nhất mỗi form (250 nghìn). TikTok không rẻ hơn GDN và tỷ lệ chỉ 2%."],
+				["Đọc", "Meta rẻ nhất mỗi form (250 nghìn). TikTok không rẻ hơn GDN và tỷ lệ chỉ 1,5%."],
 				["Phần bỏ đi", "Tám bộ lọc biến trang thành màn hình tìm kiếm. Giữ lại một bộ lọc tuần."]
 			],
 			"say": "Một trang một quyết định: chi, tỷ lệ, chi phí mỗi form. Trục kép phải ghi hai đơn vị, nếu không người xem tưởng hai cột cùng thang đo.",
@@ -20601,12 +20601,12 @@ var base = {
 		"en": {
 			"story": "Thao wants everything on one page with eight filters. Ms. Lan needs to settle one thing: should the TikTok budget go up?",
 			"words": [["Dual axis", "Two measures of different units in one chart, each with its own axis."]],
-			"problem": "Weekly spend: GDN 6 million, Meta 5, TikTok 4. Form/click rates: 4%, 4%, 2%. Build the page for the decision, including cost per form.",
+			"problem": "Weekly spend: GDN 6 million, Meta 5, TikTok 4. Form/click rates: 2.0%, 2.5%, 1.5%. Build the page for the decision, including cost per form.",
 			"steps": [
 				["Decision", "Whether to raise the TikTok budget."],
 				["Two numbers needed", "Spend (million) and form/click rate (%). Different units, so two axes, each labelled with its unit."],
 				["Cost per form", "GDN 6 ÷ 18 = 0.333 million. Meta 5 ÷ 20 = 0.25 million. TikTok 4 ÷ 12 = 0.333 million."],
-				["Read", "Meta is cheapest per form (250 thousand). TikTok is no cheaper than GDN and its rate is only 2%."],
+				["Read", "Meta is cheapest per form (250 thousand). TikTok is no cheaper than GDN and its rate is only 1.5%."],
 				["What to drop", "Eight filters turn the page into a search screen. Keep one week filter."]
 			],
 			"say": "One page, one decision: spend, rate, cost per form. A dual axis must name both units, otherwise viewers think two bars share a scale.",
@@ -20759,7 +20759,7 @@ var base = {
 				["Macro mỗi tháng", "2 × 20 = 40 giây."],
 				["Tiết kiệm", "1.800 − 40 = 1.760 giây, gần 29 phút."],
 				["Giới hạn 1", "Macro dán vào vùng cố định B2:B4. Tuần có kênh thứ tư, dòng thứ tư không được dán."],
-				["Giới hạn 2", "Macro không có thao tác nào chứa câu hỏi «có tăng ngân sách TikTok không»: tỷ lệ 2% so ngưỡng 3% vẫn do người nhìn."]
+				["Giới hạn 2", "Macro không có thao tác nào chứa câu hỏi «có tăng ngân sách TikTok không»: tỷ lệ 1,5% so ngưỡng 2% vẫn do người nhìn."]
 			],
 			"say": "Macro nhân bản thao tác, không đưa ra quyết định. Dùng nó cho việc đã rõ từng bước, và kiểm lại khi hình dạng dữ liệu đổi.",
 			"check": ["Nếu bảng nguồn thêm một cột giữa chừng thì macro cũ chạy ra sao?", "Có thể dán sai cột mà không báo lỗi, nên cần kiểm lại macro."]
@@ -20773,7 +20773,7 @@ var base = {
 				["By macro per month", "2 × 20 = 40 seconds."],
 				["Saved", "1,800 − 40 = 1,760 seconds, nearly 29 minutes."],
 				["Limit 1", "The macro pastes into the fixed range B2:B4. In a week with a fourth channel, the fourth row is not pasted."],
-				["Limit 2", "No macro action contains the question “should we raise the TikTok budget”: the 2% rate against the 3% threshold is still for a person to look at."]
+				["Limit 2", "No macro action contains the question “should we raise the TikTok budget”: the 1.5% rate against the 2% threshold is still for a person to look at."]
 			],
 			"say": "A macro replicates actions, it does not decide. Use it for steps that are already clear, and recheck when the shape of the data changes.",
 			"check": ["If the source table gains a column in the middle, what does the old macro do?", "It may paste into the wrong column without an error, so recheck the macro."]
@@ -20873,30 +20873,30 @@ var base = {
 		"vi": {
 			"story": "Thảo có một cột tính «tỷ lệ của dòng» và một measure. Khi lọc, hai thứ cư xử khác nhau.",
 			"words": [["Cột tính", "Giá trị tính cho từng dòng lúc làm mới và được lưu."], ["Measure", "Công thức tính lại theo bộ lọc đang bật."]],
-			"problem": "Ba dòng: GDN 18/450, Meta 20/500, TikTok 12/600. Cột «tỷ lệ dòng» = form ÷ click. Measure = DIVIDE(SUM(form), SUM(click)). So khi không lọc và khi lọc TikTok.",
+			"problem": "Ba dòng: GDN 18 form/900 click, TikTok tuần thường 12/800, TikTok đợt thử 6/200. Cột «tỷ lệ dòng» = form ÷ click. Measure = DIVIDE(SUM(form), SUM(click)). So khi không lọc, khi lọc TikTok.",
 			"steps": [
-				["Cột tính lưu", "4%; 4%; 2%."],
-				["Không lọc, trung bình cột", "(4 + 4 + 2) ÷ 3 = 3,33%."],
-				["Không lọc, measure", "50 ÷ 1550 = 3,23%."],
-				["Lọc TikTok, measure", "12 ÷ 600 = 2%. Tự đổi theo lát cắt."],
-				["Cột sau khi lọc", "Vẫn là 2% đã lưu cho dòng đó, và trung bình các tỷ lệ không có trọng số."]
+				["Cột tính lưu", "2,0%; 1,5%; 3,0%."],
+				["Lọc TikTok, trung bình cột", "(1,5 + 3,0) ÷ 2 = 2,25%."],
+				["Lọc TikTok, measure", "(12 + 6) ÷ (800 + 200) = 18 ÷ 1000 = 1,8%."],
+				["Không lọc, measure", "(18 + 12 + 6) ÷ (900 + 800 + 200) = 36 ÷ 1900 = 1,89%. Tự đổi theo lát cắt."],
+				["Cột sau khi lọc", "Vẫn là các tỷ lệ đã lưu cho từng dòng, và trung bình chúng không có trọng số."]
 			],
 			"say": "Measure đúng cho tỷ lệ tổng vì tính trên tổng trong bộ lọc. Cột tính dễ đưa vào lỗi «trung bình của các tỷ lệ».",
-			"check": ["Khi lọc GDN thì measure ra bao nhiêu?", "18 ÷ 450 = 4%."]
+			"check": ["Khi lọc GDN thì measure ra bao nhiêu?", "18 ÷ 900 = 2,0%."]
 		},
 		"en": {
 			"story": "Thao has a calculated column “row rate” and a measure. When filtering, the two behave differently.",
 			"words": [["Calculated column", "A value computed per row at refresh time and stored."], ["Measure", "A formula recomputed under the active filters."]],
-			"problem": "Three rows: GDN 18/450, Meta 20/500, TikTok 12/600. Column “row rate” = forms ÷ clicks. Measure = DIVIDE(SUM(forms), SUM(clicks)). Compare unfiltered and filtered to TikTok.",
+			"problem": "Three rows: GDN 18 forms/900 clicks, TikTok normal week 12/800, TikTok test 6/200. Column “row rate” = forms ÷ clicks. Measure = DIVIDE(SUM(forms), SUM(clicks)). Compare unfiltered and filtered to TikTok.",
 			"steps": [
-				["Stored column", "4%; 4%; 2%."],
-				["Unfiltered, average of the column", "(4 + 4 + 2) ÷ 3 = 3.33%."],
-				["Unfiltered, measure", "50 ÷ 1,550 = 3.23%."],
-				["Filter TikTok, measure", "12 ÷ 600 = 2%. Changes with the slice."],
-				["Column after filtering", "Still the 2% stored for that row, and the average of rates is unweighted."]
+				["Stored column", "2.0%; 1.5%; 3.0%."],
+				["Filter TikTok, average of the column", "(1.5 + 3.0) ÷ 2 = 2.25%."],
+				["Filter TikTok, measure", "(12 + 6) ÷ (800 + 200) = 18 ÷ 1,000 = 1.8%."],
+				["Unfiltered, measure", "(18 + 12 + 6) ÷ (900 + 800 + 200) = 36 ÷ 1,900 = 1.89%. Changes with the slice."],
+				["Column after filtering", "Still the per-row rates stored earlier, and their average is unweighted."]
 			],
 			"say": "The measure is right for an overall rate because it computes on the totals within the filter. A calculated column easily brings in the “mean of rates” error.",
-			"check": ["When filtered to GDN what does the measure give?", "18 ÷ 450 = 4%."]
+			"check": ["When filtered to GDN what does the measure give?", "18 ÷ 900 = 2.0%."]
 		}
 	},
 	"pb-page": {
@@ -20908,7 +20908,7 @@ var base = {
 				["Giữ lại", "3 thành phần: thẻ tỷ lệ, cột chi phí mỗi form, bộ lọc tuần."],
 				["Bỏ", "17 − 3 = 14 thành phần (cả hình và bộ lọc): bản đồ, bộ lọc theo màu logo, ..."],
 				["Chi phí mỗi form", "GDN 6 ÷ 18 = 0,333; Meta 5 ÷ 20 = 0,25; TikTok 4 ÷ 12 = 0,333 (triệu)."],
-				["Đọc", "Meta rẻ nhất; TikTok ngang GDN và có tỷ lệ 2%."],
+				["Đọc", "Meta rẻ nhất; TikTok ngang GDN và có tỷ lệ 1,5%."],
 				["Chuyển phần bỏ đi", "Sang trang khác, để người cần xem tìm được."]
 			],
 			"say": "Trang gọn cho phép chị Lan chốt trong năm phút. Phần chi tiết không bị xóa mà chuyển sang trang riêng.",
@@ -20922,7 +20922,7 @@ var base = {
 				["Keep", "3 components: rate card, cost-per-form bar, week filter."],
 				["Drop", "17 − 3 = 14 components (visuals and filters): map, logo-colour filter, ..."],
 				["Cost per form", "GDN 6 ÷ 18 = 0.333; Meta 5 ÷ 20 = 0.25; TikTok 4 ÷ 12 = 0.333 (million)."],
-				["Read", "Meta is cheapest; TikTok matches GDN and has a rate of 2%."],
+				["Read", "Meta is cheapest; TikTok matches GDN and has a rate of 1.5%."],
 				["Move what is dropped", "To another page, so whoever needs it can find it."]
 			],
 			"say": "A lean page lets Ms. Lan settle in five minutes. The detail is not deleted but moved to its own page.",
@@ -21026,9 +21026,9 @@ var base = {
 			"problem": "Lập bốn câu hỏi SPIN cho chuyện ngân sách TikTok, kèm con số.",
 			"steps": [
 				["Situation", "«Mỗi tuần mình được bao nhiêu form, chi bao nhiêu?» Đáp: 50 form, 15 triệu."],
-				["Problem", "«Có biết kênh nào đáng tiền không?» Đáp: chưa, TikTok 12 form với 4 triệu, tỷ lệ 2%."],
+				["Problem", "«Có biết kênh nào đáng tiền không?» Đáp: chưa, TikTok 12 form với 4 triệu, tỷ lệ 1,5%."],
 				["Implication", "«Nếu giữ nguyên thì sao?» TikTok tốn 4 × 4 = 16 triệu mỗi tháng mà tỷ lệ thấp hơn ngưỡng."],
-				["Need-payoff", "«Nếu có một ngưỡng để cắt thì sao?» Một ngưỡng 3% giúp chốt trong một buổi, giải phóng 16 triệu."],
+				["Need-payoff", "«Nếu có một ngưỡng để cắt thì sao?» Một ngưỡng 2% giúp chốt trong một buổi, giải phóng 16 triệu."],
 				["Cẩn thận", "Mỗi câu hỏi để nghe, không phải kịch bản để người ta gật đầu."]
 			],
 			"say": "SPIN bốn loại câu hỏi từ tình hình đến lợi ích. Nó dùng để hiểu, không để dẫn dắt người ta tới một câu trả lời định sẵn.",
@@ -21040,9 +21040,9 @@ var base = {
 			"problem": "Build four SPIN questions for the TikTok budget issue, with numbers.",
 			"steps": [
 				["Situation", "“How many forms do we get each week and what do we spend?” Answer: 50 forms, 15 million."],
-				["Problem", "“Do we know which channel is worth it?” Answer: not yet, TikTok 12 forms for 4 million, rate 2%."],
+				["Problem", "“Do we know which channel is worth it?” Answer: not yet, TikTok 12 forms for 4 million, rate 1.5%."],
 				["Implication", "“What if we keep it as is?” TikTok costs 4 × 4 = 16 million a month at a rate below the threshold."],
-				["Need-payoff", "“What if we had a threshold to cut by?” A 3% threshold lets you settle in one meeting and frees 16 million."],
+				["Need-payoff", "“What if we had a threshold to cut by?” A 2% threshold lets you settle in one meeting and frees 16 million."],
 				["Be careful", "Each question is for listening, not a script to make people nod."]
 			],
 			"say": "SPIN is four kinds of question from situation to benefit. It is for understanding, not for steering people to a pre-set answer.",
@@ -21053,30 +21053,30 @@ var base = {
 		"vi": {
 			"story": "Thảo hỏi chị Lan «Chị có thấy kênh TikTok yếu không?» và chị trả lời «yếu». Thảo ghi vào báo cáo «TikTok yếu». Chưa được.",
 			"words": [["Câu hỏi dẫn dắt", "Câu chứa sẵn câu trả lời mong muốn."], ["Ngưỡng", "Con số đã viết ra từ trước để phán xét."]],
-			"problem": "Ngưỡng form/click là 3%. TikTok tuần này 12 form trên 600 click. Biến câu hỏi cảm tính thành kết luận có căn cứ.",
+			"problem": "Ngưỡng form/click là 2%. TikTok tuần này 12 form trên 800 click. Biến câu hỏi cảm tính thành kết luận có căn cứ.",
 			"steps": [
 				["Câu hỏi cảm tính", "«Anh có thấy kênh này yếu không?» Trả lời «yếu» chỉ là ý kiến."],
 				["Câu hỏi đo được", "«Tỷ lệ form trên click của TikTok tuần qua là bao nhiêu?»"],
-				["Tính", "12 ÷ 600 = 2,0%."],
-				["So ngưỡng", "2,0% < 3%: dưới ngưỡng 1 điểm phần trăm."],
-				["Kết luận", "«TikTok dưới ngưỡng 3% tuần này», có căn cứ, có thể kiểm lại."]
+				["Tính", "12 ÷ 800 = 1,5%."],
+				["So ngưỡng", "1,5% < 2%: dưới ngưỡng 0,5 điểm phần trăm."],
+				["Kết luận", "«TikTok dưới ngưỡng 2% tuần này», có căn cứ, có thể kiểm lại."]
 			],
 			"say": "Một câu hỏi chưa phải một kết luận. Kết luận cần số đo và ngưỡng đã viết ra từ trước.",
-			"check": ["Nếu tuần sau TikTok có 21 form trên 600 click thì sao?", "21 ÷ 600 = 3,5% ≥ 3%, không còn dưới ngưỡng."]
+			"check": ["Nếu tuần sau TikTok có 20 form trên 800 click thì sao?", "20 ÷ 800 = 2,5% ≥ 2%, không còn dưới ngưỡng."]
 		},
 		"en": {
 			"story": "Thao asks Ms. Lan “Do you think the TikTok channel is weak?” and she answers “weak”. Thao writes “TikTok is weak” in the report. Not yet.",
 			"words": [["Leading question", "A question that carries the desired answer."], ["Threshold", "A number written in advance for judging."]],
-			"problem": "The form/click threshold is 3%. TikTok this week has 12 forms from 600 clicks. Turn the gut-feel question into a grounded conclusion.",
+			"problem": "The form/click threshold is 2%. TikTok this week has 12 forms from 800 clicks. Turn the gut-feel question into a grounded conclusion.",
 			"steps": [
 				["Gut-feel question", "“Do you think this channel is weak?” Answering “weak” is only an opinion."],
 				["Measurable question", "“What was TikTok's form-to-click rate last week?”"],
-				["Compute", "12 ÷ 600 = 2.0%."],
-				["Compare to threshold", "2.0% < 3%: 1 percentage point below."],
-				["Conclusion", "“TikTok is below the 3% threshold this week”, grounded and re-checkable."]
+				["Compute", "12 ÷ 800 = 1.5%."],
+				["Compare to threshold", "1.5% < 2%: 0.5 percentage point below."],
+				["Conclusion", "“TikTok is below the 2% threshold this week”, grounded and re-checkable."]
 			],
 			"say": "A question is not yet a conclusion. A conclusion needs a measure and a threshold written in advance.",
-			"check": ["If next week TikTok has 21 forms from 600 clicks?", "21 ÷ 600 = 3.5% ≥ 3%, no longer below the threshold."]
+			"check": ["If next week TikTok has 20 forms from 800 clicks?", "20 ÷ 800 = 2.5% ≥ 2%, no longer below the threshold."]
 		}
 	},
 	"fw-bmc": {
@@ -21087,8 +21087,8 @@ var base = {
 			"steps": [
 				["Chín ô", "Khách hàng, giá trị, kênh, quan hệ, doanh thu, nguồn lực, hoạt động, đối tác, chi phí."],
 				["Ô cần kiểm", "Kênh: «TikTok đem khách tới»."],
-				["Cách kiểm", "Tỷ lệ form trên click của TikTok = 12 ÷ 600 = 2%."],
-				["So ngưỡng", "2% < 3%: giả thuyết chưa được ủng hộ."],
+				["Cách kiểm", "Tỷ lệ form trên click của TikTok = 12 ÷ 800 = 1,5%."],
+				["So ngưỡng", "1,5% < 2%: giả thuyết chưa được ủng hộ."],
 				["Còn lại", "9 − 1 = 8 ô vẫn là lời nói chưa kiểm."]
 			],
 			"say": "Canvas là danh sách giả thuyết. Với mỗi ô, hỏi: đo bằng số nào, cùng đơn vị dòng nào. Ô nào không đo được thì vẫn chỉ là lời nói.",
@@ -21101,8 +21101,8 @@ var base = {
 			"steps": [
 				["Nine boxes", "Customers, value, channels, relationships, revenue, resources, activities, partners, costs."],
 				["Box to test", "Channels: “TikTok brings customers”."],
-				["How to test", "TikTok form-to-click rate = 12 ÷ 600 = 2%."],
-				["Compare to threshold", "2% < 3%: the hypothesis is not supported."],
+				["How to test", "TikTok form-to-click rate = 12 ÷ 800 = 1,5%."],
+				["Compare to threshold", "1.5% < 2%: the hypothesis is not supported."],
 				["Remaining", "9 − 1 = 8 boxes are still untested words."]
 			],
 			"say": "A canvas is a list of hypotheses. For each box ask: which number measures it, at which row grain. A box that cannot be measured is still just talk.",
@@ -21207,16 +21207,16 @@ var base = {
 				["Chỗ vướng", "Điều lệch khỏi mức nền."],
 				["Việc cần chốt", "Quyết định nhờ người nghe."]
 			],
-			"problem": "Tỷ lệ form/click: GDN 4%, Meta 4%, TikTok 2%. Ngưỡng 3%. Viết ba phần.",
+			"problem": "Tỷ lệ form/click: GDN 2,0%, Meta 2,5%, TikTok 1,5%. Ngưỡng 2%. Viết ba phần.",
 			"steps": [
-				["Bình thường", "Hai kênh đang ở 4% form trên click."],
-				["Chỗ vướng", "Tuần này TikTok chỉ còn 2%, thấp hơn ngưỡng 3% một điểm và chỉ bằng một nửa hai kênh kia (2 ÷ 4 = 50%)."],
+				["Bình thường", "GDN 2,0% và Meta 2,5%: hai kênh đang ở hoặc trên ngưỡng 2% form trên click."],
+				["Chỗ vướng", "Tuần này TikTok chỉ còn 1,5%, thấp hơn ngưỡng 2% nửa điểm và chỉ bằng 60% của Meta (1,5 ÷ 2,5 = 60%)."],
 				["Việc cần chốt", "Có tăng ngân sách TikTok 4 triệu mỗi tuần không, hay giữ lại đến hạn 30/11."],
 				["Bỏ gì", "Lịch sử nền tảng, định nghĩa form, mười biểu đồ phụ."],
 				["Kiểm tra", "Mỗi phần một câu, và phần 3 là một quyết định có hạn."]
 			],
 			"say": "Ba phần là đủ: nền, vướng, chốt. Nếu thiếu phần chốt, người nghe không biết cần làm gì.",
-			"check": ["Câu nào là «chỗ vướng» trong ví dụ này?", "«Tuần này TikTok chỉ còn 2%, dưới ngưỡng 3%.»"]
+			"check": ["Câu nào là «chỗ vướng» trong ví dụ này?", "«Tuần này TikTok chỉ còn 1,5%, dưới ngưỡng 2%.»"]
 		},
 		"en": {
 			"story": "Ms. Lan has five minutes. Thao needs a three-part story: normal, snag, decision.",
@@ -21225,16 +21225,16 @@ var base = {
 				["Snag", "What deviates from the baseline."],
 				["Decision", "What you ask the listener to settle."]
 			],
-			"problem": "Form/click rate: GDN 4%, Meta 4%, TikTok 2%. Threshold 3%. Write the three parts.",
+			"problem": "Form/click rate: GDN 2.0%, Meta 2.5%, TikTok 1.5%. Threshold 2%. Write the three parts.",
 			"steps": [
-				["Normal", "Two channels sit at 4% forms per click."],
-				["Snag", "This week TikTok is only 2%, one point below the 3% threshold and half of the other two (2 ÷ 4 = 50%)."],
+				["Normal", "GDN 2.0% and Meta 2.5%: two channels at or above the 2% threshold in forms per click."],
+				["Snag", "This week TikTok is only 1.5%, half a point below the 2% threshold and only 60% of Meta (1.5 ÷ 2.5 = 60%)."],
 				["Decision", "Raise the TikTok budget of 4 million a week, or hold until the 30/11 deadline."],
 				["What to drop", "Platform history, form definitions, ten side charts."],
 				["Check", "One sentence per part, and part 3 is a decision with a deadline."]
 			],
 			"say": "Three parts are enough: baseline, snag, decision. Without the decision part, listeners do not know what to do.",
-			"check": ["Which sentence is the “snag” in this example?", "“This week TikTok is only 2%, below the 3% threshold.”"]
+			"check": ["Which sentence is the “snag” in this example?", "“This week TikTok is only 1.5%, below the 2% threshold.”"]
 		}
 	},
 	"st-who": {
@@ -21301,11 +21301,11 @@ var base = {
 		"vi": {
 			"story": "Chị Lan nghe tới giữa bài mà chưa biết bạn muốn gì. Kim tự tháp đảo thứ tự: nói câu cần chốt trước.",
 			"words": [["Kim tự tháp", "Kết luận ở đỉnh, rồi lý do, rồi bằng chứng."]],
-			"problem": "Tỷ lệ TikTok 2% so ngưỡng 3%. Với 600 click cần 18 form để đạt 3%, hiện có 12. Viết ba tầng.",
+			"problem": "Tỷ lệ TikTok 1,5% so ngưỡng 2%. Với 800 click cần 16 form để đạt 2%, hiện có 12. Viết ba tầng.",
 			"steps": [
 				["Đỉnh", "«Đề nghị giữ ngân sách TikTok đến 30/11, không tăng.»"],
-				["Lý do", "Tỷ lệ form trên click 2% thấp hơn ngưỡng 3%."],
-				["Số cần thêm", "600 × 3% = 18 form để đạt ngưỡng; hiện 12, thiếu 6 form (+50%)."],
+				["Lý do", "Tỷ lệ form trên click 1,5% thấp hơn ngưỡng 2%."],
+				["Số cần thêm", "800 × 2% = 16 form để đạt ngưỡng; hiện 12, thiếu 4 form (+33%)."],
 				["Bằng chứng", "Cùng cách đếm với tuần nền (form ÷ click), cùng đơn vị dòng."],
 				["Thứ tự nói", "Đỉnh, rồi lý do, rồi bằng chứng; chị Lan muốn hỏi thì mới đi sâu."]
 			],
@@ -21315,11 +21315,11 @@ var base = {
 		"en": {
 			"story": "Ms. Lan listens to the middle of a talk without knowing what you want. The pyramid reverses the order: say the decision first.",
 			"words": [["Pyramid", "Conclusion at the top, then reasons, then evidence."]],
-			"problem": "TikTok rate 2% against the 3% threshold. With 600 clicks, 18 forms are needed to reach 3%, there are 12. Write three levels.",
+			"problem": "TikTok rate 1.5% against the 2% threshold. With 800 clicks, 16 forms are needed to reach 2%, there are 12. Write three levels.",
 			"steps": [
 				["Top", "“I recommend holding the TikTok budget until 30/11, not raising it.”"],
-				["Reason", "The form-to-click rate of 2% is below the 3% threshold."],
-				["Gap", "600 × 3% = 18 forms to reach the threshold; now 12, short by 6 forms (+50%)."],
+				["Reason", "The form-to-click rate of 1.5% is below the 2% threshold."],
+				["Gap", "800 × 2% = 16 forms to reach the threshold; now 12, short by 4 forms (+33%)."],
 				["Evidence", "The same counting as the baseline weeks (forms ÷ clicks), the same row grain."],
 				["Speaking order", "Top, then reason, then evidence; go deeper only if Ms. Lan asks."]
 			],
@@ -21364,7 +21364,7 @@ var base = {
 			"problem": "Ba khung: câu chốt, tỷ lệ so ngưỡng, phương án trong hạn. Nếu bỏ khung 2 thì sao?",
 			"steps": [
 				["Khung 1", "Câu chốt: «giữ ngân sách TikTok đến 30/11». Hình: không cần, chỉ chữ."],
-				["Khung 2", "Tỷ lệ so ngưỡng: cột GDN 4%, Meta 4%, TikTok 2% và đường ngưỡng 3%."],
+				["Khung 2", "Tỷ lệ so ngưỡng: cột GDN 2,0%, Meta 2,5%, TikTok 1,5% và đường ngưỡng 2%."],
 				["Khung 3", "Phương án trong hạn: giữ 4 triệu, hoặc chuyển 2 triệu sang Meta."],
 				["Bỏ khung 2", "Khung 3 mất căn cứ: người nghe không biết vì sao phải giữ."],
 				["Sửa màu cột", "Đổi màu xanh của cột không vá được chỗ hổng đó."]
@@ -21378,7 +21378,7 @@ var base = {
 			"problem": "Three frames: the decision sentence, the rate against the threshold, the options within the deadline. What if frame 2 is dropped?",
 			"steps": [
 				["Frame 1", "Decision sentence: “hold the TikTok budget until 30/11”. Visual: none needed, only text."],
-				["Frame 2", "Rate against threshold: bars GDN 4%, Meta 4%, TikTok 2% and a 3% threshold line."],
+				["Frame 2", "Rate against threshold: bars GDN 2.0%, Meta 2.5%, TikTok 1.5% and a 2% threshold line."],
 				["Frame 3", "Options within the deadline: hold 4 million, or move 2 million to Meta."],
 				["Drop frame 2", "Frame 3 loses its basis: listeners do not know why to hold."],
 				["Recolour the bars", "Changing the blue of the bars does not patch that hole."]
@@ -21487,9 +21487,9 @@ var visuals = {
 	},
 	"tb-calc": {
 		"kind": "table",
-		"title": ["Hai cách tính tỷ lệ", "Two ways to compute the rate"],
+		"title": ["Hai cách tính tỷ lệ TikTok", "Two ways to compute TikTok's rate"],
 		"head": [["Cách", "Way"], ["Kết quả", "Result"]],
-		"rows": [["Trung bình các tỷ lệ / Mean of rates", "3,33%"], ["SUM / SUM", "3,23%"]],
+		"rows": [["Trung bình các tỷ lệ / Mean of rates", "2,25%"], ["SUM / SUM", "1,8%"]],
 		"mark": [[1, 1]]
 	},
 	"tb-dual": {
@@ -21505,19 +21505,19 @@ var visuals = {
 			[
 				"GDN",
 				6,
-				"4%",
+				"2,0%",
 				.333
 			],
 			[
 				"Meta",
 				5,
-				"4%",
+				"2,5%",
 				.25
 			],
 			[
 				"TikTok",
 				4,
-				"2%",
+				"1,5%",
 				.333
 			]
 		],
@@ -21660,19 +21660,19 @@ var visuals = {
 	},
 	"st-shape": {
 		"kind": "bars",
-		"title": ["Tỷ lệ form/click (%), ngưỡng 3%", "Form/click rate (%), threshold 3%"],
+		"title": ["Tỷ lệ form/click (%), ngưỡng 2%", "Form/click rate (%), threshold 2%"],
 		"items": [
 			{
 				"label": ["GDN", "GDN"],
-				"value": 4
+				"value": 2
 			},
 			{
 				"label": ["Meta", "Meta"],
-				"value": 4
+				"value": 2.5
 			},
 			{
 				"label": ["TikTok", "TikTok"],
-				"value": 2
+				"value": 1.5
 			}
 		],
 		"unit": "%"
