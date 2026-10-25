@@ -1,10 +1,10 @@
 import { o as __toESM } from "../_runtime.mjs";
 import { J as require_react, S as require_jsx_runtime, b as Link } from "../_libs/@tanstack/react-router+[...].mjs";
-import { A as studyCopy, B as subscribeRaw, F as getRawVersion, I as getServerRawVersion, M as studyNeighbors, O as subscribeProgress, b as getServerProgress, j as studyListTitle, k as getStudy, r as Route$1, y as getProgress } from "./router-sJSsHipd.mjs";
-import { n as Range, r as Sim, t as Lab } from "./labs-BvFZklKQ.mjs";
+import { A as studyCopy, B as subscribeRaw, F as getRawVersion, I as getServerRawVersion, M as studyNeighbors, O as subscribeProgress, b as getServerProgress, j as studyListTitle, k as getStudy, r as Route$1, y as getProgress } from "./router-DR-xBwkB.mjs";
+import { n as Range, r as Sim, t as Lab } from "./labs-vOr4xm3E.mjs";
 import { t as Tex } from "./tex-t3KOuum9.mjs";
-import { o as relatedOf } from "./map-2oEQd9GP.mjs";
-//#region node_modules/.nitro/vite/services/ssr/assets/khai-niem._conceptId-BccF0V-q.js
+import { o as relatedOf } from "./map-CnVneEl0.mjs";
+//#region node_modules/.nitro/vite/services/ssr/assets/khai-niem._conceptId-DiByRtCp.js
 var import_react = /* @__PURE__ */ __toESM(require_react());
 var import_jsx_runtime = require_jsx_runtime();
 var ui$1 = {
@@ -10557,7 +10557,7 @@ var pilotWalks = {
 	}
 };
 /** C0: hiểu việc, giải quyết vấn đề, Excel. Tháng 1 ở Lotus Spa. */
-var base$4 = {
+var base$5 = {
 	"c0-order": {
 		vi: {
 			story: "Tháng 1, Lotus Spa (3 chi nhánh: Quận 1, Quận 3, Thủ Đức). Chị Lan, chủ chuỗi, gọi bạn vào phòng: «Form đặt hẹn tháng 12 giảm, em xem giúp chị.» Đây là việc đầu tiên của bạn, và cả năm tới bạn sẽ đi cùng câu chuyện này.",
@@ -11195,7 +11195,7 @@ var base$4 = {
 		}
 	}
 };
-var visuals$4 = {
+var visuals$5 = {
 	"c0-order": {
 		kind: "bars",
 		title: ["Form theo tháng", "Forms by month"],
@@ -11474,12 +11474,12 @@ var visuals$4 = {
 		note: ["Mã 25 không có: tìm gần đúng lấy dòng mã 20.", "Code 25 is missing: approximate match takes the code 20 row."]
 	}
 };
-var c0Walks = Object.fromEntries(Object.entries(base$4).map(([id, w]) => [id, visuals$4[id] ? {
+var c0Walks = Object.fromEntries(Object.entries(base$5).map(([id, w]) => [id, visuals$5[id] ? {
 	...w,
-	visual: visuals$4[id]
+	visual: visuals$5[id]
 } : w]));
 /** C1: Python cho khoa học dữ liệu. Tháng 2 ở Lotus Spa. */
-var base$3 = {
+var base$4 = {
 	"py-run": {
 		vi: {
 			story: "Tháng 2. Excel đã cho bạn thấy hạn chế: file 12 tuần × 3 kênh quá nhiều để làm tay. Bạn mở notebook Python đầu tiên và tính lại CPA tuần này (chi 15 triệu, 50 form).",
@@ -12103,7 +12103,7 @@ var base$3 = {
 		}
 	}
 };
-var visuals$3 = {
+var visuals$4 = {
 	"py-run": {
 		kind: "table",
 		title: ["Notebook sau khi sửa forms nhưng chưa chạy lại ô 2", "Notebook after editing forms but not re-running cell 2"],
@@ -12306,12 +12306,12 @@ var visuals$3 = {
 		note: ["Tổng 151 form, cùng tổng với 50 + 50 + 51 theo tuần.", "Total 151 forms, the same as 50 + 50 + 51 by week."]
 	}
 };
-var c1Walks = Object.fromEntries(Object.entries(base$3).map(([id, w]) => [id, visuals$3[id] ? {
+var c1Walks = Object.fromEntries(Object.entries(base$4).map(([id, w]) => [id, visuals$4[id] ? {
 	...w,
-	visual: visuals$3[id]
+	visual: visuals$4[id]
 } : w]));
 /** Toán cho khoa học dữ liệu. Tháng 3 ở Lotus Spa: mọi phép toán đều tính trên số form, chi phí, giá gói của spa. */
-var base$2 = {
+var base$3 = {
 	"math-vec": {
 		vi: {
 			story: "Tháng 3. Chị Lan hỏi: «Em hay nói tới mô hình, mà bên trong nó là gì?» Bạn bắt đầu từ khối nhỏ nhất: một dãy số có thứ tự, chính là số form tuần này theo ba kênh.",
@@ -12985,7 +12985,7 @@ var base$2 = {
 		}
 	}
 };
-var visuals$2 = {
+var visuals$3 = {
 	"math-vec": {
 		kind: "bars",
 		title: ["Véctơ form tuần này f = (18, 20, 12)", "This week's forms vector f = (18, 20, 12)"],
@@ -13230,12 +13230,12 @@ var visuals$2 = {
 		mark: [[1, 3]]
 	}
 };
-var mathWalks = Object.fromEntries(Object.entries(base$2).map(([id, w]) => [id, visuals$2[id] ? {
+var mathWalks = Object.fromEntries(Object.entries(base$3).map(([id, w]) => [id, visuals$3[id] ? {
 	...w,
-	visual: visuals$2[id]
+	visual: visuals$3[id]
 } : w]));
 /** Thống kê mô tả. Tháng 3 ở Lotus Spa. Dãy chính D: form 9 tuần gần đây, tuần cuối có đợt khuyến mãi. */
-var base$1 = {
+var base$2 = {
 	"ds-type": {
 		vi: {
 			story: "Tháng 3. Thảo gửi bảng khảo sát hội viên. Trước khi tính gì, bạn gọi tên kiểu của từng cột, vì kiểu quyết định phép tính nào có nghĩa.",
@@ -13579,7 +13579,7 @@ var base$1 = {
 		}
 	}
 };
-var visuals$1 = {
+var visuals$2 = {
 	"ds-type": {
 		kind: "table",
 		title: ["Bốn cột, ba kiểu", "Four columns, three types"],
@@ -13760,12 +13760,12 @@ var visuals$1 = {
 		]
 	}
 };
-var dsWalks = Object.fromEntries(Object.entries(base$1).map(([id, w]) => [id, visuals$1[id] ? {
+var dsWalks = Object.fromEntries(Object.entries(base$2).map(([id, w]) => [id, visuals$2[id] ? {
 	...w,
-	visual: visuals$1[id]
+	visual: visuals$2[id]
 } : w]));
 /** C2 phần 1: EDA, xác suất, lấy mẫu. Tháng 3 ở Lotus Spa. */
-var base = {
+var base$1 = {
 	"eda-ask": {
 		vi: {
 			story: "Tháng 3, bạn mở lại câu hỏi từ đầu năm: form tháng 12 giảm 40 (220 xuống 180). Trước khi vẽ biểu đồ nào, bạn phải có câu hỏi cụ thể để dữ liệu trả lời.",
@@ -14983,7 +14983,7 @@ var base = {
 		}
 	}
 };
-var visuals = {
+var visuals$1 = {
 	"eda-ask": {
 		kind: "table",
 		title: ["Form theo kênh, tháng 11 và tháng 12", "Forms by channel, November and December"],
@@ -15388,7 +15388,485 @@ var visuals = {
 		mark: [[0, 1]]
 	}
 };
-var c2aWalks = Object.fromEntries(Object.entries(base).map(([id, w]) => [id, visuals[id] ? {
+var c2aWalks = Object.fromEntries(Object.entries(base$1).map(([id, w]) => [id, visuals$1[id] ? {
+	...w,
+	visual: visuals$1[id]
+} : w]));
+/** C2 phần 2a: kiểm định giả thuyết. Tháng 4 ở Lotus Spa: trang đích mới B so với trang cũ A. */
+var base = {
+	"ht-rule": {
+		vi: {
+			story: "Tháng 4, Thảo làm trang đích mới (B) và cho chạy song song với trang cũ (A), mỗi trang 2.000 người xem. Trước khi mở số, bạn phải chốt luật quyết định, nếu không sẽ vô thức chọn luật theo kết quả.",
+			words: [
+				["Mức ý nghĩa α", "Tỷ lệ báo động giả bạn chịu được, thường 5%."],
+				["Vạch bác bỏ", "Giá trị của thống kê kiểm định mà vượt qua là bạn nói «khác». Với α = 5% hai phía, vạch là 1,96."],
+				["Thống kê kiểm định z", "Số đo chênh lệch tính bằng đơn vị sai số."]
+			],
+			problem: "Luật viết trước: chỉ gọi hai trang là khác nếu |z| > 1,96. Sau đó số cho z = 1,27 (xem thẻ «hai tỷ lệ»). Kết luận gì? Và nếu bạn chọn vạch SAU khi thấy số thì điều gì xảy ra?",
+			steps: [
+				["Chốt vạch trước", "α = 5% hai phía → vạch là 1,96."],
+				["So số với vạch", "|1,27| < 1,96, chưa vượt vạch."],
+				["Kết luận", "Chưa đủ bằng chứng để nói hai trang khác nhau."],
+				["Điều bạn không được làm", "Hạ vạch xuống 1,2 sau khi thấy z = 1,27 thì 1,27 > 1,2 và «B thắng». Vạch đó không còn tương ứng 5% nữa."]
+			],
+			say: "Viết luật trước khi nhìn số giữ cho 5% còn là 5%. Nếu vạch dời theo kết quả thì bất kỳ số nào cũng có thể được gọi là «khác». Ở Lotus Spa, z = 1,27 chưa vượt 1,96, nên B chưa được gọi là thắng.",
+			check: ["Nếu bạn chọn α = 1% hai phía (vạch 2,58), vạch dễ vượt hơn hay khó vượt hơn?", "Khó vượt hơn. α nhỏ nghĩa là bạn đòi bằng chứng mạnh hơn mới nói «khác»."]
+		},
+		en: {
+			story: "In April, Thao builds a new landing page (B) and runs it alongside the old one (A), 2,000 viewers each. Before opening the numbers you must fix the decision rule, or you will unconsciously choose the rule to suit the result.",
+			words: [
+				["Significance level α", "The false-alarm rate you accept, usually 5%."],
+				["Rejection cut-off", "A value of the test statistic that, if exceeded, makes you say “different”. With two-sided α = 5% it is 1.96."],
+				["Test statistic z", "A measure of the difference counted in units of standard error."]
+			],
+			problem: "Rule written first: call the two pages different only if |z| > 1.96. Afterwards the data give z = 1.27 (see the “two proportions” card). What do you conclude? And what happens if you choose the cut-off AFTER seeing the number?",
+			steps: [
+				["Fix the cut-off first", "α = 5% two-sided → cut-off is 1.96."],
+				["Compare the number with the cut-off", "|1.27| < 1.96, not past the cut-off."],
+				["Conclude", "There is not enough evidence to say the two pages differ."],
+				["What you must not do", "Lowering the cut-off to 1.2 after seeing z = 1.27 makes 1.27 > 1.2 and “B wins”. That cut-off no longer corresponds to 5%."]
+			],
+			say: "Writing the rule before looking at the number keeps 5% as 5%. If the cut-off moves with the result, any number can be called “different”. At Lotus Spa, z = 1.27 does not pass 1.96, so B cannot yet be called the winner.",
+			check: ["If you choose α = 1% two-sided (cut-off 2.58), is the cut-off easier or harder to pass?", "Harder. A smaller α means you demand stronger evidence before saying “different”."]
+		}
+	},
+	"ht-h0": {
+		vi: {
+			story: "Có luật rồi, bạn viết hai câu giả thuyết cho cuộc so sánh trang A và B, trước khi tính bất kỳ phép tính nào.",
+			words: [["H0 (giả thuyết không)", "Câu mặc định «không có khác biệt», thứ ta thử bác bỏ."], ["H1 (giả thuyết đối)", "Câu ta muốn tìm bằng chứng: có khác biệt."]],
+			problem: "Viết H0 và H1 cho «trang B có tỷ lệ form khác trang A», và chỉ ra câu nào sai trong hai câu: (i) «H1: B thắng A» (ii) «H0: pA = pB».",
+			steps: [
+				["Đặt ký hiệu", "pA = tỷ lệ form thật của trang A, pB = tỷ lệ form thật của trang B."],
+				["Viết H0", "H0: pA = pB (hai trang như nhau)."],
+				["Viết H1", "H1: pA ≠ pB (hai trang khác nhau, hai phía)."],
+				["Kiểm tra câu (i)", "«B thắng A» là pB > pA, một phía. Nó chỉ đúng nếu bạn đã chốt trước là chỉ quan tâm B tốt hơn."],
+				["Kiểm tra câu (ii)", "Câu (ii) là H0 hợp lệ."]
+			],
+			say: "H0 là câu có đẳng thức. Ta không «chứng minh H0 đúng»: ta chỉ hỏi liệu dữ liệu có hiếm đến mức bác được nó. Nếu không bác được thì kết luận là «chưa đủ bằng chứng», chưa phải «hai trang bằng nhau».",
+			check: ["Nếu không bác được H0, có nói «hai trang giống hệt nhau» được không?", "Không. Chỉ nói được «chưa thấy bằng chứng khác nhau»; mẫu nhỏ có thể che mất khác biệt thật."]
+		},
+		en: {
+			story: "With the rule fixed, you write the two hypothesis sentences for comparing page A and B, before any calculation.",
+			words: [["H0 (null hypothesis)", "The default “no difference” statement we try to reject."], ["H1 (alternative hypothesis)", "The statement we look for evidence of: there is a difference."]],
+			problem: "Write H0 and H1 for “page B has a different form rate from page A”, and say which of these two is wrong: (i) “H1: B beats A” (ii) “H0: pA = pB”.",
+			steps: [
+				["Set notation", "pA = page A's true form rate, pB = page B's true form rate."],
+				["Write H0", "H0: pA = pB (the two pages are the same)."],
+				["Write H1", "H1: pA ≠ pB (the two pages differ, two-sided)."],
+				["Check sentence (i)", "“B beats A” is pB > pA, one-sided. It is only valid if you fixed beforehand that you care only about B being better."],
+				["Check sentence (ii)", "Sentence (ii) is a valid H0."]
+			],
+			say: "H0 is the sentence with the equals sign. We never “prove H0 true”: we only ask whether the data are rare enough to reject it. If we cannot reject it the conclusion is “not enough evidence”, not “the two pages are equal”.",
+			check: ["If you cannot reject H0, can you say “the two pages are identical”?", "No. You can only say “no evidence of a difference seen”; a small sample can hide a real difference."]
+		}
+	},
+	"ht-p": {
+		vi: {
+			story: "Số liệu về: trang A 40 form trên 2.000 người xem, trang B 52 form. Thống kê cho z = 1,27. Giờ bạn đổi z thành p-value để nói nó hiếm đến đâu.",
+			words: [["p-value", "Nếu H0 đúng, xác suất gặp một mẫu lệch ít nhất như mẫu này."], ["Hai phía", "Tính cả hai đuôi: B cao hơn hoặc thấp hơn A đều tính là lệch."]],
+			problem: "z = 1,27, kiểm định hai phía. Tra bảng chuẩn P(Z ≤ 1,27) = 0,8980. Tính p-value, so với α = 5%, và nói đúng ý nghĩa của nó.",
+			steps: [
+				["Một đuôi", "P(Z > 1,27) = 1 − 0,8980 = 0,1020."],
+				["Hai đuôi", "p = 2 × 0,1020 = 0,204, khoảng 0,20."],
+				["So với α", "0,20 > 0,05, nên không bác bỏ H0."],
+				["Đọc đúng", "Nếu hai trang thật sự bằng nhau thì chênh lệch lớn như vậy xảy ra khoảng 20 trong 100 lần làm lại."],
+				["Đọc sai cần tránh", "p = 0,20 không có nghĩa «H0 đúng với xác suất 20%» và không có nghĩa «B hơn A với xác suất 80%»."]
+			],
+			say: "p = 0,20 cho thấy mẫu chênh lệch này khá bình thường khi hai trang bằng nhau. Nhỏ hơn 0,05 mới đủ hiếm. p-value đo độ hiếm của dữ liệu, không đo xác suất H0 đúng.",
+			check: ["Với z = 1,96, hai phía, p-value bằng bao nhiêu?", "Khoảng 0,05: 2 × 0,025. Đó chính là vạch của α = 5%."]
+		},
+		en: {
+			story: "The data are in: page A 40 forms out of 2,000 viewers, page B 52 forms. The statistic gives z = 1.27. Now you turn z into a p-value to say how rare it is.",
+			words: [["p-value", "If H0 is true, the probability of a sample at least this far off."], ["Two-sided", "Both tails count: B higher or lower than A both count as off."]],
+			problem: "z = 1.27, two-sided test. From the normal table P(Z ≤ 1.27) = 0.8980. Compute the p-value, compare with α = 5%, and state its meaning correctly.",
+			steps: [
+				["One tail", "P(Z > 1.27) = 1 − 0.8980 = 0.1020."],
+				["Two tails", "p = 2 × 0.1020 = 0.204, about 0.20."],
+				["Compare with α", "0.20 > 0.05, so do not reject H0."],
+				["Read correctly", "If the two pages are truly equal, a difference this large happens about 20 times in 100 repeats."],
+				["Misreadings to avoid", "p = 0.20 does not mean “H0 is true with probability 20%” and does not mean “B beats A with probability 80%”."]
+			],
+			say: "p = 0.20 shows this sample difference is quite ordinary when the pages are equal. Only below 0.05 is it rare enough. The p-value measures how rare the data are, not the probability that H0 is true.",
+			check: ["With z = 1.96, two-sided, what is the p-value?", "About 0.05: 2 × 0.025. That is exactly the cut-off for α = 5%."]
+		}
+	},
+	"ht-err": {
+		vi: {
+			story: "Không bác được H0 không có nghĩa B vô dụng. Bạn kiểm tra hai kiểu sai của cuộc thử trang B: hô «khác» khi không khác, và bỏ sót khi có khác.",
+			words: [
+				["Sai lầm loại I", "Bác H0 khi H0 đúng (báo động giả). Xác suất là α."],
+				["Sai lầm loại II", "Không bác H0 khi H1 đúng (bỏ sót). Xác suất là β."],
+				["Sức mạnh kiểm định", "1 − β: xác suất bắt được khác biệt thật."]
+			],
+			problem: "Giả sử B thật sự tốt hơn: 2,6% so với 2,0% của A, mỗi trang 2.000 người. Sai số chuẩn khi H1 đúng là 0,00474, vạch bác bỏ là 1,96. Tính sức mạnh và xác suất bỏ sót.",
+			steps: [
+				["Sai loại I", "α = 5%: nếu hai trang bằng nhau, 100 lần thử thì khoảng 5 lần hô nhầm «khác»."],
+				["Chênh thật tính theo sai số", "(0,026 − 0,020) ÷ 0,00474 = 0,006 ÷ 0,00474 ≈ 1,27."],
+				["Phải vượt vạch", "Cần z vượt 1,96, tức phải vượt thêm 1,96 − 1,27 = 0,69 so với chênh thật."],
+				["Sức mạnh", "P(Z > 0,69) ≈ 0,245, khoảng 24%."],
+				["Bỏ sót", "β = 1 − 0,245 ≈ 0,755, khoảng 76%."]
+			],
+			say: "Dù B thật sự tốt hơn, với 2.000 người mỗi trang bạn chỉ bắt được khoảng 24% số lần thử, và bỏ sót khoảng 76%. Vì vậy «không bác được» chưa chứng minh B không tốt. Muốn sức mạnh cao hơn cần nhiều người xem hơn.",
+			check: ["Nếu tăng α từ 5% lên 10%, sai loại II tăng hay giảm?", "Giảm (vạch thấp hơn nên dễ bắt hơn), đổi lại sai loại I tăng từ 5% lên 10%."]
+		},
+		en: {
+			story: "Failing to reject H0 does not mean B is useless. You check the two kinds of error in the page B test: shouting “different” when it is not, and missing it when it is.",
+			words: [
+				["Type I error", "Rejecting H0 when H0 is true (a false alarm). Its probability is α."],
+				["Type II error", "Not rejecting H0 when H1 is true (a miss). Its probability is β."],
+				["Power", "1 − β: the probability of catching a real difference."]
+			],
+			problem: "Suppose B really is better: 2.6% versus A's 2.0%, 2,000 people per page. The standard error when H1 is true is 0.00474 and the rejection cut-off is 1.96. Compute the power and the probability of a miss.",
+			steps: [
+				["Type I", "α = 5%: if the pages are equal, in 100 trials about 5 wrongly shout “different”."],
+				["True gap in standard errors", "(0.026 − 0.020) ÷ 0.00474 = 0.006 ÷ 0.00474 ≈ 1.27."],
+				["Must pass the cut-off", "z needs to exceed 1.96, i.e. noise must add 1.96 − 1.27 = 0.69 beyond the true gap."],
+				["Power", "P(Z > 0.69) ≈ 0.245, about 24%."],
+				["Miss", "β = 1 − 0.245 ≈ 0.755, about 76%."]
+			],
+			say: "Even if B really is better, with 2,000 people per page you catch it only about 24% of the time and miss it about 76%. So “cannot reject” has not proved B is no good. Higher power needs more viewers.",
+			check: ["If you raise α from 5% to 10%, does the Type II error rise or fall?", "It falls (the cut-off is lower so it is easier to catch), at the price of Type I rising from 5% to 10%."]
+		}
+	},
+	"ht-t": {
+		vi: {
+			story: "Sau 12 tuần chạy trang B, form trung bình mỗi tuần là 53,5 với độ lệch chuẩn 6 (tính từ chính 12 tuần). Mức cũ là 50. Vì σ phải ước từ mẫu nhỏ, bạn dùng vạch t, không dùng vạch z.",
+			words: [["Phân phối t", "Giống phân phối chuẩn nhưng đuôi dày hơn, dùng khi σ ước từ mẫu."], ["Bậc tự do", "n − 1 = 11."]],
+			problem: "H0: μ = 50. Mẫu 12 tuần, trung bình 53,5, s = 6. Tính t, rồi quyết định theo vạch z (1,96) và theo vạch t với 11 bậc tự do (2,201).",
+			steps: [
+				["Sai số chuẩn", "s ÷ √n = 6 ÷ √12 = 6 ÷ 3,464 ≈ 1,732."],
+				["Tính t", "(53,5 − 50) ÷ 1,732 = 3,5 ÷ 1,732 ≈ 2,02."],
+				["Theo vạch z", "2,02 > 1,96: sẽ bác H0 (quá dễ dàng)."],
+				["Theo vạch t(11)", "2,02 < 2,201: không bác H0."],
+				["Kết luận", "Với 12 tuần, chưa đủ bằng chứng rằng trang mới nâng form trung bình trên 50."]
+			],
+			say: "Vạch t xa hơn vạch z để bù cho việc ước độ lệch chuẩn từ mẫu nhỏ. Dùng nhầm z sẽ gọi «có tác dụng» sớm quá. Khi n lớn, hai vạch gần bằng nhau.",
+			check: ["Nếu n = 100 thì vạch t gần với số nào?", "Gần 1,98, rất sát 1,96 của z. Mẫu lớn thì ước s đủ tốt nên khác biệt biến mất."]
+		},
+		en: {
+			story: "After 12 weeks running page B, average weekly forms are 53.5 with a standard deviation of 6 (computed from those 12 weeks). The old level is 50. Because σ must be estimated from a small sample, you use the t cut-off, not the z cut-off.",
+			words: [["t distribution", "Like the normal but with heavier tails, used when σ is estimated from the sample."], ["Degrees of freedom", "n − 1 = 11."]],
+			problem: "H0: μ = 50. Sample of 12 weeks, mean 53.5, s = 6. Compute t, then decide using the z cut-off (1.96) and the t cut-off with 11 degrees of freedom (2.201).",
+			steps: [
+				["Standard error", "s ÷ √n = 6 ÷ √12 = 6 ÷ 3.464 ≈ 1.732."],
+				["Compute t", "(53.5 − 50) ÷ 1.732 = 3.5 ÷ 1.732 ≈ 2.02."],
+				["By the z cut-off", "2.02 > 1.96: you would reject H0 (too easily)."],
+				["By the t(11) cut-off", "2.02 < 2.201: do not reject H0."],
+				["Conclude", "With 12 weeks there is not enough evidence that the new page lifts average forms above 50."]
+			],
+			say: "The t cut-off is farther out than z to compensate for estimating the standard deviation from a small sample. Using z by mistake calls “it works” too soon. With a large n the two cut-offs are almost equal.",
+			check: ["If n = 100, which number is the t cut-off close to?", "About 1.98, very near z's 1.96. With a large sample s is estimated well so the difference vanishes."]
+		}
+	},
+	"ht-means": {
+		vi: {
+			story: "Thảo muốn biết form có khó điền hơn trên điện thoại không (từ thẻ so sánh theo nhóm, điện thoại mất 70 giây, máy tính 45 giây). Bạn kiểm tra xem khoảng cách 25 giây là thật hay nhiễu.",
+			words: [["Sai số chuẩn của hiệu", "√(s₁²/n₁ + s₂²/n₂)."], ["t hai mẫu", "(x̄₁ − x̄₂) ÷ sai số chuẩn của hiệu."]],
+			problem: "Điện thoại: trung bình 70 giây, s = 20, n = 36. Máy tính: trung bình 45 giây, s = 15, n = 36. H0: hai thời gian trung bình bằng nhau. Tính t và quyết định (vạch xấp xỉ 2,0).",
+			steps: [
+				["Chênh lệch", "70 − 45 = 25 giây."],
+				["Phương sai chia n", "20² ÷ 36 = 400 ÷ 36 ≈ 11,11; 15² ÷ 36 = 225 ÷ 36 = 6,25."],
+				["Sai số chuẩn", "√(11,11 + 6,25) = √17,36 ≈ 4,17."],
+				["Tính t", "25 ÷ 4,17 ≈ 6,0."],
+				["Quyết định", "6,0 lớn hơn nhiều vạch 2,0, nên bác H0: khoảng cách 25 giây không phải nhiễu."]
+			],
+			say: "t = 6 nghĩa là khoảng cách lớn gấp 6 lần mức nhiễu điển hình. Nên form thật sự chậm hơn trên điện thoại. Việc cần làm tiếp theo là sửa giao diện điện thoại chứ không phải thu thập thêm.",
+			check: ["Nếu chênh lệch chỉ 5 giây (cùng sai số chuẩn 4,17), t là bao nhiêu và kết luận?", "5 ÷ 4,17 ≈ 1,2 < 2,0: chưa bác được H0, khoảng cách 5 giây có thể là nhiễu."]
+		},
+		en: {
+			story: "Thao wants to know whether the form is harder to fill on phones (from the group-comparison card: phone 70 seconds, computer 45 seconds). You test whether the 25-second gap is real or noise.",
+			words: [["Standard error of the difference", "√(s₁²/n₁ + s₂²/n₂)."], ["Two-sample t", "(x̄₁ − x̄₂) ÷ standard error of the difference."]],
+			problem: "Phone: mean 70 seconds, s = 20, n = 36. Computer: mean 45 seconds, s = 15, n = 36. H0: the two mean times are equal. Compute t and decide (cut-off about 2.0).",
+			steps: [
+				["Difference", "70 − 45 = 25 seconds."],
+				["Variance divided by n", "20² ÷ 36 = 400 ÷ 36 ≈ 11.11; 15² ÷ 36 = 225 ÷ 36 = 6.25."],
+				["Standard error", "√(11.11 + 6.25) = √17.36 ≈ 4.17."],
+				["Compute t", "25 ÷ 4.17 ≈ 6.0."],
+				["Decide", "6.0 is far above the cut-off 2.0, so reject H0: the 25-second gap is not noise."]
+			],
+			say: "t = 6 means the gap is 6 times the typical noise. So the form really is slower on phones. The next job is to fix the phone interface, not to collect more.",
+			check: ["If the gap were only 5 seconds (same standard error 4.17), what is t and the conclusion?", "5 ÷ 4.17 ≈ 1.2 < 2.0: H0 is not rejected; a 5-second gap could be noise."]
+		}
+	},
+	"ht-props": {
+		vi: {
+			story: "Đây là phép tính cho trang A/B. Trang A có 40 form trên 2.000 người xem, trang B có 52 form trên 2.000. Bạn tính z = 1,27 mà các thẻ trước đã dùng.",
+			words: [["Tỷ lệ gộp", "Tổng form chia tổng người xem, dùng khi giả định H0 (hai tỷ lệ bằng nhau)."], ["z hai tỷ lệ", "(p̂₁ − p̂₂) ÷ √[p̂(1−p̂)(1/n₁ + 1/n₂)]."]],
+			problem: "A: 40/2000, B: 52/2000. Kiểm định H0: pA = pB, hai phía, α = 5%. Tính z, p, và khoảng tin cậy 95% của chênh lệch.",
+			steps: [
+				["Tỷ lệ từng trang", "A: 40 ÷ 2000 = 2,0%. B: 52 ÷ 2000 = 2,6%. Chênh 0,6 điểm phần trăm."],
+				["Tỷ lệ gộp", "(40 + 52) ÷ 4000 = 92 ÷ 4000 = 0,023."],
+				["Sai số chuẩn", "√(0,023 × 0,977 × (1/2000 + 1/2000)) = √(0,022471 × 0,001) ≈ 0,00474."],
+				["z", "0,006 ÷ 0,00474 ≈ 1,27."],
+				["p và quyết định", "p ≈ 0,20 > 0,05: không bác H0."],
+				["Khoảng 95% của chênh lệch", "0,006 ± 1,96 × 0,00474 = 0,006 ± 0,0093, từ −0,3% đến +1,5%. Khoảng chứa 0 nên cũng cho kết luận như vậy."]
+			],
+			say: "Chênh 0,6 điểm nghe có vẻ tốt nhưng nằm trong nhiễu của 2.000 người mỗi trang. Khoảng từ −0,3% đến +1,5% nói cả hai khả năng, B tệ hơn một chút hoặc tốt hơn khá nhiều, đều chưa loại được.",
+			check: ["Nếu mỗi trang có 8.000 người và vẫn 2,0% so với 2,6%, z đổi thế nào?", "Sai số chuẩn giảm một nửa (còn khoảng 0,00237) nên z ≈ 2,53 > 1,96: lúc đó bác H0."]
+		},
+		en: {
+			story: "This is the calculation for the A/B pages. Page A has 40 forms out of 2,000 viewers, page B has 52 out of 2,000. You compute the z = 1.27 that the earlier cards used.",
+			words: [["Pooled proportion", "Total forms divided by total viewers, used under H0 (the two proportions are equal)."], ["Two-proportion z", "(p̂₁ − p̂₂) ÷ √[p̂(1−p̂)(1/n₁ + 1/n₂)]."]],
+			problem: "A: 40/2000, B: 52/2000. Test H0: pA = pB, two-sided, α = 5%. Compute z, p, and the 95% confidence interval of the difference.",
+			steps: [
+				["Rate for each page", "A: 40 ÷ 2000 = 2.0%. B: 52 ÷ 2000 = 2.6%. The gap is 0.6 percentage points."],
+				["Pooled rate", "(40 + 52) ÷ 4000 = 92 ÷ 4000 = 0.023."],
+				["Standard error", "√(0.023 × 0.977 × (1/2000 + 1/2000)) = √(0.022471 × 0.001) ≈ 0.00474."],
+				["z", "0.006 ÷ 0.00474 ≈ 1.27."],
+				["p and decision", "p ≈ 0.20 > 0.05: do not reject H0."],
+				["95% interval of the difference", "0.006 ± 1.96 × 0.00474 = 0.006 ± 0.0093, from −0.3% to +1.5%. The interval contains 0, giving the same conclusion."]
+			],
+			say: "A 0.6-point gap sounds good but sits within the noise of 2,000 people per page. The interval from −0.3% to +1.5% says both possibilities, B slightly worse or quite a bit better, are not yet ruled out.",
+			check: ["If each page had 8,000 people and still 2.0% versus 2.6%, how does z change?", "The standard error halves (to about 0.00237) so z ≈ 2.53 > 1.96: then you reject H0."]
+		}
+	},
+	"ht-peek": {
+		vi: {
+			story: "Thảo nóng ruột và xem kết quả trang B mỗi ngày, định dừng khi p < 0,05. Bạn cảnh báo rằng cách này làm 5% không còn là 5%.",
+			words: [["Nhìn trộm", "Xem kết quả nhiều lần và dừng ngay khi thấy đẹp."], ["Sai lầm loại I tích lũy", "Càng nhiều lần được hô «khác», xác suất báo động giả càng cao."]],
+			problem: "Thảo xem kết quả 5 lần, mỗi lần dùng α = 5% và hô «khác» nếu bất kỳ lần nào có p < 0,05. Nếu hai trang thật sự bằng nhau, xác suất báo động giả tối đa là bao nhiêu (coi 5 lần là độc lập)?",
+			steps: [
+				["Một lần không báo động", "1 − 0,05 = 0,95."],
+				["Cả 5 lần không báo động", "0,95⁵ = 0,7738."],
+				["Ít nhất một lần báo động", "1 − 0,7738 = 0,2262, khoảng 23%."],
+				["Điều chỉnh", "Chia đều α cho 5 lần: 0,05 ÷ 5 = 0,01 mỗi lần. Khi đó tổng báo động giả không vượt 5%."]
+			],
+			say: "Nếu coi các lần xem là độc lập thì báo động giả lên tới khoảng 23%, tức gần gấp 5 lần mức 5% đã viết. Thực tế các lần xem dùng chung dữ liệu nên thấp hơn, nhưng vẫn cao hơn 5% nhiều. Hãy chốt cỡ mẫu trước (ví dụ 4 tuần) rồi mới xem, hoặc dùng α nhỏ hơn mỗi lần xem.",
+			check: ["Nếu chỉ xem 2 lần, mỗi lần α = 5%, báo động giả tối đa bao nhiêu?", "1 − 0,95² = 1 − 0,9025 = 0,0975, khoảng 9,8%."]
+		},
+		en: {
+			story: "Thao is impatient and checks page B's results every day, planning to stop when p < 0.05. You warn that this makes 5% no longer 5%.",
+			words: [["Peeking", "Looking at results many times and stopping as soon as they look good."], ["Accumulated Type I error", "The more chances to shout “different”, the higher the false-alarm probability."]],
+			problem: "Thao looks 5 times, each time using α = 5% and shouts “different” if any look has p < 0.05. If the pages are truly equal, what is the maximum false-alarm probability (treating the 5 looks as independent)?",
+			steps: [
+				["One look, no alarm", "1 − 0.05 = 0.95."],
+				["All 5 looks, no alarm", "0.95⁵ = 0.7738."],
+				["At least one alarm", "1 − 0.7738 = 0.2262, about 23%."],
+				["Adjust", "Split α over the 5 looks: 0.05 ÷ 5 = 0.01 per look. Then the total false alarm does not exceed 5%."]
+			],
+			say: "If you treat the looks as independent, false alarms reach about 23%, nearly 5 times the 5% written down. In reality the looks share data so it is lower, but still far above 5%. Fix the sample size beforehand (for example 4 weeks) and look only then, or use a smaller α per look.",
+			check: ["If you look only 2 times, each at α = 5%, what is the maximum false alarm?", "1 − 0.95² = 1 − 0.9025 = 0.0975, about 9.8%."]
+		}
+	},
+	"ht-chi": {
+		vi: {
+			story: "Chị Lan hỏi: «Khách đến từ kênh nào thì có hay mua gói hơn?» Bạn có bảng 200 khách (100 từ GDN, 100 từ TikTok), và dùng chi-bình phương để xem cả bảng, không phải từng ô.",
+			words: [
+				["Số quan sát O", "Số đếm thật trong mỗi ô."],
+				["Số kỳ vọng E", "Số đếm nếu kênh và việc mua không liên quan: tổng hàng × tổng cột ÷ tổng chung."],
+				["Chi-bình phương", "Σ (O − E)² ÷ E."]
+			],
+			problem: "GDN: 30 mua, 70 không mua. TikTok: 10 mua, 90 không mua. H0: kênh và việc mua không liên quan. Tính χ² và so với vạch 3,84 (1 bậc tự do, α = 5%).",
+			steps: [
+				["Tổng", "Mua: 30 + 10 = 40. Không mua: 70 + 90 = 160. Tổng 200."],
+				["Số kỳ vọng", "Mỗi kênh 100 khách: mua 100 × 40 ÷ 200 = 20, không mua 100 × 160 ÷ 200 = 80."],
+				["Từng ô", "GDN mua: (30−20)²÷20 = 5. GDN không: (70−80)²÷80 = 1,25. TikTok mua: (10−20)²÷20 = 5. TikTok không: (90−80)²÷80 = 1,25."],
+				["Cộng", "χ² = 5 + 1,25 + 5 + 1,25 = 12,5."],
+				["Quyết định", "12,5 > 3,84: bác H0. Kênh và việc mua có liên quan."]
+			],
+			say: "GDN có 30% khách mua còn TikTok chỉ 10%, và χ² = 12,5 cho thấy khác biệt này không phải ngẫu nhiên. Chi-bình phương chỉ nói «có liên quan», còn chiều hướng thì đọc từ bảng: GDN mua nhiều hơn.",
+			check: ["Nếu cả hai kênh đều có 20 người mua trên 100, χ² bằng bao nhiêu?", "Mọi O đều bằng E nên χ² = 0: không có liên quan."]
+		},
+		en: {
+			story: "Ms. Lan asks: “Customers from which channel are more likely to buy a package?” You have a table of 200 customers (100 from GDN, 100 from TikTok), and use chi-square to look at the whole table, not cell by cell.",
+			words: [
+				["Observed O", "The real count in each cell."],
+				["Expected E", "The count if channel and buying were unrelated: row total × column total ÷ grand total."],
+				["Chi-square", "Σ (O − E)² ÷ E."]
+			],
+			problem: "GDN: 30 buy, 70 do not. TikTok: 10 buy, 90 do not. H0: channel and buying are unrelated. Compute χ² and compare with the cut-off 3.84 (1 degree of freedom, α = 5%).",
+			steps: [
+				["Totals", "Buy: 30 + 10 = 40. Do not buy: 70 + 90 = 160. Total 200."],
+				["Expected counts", "Each channel has 100 customers: buy 100 × 40 ÷ 200 = 20, do not buy 100 × 160 ÷ 200 = 80."],
+				["Each cell", "GDN buy: (30−20)²÷20 = 5. GDN not: (70−80)²÷80 = 1.25. TikTok buy: (10−20)²÷20 = 5. TikTok not: (90−80)²÷80 = 1.25."],
+				["Add", "χ² = 5 + 1.25 + 5 + 1.25 = 12.5."],
+				["Decide", "12.5 > 3.84: reject H0. Channel and buying are related."]
+			],
+			say: "30% of GDN customers buy but only 10% of TikTok customers do, and χ² = 12.5 shows this difference is not chance. Chi-square only says “related”; the direction is read from the table: GDN buys more.",
+			check: ["If both channels had 20 buyers out of 100, what is χ²?", "Every O equals E so χ² = 0: no relationship."]
+		}
+	},
+	"ht-anova": {
+		vi: {
+			story: "Có ba kênh GDN, Meta, TikTok và bạn muốn biết chi phí mỗi form có khác nhau không. So từng cặp sẽ cho ba cuộc kiểm định và làm báo động giả tăng, nên bạn dùng ANOVA, một cuộc kiểm định cho cả ba.",
+			words: [
+				["Giữa các nhóm", "Độ khác nhau của các trung bình nhóm so với trung bình chung."],
+				["Trong nhóm", "Độ dao động bên trong từng nhóm."],
+				["F", "MS giữa ÷ MS trong."]
+			],
+			problem: "Số đo thử chi phí mỗi form (nghìn đồng), mỗi kênh 3 lần: GDN 10, 11, 12; Meta 11, 12, 13; TikTok 19, 20, 21. Tính F và so với vạch 5,14 (bậc tự do 2 và 6, α = 5%).",
+			steps: [
+				["Trung bình", "GDN 11, Meta 12, TikTok 20. Trung bình chung (11 + 12 + 20) ÷ 3 = 14,33."],
+				["SS giữa", "3 × [(11−14,33)² + (12−14,33)² + (20−14,33)²] = 3 × [11,11 + 5,44 + 32,11] = 3 × 48,67 = 146."],
+				["SS trong", "Mỗi nhóm lệch −1, 0, +1 so với trung bình nhóm, SS = 2. Ba nhóm: 6."],
+				["Chia bậc tự do", "MS giữa = 146 ÷ 2 = 73. MS trong = 6 ÷ 6 = 1."],
+				["F", "73 ÷ 1 = 73."],
+				["Quyết định", "73 > 5,14: bác H0. Ít nhất một kênh khác các kênh còn lại."]
+			],
+			say: "F = 73 nghĩa là khác biệt giữa các kênh lớn gấp 73 lần dao động trong từng kênh. ANOVA chỉ nói «có kênh khác», không nói kênh nào. Nhìn trung bình thì TikTok (20) khác xa GDN (11) và Meta (12).",
+			check: ["ANOVA bác H0 rồi, đã biết kênh nào khác chưa?", "Chưa. Cần so sánh từng cặp sau đó, có điều chỉnh sai lầm loại I."]
+		},
+		en: {
+			story: "With three channels GDN, Meta, TikTok you want to know whether cost per form differs. Comparing pairs would run three tests and raise false alarms, so you use ANOVA, one test for all three.",
+			words: [
+				["Between groups", "How different the group means are from the overall mean."],
+				["Within groups", "The wobble inside each group."],
+				["F", "MS between ÷ MS within."]
+			],
+			problem: "Trial measurements of cost per form (thousand dong), 3 per channel: GDN 10, 11, 12; Meta 11, 12, 13; TikTok 19, 20, 21. Compute F and compare with the cut-off 5.14 (degrees of freedom 2 and 6, α = 5%).",
+			steps: [
+				["Means", "GDN 11, Meta 12, TikTok 20. Grand mean (11 + 12 + 20) ÷ 3 = 14.33."],
+				["SS between", "3 × [(11−14.33)² + (12−14.33)² + (20−14.33)²] = 3 × [11.11 + 5.44 + 32.11] = 3 × 48.67 = 146."],
+				["SS within", "Each group deviates −1, 0, +1 from its mean, SS = 2. Three groups: 6."],
+				["Divide by degrees of freedom", "MS between = 146 ÷ 2 = 73. MS within = 6 ÷ 6 = 1."],
+				["F", "73 ÷ 1 = 73."],
+				["Decide", "73 > 5.14: reject H0. At least one channel differs from the others."]
+			],
+			say: "F = 73 means the difference between channels is 73 times the wobble within a channel. ANOVA only says “some channel differs”, not which. From the means, TikTok (20) is far from GDN (11) and Meta (12).",
+			check: ["ANOVA rejected H0; do you yet know which channel differs?", "No. You need pairwise comparisons afterwards, adjusted for Type I error."]
+		}
+	}
+};
+var visuals = {
+	"ht-t": {
+		kind: "bars",
+		title: ["Vạch bác bỏ và t quan sát", "Cut-offs and observed t"],
+		items: [
+			{
+				label: ["Vạch z", "z cut-off"],
+				value: 1.96
+			},
+			{
+				label: ["t quan sát", "observed t"],
+				value: 2.02
+			},
+			{
+				label: ["Vạch t(11)", "t(11) cut-off"],
+				value: 2.201
+			}
+		],
+		note: ["2,02 vượt vạch z nhưng chưa vượt vạch t.", "2.02 passes the z cut-off but not the t cut-off."]
+	},
+	"ht-err": {
+		kind: "bars",
+		title: ["Với B thật sự tốt hơn: sức mạnh và bỏ sót (%)", "If B truly is better: power and miss (%)"],
+		items: [{
+			label: ["Bắt được", "Caught"],
+			value: 24
+		}, {
+			label: ["Bỏ sót", "Missed"],
+			value: 76
+		}]
+	},
+	"ht-props": {
+		kind: "table",
+		title: ["Hai trang, 2.000 người xem mỗi trang", "Two pages, 2,000 viewers each"],
+		head: [
+			["", ""],
+			["Trang A", "Page A"],
+			["Trang B", "Page B"],
+			["Gộp", "Pooled"]
+		],
+		rows: [
+			[
+				"Form",
+				40,
+				52,
+				92
+			],
+			[
+				"Người xem / Viewers",
+				2e3,
+				2e3,
+				4e3
+			],
+			[
+				"Tỷ lệ / Rate",
+				"2,0%",
+				"2,6%",
+				"2,3%"
+			]
+		],
+		mark: [[2, 3]]
+	},
+	"ht-peek": {
+		kind: "bars",
+		title: ["Báo động giả tối đa theo số lần xem (%)", "Maximum false alarm by number of looks (%)"],
+		items: [
+			{
+				label: ["1", "1"],
+				value: 5
+			},
+			{
+				label: ["2", "2"],
+				value: 9.8
+			},
+			{
+				label: ["3", "3"],
+				value: 14.3
+			},
+			{
+				label: ["5", "5"],
+				value: 22.6
+			}
+		]
+	},
+	"ht-chi": {
+		kind: "table",
+		title: ["Số thật (số kỳ vọng nếu không liên quan)", "Observed (expected if unrelated)"],
+		head: [
+			["Kênh", "Channel"],
+			["Mua", "Buy"],
+			["Không mua", "Not buy"]
+		],
+		rows: [[
+			"GDN",
+			"30 (20)",
+			"70 (80)"
+		], [
+			"TikTok",
+			"10 (20)",
+			"90 (80)"
+		]],
+		mark: [[0, 1], [1, 1]]
+	},
+	"ht-anova": {
+		kind: "table",
+		title: ["Chi phí mỗi form theo kênh (nghìn đồng)", "Cost per form by channel (thousand dong)"],
+		head: [
+			["Kênh", "Channel"],
+			["Lần 1", "Try 1"],
+			["Lần 2", "Try 2"],
+			["Lần 3", "Try 3"],
+			["Trung bình", "Mean"]
+		],
+		rows: [
+			[
+				"GDN",
+				10,
+				11,
+				12,
+				11
+			],
+			[
+				"Meta",
+				11,
+				12,
+				13,
+				12
+			],
+			[
+				"TikTok",
+				19,
+				20,
+				21,
+				20
+			]
+		],
+		mark: [[2, 4]]
+	}
+};
+var c2bWalks = Object.fromEntries(Object.entries(base).map(([id, w]) => [id, visuals[id] ? {
 	...w,
 	visual: visuals[id]
 } : w]));
@@ -15398,7 +15876,8 @@ var walks = {
 	...c1Walks,
 	...mathWalks,
 	...dsWalks,
-	...c2aWalks
+	...c2aWalks,
+	...c2bWalks
 };
 /** Hình minh họa trong mục «Làm từng bước»: bảng tính, biểu đồ cột, biểu đồ đường. Dùng màu từ token của app. */
 function WalkVisual({ v, lang }) {

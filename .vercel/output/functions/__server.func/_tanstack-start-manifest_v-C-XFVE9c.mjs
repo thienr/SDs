@@ -1,4 +1,4 @@
-//#region node_modules/.nitro/vite/services/ssr/assets/_tanstack-start-manifest_v-DqsNtLZf.js
+//#region node_modules/.nitro/vite/services/ssr/assets/_tanstack-start-manifest_v-C-XFVE9c.js
 var tsrStartManifest = () => ({ routes: {
 	__root__: {
 		filePath: "/tmp/claude-0/-home-claude/b7900409-a548-5903-9b69-7da6c0ed2a15/scratchpad/repo/src/routes/__root.tsx",
@@ -17,7 +17,7 @@ var tsrStartManifest = () => ({ routes: {
 			"/khoa/$courseId"
 		],
 		preloads: [
-			"/assets/index-B0hCaAhc.js",
+			"/assets/index-Ccf1sBTJ.js",
 			"/assets/catalog-BjekHlh_.js",
 			"/assets/preload-helper-BOk4WlzW.js",
 			"/assets/useMatch-B7agi90b.js",
@@ -26,27 +26,27 @@ var tsrStartManifest = () => ({ routes: {
 		scripts: [{ attrs: {
 			type: "module",
 			async: !0,
-			src: "/assets/index-B0hCaAhc.js"
+			src: "/assets/index-Ccf1sBTJ.js"
 		} }]
 	},
 	"/": {
 		filePath: "/tmp/claude-0/-home-claude/b7900409-a548-5903-9b69-7da6c0ed2a15/scratchpad/repo/src/routes/index.tsx",
 		children: void 0,
-		preloads: ["/assets/routes-DQn-xdXL.js", "/assets/cms-live-BRMfqBgY.js"]
+		preloads: ["/assets/routes-3rtLXmtm.js", "/assets/cms-live-BHHkGgFE.js"]
 	},
 	"/ban-do": {
 		filePath: "/tmp/claude-0/-home-claude/b7900409-a548-5903-9b69-7da6c0ed2a15/scratchpad/repo/src/routes/ban-do.tsx",
 		children: void 0,
-		preloads: ["/assets/ban-do-TOhY4xi6.js", "/assets/map-DJcySBxG.js"]
+		preloads: ["/assets/ban-do-CaYmBdcy.js", "/assets/map-BurCkxTJ.js"]
 	},
 	"/cong-thuc": {
 		filePath: "/tmp/claude-0/-home-claude/b7900409-a548-5903-9b69-7da6c0ed2a15/scratchpad/repo/src/routes/cong-thuc.tsx",
 		children: void 0,
 		css: ["/assets/tex-Bv5fr4tV.css"],
 		preloads: [
-			"/assets/cong-thuc-DBROAfdz.js",
+			"/assets/cong-thuc-B8gSgAFC.js",
 			"/assets/tex-BCUI21W9.js",
-			"/assets/cms-live-BRMfqBgY.js"
+			"/assets/cms-live-BHHkGgFE.js"
 		]
 	},
 	"/do-phu": {
@@ -57,7 +57,7 @@ var tsrStartManifest = () => ({ routes: {
 	"/goc": {
 		filePath: "/tmp/claude-0/-home-claude/b7900409-a548-5903-9b69-7da6c0ed2a15/scratchpad/repo/src/routes/goc.tsx",
 		children: void 0,
-		preloads: ["/assets/goc-CreZIYV9.js", "/assets/cms-live-BRMfqBgY.js"]
+		preloads: ["/assets/goc-CpDyx3Ff.js", "/assets/cms-live-BHHkGgFE.js"]
 	},
 	"/tim-kiem": {
 		filePath: "/tmp/claude-0/-home-claude/b7900409-a548-5903-9b69-7da6c0ed2a15/scratchpad/repo/src/routes/tim-kiem.tsx",
@@ -67,17 +67,17 @@ var tsrStartManifest = () => ({ routes: {
 	"/tu-dien": {
 		filePath: "/tmp/claude-0/-home-claude/b7900409-a548-5903-9b69-7da6c0ed2a15/scratchpad/repo/src/routes/tu-dien.tsx",
 		children: void 0,
-		preloads: ["/assets/tu-dien-Dz982rfw.js", "/assets/cms-live-BRMfqBgY.js"]
+		preloads: ["/assets/tu-dien-COp0g4BA.js", "/assets/cms-live-BHHkGgFE.js"]
 	},
 	"/bai/$lessonId": {
 		filePath: "/tmp/claude-0/-home-claude/b7900409-a548-5903-9b69-7da6c0ed2a15/scratchpad/repo/src/routes/bai.$lessonId.tsx",
 		children: void 0,
 		css: ["/assets/tex-Bv5fr4tV.css"],
 		preloads: [
-			"/assets/bai._lessonId-DTrsA4nT.js",
-			"/assets/labs-CcVO21FQ.js",
+			"/assets/bai._lessonId-c2IHADpL.js",
+			"/assets/labs-DGNjF4UU.js",
 			"/assets/tex-BCUI21W9.js",
-			"/assets/cms-live-BRMfqBgY.js"
+			"/assets/cms-live-BHHkGgFE.js"
 		]
 	},
 	"/khai-niem/$conceptId": {
@@ -85,16 +85,16 @@ var tsrStartManifest = () => ({ routes: {
 		children: void 0,
 		css: ["/assets/tex-Bv5fr4tV.css"],
 		preloads: [
-			"/assets/khai-niem._conceptId-ystJcxiy.js",
-			"/assets/labs-CcVO21FQ.js",
+			"/assets/khai-niem._conceptId-fYiIJvVP.js",
+			"/assets/labs-DGNjF4UU.js",
 			"/assets/tex-BCUI21W9.js",
-			"/assets/map-DJcySBxG.js"
+			"/assets/map-BurCkxTJ.js"
 		]
 	},
 	"/khoa/$courseId": {
 		filePath: "/tmp/claude-0/-home-claude/b7900409-a548-5903-9b69-7da6c0ed2a15/scratchpad/repo/src/routes/khoa.$courseId.tsx",
 		children: void 0,
-		preloads: ["/assets/khoa._courseId-DiK-lFw8.js", "/assets/cms-live-BRMfqBgY.js"]
+		preloads: ["/assets/khoa._courseId-XXaPY9bt.js", "/assets/cms-live-BHHkGgFE.js"]
 	}
 } });
 //#endregion
