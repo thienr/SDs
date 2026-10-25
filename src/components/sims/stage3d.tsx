@@ -1480,9 +1480,9 @@ export function Stage3D({ scene, lang }: { scene: string; lang: Lang }) {
       {legend ? (
         <div className="mt-3 rounded-card border border-line bg-card px-4 py-3">
           <p className="text-xs uppercase tracking-widest text-muted">{t.legend}</p>
-          <ul className="mt-2 space-y-2">
+          <ul className="mt-2 space-y-3">
             {legend.map(([swatch, vi, en]) => (
-              <li key={vi} className="flex items-start gap-3 text-sm leading-snug">
+              <li key={vi} className="flex items-start gap-3 text-base leading-relaxed">
                 <span
                   className="mt-1 inline-block size-3.5 shrink-0 rounded-full border border-line"
                   style={{ background: swatchColor[swatch] }}
