@@ -1,7 +1,7 @@
-import type { Walk } from "@/data/walk/pilot";
+import type { Visual, Walk } from "@/data/walk/pilot";
 
 /** C0: hiểu việc, giải quyết vấn đề, Excel. Tháng 1 ở Lotus Spa. */
-export const c0Walks: Record<string, Walk> = {
+const base: Record<string, Walk> = {
   "c0-order": {
     vi: {
       story: "Tháng 1, Lotus Spa (3 chi nhánh: Quận 1, Quận 3, Thủ Đức). Chị Lan, chủ chuỗi, gọi bạn vào phòng: «Form đặt hẹn tháng 12 giảm, em xem giúp chị.» Đây là việc đầu tiên của bạn, và cả năm tới bạn sẽ đi cùng câu chuyện này.",
@@ -739,3 +739,25 @@ export const c0Walks: Record<string, Walk> = {
     },
   },
 };
+
+const visuals: Record<string, Visual> = {
+  "c0-order": { kind: "bars", title: ["Form theo tháng", "Forms by month"], items: [{ label: ["Th.11", "Nov"], value: 220 }, { label: ["Th.12", "Dec"], value: 180 }], note: ["Giảm 40 form, tức khoảng 18%.", "A drop of 40 forms, about 18%."] },
+  "c0-read": { kind: "bars", title: ["Hình trong thẻ: hai cột", "The card's picture: two bars"], items: [{ label: ["Trước", "Before"], value: 220 }, { label: ["Sau", "After"], value: 180 }], note: ["Khoảng chênh giữa hai đỉnh là 40.", "The gap between the tops is 40."] },
+  "crisp-data": { kind: "table", title: ["File ads_export: thiếu cột form theo kênh", "ads_export file: forms-by-channel column missing"], head: [["Tuần", "Week"], ["Kênh", "Channel"], ["Chi phí (triệu)", "Spend (million)"], ["Tổng form", "Total forms"]], rows: [[1, "GDN", 6, 50], [1, "Meta", 5, 50], [1, "TikTok", 4, 50]], mark: [[0, 3], [1, 3], [2, 3]], note: ["Cột D là tổng cả ba kênh, nên không chia được CPA theo kênh.", "Column D is the total of all three channels, so you cannot divide CPA by channel."] },
+  "crisp-prep": { kind: "table", title: ["TikTok: tuần 5 bị trống", "TikTok: week 5 is blank"], head: [["Tuần", "Week"], ["Chi phí (triệu)", "Spend (million)"], ["Form", "Forms"]], rows: [[3, 4, 12], [4, 4, 12], [5, "", 12], [6, 4, 12]], mark: [[2, 1]], note: ["Ô B3 trống, không phải số 0.", "Cell B3 is blank, not 0."] },
+  "ps-fact": { kind: "bars", title: ["Tỷ lệ form theo kênh (%)", "Form rate by channel (%)"], items: [{ label: ["GDN", "GDN"], value: 2.0 }, { label: ["Meta", "Meta"], value: 2.5 }, { label: ["TikTok", "TikTok"], value: 1.5 }], unit: "%", note: ["Ngưỡng «yếu» = dưới 2,0%.", "Threshold for “weak” = below 2.0%."] },
+  "ps-smart": { kind: "bars", title: ["Form TikTok mỗi tuần: hiện tại và mục tiêu", "TikTok forms per week: now and target"], items: [{ label: ["Hiện tại", "Now"], value: 12 }, { label: ["31/1", "31 Jan"], value: 15 }] },
+  "ps-opt": { kind: "table", title: ["Ba phương án, cùng một thước đo", "Three options, one measure"], head: [["Phương án", "Option"], ["Thời gian", "Time"], ["Form TikTok vào 31/1", "TikTok forms on 31 Jan"]], rows: [["X", "2 ngày / 2 days", "16 | 12"], ["Y", "5 tuần / weeks", 12], ["Z", "0", 12]], mark: [[0, 2]] },
+  "ps-do": { kind: "bars", title: ["Form TikTok mỗi tuần: trước và sau khi sửa lỗi", "TikTok forms per week: before and after the fix"], items: [{ label: ["Trước", "Before"], value: 12 }, { label: ["Sau", "After"], value: 15 }] },
+  "xl-cell": { kind: "table", title: ["Form tháng 11 (ô B3 là chữ)", "November forms (cell B3 is text)"], head: [["Chi nhánh", "Branch"], ["Form", "Forms"]], rows: [["Quận 1 / D1", 80], ["Quận 3 / D3", "'70"], ["Thủ Đức / Thu Duc", 70], ["SUM", 150]], mark: [[1, 1], [3, 1]], note: ["SUM bỏ qua B3 nên ra 150 thay vì 220.", "SUM skips B3 so it returns 150 instead of 220."] },
+  "xl-lock": { kind: "table", title: ["Tỷ trọng = B2/$B$5", "Share = B2/$B$5"], head: [["Form", "Forms"], ["Tỷ trọng", "Share"]], rows: [[80, "36,4%"], [70, "31,8%"], [70, "31,8%"], [220, "100%"]], mark: [[3, 0]] },
+  "xl-if": { kind: "table", title: ["CPA tuần 4 và tuần 5", "CPA, weeks 4 and 5"], head: [["Chi phí", "Spend"], ["Form", "Forms"], ["CPA", "CPA"]], rows: [[4, 12, 0.333], ["", 12, "chưa có / not yet"]], mark: [[1, 0]] },
+  "xl-keep": { kind: "table", title: ["Lọc GDN: dòng Meta chỉ bị ẩn", "Filter GDN: Meta rows are only hidden"], head: [["Kênh", "Channel"], ["Form", "Forms"]], rows: [["GDN", 18], ["GDN", 17], ["GDN", 19], ["Meta (ẩn / hidden)", 20], ["Meta (ẩn / hidden)", 21], ["Meta (ẩn / hidden)", 20]], mark: [[0, 1], [1, 1], [2, 1]], note: ["SUMIFS chỉ cộng ba ô tô sáng: 54.", "SUMIFS adds only the three highlighted cells: 54."] },
+  "xl-chart": { kind: "line", title: ["Form tổng 6 tuần", "Total forms, 6 weeks"], xs: ["1", "2", "3", "4", "5", "6"], ys: [48, 51, 50, 47, 53, 50], note: ["Dao động quanh 50, không dốc xuống.", "Wobbles around 50, no downward slope."] },
+  "xl-pivot": { kind: "bars", title: ["Kết quả pivot: tổng form theo kênh", "Pivot result: total forms by channel"], items: [{ label: ["GDN", "GDN"], value: 35 }, { label: ["Meta", "Meta"], value: 41 }, { label: ["TikTok", "TikTok"], value: 24 }], note: ["35 + 41 + 24 = 100 = 50 × 2 tuần.", "35 + 41 + 24 = 100 = 50 × 2 weeks."] },
+  "xl-look": { kind: "table", title: ["Bảng mã giảm giá", "Discount code table"], head: [["Mã", "Code"], ["Giảm", "Discount"]], rows: [[10, "5%"], [20, "10%"], [30, "15%"]], mark: [[1, 1]], note: ["Mã 25 không có: tìm gần đúng lấy dòng mã 20.", "Code 25 is missing: approximate match takes the code 20 row."] },
+};
+
+export const c0Walks: Record<string, Walk> = Object.fromEntries(
+  Object.entries(base).map(([id, w]) => [id, visuals[id] ? { ...w, visual: visuals[id] } : w]),
+);

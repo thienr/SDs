@@ -6,7 +6,8 @@ import { demos } from "@/data/demos";
 import { Sim } from "@/components/sims/labs";
 import { InferWidget } from "@/components/sims/infer-widgets";
 import { Tex } from "@/components/tex";
-import { walks, type WalkText } from "@/data/walk";
+import { walks, type Visual, type WalkText } from "@/data/walk";
+import { WalkVisual } from "@/components/walk-visual";
 import { relatedOf } from "@/data/map";
 import { studyCopy, studyListTitle, studyNeighbors, type StudyConcept } from "@/data/study";
 import { getProgress, getServerProgress, subscribeProgress } from "@/lib/progress";
@@ -63,7 +64,7 @@ const heads = {
   },
 } as const;
 
-function WalkBlock({ walk, head }: { walk: WalkText; head: Record<string, string> }) {
+function WalkBlock({ walk, head, visual, lang }: { walk: WalkText; head: Record<string, string>; visual?: Visual; lang: "vi" | "en" }) {
   const [open, setOpen] = useState(false);
   return (
     <section className="mt-8 rounded-card border border-line bg-card p-4">
@@ -85,6 +86,7 @@ function WalkBlock({ walk, head }: { walk: WalkText; head: Record<string, string
       </dl>
       <h3 className="mt-5 text-sm font-medium">{head.problem}</h3>
       <p className="mt-1 leading-relaxed">{walk.problem}</p>
+      {visual ? <WalkVisual v={visual} lang={lang} /> : null}
       <h3 className="mt-5 text-sm font-medium">{head.steps}</h3>
       <ol className="mt-2 space-y-3">
         {walk.steps.map(([title, body], i) => (
@@ -177,7 +179,7 @@ export function ConceptView({ concept }: { concept: StudyConcept }) {
         <p className="mt-2 leading-relaxed">{text.situation}</p>
       </section>
 
-      {walks[concept.id] ? <WalkBlock walk={walks[concept.id][lang]} head={head} /> : null}
+      {walks[concept.id] ? <WalkBlock walk={walks[concept.id][lang]} head={head} visual={walks[concept.id].visual} lang={lang} /> : null}
 
       <section className="mt-8">
         <h2 className="text-xs uppercase tracking-widest text-muted">{head.use}</h2>

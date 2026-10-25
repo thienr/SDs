@@ -8,7 +8,14 @@ export type WalkText = {
   say: string;
   check: [string, string];
 };
-export type Walk = { vi: WalkText; en: WalkText };
+/** Cặp [tiếng Việt, tiếng Anh]. */
+export type S = [string, string];
+/** Hình minh họa dùng chung cho hai ngôn ngữ: bảng tính, biểu đồ cột, biểu đồ đường. */
+export type Visual =
+  | { kind: "table"; title: S; head: S[]; rows: (string | number)[][]; mark?: [number, number][]; note?: S }
+  | { kind: "bars"; title: S; items: { label: S; value: number }[]; unit?: string; note?: S }
+  | { kind: "line"; title: S; xs: string[]; ys: number[]; unit?: string; note?: S };
+export type Walk = { vi: WalkText; en: WalkText; visual?: Visual };
 
 export const pilotWalks: Record<string, Walk> = {
   bayes: {
