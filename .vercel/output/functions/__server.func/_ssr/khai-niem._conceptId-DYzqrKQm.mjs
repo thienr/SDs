@@ -1,10 +1,10 @@
 import { o as __toESM } from "../_runtime.mjs";
 import { J as require_react, S as require_jsx_runtime, b as Link } from "../_libs/@tanstack/react-router+[...].mjs";
-import { A as studyCopy, B as subscribeRaw, F as getRawVersion, I as getServerRawVersion, M as studyNeighbors, O as subscribeProgress, b as getServerProgress, j as studyListTitle, k as getStudy, r as Route$1, y as getProgress } from "./router-DKbiobYL.mjs";
-import { n as Range, r as Sim, t as Lab } from "./labs-AIgye1CM.mjs";
+import { A as studyCopy, B as subscribeRaw, F as getRawVersion, I as getServerRawVersion, M as studyNeighbors, O as subscribeProgress, b as getServerProgress, j as studyListTitle, k as getStudy, r as Route$1, y as getProgress } from "./router-DhyOigLQ.mjs";
+import { n as Range, r as Sim, t as Lab } from "./labs-DBu-8TIJ.mjs";
 import { t as Tex } from "./tex-t3KOuum9.mjs";
-import { o as relatedOf } from "./map-IFSRoNC1.mjs";
-//#region node_modules/.nitro/vite/services/ssr/assets/khai-niem._conceptId-CVZt_y9r.js
+import { o as relatedOf } from "./map-CbrCj52C.mjs";
+//#region node_modules/.nitro/vite/services/ssr/assets/khai-niem._conceptId-DYzqrKQm.js
 var import_react = /* @__PURE__ */ __toESM(require_react());
 var import_jsx_runtime = require_jsx_runtime();
 var wideBeats = {
@@ -804,12 +804,37 @@ function bars(THREE, world, kit, rows, note) {
 	};
 }
 function toggle(THREE, world, kit, a, b, noteA, noteB) {
-	const left = chip(THREE, world, kit, a[0], a[1], 0, .15, 2.15);
-	const right = chip(THREE, world, kit, b[0], b[1], 0, .15, 2.15);
-	return (_dt, t, tell) => {
+	const make = (text, x, color) => {
+		const group = new THREE.Group();
+		const body = new THREE.Mesh(new THREE.BoxGeometry(2.1, 1.25, .3), kit.lambert(THREE, color));
+		const face = kit.label(THREE, kit.L(text[0], text[1]), 1.9);
+		face.position.set(0, 0, .24);
+		const base = new THREE.Mesh(new THREE.BoxGeometry(2.1, .07, .34), new THREE.MeshBasicMaterial({ color: kit.GOLD }));
+		base.position.set(0, -.72, 0);
+		group.add(body, face, base);
+		group.position.set(x, .1, 0);
+		world.add(group);
+		return {
+			group,
+			body,
+			base
+		};
+	};
+	const left = make(a, -1.25, kit.GOLD);
+	const right = make(b, 1.25, kit.CLAY);
+	return (dt, t, tell) => {
 		const on = t % 6 > 3;
-		left.visible = !on;
-		right.visible = on;
+		const step = Math.min(1, dt * 7);
+		[[left, !on], [right, on]].forEach(([card, active]) => {
+			const c = card;
+			const target = active ? 1 : 0;
+			c.group.position.z += ((active ? .45 : -.2) - c.group.position.z) * step;
+			c.group.scale.setScalar(c.group.scale.x + ((active ? 1.07 : .92) - c.group.scale.x) * step);
+			c.base.visible = target === 1;
+			const mat = c.body.material;
+			mat.transparent = true;
+			mat.opacity += ((active ? 1 : .45) - mat.opacity) * step;
+		});
 		const note = on ? noteB : noteA;
 		say(kit, note[0], note[1], tell);
 	};
@@ -1960,6 +1985,568 @@ function buildExtra(THREE, kind, world, kit) {
 	if (beat) return toggle(THREE, world, kit, beat.a, beat.b, beat.noteA, beat.noteB);
 	return null;
 }
+var swatchColor = {
+	gold: "#f0c14a",
+	cream: "#f4efe6",
+	clay: "#c4623a",
+	rust: "#b5461f",
+	ink: "#3a332c",
+	axis: "transparent"
+};
+var legends = {
+	field: [
+		[
+			"cream",
+			"Mỗi chấm là một phiên truy cập trong cả nguồn",
+			"Each dot is one visit in the whole source"
+		],
+		[
+			"gold",
+			"Chấm vàng là loại phiên đang đếm",
+			"Gold dots are the kind being counted"
+		],
+		[
+			"gold",
+			"Khung vàng là một lần lấy mẫu (một tuần)",
+			"The gold frame is one sample (one week)"
+		],
+		[
+			"axis",
+			"Số % dưới khung là tỷ lệ trong riêng khung đó",
+			"The % under the frame is the rate inside that frame only"
+		]
+	],
+	seats: [[
+		"gold",
+		"Ba quả cầu A, B, C là ba người",
+		"The three balls A, B, C are three people"
+	], [
+		"ink",
+		"Ba bệ đen là ba ghế. Đổi thứ tự là một cách xếp mới",
+		"The three dark slabs are three seats. A new order is a new arrangement"
+	]],
+	group: [[
+		"gold",
+		"Ba quả cầu là một nhóm. Xoay cả cụm thì vẫn là nhóm đó",
+		"The three balls are one group. Spinning it is still the same group"
+	]],
+	fraction: [[
+		"gold",
+		"Hai viên vàng là trường hợp thuận (2)",
+		"The two gold balls are the favorable cases (2)"
+	], [
+		"cream",
+		"Tám viên kem là các trường hợp còn lại. Tổng là 10",
+		"The eight cream balls are the rest. Ten in all"
+	]],
+	meet: [[
+		"gold",
+		"Hai quả cầu bên trái có thể xảy ra cùng lúc, nên có vùng chung",
+		"The two left balls can happen together, so they share a zone"
+	], [
+		"cream",
+		"Hai quả cầu bên phải loại trừ nhau, không bao giờ gặp",
+		"The two right balls exclude each other and never meet"
+	]],
+	plus: [[
+		"gold",
+		"Hai vòng tròn là hai sự kiện",
+		"The two circles are two events"
+	], [
+		"axis",
+		"Phần hai vòng chồng nhau bị đếm hai lần, nên phải trừ một lần",
+		"Where the circles overlap is counted twice, so subtract it once"
+	]],
+	times: [[
+		"gold",
+		"Hai cột là hai cửa mà viên bi phải đi qua",
+		"The two posts are two doors the ball must pass"
+	], [
+		"cream",
+		"Viên bi đi qua cả hai thì nhân hai xác suất",
+		"A ball through both doors means multiplying the two probabilities"
+	]],
+	flip: [[
+		"axis",
+		"Chữ rồi số: mỗi việc phải được gán một số (có = 1, không = 0) thì mới tính trung bình được",
+		"Words then numbers: each event gets a number (yes = 1, no = 0) so you can average it"
+	]],
+	cols: [[
+		"axis",
+		"Ngang: các giá trị có thể xảy ra. Cao: xác suất của giá trị đó",
+		"Across: the possible values. Up: the probability of that value"
+	], [
+		"gold",
+		"Cột vàng là giá trị thường gặp nhất",
+		"The gold bar is the most common value"
+	]],
+	"cols-bin": [[
+		"axis",
+		"Ngang: số lần trúng (0, 1, 2...). Cao: xác suất của số lần đó",
+		"Across: number of hits (0, 1, 2...). Up: probability of that count"
+	], [
+		"gold",
+		"Cột vàng gần n × p, số lần trúng hay gặp nhất",
+		"The gold bar sits near n × p, the most common hit count"
+	]],
+	"cols-ghost": [[
+		"axis",
+		"Ngang: các giá trị có thể có. Cao: xác suất theo giả định",
+		"Across: possible values. Up: probability under the assumption"
+	], [
+		"cream",
+		"Cột mờ dần hiện ra: hình dựng từ giả định, trước khi có dữ liệu",
+		"Fading bars: a shape built from assumptions, before any data"
+	]],
+	"cols-cdf": [[
+		"axis",
+		"Ngang: giá trị. Cao: xác suất của từng giá trị",
+		"Across: value. Up: probability of each value"
+	], [
+		"gold",
+		"Khối vàng trượt phủ các cột bên trái. Cộng chúng ra xác suất «ít hơn»",
+		"The gold slab slides over the left bars. Adding them gives the “less than” probability"
+	]],
+	level: [[
+		"axis",
+		"Thanh ngang là thang xác suất từ 0 đến 1",
+		"The bar is the probability scale from 0 to 1"
+	], [
+		"gold",
+		"Kim vàng lúc đầu lắc, rồi đứng yên ở 0,25: mức khi thử nhiều lần",
+		"The gold needle first wobbles, then settles at 0.25: the level over many tries"
+	]],
+	bell: [[
+		"axis",
+		"Ngang: giá trị. Cao: mức hay gặp của giá trị đó",
+		"Across: value. Up: how common that value is"
+	], [
+		"gold",
+		"Vạch vàng giữa: trung bình. Hai vạch hai bên: cách tâm một độ lệch chuẩn",
+		"Middle gold line: the mean. Side lines: one standard deviation from the center"
+	]],
+	"bell-area": [[
+		"axis",
+		"Ngang: giá trị. Cao: mức hay gặp của giá trị đó",
+		"Across: value. Up: how common that value is"
+	], [
+		"gold",
+		"Khối vàng là một khoảng bạn hỏi. Thể tích của nó là xác suất",
+		"The gold block is the range you ask about. Its size is the probability"
+	]],
+	ruler: [[
+		"axis",
+		"Thước chung: -2, -1, 0, 1, 2 độ lệch chuẩn quanh trung bình",
+		"One shared ruler: -2, -1, 0, 1, 2 standard deviations around the mean"
+	], [
+		"gold",
+		"Vạch vàng là vạch thước. Giây và tiền được kéo về cùng thước rồi mới so",
+		"Gold ticks are the ruler. Seconds and money are pulled onto it before comparing"
+	]],
+	pile: [
+		[
+			"clay",
+			"Cột nâu bên trái: từng phiên, rất lệch nhau",
+			"Brown bars on the left: single sessions, very scattered"
+		],
+		[
+			"cream",
+			"Hạt kem bên phải: trung bình của mỗi mẫu, rơi dần thành ụ",
+			"Cream beads on the right: the mean of each sample, piling up into a mound"
+		],
+		[
+			"gold",
+			"Vạch vàng: số thật. Mẫu lớn thì ụ khít vào đây",
+			"Gold line: the true value. A large sample makes the mound hug it"
+		]
+	],
+	covers: [
+		[
+			"gold",
+			"Vạch vàng đứng: số thật, thứ ta không biết",
+			"The upright gold line: the true value we cannot see"
+		],
+		[
+			"cream",
+			"Mỗi thanh ngang là một khoảng tin cậy tính từ một mẫu",
+			"Each horizontal bar is a confidence interval from one sample"
+		],
+		[
+			"rust",
+			"Thanh đỏ: khoảng trượt, không chạm số thật",
+			"The red bar: an interval that misses the true value"
+		]
+	],
+	bias: [[
+		"gold",
+		"Viên vàng và viên kem là hai loại trong đám",
+		"Gold and cream chips are two kinds in the pile"
+	], [
+		"axis",
+		"Khay bên phải: chỉ nhặt vàng thì khay lệch, nhặt cả hai thì giống đám",
+		"The tray on the right: only gold makes it biased, both makes it match the pile"
+	]],
+	divide: [[
+		"axis",
+		"Ba dòng: xác suất của cả hai, chia cho xác suất của điều đã biết, ra xác suất có điều kiện",
+		"Three lines: probability of both, divided by the probability of what you know, gives the conditional probability"
+	]],
+	priorbar: [[
+		"gold",
+		"Thanh vàng là mức tin hiện tại (bắt đầu 20%)",
+		"The gold bar is your current belief (starting at 20%)"
+	], [
+		"axis",
+		"Tin mới làm thanh dài ra. Nó không nhảy thẳng lên 100%",
+		"New news stretches the bar. It does not jump to 100%"
+	]],
+	jobs: [[
+		"gold",
+		"Bên trái: đường dốc, đoán một con số",
+		"Left: a sloping line, guessing a number"
+	], [
+		"axis",
+		"Bên phải: chỉ có 1 hoặc 0, đoán có hay không",
+		"Right: only 1 or 0, guessing yes or no"
+	]],
+	line: [
+		[
+			"cream",
+			"Mỗi chấm kem là một tuần thật",
+			"Each cream dot is a real week"
+		],
+		[
+			"gold",
+			"Đường vàng là câu đoán của mô hình",
+			"The gold line is the model's guess"
+		],
+		[
+			"axis",
+			"Ngang: chi tiêu quảng cáo. Dọc: số form",
+			"Across: ad spend. Up: forms"
+		]
+	],
+	"line-resid": [
+		[
+			"cream",
+			"Mỗi chấm kem là một tuần thật",
+			"Each cream dot is a real week"
+		],
+		[
+			"gold",
+			"Đường vàng là câu đoán của mô hình",
+			"The gold line is the model's guess"
+		],
+		[
+			"clay",
+			"Que nâu: phần đường đoán trượt (thật trừ đường)",
+			"Brown stick: how far the guess missed (real minus line)"
+		]
+	],
+	"line-fit": [
+		[
+			"cream",
+			"Mỗi chấm kem là một tuần thật",
+			"Each cream dot is a real week"
+		],
+		[
+			"gold",
+			"Đường vàng được chọn để tổng bình phương các que nâu nhỏ nhất",
+			"The gold line is chosen to make the squared brown sticks smallest"
+		],
+		[
+			"clay",
+			"Que nâu: phần đường trượt",
+			"Brown stick: the miss"
+		]
+	],
+	r2: [[
+		"gold",
+		"Cột vàng cao: phần biến động mà đường giải thích được (70%)",
+		"Tall gold bar: the share of variation the line explains (70%)"
+	], [
+		"cream",
+		"Cột kem thấp: phần còn lại chưa giải thích",
+		"Short cream bar: what is left unexplained"
+	]],
+	band: [[
+		"cream",
+		"Mỗi chấm là phần trượt của một tuần quanh đường",
+		"Each dot is how far one week sits from the line"
+	], [
+		"axis",
+		"Dải phẳng: trượt đều, đọc kiểm định được. Hình kèn: trượt rộng dần, đừng tin kiểm định",
+		"A flat band: even misses, safe to read the test. A funnel: misses widen, do not trust the test"
+	]],
+	zero: [[
+		"cream",
+		"Vạch kem dọc: số 0, nghĩa là không có tác động",
+		"The upright cream line: 0, meaning no effect"
+	], [
+		"gold",
+		"Thanh vàng: khoảng tin cậy của độ dốc. Không chạm 0 nên khó nói «không tác động»",
+		"Gold bar: the confidence interval of the slope. It misses 0, so “no effect” is hard to say"
+	]],
+	bowl: [[
+		"cream",
+		"Các cột kem tạo thành cái bát: chi phí theo từng bộ hệ số",
+		"The cream bars form a bowl: cost for each set of coefficients"
+	], [
+		"gold",
+		"Viên vàng lăn xuống đáy bát: bộ hệ số đỡ tệ nhất",
+		"The gold ball rolls to the bottom: the least-bad coefficients"
+	]],
+	"bowl-fast": [[
+		"cream",
+		"Các cột kem tạo thành cái bát: chi phí theo từng bộ hệ số",
+		"The cream bars form a bowl: cost for each set of coefficients"
+	], [
+		"gold",
+		"Viên vàng nhảy quá xa mỗi bước nên vọt qua đáy và chi phí tăng",
+		"The gold ball jumps too far each step, shoots past the bottom and the cost rises"
+	]],
+	many: [[
+		"gold",
+		"Ba cột là ba thứ cùng thay đổi trong một tuần: chi tiêu, email, khuyến mãi",
+		"Three bars are three things changing in the same week: spend, email, promo"
+	], [
+		"clay",
+		"Cột email nâu để dễ phân biệt",
+		"The email bar is brown to tell it apart"
+	]],
+	held: [[
+		"gold",
+		"Cột vàng: chi tiêu, thứ đang nhích lên",
+		"Gold bar: spend, the thing moving up"
+	], [
+		"ink",
+		"Hai cột đen: email và khuyến mãi bị khóa, đứng yên",
+		"Two dark bars: email and promo are locked, held still"
+	]],
+	vif: [[
+		"gold",
+		"Hai cột vàng và nâu là hai kênh luôn tăng giảm cùng nhau",
+		"The gold and brown bars are two channels that always rise and fall together"
+	], [
+		"axis",
+		"Vì đi cùng nhau nên độ dốc từng kênh có thể đảo dấu dù kênh không có hại",
+		"Because they move together, each slope can flip sign even if the channel is not harmful"
+	]],
+	dummy: [
+		[
+			"gold",
+			"Ô vàng: GDN, so với mốc",
+			"Gold box: GDN, compared with the baseline"
+		],
+		[
+			"clay",
+			"Ô nâu: Facebook, so với mốc",
+			"Brown box: Facebook, compared with the baseline"
+		],
+		[
+			"ink",
+			"Ô đen: TikTok là mốc, được bỏ ra để so",
+			"Dark box: TikTok is the baseline, dropped as the reference"
+		]
+	],
+	pick: [[
+		"cream",
+		"Ba cột kem: biến giữ lại",
+		"Three cream bars: variables to keep"
+	], [
+		"clay",
+		"Cột nâu nhấp nháy: biến nhiễu, không đổi quyết định nên bỏ",
+		"The blinking brown bar: a noise variable that changes no decision, so drop it"
+	]],
+	escape: [
+		[
+			"cream",
+			"Hai thanh kem ngang là 0 và 1, hai biên của xác suất",
+			"The two cream bars are 0 and 1, the limits of a probability"
+		],
+		[
+			"gold",
+			"Đường vàng thẳng chui ra ngoài hai biên",
+			"The straight gold line leaves both limits"
+		],
+		[
+			"rust",
+			"Chấm đỏ: chỗ đường ra ngoài, xác suất không thể thế",
+			"Red dots: where the line escapes, which a probability cannot do"
+		]
+	],
+	sig: [
+		[
+			"axis",
+			"Ngang: điểm tổng hợp của mô hình. Dọc: xác suất, từ 0 đến 1",
+			"Across: the model's combined score. Up: probability from 0 to 1"
+		],
+		[
+			"cream",
+			"Đường chữ S: xác suất không bao giờ ra ngoài 0 và 1",
+			"The S curve: probability never leaves 0 and 1"
+		],
+		[
+			"gold",
+			"Chấm vàng: một khách cụ thể với xác suất 0,35",
+			"Gold dot: one specific customer at probability 0.35"
+		]
+	],
+	odds: [[
+		"gold",
+		"Thanh vàng dài ra gấp 1,04 lần mỗi ngày thêm: odds nhân lên, không cộng điểm phần trăm",
+		"The gold bar stretches ×1.04 per extra day: odds multiply, they do not add percentage points"
+	]],
+	cm: [
+		[
+			"gold",
+			"Ô vàng: nói rời và thật sự rời (đúng)",
+			"Gold: said leave and truly left (right)"
+		],
+		[
+			"cream",
+			"Ô kem: nói rời nhưng ở lại (gọi nhầm), và nói ở lại và ở lại (ổn)",
+			"Cream: said leave but stayed (false alarm), and said stay and stayed (fine)"
+		],
+		[
+			"rust",
+			"Ô đỏ: thật sự rời nhưng bị bỏ sót, thứ đắt nhất",
+			"Red: truly left but missed, the costly one"
+		]
+	],
+	pr: [[
+		"axis",
+		"Hai trạng thái: danh sách sạch (ít người nhưng đúng) và lưới rộng (bắt thêm người rời, kèm gọi nhầm)",
+		"Two states: a clean list (few people, mostly right) and a wide net (catches more leavers, plus false alarms)"
+	]],
+	roc: [
+		[
+			"axis",
+			"Ngang: tỷ lệ báo nhầm. Dọc: tỷ lệ bắt đúng",
+			"Across: false alarm rate. Up: true catch rate"
+		],
+		[
+			"cream",
+			"Đường chấm kem: mọi ngưỡng có thể chọn",
+			"The cream dots: every threshold you could pick"
+		],
+		[
+			"gold",
+			"Chấm vàng di chuyển: một ngưỡng cụ thể",
+			"The moving gold dot: one particular threshold"
+		]
+	],
+	rests: [[
+		"axis",
+		"Ba đường chữ S A, B, C: mỗi nhãn một đường xác suất riêng",
+		"Three S curves A, B, C: one probability curve per label"
+	], [
+		"gold",
+		"Đường vàng ở giữa là nhãn B, nổi bật để so với hai nhãn kia",
+		"The gold middle curve is label B, picked out to compare with the other two"
+	]],
+	split: [[
+		"gold",
+		"Vạch vàng là một câu hỏi đúng/sai chia người làm hai phía",
+		"The gold line is one yes/no question that splits people into two sides"
+	], [
+		"clay",
+		"Chấm nâu: nhóm ở bên trái. Chấm vàng: nhóm bên phải",
+		"Brown dots: the left group. Gold dots: the right group"
+	]],
+	gini: [[
+		"axis",
+		"Trái: nhóm trước khi cắt, lẫn hai màu (độ lẫn 0,48). Phải: sau khi cắt, ít lẫn hơn",
+		"Left: the group before cutting, both colors mixed (impurity 0.48). Right: after cutting, less mixed"
+	], [
+		"gold",
+		"Hai màu vàng và nâu là hai kết cục khác nhau",
+		"Gold and brown are the two different outcomes"
+	]],
+	deep: [[
+		"axis",
+		"Cây từ trên xuống: mỗi ô là một câu hỏi, mỗi nhánh vàng là một câu trả lời",
+		"The tree from the top: each box is a question, each gold branch an answer"
+	], [
+		"axis",
+		"Cây sâu tách tới từng người: học thuộc dữ liệu cũ, không còn là luật dùng lại",
+		"A deep tree cuts down to one person: memorizing old data, not a reusable rule"
+	]],
+	raw: [[
+		"cream",
+		"Các chấm kem không có màu hay nhãn: dữ liệu chưa có cột câu trả lời",
+		"Dots with no color or label: data with no answer column"
+	]],
+	km: [[
+		"gold",
+		"Quả to vàng và nâu là hai tâm cụm",
+		"The two big balls, gold and brown, are cluster centers"
+	], [
+		"cream",
+		"Mỗi chấm nhỏ đổi sang màu của tâm gần nhất, rồi tâm dời vào giữa các chấm của nó",
+		"Each small dot takes the color of its nearest center, then the center moves to the middle of its dots"
+	]],
+	elbow: [[
+		"axis",
+		"Ngang: số nhóm K từ ít tới nhiều. Cao: độ lỏng lẻo trong nhóm",
+		"Across: number of groups K, few to many. Up: looseness inside groups"
+	], [
+		"gold",
+		"Cột vàng: chỗ gập, nơi cột bắt đầu bẹt",
+		"Gold bar: the bend, where bars start to flatten"
+	]],
+	merge: [[
+		"axis",
+		"Các chấm dưới cùng là từng điểm dữ liệu. Chấm gần nhau được dán trước, đi lên như một cây phân cấp",
+		"The bottom dots are single data points. Close ones glue first and rise like a hierarchy tree"
+	]],
+	tok: [[
+		"axis",
+		"Bốn chữ là bốn mảnh sau khi cắt câu",
+		"Four words are four pieces after cutting the sentence"
+	], [
+		"axis",
+		"Từ hư («và», «của») mờ đi, chữ có nghĩa được giữ lại để đếm",
+		"Filler words fade, meaningful words stay to be counted"
+	]],
+	bow: [[
+		"gold",
+		"Cột vàng: số lần mỗi chữ xuất hiện",
+		"Gold bar: how often each word appears"
+	], [
+		"axis",
+		"Chữ đổi chỗ nhưng độ cao cột không đổi: thứ tự câu đã mất",
+		"Words swap places but bar heights stay: sentence order is lost"
+	]],
+	tfidf: [[
+		"ink",
+		"Cột đen thấp: «spa» có mặt ở mọi bài nên bị hạ điểm",
+		"Short dark bar: “spa” appears in every review so it is scored down"
+	], [
+		"gold",
+		"Cột vàng cao: «chờ» hiếm nên được giữ điểm cao",
+		"Tall gold bar: “waited” is rare so it keeps a high score"
+	]],
+	edit: [[
+		"axis",
+		"Bốn chữ cái S P A A, rồi chữ A thứ hai rơi: một lần sửa đưa «spaa» về «spa»",
+		"Four letters S P A A, then the second A drops: one edit turns “spaa” into “spa”"
+	]],
+	steps: [[
+		"axis",
+		"Bốn bước xếp dọc, bước đang nói tới nhích ra: quyết định, giả thuyết, dữ liệu rồi mới đến mô hình",
+		"Four steps stacked, the current one slides out: decision, hypothesis, data, and only then the model"
+	]],
+	target: [[
+		"axis",
+		"Trái: tỷ lệ form hiện tại. Phải: mục tiêu",
+		"Left: the current form rate. Right: the goal"
+	], [
+		"axis",
+		"Dòng dưới là ràng buộc giá phải giữ",
+		"The bottom line is the cost limit to respect"
+	]]
+};
 var CREAM = 16052198;
 var GOLD = 15778122;
 var CLAY = 12870202;
@@ -1985,23 +2572,27 @@ function label(THREE, text, width = 1.7) {
 	const sprite = new THREE.Sprite(new THREE.SpriteMaterial({ transparent: true }));
 	if (!g) return sprite;
 	g.clearRect(0, 0, 512, 160);
-	g.fillStyle = "rgba(20,17,14,0.88)";
-	g.fillRect(6, 36, 500, 88);
-	g.fillStyle = "#f4efe6";
 	g.textAlign = "center";
 	g.textBaseline = "middle";
-	let size = 58;
+	let size = 64;
 	g.font = `600 ${size}px Georgia, serif`;
 	while (g.measureText(text).width > 470 && size > 28) {
 		size -= 4;
 		g.font = `600 ${size}px Georgia, serif`;
 	}
+	const bar = Math.min(504, g.measureText(text).width + 56);
+	g.fillStyle = "rgba(20,17,14,0.9)";
+	g.fillRect(256 - bar / 2, 28, bar, 104);
+	g.fillStyle = "#f4efe6";
 	g.fillText(text, 256, 80);
 	const tex = new THREE.CanvasTexture(canvas);
 	tex.colorSpace = THREE.SRGBColorSpace;
 	const mat = sprite.material;
 	mat.map = tex;
-	sprite.scale.set(width, width * .31, 1);
+	mat.depthTest = false;
+	sprite.renderOrder = 10;
+	const w = Math.max(width, 1.45);
+	sprite.scale.set(w, w * .31, 1);
 	return sprite;
 }
 function peg(THREE, x, h, color, w = .28) {
@@ -3298,7 +3889,18 @@ function target(THREE, world) {
 		say(L("Đích là tỷ lệ form. Accuracy đẹp mà không nhích đích thì chưa xong.", "The target is the form rate. A pretty accuracy that does not move it is not done."));
 	};
 }
-function start(THREE, host, canvas, kind, say, lang) {
+var HOME = {
+	x: 0,
+	y: .15,
+	z: 6.1
+};
+function start(THREE, Orbit, host, canvas, kind, say, lang, touchOn) {
+	const none = {
+		stop: () => {},
+		setPaused: () => {},
+		setTouch: () => {},
+		resetView: () => {}
+	};
 	line = (vi, en) => lang === "en" ? en : vi;
 	let renderer;
 	try {
@@ -3309,19 +3911,44 @@ function start(THREE, host, canvas, kind, say, lang) {
 			failIfMajorPerformanceCaveat: false
 		});
 	} catch {
-		return () => {};
+		return none;
 	}
 	renderer.setClearColor(0, 0);
 	renderer.outputColorSpace = THREE.SRGBColorSpace;
 	const scene = new THREE.Scene();
 	const camera = new THREE.PerspectiveCamera(40, 1, .1, 40);
-	camera.position.set(0, .15, 6.1);
+	camera.position.set(HOME.x, HOME.y, HOME.z);
+	const controls = new Orbit(camera, canvas);
+	controls.enableDamping = true;
+	controls.dampingFactor = .08;
+	controls.enablePan = false;
+	controls.minDistance = 3;
+	controls.maxDistance = 11;
+	controls.minPolarAngle = .15;
+	controls.maxPolarAngle = Math.PI - .35;
+	controls.target.set(0, 0, 0);
+	controls.enabled = touchOn;
+	let paused = false;
 	scene.add(new THREE.HemisphereLight(16774890, 3812390, 2.5));
 	const key = new THREE.DirectionalLight(16775407, 2);
 	key.position.set(3, 5, 4);
 	scene.add(key);
 	const world = new THREE.Group();
 	scene.add(world);
+	const floor = new THREE.GridHelper(9, 18, 7035981, 3813159);
+	floor.position.y = -1.55;
+	floor.material.transparent = true;
+	floor.material.opacity = .55;
+	scene.add(floor);
+	const wall = new THREE.Mesh(new THREE.PlaneGeometry(7.4, 3.9), new THREE.MeshBasicMaterial({
+		color: 2892830,
+		transparent: true,
+		opacity: .35,
+		side: THREE.DoubleSide,
+		depthWrite: false
+	}));
+	wall.position.set(0, .2, -.45);
+	scene.add(wall);
 	const update = build(THREE, kind, world);
 	const slow = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 	let last = performance.now();
@@ -3347,7 +3974,7 @@ function start(THREE, host, canvas, kind, say, lang) {
 	const loop = (now) => {
 		frame = requestAnimationFrame(loop);
 		if (!visible) return;
-		const dt = Math.min(.05, Math.max(0, (now - last) / 1e3)) * (slow ? .35 : 1);
+		const dt = paused ? 0 : Math.min(.05, Math.max(0, (now - last) / 1e3)) * (slow ? .35 : 1);
 		last = now;
 		elapsed += dt;
 		update(dt, elapsed, (note) => {
@@ -3356,13 +3983,13 @@ function start(THREE, host, canvas, kind, say, lang) {
 				say(note);
 			}
 		});
-		camera.position.x = Math.sin(elapsed * .12) * .18;
-		camera.lookAt(0, 0, 0);
+		controls.update();
 		renderer.render(scene, camera);
 	};
 	frame = requestAnimationFrame(loop);
-	return () => {
+	const stop = () => {
 		cancelAnimationFrame(frame);
+		controls.dispose();
 		ro.disconnect();
 		io.disconnect();
 		scene.traverse((obj) => {
@@ -3377,37 +4004,176 @@ function start(THREE, host, canvas, kind, say, lang) {
 		});
 		renderer.dispose();
 	};
+	return {
+		stop,
+		setPaused: (value) => {
+			paused = value;
+		},
+		setTouch: (on) => {
+			controls.enabled = on;
+		},
+		resetView: () => {
+			camera.position.set(HOME.x, HOME.y, HOME.z);
+			controls.target.set(0, 0, 0);
+			controls.update();
+		}
+	};
+}
+var ui = {
+	vi: {
+		now: "Đang xảy ra",
+		legend: "Cách đọc hình",
+		hint: "Kéo để xoay · cuộn hoặc chụm hai ngón để zoom",
+		hintOff: "Bấm «Xoay hình» để xoay bằng ngón tay. Đang tắt để bạn cuộn trang.",
+		rotate: "Xoay hình",
+		rotating: "Đang xoay",
+		pause: "Dừng",
+		play: "Chạy",
+		replay: "Tua lại",
+		home: "Về góc đầu"
+	},
+	en: {
+		now: "What is happening",
+		legend: "How to read the picture",
+		hint: "Drag to rotate · scroll or pinch to zoom",
+		hintOff: "Tap “Rotate” to turn the scene with your finger. It is off so the page can scroll.",
+		rotate: "Rotate",
+		rotating: "Rotating",
+		pause: "Pause",
+		play: "Play",
+		replay: "Replay",
+		home: "Reset view"
+	}
+};
+function fineHover() {
+	try {
+		return window.matchMedia("(pointer: fine)").matches;
+	} catch {
+		return true;
+	}
 }
 function Stage3D({ scene, lang }) {
 	const hostRef = (0, import_react.useRef)(null);
 	const canvasRef = (0, import_react.useRef)(null);
+	const apiRef = (0, import_react.useRef)(null);
 	const [note, setNote] = (0, import_react.useState)("");
+	const [paused, setPaused] = (0, import_react.useState)(false);
+	const [run, setRun] = (0, import_react.useState)(0);
+	const [touch, setTouch] = (0, import_react.useState)(null);
+	const t = ui[lang === "en" ? "en" : "vi"];
+	const legend = legends[scene];
+	(0, import_react.useEffect)(() => {
+		setTouch(fineHover());
+	}, []);
+	const touchRef = (0, import_react.useRef)(true);
+	touchRef.current = touch ?? true;
 	(0, import_react.useEffect)(() => {
 		const host = hostRef.current;
 		const canvas = canvasRef.current;
 		if (!host || !canvas) return;
 		let dead = false;
-		let stop = () => {};
-		import("../_libs/three.mjs").then((n) => n.t).then((THREE) => {
+		setNote("");
+		Promise.all([import("../_libs/three.mjs").then((n) => n.n), import("../_libs/three.mjs").then((n) => n.t)]).then(([THREE, mod]) => {
 			if (dead) return;
-			stop = start(THREE, host, canvas, scene, setNote, lang);
+			apiRef.current = start(THREE, mod.OrbitControls, host, canvas, scene, setNote, lang, touchRef.current);
 		});
 		return () => {
 			dead = true;
-			stop();
+			apiRef.current?.stop();
+			apiRef.current = null;
 		};
-	}, [scene, lang]);
-	return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-		ref: hostRef,
-		className: "relative h-80 overflow-hidden rounded-card bg-[#14110e]",
-		children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", { className: "pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_50%_45%,#2c241e_0%,#14110e_72%)]" }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("canvas", {
-			ref: canvasRef,
-			className: "relative h-full w-full"
-		})]
-	}), note ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
-		className: "mt-2 text-sm leading-snug text-muted",
-		children: note
-	}) : null] });
+	}, [
+		scene,
+		lang,
+		run
+	]);
+	(0, import_react.useEffect)(() => {
+		apiRef.current?.setPaused(paused);
+	}, [paused, run]);
+	(0, import_react.useEffect)(() => {
+		apiRef.current?.setTouch(touch ?? true);
+	}, [touch, run]);
+	const btn = "inline-flex min-h-11 items-center rounded-full border border-line bg-card px-4 text-sm";
+	return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", { children: [
+		/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+			ref: hostRef,
+			className: "relative h-80 overflow-hidden rounded-card bg-[#14110e] sm:h-96",
+			children: [
+				/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", { className: "pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_50%_45%,#2c241e_0%,#14110e_72%)]" }),
+				/* @__PURE__ */ (0, import_jsx_runtime.jsx)("canvas", {
+					ref: canvasRef,
+					className: "relative h-full w-full",
+					style: {
+						touchAction: touch === false ? "pan-y" : "none",
+						cursor: touch === false ? "default" : "grab"
+					}
+				}),
+				/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+					className: "pointer-events-none absolute bottom-2 left-3 right-3 text-xs text-[#d8cdbd]",
+					children: touch === false ? t.hintOff : t.hint
+				})
+			]
+		}),
+		/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+			className: "mt-2 flex flex-wrap gap-2",
+			children: [
+				/* @__PURE__ */ (0, import_jsx_runtime.jsx)("button", {
+					type: "button",
+					className: btn,
+					onClick: () => setPaused(!paused),
+					children: paused ? t.play : t.pause
+				}),
+				/* @__PURE__ */ (0, import_jsx_runtime.jsx)("button", {
+					type: "button",
+					className: btn,
+					onClick: () => {
+						setPaused(false);
+						setRun(run + 1);
+					},
+					children: t.replay
+				}),
+				/* @__PURE__ */ (0, import_jsx_runtime.jsx)("button", {
+					type: "button",
+					className: btn,
+					onClick: () => apiRef.current?.resetView(),
+					children: t.home
+				}),
+				touch === false || touch === true && !fineHover() ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)("button", {
+					type: "button",
+					className: `${btn} ${touch ? "bg-ink text-paper" : ""}`,
+					onClick: () => setTouch(!touch),
+					children: touch ? t.rotating : t.rotate
+				}) : null
+			]
+		}),
+		legend ? /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+			className: "mt-3 rounded-card border border-line bg-card px-4 py-3",
+			children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+				className: "text-xs uppercase tracking-widest text-muted",
+				children: t.legend
+			}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("ul", {
+				className: "mt-2 space-y-2",
+				children: legend.map(([swatch, vi, en]) => /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("li", {
+					className: "flex items-start gap-3 text-sm leading-snug",
+					children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+						className: "mt-1 inline-block size-3.5 shrink-0 rounded-full border border-line",
+						style: { background: swatchColor[swatch] },
+						"aria-hidden": true
+					}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", { children: lang === "en" ? en : vi })]
+				}, vi))
+			})]
+		}) : null,
+		note ? /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+			className: "mt-3 rounded-card border border-line bg-card px-4 py-3",
+			children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+				className: "text-xs uppercase tracking-widest text-accent",
+				children: t.now
+			}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+				className: "mt-1 text-base leading-snug",
+				children: note
+			})]
+		}) : null
+	] });
 }
 function t(lang, vi, en) {
 	return lang === "en" ? en : vi;

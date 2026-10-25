@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { buildExtra, type Kit } from "@/components/sims/stage3d-extra";
+import { legends, swatchColor } from "@/components/sims/stage3d-legend";
 
 type Three = typeof import("three");
 type Sprite = InstanceType<Three["Sprite"]>;
@@ -34,23 +35,28 @@ function label(THREE: Three, text: string, width = 1.7): Sprite {
   const sprite = new THREE.Sprite(new THREE.SpriteMaterial({ transparent: true }));
   if (!g) return sprite;
   g.clearRect(0, 0, 512, 160);
-  g.fillStyle = "rgba(20,17,14,0.88)";
-  g.fillRect(6, 36, 500, 88);
-  g.fillStyle = "#f4efe6";
   g.textAlign = "center";
   g.textBaseline = "middle";
-  let size = 58;
+  let size = 64;
   g.font = `600 ${size}px Georgia, serif`;
   while (g.measureText(text).width > 470 && size > 28) {
     size -= 4;
     g.font = `600 ${size}px Georgia, serif`;
   }
+  // Nền chỉ vừa khít chữ, để chữ ngắn vẫn đủ lớn mà không che hình.
+  const bar = Math.min(504, g.measureText(text).width + 56);
+  g.fillStyle = "rgba(20,17,14,0.9)";
+  g.fillRect(256 - bar / 2, 28, bar, 104);
+  g.fillStyle = "#f4efe6";
   g.fillText(text, 256, 80);
   const tex = new THREE.CanvasTexture(canvas);
   tex.colorSpace = THREE.SRGBColorSpace;
   const mat = sprite.material as InstanceType<Three["SpriteMaterial"]>;
   mat.map = tex;
-  sprite.scale.set(width, width * 0.31, 1);
+  mat.depthTest = false;
+  sprite.renderOrder = 10;
+  const w = Math.max(width, 1.45);
+  sprite.scale.set(w, w * 0.31, 1);
   return sprite;
 }
 
@@ -1228,25 +1234,66 @@ function target(THREE: Three, world: Group): Update {
   };
 }
 
-function start(THREE: Three, host: HTMLElement, canvas: HTMLCanvasElement, kind: string, say: (note: string) => void, lang: Lang) {
+type Orbit = InstanceType<typeof import("three/examples/jsm/controls/OrbitControls.js").OrbitControls>;
+
+export type StageApi = {
+  stop: () => void;
+  setPaused: (paused: boolean) => void;
+  setTouch: (on: boolean) => void;
+  resetView: () => void;
+};
+
+const HOME = { x: 0, y: 0.15, z: 6.1 };
+
+function start(
+  THREE: Three,
+  Orbit: new (camera: InstanceType<Three["Camera"]>, el: HTMLElement) => Orbit,
+  host: HTMLElement,
+  canvas: HTMLCanvasElement,
+  kind: string,
+  say: (note: string) => void,
+  lang: Lang,
+  touchOn: boolean,
+): StageApi {
+  const none: StageApi = { stop: () => {}, setPaused: () => {}, setTouch: () => {}, resetView: () => {} };
   line = (vi, en) => (lang === "en" ? en : vi);
   let renderer: InstanceType<Three["WebGLRenderer"]>;
   try {
     renderer = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: true, failIfMajorPerformanceCaveat: false });
   } catch {
-    return () => {};
+    return none;
   }
   renderer.setClearColor(0x000000, 0);
   renderer.outputColorSpace = THREE.SRGBColorSpace;
   const scene = new THREE.Scene();
   const camera = new THREE.PerspectiveCamera(40, 1, 0.1, 40);
-  camera.position.set(0, 0.15, 6.1);
+  camera.position.set(HOME.x, HOME.y, HOME.z);
+  const controls = new Orbit(camera, canvas);
+  controls.enableDamping = true;
+  controls.dampingFactor = 0.08;
+  controls.enablePan = false;
+  controls.minDistance = 3;
+  controls.maxDistance = 11;
+  controls.minPolarAngle = 0.15;
+  controls.maxPolarAngle = Math.PI - 0.35;
+  controls.target.set(0, 0, 0);
+  controls.enabled = touchOn;
+  let paused = false;
   scene.add(new THREE.HemisphereLight(0xfff6ea, 0x3a2c26, 2.5));
   const key = new THREE.DirectionalLight(0xfff8ef, 2);
   key.position.set(3, 5, 4);
   scene.add(key);
   const world = new THREE.Group();
   scene.add(world);
+  // Sàn lưới và tấm nền mờ giúp thấy chiều sâu khi xoay hình.
+  const floor = new THREE.GridHelper(9, 18, 0x6b5c4d, 0x3a2f27);
+  floor.position.y = -1.55;
+  (floor.material as InstanceType<Three["Material"]>).transparent = true;
+  (floor.material as InstanceType<Three["Material"]>).opacity = 0.55;
+  scene.add(floor);
+  const wall = new THREE.Mesh(new THREE.PlaneGeometry(7.4, 3.9), new THREE.MeshBasicMaterial({ color: 0x2c241e, transparent: true, opacity: 0.35, side: THREE.DoubleSide, depthWrite: false }));
+  wall.position.set(0, 0.2, -0.45);
+  scene.add(wall);
   const update = build(THREE, kind, world);
   const slow = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   let last = performance.now();
@@ -1272,7 +1319,7 @@ function start(THREE: Three, host: HTMLElement, canvas: HTMLCanvasElement, kind:
   const loop = (now: number) => {
     frame = requestAnimationFrame(loop);
     if (!visible) return;
-    const dt = Math.min(0.05, Math.max(0, (now - last) / 1000)) * (slow ? 0.35 : 1);
+    const dt = paused ? 0 : Math.min(0.05, Math.max(0, (now - last) / 1000)) * (slow ? 0.35 : 1);
     last = now;
     elapsed += dt;
     update(dt, elapsed, (note) => {
@@ -1281,13 +1328,13 @@ function start(THREE: Three, host: HTMLElement, canvas: HTMLCanvasElement, kind:
         say(note);
       }
     });
-    camera.position.x = Math.sin(elapsed * 0.12) * 0.18;
-    camera.lookAt(0, 0, 0);
+    controls.update();
     renderer.render(scene, camera);
   };
   frame = requestAnimationFrame(loop);
-  return () => {
+  const stop = () => {
     cancelAnimationFrame(frame);
+    controls.dispose();
     ro.disconnect();
     io.disconnect();
     scene.traverse((obj) => {
@@ -1304,36 +1351,155 @@ function start(THREE: Three, host: HTMLElement, canvas: HTMLCanvasElement, kind:
     });
     renderer.dispose();
   };
+  return {
+    stop,
+    setPaused: (value) => {
+      paused = value;
+    },
+    setTouch: (on) => {
+      controls.enabled = on;
+    },
+    resetView: () => {
+      camera.position.set(HOME.x, HOME.y, HOME.z);
+      controls.target.set(0, 0, 0);
+      controls.update();
+    },
+  };
+}
+
+const ui = {
+  vi: {
+    now: "Đang xảy ra",
+    legend: "Cách đọc hình",
+    hint: "Kéo để xoay · cuộn hoặc chụm hai ngón để zoom",
+    hintOff: "Bấm «Xoay hình» để xoay bằng ngón tay. Đang tắt để bạn cuộn trang.",
+    rotate: "Xoay hình",
+    rotating: "Đang xoay",
+    pause: "Dừng",
+    play: "Chạy",
+    replay: "Tua lại",
+    home: "Về góc đầu",
+  },
+  en: {
+    now: "What is happening",
+    legend: "How to read the picture",
+    hint: "Drag to rotate · scroll or pinch to zoom",
+    hintOff: "Tap “Rotate” to turn the scene with your finger. It is off so the page can scroll.",
+    rotate: "Rotate",
+    rotating: "Rotating",
+    pause: "Pause",
+    play: "Play",
+    replay: "Replay",
+    home: "Reset view",
+  },
+} as const;
+
+function fineHover() {
+  try {
+    return window.matchMedia("(pointer: fine)").matches;
+  } catch {
+    return true;
+  }
 }
 
 export function Stage3D({ scene, lang }: { scene: string; lang: Lang }) {
   const hostRef = useRef<HTMLDivElement>(null);
   const canvasRef = useRef<HTMLCanvasElement>(null);
+  const apiRef = useRef<StageApi | null>(null);
   const [note, setNote] = useState("");
+  const [paused, setPaused] = useState(false);
+  const [run, setRun] = useState(0);
+  const [touch, setTouch] = useState<boolean | null>(null);
+  const t = ui[lang === "en" ? "en" : "vi"];
+  const legend = legends[scene];
+
+  useEffect(() => {
+    setTouch(fineHover());
+  }, []);
+
+  const touchRef = useRef(true);
+  touchRef.current = touch ?? true;
 
   useEffect(() => {
     const host = hostRef.current;
     const canvas = canvasRef.current;
     if (!host || !canvas) return;
     let dead = false;
-    let stop = () => {};
-    import("three").then((THREE) => {
+    setNote("");
+    Promise.all([import("three"), import("three/examples/jsm/controls/OrbitControls.js")]).then(([THREE, mod]) => {
       if (dead) return;
-      stop = start(THREE, host, canvas, scene, setNote, lang);
+      apiRef.current = start(THREE, mod.OrbitControls as never, host, canvas, scene, setNote, lang, touchRef.current);
     });
     return () => {
       dead = true;
-      stop();
+      apiRef.current?.stop();
+      apiRef.current = null;
     };
-  }, [scene, lang]);
+  }, [scene, lang, run]);
+
+  useEffect(() => {
+    apiRef.current?.setPaused(paused);
+  }, [paused, run]);
+
+  useEffect(() => {
+    apiRef.current?.setTouch(touch ?? true);
+  }, [touch, run]);
+
+  const btn = "inline-flex min-h-11 items-center rounded-full border border-line bg-card px-4 text-sm";
 
   return (
     <div>
-      <div ref={hostRef} className="relative h-80 overflow-hidden rounded-card bg-[#14110e]">
+      <div ref={hostRef} className="relative h-80 overflow-hidden rounded-card bg-[#14110e] sm:h-96">
         <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_50%_45%,#2c241e_0%,#14110e_72%)]" />
-        <canvas ref={canvasRef} className="relative h-full w-full" />
+        <canvas ref={canvasRef} className="relative h-full w-full" style={{ touchAction: touch === false ? "pan-y" : "none", cursor: touch === false ? "default" : "grab" }} />
+        <p className="pointer-events-none absolute bottom-2 left-3 right-3 text-xs text-[#d8cdbd]">{touch === false ? t.hintOff : t.hint}</p>
       </div>
-      {note ? <p className="mt-2 text-sm leading-snug text-muted">{note}</p> : null}
+      <div className="mt-2 flex flex-wrap gap-2">
+        <button type="button" className={btn} onClick={() => setPaused(!paused)}>
+          {paused ? t.play : t.pause}
+        </button>
+        <button
+          type="button"
+          className={btn}
+          onClick={() => {
+            setPaused(false);
+            setRun(run + 1);
+          }}
+        >
+          {t.replay}
+        </button>
+        <button type="button" className={btn} onClick={() => apiRef.current?.resetView()}>
+          {t.home}
+        </button>
+        {touch === false || (touch === true && !fineHover()) ? (
+          <button type="button" className={`${btn} ${touch ? "bg-ink text-paper" : ""}`} onClick={() => setTouch(!touch)}>
+            {touch ? t.rotating : t.rotate}
+          </button>
+        ) : null}
+      </div>
+      {legend ? (
+        <div className="mt-3 rounded-card border border-line bg-card px-4 py-3">
+          <p className="text-xs uppercase tracking-widest text-muted">{t.legend}</p>
+          <ul className="mt-2 space-y-2">
+            {legend.map(([swatch, vi, en]) => (
+              <li key={vi} className="flex items-start gap-3 text-sm leading-snug">
+                <span
+                  className="mt-1 inline-block size-3.5 shrink-0 rounded-full border border-line"
+                  style={{ background: swatchColor[swatch] }}
+                  aria-hidden
+                />
+                <span>{lang === "en" ? en : vi}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      ) : null}
+      {note ? (
+        <div className="mt-3 rounded-card border border-line bg-card px-4 py-3">
+          <p className="text-xs uppercase tracking-widest text-accent">{t.now}</p>
+          <p className="mt-1 text-base leading-snug">{note}</p>
+        </div>
+      ) : null}
     </div>
   );
 }
