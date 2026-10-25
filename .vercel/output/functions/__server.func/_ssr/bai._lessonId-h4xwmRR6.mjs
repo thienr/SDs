@@ -2,11 +2,11 @@ import { o as __toESM } from "../_runtime.mjs";
 import { a as getLesson, c as neighbors, r as formatMinutes, t as block } from "./catalog-BshCFI1J.mjs";
 import { J as require_react, S as require_jsx_runtime, b as Link } from "../_libs/@tanstack/react-router+[...].mjs";
 import { f as Circle, p as Check } from "../_libs/lucide-react.mjs";
-import { C as itemStatus, E as openLesson, O as subscribeProgress, T as markLesson, b as getServerProgress, g as subscribeCms, i as Route$2, m as getServerCmsVersion, p as getCmsVersion, v as cycleItem, w as lessonStatus, y as getProgress } from "./router-DC257ZsM.mjs";
-import { r as Sim } from "./labs-QD1I4UpG.mjs";
+import { C as itemStatus, E as openLesson, O as subscribeProgress, T as markLesson, b as getServerProgress, g as subscribeCms, i as Route$2, m as getServerCmsVersion, p as getCmsVersion, v as cycleItem, w as lessonStatus, y as getProgress } from "./router-WhILmx5X.mjs";
+import { r as Sim } from "./labs-DJoBzrU9.mjs";
 import { n as maybeTex, t as Tex } from "./tex-t3KOuum9.mjs";
-import { a as liveLesson } from "./cms-live-CW1KbtQI.mjs";
-//#region node_modules/.nitro/vite/services/ssr/assets/bai._lessonId-oA7_hrzo.js
+import { a as liveLesson } from "./cms-live-CHK1Z015.mjs";
+//#region node_modules/.nitro/vite/services/ssr/assets/bai._lessonId-h4xwmRR6.js
 var import_react = /* @__PURE__ */ __toESM(require_react());
 var import_jsx_runtime = require_jsx_runtime();
 var labels = {
