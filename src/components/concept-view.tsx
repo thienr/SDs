@@ -1,6 +1,8 @@
 import { Link } from "@tanstack/react-router";
 import { useSyncExternalStore } from "react";
+import { DataDemo } from "@/components/sims/data-demo";
 import { Stage3D } from "@/components/sims/stage3d";
+import { demos } from "@/data/demos";
 import { Sim } from "@/components/sims/labs";
 import { InferWidget } from "@/components/sims/infer-widgets";
 import { Tex } from "@/components/tex";
@@ -74,7 +76,7 @@ export function ConceptView({ concept }: { concept: StudyConcept }) {
       <section className="mt-6">
         <h2 className="text-xs uppercase tracking-widest text-muted">{head.see}</h2>
         <div className="mt-3">
-          <Stage3D scene={concept.scene} lang={lang} />
+          {demos[concept.id] ? <DataDemo demo={demos[concept.id]} lang={lang} /> : <Stage3D scene={concept.scene} lang={lang} />}
         </div>
         <p className="mt-3 text-lg leading-relaxed">{text.see}</p>
       </section>

@@ -1,12 +1,192 @@
 import { o as __toESM } from "../_runtime.mjs";
 import { J as require_react, S as require_jsx_runtime, b as Link } from "../_libs/@tanstack/react-router+[...].mjs";
-import { A as studyCopy, B as subscribeRaw, F as getRawVersion, I as getServerRawVersion, M as studyNeighbors, O as subscribeProgress, b as getServerProgress, j as studyListTitle, k as getStudy, r as Route$1, y as getProgress } from "./router-DKbiobYL.mjs";
-import { n as Range, r as Sim, t as Lab } from "./labs-AIgye1CM.mjs";
+import { A as studyCopy, B as subscribeRaw, F as getRawVersion, I as getServerRawVersion, M as studyNeighbors, O as subscribeProgress, b as getServerProgress, j as studyListTitle, k as getStudy, r as Route$1, y as getProgress } from "./router-Bd8qiDpA.mjs";
+import { n as Range, r as Sim, t as Lab } from "./labs-BQfzGGBR.mjs";
 import { t as Tex } from "./tex-t3KOuum9.mjs";
-import { o as relatedOf } from "./map-IFSRoNC1.mjs";
-//#region node_modules/.nitro/vite/services/ssr/assets/khai-niem._conceptId-CVZt_y9r.js
+import { o as relatedOf } from "./map-By7eMKFr.mjs";
+//#region node_modules/.nitro/vite/services/ssr/assets/khai-niem._conceptId-DvnHJ9i5.js
 var import_react = /* @__PURE__ */ __toESM(require_react());
 var import_jsx_runtime = require_jsx_runtime();
+var ui$1 = {
+	vi: {
+		step: "Bước",
+		of: "trên",
+		prev: "Lùi",
+		next: "Bước kế",
+		again: "Chạy lại",
+		auto: "Tự chạy",
+		stop: "Dừng",
+		legend: "Màu",
+		focus: "đang nói tới",
+		gone: "bị loại hoặc gộp",
+		fresh: "mới xuất hiện",
+		bad: "sai hoặc bị từ chối",
+		empty: "trống (NULL)"
+	},
+	en: {
+		step: "Step",
+		of: "of",
+		prev: "Back",
+		next: "Next step",
+		again: "Run again",
+		auto: "Autoplay",
+		stop: "Stop",
+		legend: "Colors",
+		focus: "in focus",
+		gone: "dropped or merged",
+		fresh: "new",
+		bad: "wrong or rejected",
+		empty: "empty (NULL)"
+	}
+};
+function show$1(v) {
+	if (v === null) return /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+		className: "italic text-muted",
+		children: "NULL"
+	});
+	return String(v);
+}
+function Grid({ t }) {
+	const m = t.m ?? {};
+	const cellClass = (r, c) => {
+		const classes = ["border border-line px-2 py-1 text-sm whitespace-nowrap"];
+		if (m.cells?.some(([rr, cc]) => rr === r && cc === c)) return classes.concat("bg-[#f0c14a] text-[#14110e] font-semibold").join(" ");
+		if (m.dim?.includes(r)) classes.push("opacity-35 line-through");
+		if (m.bad?.includes(r)) classes.push("bg-[#b5461f]/30");
+		else if (m.add?.includes(r) || m.addCols?.includes(c)) classes.push("bg-good/25");
+		else if (m.rows?.includes(r) || m.cols?.includes(c)) classes.push("bg-[#f0c14a]/35");
+		return classes.join(" ");
+	};
+	return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+		className: "min-w-0",
+		children: [t.name ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+			className: "mb-1 font-mono text-xs text-muted",
+			children: t.name
+		}) : null, /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+			className: "overflow-x-auto rounded-card border border-line bg-card",
+			children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("table", {
+				className: "w-full border-collapse",
+				children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("thead", { children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)("tr", { children: t.c.map((name, c) => /* @__PURE__ */ (0, import_jsx_runtime.jsx)("th", {
+					className: `border border-line bg-paper px-2 py-1 text-left font-mono text-xs font-semibold ${m.addCols?.includes(c) ? "bg-good/25" : ""} ${m.cols?.includes(c) ? "bg-[#f0c14a]/50" : ""}`,
+					children: name
+				}, name + c)) }) }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("tbody", { children: t.r.map((row, r) => /* @__PURE__ */ (0, import_jsx_runtime.jsx)("tr", { children: row.map((v, c) => /* @__PURE__ */ (0, import_jsx_runtime.jsx)("td", {
+					className: cellClass(r, c),
+					children: show$1(v)
+				}, c)) }, r)) })]
+			})
+		})]
+	});
+}
+function DataDemo({ demo, lang }) {
+	const t = ui$1[lang];
+	const [i, setI] = (0, import_react.useState)(0);
+	const [auto, setAuto] = (0, import_react.useState)(false);
+	const last = demo.length - 1;
+	const step = demo[Math.min(i, last)];
+	(0, import_react.useEffect)(() => {
+		setI(0);
+		setAuto(false);
+	}, [demo]);
+	(0, import_react.useEffect)(() => {
+		if (!auto) return;
+		const id = window.setInterval(() => {
+			setI((v) => {
+				if (v >= last) {
+					setAuto(false);
+					return v;
+				}
+				return v + 1;
+			});
+		}, 3200);
+		return () => window.clearInterval(id);
+	}, [auto, last]);
+	const btn = "inline-flex min-h-11 items-center rounded-full border border-line bg-card px-4 text-sm disabled:opacity-40";
+	const used = /* @__PURE__ */ new Set();
+	step.t.forEach((tb) => {
+		const m = tb.m;
+		if (!m) return;
+		if (m.rows || m.cols || m.cells) used.add("focus");
+		if (m.dim) used.add("gone");
+		if (m.add || m.addCols) used.add("fresh");
+		if (m.bad) used.add("bad");
+		if (tb.r.some((row) => row.includes(null))) used.add("empty");
+	});
+	const sw = {
+		focus: "bg-[#f0c14a]",
+		gone: "bg-line",
+		fresh: "bg-good/60",
+		bad: "bg-[#b5461f]/60",
+		empty: "border border-line bg-card"
+	};
+	return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+		className: "rounded-card border border-line bg-paper p-3",
+		children: [
+			/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+				className: "flex items-center justify-between gap-2",
+				children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("p", {
+					className: "text-xs uppercase tracking-widest text-accent",
+					children: [
+						t.step,
+						" ",
+						Math.min(i, last) + 1,
+						" ",
+						t.of,
+						" ",
+						demo.length
+					]
+				}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+					className: "flex gap-1",
+					"aria-hidden": true,
+					children: demo.map((_, k) => /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", { className: `h-2 w-6 rounded-full ${k <= i ? "bg-accent" : "bg-line"}` }, k))
+				})]
+			}),
+			/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+				className: "mt-2 text-base leading-snug",
+				children: lang === "en" ? step.en : step.vi
+			}),
+			step.code ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)("pre", {
+				className: "mt-3 overflow-x-auto rounded-card bg-[#14110e] px-3 py-2 font-mono text-sm leading-relaxed text-[#f4efe6]",
+				children: step.code
+			}) : null,
+			/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+				className: `mt-3 grid gap-3 ${step.t.length > 1 ? "md:grid-cols-2" : ""}`,
+				children: step.t.map((tb, k) => /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Grid, { t: tb }, k))
+			}),
+			used.size > 0 ? /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("p", {
+				className: "mt-3 flex flex-wrap items-center gap-x-4 gap-y-1 text-xs text-muted",
+				children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", { children: [t.legend, ":"] }), [...used].map((k) => /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", {
+					className: "inline-flex items-center gap-1",
+					children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", { className: `inline-block size-3 rounded-sm ${sw[k]}` }), t[k]]
+				}, k))]
+			}) : null,
+			/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+				className: "mt-3 flex flex-wrap gap-2",
+				children: [
+					/* @__PURE__ */ (0, import_jsx_runtime.jsx)("button", {
+						type: "button",
+						className: btn,
+						disabled: i === 0,
+						onClick: () => setI(Math.max(0, i - 1)),
+						children: t.prev
+					}),
+					/* @__PURE__ */ (0, import_jsx_runtime.jsx)("button", {
+						type: "button",
+						className: `${btn} bg-ink text-paper`,
+						disabled: i >= last,
+						onClick: () => setI(Math.min(last, i + 1)),
+						children: t.next
+					}),
+					/* @__PURE__ */ (0, import_jsx_runtime.jsx)("button", {
+						type: "button",
+						className: btn,
+						onClick: () => i >= last ? (setI(0), setAuto(true)) : setAuto(!auto),
+						children: auto ? t.stop : i >= last ? t.again : t.auto
+					})
+				]
+			})
+		]
+	});
+}
 var wideBeats = {
 	"x-drill": {
 		a: ["bài luyện", "a drill"],
@@ -804,12 +984,37 @@ function bars(THREE, world, kit, rows, note) {
 	};
 }
 function toggle(THREE, world, kit, a, b, noteA, noteB) {
-	const left = chip(THREE, world, kit, a[0], a[1], 0, .15, 2.15);
-	const right = chip(THREE, world, kit, b[0], b[1], 0, .15, 2.15);
-	return (_dt, t, tell) => {
+	const make = (text, x, color) => {
+		const group = new THREE.Group();
+		const body = new THREE.Mesh(new THREE.BoxGeometry(2.1, 1.25, .3), kit.lambert(THREE, color));
+		const face = kit.label(THREE, kit.L(text[0], text[1]), 1.9);
+		face.position.set(0, 0, .24);
+		const base = new THREE.Mesh(new THREE.BoxGeometry(2.1, .07, .34), new THREE.MeshBasicMaterial({ color: kit.GOLD }));
+		base.position.set(0, -.72, 0);
+		group.add(body, face, base);
+		group.position.set(x, .1, 0);
+		world.add(group);
+		return {
+			group,
+			body,
+			base
+		};
+	};
+	const left = make(a, -1.25, kit.GOLD);
+	const right = make(b, 1.25, kit.CLAY);
+	return (dt, t, tell) => {
 		const on = t % 6 > 3;
-		left.visible = !on;
-		right.visible = on;
+		const step = Math.min(1, dt * 7);
+		[[left, !on], [right, on]].forEach(([card, active]) => {
+			const c = card;
+			const target = active ? 1 : 0;
+			c.group.position.z += ((active ? .45 : -.2) - c.group.position.z) * step;
+			c.group.scale.setScalar(c.group.scale.x + ((active ? 1.07 : .92) - c.group.scale.x) * step);
+			c.base.visible = target === 1;
+			const mat = c.body.material;
+			mat.transparent = true;
+			mat.opacity += ((active ? 1 : .45) - mat.opacity) * step;
+		});
 		const note = on ? noteB : noteA;
 		say(kit, note[0], note[1], tell);
 	};
@@ -1960,6 +2165,568 @@ function buildExtra(THREE, kind, world, kit) {
 	if (beat) return toggle(THREE, world, kit, beat.a, beat.b, beat.noteA, beat.noteB);
 	return null;
 }
+var swatchColor = {
+	gold: "#f0c14a",
+	cream: "#f4efe6",
+	clay: "#c4623a",
+	rust: "#b5461f",
+	ink: "#3a332c",
+	axis: "transparent"
+};
+var legends = {
+	field: [
+		[
+			"cream",
+			"Mỗi chấm là một phiên truy cập trong cả nguồn",
+			"Each dot is one visit in the whole source"
+		],
+		[
+			"gold",
+			"Chấm vàng là loại phiên đang đếm",
+			"Gold dots are the kind being counted"
+		],
+		[
+			"gold",
+			"Khung vàng là một lần lấy mẫu (một tuần)",
+			"The gold frame is one sample (one week)"
+		],
+		[
+			"axis",
+			"Số % dưới khung là tỷ lệ trong riêng khung đó",
+			"The % under the frame is the rate inside that frame only"
+		]
+	],
+	seats: [[
+		"gold",
+		"Ba quả cầu A, B, C là ba người",
+		"The three balls A, B, C are three people"
+	], [
+		"ink",
+		"Ba bệ đen là ba ghế. Đổi thứ tự là một cách xếp mới",
+		"The three dark slabs are three seats. A new order is a new arrangement"
+	]],
+	group: [[
+		"gold",
+		"Ba quả cầu là một nhóm. Xoay cả cụm thì vẫn là nhóm đó",
+		"The three balls are one group. Spinning it is still the same group"
+	]],
+	fraction: [[
+		"gold",
+		"Hai viên vàng là trường hợp thuận (2)",
+		"The two gold balls are the favorable cases (2)"
+	], [
+		"cream",
+		"Tám viên kem là các trường hợp còn lại. Tổng là 10",
+		"The eight cream balls are the rest. Ten in all"
+	]],
+	meet: [[
+		"gold",
+		"Hai quả cầu bên trái có thể xảy ra cùng lúc, nên có vùng chung",
+		"The two left balls can happen together, so they share a zone"
+	], [
+		"cream",
+		"Hai quả cầu bên phải loại trừ nhau, không bao giờ gặp",
+		"The two right balls exclude each other and never meet"
+	]],
+	plus: [[
+		"gold",
+		"Hai vòng tròn là hai sự kiện",
+		"The two circles are two events"
+	], [
+		"axis",
+		"Phần hai vòng chồng nhau bị đếm hai lần, nên phải trừ một lần",
+		"Where the circles overlap is counted twice, so subtract it once"
+	]],
+	times: [[
+		"gold",
+		"Hai cột là hai cửa mà viên bi phải đi qua",
+		"The two posts are two doors the ball must pass"
+	], [
+		"cream",
+		"Viên bi đi qua cả hai thì nhân hai xác suất",
+		"A ball through both doors means multiplying the two probabilities"
+	]],
+	flip: [[
+		"axis",
+		"Chữ rồi số: mỗi việc phải được gán một số (có = 1, không = 0) thì mới tính trung bình được",
+		"Words then numbers: each event gets a number (yes = 1, no = 0) so you can average it"
+	]],
+	cols: [[
+		"axis",
+		"Ngang: các giá trị có thể xảy ra. Cao: xác suất của giá trị đó",
+		"Across: the possible values. Up: the probability of that value"
+	], [
+		"gold",
+		"Cột vàng là giá trị thường gặp nhất",
+		"The gold bar is the most common value"
+	]],
+	"cols-bin": [[
+		"axis",
+		"Ngang: số lần trúng (0, 1, 2...). Cao: xác suất của số lần đó",
+		"Across: number of hits (0, 1, 2...). Up: probability of that count"
+	], [
+		"gold",
+		"Cột vàng gần n × p, số lần trúng hay gặp nhất",
+		"The gold bar sits near n × p, the most common hit count"
+	]],
+	"cols-ghost": [[
+		"axis",
+		"Ngang: các giá trị có thể có. Cao: xác suất theo giả định",
+		"Across: possible values. Up: probability under the assumption"
+	], [
+		"cream",
+		"Cột mờ dần hiện ra: hình dựng từ giả định, trước khi có dữ liệu",
+		"Fading bars: a shape built from assumptions, before any data"
+	]],
+	"cols-cdf": [[
+		"axis",
+		"Ngang: giá trị. Cao: xác suất của từng giá trị",
+		"Across: value. Up: probability of each value"
+	], [
+		"gold",
+		"Khối vàng trượt phủ các cột bên trái. Cộng chúng ra xác suất «ít hơn»",
+		"The gold slab slides over the left bars. Adding them gives the “less than” probability"
+	]],
+	level: [[
+		"axis",
+		"Thanh ngang là thang xác suất từ 0 đến 1",
+		"The bar is the probability scale from 0 to 1"
+	], [
+		"gold",
+		"Kim vàng lúc đầu lắc, rồi đứng yên ở 0,25: mức khi thử nhiều lần",
+		"The gold needle first wobbles, then settles at 0.25: the level over many tries"
+	]],
+	bell: [[
+		"axis",
+		"Ngang: giá trị. Cao: mức hay gặp của giá trị đó",
+		"Across: value. Up: how common that value is"
+	], [
+		"gold",
+		"Vạch vàng giữa: trung bình. Hai vạch hai bên: cách tâm một độ lệch chuẩn",
+		"Middle gold line: the mean. Side lines: one standard deviation from the center"
+	]],
+	"bell-area": [[
+		"axis",
+		"Ngang: giá trị. Cao: mức hay gặp của giá trị đó",
+		"Across: value. Up: how common that value is"
+	], [
+		"gold",
+		"Khối vàng là một khoảng bạn hỏi. Thể tích của nó là xác suất",
+		"The gold block is the range you ask about. Its size is the probability"
+	]],
+	ruler: [[
+		"axis",
+		"Thước chung: -2, -1, 0, 1, 2 độ lệch chuẩn quanh trung bình",
+		"One shared ruler: -2, -1, 0, 1, 2 standard deviations around the mean"
+	], [
+		"gold",
+		"Vạch vàng là vạch thước. Giây và tiền được kéo về cùng thước rồi mới so",
+		"Gold ticks are the ruler. Seconds and money are pulled onto it before comparing"
+	]],
+	pile: [
+		[
+			"clay",
+			"Cột nâu bên trái: từng phiên, rất lệch nhau",
+			"Brown bars on the left: single sessions, very scattered"
+		],
+		[
+			"cream",
+			"Hạt kem bên phải: trung bình của mỗi mẫu, rơi dần thành ụ",
+			"Cream beads on the right: the mean of each sample, piling up into a mound"
+		],
+		[
+			"gold",
+			"Vạch vàng: số thật. Mẫu lớn thì ụ khít vào đây",
+			"Gold line: the true value. A large sample makes the mound hug it"
+		]
+	],
+	covers: [
+		[
+			"gold",
+			"Vạch vàng đứng: số thật, thứ ta không biết",
+			"The upright gold line: the true value we cannot see"
+		],
+		[
+			"cream",
+			"Mỗi thanh ngang là một khoảng tin cậy tính từ một mẫu",
+			"Each horizontal bar is a confidence interval from one sample"
+		],
+		[
+			"rust",
+			"Thanh đỏ: khoảng trượt, không chạm số thật",
+			"The red bar: an interval that misses the true value"
+		]
+	],
+	bias: [[
+		"gold",
+		"Viên vàng và viên kem là hai loại trong đám",
+		"Gold and cream chips are two kinds in the pile"
+	], [
+		"axis",
+		"Khay bên phải: chỉ nhặt vàng thì khay lệch, nhặt cả hai thì giống đám",
+		"The tray on the right: only gold makes it biased, both makes it match the pile"
+	]],
+	divide: [[
+		"axis",
+		"Ba dòng: xác suất của cả hai, chia cho xác suất của điều đã biết, ra xác suất có điều kiện",
+		"Three lines: probability of both, divided by the probability of what you know, gives the conditional probability"
+	]],
+	priorbar: [[
+		"gold",
+		"Thanh vàng là mức tin hiện tại (bắt đầu 20%)",
+		"The gold bar is your current belief (starting at 20%)"
+	], [
+		"axis",
+		"Tin mới làm thanh dài ra. Nó không nhảy thẳng lên 100%",
+		"New news stretches the bar. It does not jump to 100%"
+	]],
+	jobs: [[
+		"gold",
+		"Bên trái: đường dốc, đoán một con số",
+		"Left: a sloping line, guessing a number"
+	], [
+		"axis",
+		"Bên phải: chỉ có 1 hoặc 0, đoán có hay không",
+		"Right: only 1 or 0, guessing yes or no"
+	]],
+	line: [
+		[
+			"cream",
+			"Mỗi chấm kem là một tuần thật",
+			"Each cream dot is a real week"
+		],
+		[
+			"gold",
+			"Đường vàng là câu đoán của mô hình",
+			"The gold line is the model's guess"
+		],
+		[
+			"axis",
+			"Ngang: chi tiêu quảng cáo. Dọc: số form",
+			"Across: ad spend. Up: forms"
+		]
+	],
+	"line-resid": [
+		[
+			"cream",
+			"Mỗi chấm kem là một tuần thật",
+			"Each cream dot is a real week"
+		],
+		[
+			"gold",
+			"Đường vàng là câu đoán của mô hình",
+			"The gold line is the model's guess"
+		],
+		[
+			"clay",
+			"Que nâu: phần đường đoán trượt (thật trừ đường)",
+			"Brown stick: how far the guess missed (real minus line)"
+		]
+	],
+	"line-fit": [
+		[
+			"cream",
+			"Mỗi chấm kem là một tuần thật",
+			"Each cream dot is a real week"
+		],
+		[
+			"gold",
+			"Đường vàng được chọn để tổng bình phương các que nâu nhỏ nhất",
+			"The gold line is chosen to make the squared brown sticks smallest"
+		],
+		[
+			"clay",
+			"Que nâu: phần đường trượt",
+			"Brown stick: the miss"
+		]
+	],
+	r2: [[
+		"gold",
+		"Cột vàng cao: phần biến động mà đường giải thích được (70%)",
+		"Tall gold bar: the share of variation the line explains (70%)"
+	], [
+		"cream",
+		"Cột kem thấp: phần còn lại chưa giải thích",
+		"Short cream bar: what is left unexplained"
+	]],
+	band: [[
+		"cream",
+		"Mỗi chấm là phần trượt của một tuần quanh đường",
+		"Each dot is how far one week sits from the line"
+	], [
+		"axis",
+		"Dải phẳng: trượt đều, đọc kiểm định được. Hình kèn: trượt rộng dần, đừng tin kiểm định",
+		"A flat band: even misses, safe to read the test. A funnel: misses widen, do not trust the test"
+	]],
+	zero: [[
+		"cream",
+		"Vạch kem dọc: số 0, nghĩa là không có tác động",
+		"The upright cream line: 0, meaning no effect"
+	], [
+		"gold",
+		"Thanh vàng: khoảng tin cậy của độ dốc. Không chạm 0 nên khó nói «không tác động»",
+		"Gold bar: the confidence interval of the slope. It misses 0, so “no effect” is hard to say"
+	]],
+	bowl: [[
+		"cream",
+		"Các cột kem tạo thành cái bát: chi phí theo từng bộ hệ số",
+		"The cream bars form a bowl: cost for each set of coefficients"
+	], [
+		"gold",
+		"Viên vàng lăn xuống đáy bát: bộ hệ số đỡ tệ nhất",
+		"The gold ball rolls to the bottom: the least-bad coefficients"
+	]],
+	"bowl-fast": [[
+		"cream",
+		"Các cột kem tạo thành cái bát: chi phí theo từng bộ hệ số",
+		"The cream bars form a bowl: cost for each set of coefficients"
+	], [
+		"gold",
+		"Viên vàng nhảy quá xa mỗi bước nên vọt qua đáy và chi phí tăng",
+		"The gold ball jumps too far each step, shoots past the bottom and the cost rises"
+	]],
+	many: [[
+		"gold",
+		"Ba cột là ba thứ cùng thay đổi trong một tuần: chi tiêu, email, khuyến mãi",
+		"Three bars are three things changing in the same week: spend, email, promo"
+	], [
+		"clay",
+		"Cột email nâu để dễ phân biệt",
+		"The email bar is brown to tell it apart"
+	]],
+	held: [[
+		"gold",
+		"Cột vàng: chi tiêu, thứ đang nhích lên",
+		"Gold bar: spend, the thing moving up"
+	], [
+		"ink",
+		"Hai cột đen: email và khuyến mãi bị khóa, đứng yên",
+		"Two dark bars: email and promo are locked, held still"
+	]],
+	vif: [[
+		"gold",
+		"Hai cột vàng và nâu là hai kênh luôn tăng giảm cùng nhau",
+		"The gold and brown bars are two channels that always rise and fall together"
+	], [
+		"axis",
+		"Vì đi cùng nhau nên độ dốc từng kênh có thể đảo dấu dù kênh không có hại",
+		"Because they move together, each slope can flip sign even if the channel is not harmful"
+	]],
+	dummy: [
+		[
+			"gold",
+			"Ô vàng: GDN, so với mốc",
+			"Gold box: GDN, compared with the baseline"
+		],
+		[
+			"clay",
+			"Ô nâu: Facebook, so với mốc",
+			"Brown box: Facebook, compared with the baseline"
+		],
+		[
+			"ink",
+			"Ô đen: TikTok là mốc, được bỏ ra để so",
+			"Dark box: TikTok is the baseline, dropped as the reference"
+		]
+	],
+	pick: [[
+		"cream",
+		"Ba cột kem: biến giữ lại",
+		"Three cream bars: variables to keep"
+	], [
+		"clay",
+		"Cột nâu nhấp nháy: biến nhiễu, không đổi quyết định nên bỏ",
+		"The blinking brown bar: a noise variable that changes no decision, so drop it"
+	]],
+	escape: [
+		[
+			"cream",
+			"Hai thanh kem ngang là 0 và 1, hai biên của xác suất",
+			"The two cream bars are 0 and 1, the limits of a probability"
+		],
+		[
+			"gold",
+			"Đường vàng thẳng chui ra ngoài hai biên",
+			"The straight gold line leaves both limits"
+		],
+		[
+			"rust",
+			"Chấm đỏ: chỗ đường ra ngoài, xác suất không thể thế",
+			"Red dots: where the line escapes, which a probability cannot do"
+		]
+	],
+	sig: [
+		[
+			"axis",
+			"Ngang: điểm tổng hợp của mô hình. Dọc: xác suất, từ 0 đến 1",
+			"Across: the model's combined score. Up: probability from 0 to 1"
+		],
+		[
+			"cream",
+			"Đường chữ S: xác suất không bao giờ ra ngoài 0 và 1",
+			"The S curve: probability never leaves 0 and 1"
+		],
+		[
+			"gold",
+			"Chấm vàng: một khách cụ thể với xác suất 0,35",
+			"Gold dot: one specific customer at probability 0.35"
+		]
+	],
+	odds: [[
+		"gold",
+		"Thanh vàng dài ra gấp 1,04 lần mỗi ngày thêm: odds nhân lên, không cộng điểm phần trăm",
+		"The gold bar stretches ×1.04 per extra day: odds multiply, they do not add percentage points"
+	]],
+	cm: [
+		[
+			"gold",
+			"Ô vàng: nói rời và thật sự rời (đúng)",
+			"Gold: said leave and truly left (right)"
+		],
+		[
+			"cream",
+			"Ô kem: nói rời nhưng ở lại (gọi nhầm), và nói ở lại và ở lại (ổn)",
+			"Cream: said leave but stayed (false alarm), and said stay and stayed (fine)"
+		],
+		[
+			"rust",
+			"Ô đỏ: thật sự rời nhưng bị bỏ sót, thứ đắt nhất",
+			"Red: truly left but missed, the costly one"
+		]
+	],
+	pr: [[
+		"axis",
+		"Hai trạng thái: danh sách sạch (ít người nhưng đúng) và lưới rộng (bắt thêm người rời, kèm gọi nhầm)",
+		"Two states: a clean list (few people, mostly right) and a wide net (catches more leavers, plus false alarms)"
+	]],
+	roc: [
+		[
+			"axis",
+			"Ngang: tỷ lệ báo nhầm. Dọc: tỷ lệ bắt đúng",
+			"Across: false alarm rate. Up: true catch rate"
+		],
+		[
+			"cream",
+			"Đường chấm kem: mọi ngưỡng có thể chọn",
+			"The cream dots: every threshold you could pick"
+		],
+		[
+			"gold",
+			"Chấm vàng di chuyển: một ngưỡng cụ thể",
+			"The moving gold dot: one particular threshold"
+		]
+	],
+	rests: [[
+		"axis",
+		"Ba đường chữ S A, B, C: mỗi nhãn một đường xác suất riêng",
+		"Three S curves A, B, C: one probability curve per label"
+	], [
+		"gold",
+		"Đường vàng ở giữa là nhãn B, nổi bật để so với hai nhãn kia",
+		"The gold middle curve is label B, picked out to compare with the other two"
+	]],
+	split: [[
+		"gold",
+		"Vạch vàng là một câu hỏi đúng/sai chia người làm hai phía",
+		"The gold line is one yes/no question that splits people into two sides"
+	], [
+		"clay",
+		"Chấm nâu: nhóm ở bên trái. Chấm vàng: nhóm bên phải",
+		"Brown dots: the left group. Gold dots: the right group"
+	]],
+	gini: [[
+		"axis",
+		"Trái: nhóm trước khi cắt, lẫn hai màu (độ lẫn 0,48). Phải: sau khi cắt, ít lẫn hơn",
+		"Left: the group before cutting, both colors mixed (impurity 0.48). Right: after cutting, less mixed"
+	], [
+		"gold",
+		"Hai màu vàng và nâu là hai kết cục khác nhau",
+		"Gold and brown are the two different outcomes"
+	]],
+	deep: [[
+		"axis",
+		"Cây từ trên xuống: mỗi ô là một câu hỏi, mỗi nhánh vàng là một câu trả lời",
+		"The tree from the top: each box is a question, each gold branch an answer"
+	], [
+		"axis",
+		"Cây sâu tách tới từng người: học thuộc dữ liệu cũ, không còn là luật dùng lại",
+		"A deep tree cuts down to one person: memorizing old data, not a reusable rule"
+	]],
+	raw: [[
+		"cream",
+		"Các chấm kem không có màu hay nhãn: dữ liệu chưa có cột câu trả lời",
+		"Dots with no color or label: data with no answer column"
+	]],
+	km: [[
+		"gold",
+		"Quả to vàng và nâu là hai tâm cụm",
+		"The two big balls, gold and brown, are cluster centers"
+	], [
+		"cream",
+		"Mỗi chấm nhỏ đổi sang màu của tâm gần nhất, rồi tâm dời vào giữa các chấm của nó",
+		"Each small dot takes the color of its nearest center, then the center moves to the middle of its dots"
+	]],
+	elbow: [[
+		"axis",
+		"Ngang: số nhóm K từ ít tới nhiều. Cao: độ lỏng lẻo trong nhóm",
+		"Across: number of groups K, few to many. Up: looseness inside groups"
+	], [
+		"gold",
+		"Cột vàng: chỗ gập, nơi cột bắt đầu bẹt",
+		"Gold bar: the bend, where bars start to flatten"
+	]],
+	merge: [[
+		"axis",
+		"Các chấm dưới cùng là từng điểm dữ liệu. Chấm gần nhau được dán trước, đi lên như một cây phân cấp",
+		"The bottom dots are single data points. Close ones glue first and rise like a hierarchy tree"
+	]],
+	tok: [[
+		"axis",
+		"Bốn chữ là bốn mảnh sau khi cắt câu",
+		"Four words are four pieces after cutting the sentence"
+	], [
+		"axis",
+		"Từ hư («và», «của») mờ đi, chữ có nghĩa được giữ lại để đếm",
+		"Filler words fade, meaningful words stay to be counted"
+	]],
+	bow: [[
+		"gold",
+		"Cột vàng: số lần mỗi chữ xuất hiện",
+		"Gold bar: how often each word appears"
+	], [
+		"axis",
+		"Chữ đổi chỗ nhưng độ cao cột không đổi: thứ tự câu đã mất",
+		"Words swap places but bar heights stay: sentence order is lost"
+	]],
+	tfidf: [[
+		"ink",
+		"Cột đen thấp: «spa» có mặt ở mọi bài nên bị hạ điểm",
+		"Short dark bar: “spa” appears in every review so it is scored down"
+	], [
+		"gold",
+		"Cột vàng cao: «chờ» hiếm nên được giữ điểm cao",
+		"Tall gold bar: “waited” is rare so it keeps a high score"
+	]],
+	edit: [[
+		"axis",
+		"Bốn chữ cái S P A A, rồi chữ A thứ hai rơi: một lần sửa đưa «spaa» về «spa»",
+		"Four letters S P A A, then the second A drops: one edit turns “spaa” into “spa”"
+	]],
+	steps: [[
+		"axis",
+		"Bốn bước xếp dọc, bước đang nói tới nhích ra: quyết định, giả thuyết, dữ liệu rồi mới đến mô hình",
+		"Four steps stacked, the current one slides out: decision, hypothesis, data, and only then the model"
+	]],
+	target: [[
+		"axis",
+		"Trái: tỷ lệ form hiện tại. Phải: mục tiêu",
+		"Left: the current form rate. Right: the goal"
+	], [
+		"axis",
+		"Dòng dưới là ràng buộc giá phải giữ",
+		"The bottom line is the cost limit to respect"
+	]]
+};
 var CREAM = 16052198;
 var GOLD = 15778122;
 var CLAY = 12870202;
@@ -1985,23 +2752,27 @@ function label(THREE, text, width = 1.7) {
 	const sprite = new THREE.Sprite(new THREE.SpriteMaterial({ transparent: true }));
 	if (!g) return sprite;
 	g.clearRect(0, 0, 512, 160);
-	g.fillStyle = "rgba(20,17,14,0.88)";
-	g.fillRect(6, 36, 500, 88);
-	g.fillStyle = "#f4efe6";
 	g.textAlign = "center";
 	g.textBaseline = "middle";
-	let size = 58;
+	let size = 64;
 	g.font = `600 ${size}px Georgia, serif`;
 	while (g.measureText(text).width > 470 && size > 28) {
 		size -= 4;
 		g.font = `600 ${size}px Georgia, serif`;
 	}
+	const bar = Math.min(504, g.measureText(text).width + 56);
+	g.fillStyle = "rgba(20,17,14,0.9)";
+	g.fillRect(256 - bar / 2, 28, bar, 104);
+	g.fillStyle = "#f4efe6";
 	g.fillText(text, 256, 80);
 	const tex = new THREE.CanvasTexture(canvas);
 	tex.colorSpace = THREE.SRGBColorSpace;
 	const mat = sprite.material;
 	mat.map = tex;
-	sprite.scale.set(width, width * .31, 1);
+	mat.depthTest = false;
+	sprite.renderOrder = 10;
+	const w = Math.max(width, 1.45);
+	sprite.scale.set(w, w * .31, 1);
 	return sprite;
 }
 function peg(THREE, x, h, color, w = .28) {
@@ -3298,7 +4069,18 @@ function target(THREE, world) {
 		say(L("Đích là tỷ lệ form. Accuracy đẹp mà không nhích đích thì chưa xong.", "The target is the form rate. A pretty accuracy that does not move it is not done."));
 	};
 }
-function start(THREE, host, canvas, kind, say, lang) {
+var HOME = {
+	x: 0,
+	y: .15,
+	z: 6.1
+};
+function start(THREE, Orbit, host, canvas, kind, say, lang, touchOn) {
+	const none = {
+		stop: () => {},
+		setPaused: () => {},
+		setTouch: () => {},
+		resetView: () => {}
+	};
 	line = (vi, en) => lang === "en" ? en : vi;
 	let renderer;
 	try {
@@ -3309,19 +4091,44 @@ function start(THREE, host, canvas, kind, say, lang) {
 			failIfMajorPerformanceCaveat: false
 		});
 	} catch {
-		return () => {};
+		return none;
 	}
 	renderer.setClearColor(0, 0);
 	renderer.outputColorSpace = THREE.SRGBColorSpace;
 	const scene = new THREE.Scene();
 	const camera = new THREE.PerspectiveCamera(40, 1, .1, 40);
-	camera.position.set(0, .15, 6.1);
+	camera.position.set(HOME.x, HOME.y, HOME.z);
+	const controls = new Orbit(camera, canvas);
+	controls.enableDamping = true;
+	controls.dampingFactor = .08;
+	controls.enablePan = false;
+	controls.minDistance = 3;
+	controls.maxDistance = 11;
+	controls.minPolarAngle = .15;
+	controls.maxPolarAngle = Math.PI - .35;
+	controls.target.set(0, 0, 0);
+	controls.enabled = touchOn;
+	let paused = false;
 	scene.add(new THREE.HemisphereLight(16774890, 3812390, 2.5));
 	const key = new THREE.DirectionalLight(16775407, 2);
 	key.position.set(3, 5, 4);
 	scene.add(key);
 	const world = new THREE.Group();
 	scene.add(world);
+	const floor = new THREE.GridHelper(9, 18, 7035981, 3813159);
+	floor.position.y = -1.55;
+	floor.material.transparent = true;
+	floor.material.opacity = .55;
+	scene.add(floor);
+	const wall = new THREE.Mesh(new THREE.PlaneGeometry(7.4, 3.9), new THREE.MeshBasicMaterial({
+		color: 2892830,
+		transparent: true,
+		opacity: .35,
+		side: THREE.DoubleSide,
+		depthWrite: false
+	}));
+	wall.position.set(0, .2, -.45);
+	scene.add(wall);
 	const update = build(THREE, kind, world);
 	const slow = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 	let last = performance.now();
@@ -3347,7 +4154,7 @@ function start(THREE, host, canvas, kind, say, lang) {
 	const loop = (now) => {
 		frame = requestAnimationFrame(loop);
 		if (!visible) return;
-		const dt = Math.min(.05, Math.max(0, (now - last) / 1e3)) * (slow ? .35 : 1);
+		const dt = paused ? 0 : Math.min(.05, Math.max(0, (now - last) / 1e3)) * (slow ? .35 : 1);
 		last = now;
 		elapsed += dt;
 		update(dt, elapsed, (note) => {
@@ -3356,13 +4163,13 @@ function start(THREE, host, canvas, kind, say, lang) {
 				say(note);
 			}
 		});
-		camera.position.x = Math.sin(elapsed * .12) * .18;
-		camera.lookAt(0, 0, 0);
+		controls.update();
 		renderer.render(scene, camera);
 	};
 	frame = requestAnimationFrame(loop);
-	return () => {
+	const stop = () => {
 		cancelAnimationFrame(frame);
+		controls.dispose();
 		ro.disconnect();
 		io.disconnect();
 		scene.traverse((obj) => {
@@ -3377,38 +4184,2287 @@ function start(THREE, host, canvas, kind, say, lang) {
 		});
 		renderer.dispose();
 	};
+	return {
+		stop,
+		setPaused: (value) => {
+			paused = value;
+		},
+		setTouch: (on) => {
+			controls.enabled = on;
+		},
+		resetView: () => {
+			camera.position.set(HOME.x, HOME.y, HOME.z);
+			controls.target.set(0, 0, 0);
+			controls.update();
+		}
+	};
+}
+var ui = {
+	vi: {
+		now: "Đang xảy ra",
+		legend: "Cách đọc hình",
+		hint: "Kéo để xoay · cuộn hoặc chụm hai ngón để zoom",
+		hintOff: "Bấm «Xoay hình» để xoay bằng ngón tay. Đang tắt để bạn cuộn trang.",
+		rotate: "Xoay hình",
+		rotating: "Đang xoay",
+		pause: "Dừng",
+		play: "Chạy",
+		replay: "Tua lại",
+		home: "Về góc đầu"
+	},
+	en: {
+		now: "What is happening",
+		legend: "How to read the picture",
+		hint: "Drag to rotate · scroll or pinch to zoom",
+		hintOff: "Tap “Rotate” to turn the scene with your finger. It is off so the page can scroll.",
+		rotate: "Rotate",
+		rotating: "Rotating",
+		pause: "Pause",
+		play: "Play",
+		replay: "Replay",
+		home: "Reset view"
+	}
+};
+function fineHover() {
+	try {
+		return window.matchMedia("(pointer: fine)").matches;
+	} catch {
+		return true;
+	}
 }
 function Stage3D({ scene, lang }) {
 	const hostRef = (0, import_react.useRef)(null);
 	const canvasRef = (0, import_react.useRef)(null);
+	const apiRef = (0, import_react.useRef)(null);
 	const [note, setNote] = (0, import_react.useState)("");
+	const [paused, setPaused] = (0, import_react.useState)(false);
+	const [run, setRun] = (0, import_react.useState)(0);
+	const [touch, setTouch] = (0, import_react.useState)(null);
+	const t = ui[lang === "en" ? "en" : "vi"];
+	const legend = legends[scene];
+	(0, import_react.useEffect)(() => {
+		setTouch(fineHover());
+	}, []);
+	const touchRef = (0, import_react.useRef)(true);
+	touchRef.current = touch ?? true;
 	(0, import_react.useEffect)(() => {
 		const host = hostRef.current;
 		const canvas = canvasRef.current;
 		if (!host || !canvas) return;
 		let dead = false;
-		let stop = () => {};
-		import("../_libs/three.mjs").then((n) => n.t).then((THREE) => {
+		setNote("");
+		Promise.all([import("../_libs/three.mjs").then((n) => n.n), import("../_libs/three.mjs").then((n) => n.t)]).then(([THREE, mod]) => {
 			if (dead) return;
-			stop = start(THREE, host, canvas, scene, setNote, lang);
+			apiRef.current = start(THREE, mod.OrbitControls, host, canvas, scene, setNote, lang, touchRef.current);
 		});
 		return () => {
 			dead = true;
-			stop();
+			apiRef.current?.stop();
+			apiRef.current = null;
 		};
-	}, [scene, lang]);
-	return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-		ref: hostRef,
-		className: "relative h-80 overflow-hidden rounded-card bg-[#14110e]",
-		children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", { className: "pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_50%_45%,#2c241e_0%,#14110e_72%)]" }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("canvas", {
-			ref: canvasRef,
-			className: "relative h-full w-full"
-		})]
-	}), note ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
-		className: "mt-2 text-sm leading-snug text-muted",
-		children: note
-	}) : null] });
+	}, [
+		scene,
+		lang,
+		run
+	]);
+	(0, import_react.useEffect)(() => {
+		apiRef.current?.setPaused(paused);
+	}, [paused, run]);
+	(0, import_react.useEffect)(() => {
+		apiRef.current?.setTouch(touch ?? true);
+	}, [touch, run]);
+	const btn = "inline-flex min-h-11 items-center rounded-full border border-line bg-card px-4 text-sm";
+	return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", { children: [
+		/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+			ref: hostRef,
+			className: "relative h-80 overflow-hidden rounded-card bg-[#14110e] sm:h-96",
+			children: [
+				/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", { className: "pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_50%_45%,#2c241e_0%,#14110e_72%)]" }),
+				/* @__PURE__ */ (0, import_jsx_runtime.jsx)("canvas", {
+					ref: canvasRef,
+					className: "relative h-full w-full",
+					style: {
+						touchAction: touch === false ? "pan-y" : "none",
+						cursor: touch === false ? "default" : "grab"
+					}
+				}),
+				/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+					className: "pointer-events-none absolute bottom-2 left-3 right-3 text-xs text-[#d8cdbd]",
+					children: touch === false ? t.hintOff : t.hint
+				})
+			]
+		}),
+		/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+			className: "mt-2 flex flex-wrap gap-2",
+			children: [
+				/* @__PURE__ */ (0, import_jsx_runtime.jsx)("button", {
+					type: "button",
+					className: btn,
+					onClick: () => setPaused(!paused),
+					children: paused ? t.play : t.pause
+				}),
+				/* @__PURE__ */ (0, import_jsx_runtime.jsx)("button", {
+					type: "button",
+					className: btn,
+					onClick: () => {
+						setPaused(false);
+						setRun(run + 1);
+					},
+					children: t.replay
+				}),
+				/* @__PURE__ */ (0, import_jsx_runtime.jsx)("button", {
+					type: "button",
+					className: btn,
+					onClick: () => apiRef.current?.resetView(),
+					children: t.home
+				}),
+				touch === false || touch === true && !fineHover() ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)("button", {
+					type: "button",
+					className: `${btn} ${touch ? "bg-ink text-paper" : ""}`,
+					onClick: () => setTouch(!touch),
+					children: touch ? t.rotating : t.rotate
+				}) : null
+			]
+		}),
+		legend ? /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+			className: "mt-3 rounded-card border border-line bg-card px-4 py-3",
+			children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+				className: "text-xs uppercase tracking-widest text-muted",
+				children: t.legend
+			}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("ul", {
+				className: "mt-2 space-y-2",
+				children: legend.map(([swatch, vi, en]) => /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("li", {
+					className: "flex items-start gap-3 text-sm leading-snug",
+					children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+						className: "mt-1 inline-block size-3.5 shrink-0 rounded-full border border-line",
+						style: { background: swatchColor[swatch] },
+						"aria-hidden": true
+					}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", { children: lang === "en" ? en : vi })]
+				}, vi))
+			})]
+		}) : null,
+		note ? /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+			className: "mt-3 rounded-card border border-line bg-card px-4 py-3",
+			children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+				className: "text-xs uppercase tracking-widest text-accent",
+				children: t.now
+			}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+				className: "mt-1 text-base leading-snug",
+				children: note
+			})]
+		}) : null
+	] });
 }
+/** Viết gọn một bảng. */
+function T(name, c, r, m) {
+	return {
+		name,
+		c,
+		r,
+		m
+	};
+}
+/** Viết gọn một bước. */
+function S(vi, en, t, code) {
+	return {
+		vi,
+		en,
+		code,
+		t
+	};
+}
+var mem = (r, m = {}) => T("bộ nhớ", ["tên", "giá trị"], r, m);
+var df = (m = {}) => T("df", [
+	"",
+	"channel",
+	"spend"
+], [
+	[
+		"a",
+		"GDN",
+		8
+	],
+	[
+		"b",
+		"Meta",
+		12
+	],
+	[
+		"c",
+		"TikTok",
+		6
+	]
+], m);
+var pyDemos = {
+	"py-run": [S("Python đọc từ trên xuống. Dòng 1 dùng cpl khi chưa ai tạo nó nên báo lỗi.", "Python reads top to bottom. Line 1 uses cpl before anyone created it, so it errors.", [mem([["cpl", "chưa có"]], { bad: [0] })], "print(cpl)      # dòng 1: NameError\ncpl = 8 / 24    # dòng 2"), S("Đảo thứ tự: tạo cpl trước, dùng sau. Bộ nhớ có tên cpl nên dòng print chạy được.", "Swap the order: create cpl first, use it after. The memory holds the name cpl, so print works.", [mem([["cpl", .333]], { add: [0] })], "cpl = 8 / 24    # dòng 1: tạo tên\nprint(cpl)      # dòng 2: dùng tên")],
+	"py-type": [
+		S("Với số nguyên, + là cộng.", "With integers, + adds.", [T("biểu thức", [
+			"biểu thức",
+			"kết quả",
+			"kiểu"
+		], [[
+			"3 + 4",
+			7,
+			"int"
+		]], { rows: [0] })]),
+		S("Với chuỗi, + là nối. «3» + «4» ra «34», không phải 7.", "With strings, + joins. \"3\" + \"4\" gives \"34\", not 7.", [T("biểu thức", [
+			"biểu thức",
+			"kết quả",
+			"kiểu"
+		], [
+			[
+				"3 + 4",
+				7,
+				"int"
+			],
+			[
+				"\"3\" + \"4\"",
+				"\"34\"",
+				"str"
+			],
+			[
+				"\"3\" * 2",
+				"\"33\"",
+				"str"
+			]
+		], { rows: [1, 2] })]),
+		S("Trộn số với chuỗi thì Python từ chối, vì kiểu quyết định phép nào hợp lệ.", "Mix a number with a string and Python refuses, because the type decides which operation is valid.", [T("biểu thức", [
+			"biểu thức",
+			"kết quả",
+			"kiểu"
+		], [
+			[
+				"3 + 4",
+				7,
+				"int"
+			],
+			[
+				"\"3\" + \"4\"",
+				"\"34\"",
+				"str"
+			],
+			[
+				"3 + \"4\"",
+				"TypeError",
+				"—"
+			]
+		], { bad: [2] })])
+	],
+	"py-op": [
+		S("Một dấu = là gán: đặt tên x vào ô nhớ giá trị 5.", "One = assigns: it puts the name x on a memory slot holding 5.", [mem([["x", 5]], { add: [0] })], "x = 5"),
+		S("Hai dấu == là so sánh: hỏi «x có bằng 5 không?» và trả về True. x không đổi.", "Two == compare: they ask whether x equals 5 and return True. x does not change.", [mem([["x", 5], ["x == 5", "True"]], { cells: [[1, 1]] })], "x == 5"),
+		S("So sánh với 6 ra False, và x vẫn là 5. Chỉ dấu = mới làm bộ nhớ đổi.", "Comparing with 6 gives False, and x is still 5. Only = changes memory.", [mem([["x", 5], ["x == 6", "False"]], { cells: [[1, 1]] })], "x == 6")
+	],
+	"py-if": [
+		S("Với spend = 12, nhánh if đúng nên chạy. Các nhánh sau không được xét.", "With spend = 12, the if branch is true so it runs. The later branches are not even checked.", [T("nhánh", [
+			"nhánh",
+			"điều kiện",
+			"chạy?"
+		], [
+			[
+				"if",
+				"spend >= 10",
+				"chạy"
+			],
+			[
+				"elif",
+				"spend >= 6",
+				"bỏ qua"
+			],
+			[
+				"else",
+				"(còn lại)",
+				"bỏ qua"
+			]
+		], {
+			rows: [0],
+			dim: [1, 2]
+		})], "spend = 12\nif spend >= 10: tier = 'cao'\nelif spend >= 6: tier = 'vừa'\nelse: tier = 'thấp'"),
+		S("Với spend = 8, if sai nên xét tiếp: elif đúng và chạy. Else bỏ qua.", "With spend = 8, if is false so it checks on: elif is true and runs. Else is skipped.", [T("nhánh", [
+			"nhánh",
+			"điều kiện",
+			"chạy?"
+		], [
+			[
+				"if",
+				"spend >= 10",
+				"sai"
+			],
+			[
+				"elif",
+				"spend >= 6",
+				"chạy"
+			],
+			[
+				"else",
+				"(còn lại)",
+				"bỏ qua"
+			]
+		], {
+			rows: [1],
+			dim: [0, 2]
+		})], "spend = 8"),
+		S("Với spend = 4, hai điều kiện đều sai nên else chạy. Luôn đúng một nhánh.", "With spend = 4, both conditions fail so else runs. Exactly one branch runs.", [T("nhánh", [
+			"nhánh",
+			"điều kiện",
+			"chạy?"
+		], [
+			[
+				"if",
+				"spend >= 10",
+				"sai"
+			],
+			[
+				"elif",
+				"spend >= 6",
+				"sai"
+			],
+			[
+				"else",
+				"(còn lại)",
+				"chạy"
+			]
+		], {
+			rows: [2],
+			dim: [0, 1]
+		})], "spend = 4")
+	],
+	"py-loop": [
+		S("for đi qua từng phần tử của danh sách, lần lượt một. Bắt đầu: total = 0.", "for walks through each element of a list, one by one. Start: total = 0.", [T("vòng lặp", [
+			"vòng",
+			"spend",
+			"total"
+		], [[
+			"—",
+			"—",
+			0
+		]])], "total = 0\nfor spend in [8, 10, 12]:\n    total = total + spend"),
+		S("Vòng 1: spend = 8, total thành 8. Vòng 2: spend = 10, total thành 18.", "Turn 1: spend = 8, total becomes 8. Turn 2: spend = 10, total becomes 18.", [T("vòng lặp", [
+			"vòng",
+			"spend",
+			"total"
+		], [[
+			1,
+			8,
+			8
+		], [
+			2,
+			10,
+			18
+		]], { add: [0, 1] })]),
+		S("Vòng 3: spend = 12, total thành 30. Hết phần tử thì for tự dừng.", "Turn 3: spend = 12, total becomes 30. When the elements run out, for stops by itself.", [T("vòng lặp", [
+			"vòng",
+			"spend",
+			"total"
+		], [
+			[
+				1,
+				8,
+				8
+			],
+			[
+				2,
+				10,
+				18
+			],
+			[
+				3,
+				12,
+				30
+			]
+		], { add: [2] })]),
+		S("while thì khác: nó lặp tới khi điều kiện sai. Quên đổi spend thì điều kiện mãi đúng và không bao giờ dừng.", "while is different: it repeats until the condition is false. Forget to change spend and the condition stays true forever.", [T("vòng lặp", ["vòng", "spend < 10 ?"], [
+			[1, "đúng"],
+			[2, "đúng"],
+			[3, "đúng"],
+			["…", "đúng mãi"]
+		], { bad: [3] })], "spend = 8\nwhile spend < 10:\n    print(spend)   # quên tăng spend")
+	],
+	"py-fn": [S("Hàm nhận hai số và trả về s / f. return là thứ người gọi nhận lại.", "The function takes two numbers and returns s / f. return is what the caller gets back.", [mem([["cpl(8, 24)", .333]], { cells: [[0, 1]] })], "def cpl(s, f):\n    return s / f\n\nx = cpl(8, 24)"), S("Thiếu return thì hàm vẫn chạy nhưng không trả gì: người gọi nhận None.", "Without return the function still runs but hands nothing back: the caller gets None.", [mem([["cpl(8, 24)", .333], ["cpl_bad(8, 24)", "None"]], { bad: [1] })], "def cpl_bad(s, f):\n    s / f           # tính xong rồi bỏ\n\ny = cpl_bad(8, 24)   # y là None")],
+	"py-str": [
+		S("Một chuỗi s là «Tet Sale». Gọi .upper() trả về một chuỗi mới viết hoa.", "A string s is Tet Sale. Calling .upper() returns a new uppercase string.", [mem([["s", "Tet Sale"], ["s.upper()", "TET SALE"]], { add: [1] })], "s = \"Tet Sale\"\ns.upper()"),
+		S("Nhưng s vẫn là «Tet Sale». Chuỗi cũ không tự đổi.", "But s is still Tet Sale. The old string does not change by itself.", [mem([["s", "Tet Sale"]], { cells: [[0, 1]] })], "print(s)   # Tet Sale"),
+		S("Muốn giữ kết quả thì gán lại tên.", "To keep the result, assign it back to a name.", [mem([["s", "TET SALE"]], { cells: [[0, 1]] })], "s = s.upper()")
+	],
+	"py-list": [
+		S("Danh sách có thứ tự. Chỉ số bắt đầu từ 0, không phải từ 1.", "A list has an order. Indexes start at 0, not 1.", [T("spend = [8, 10, 12]", ["chỉ số", "giá trị"], [
+			[0, 8],
+			[1, 10],
+			[2, 12]
+		])]),
+		S("spend[0] là phần tử đầu tiên: 8.", "spend[0] is the first element: 8.", [T("spend = [8, 10, 12]", ["chỉ số", "giá trị"], [
+			[0, 8],
+			[1, 10],
+			[2, 12]
+		], { cells: [[0, 1]] })], "spend[0]   → 8"),
+		S("spend[-1] đếm từ cuối: 12. spend[3] không có nên báo IndexError.", "spend[-1] counts from the end: 12. spend[3] does not exist so it raises IndexError.", [T("spend = [8, 10, 12]", ["chỉ số", "giá trị"], [
+			[0, 8],
+			[1, 10],
+			[2, 12],
+			[3, "IndexError"]
+		], {
+			cells: [[2, 1]],
+			bad: [3]
+		})], "spend[-1]  → 12\nspend[3]   → IndexError"),
+		S("List sửa được: gán lại một ô, hoặc thêm vào cuối bằng append.", "A list can be edited: assign a cell, or add to the end with append.", [T("spend", ["chỉ số", "giá trị"], [
+			[0, 8],
+			[1, 15],
+			[2, 12],
+			[3, 20]
+		], {
+			cells: [[1, 1]],
+			add: [3]
+		})], "spend[1] = 15\nspend.append(20)")
+	],
+	"py-dict": [
+		S("Dictionary tra giá trị theo khóa: kênh GDN có chi tiêu 8.", "A dictionary looks up a value by key: channel GDN has spend 8.", [T("d", ["khóa", "giá trị"], [["GDN", 8], ["Meta", 12]], { cols: [0] })], "d = {\"GDN\": 8, \"Meta\": 12}\nd[\"GDN\"]   → 8"),
+		S("Hỏi khóa không có: d[\"TikTok\"] báo KeyError.", "Ask for a missing key: d[\"TikTok\"] raises KeyError.", [T("d", ["khóa", "giá trị"], [
+			["GDN", 8],
+			["Meta", 12],
+			["TikTok", "KeyError"]
+		], { bad: [2] })], "d[\"TikTok\"]   → KeyError"),
+		S("get thì chịu trả về giá trị mặc định thay vì lỗi: None, hoặc 0 nếu bạn nói.", "get is willing to return a default instead of an error: None, or 0 if you say so.", [T("d", ["biểu thức", "kết quả"], [["d.get(\"TikTok\")", "None"], ["d.get(\"TikTok\", 0)", 0]], { rows: [1] })])
+	],
+	"py-tup": [
+		S("Tuple cũng có thứ tự, viết bằng ngoặc tròn.", "A tuple also has an order, written with round brackets.", [T("t = (\"GDN\", 8)", ["chỉ số", "giá trị"], [[0, "GDN"], [1, 8]])]),
+		S("Đọc t[1] thì được 8. Nhưng gán t[1] = 9 báo TypeError: tuple không cho sửa từng ô.", "Reading t[1] gives 8. But assigning t[1] = 9 raises TypeError: a tuple does not allow editing a cell.", [T("t = (\"GDN\", 8)", ["chỉ số", "giá trị"], [[0, "GDN"], [1, 8]], { bad: [1] })], "t[1]     → 8\nt[1] = 9 → TypeError"),
+		S("Muốn đổi thì tạo tuple mới, hoặc dùng list nếu cần sửa.", "To change it, build a new tuple, or use a list if you need to edit.", [T("t", ["chỉ số", "giá trị"], [[0, "GDN"], [1, 9]], { add: [1] })], "t = (t[0], 9)")
+	],
+	"py-set": [
+		S("Một danh sách có GDN hai lần.", "A list with GDN twice.", [T("list", ["vị trí", "giá trị"], [
+			[0, "GDN"],
+			[1, "Meta"],
+			[2, "GDN"]
+		], { rows: [0, 2] })], "ch = [\"GDN\", \"Meta\", \"GDN\"]"),
+		S("set(ch) giữ mỗi giá trị một lần. Còn hai phần tử.", "set(ch) keeps each value once. Two elements remain.", [T("set", ["giá trị"], [["GDN"], ["Meta"]], { add: [0, 1] })], "set(ch)   → {\"GDN\", \"Meta\"}"),
+		S("Set không có vị trí, nên không hứa thứ tự và không có s[0]. Dùng nó để hỏi «có hay không» và đếm giá trị khác nhau.", "A set has no position, so no order promise and no s[0]. Use it to ask is it in there and to count distinct values.", [T("set", ["biểu thức", "kết quả"], [
+			["\"GDN\" in s", "True"],
+			["len(s)", 2],
+			["s[0]", "TypeError"]
+		], { bad: [2] })])
+	],
+	"py-np": [
+		S("Mảng NumPy là một hình chữ nhật số, mọi ô cùng một kiểu. Đây là mảng 2 dòng 2 cột.", "A NumPy array is a rectangle of numbers, every cell of one type. This is 2 rows by 2 columns.", [T("a", [
+			"",
+			"cột 0",
+			"cột 1"
+		], [[
+			"dòng 0",
+			8,
+			24
+		], [
+			"dòng 1",
+			6,
+			12
+		]])], "a = np.array([[8, 24], [6, 12]])"),
+		S("sum(axis=0) cộng theo từng cột, ra hai số.", "sum(axis=0) adds down each column, giving two numbers.", [T("a", [
+			"",
+			"cột 0",
+			"cột 1"
+		], [
+			[
+				"dòng 0",
+				8,
+				24
+			],
+			[
+				"dòng 1",
+				6,
+				12
+			],
+			[
+				"a.sum(axis=0)",
+				14,
+				36
+			]
+		], {
+			cols: [1, 2],
+			rows: [2]
+		})], "a.sum(axis=0)   → [14, 36]"),
+		S("Trộn số với chữ thì cả mảng bị ép thành chữ. Lúc đó không cộng được nữa.", "Mix numbers with text and the whole array is forced to text. You can no longer add.", [T("np.array([8, \"GDN\"])", [
+			"phần tử",
+			"giá trị",
+			"kiểu"
+		], [[
+			0,
+			"8",
+			"chữ"
+		], [
+			1,
+			"GDN",
+			"chữ"
+		]], { bad: [0, 1] })])
+	],
+	"py-ser": [S("Hai Series có nhãn (index) khác nhau: s1 có a, b, c; s2 có b, c, d.", "Two Series with different labels (index): s1 has a, b, c; s2 has b, c, d.", [T("s1", ["nhãn", "giá trị"], [
+		["a", 1],
+		["b", 2],
+		["c", 3]
+	]), T("s2", ["nhãn", "giá trị"], [
+		["b", 10],
+		["c", 20],
+		["d", 30]
+	])]), S("s1 + s2 cộng theo nhãn, không theo vị trí mắt nhìn. b và c có ở cả hai nên cộng được. a và d chỉ có một bên nên ra NaN.", "s1 + s2 adds by label, not by position. b and c are in both so they add. a and d are in only one so they give NaN.", [T("s1 + s2", ["nhãn", "kết quả"], [
+		["a", "NaN"],
+		["b", 12],
+		["c", 23],
+		["d", "NaN"]
+	], {
+		rows: [1, 2],
+		bad: [0, 3]
+	})], "s1 + s2")],
+	"py-frame": [
+		S("DataFrame có nhãn dòng (a, b, c) và có vị trí (0, 1, 2). Hai thứ này khác nhau.", "A DataFrame has row labels (a, b, c) and positions (0, 1, 2). They are different things.", [df()]),
+		S("loc dùng nhãn: df.loc[\"b\"] là dòng có nhãn b.", "loc uses labels: df.loc[\"b\"] is the row labeled b.", [df({ rows: [1] })], "df.loc[\"b\"]"),
+		S("iloc dùng vị trí: df.iloc[1] là dòng ở vị trí 1. Hôm nay trùng, nhưng sau khi lọc hay xếp lại thì không còn trùng.", "iloc uses position: df.iloc[1] is the row at position 1. Same row today, but after filtering or sorting they no longer match.", [df({ rows: [1] })], "df.iloc[1]"),
+		S("Cắt bằng loc lấy cả điểm cuối: df.loc[\"a\":\"b\"] có hai dòng.", "Slicing with loc includes the end: df.loc[\"a\":\"b\"] has two rows.", [df({ rows: [0, 1] })], "df.loc[\"a\":\"b\"]"),
+		S("Cắt bằng iloc bỏ điểm cuối: df.iloc[0:1] chỉ có một dòng.", "Slicing with iloc excludes the end: df.iloc[0:1] has just one row.", [df({ rows: [0] })], "df.iloc[0:1]")
+	]
+};
+var ads = (m = {}) => T("ads", [
+	"week",
+	"channel",
+	"spend",
+	"forms"
+], [
+	[
+		1,
+		"GDN",
+		8,
+		24
+	],
+	[
+		1,
+		"TikTok",
+		6,
+		12
+	],
+	[
+		2,
+		"GDN",
+		10,
+		35
+	],
+	[
+		2,
+		"TikTok",
+		4,
+		9
+	],
+	[
+		3,
+		"GDN",
+		12,
+		30
+	],
+	[
+		3,
+		"TikTok",
+		7,
+		20
+	]
+], m);
+var sqlDemos = {
+	"sql-wh": [
+		S("Bảng đang ghi đơn (nguồn). Hai đơn đang ở trạng thái new.", "The table that takes orders (the source). Two orders are new.", [T("orders", [
+			"id",
+			"status",
+			"total"
+		], [[
+			1,
+			"new",
+			200
+		], [
+			2,
+			"new",
+			150
+		]])]),
+		S("Khi đơn 2 được trả tiền, nguồn ghi đè. Trạng thái cũ mất.", "When order 2 is paid, the source overwrites it. The old status is gone.", [T("orders", [
+			"id",
+			"status",
+			"total"
+		], [[
+			1,
+			"new",
+			200
+		], [
+			2,
+			"paid",
+			150
+		]], { cells: [[1, 1]] })], "UPDATE orders SET status = 'paid' WHERE id = 2;"),
+		S("Kho dữ liệu chụp lại mỗi ngày và chỉ thêm dòng, nên còn cả lịch sử.", "The warehouse snapshots every day and only adds rows, so history stays.", [T("fact_order_daily", [
+			"day",
+			"id",
+			"status"
+		], [[
+			"Mon",
+			2,
+			"new"
+		], [
+			"Tue",
+			2,
+			"paid"
+		]], { add: [1] })], "INSERT INTO fact_order_daily SELECT CURRENT_DATE, id, status FROM orders;")
+	],
+	"sql-star": [
+		S("Ở giữa là bảng sự kiện: mỗi dòng là một lần có form. Nó chỉ giữ số và khóa.", "In the middle is the fact table: one row per form. It holds only numbers and keys.", [T("fact_form", [
+			"form_id",
+			"campaign_id",
+			"channel_id",
+			"forms"
+		], [
+			[
+				1,
+				1,
+				1,
+				24
+			],
+			[
+				2,
+				1,
+				2,
+				12
+			],
+			[
+				3,
+				2,
+				1,
+				35
+			]
+		], { cols: [1, 2] })]),
+		S("Xung quanh là các bảng mô tả: tên chiến dịch, tên kênh. Khóa trong bảng sự kiện trỏ tới chúng.", "Around it are description tables: campaign name, channel name. Keys in the fact table point to them.", [T("dim_campaign", ["campaign_id", "name"], [[1, "Tết"], [2, "Hè"]], { cols: [0] }), T("dim_channel", ["channel_id", "name"], [[1, "GDN"], [2, "TikTok"]], { cols: [0] })]),
+		S("Muốn đọc ra chữ thì nối ba bảng theo khóa.", "To read words, join the three tables on the keys.", [T("kết quả", [
+			"form_id",
+			"campaign",
+			"channel",
+			"forms"
+		], [
+			[
+				1,
+				"Tết",
+				"GDN",
+				24
+			],
+			[
+				2,
+				"Tết",
+				"TikTok",
+				12
+			],
+			[
+				3,
+				"Hè",
+				"GDN",
+				35
+			]
+		], { add: [
+			0,
+			1,
+			2
+		] })], "SELECT f.form_id, c.name, ch.name, f.forms\nFROM fact_form f\nJOIN dim_campaign c ON c.campaign_id = f.campaign_id\nJOIN dim_channel ch ON ch.channel_id = f.channel_id;")
+	],
+	"sql-key": [
+		S("Khóa chính (id) nhận ra từng chiến dịch. Mỗi form có khóa ngoại campaign_id trỏ về đó.", "The primary key (id) identifies each campaign. Each form carries a foreign key campaign_id pointing to it.", [T("campaigns", ["id", "name"], [[1, "Tết"], [2, "Hè"]], { cols: [0] }), T("forms", ["id", "campaign_id"], [[1, 1], [2, 2]], { cols: [1] })]),
+		S("Thêm form trỏ tới chiến dịch 9 không có thật thì cơ sở dữ liệu từ chối.", "A form pointing at campaign 9, which does not exist, is rejected by the database.", [T("forms", ["id", "campaign_id"], [
+			[1, 1],
+			[2, 2],
+			[3, 9]
+		], { bad: [2] })], "INSERT INTO forms VALUES (3, 9);  -- lỗi: không có campaigns.id = 9"),
+		S("Trỏ tới chiến dịch 1 có thật thì được nhận.", "Pointing at the real campaign 1 is accepted.", [T("forms", ["id", "campaign_id"], [
+			[1, 1],
+			[2, 2],
+			[3, 1]
+		], { add: [2] })], "INSERT INTO forms VALUES (3, 1);")
+	],
+	"sql-ddl": [
+		S("Bảng ads có hai cột. Đây là khung và các dòng dữ liệu.", "The ads table has two columns. That is the frame and the rows.", [T("ads", ["id", "spend"], [[1, 8], [2, 10]])]),
+		S("DDL đổi khung: thêm một cột. Mọi dòng có sẵn ô trống ở cột mới.", "DDL changes the frame: it adds a column. Every row gets an empty cell there.", [T("ads", [
+			"id",
+			"spend",
+			"note"
+		], [[
+			1,
+			8,
+			null
+		], [
+			2,
+			10,
+			null
+		]], { addCols: [2] })], "ALTER TABLE ads ADD COLUMN note TEXT;"),
+		S("DML sửa dòng: chỉ một ô đổi, khung vẫn vậy.", "DML edits rows: one cell changes, the frame stays.", [T("ads", [
+			"id",
+			"spend",
+			"note"
+		], [[
+			1,
+			12,
+			null
+		], [
+			2,
+			10,
+			null
+		]], { cells: [[0, 1]] })], "UPDATE ads SET spend = 12 WHERE id = 1;")
+	],
+	"sql-run": [
+		S("Máy bắt đầu từ FROM: lấy cả bảng.", "The engine starts at FROM: it takes the whole table.", [ads()], "SELECT channel, SUM(spend) AS total\nFROM ads                 -- 1. chạy trước\nWHERE spend >= 6\nGROUP BY channel\nORDER BY total;"),
+		S("WHERE lọc từng dòng, trước khi gộp. Dòng chi 4 bị loại.", "WHERE filters single rows, before grouping. The row with spend 4 is dropped.", [ads({ dim: [3] })], "WHERE spend >= 6         -- 2."),
+		S("GROUP BY gom các dòng còn lại theo kênh.", "GROUP BY collects the remaining rows by channel.", [T("nhóm", ["channel", "spend của các dòng"], [["GDN", "8, 10, 12"], ["TikTok", "6, 7"]])], "GROUP BY channel         -- 3."),
+		S("Lúc này SELECT mới chạy: tính tổng cho từng nhóm và đặt tên total.", "Only now does SELECT run: it computes the sum of each group and names it total.", [T("kết quả", ["channel", "total"], [["GDN", 30], ["TikTok", 13]], { addCols: [1] })], "SELECT channel, SUM(spend) AS total   -- 4."),
+		S("ORDER BY chạy cuối nên dùng được tên total vừa đặt. Xếp tăng dần.", "ORDER BY runs last, so it can use the name total. Sorted ascending.", [T("kết quả", ["channel", "total"], [["TikTok", 13], ["GDN", 30]], { rows: [0, 1] })], "ORDER BY total           -- 5.")
+	],
+	"sql-having": [
+		S("Bảng gốc, sáu dòng.", "The base table, six rows.", [ads()]),
+		S("WHERE lọc dòng trước khi gộp: dòng chi 4 bị loại.", "WHERE filters rows before grouping: the row with spend 4 is dropped.", [ads({ dim: [3] })], "WHERE spend >= 6"),
+		S("Sau khi gộp, mỗi kênh còn một dòng tổng.", "After grouping, each channel has one total row.", [T("nhóm", ["channel", "SUM(spend)"], [["GDN", 30], ["TikTok", 13]])], "GROUP BY channel"),
+		S("HAVING lọc nhóm theo con số đã tính. TikTok có tổng 13 nên bị loại.", "HAVING filters groups by the computed number. TikTok totals 13 and is dropped.", [T("nhóm", ["channel", "SUM(spend)"], [["GDN", 30], ["TikTok", 13]], {
+			dim: [1],
+			rows: [0]
+		})], "HAVING SUM(spend) > 20")
+	],
+	"sql-count": [
+		S("Bốn người điền form. Hai người không để số điện thoại.", "Four people filled the form. Two left no phone number.", [T("leads", [
+			"id",
+			"name",
+			"phone"
+		], [
+			[
+				1,
+				"An",
+				"0901"
+			],
+			[
+				2,
+				"Bình",
+				null
+			],
+			[
+				3,
+				"Chi",
+				"0933"
+			],
+			[
+				4,
+				"Dũng",
+				null
+			]
+		])]),
+		S("COUNT(*) đếm dòng, nên ra 4.", "COUNT(*) counts rows, so it returns 4.", [T("leads", [
+			"id",
+			"name",
+			"phone"
+		], [
+			[
+				1,
+				"An",
+				"0901"
+			],
+			[
+				2,
+				"Bình",
+				null
+			],
+			[
+				3,
+				"Chi",
+				"0933"
+			],
+			[
+				4,
+				"Dũng",
+				null
+			]
+		], { rows: [
+			0,
+			1,
+			2,
+			3
+		] })], "SELECT COUNT(*) FROM leads;   -- 4"),
+		S("COUNT(phone) chỉ đếm ô có giá trị, nên ra 2.", "COUNT(phone) counts only cells that have a value, so it returns 2.", [T("leads", [
+			"id",
+			"name",
+			"phone"
+		], [
+			[
+				1,
+				"An",
+				"0901"
+			],
+			[
+				2,
+				"Bình",
+				null
+			],
+			[
+				3,
+				"Chi",
+				"0933"
+			],
+			[
+				4,
+				"Dũng",
+				null
+			]
+		], { cells: [[0, 2], [2, 2]] })], "SELECT COUNT(phone) FROM leads;   -- 2")
+	],
+	"sql-join": [S("Chiến dịch Tết có hai tuần chạy ở bảng weeks.", "The Tết campaign has two running weeks in the weeks table.", [T("campaigns", ["id", "name"], [[1, "Tết"], [2, "Hè"]], { cols: [0] }), T("weeks", ["campaign_id", "week"], [
+		[1, "w1"],
+		[1, "w2"],
+		[2, "w1"]
+	], { cols: [0] })]), S("Nối theo khóa không duy nhất: Tết khớp hai dòng nên xuất hiện hai lần. Hai dòng thành ba dòng.", "Joining on a key that is not unique: Tết matches two rows so it shows twice. Two rows become three.", [T("kết quả", [
+		"id",
+		"name",
+		"week"
+	], [
+		[
+			1,
+			"Tết",
+			"w1"
+		],
+		[
+			1,
+			"Tết",
+			"w2"
+		],
+		[
+			2,
+			"Hè",
+			"w1"
+		]
+	], { rows: [0, 1] })], "SELECT c.id, c.name, w.week\nFROM campaigns c JOIN weeks w ON w.campaign_id = c.id;")],
+	"sql-left": [
+		S("Ba chiến dịch, nhưng chỉ hai chiến dịch có form.", "Three campaigns, but only two have forms.", [T("campaigns", ["id", "name"], [
+			[1, "Tết"],
+			[2, "Hè"],
+			[3, "Noel"]
+		]), T("forms", ["campaign_id", "forms"], [[1, 40], [2, 25]])]),
+		S("LEFT JOIN giữ cả ba chiến dịch. Noel không có form nên ô trống, là NULL.", "LEFT JOIN keeps all three campaigns. Noel has no forms, so its cell is empty, NULL.", [T("kết quả", ["name", "forms"], [
+			["Tết", 40],
+			["Hè", 25],
+			["Noel", null]
+		], { cells: [[2, 1]] })], "SELECT c.name, f.forms\nFROM campaigns c LEFT JOIN forms f ON f.campaign_id = c.id;"),
+		S("NULL là «không có dữ liệu», không phải 0. Chỉ khi bạn quyết định mới đổi nó thành 0.", "NULL means no data, not 0. Only when you decide do you turn it into 0.", [T("kết quả", ["name", "forms"], [
+			["Tết", 40],
+			["Hè", 25],
+			["Noel", 0]
+		], { cells: [[2, 1]] })], "SELECT c.name, COALESCE(f.forms, 0) AS forms ...")
+	],
+	"sql-union": [
+		S("Hai bảng cùng cột, đến từ hai nguồn. TikTok có mặt ở cả hai.", "Two tables with the same columns, from two sources. TikTok is in both.", [T("a", ["channel", "forms"], [["GDN", 24], ["TikTok", 12]]), T("b", ["channel", "forms"], [["TikTok", 12], ["Meta", 18]])]),
+		S("UNION ALL xếp bảng này nối xuống dưới bảng kia, giữ cả dòng trùng.", "UNION ALL stacks one table under the other and keeps the duplicate.", [T("kết quả", ["channel", "forms"], [
+			["GDN", 24],
+			["TikTok", 12],
+			["TikTok", 12],
+			["Meta", 18]
+		], { rows: [1, 2] })], "SELECT * FROM a UNION ALL SELECT * FROM b;"),
+		S("UNION bỏ dòng trùng. Đây là xếp dọc, khác JOIN là ghép ngang thêm cột.", "UNION removes the duplicate. It stacks down, unlike JOIN which adds columns across.", [T("kết quả", ["channel", "forms"], [
+			["GDN", 24],
+			["TikTok", 12],
+			["TikTok", 12],
+			["Meta", 18]
+		], { dim: [2] })], "SELECT * FROM a UNION SELECT * FROM b;")
+	],
+	"sql-win": [
+		S("Bốn dòng, hai kênh.", "Four rows, two channels.", [T("ads", ["channel", "spend"], [
+			["GDN", 8],
+			["GDN", 10],
+			["TikTok", 6],
+			["TikTok", 4]
+		])]),
+		S("GROUP BY gộp mỗi kênh thành một dòng. Từng dòng gốc biến mất.", "GROUP BY folds each channel into one row. The original rows disappear.", [T("kết quả", ["channel", "total"], [["GDN", 18], ["TikTok", 10]])], "SELECT channel, SUM(spend) AS total FROM ads GROUP BY channel;"),
+		S("Hàm cửa sổ thêm một cột tổng nhưng vẫn giữ cả bốn dòng.", "A window function adds a total column but keeps all four rows.", [T("kết quả", [
+			"channel",
+			"spend",
+			"total"
+		], [
+			[
+				"GDN",
+				8,
+				18
+			],
+			[
+				"GDN",
+				10,
+				18
+			],
+			[
+				"TikTok",
+				6,
+				10
+			],
+			[
+				"TikTok",
+				4,
+				10
+			]
+		], { addCols: [2] })], "SELECT channel, spend,\n  SUM(spend) OVER (PARTITION BY channel) AS total\nFROM ads;")
+	],
+	"sql-rank": [
+		S("Xếp hạng kênh theo form. Hai kênh hòa nhau ở 40.", "Rank channels by forms. Two channels tie at 40.", [T("kênh", ["channel", "forms"], [
+			["GDN", 50],
+			["Meta", 40],
+			["TikTok", 40],
+			["Zalo", 30]
+		], { rows: [1, 2] })]),
+		S("ROW_NUMBER không quan tâm hòa: luôn 1, 2, 3, 4.", "ROW_NUMBER ignores ties: always 1, 2, 3, 4.", [T("kênh", [
+			"channel",
+			"forms",
+			"row_number"
+		], [
+			[
+				"GDN",
+				50,
+				1
+			],
+			[
+				"Meta",
+				40,
+				2
+			],
+			[
+				"TikTok",
+				40,
+				3
+			],
+			[
+				"Zalo",
+				30,
+				4
+			]
+		], { addCols: [2] })], "ROW_NUMBER() OVER (ORDER BY forms DESC)"),
+		S("RANK cho hai kênh hòa cùng hạng 2 rồi nhảy số: kênh sau là hạng 4.", "RANK gives the tied channels the same rank 2, then skips: the next is 4.", [T("kênh", [
+			"channel",
+			"forms",
+			"rank"
+		], [
+			[
+				"GDN",
+				50,
+				1
+			],
+			[
+				"Meta",
+				40,
+				2
+			],
+			[
+				"TikTok",
+				40,
+				2
+			],
+			[
+				"Zalo",
+				30,
+				4
+			]
+		], {
+			addCols: [2],
+			cells: [[3, 2]]
+		})], "RANK() OVER (ORDER BY forms DESC)"),
+		S("DENSE_RANK cũng hòa ở hạng 2 nhưng không nhảy số: kênh sau là hạng 3.", "DENSE_RANK also ties at 2 but does not skip: the next is 3.", [T("kênh", [
+			"channel",
+			"forms",
+			"dense_rank"
+		], [
+			[
+				"GDN",
+				50,
+				1
+			],
+			[
+				"Meta",
+				40,
+				2
+			],
+			[
+				"TikTok",
+				40,
+				2
+			],
+			[
+				"Zalo",
+				30,
+				3
+			]
+		], {
+			addCols: [2],
+			cells: [[3, 2]]
+		})], "DENSE_RANK() OVER (ORDER BY forms DESC)")
+	],
+	"sql-part": [
+		S("Hai kênh, hai tuần mỗi kênh.", "Two channels, two weeks each.", [T("ads", [
+			"channel",
+			"week",
+			"forms"
+		], [
+			[
+				"GDN",
+				1,
+				24
+			],
+			[
+				"GDN",
+				2,
+				35
+			],
+			[
+				"TikTok",
+				1,
+				12
+			],
+			[
+				"TikTok",
+				2,
+				9
+			]
+		])]),
+		S("Xếp hạng chung cả bảng: TikTok bị đẩy xuống hạng 3 và 4.", "Ranking the whole table: TikTok is pushed down to 3 and 4.", [T("ads", [
+			"channel",
+			"week",
+			"forms",
+			"rank"
+		], [
+			[
+				"GDN",
+				1,
+				24,
+				2
+			],
+			[
+				"GDN",
+				2,
+				35,
+				1
+			],
+			[
+				"TikTok",
+				1,
+				12,
+				3
+			],
+			[
+				"TikTok",
+				2,
+				9,
+				4
+			]
+		], { addCols: [3] })], "RANK() OVER (ORDER BY forms DESC)"),
+		S("PARTITION BY chia theo kênh. Mỗi kênh tự đếm hạng, bắt đầu từ 1.", "PARTITION BY splits by channel. Each channel counts its own rank, starting from 1.", [T("ads", [
+			"channel",
+			"week",
+			"forms",
+			"rank"
+		], [
+			[
+				"GDN",
+				1,
+				24,
+				2
+			],
+			[
+				"GDN",
+				2,
+				35,
+				1
+			],
+			[
+				"TikTok",
+				1,
+				12,
+				1
+			],
+			[
+				"TikTok",
+				2,
+				9,
+				2
+			]
+		], {
+			addCols: [3],
+			cells: [[2, 3]]
+		})], "RANK() OVER (PARTITION BY channel ORDER BY forms DESC)")
+	],
+	"sql-frame": [
+		S("Thiếu tuần 3: chỉ có tuần 1, 2, 4, 5. Muốn trung bình của «ba dòng gần nhất».", "Week 3 is missing: only weeks 1, 2, 4, 5. We want the average of the last three rows.", [T("weeks", ["week", "spend"], [
+			[1, 10],
+			[2, 20],
+			[4, 40],
+			[5, 50]
+		])], "AVG(spend) OVER (ORDER BY week\n  ROWS BETWEEN 2 PRECEDING AND CURRENT ROW)"),
+		S("Ở tuần 4, khung lấy ba dòng: tuần 1, 2 và 4. Nó trải qua bốn tuần lịch, vì tuần 3 không có dòng.", "At week 4 the frame takes three rows: weeks 1, 2 and 4. It spans four calendar weeks, because week 3 has no row.", [T("weeks", [
+			"week",
+			"spend",
+			"avg3"
+		], [
+			[
+				1,
+				10,
+				10
+			],
+			[
+				2,
+				20,
+				15
+			],
+			[
+				4,
+				40,
+				23.3
+			],
+			[
+				5,
+				50,
+				"…"
+			]
+		], {
+			rows: [
+				0,
+				1,
+				2
+			],
+			cells: [[2, 2]]
+		})]),
+		S("Ở tuần 5, khung là tuần 2, 4, 5. Khung đếm dòng, không đếm ngày.", "At week 5 the frame is weeks 2, 4, 5. The frame counts rows, not days.", [T("weeks", [
+			"week",
+			"spend",
+			"avg3"
+		], [
+			[
+				1,
+				10,
+				10
+			],
+			[
+				2,
+				20,
+				15
+			],
+			[
+				4,
+				40,
+				23.3
+			],
+			[
+				5,
+				50,
+				36.7
+			]
+		], {
+			rows: [
+				1,
+				2,
+				3
+			],
+			cells: [[3, 2]]
+		})])
+	],
+	"sql-lag": [
+		S("Ba ngày có số liệu: ngày 1, 2 và 4. Ngày 3 thiếu.", "Three days with data: days 1, 2 and 4. Day 3 is missing.", [T("daily", ["day", "forms"], [
+			[1, 10],
+			[2, 14],
+			[4, 9]
+		])]),
+		S("LAG lấy giá trị của dòng ngay trước. Dòng đầu chưa có dòng trước nên là NULL.", "LAG takes the value from the row right before. The first row has none, so NULL.", [T("daily", [
+			"day",
+			"forms",
+			"prev"
+		], [
+			[
+				1,
+				10,
+				null
+			],
+			[
+				2,
+				14,
+				10
+			],
+			[
+				4,
+				9,
+				14
+			]
+		], { addCols: [2] })], "LAG(forms) OVER (ORDER BY day) AS prev"),
+		S("Ở ngày 4, «dòng trước» là ngày 2, không phải hôm qua. Thiếu ngày thì LAG vẫn nhảy qua.", "On day 4 the previous row is day 2, not yesterday. With a missing day, LAG still jumps across.", [T("daily", [
+			"day",
+			"forms",
+			"prev"
+		], [
+			[
+				1,
+				10,
+				null
+			],
+			[
+				2,
+				14,
+				10
+			],
+			[
+				4,
+				9,
+				14
+			]
+		], {
+			cells: [[2, 2]],
+			rows: [1]
+		})])
+	],
+	"sql-case": [
+		S("Bảng gốc chỉ có kênh và chi tiêu.", "The base table has only channel and spend.", [T("ads", ["channel", "spend"], [
+			["GDN", 12],
+			["Meta", 8],
+			["TikTok", 4]
+		])]),
+		S("CASE tạo một cột mới ngay trong kết quả, theo từng bậc.", "CASE builds a new column right in the result, tier by tier.", [T("kết quả", [
+			"channel",
+			"spend",
+			"tier"
+		], [
+			[
+				"GDN",
+				12,
+				"cao"
+			],
+			[
+				"Meta",
+				8,
+				"vừa"
+			],
+			[
+				"TikTok",
+				4,
+				"thấp"
+			]
+		], { addCols: [2] })], "SELECT channel, spend,\n  CASE WHEN spend >= 10 THEN 'cao'\n       WHEN spend >= 6  THEN 'vừa'\n       ELSE 'thấp' END AS tier\nFROM ads;"),
+		S("Bảng gốc vẫn không có cột tier. Bậc chỉ sống trong câu truy vấn.", "The base table still has no tier column. The tier lives only in the query.", [T("ads", ["channel", "spend"], [
+			["GDN", 12],
+			["Meta", 8],
+			["TikTok", 4]
+		])], "SELECT * FROM ads;")
+	],
+	"sql-cte": [
+		S("Bảng gốc ads.", "The base table ads.", [T("ads", [
+			"id",
+			"channel",
+			"spend"
+		], [
+			[
+				1,
+				"GDN",
+				8
+			],
+			[
+				2,
+				"TikTok",
+				6
+			],
+			[
+				3,
+				"Meta",
+				12
+			]
+		])]),
+		S("Đặt tên cho một câu con: big là các dòng chi từ 8 trở lên. Nó chỉ là tên cho câu truy vấn.", "Name a sub-query: big is the rows with spend of 8 or more. It is just a name for a query.", [T("big", [
+			"id",
+			"channel",
+			"spend"
+		], [[
+			1,
+			"GDN",
+			8
+		], [
+			3,
+			"Meta",
+			12
+		]], { rows: [0, 1] })], "CREATE VIEW big AS\n  SELECT * FROM ads WHERE spend >= 8;"),
+		S("Sửa bảng gốc: TikTok từ 6 lên 9.", "Edit the base table: TikTok goes from 6 to 9.", [T("ads", [
+			"id",
+			"channel",
+			"spend"
+		], [
+			[
+				1,
+				"GDN",
+				8
+			],
+			[
+				2,
+				"TikTok",
+				9
+			],
+			[
+				3,
+				"Meta",
+				12
+			]
+		], { cells: [[1, 2]] })], "UPDATE ads SET spend = 9 WHERE id = 2;"),
+		S("Hỏi lại big: TikTok tự có mặt. View không phải bản sao, nó chạy lại câu truy vấn mỗi lần.", "Ask big again: TikTok appears by itself. A view is not a copy, it reruns its query every time.", [T("big", [
+			"id",
+			"channel",
+			"spend"
+		], [
+			[
+				1,
+				"GDN",
+				8
+			],
+			[
+				2,
+				"TikTok",
+				9
+			],
+			[
+				3,
+				"Meta",
+				12
+			]
+		], { add: [1] })], "SELECT * FROM big;")
+	],
+	"sql-idx": [
+		S("Tìm kênh Meta trong bảng sáu dòng, không có chỉ mục: máy đọc từng dòng từ đầu.", "Finding Meta in a six-row table with no index: the engine reads every row from the top.", [T("ads", ["id", "channel"], [
+			[1, "GDN"],
+			[2, "Meta"],
+			[3, "TikTok"],
+			[4, "GDN"],
+			[5, "Meta"],
+			[6, "TikTok"]
+		], { rows: [
+			0,
+			1,
+			2,
+			3,
+			4,
+			5
+		] })], "SELECT * FROM ads WHERE channel = 'Meta';"),
+		S("Chỉ mục như mục lục: kênh nào nằm ở dòng nào. Máy tra mục lục rồi nhảy thẳng tới dòng 2 và 5.", "An index is like a table of contents: which channel sits on which rows. The engine looks it up and jumps straight to rows 2 and 5.", [T("index trên channel", ["channel", "dòng"], [
+			["GDN", "1, 4"],
+			["Meta", "2, 5"],
+			["TikTok", "3, 6"]
+		], { rows: [1] }), T("ads", ["id", "channel"], [
+			[1, "GDN"],
+			[2, "Meta"],
+			[3, "TikTok"],
+			[4, "GDN"],
+			[5, "Meta"],
+			[6, "TikTok"]
+		], { rows: [1, 4] })]),
+		S("Kết quả y hệt, chỉ nhanh hơn. Chỉ mục đổi tốc độ, không đổi câu trả lời.", "The result is identical, only faster. An index changes speed, not the answer.", [T("kết quả", ["id", "channel"], [[2, "Meta"], [5, "Meta"]])])
+	],
+	"sql-like": [
+		S("Bốn tên chiến dịch. Ký tự % thay cho «bất kỳ chuỗi nào».", "Four campaign names. The % sign stands for any string.", [T("campaigns", ["name"], [
+			["Tet Sale"],
+			["Tet 2026"],
+			["Mid-Tet"],
+			["Back Tet"]
+		])]),
+		S("'Tet%' khớp những tên bắt đầu bằng Tet.", "'Tet%' matches names that start with Tet.", [T("campaigns", ["name"], [
+			["Tet Sale"],
+			["Tet 2026"],
+			["Mid-Tet"],
+			["Back Tet"]
+		], { rows: [0, 1] })], "WHERE name LIKE 'Tet%'"),
+		S("'%Tet' khớp những tên kết thúc bằng Tet.", "'%Tet' matches names that end with Tet.", [T("campaigns", ["name"], [
+			["Tet Sale"],
+			["Tet 2026"],
+			["Mid-Tet"],
+			["Back Tet"]
+		], { rows: [2, 3] })], "WHERE name LIKE '%Tet'"),
+		S("'%Tet%' khớp tên có Tet ở bất kỳ đâu. LIKE chỉ có % và _. Luật phức tạp hơn là việc của regex.", "'%Tet%' matches Tet anywhere. LIKE has only % and _. Richer rules are regex's job.", [T("campaigns", ["name"], [
+			["Tet Sale"],
+			["Tet 2026"],
+			["Mid-Tet"],
+			["Back Tet"]
+		], { rows: [
+			0,
+			1,
+			2,
+			3
+		] })], "WHERE name LIKE '%Tet%'")
+	],
+	"sql-date": [
+		S("Ba ngày được lưu thành chữ, không phải kiểu ngày.", "Three dates stored as text, not as a date type.", [T("log", ["d"], [
+			["5/1/2026"],
+			["10/1/2026"],
+			["9/1/2026"]
+		])]),
+		S("Xếp theo chữ: «10/1» đứng trước «5/1» vì ký tự «1» nhỏ hơn «5». Thứ tự sai.", "Sorting as text: \"10/1\" comes before \"5/1\" because the character \"1\" is smaller than \"5\". The order is wrong.", [T("log", ["d"], [
+			["10/1/2026"],
+			["5/1/2026"],
+			["9/1/2026"]
+		], { bad: [
+			0,
+			1,
+			2
+		] })], "SELECT d FROM log ORDER BY d;"),
+		S("Đổi sang kiểu ngày trước khi xếp: ngày 5, 9, rồi 10. Đúng thứ tự thời gian.", "Convert to a date type before sorting: 5, 9, 10. The true time order.", [T("log", ["d"], [
+			["5/1/2026"],
+			["9/1/2026"],
+			["10/1/2026"]
+		], { add: [
+			0,
+			1,
+			2
+		] })], "SELECT d FROM log ORDER BY TO_DATE(d, 'DD/MM/YYYY');")
+	],
+	"sql-nest": [
+		S("Muốn các kênh đã có form. Kênh 2 chưa có form nào.", "We want channels that have forms. Channel 2 has none.", [T("channels", ["id", "name"], [
+			[1, "GDN"],
+			[2, "TikTok"],
+			[3, "Meta"]
+		]), T("forms", ["channel_id"], [
+			[1],
+			[1],
+			[3]
+		])]),
+		S("Cách 1, câu con: hỏi «id nào có trong forms».", "Way 1, a subquery: ask which ids appear in forms.", [T("kết quả", ["id", "name"], [[1, "GDN"], [3, "Meta"]], { add: [0, 1] })], "SELECT * FROM channels\nWHERE id IN (SELECT channel_id FROM forms);"),
+		S("Cách 2, phép nối: ra đúng kết quả đó. Câu lồng không cao cấp hơn. Chọn cách dễ đọc.", "Way 2, a join: the very same result. A nested query is not fancier. Pick the one that reads better.", [T("kết quả", ["id", "name"], [[1, "GDN"], [3, "Meta"]], { add: [0, 1] })], "SELECT DISTINCT c.*\nFROM channels c JOIN forms f ON f.channel_id = c.id;")
+	],
+	"sql-nwin": [
+		S("Muốn cộng dồn form theo từng kênh qua các tuần.", "We want a running total of forms per channel across weeks.", [T("ads", [
+			"channel",
+			"week",
+			"forms"
+		], [
+			[
+				"GDN",
+				1,
+				24
+			],
+			[
+				"GDN",
+				2,
+				35
+			],
+			[
+				"TikTok",
+				1,
+				12
+			],
+			[
+				"TikTok",
+				2,
+				9
+			]
+		])]),
+		S("Viết cửa sổ dài ngay trong hàm.", "Spell the window out inside the function.", [T("kết quả", [
+			"channel",
+			"week",
+			"forms",
+			"run"
+		], [
+			[
+				"GDN",
+				1,
+				24,
+				24
+			],
+			[
+				"GDN",
+				2,
+				35,
+				59
+			],
+			[
+				"TikTok",
+				1,
+				12,
+				12
+			],
+			[
+				"TikTok",
+				2,
+				9,
+				21
+			]
+		], { addCols: [3] })], "SUM(forms) OVER (PARTITION BY channel ORDER BY week) AS run"),
+		S("Đặt tên cửa sổ là w rồi gọi w. Kết quả y hệt. Tên chỉ để viết ngắn và dùng lại.", "Name the window w and call w. The result is identical. A name only shortens and reuses.", [T("kết quả", [
+			"channel",
+			"week",
+			"forms",
+			"run"
+		], [
+			[
+				"GDN",
+				1,
+				24,
+				24
+			],
+			[
+				"GDN",
+				2,
+				35,
+				59
+			],
+			[
+				"TikTok",
+				1,
+				12,
+				12
+			],
+			[
+				"TikTok",
+				2,
+				9,
+				21
+			]
+		], { addCols: [3] })], "SUM(forms) OVER w AS run\n...\nWINDOW w AS (PARTITION BY channel ORDER BY week)")
+	],
+	"sql-proc": [
+		S("Bảng ads đang có ba tuần, bảng archive còn trống.", "The ads table holds three weeks, the archive table is empty.", [T("ads", [
+			"id",
+			"week",
+			"spend"
+		], [
+			[
+				1,
+				"w1",
+				8
+			],
+			[
+				2,
+				"w2",
+				10
+			],
+			[
+				3,
+				"w3",
+				12
+			]
+		]), T("archive", [
+			"id",
+			"week",
+			"spend"
+		], [])]),
+		S("Gọi thủ tục một lần: nó chép tuần 1 sang archive rồi xóa khỏi ads. Hai việc trong một lệnh.", "Call the procedure once: it copies week 1 to archive then deletes it from ads. Two jobs in one command.", [T("ads", [
+			"id",
+			"week",
+			"spend"
+		], [
+			[
+				1,
+				"w1",
+				8
+			],
+			[
+				2,
+				"w2",
+				10
+			],
+			[
+				3,
+				"w3",
+				12
+			]
+		], { dim: [0] }), T("archive", [
+			"id",
+			"week",
+			"spend"
+		], [[
+			1,
+			"w1",
+			8
+		]], { add: [0] })], "CALL archive_week('w1');"),
+		S("Kết quả: một kịch bản đã lưu đã sửa hai bảng, và có thể gọi lại bất cứ lúc nào.", "Result: one saved script edited two tables, and you can call it again any time.", [T("ads", [
+			"id",
+			"week",
+			"spend"
+		], [[
+			2,
+			"w2",
+			10
+		], [
+			3,
+			"w3",
+			12
+		]]), T("archive", [
+			"id",
+			"week",
+			"spend"
+		], [[
+			1,
+			"w1",
+			8
+		]])])
+	],
+	"sql-cur": [
+		S("Ba form cần chuyển từ new sang done.", "Three forms need to go from new to done.", [T("forms", ["id", "status"], [
+			[1, "new"],
+			[2, "new"],
+			[3, "new"]
+		])]),
+		S("Con trỏ đi từng dòng một: dòng 1 xong, rồi mới tới dòng 2 và 3. Ba vòng lặp.", "A cursor goes one row at a time: row 1 is done, then row 2 and 3. Three loop turns.", [T("forms", ["id", "status"], [
+			[1, "done"],
+			[2, "new"],
+			[3, "new"]
+		], { rows: [0] })], "FETCH NEXT FROM cur;  -- vòng 1\nUPDATE forms SET status = 'done' WHERE id = 1;"),
+		S("Vòng 2 và vòng 3 cũng như vậy, từng dòng một.", "Turns 2 and 3 do the same, one row each.", [T("forms", ["id", "status"], [
+			[1, "done"],
+			[2, "done"],
+			[3, "done"]
+		], { rows: [1, 2] })], "-- vòng 2, vòng 3"),
+		S("Một câu UPDATE xử lý cả ba dòng cùng lúc, gọn hơn và thường nhanh hơn nhiều.", "One UPDATE handles all three rows at once, shorter and usually much faster.", [T("forms", ["id", "status"], [
+			[1, "done"],
+			[2, "done"],
+			[3, "done"]
+		], { rows: [
+			0,
+			1,
+			2
+		] })], "UPDATE forms SET status = 'done' WHERE status = 'new';")
+	]
+};
+var vizDemos = {
+	"tb-join": [
+		S("Bảng chiến dịch có ngân sách mỗi chiến dịch. Bảng weeks có từng tuần chạy.", "The campaigns table has one budget per campaign. The weeks table has each running week.", [T("campaigns", [
+			"id",
+			"name",
+			"budget"
+		], [[
+			1,
+			"Tết",
+			100
+		], [
+			2,
+			"Hè",
+			100
+		]]), T("weeks", ["campaign_id", "week"], [
+			[1, "w1"],
+			[1, "w2"],
+			[2, "w1"]
+		])]),
+		S("Nối hai bảng: Tết có hai tuần nên dòng Tết nhân đôi, và ngân sách 100 lặp hai lần.", "Join the tables: Tết has two weeks so its row doubles, and its budget 100 appears twice.", [T("sau khi nối", [
+			"name",
+			"budget",
+			"week"
+		], [
+			[
+				"Tết",
+				100,
+				"w1"
+			],
+			[
+				"Tết",
+				100,
+				"w2"
+			],
+			[
+				"Hè",
+				100,
+				"w1"
+			]
+		], { rows: [0, 1] })]),
+		S("Kéo SUM(budget) lên biểu đồ ra 300, trong khi tổng thật là 200. Phép nối đã nhân dòng trước khi vẽ.", "Drag SUM(budget) onto a chart and you get 300, while the truth is 200. The join multiplied rows before the drawing.", [T("biểu đồ", ["", "tổng budget"], [["đúng (trước khi nối)", 200], ["sau khi nối", 300]], { bad: [1] })])
+	],
+	"tb-calc": [
+		S("Dữ liệu gốc có chi tiêu và form theo kênh.", "The source data has spend and forms by channel.", [T("ads", [
+			"channel",
+			"spend",
+			"forms"
+		], [[
+			"GDN",
+			30,
+			89
+		], [
+			"TikTok",
+			17,
+			41
+		]])]),
+		S("Trường tính toán CPL là một công thức: tổng chi chia tổng form. Tableau chạy nó mỗi lần vẽ.", "The calculated field CPL is a formula: total spend divided by total forms. Tableau runs it each time it draws.", [T("trong biểu đồ", ["channel", "CPL"], [["GDN", .337], ["TikTok", .415]], { addCols: [1] })], "CPL = SUM([spend]) / SUM([forms])"),
+		S("Bảng dữ liệu gốc vẫn không có cột CPL. Công thức không tạo dữ liệu mới.", "The source table still has no CPL column. A formula creates no new data.", [T("ads", [
+			"channel",
+			"spend",
+			"forms"
+		], [[
+			"GDN",
+			30,
+			89
+		], [
+			"TikTok",
+			17,
+			41
+		]])])
+	],
+	"pb-model": [S("Mô hình là các bảng và đường nối giữa chúng. Bảng chiến dịch (mô tả) nối với bảng form (sự kiện) qua campaign_id.", "A model is tables and the lines between them. The campaign table (description) joins the form table (events) through campaign_id.", [T("campaign", ["campaign_id", "name"], [[1, "Tết"], [2, "Hè"]], { cols: [0] }), T("forms", ["form_id", "campaign_id"], [
+		[1, 1],
+		[2, 1],
+		[3, 2]
+	], { cols: [1] })]), S("Chọn «Tết» ở bảng chiến dịch: bộ lọc chảy qua đường nối, chỉ còn các form của Tết.", "Pick Tết in the campaign table: the filter flows along the line, leaving only Tết's forms.", [T("campaign", ["campaign_id", "name"], [[1, "Tết"], [2, "Hè"]], {
+		rows: [0],
+		dim: [1]
+	}), T("forms", ["form_id", "campaign_id"], [
+		[1, 1],
+		[2, 1],
+		[3, 2]
+	], {
+		rows: [0, 1],
+		dim: [2]
+	})])],
+	"pb-pq": [
+		S("Power Query là một danh sách bước. Mỗi bước là một công thức, chạy lần lượt trên dữ liệu thô.", "Power Query is a list of steps. Each step is a formula, run in order on the raw data.", [T("applied steps", ["#", "bước"], [
+			[1, "Source: đọc file"],
+			[2, "Filter: bỏ dòng trống"],
+			[3, "Change type: spend thành số"]
+		])]),
+		S("Dữ liệu thô có một dòng trống và spend là chữ. Sau ba bước còn dữ liệu sạch.", "Raw data has a blank row and spend as text. After three steps it is clean.", [T("thô", ["channel", "spend"], [
+			["GDN", "8"],
+			[null, null],
+			["Meta", "12"]
+		], { bad: [1] }), T("sau 3 bước", ["channel", "spend"], [["GDN", 8], ["Meta", 12]], { add: [0, 1] })]),
+		S("Làm mới (refresh) là chạy lại cả ba công thức trên dữ liệu mới. Dòng TikTok mới tự đi qua các bước.", "Refresh runs all three formulas again on the new data. The new TikTok row passes through the steps by itself.", [T("sau khi refresh", ["channel", "spend"], [
+			["GDN", 8],
+			["Meta", 12],
+			["TikTok", 6]
+		], { add: [2] })])
+	],
+	"pb-grain": [
+		S("Mỗi dòng của bảng này là một dòng hàng trong đơn, không phải một đơn. Đó là grain (độ mịn).", "Each row of this table is one order line, not one order. That is the grain.", [T("order_lines", ["order_id", "item"], [
+			[1, "A"],
+			[1, "B"],
+			[2, "A"]
+		])]),
+		S("Đếm dòng ra 3. Đây là số dòng hàng, không phải số đơn.", "Counting rows gives 3. That is the number of lines, not of orders.", [T("order_lines", ["order_id", "item"], [
+			[1, "A"],
+			[1, "B"],
+			[2, "A"]
+		], { rows: [
+			0,
+			1,
+			2
+		] })], "COUNTROWS(order_lines)   → 3"),
+		S("Muốn số đơn thì đếm mã đơn khác nhau: ra 2.", "For the number of orders, count distinct order ids: 2.", [T("order_lines", ["order_id", "item"], [
+			[1, "A"],
+			[1, "B"],
+			[2, "A"]
+		], { cols: [0] })], "DISTINCTCOUNT(order_lines[order_id])   → 2")
+	],
+	"pb-dax": [
+		S("Bảng ads. Cột tính (calculated column) lưu một giá trị cho mỗi dòng, tính một lần lúc làm mới.", "The ads table. A calculated column stores one value per row, computed once at refresh.", [T("ads", [
+			"channel",
+			"spend",
+			"forms",
+			"cpl"
+		], [
+			[
+				"GDN",
+				8,
+				24,
+				.333
+			],
+			[
+				"GDN",
+				10,
+				35,
+				.286
+			],
+			[
+				"TikTok",
+				6,
+				12,
+				.5
+			]
+		], { addCols: [3] })], "cpl = [spend] / [forms]"),
+		S("Measure không lưu gì. Nó tính lại mỗi lần bộ lọc đổi. Không lọc: tổng chi chia tổng form.", "A measure stores nothing. It recomputes each time the filter changes. No filter: total spend over total forms.", [T("measure CPL", ["bộ lọc", "CPL"], [["không lọc", .362]], { cells: [[0, 1]] })], "CPL = DIVIDE(SUM(ads[spend]), SUM(ads[forms]))"),
+		S("Lọc kênh nào thì measure tính lại trên các dòng của kênh đó. Trung bình các cột cpl sẽ không cho đúng con số này.", "Filter a channel and the measure recomputes over that channel's rows. Averaging the cpl column would not give these numbers.", [T("measure CPL", ["bộ lọc", "CPL"], [
+			["không lọc", .362],
+			["channel = GDN", .337],
+			["channel = TikTok", .415]
+		], { rows: [1, 2] })])
+	],
+	"pb-rls": [
+		S("Bảng form, mỗi dòng có người phụ trách.", "A form table, each row with an owner.", [T("forms", [
+			"form_id",
+			"owner",
+			"forms"
+		], [
+			[
+				1,
+				"An",
+				24
+			],
+			[
+				2,
+				"Bình",
+				12
+			],
+			[
+				3,
+				"An",
+				35
+			],
+			[
+				4,
+				"Bình",
+				9
+			]
+		])]),
+		S("Luật RLS (row-level security) áp lên người xem. Khi Bình mở báo cáo, dòng của An bị ẩn đi hoàn toàn.", "An RLS (row-level security) rule is applied to the viewer. When Bình opens the report, An's rows are hidden entirely.", [T("Bình nhìn thấy", [
+			"form_id",
+			"owner",
+			"forms"
+		], [
+			[
+				1,
+				"An",
+				24
+			],
+			[
+				2,
+				"Bình",
+				12
+			],
+			[
+				3,
+				"An",
+				35
+			],
+			[
+				4,
+				"Bình",
+				9
+			]
+		], {
+			dim: [0, 2],
+			rows: [1, 3]
+		})], "[owner] = USERNAME()"),
+		S("Slicer thì khác: người xem tự bấm và có thể bỏ chọn. RLS không cho người xem tự gỡ.", "A slicer is different: the viewer clicks and can clear it. RLS cannot be removed by the viewer.", [T("so sánh", [
+			"",
+			"ai quyết định",
+			"bỏ được?"
+		], [[
+			"slicer",
+			"người xem",
+			"được"
+		], [
+			"RLS",
+			"người quản trị",
+			"không"
+		]], { rows: [1] })])
+	],
+	"pb-refresh": [
+		S("Nguồn có ba dòng. Báo cáo tính tổng form: 71.", "The source has three rows. The report totals the forms: 71.", [T("nguồn", ["form_id", "forms"], [
+			[1, 24],
+			[2, 12],
+			[3, 35]
+		]), T("báo cáo", ["", "tổng form"], [["measure", 71]])]),
+		S("Nguồn có thêm một dòng mới. Báo cáo chưa làm mới nên vẫn hiện 71.", "A new row lands in the source. The report has not refreshed, so it still shows 71.", [T("nguồn", ["form_id", "forms"], [
+			[1, 24],
+			[2, 12],
+			[3, 35],
+			[4, 9]
+		], { add: [3] }), T("báo cáo", ["", "tổng form"], [["measure", 71]], { bad: [0] })]),
+		S("Làm mới (refresh) kéo dòng mới về và chạy lại công thức: 80. Measure không giữ số cũ.", "Refresh pulls the new row and reruns the formula: 80. A measure does not keep the old number.", [T("nguồn", ["form_id", "forms"], [
+			[1, 24],
+			[2, 12],
+			[3, 35],
+			[4, 9]
+		]), T("báo cáo", ["", "tổng form"], [["measure", 80]], { cells: [[0, 1]] })])
+	]
+};
+var xlDemos = {
+	"xl-cell": [S("Một ô giữ ba loại thứ: số, chữ hoặc công thức. Bảng này cho thấy bạn gõ gì và ô hiện gì.", "A cell holds one of three things: a number, text or a formula. This shows what you type and what the cell shows.", [T("sheet", [
+		"ô",
+		"bạn gõ",
+		"ô hiện",
+		"loại"
+	], [
+		[
+			"A1",
+			"12",
+			"12",
+			"số"
+		],
+		[
+			"A2",
+			"'12",
+			"12",
+			"chữ trông giống số"
+		],
+		[
+			"A3",
+			"=A1*2",
+			"24",
+			"công thức"
+		]
+	])]), S("SUM bỏ qua ô chữ. Tổng A1:A2 chỉ là 12, không phải 24.", "SUM skips text cells. The total of A1:A2 is just 12, not 24.", [T("sheet", [
+		"ô",
+		"bạn gõ",
+		"ô hiện",
+		"loại"
+	], [
+		[
+			"A1",
+			"12",
+			"12",
+			"số"
+		],
+		[
+			"A2",
+			"'12",
+			"12",
+			"chữ trông giống số"
+		],
+		[
+			"A3",
+			"=A1*2",
+			"24",
+			"công thức"
+		]
+	], {
+		rows: [0],
+		dim: [1]
+	})], "=SUM(A1:A2)   → 12")],
+	"xl-lock": [S("Công thức =B2*$E$1 nhân chi tiêu với tỷ lệ ở E1. Dấu $ khóa địa chỉ E1.", "The formula =B2*$E$1 multiplies spend by the rate in E1. The $ signs lock E1.", [T("kéo xuống bốn dòng", ["dòng", "công thức"], [
+		[2, "=B2*$E$1"],
+		[3, "=B3*$E$1"],
+		[4, "=B4*$E$1"]
+	], { cols: [1] })], "=B2*$E$1"), S("Không có $, địa chỉ trượt theo khi kéo: E1 thành E2, E3. Các ô đó trống nên ra 0.", "Without $, the address slides as you drag: E1 becomes E2, E3. Those cells are empty so you get 0.", [T("kéo xuống bốn dòng", ["dòng", "công thức"], [
+		[2, "=B2*E1"],
+		[3, "=B3*E2"],
+		[4, "=B4*E3"]
+	], { bad: [1, 2] })], "=B2*E1")],
+	"xl-if": [
+		S("IF chọn một nhánh: chi từ 10 trở lên là «cao», còn lại là «thấp».", "IF picks one branch: spend of 10 or more is cao, otherwise thấp.", [T("tuần", [
+			"tuần",
+			"chi",
+			"tier"
+		], [
+			[
+				"w1",
+				12,
+				"cao"
+			],
+			[
+				"w2",
+				8,
+				"thấp"
+			],
+			[
+				"w3",
+				"(trống)",
+				"thấp"
+			]
+		], { addCols: [2] })], "=IF(B2>=10, \"cao\", \"thấp\")"),
+		S("Tuần 3 chưa nhập số. Ô trống bị coi như 0 nên rơi vào «thấp», trông như tuần chi ít.", "Week 3 has no number yet. A blank is treated as 0, so it lands in thấp, looking like a low-spend week.", [T("tuần", [
+			"tuần",
+			"chi",
+			"tier"
+		], [
+			[
+				"w1",
+				12,
+				"cao"
+			],
+			[
+				"w2",
+				8,
+				"thấp"
+			],
+			[
+				"w3",
+				"(trống)",
+				"thấp"
+			]
+		], { cells: [[2, 2]] })]),
+		S("Muốn tách trường hợp chưa có số thì kiểm tra ô trống trước.", "To separate the not-entered case, test for blank first.", [T("tuần", [
+			"tuần",
+			"chi",
+			"tier"
+		], [
+			[
+				"w1",
+				12,
+				"cao"
+			],
+			[
+				"w2",
+				8,
+				"thấp"
+			],
+			[
+				"w3",
+				"(trống)",
+				"chưa có"
+			]
+		], { cells: [[2, 2]] })], "=IF(ISBLANK(B4), \"chưa có\", IF(B4>=10, \"cao\", \"thấp\"))")
+	],
+	"xl-keep": [
+		S("Bảng có năm dòng.", "A table with five rows.", [T("ads", ["kênh", "chi"], [
+			["GDN", 12],
+			["Meta", 8],
+			["TikTok", 4],
+			["Zalo", 3],
+			["Bing", 9]
+		])]),
+		S("Lọc chi ≥ 8: dòng khác bị giấu đi, không bị xóa.", "Filter spend ≥ 8: the other rows are hidden, not deleted.", [T("ads", ["kênh", "chi"], [
+			["GDN", 12],
+			["Meta", 8],
+			["TikTok", 4],
+			["Zalo", 3],
+			["Bing", 9]
+		], { dim: [2, 3] })]),
+		S("Bỏ bộ lọc thì mọi dòng quay lại như cũ.", "Clear the filter and every row comes back.", [T("ads", ["kênh", "chi"], [
+			["GDN", 12],
+			["Meta", 8],
+			["TikTok", 4],
+			["Zalo", 3],
+			["Bing", 9]
+		])]),
+		S("Xóa dòng mới làm mất dữ liệu thật. Lúc này không còn đường quay lại ngoài hoàn tác.", "Deleting is what really loses data. Only undo gets it back.", [T("ads", ["kênh", "chi"], [
+			["GDN", 12],
+			["Meta", 8],
+			["Bing", 9]
+		])])
+	],
+	"xl-chart": [S("Muốn so các nhóm với nhau (kênh này với kênh kia): dùng biểu đồ cột. Mỗi nhóm một cột.", "To compare groups (one channel with another): use a bar chart. One bar per group.", [T("so nhóm → biểu đồ cột", ["kênh", "form"], [
+		["GDN", 90],
+		["Meta", 55],
+		["TikTok", 41]
+	], { cols: [1] })]), S("Muốn xem một thứ đổi theo thời gian: dùng biểu đồ đường. Thứ tự tuần là có thật nên nối các điểm được.", "To see one thing change over time: use a line chart. Week order is real, so joining the points makes sense.", [T("theo thời gian → biểu đồ đường", ["tuần", "form"], [
+		["w1", 41],
+		["w2", 55],
+		["w3", 90]
+	], { cols: [1] })])],
+	"xl-pivot": [
+		S("Sáu dòng gốc: mỗi dòng là một kênh trong một tuần.", "Six raw rows: each is one channel in one week.", [T("ads", [
+			"week",
+			"channel",
+			"spend"
+		], [
+			[
+				1,
+				"GDN",
+				8
+			],
+			[
+				1,
+				"TikTok",
+				6
+			],
+			[
+				2,
+				"GDN",
+				10
+			],
+			[
+				2,
+				"TikTok",
+				4
+			],
+			[
+				3,
+				"GDN",
+				12
+			],
+			[
+				3,
+				"TikTok",
+				7
+			]
+		])]),
+		S("PivotTable nhóm các dòng theo kênh và cộng chi tiêu. Sáu dòng thành hai dòng.", "A PivotTable groups rows by channel and sums spend. Six rows become two.", [T("pivot: hàng = channel, giá trị = tổng spend", ["channel", "tổng spend"], [["GDN", 30], ["TikTok", 17]], { addCols: [1] })]),
+		S("Đưa tuần lên cột thì ra bảng chéo. Tổng vẫn là 47, như ở bảng gốc. Pivot chỉ sắp lại, không tạo thêm số.", "Move week to columns for a cross-table. The total is still 47, as in the raw table. A pivot only rearranges, it creates no new numbers.", [T("pivot: hàng = channel, cột = week", [
+			"channel",
+			"w1",
+			"w2",
+			"w3",
+			"tổng"
+		], [
+			[
+				"GDN",
+				8,
+				10,
+				12,
+				30
+			],
+			[
+				"TikTok",
+				6,
+				4,
+				7,
+				17
+			],
+			[
+				"tổng",
+				14,
+				14,
+				19,
+				47
+			]
+		], { rows: [2] })])
+	],
+	"xl-look": [
+		S("Bảng tra: cột đầu là tên kênh, bên phải là mã và giá mỗi form.", "A lookup table: the first column is the channel name, to the right are the code and cost per form.", [T("kênh", [
+			"name",
+			"id",
+			"cpl"
+		], [
+			[
+				"GDN",
+				1,
+				40
+			],
+			[
+				"Meta",
+				2,
+				55
+			],
+			[
+				"TikTok",
+				3,
+				32
+			]
+		], { cols: [0] })]),
+		S("VLOOKUP tìm «Meta» ở cột đầu rồi lấy ô ở cột thứ 3 của dòng đó. FALSE ở cuối nghĩa là chỉ lấy khớp đúng.", "VLOOKUP finds Meta in the first column then takes the cell from the 3rd column of that row. The final FALSE means exact match only.", [T("kênh", [
+			"name",
+			"id",
+			"cpl"
+		], [
+			[
+				"GDN",
+				1,
+				40
+			],
+			[
+				"Meta",
+				2,
+				55
+			],
+			[
+				"TikTok",
+				3,
+				32
+			]
+		], {
+			rows: [1],
+			cells: [[1, 2]]
+		})], "=VLOOKUP(\"Meta\", A:C, 3, FALSE)   → 55"),
+		S("Nó chỉ nhìn sang bên phải của cột tìm. Muốn lấy cột nằm bên trái cột tìm thì VLOOKUP không làm được. Bỏ FALSE thì nó tìm gần đúng và có thể trả về dòng sai.", "It only looks to the right of the search column. A column to the left of it cannot be fetched. Drop FALSE and it matches approximately and may return the wrong row.", [T("kênh", [
+			"name",
+			"id",
+			"cpl"
+		], [
+			[
+				"GDN",
+				1,
+				40
+			],
+			[
+				"Meta",
+				2,
+				55
+			],
+			[
+				"TikTok",
+				3,
+				32
+			]
+		], { bad: [
+			0,
+			1,
+			2
+		] })], "=VLOOKUP(2, B:C, ...) không lấy được cột name ở bên trái")
+	],
+	"xa-text": [S("Hàm xử lý chuỗi trả về chữ. LEFT lấy bốn ký tự đầu của «2026-01».", "String functions return text. LEFT takes the first four characters of 2026-01.", [T("công thức", [
+		"công thức",
+		"kết quả",
+		"loại"
+	], [[
+		"=LEFT(\"2026-01\", 4)",
+		"2026",
+		"chữ"
+	]], { cells: [[0, 1]] })]), S("Trông giống số nhưng vẫn là chữ nên SUM bỏ qua. Muốn thành số phải bọc VALUE.", "It looks like a number but it is text, so SUM skips it. To make it a number, wrap it in VALUE.", [T("công thức", [
+		"công thức",
+		"kết quả",
+		"loại"
+	], [[
+		"=LEFT(\"2026-01\", 4)",
+		"2026",
+		"chữ"
+	], [
+		"=VALUE(LEFT(\"2026-01\", 4))",
+		2026,
+		"số"
+	]], { rows: [1] })])],
+	"xa-count": [
+		S("Một cột có số, chữ «n/a» và một ô trống.", "A column with numbers, the text n/a and a blank cell.", [T("cột B", ["ô", "giá trị"], [
+			["B1", 12],
+			["B2", "n/a"],
+			["B3", "(trống)"],
+			["B4", 7]
+		])]),
+		S("COUNT chỉ đếm ô là số: B1 và B4, ra 2.", "COUNT counts only numeric cells: B1 and B4, so 2.", [T("cột B", ["ô", "giá trị"], [
+			["B1", 12],
+			["B2", "n/a"],
+			["B3", "(trống)"],
+			["B4", 7]
+		], { cells: [[0, 1], [3, 1]] })], "=COUNT(B1:B4)   → 2"),
+		S("COUNTA đếm mọi ô không trống, kể cả chữ: ra 3.", "COUNTA counts every non-empty cell, text included: 3.", [T("cột B", ["ô", "giá trị"], [
+			["B1", 12],
+			["B2", "n/a"],
+			["B3", "(trống)"],
+			["B4", 7]
+		], { cells: [
+			[0, 1],
+			[1, 1],
+			[3, 1]
+		] })], "=COUNTA(B1:B4)   → 3")
+	],
+	"xa-match": [
+		S("Bảng có tên kênh ở cột A và mã ở cột B. Cần tìm tên khi biết mã 2: tên nằm bên trái cột mã.", "Names in column A and codes in column B. We need the name given code 2: the name is left of the code column.", [T("kênh", ["A: name", "B: id"], [
+			["GDN", 1],
+			["Meta", 2],
+			["TikTok", 3]
+		], { cols: [1] })]),
+		S("MATCH tìm mã 2 trong cột B và báo vị trí: dòng thứ 2.", "MATCH finds code 2 in column B and reports the position: the 2nd row.", [T("kênh", ["A: name", "B: id"], [
+			["GDN", 1],
+			["Meta", 2],
+			["TikTok", 3]
+		], { cells: [[1, 1]] })], "=MATCH(2, B:B, 0)   → 2"),
+		S("INDEX lấy ô thứ 2 của cột A. Nó nhìn được sang trái, điều VLOOKUP không làm được.", "INDEX takes the 2nd cell of column A. It can look left, which VLOOKUP cannot.", [T("kênh", ["A: name", "B: id"], [
+			["GDN", 1],
+			["Meta", 2],
+			["TikTok", 3]
+		], { cells: [[1, 0]] })], "=INDEX(A:A, MATCH(2, B:B, 0))   → Meta")
+	],
+	"xa-what": [S("Mô hình nhỏ: số form = chi tiêu × tỷ lệ. Ô đầu vào là chi tiêu 8 và tỷ lệ 3.", "A small model: forms = spend × rate. The input cells are spend 8 and rate 3.", [T("ô đầu vào", ["ô", "giá trị"], [
+		["spend", 8],
+		["rate", 3],
+		["forms = spend × rate", 24]
+	], {
+		rows: [0, 1],
+		cells: [[2, 1]]
+	})]), S("Đổi tỷ lệ thành 4, số form tự tính lại ra 32. Đây là phép tính theo giả định bạn nhập, không phải dự báo.", "Change rate to 4 and forms recalculates to 32. This is arithmetic on the assumption you typed, not a forecast.", [T("ô đầu vào", ["ô", "giá trị"], [
+		["spend", 8],
+		["rate", 4],
+		["forms = spend × rate", 32]
+	], { cells: [[1, 1], [2, 1]] })])],
+	"xa-macro": [
+		S("Macro ghi lại các thao tác bạn bấm theo thứ tự.", "A macro records the steps you click, in order.", [T("macro đã ghi", ["#", "thao tác"], [
+			[1, "chọn cột C"],
+			[2, "xếp giảm dần"],
+			[3, "tô vàng dòng đầu"]
+		])]),
+		S("Chạy lại macro là bấm lại đúng các bước đó trên dữ liệu mới.", "Running the macro replays exactly those clicks on new data.", [T("macro đã ghi", ["#", "thao tác"], [
+			[1, "chọn cột C"],
+			[2, "xếp giảm dần"],
+			[3, "tô vàng dòng đầu"]
+		], { rows: [
+			0,
+			1,
+			2
+		] })]),
+		S("Nó không biết bạn muốn gì. Nếu dữ liệu mới có thêm một cột thì «cột C» là cột khác, và macro vẫn bấm.", "It does not know what you want. If the new data has an extra column, column C is a different column, and the macro still clicks.", [T("macro đã ghi", ["#", "thao tác"], [
+			[1, "chọn cột C"],
+			[2, "xếp giảm dần"],
+			[3, "tô vàng dòng đầu"]
+		], { bad: [0] })])
+	]
+};
+var demos = {
+	...sqlDemos,
+	...xlDemos,
+	...pyDemos,
+	...vizDemos
+};
 function t(lang, vi, en) {
 	return lang === "en" ? en : vi;
 }
@@ -3832,7 +6888,10 @@ function ConceptView({ concept }) {
 					}),
 					/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
 						className: "mt-3",
-						children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Stage3D, {
+						children: demos[concept.id] ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)(DataDemo, {
+							demo: demos[concept.id],
+							lang
+						}) : /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Stage3D, {
 							scene: concept.scene,
 							lang
 						})

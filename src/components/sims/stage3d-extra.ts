@@ -64,12 +64,37 @@ function bars(THREE: Three, world: Group, kit: Kit, rows: [string, string, numbe
 }
 
 function toggle(THREE: Three, world: Group, kit: Kit, a: [string, string], b: [string, string], noteA: [string, string], noteB: [string, string]): Update {
-  const left = chip(THREE, world, kit, a[0], a[1], 0, 0.15, 2.15);
-  const right = chip(THREE, world, kit, b[0], b[1], 0, 0.15, 2.15);
-  return (_dt, t, tell) => {
+  // Hai thẻ đặt cạnh nhau trong không gian. Thẻ đang được nói tới nổi lên và sáng, thẻ kia lùi lại.
+  const make = (text: [string, string], x: number, color: number) => {
+    const group = new THREE.Group();
+    const body = new THREE.Mesh(new THREE.BoxGeometry(2.1, 1.25, 0.3), kit.lambert(THREE, color));
+    const face = kit.label(THREE, kit.L(text[0], text[1]), 1.9);
+    face.position.set(0, 0, 0.24);
+    const base = new THREE.Mesh(new THREE.BoxGeometry(2.1, 0.07, 0.34), new THREE.MeshBasicMaterial({ color: kit.GOLD }));
+    base.position.set(0, -0.72, 0);
+    group.add(body, face, base);
+    group.position.set(x, 0.1, 0);
+    world.add(group);
+    return { group, body, base };
+  };
+  const left = make(a, -1.25, kit.GOLD);
+  const right = make(b, 1.25, kit.CLAY);
+  return (dt, t, tell) => {
     const on = t % 6 > 3;
-    left.visible = !on;
-    right.visible = on;
+    const step = Math.min(1, dt * 7);
+    [
+      [left, !on],
+      [right, on],
+    ].forEach(([card, active]) => {
+      const c = card as typeof left;
+      const target = active ? 1 : 0;
+      c.group.position.z += ((active ? 0.45 : -0.2) - c.group.position.z) * step;
+      c.group.scale.setScalar(c.group.scale.x + ((active ? 1.07 : 0.92) - c.group.scale.x) * step);
+      c.base.visible = target === 1;
+      const mat = c.body.material as InstanceType<Three["MeshLambertMaterial"]>;
+      mat.transparent = true;
+      mat.opacity += ((active ? 1 : 0.45) - mat.opacity) * step;
+    });
     const note = on ? noteB : noteA;
     say(kit, note[0], note[1], tell);
   };
