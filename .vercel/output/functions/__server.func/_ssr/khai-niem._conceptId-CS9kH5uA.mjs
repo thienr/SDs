@@ -1,10 +1,10 @@
 import { o as __toESM } from "../_runtime.mjs";
 import { J as require_react, S as require_jsx_runtime, b as Link } from "../_libs/@tanstack/react-router+[...].mjs";
-import { A as studyCopy, B as subscribeRaw, F as getRawVersion, I as getServerRawVersion, M as studyNeighbors, O as subscribeProgress, b as getServerProgress, j as studyListTitle, k as getStudy, r as Route$1, y as getProgress } from "./router-E7iIJF7x.mjs";
-import { n as Range, r as Sim, t as Lab } from "./labs-Z7di7tsM.mjs";
+import { A as studyCopy, B as subscribeRaw, F as getRawVersion, I as getServerRawVersion, M as studyNeighbors, O as subscribeProgress, b as getServerProgress, j as studyListTitle, k as getStudy, r as Route$1, y as getProgress } from "./router-BGQUklxF.mjs";
+import { n as Range, r as Sim, t as Lab } from "./labs-DnD_v-xp.mjs";
 import { t as Tex } from "./tex-t3KOuum9.mjs";
-import { o as relatedOf } from "./map-1mTIDri5.mjs";
-//#region node_modules/.nitro/vite/services/ssr/assets/khai-niem._conceptId-DsNkipxk.js
+import { o as relatedOf } from "./map-BGpkzDS1.mjs";
+//#region node_modules/.nitro/vite/services/ssr/assets/khai-niem._conceptId-CS9kH5uA.js
 var import_react = /* @__PURE__ */ __toESM(require_react());
 var import_jsx_runtime = require_jsx_runtime();
 var ui$1 = {
@@ -10569,7 +10569,7 @@ var pilotWalks = {
 	}
 };
 /** C0: hiểu việc, giải quyết vấn đề, Excel. Tháng 1 ở Lotus Spa. */
-var base$8 = {
+var base$9 = {
 	"c0-order": {
 		vi: {
 			story: "Tháng 1, Lotus Spa (3 chi nhánh: Quận 1, Quận 3, Thủ Đức). Chị Lan, chủ chuỗi, gọi bạn vào phòng: «Form đặt hẹn tháng 12 giảm, em xem giúp chị.» Đây là việc đầu tiên của bạn, và cả năm tới bạn sẽ đi cùng câu chuyện này.",
@@ -11207,7 +11207,7 @@ var base$8 = {
 		}
 	}
 };
-var visuals$8 = {
+var visuals$9 = {
 	"c0-order": {
 		kind: "bars",
 		title: ["Form theo tháng", "Forms by month"],
@@ -11486,12 +11486,12 @@ var visuals$8 = {
 		note: ["Mã 25 không có: tìm gần đúng lấy dòng mã 20.", "Code 25 is missing: approximate match takes the code 20 row."]
 	}
 };
-var c0Walks = Object.fromEntries(Object.entries(base$8).map(([id, w]) => [id, visuals$8[id] ? {
+var c0Walks = Object.fromEntries(Object.entries(base$9).map(([id, w]) => [id, visuals$9[id] ? {
 	...w,
-	visual: visuals$8[id]
+	visual: visuals$9[id]
 } : w]));
 /** C1: Python cho khoa học dữ liệu. Tháng 2 ở Lotus Spa. */
-var base$7 = {
+var base$8 = {
 	"py-run": {
 		vi: {
 			story: "Tháng 2. Excel đã cho bạn thấy hạn chế: file 12 tuần × 3 kênh quá nhiều để làm tay. Bạn mở notebook Python đầu tiên và tính lại CPA tuần này (chi 15 triệu, 50 form).",
@@ -12115,7 +12115,7 @@ var base$7 = {
 		}
 	}
 };
-var visuals$7 = {
+var visuals$8 = {
 	"py-run": {
 		kind: "table",
 		title: ["Notebook sau khi sửa forms nhưng chưa chạy lại ô 2", "Notebook after editing forms but not re-running cell 2"],
@@ -12318,12 +12318,12 @@ var visuals$7 = {
 		note: ["Tổng 151 form, cùng tổng với 50 + 50 + 51 theo tuần.", "Total 151 forms, the same as 50 + 50 + 51 by week."]
 	}
 };
-var c1Walks = Object.fromEntries(Object.entries(base$7).map(([id, w]) => [id, visuals$7[id] ? {
+var c1Walks = Object.fromEntries(Object.entries(base$8).map(([id, w]) => [id, visuals$8[id] ? {
 	...w,
-	visual: visuals$7[id]
+	visual: visuals$8[id]
 } : w]));
 /** Toán cho khoa học dữ liệu. Tháng 3 ở Lotus Spa: mọi phép toán đều tính trên số form, chi phí, giá gói của spa. */
-var base$6 = {
+var base$7 = {
 	"math-vec": {
 		vi: {
 			story: "Tháng 3. Chị Lan hỏi: «Em hay nói tới mô hình, mà bên trong nó là gì?» Bạn bắt đầu từ khối nhỏ nhất: một dãy số có thứ tự, chính là số form tuần này theo ba kênh.",
@@ -12997,7 +12997,7 @@ var base$6 = {
 		}
 	}
 };
-var visuals$6 = {
+var visuals$7 = {
 	"math-vec": {
 		kind: "bars",
 		title: ["Véctơ form tuần này f = (18, 20, 12)", "This week's forms vector f = (18, 20, 12)"],
@@ -13242,12 +13242,12 @@ var visuals$6 = {
 		mark: [[1, 3]]
 	}
 };
-var mathWalks = Object.fromEntries(Object.entries(base$6).map(([id, w]) => [id, visuals$6[id] ? {
+var mathWalks = Object.fromEntries(Object.entries(base$7).map(([id, w]) => [id, visuals$7[id] ? {
 	...w,
-	visual: visuals$6[id]
+	visual: visuals$7[id]
 } : w]));
 /** Thống kê mô tả. Tháng 3 ở Lotus Spa. Dãy chính D: form 9 tuần gần đây, tuần cuối có đợt khuyến mãi. */
-var base$5 = {
+var base$6 = {
 	"ds-type": {
 		vi: {
 			story: "Tháng 3. Thảo gửi bảng khảo sát hội viên. Trước khi tính gì, bạn gọi tên kiểu của từng cột, vì kiểu quyết định phép tính nào có nghĩa.",
@@ -13591,7 +13591,7 @@ var base$5 = {
 		}
 	}
 };
-var visuals$5 = {
+var visuals$6 = {
 	"ds-type": {
 		kind: "table",
 		title: ["Bốn cột, ba kiểu", "Four columns, three types"],
@@ -13772,12 +13772,12 @@ var visuals$5 = {
 		]
 	}
 };
-var dsWalks = Object.fromEntries(Object.entries(base$5).map(([id, w]) => [id, visuals$5[id] ? {
+var dsWalks = Object.fromEntries(Object.entries(base$6).map(([id, w]) => [id, visuals$6[id] ? {
 	...w,
-	visual: visuals$5[id]
+	visual: visuals$6[id]
 } : w]));
 /** C2 phần 1: EDA, xác suất, lấy mẫu. Tháng 3 ở Lotus Spa. */
-var base$4 = {
+var base$5 = {
 	"eda-ask": {
 		vi: {
 			story: "Tháng 3, bạn mở lại câu hỏi từ đầu năm: form tháng 12 giảm 40 (220 xuống 180). Trước khi vẽ biểu đồ nào, bạn phải có câu hỏi cụ thể để dữ liệu trả lời.",
@@ -14995,7 +14995,7 @@ var base$4 = {
 		}
 	}
 };
-var visuals$4 = {
+var visuals$5 = {
 	"eda-ask": {
 		kind: "table",
 		title: ["Form theo kênh, tháng 11 và tháng 12", "Forms by channel, November and December"],
@@ -15400,12 +15400,12 @@ var visuals$4 = {
 		mark: [[0, 1]]
 	}
 };
-var c2aWalks = Object.fromEntries(Object.entries(base$4).map(([id, w]) => [id, visuals$4[id] ? {
+var c2aWalks = Object.fromEntries(Object.entries(base$5).map(([id, w]) => [id, visuals$5[id] ? {
 	...w,
-	visual: visuals$4[id]
+	visual: visuals$5[id]
 } : w]));
 /** C2 phần 2a: kiểm định giả thuyết. Tháng 4 ở Lotus Spa: trang đích mới B so với trang cũ A. */
-var base$3 = {
+var base$4 = {
 	"ht-rule": {
 		vi: {
 			story: "Tháng 4, Thảo làm trang đích mới (B) và cho chạy song song với trang cũ (A), mỗi trang 2.000 người xem. Trước khi mở số, bạn phải chốt luật quyết định, nếu không sẽ vô thức chọn luật theo kết quả.",
@@ -15739,7 +15739,7 @@ var base$3 = {
 		}
 	}
 };
-var visuals$3 = {
+var visuals$4 = {
 	"ht-t": {
 		kind: "bars",
 		title: ["Vạch bác bỏ và t quan sát", "Cut-offs and observed t"],
@@ -15878,15 +15878,15 @@ var visuals$3 = {
 		mark: [[2, 4]]
 	}
 };
-var c2bWalks = Object.fromEntries(Object.entries(base$3).map(([id, w]) => [id, visuals$3[id] ? {
+var c2bWalks = Object.fromEntries(Object.entries(base$4).map(([id, w]) => [id, visuals$4[id] ? {
 	...w,
-	visual: visuals$3[id]
+	visual: visuals$4[id]
 } : w]));
 /**
 * C2: SQL (MySQL cơ bản + SQL nâng cao). Cuối tháng 4: bạn dựng báo cáo cho Lotus Spa.
 * Bảng chính: weekly(week, channel, spend, forms) = 3 tuần x 3 kênh, tổng form 151.
 */
-var base$2 = {
+var base$3 = {
 	"sql-wh": {
 		vi: {
 			story: "Cuối tháng 4, chị Lan hỏi doanh thu 18 tháng theo chi nhánh. Hệ thống đặt hẹn của spa là nơi thu ngân đang ghi từng lượt, và bạn phải trả lời mà không làm chậm nó.",
@@ -16596,7 +16596,7 @@ var base$2 = {
 		}
 	}
 };
-var visuals$2 = {
+var visuals$3 = {
 	"sql-star": {
 		kind: "table",
 		title: ["Bảng giữa: form theo tuần và kênh", "Middle table: forms by week and channel"],
@@ -16784,12 +16784,12 @@ var visuals$2 = {
 		}]
 	}
 };
-var sqlWalks = Object.fromEntries(Object.entries(base$2).map(([id, w]) => [id, visuals$2[id] ? {
+var sqlWalks = Object.fromEntries(Object.entries(base$3).map(([id, w]) => [id, visuals$3[id] ? {
 	...w,
-	visual: visuals$2[id]
+	visual: visuals$3[id]
 } : w]));
 /** C3 phần 1: hồi quy tuyến tính, gradient descent, hồi quy bội. Tháng 5 ở Lotus Spa. */
-var base$1 = {
+var base$2 = {
 	"ml-what": {
 		vi: {
 			story: "Tháng 5, chị Lan hỏi: «Nếu Thảo tăng ngân sách TikTok lên 6 triệu thì được bao nhiêu form?» Đây là lúc bạn chuyển từ mô tả quá khứ sang dự đoán một dòng mới.",
@@ -17249,7 +17249,7 @@ var base$1 = {
 		}
 	}
 };
-var visuals$1 = {
+var visuals$2 = {
 	"ml-what": {
 		kind: "table",
 		title: ["Dữ liệu huấn luyện và dòng cần dự đoán", "Training data and the row to predict"],
@@ -17478,15 +17478,15 @@ var visuals$1 = {
 		]
 	}
 };
-var c3aWalks = Object.fromEntries(Object.entries(base$1).map(([id, w]) => [id, visuals$1[id] ? {
+var c3aWalks = Object.fromEntries(Object.entries(base$2).map(([id, w]) => [id, visuals$2[id] ? {
 	...w,
-	visual: visuals$1[id]
+	visual: visuals$2[id]
 } : w]));
 /**
 * C3 phần 2a: hồi quy logistic và cây quyết định. Tháng 5-6 ở Lotus Spa: dự đoán hội viên sắp rời.
 * Số cố định: 1000 hội viên, 50 sắp rời; công cụ bắt đúng 45, bỏ sót 5, báo nhầm 76, đúng 874.
 */
-var base = {
+var base$1 = {
 	"logit-why": {
 		vi: {
 			story: "Sau khi dự đoán form, chị Lan chuyển câu hỏi sang hội viên: «Ai sắp rời?» Đáp án giờ là có/không (1 = rời, 0 = ở lại), và bạn thử dùng đường thẳng như cũ.",
@@ -17970,7 +17970,7 @@ var base = {
 		}
 	}
 };
-var visuals = {
+var visuals$1 = {
 	"logit-why": {
 		kind: "table",
 		title: ["Đường thẳng cho đáp án 0/1", "A straight line on a 0/1 answer"],
@@ -18215,7 +18215,821 @@ var visuals = {
 		mark: [[1, 2]]
 	}
 };
-var c3bWalks = Object.fromEntries(Object.entries(base).map(([id, w]) => [id, visuals[id] ? {
+var c3bWalks = Object.fromEntries(Object.entries(base$1).map(([id, w]) => [id, visuals$1[id] ? {
+	...w,
+	visual: visuals$1[id]
+} : w]));
+/**
+* C3 phần 2b: gom cụm, xử lý văn bản, bài toán kinh doanh, Git. Tháng 6 ở Lotus Spa.
+* Sáu hội viên mẫu (lần ghé mỗi tháng, chi tiêu theo trăm nghìn): A(1,1) B(2,1) C(1,2) D(8,8) E(9,8) F(8,9).
+*/
+var base = {
+	"clus-why": {
+		vi: {
+			story: "Tháng 6, chị Lan hỏi: «Hội viên của mình gồm những nhóm nào?» Lần này không có cột đáp án («nhóm A», «nhóm B») để học. Bạn phải để dữ liệu tự cho thấy các nhóm.",
+			words: [["Học không giám sát", "Tìm cấu trúc trong dữ liệu khi không có cột đáp án."], ["Cụm", "Nhóm điểm gần nhau hơn so với điểm ngoài nhóm."]],
+			problem: "Sáu hội viên (lần ghé mỗi tháng, chi tiêu theo trăm nghìn): A(1,1), B(2,1), C(1,2), D(8,8), E(9,8), F(8,9). Có nhóm nào không, và nhìn bằng số thì sao?",
+			steps: [
+				["Nhìn bằng mắt", "A, B, C nằm gần gốc (ghé ít, chi ít). D, E, F nằm xa (ghé nhiều, chi nhiều)."],
+				["Tâm nhóm thứ nhất", "((1 + 2 + 1) ÷ 3; (1 + 1 + 2) ÷ 3) = (1,33; 1,33)."],
+				["Tâm nhóm thứ hai", "((8 + 9 + 8) ÷ 3; (8 + 8 + 9) ÷ 3) = (8,33; 8,33)."],
+				["Khoảng cách giữa hai tâm", "√(7² + 7²) = √98 ≈ 9,9."],
+				["Khoảng cách trong nhóm", "Từ A đến B là 1; từ D đến E là 1. Trong nhóm gần gấp 10 lần so với giữa hai nhóm."]
+			],
+			say: "Không ai gán nhãn trước mà hai nhóm vẫn rõ: hội viên «ít ghé, chi ít» và «ghé nhiều, chi nhiều». Gom cụm cho bạn một gợi ý để đặt tên nhóm, rồi chị Lan mới quyết định làm gì với từng nhóm.",
+			check: ["Gom cụm có cho biết hội viên nào sắp rời không?", "Không. Nó chỉ cho nhóm giống nhau; sắp rời là một đáp án phải có nhãn riêng (học có giám sát)."]
+		},
+		en: {
+			story: "In June, Ms. Lan asks: “What groups do our members fall into?” This time there is no answer column (“group A”, “group B”) to learn from. You must let the data show the groups.",
+			words: [["Unsupervised learning", "Finding structure in the data when there is no answer column."], ["Cluster", "A group of points closer to each other than to points outside the group."]],
+			problem: "Six members (visits per month, spend in hundreds of thousands): A(1,1), B(2,1), C(1,2), D(8,8), E(9,8), F(8,9). Are there groups, and what do the numbers say?",
+			steps: [
+				["By eye", "A, B, C sit near the origin (few visits, low spend). D, E, F sit far away (many visits, high spend)."],
+				["Centre of group one", "((1 + 2 + 1) ÷ 3; (1 + 1 + 2) ÷ 3) = (1.33; 1.33)."],
+				["Centre of group two", "((8 + 9 + 8) ÷ 3; (8 + 8 + 9) ÷ 3) = (8.33; 8.33)."],
+				["Distance between the two centres", "√(7² + 7²) = √98 ≈ 9.9."],
+				["Distance within a group", "A to B is 1; D to E is 1. Within a group is nearly 10 times closer than between groups."]
+			],
+			say: "Nobody labelled anything yet the two groups are clear: “few visits, low spend” and “many visits, high spend” members. Clustering gives you a hint for naming the groups, and then Ms. Lan decides what to do with each.",
+			check: ["Does clustering tell you which member is about to leave?", "No. It only gives groups of similar members; about-to-leave is an answer needing its own labels (supervised learning)."]
+		}
+	},
+	"km-loop": {
+		vi: {
+			story: "Bạn cho máy tự tìm hai nhóm hội viên bằng K-means với K = 2. Bạn đi bằng tay một vòng đầy đủ.",
+			words: [
+				["Tâm cụm", "Điểm trung bình của cụm."],
+				["Gán", "Mỗi điểm về tâm gần nhất."],
+				["Dời", "Đưa tâm về trung bình các điểm vừa được gán."]
+			],
+			problem: "Sáu hội viên A(1,1), B(2,1), C(1,2), D(8,8), E(9,8), F(8,9). Tâm ban đầu: A(1,1) và D(8,8). Chạy cho đến khi không đổi.",
+			steps: [
+				["Gán lượt 1", "B: cách A là 1, cách D là √(36+49) = 9,2 → A. C → A. E: cách D là 1 → D. F → D."],
+				["Nhóm sau lượt 1", "{A, B, C} và {D, E, F}."],
+				["Dời tâm", "Tâm 1 = (1,33; 1,33). Tâm 2 = (8,33; 8,33)."],
+				["Gán lượt 2", "A cách tâm 1 là 0,47 nhưng cách tâm 2 là 10,4 → vẫn tâm 1. Mọi điểm giữ nguyên nhóm."],
+				["Dừng và đo", "Không điểm nào đổi nên dừng. Tổng bình phương trong cụm = 1,33 + 1,33 = 2,67."]
+			],
+			say: "Hai bước gán và dời lặp lại đến khi nhóm không đổi, và ở đây chỉ cần một vòng vì dữ liệu tách rõ. Với dữ liệu lộn xộn hơn, kết quả có thể phụ thuộc điểm xuất phát (thẻ K-means++).",
+			check: ["Nếu chọn tâm ban đầu là B và E, nhóm cuối có khác không?", "Gần chắc là không: B gần A, C; E gần D, F; sau một lần dời thì về cùng hai nhóm."]
+		},
+		en: {
+			story: "You let the machine find two groups of members using K-means with K = 2. You walk one full round by hand.",
+			words: [
+				["Centre", "The mean point of a cluster."],
+				["Assign", "Each point goes to the nearest centre."],
+				["Move", "Put the centre at the mean of the points just assigned."]
+			],
+			problem: "Six members A(1,1), B(2,1), C(1,2), D(8,8), E(9,8), F(8,9). Initial centres: A(1,1) and D(8,8). Run until nothing changes.",
+			steps: [
+				["Assign round 1", "B: distance to A is 1, to D is √(36+49) = 9.2 → A. C → A. E: distance to D is 1 → D. F → D."],
+				["Groups after round 1", "{A, B, C} and {D, E, F}."],
+				["Move the centres", "Centre 1 = (1.33; 1.33). Centre 2 = (8.33; 8.33)."],
+				["Assign round 2", "A is 0.47 from centre 1 but 10.4 from centre 2 → still centre 1. Every point keeps its group."],
+				["Stop and measure", "No point changed so stop. Within-cluster sum of squares = 1.33 + 1.33 = 2.67."]
+			],
+			say: "The two steps assign and move repeat until the groups stop changing, and here one round is enough because the data separate clearly. With messier data the result can depend on the starting points (the K-means++ card).",
+			check: ["If the initial centres were B and E, would the final groups differ?", "Almost surely not: B is near A and C; E is near D and F; after one move they land in the same two groups."]
+		}
+	},
+	"km-k": {
+		vi: {
+			story: "Chị Lan hỏi: «Nên chia thành mấy nhóm?» Bạn tính tổng bình phương trong cụm (WCSS) cho từng K trên sáu hội viên.",
+			words: [["WCSS", "Tổng bình phương khoảng cách từ mỗi điểm đến tâm cụm của nó."], ["Elbow", "Chỗ đường WCSS gập: thêm cụm không giảm nhiều nữa."]],
+			problem: "WCSS theo K: K = 1: 149,7; K = 2: 2,67; K = 3: 1,83; K = 4: 1,0; K = 6: 0. Chọn K bằng elbow và nói giới hạn của cách này.",
+			steps: [
+				["Mức giảm từ K = 1 sang 2", "149,7 − 2,67 = 147,0."],
+				["Mức giảm từ K = 2 sang 3", "2,67 − 1,83 = 0,83."],
+				["Mức giảm từ K = 3 sang 4", "1,83 − 1,0 = 0,83."],
+				["Chỗ gập", "Giảm lớn ở K = 2, sau đó chỉ còn khoảng 0,8 mỗi bước. Chọn K = 2."],
+				["Giới hạn", "K = 6 cho WCSS = 0 vì mỗi người một cụm. WCSS luôn giảm khi tăng K, nên chỗ gập chỉ là gợi ý, không phải bằng chứng."]
+			],
+			say: "Elbow ở K = 2 khớp với nhóm nhìn thấy bằng mắt. Với dữ liệu thật, chỗ gập thường mờ. Nên kiểm xem các nhóm có đặt tên được và chị Lan có hành động được khác nhau không.",
+			check: ["Vì sao không chọn K sao cho WCSS bằng 0?", "Vì đó là mỗi hội viên một nhóm, không có ích để ra quyết định."]
+		},
+		en: {
+			story: "Ms. Lan asks: “How many groups should we split into?” You compute the within-cluster sum of squares (WCSS) for each K on the six members.",
+			words: [["WCSS", "The sum of squared distances from each point to its cluster centre."], ["Elbow", "Where the WCSS curve bends: adding clusters no longer reduces much."]],
+			problem: "WCSS by K: K = 1: 149.7; K = 2: 2.67; K = 3: 1.83; K = 4: 1.0; K = 6: 0. Choose K by the elbow and state the limit of this method.",
+			steps: [
+				["Drop from K = 1 to 2", "149.7 − 2.67 = 147.0."],
+				["Drop from K = 2 to 3", "2.67 − 1.83 = 0.83."],
+				["Drop from K = 3 to 4", "1.83 − 1.0 = 0.83."],
+				["The bend", "A large drop at K = 2, then only about 0.8 per step. Choose K = 2."],
+				["Limit", "K = 6 gives WCSS = 0 because each person is a cluster. WCSS always falls as K rises, so the bend is only a hint, not evidence."]
+			],
+			say: "The elbow at K = 2 matches the groups seen by eye. With real data the bend is often blurry. Also check that the groups can be named and that Ms. Lan could act differently on each.",
+			check: ["Why not choose K so that WCSS equals 0?", "Because that is one group per member, of no use for decisions."]
+		}
+	},
+	"km-start": {
+		vi: {
+			story: "K-means phụ thuộc điểm xuất phát. Bạn thử chọn tâm thứ hai bằng K-means++ thay vì ngẫu nhiên.",
+			words: [["K-means++", "Chọn tâm đầu tiên ngẫu nhiên, các tâm sau chọn với xác suất tỷ lệ bình phương khoảng cách đến tâm gần nhất."]],
+			problem: "Tâm đầu là A(1,1). Bình phương khoảng cách từ các điểm còn lại tới A. Xác suất chọn D, E hoặc F (nhóm xa) làm tâm thứ hai là bao nhiêu?",
+			steps: [
+				["B(2,1)", "1² + 0² = 1."],
+				["C(1,2)", "0² + 1² = 1."],
+				["D(8,8)", "7² + 7² = 98."],
+				["E(9,8) và F(8,9)", "8² + 7² = 113 mỗi điểm."],
+				["Tổng", "1 + 1 + 98 + 113 + 113 = 326."],
+				["Xác suất chọn nhóm xa", "(98 + 113 + 113) ÷ 326 = 324 ÷ 326 = 0,994, khoảng 99,4%."]
+			],
+			say: "K-means++ gần như chắc chắn đặt tâm thứ hai vào nhóm xa, nên hai tâm bắt đầu ở hai nhóm khác nhau. Chọn ngẫu nhiên thuần có thể đặt cả hai tâm vào cùng nhóm và chạy lâu hơn hoặc ra nhóm xấu.",
+			check: ["Xác suất chọn B làm tâm thứ hai là bao nhiêu?", "1 ÷ 326 ≈ 0,3%."]
+		},
+		en: {
+			story: "K-means depends on its starting points. You try choosing the second centre by K-means++ instead of at random.",
+			words: [["K-means++", "Pick the first centre at random, later centres with probability proportional to squared distance to the nearest centre."]],
+			problem: "The first centre is A(1,1). Squared distances from the other points to A. What is the probability of choosing D, E or F (the far group) as the second centre?",
+			steps: [
+				["B(2,1)", "1² + 0² = 1."],
+				["C(1,2)", "0² + 1² = 1."],
+				["D(8,8)", "7² + 7² = 98."],
+				["E(9,8) and F(8,9)", "8² + 7² = 113 each."],
+				["Total", "1 + 1 + 98 + 113 + 113 = 326."],
+				["Probability of picking the far group", "(98 + 113 + 113) ÷ 326 = 324 ÷ 326 = 0.994, about 99.4%."]
+			],
+			say: "K-means++ almost surely puts the second centre in the far group, so the two centres start in two different groups. Pure random choice could put both centres in the same group and run longer or land on bad groups.",
+			check: ["What is the probability of choosing B as the second centre?", "1 ÷ 326 ≈ 0.3%."]
+		}
+	},
+	"hier": {
+		vi: {
+			story: "Chị Lan muốn xem các hội viên nhập thành nhóm thế nào từng bước, không cố định K trước. Bạn dán dần hai nhóm gần nhất.",
+			words: [["Gom cụm phân cấp", "Bắt đầu mỗi điểm là một nhóm, dán dần hai nhóm gần nhất."], ["Cắt cây", "Chọn một độ cao để chia các nhóm."]],
+			problem: "Khoảng cách: A–B 1, A–C 1, B–C 1,41, D–E 1, D–F 1, E–F 1,41; khoảng cách gần nhất giữa hai nhóm lớn là 9,22 (B–D). Dán theo thứ tự và cắt ở độ cao 5.",
+			steps: [
+				["Bước 1", "Dán A–B ở khoảng cách 1: nhóm {A,B}."],
+				["Bước 2", "Dán C vào {A,B} ở 1 (A–C): {A,B,C}."],
+				["Bước 3", "Dán D–E ở 1, rồi F ở 1: {D,E,F}."],
+				["Bước 4", "Dán hai nhóm lớn ở 9,22."],
+				["Cắt ở độ cao 5", "Các dán ở khoảng cách 1 xảy ra dưới 5, dán cuối ở 9,22 nằm trên 5: còn 2 nhóm {A,B,C} và {D,E,F}."]
+			],
+			say: "Cây cho thấy cấu trúc ở mọi mức: dưới 2 là bốn cặp gần nhau, trên 9 là một nhóm duy nhất. Cắt ở độ cao nào chọn số nhóm. Một khoảng trống lớn từ 1 lên 9,22 báo rằng có đúng 2 nhóm rõ.",
+			check: ["Cắt ở độ cao 0,5 cho bao nhiêu nhóm?", "6 nhóm, vì chưa có lần dán nào (nhỏ nhất là 1)."]
+		},
+		en: {
+			story: "Ms. Lan wants to see how members merge into groups step by step, without fixing K in advance. You join the two nearest groups gradually.",
+			words: [["Hierarchical clustering", "Start with each point as a group, merging the two nearest groups step by step."], ["Cutting the tree", "Choose a height to split the groups."]],
+			problem: "Distances: A–B 1, A–C 1, B–C 1.41, D–E 1, D–F 1, E–F 1.41; the nearest distance between the two big groups is 9.22 (B–D). Merge in order and cut at height 5.",
+			steps: [
+				["Step 1", "Merge A–B at distance 1: group {A,B}."],
+				["Step 2", "Merge C into {A,B} at 1 (A–C): {A,B,C}."],
+				["Step 3", "Merge D–E at 1, then F at 1: {D,E,F}."],
+				["Step 4", "Merge the two big groups at 9.22."],
+				["Cut at height 5", "Merges at distance 1 are below 5, the last merge at 9.22 is above 5: 2 groups remain {A,B,C} and {D,E,F}."]
+			],
+			say: "The tree shows structure at every level: below 2 are four close pairs, above 9 is a single group. Where you cut chooses the number of groups. A big gap from 1 up to 9.22 signals exactly 2 clear groups.",
+			check: ["How many groups does a cut at height 0.5 give?", "6 groups, because no merge has happened yet (the smallest is 1)."]
+		}
+	},
+	"link-how": {
+		vi: {
+			story: "Khi dán hai nhóm {A,B,C} và {D,E,F}, «khoảng cách giữa hai nhóm» có thể tính theo ba cách và cho ba con số khác nhau.",
+			words: [
+				["Single linkage", "Khoảng cách của cặp gần nhất giữa hai nhóm."],
+				["Complete linkage", "Khoảng cách của cặp xa nhất."],
+				["Average linkage", "Trung bình mọi cặp."]
+			],
+			problem: "Chín khoảng cách giữa hai nhóm: A–D 9,90; A–E 10,63; A–F 10,63; B–D 9,22; B–E 9,90; B–F 10,00; C–D 9,22; C–E 10,00; C–F 9,90. Tính ba kiểu linkage.",
+			steps: [
+				["Single", "Nhỏ nhất: 9,22 (B–D và C–D)."],
+				["Complete", "Lớn nhất: 10,63 (A–E và A–F)."],
+				["Tổng chín khoảng cách", "9,90 + 10,63 + 10,63 + 9,22 + 9,90 + 10,00 + 9,22 + 10,00 + 9,90 = 89,4."],
+				["Average", "89,4 ÷ 9 = 9,93."],
+				["So sánh", "9,22 < 9,93 < 10,63."]
+			],
+			say: "Ở dữ liệu tách rõ, ba cách cho cùng kết luận (hai nhóm). Khác biệt xuất hiện khi dữ liệu có chuỗi điểm nối hai nhóm: single dễ dán chúng lại (hiệu ứng dây chuyền), complete giữ các nhóm gọn.",
+			check: ["Kiểu nào dễ bị một điểm nằm giữa hai nhóm làm dán nhầm?", "Single, vì chỉ cần một cặp gần nhau là đủ để dán."]
+		},
+		en: {
+			story: "When merging the two groups {A,B,C} and {D,E,F}, the “distance between groups” can be computed three ways giving three different numbers.",
+			words: [
+				["Single linkage", "The distance of the nearest pair between two groups."],
+				["Complete linkage", "The distance of the farthest pair."],
+				["Average linkage", "The mean over all pairs."]
+			],
+			problem: "The nine distances between the two groups: A–D 9.90; A–E 10.63; A–F 10.63; B–D 9.22; B–E 9.90; B–F 10.00; C–D 9.22; C–E 10.00; C–F 9.90. Compute the three linkage types.",
+			steps: [
+				["Single", "Smallest: 9.22 (B–D and C–D)."],
+				["Complete", "Largest: 10.63 (A–E and A–F)."],
+				["Sum of the nine distances", "9.90 + 10.63 + 10.63 + 9.22 + 9.90 + 10.00 + 9.22 + 10.00 + 9.90 = 89.4."],
+				["Average", "89.4 ÷ 9 = 9.93."],
+				["Compare", "9.22 < 9.93 < 10.63."]
+			],
+			say: "With clearly separated data the three give the same conclusion (two groups). Differences appear when a chain of points bridges two groups: single readily joins them (chaining effect), complete keeps groups compact.",
+			check: ["Which type is easily fooled by a point lying between two groups?", "Single, since one close pair is enough to join them."]
+		}
+	},
+	"db-scan": {
+		vi: {
+			story: "Một hội viên thứ bảy, G, ghé 15 lần mỗi tháng và chi rất ít, khác hẳn mọi người. K-means sẽ ép G vào một nhóm. DBSCAN thì cho phép G là nhiễu.",
+			words: [
+				["eps", "Bán kính tìm hàng xóm."],
+				["minPts", "Số điểm tối thiểu (kể cả chính nó) trong bán kính để thành điểm lõi."],
+				["Nhiễu", "Điểm không thuộc cụm nào."]
+			],
+			problem: "Bảy hội viên: A(1,1), B(2,1), C(1,2), D(8,8), E(9,8), F(8,9), G(15,1). Dùng eps = 1,5 và minPts = 3. Cụm nào hình thành và G là gì?",
+			steps: [
+				["Hàng xóm của A", "B (cách 1), C (cách 1), cộng chính A: 3 điểm ≥ 3: A là điểm lõi."],
+				["B và C", "B: A (1), C (1,41), chính nó: 3. C: A (1), B (1,41), chính nó: 3. Cả hai là lõi."],
+				["Cụm 1", "{A, B, C}. Tương tự D, E, F cho cụm 2."],
+				["G", "Gần nhất là B cách 13,0. Không ai trong eps: chỉ có chính G, 1 điểm < 3."],
+				["Kết luận", "G là nhiễu, không ép vào nhóm nào. Số cụm tự ra là 2."]
+			],
+			say: "DBSCAN không cần chọn K trước, và dám nói «hội viên này không thuộc nhóm nào». Hội viên G có thể là nhóm rất nhỏ cần nhìn riêng. Cái giá là phải chọn eps và minPts hợp lý.",
+			check: ["Nếu eps = 15 thì chuyện gì xảy ra?", "Mọi điểm đều là hàng xóm của nhau, thành một cụm duy nhất, G không còn là nhiễu."]
+		},
+		en: {
+			story: "A seventh member, G, visits 15 times a month and spends very little, unlike everyone else. K-means would force G into a group. DBSCAN lets G be noise.",
+			words: [
+				["eps", "The radius for finding neighbours."],
+				["minPts", "The minimum number of points (including itself) within the radius to be a core point."],
+				["Noise", "A point belonging to no cluster."]
+			],
+			problem: "Seven members: A(1,1), B(2,1), C(1,2), D(8,8), E(9,8), F(8,9), G(15,1). Use eps = 1.5 and minPts = 3. Which clusters form and what is G?",
+			steps: [
+				["A's neighbours", "B (distance 1), C (distance 1), plus A itself: 3 points ≥ 3: A is a core point."],
+				["B and C", "B: A (1), C (1.41), itself: 3. C: A (1), B (1.41), itself: 3. Both are core."],
+				["Cluster 1", "{A, B, C}. Likewise D, E, F give cluster 2."],
+				["G", "Nearest is B at 13.0. No one within eps: only G itself, 1 point < 3."],
+				["Conclusion", "G is noise, not forced into any group. The number of clusters comes out as 2."]
+			],
+			say: "DBSCAN needs no K in advance, and dares to say “this member belongs to no group”. Member G may be a tiny group worth examining separately. The price is choosing eps and minPts sensibly.",
+			check: ["If eps = 15, what happens?", "Every point is a neighbour of the others, forming a single cluster, and G is no longer noise."]
+		}
+	},
+	"gmm-soft": {
+		vi: {
+			story: "Một hội viên P(5,5) nằm giữa hai nhóm. K-means bắt P chọn một nhóm. Hỗn hợp Gauss cho phép P thuộc cả hai, mỗi nhóm một phần.",
+			words: [["Gán mềm", "Mỗi điểm có xác suất thuộc từng nhóm, cộng bằng 1."], ["Trọng số", "Tỷ lệ với exp(−d² ÷ 2σ²) với d là khoảng cách tới tâm."]],
+			problem: "Hai nhóm có tâm (1,33; 1,33) và (8,33; 8,33), σ² = 4 (nên 2σ² = 8). Tính xác suất P(5,5) thuộc mỗi nhóm.",
+			steps: [
+				["d² tới tâm 1", "(5 − 1,33)² × 2 = 13,44 × 2 = 26,9."],
+				["d² tới tâm 2", "(5 − 8,33)² × 2 = 11,11 × 2 = 22,2."],
+				["Trọng số", "Nhóm 1: e^(−26,9 ÷ 8) = e^(−3,36) = 0,035. Nhóm 2: e^(−22,2 ÷ 8) = e^(−2,78) = 0,062."],
+				["Chuẩn hóa", "Tổng 0,097. Nhóm 1: 0,035 ÷ 0,097 = 36%. Nhóm 2: 0,062 ÷ 0,097 = 64%."]
+			],
+			say: "P là «64% nhóm ghé nhiều, 36% nhóm ghé ít», chân thật hơn việc ép vào một nhóm. Hữu ích khi hội viên đang chuyển từ thói quen này sang thói quen kia.",
+			check: ["Một điểm đúng giữa hai tâm sẽ có xác suất bao nhiêu mỗi nhóm?", "50% và 50%, vì cách đều hai tâm."]
+		},
+		en: {
+			story: "A member P(5,5) sits between the two groups. K-means forces P to pick one group. A Gaussian mixture lets P belong to both, partly to each.",
+			words: [["Soft assignment", "Each point has a probability of belonging to each group, adding to 1."], ["Weight", "Proportional to exp(−d² ÷ 2σ²) where d is the distance to the centre."]],
+			problem: "Two groups with centres (1.33, 1.33) and (8.33, 8.33), σ² = 4 (so 2σ² = 8). Compute the probability that P(5,5) belongs to each group.",
+			steps: [
+				["d² to centre 1", "(5 − 1.33)² × 2 = 13.44 × 2 = 26.9."],
+				["d² to centre 2", "(5 − 8.33)² × 2 = 11.11 × 2 = 22.2."],
+				["Weights", "Group 1: e^(−26.9 ÷ 8) = e^(−3.36) = 0.035. Group 2: e^(−22.2 ÷ 8) = e^(−2.78) = 0.062."],
+				["Normalise", "Sum 0.097. Group 1: 0.035 ÷ 0.097 = 36%. Group 2: 0.062 ÷ 0.097 = 64%."]
+			],
+			say: "P is “64% frequent-visitor group, 36% infrequent group”, more truthful than forcing into one. Useful when a member is shifting from one habit to another.",
+			check: ["What probability does a point exactly midway between the two centres have for each group?", "50% and 50%, since it is equidistant from both centres."]
+		}
+	},
+	"k-mode": {
+		vi: {
+			story: "Có những cột chữ như kênh ưa dùng, chi nhánh, gói thường chọn. Không tính trung bình của «GDN» và «Meta» được, nên K-modes dùng giá trị phổ biến nhất.",
+			words: [["Mode", "Giá trị xuất hiện nhiều nhất."], ["Khoảng cách Hamming", "Số cột khác nhau giữa hai dòng."]],
+			problem: "Bốn hội viên (kênh, chi nhánh, gói): (GDN, Q1, 60), (GDN, Q1, 90), (Meta, Q1, 60), (GDN, Q3, 60). Tìm «tâm» của nhóm và tổng khoảng cách Hamming.",
+			steps: [
+				["Mode cột kênh", "GDN có 3, Meta có 1: GDN."],
+				["Mode cột chi nhánh", "Q1 có 3, Q3 có 1: Q1."],
+				["Mode cột gói", "60 có 3, 90 có 1: 60."],
+				["Tâm", "(GDN, Q1, 60)."],
+				["Khoảng cách Hamming tới tâm", "Hội viên 1: 0. Hội viên 2: 1 (gói). Hội viên 3: 1 (kênh). Hội viên 4: 1 (chi nhánh). Tổng 3."]
+			],
+			say: "Tâm (GDN, Q1, 60) là một hội viên «điển hình» thật sự có thể tồn tại. Không có trung bình của chữ, nên mode và Hamming thay thế cho trung bình và khoảng cách Euclid. Nếu dữ liệu vừa có số vừa có chữ thì dùng K-prototypes.",
+			check: ["Nếu có hai giá trị đồng số lần cho một cột thì mode thế nào?", "Mode không duy nhất: phải có luật phá hòa (ví dụ lấy cái xuất hiện trước)."]
+		},
+		en: {
+			story: "Some columns are text, like preferred channel, branch, usual package. You cannot average “GDN” and “Meta”, so K-modes uses the most common value.",
+			words: [["Mode", "The most frequent value."], ["Hamming distance", "The number of columns that differ between two rows."]],
+			problem: "Four members (channel, branch, package): (GDN, D1, 60), (GDN, D1, 90), (Meta, D1, 60), (GDN, D3, 60). Find the group's “centre” and the total Hamming distance.",
+			steps: [
+				["Mode of channel", "GDN has 3, Meta has 1: GDN."],
+				["Mode of branch", "D1 has 3, D3 has 1: D1."],
+				["Mode of package", "60 has 3, 90 has 1: 60."],
+				["Centre", "(GDN, D1, 60)."],
+				["Hamming distance to the centre", "Member 1: 0. Member 2: 1 (package). Member 3: 1 (channel). Member 4: 1 (branch). Total 3."]
+			],
+			say: "The centre (GDN, D1, 60) is a “typical” member that could really exist. There is no mean of text, so mode and Hamming replace mean and Euclidean distance. If data has both numbers and text, use K-prototypes.",
+			check: ["If two values tie in count for a column, what is the mode?", "The mode is not unique: you need a tie-break rule (for example take the one that appears first)."]
+		}
+	},
+	"nlp-tok": {
+		vi: {
+			story: "Hội viên viết đánh giá tự do. Để máy đếm được, bạn phải cắt đánh giá thành các mảnh (token) và bỏ những từ quá thường.",
+			words: [["Token", "Một mảnh của văn bản, thường là một từ."], ["Từ hư (stopword)", "Từ rất thường, ít mang nghĩa riêng, như «rất», «hơi»."]],
+			problem: "Ba đánh giá: R1 «Ghế massage rất êm», R2 «Nhân viên rất thân thiện», R3 «Ghế massage hơi đắt». Từ hư: «rất», «hơi». Cắt, bỏ từ hư, và đếm.",
+			steps: [
+				["Cắt R1", "[ghế, massage, rất, êm]: 4 token."],
+				["Bỏ từ hư R1", "[ghế, massage, êm]: 3 token."],
+				["R2", "Ghép «nhân viên» và «thân thiện» thành một từ mỗi cái: [nhân_viên, rất, thân_thiện] → [nhân_viên, thân_thiện]."],
+				["R3", "[ghế, massage, hơi, đắt] → [ghế, massage, đắt]."],
+				["Tổng số token", "Trước: 4 + 3 + 4 = 11. Sau khi bỏ từ hư: 3 + 2 + 3 = 8."]
+			],
+			say: "Bỏ từ hư giảm 11 token xuống còn 8 mà vẫn giữ các từ mang nghĩa. Tiếng Việt cần ghép các tiếng thành từ (nhân_viên), nếu tách theo dấu cách thì «nhân» và «viên» thành hai mảnh vô nghĩa.",
+			check: ["«rất» và «hơi» có thể quan trọng khi nào?", "Khi đo mức độ cảm xúc: «rất êm» khác «êm»; bỏ chúng làm mất cường độ."]
+		},
+		en: {
+			story: "Members write free-text reviews. For a machine to count them, you must cut the reviews into pieces (tokens) and drop words that are too common.",
+			words: [["Token", "A piece of text, usually a word."], ["Stopword", "A very common word carrying little meaning of its own, like “very”, “slightly”."]],
+			problem: "Three reviews: R1 “Ghế massage rất êm” (massage chair very smooth), R2 “Nhân viên rất thân thiện” (staff very friendly), R3 “Ghế massage hơi đắt” (massage chair slightly pricey). Stopwords: “rất”, “hơi”. Tokenise, drop stopwords and count.",
+			steps: [
+				["Tokenise R1", "[ghế, massage, rất, êm]: 4 tokens."],
+				["Drop stopwords from R1", "[ghế, massage, êm]: 3 tokens."],
+				["R2", "Join “nhân viên” and “thân thiện” into one word each: [nhân_viên, rất, thân_thiện] → [nhân_viên, thân_thiện]."],
+				["R3", "[ghế, massage, hơi, đắt] → [ghế, massage, đắt]."],
+				["Total tokens", "Before: 4 + 3 + 4 = 11. After dropping stopwords: 3 + 2 + 3 = 8."]
+			],
+			say: "Dropping stopwords cuts 11 tokens to 8 while keeping the meaningful words. Vietnamese needs syllables joined into words (nhân_viên); splitting at spaces makes “nhân” and “viên” two meaningless pieces.",
+			check: ["When might “rất” and “hơi” matter?", "When measuring degree of sentiment: “rất êm” differs from “êm”; dropping them loses intensity."]
+		}
+	},
+	"nlp-bow": {
+		vi: {
+			story: "Sau khi cắt, bạn biến mỗi đánh giá thành một dãy số để máy so sánh. Cách đơn giản nhất là đếm từ và bỏ thứ tự.",
+			words: [["Bag-of-words", "Mỗi văn bản là một vectơ đếm số lần mỗi từ xuất hiện."], ["Cosine", "Độ giống nhau của hai vectơ: tích vô hướng chia tích độ dài."]],
+			problem: "Từ vựng (6 từ): [ghế, massage, êm, nhân_viên, thân_thiện, đắt]. Lập vectơ cho R1, R2, R3 từ thẻ trước và tính cosine giữa R1 và R3.",
+			steps: [
+				["R1", "[1, 1, 1, 0, 0, 0]."],
+				["R2", "[0, 0, 0, 1, 1, 0]."],
+				["R3", "[1, 1, 0, 0, 0, 1]."],
+				["Tích vô hướng R1·R3", "1×1 + 1×1 + 0 + 0 + 0 + 0 = 2."],
+				["Độ dài", "R1: √3 = 1,73. R3: √3 = 1,73."],
+				["Cosine", "2 ÷ (1,73 × 1,73) = 2 ÷ 3 = 0,67. R1·R2 = 0, nên cosine R1 và R2 là 0."]
+			],
+			say: "R1 và R3 cùng nói về ghế massage nên giống nhau 0,67, còn R2 (về nhân viên) giống 0. Cái giá của việc bỏ thứ tự: «ghế massage không đắt» và «ghế massage đắt» cho vectơ gần giống nhau.",
+			check: ["Hai đánh giá giống hệt có cosine bao nhiêu?", "1, vì hai vectơ trùng nhau."]
+		},
+		en: {
+			story: "After tokenising, you turn each review into a row of numbers so the machine can compare. The simplest way is to count words and drop the order.",
+			words: [["Bag-of-words", "Each text is a vector counting how often each word occurs."], ["Cosine", "Similarity of two vectors: dot product divided by product of lengths."]],
+			problem: "Vocabulary (6 words): [ghế, massage, êm, nhân_viên, thân_thiện, đắt]. Build vectors for R1, R2, R3 from the previous card and compute the cosine between R1 and R3.",
+			steps: [
+				["R1", "[1, 1, 1, 0, 0, 0]."],
+				["R2", "[0, 0, 0, 1, 1, 0]."],
+				["R3", "[1, 1, 0, 0, 0, 1]."],
+				["Dot product R1·R3", "1×1 + 1×1 + 0 + 0 + 0 + 0 = 2."],
+				["Lengths", "R1: √3 = 1.73. R3: √3 = 1.73."],
+				["Cosine", "2 ÷ (1.73 × 1.73) = 2 ÷ 3 = 0.67. R1·R2 = 0, so the cosine of R1 and R2 is 0."]
+			],
+			say: "R1 and R3 both talk about the massage chair so they are 0.67 similar, while R2 (about staff) is 0. The cost of dropping order: “massage chair not pricey” and “massage chair pricey” give nearly the same vector.",
+			check: ["What is the cosine of two identical reviews?", "1, since the two vectors coincide."]
+		}
+	},
+	"nlp-stem": {
+		vi: {
+			story: "Một đánh giá viết «relaxing», đánh giá khác «relaxed», đánh giá thứ ba «relaxes». Với máy, đó là ba từ khác nhau, dù cùng nghĩa.",
+			words: [["Stemming", "Cắt đuôi từ bằng luật, ra gốc có thể không phải từ thật."], ["Lemmatisation", "Đưa về từ trong từ điển, dùng ngữ pháp."]],
+			problem: "Bốn đánh giá có các từ: relaxing, relaxed, relaxes, relax. Đếm số từ khác nhau trước và sau khi cắt về gốc «relax». Và «better» thì stemming và lemmatisation cho gì?",
+			steps: [
+				["Trước", "4 dạng khác nhau, mỗi dạng xuất hiện 1 lần."],
+				["Sau stemming", "Cả bốn về gốc «relax»: 1 từ xuất hiện 4 lần."],
+				["Hiệu quả", "Từ vựng giảm 4 → 1 và số đếm của «relax» là 4, không bị chia nhỏ."],
+				["«better» với stemming", "Luật cắt đuôi không biết «better» là dạng so sánh của «good»: giữ nguyên «better»."],
+				["«better» với lemmatisation", "Dùng từ điển nên ra «good»."]
+			],
+			say: "Stemming nhanh và thô, lemmatisation chậm nhưng đúng nghĩa hơn. Dùng cái nào tùy việc: để đếm chủ đề thì stemming thường đủ, để đọc kết quả cho chị Lan thì gốc phải là từ thật.",
+			check: ["Có rủi ro gì khi cắt quá mạnh?", "Hai từ khác nghĩa có thể về cùng gốc (ví dụ «university» và «universe» cùng về «univers»), và mất sự phân biệt."]
+		},
+		en: {
+			story: "One review says “relaxing”, another “relaxed”, a third “relaxes”. To a machine these are three different words, though they mean the same.",
+			words: [["Stemming", "Cutting word endings by rules, giving a root that may not be a real word."], ["Lemmatisation", "Reducing to the dictionary word, using grammar."]],
+			problem: "Four reviews contain the words: relaxing, relaxed, relaxes, relax. Count the distinct words before and after cutting to the root “relax”. And what do stemming and lemmatisation give for “better”?",
+			steps: [
+				["Before", "4 different forms, each appearing once."],
+				["After stemming", "All four reduce to the root “relax”: 1 word appearing 4 times."],
+				["Effect", "The vocabulary falls 4 → 1 and the count of “relax” is 4, not split up."],
+				["“better” by stemming", "Ending-cutting rules do not know “better” is the comparative of “good”: “better” stays."],
+				["“better” by lemmatisation", "Uses a dictionary so it gives “good”."]
+			],
+			say: "Stemming is fast and crude, lemmatisation slow but truer to meaning. Which to use depends on the job: for counting themes stemming is usually enough, for reporting to Ms. Lan the root should be a real word.",
+			check: ["What is the risk of cutting too aggressively?", "Two words with different meanings can reduce to the same root (for example “university” and “universe” both to “univers”), losing the distinction."]
+		}
+	},
+	"nlp-edit": {
+		vi: {
+			story: "Có hội viên gõ «massge» thay vì «massage». Bạn muốn máy nhận ra họ nói đến từ nào.",
+			words: [["Khoảng cách sửa", "Số lần thêm, xóa, hoặc thay một ký tự ít nhất để biến chuỗi này thành chuỗi kia."]],
+			problem: "Từ gõ: «massge». Từ điển: massage, message, manage. Tính khoảng cách sửa tới từng từ và chọn từ gần nhất.",
+			steps: [
+				["Tới «massage»", "Thêm một chữ «a» (massge → massage): 1 lần sửa."],
+				["Tới «message»", "massge → message: thay «a» bằng «e» (1) và thêm «a» (1): 2 lần."],
+				["Tới «manage»", "massge → manage: thay «s» bằng «n» (1) và thay «s» bằng «a» (1): 2 lần."],
+				["Chọn", "«massage» gần nhất (1 lần sửa < 2)."]
+			],
+			say: "Một lỗi chính tả là một lần sửa, nên «massage» thắng rõ. Khi hai từ có cùng khoảng cách (như message và manage ở đây) thì cần thêm ngữ cảnh (đoạn nói về ghế hay về nhân viên) để chọn.",
+			check: ["Khoảng cách sửa từ «masage» đến «massage» là bao nhiêu?", "1 (thêm một chữ «s»)."]
+		},
+		en: {
+			story: "A member typed “massge” instead of “massage”. You want the machine to recognise which word they meant.",
+			words: [["Edit distance", "The minimum number of insertions, deletions or substitutions of a character to turn one string into another."]],
+			problem: "Typed word: “massge”. Dictionary: massage, message, manage. Compute the edit distance to each and choose the nearest word.",
+			steps: [
+				["To “massage”", "Insert one letter “a” (massge → massage): 1 edit."],
+				["To “message”", "massge → message: substitute “a” with “e” (1) and insert “a” (1): 2 edits."],
+				["To “manage”", "massge → manage: substitute “s” with “n” (1) and substitute “s” with “a” (1): 2 edits."],
+				["Choose", "“massage” is nearest (1 edit < 2)."]
+			],
+			say: "A single typo is one edit, so “massage” wins clearly. When two words tie (like message and manage here) you need extra context (is the passage about the chair or the staff) to choose.",
+			check: ["What is the edit distance from “masage” to “massage”?", "1 (insert one letter “s”)."]
+		}
+	},
+	"nlp-pmi": {
+		vi: {
+			story: "Trong 1000 đánh giá, «ghế» và «massage» hay đi cùng nhau. Bạn đo xem chúng đi cùng nhiều hơn mức ngẫu nhiên bao nhiêu.",
+			words: [["PMI", "log₂ của P(a và b) ÷ (P(a) × P(b)). Dương nghĩa là đi cùng nhiều hơn mức độc lập."]],
+			problem: "1000 đánh giá. «ghế» có trong 200, «massage» trong 250, cả hai trong 180. «rất» có trong 500, «êm» trong 100, cả hai trong 50. Tính PMI của hai cặp.",
+			steps: [
+				["P của ghế, massage, và cả hai", "0,20; 0,25; 0,18."],
+				["Mức kỳ vọng nếu độc lập", "0,20 × 0,25 = 0,05."],
+				["Tỷ số", "0,18 ÷ 0,05 = 3,6."],
+				["PMI (ghế, massage)", "log₂ 3,6 ≈ 1,85."],
+				["Cặp (rất, êm)", "P = 0,05; kỳ vọng 0,5 × 0,1 = 0,05; tỷ số 1; PMI = log₂ 1 = 0."]
+			],
+			say: "«ghế massage» đi cùng nhau gấp 3,6 lần mức ngẫu nhiên, đúng là một cụm từ. «rất êm» chỉ đi cùng theo mức độc lập: «rất» là từ phổ biến, nó đứng cạnh «êm» chỉ vì xuất hiện ở khắp nơi.",
+			check: ["PMI âm nghĩa là gì?", "Hai từ đi cùng ít hơn mức độc lập, tức xu hướng tránh nhau."]
+		},
+		en: {
+			story: "Among 1,000 reviews, “ghế” (chair) and “massage” often go together. You measure how much more than chance they co-occur.",
+			words: [["PMI", "log₂ of P(a and b) ÷ (P(a) × P(b)). Positive means co-occurring more than under independence."]],
+			problem: "1,000 reviews. “ghế” appears in 200, “massage” in 250, both in 180. “rất” appears in 500, “êm” in 100, both in 50. Compute the PMI of both pairs.",
+			steps: [
+				["P of ghế, massage, and both", "0.20; 0.25; 0.18."],
+				["Expected if independent", "0.20 × 0.25 = 0.05."],
+				["Ratio", "0.18 ÷ 0.05 = 3.6."],
+				["PMI (ghế, massage)", "log₂ 3.6 ≈ 1.85."],
+				["Pair (rất, êm)", "P = 0.05; expected 0.5 × 0.1 = 0.05; ratio 1; PMI = log₂ 1 = 0."]
+			],
+			say: "“ghế massage” co-occur 3.6 times more than chance, truly a phrase. “rất êm” co-occur only at the independent level: “rất” is a common word, standing next to “êm” merely because it appears everywhere.",
+			check: ["What does a negative PMI mean?", "The two words co-occur less than independence, i.e. they tend to avoid each other."]
+		}
+	},
+	"biz-map": {
+		vi: {
+			story: "Tháng 6, mô hình dự đoán hội viên sắp rời đã chạy. Chị Lan chưa hỏi về AUC. Chị hỏi: «Em muốn chị làm gì với danh sách này?» Bạn phải gọi tên quyết định trước.",
+			words: [["Quyết định", "Việc chị Lan sẽ làm khác đi nhờ kết quả."], ["Bản đồ bài toán", "Câu hỏi → quyết định → dữ liệu → mô hình → hành động → thước đo."]],
+			problem: "Điền bản đồ: mất 1 hội viên tốn 2 triệu; 5% trong 1000 hội viên sắp rời; 121 người bị gắn cờ. Số tiền đang bị đe dọa và quyết định cần chốt là gì?",
+			steps: [
+				["Câu hỏi kinh doanh", "Làm sao giữ chân hội viên sắp rời?"],
+				["Số tiền đang bị đe dọa", "5% × 1000 = 50 người; 50 × 2 triệu = 100 triệu."],
+				["Quyết định", "Gọi điện cho ai: 121 người bị gắn cờ, hay tất cả 1000, hay không ai?"],
+				["Dữ liệu và mô hình", "Danh sách gắn cờ từ mô hình logistic (45 đúng, 76 nhầm)."],
+				["Hành động và thước đo", "Gọi điện, ưu đãi. Thước đo là tiền giữ được trừ tiền chi, không phải accuracy."]
+			],
+			say: "Gọi tên quyết định trước giúp bạn biết thước đo cần dùng. Nếu chị Lan chỉ có ngân sách gọi 50 người thì danh sách tốt nhất khác với khi gọi được 121 người.",
+			check: ["Vì sao «100 triệu» quan trọng khi bắt đầu?", "Nó là mức thiệt hại tối đa: mọi giải pháp phải rẻ hơn mức này mới đáng làm."]
+		},
+		en: {
+			story: "In June, the model predicting members about to leave is running. Ms. Lan has not asked about AUC. She asks: “What do you want me to do with this list?” You must name the decision first.",
+			words: [["Decision", "What Ms. Lan will do differently thanks to the result."], ["Problem map", "Question → decision → data → model → action → measure."]],
+			problem: "Fill in the map: losing a member costs 2 million; 5% of 1,000 members are about to leave; 121 are flagged. What is the money at stake and what decision must be made?",
+			steps: [
+				["Business question", "How do we keep members about to leave?"],
+				["Money at stake", "5% × 1,000 = 50 people; 50 × 2 million = 100 million."],
+				["Decision", "Whom to phone: the 121 flagged, or all 1,000, or no one?"],
+				["Data and model", "The flag list from the logistic model (45 right, 76 wrong)."],
+				["Action and measure", "Phone calls, offers. The measure is money kept minus money spent, not accuracy."]
+			],
+			say: "Naming the decision first tells you which measure to use. If Ms. Lan has a budget to call only 50 people, the best list differs from when she can call 121.",
+			check: ["Why does “100 million” matter at the start?", "It is the maximum loss: any solution must cost less than this to be worth doing."]
+		}
+	},
+	"biz-metric": {
+		vi: {
+			story: "Có ba cách gọi: tất cả 1000, 121 người gắn cờ, hoặc 50 người có điểm cao nhất. Bạn chấm bằng tiền, theo đúng quyết định của chị Lan.",
+			words: [["Giá trị ròng", "Tiền giữ được trừ chi phí hành động."]],
+			problem: "Mỗi cuộc gọi tốn 20 nghìn, giữ chân 30% người sắp rời được gọi, mỗi người giữ lại đáng 2 triệu. Gọi tất cả 1000 (có 50 người sắp rời). Gọi 121 người (45 thật). Gọi 50 người cao nhất (35 thật). Tính giá trị ròng từng cách.",
+			steps: [
+				["Gọi 1000", "Chi 1000 × 20 nghìn = 20 triệu. Giữ 0,3 × 50 = 15 người = 30 triệu. Ròng = 10 triệu."],
+				["Gọi 121", "Chi 121 × 20 nghìn = 2,42 triệu. Giữ 0,3 × 45 = 13,5 người = 27 triệu. Ròng = 24,58 triệu."],
+				["Gọi 50 người cao nhất", "Chi 50 × 20 nghìn = 1 triệu. Giữ 0,3 × 35 = 10,5 người = 21 triệu. Ròng = 20 triệu."],
+				["Không gọi", "Ròng = 0."],
+				["Chọn", "Gọi 121 người: 24,58 triệu là cao nhất."]
+			],
+			say: "Accuracy 91,9% không nói được gọi 121 hay gọi 50 tốt hơn. Giá trị ròng nói rõ: gọi 121 người có lời nhất. Nếu cuộc gọi tốn 100 nghìn thay vì 20 nghìn thì kết quả đảo ngược, nên thước đo luôn phải dùng số của đúng bài toán.",
+			check: ["Nếu mỗi cuộc gọi tốn 100 nghìn, gọi 121 người có ròng bao nhiêu?", "Chi 12,1 triệu; giữ vẫn 27 triệu; ròng 14,9 triệu, vẫn dương."]
+		},
+		en: {
+			story: "There are three ways to call: all 1,000, the 121 flagged, or the top 50 by score. You score them in money, matching Ms. Lan's decision.",
+			words: [["Net value", "Money kept minus the cost of the action."]],
+			problem: "Each call costs 20 thousand, retains 30% of leavers called, and each retained member is worth 2 million. Call all 1,000 (50 about to leave). Call 121 (45 real). Call the top 50 (35 real). Compute each net value.",
+			steps: [
+				["Call 1,000", "Cost 1,000 × 20 thousand = 20 million. Keep 0.3 × 50 = 15 people = 30 million. Net = 10 million."],
+				["Call 121", "Cost 121 × 20 thousand = 2.42 million. Keep 0.3 × 45 = 13.5 people = 27 million. Net = 24.58 million."],
+				["Call the top 50", "Cost 50 × 20 thousand = 1 million. Keep 0.3 × 35 = 10.5 people = 21 million. Net = 20 million."],
+				["Do not call", "Net = 0."],
+				["Choose", "Call 121 people: 24.58 million is the highest."]
+			],
+			say: "Accuracy 91.9% cannot say whether calling 121 or 50 is better. Net value says clearly: calling 121 people pays most. If a call cost 100 thousand instead of 20 thousand the result would flip, so the measure must always use the numbers of the actual problem.",
+			check: ["If each call cost 100 thousand, what is the net of calling 121?", "Cost 12.1 million; kept still 27 million; net 14.9 million, still positive."]
+		}
+	},
+	"git-commit": {
+		vi: {
+			story: "Sổ phân tích của bạn đã qua nhiều lần sửa. Bạn muốn lưu từng mốc để quay lại khi cần, như cách làm khi sửa số liệu form tuần 5.",
+			words: [["Commit", "Một ảnh chụp toàn bộ tệp ở một lúc, kèm câu mô tả và mã nhận diện."]],
+			problem: "Ba commit: c1 «nạp 36 tuần dữ liệu» (tệp 20 dòng); c2 «thêm điểm z» (thêm 12 dòng); c3 «sửa tuần 5 để trống» (thêm 4, xóa 2). Tính số dòng sau mỗi commit và khi quay về c2.",
+			steps: [
+				["Sau c1", "20 dòng."],
+				["Sau c2", "20 + 12 = 32 dòng."],
+				["Sau c3", "32 + 4 − 2 = 34 dòng."],
+				["Quay về c2", "Tệp trở lại đúng 32 dòng như lúc chụp c2, không mất gì."],
+				["Đọc lịch sử", "Ba câu mô tả kể câu chuyện: nạp, thêm z, sửa tuần 5."]
+			],
+			say: "Mỗi commit là một mốc có thể quay về, và câu mô tả giúp bạn (và chị Lan) hiểu vì sao đổi. Câu mô tả mơ hồ như «sửa lỗi» làm lịch sử vô dụng; câu cụ thể như «sửa tuần 5 để trống» thì không.",
+			check: ["Commit có lưu thay đổi hay lưu toàn bộ tệp?", "Về mặt dùng thì như lưu toàn bộ ảnh chụp tại lúc đó (Git tính phần khác biệt nội bộ để gọn)."]
+		},
+		en: {
+			story: "Your analysis notebook has gone through many edits. You want to save each milestone so you can return when needed, like when fixing the week-5 form figures.",
+			words: [["Commit", "A snapshot of all files at one moment, with a description and an identifier."]],
+			problem: "Three commits: c1 “load 36 weeks of data” (file of 20 lines); c2 “add z-score” (adds 12 lines); c3 “fix blank week 5” (adds 4, removes 2). Compute the line count after each commit and when going back to c2.",
+			steps: [
+				["After c1", "20 lines."],
+				["After c2", "20 + 12 = 32 lines."],
+				["After c3", "32 + 4 − 2 = 34 lines."],
+				["Go back to c2", "The file returns to exactly 32 lines as at c2, nothing lost."],
+				["Read the history", "The three descriptions tell the story: load, add z, fix week 5."]
+			],
+			say: "Each commit is a milestone you can return to, and the description helps you (and Ms. Lan) understand why it changed. A vague description like “fix bug” makes the history useless; a specific one like “fix blank week 5” does not.",
+			check: ["Does a commit store the changes or the whole file?", "In use it is like storing the whole snapshot at that moment (Git stores differences internally to stay compact)."]
+		}
+	},
+	"git-branch": {
+		vi: {
+			story: "Thảo muốn thử mô hình mới với ngân sách TikTok 6 triệu nhưng bạn không muốn làm hỏng bản đang dùng. Bạn mở một nhánh riêng.",
+			words: [["Branch", "Một dòng commit riêng, tách khỏi nhánh chính."], ["Merge", "Nhập các commit của một nhánh vào nhánh khác."]],
+			problem: "Nhánh chính main có tệp 34 dòng. Nhánh thử tiktok-6tr thêm 10 dòng. Tính số dòng ở hai nhánh trước và sau merge, và nếu thử nghiệm thất bại thì sao?",
+			steps: [
+				["Trước merge", "main: 34 dòng. tiktok-6tr: 34 + 10 = 44 dòng."],
+				["Trong lúc thử", "Mọi sửa trên tiktok-6tr không ảnh hưởng main; bản đang dùng vẫn 34 dòng."],
+				["Nếu thành công, merge", "main nhận 10 dòng: 44 dòng."],
+				["Nếu thất bại", "Xóa nhánh tiktok-6tr. main vẫn 34 dòng, không dấu vết thử nghiệm."],
+				["Xung đột", "Nếu cả hai nhánh đều sửa cùng một dòng, Git không tự chọn mà dừng lại để bạn quyết."]
+			],
+			say: "Nhánh cho phép thử mạo hiểm mà bản chính đứng yên. Chỉ khi thử xong và xác nhận tốt mới nhập về. Đây cũng là cách làm việc nhóm: mỗi người một nhánh, nhập khi sẵn sàng.",
+			check: ["Sau khi merge, main và nhánh thử có cùng nội dung không?", "main có nội dung của nhánh thử (44 dòng). Nhánh thử vẫn còn đó cho đến khi bạn xóa."]
+		},
+		en: {
+			story: "Thao wants to try a new model with a TikTok budget of 6 million but you do not want to break the version in use. You open a separate branch.",
+			words: [["Branch", "A separate line of commits, split from the main branch."], ["Merge", "Bringing a branch's commits into another branch."]],
+			problem: "The main branch has a file of 34 lines. The trial branch tiktok-6m adds 10 lines. Compute the line counts of both branches before and after merging, and what if the trial fails?",
+			steps: [
+				["Before merge", "main: 34 lines. tiktok-6m: 34 + 10 = 44 lines."],
+				["During the trial", "Any edit on tiktok-6m does not affect main; the version in use stays at 34 lines."],
+				["If it succeeds, merge", "main receives 10 lines: 44 lines."],
+				["If it fails", "Delete the branch tiktok-6m. main is still 34 lines, with no trace of the trial."],
+				["Conflict", "If both branches edit the same line, Git does not choose but stops for you to decide."]
+			],
+			say: "A branch lets you try something risky while the main version stays still. Only when the trial is done and confirmed good do you merge it in. It is also the way to work in a team: each person a branch, merging when ready.",
+			check: ["After merging, do main and the trial branch have the same content?", "main has the trial branch's content (44 lines). The trial branch is still there until you delete it."]
+		}
+	}
+};
+var visuals = {
+	"clus-why": {
+		kind: "table",
+		title: ["Sáu hội viên và hai nhóm", "Six members and two groups"],
+		head: [
+			["Hội viên", "Member"],
+			["Lần ghé", "Visits"],
+			["Chi tiêu (trăm nghìn)", "Spend (100k)"],
+			["Nhóm", "Group"]
+		],
+		rows: [
+			[
+				"A",
+				1,
+				1,
+				"1"
+			],
+			[
+				"B",
+				2,
+				1,
+				"1"
+			],
+			[
+				"C",
+				1,
+				2,
+				"1"
+			],
+			[
+				"D",
+				8,
+				8,
+				"2"
+			],
+			[
+				"E",
+				9,
+				8,
+				"2"
+			],
+			[
+				"F",
+				8,
+				9,
+				"2"
+			]
+		]
+	},
+	"km-k": {
+		kind: "bars",
+		title: ["WCSS theo K", "WCSS by K"],
+		items: [
+			{
+				label: ["K=1", "K=1"],
+				value: 149.7
+			},
+			{
+				label: ["K=2", "K=2"],
+				value: 2.67
+			},
+			{
+				label: ["K=3", "K=3"],
+				value: 1.83
+			},
+			{
+				label: ["K=4", "K=4"],
+				value: 1
+			},
+			{
+				label: ["K=6", "K=6"],
+				value: 0
+			}
+		]
+	},
+	"km-start": {
+		kind: "bars",
+		title: ["Xác suất chọn làm tâm thứ hai (%)", "Chance of being picked as second centre (%)"],
+		items: [
+			{
+				label: ["B", "B"],
+				value: .3
+			},
+			{
+				label: ["C", "C"],
+				value: .3
+			},
+			{
+				label: ["D", "D"],
+				value: 30.1
+			},
+			{
+				label: ["E", "E"],
+				value: 34.7
+			},
+			{
+				label: ["F", "F"],
+				value: 34.7
+			}
+		]
+	},
+	"link-how": {
+		kind: "bars",
+		title: ["Khoảng cách giữa hai nhóm theo kiểu linkage", "Distance between the two groups by linkage"],
+		items: [
+			{
+				label: ["Single", "Single"],
+				value: 9.22
+			},
+			{
+				label: ["Average", "Average"],
+				value: 9.93
+			},
+			{
+				label: ["Complete", "Complete"],
+				value: 10.63
+			}
+		]
+	},
+	"gmm-soft": {
+		kind: "bars",
+		title: ["P(5,5) thuộc nhóm nào (%)", "Which group P(5,5) belongs to (%)"],
+		items: [{
+			label: ["Nhóm 1", "Group 1"],
+			value: 36
+		}, {
+			label: ["Nhóm 2", "Group 2"],
+			value: 64
+		}]
+	},
+	"nlp-bow": {
+		kind: "table",
+		title: ["Bag-of-words cho ba đánh giá", "Bag-of-words for three reviews"],
+		head: [
+			["", ""],
+			["ghế", "ghế"],
+			["massage", "massage"],
+			["êm", "êm"],
+			["nhân_viên", "nhân_viên"],
+			["thân_thiện", "thân_thiện"],
+			["đắt", "đắt"]
+		],
+		rows: [
+			[
+				"R1",
+				1,
+				1,
+				1,
+				0,
+				0,
+				0
+			],
+			[
+				"R2",
+				0,
+				0,
+				0,
+				1,
+				1,
+				0
+			],
+			[
+				"R3",
+				1,
+				1,
+				0,
+				0,
+				0,
+				1
+			]
+		],
+		mark: [[0, 1], [2, 1]]
+	},
+	"nlp-pmi": {
+		kind: "bars",
+		title: ["PMI của hai cặp", "PMI of two pairs"],
+		items: [{
+			label: ["ghế + massage", "ghế + massage"],
+			value: 1.85
+		}, {
+			label: ["rất + êm", "rất + êm"],
+			value: 0
+		}]
+	},
+	"biz-metric": {
+		kind: "bars",
+		title: ["Giá trị ròng của từng cách gọi (triệu đồng)", "Net value of each calling plan (million dong)"],
+		items: [
+			{
+				label: ["Gọi 1000", "Call 1,000"],
+				value: 10
+			},
+			{
+				label: ["Gọi 121", "Call 121"],
+				value: 24.58
+			},
+			{
+				label: ["Gọi 50", "Call 50"],
+				value: 20
+			},
+			{
+				label: ["Không gọi", "No call"],
+				value: 0
+			}
+		]
+	},
+	"git-commit": {
+		kind: "line",
+		title: ["Số dòng của tệp sau mỗi commit", "File line count after each commit"],
+		xs: [
+			"c1",
+			"c2",
+			"c3"
+		],
+		ys: [
+			20,
+			32,
+			34
+		]
+	},
+	"git-branch": {
+		kind: "table",
+		title: ["Số dòng ở hai nhánh", "Line count in the two branches"],
+		head: [
+			["", ""],
+			["Trước merge", "Before merge"],
+			["Sau merge", "After merge"]
+		],
+		rows: [[
+			"main",
+			34,
+			44
+		], [
+			"tiktok-6tr",
+			44,
+			44
+		]],
+		mark: [[0, 2]]
+	}
+};
+var c3cWalks = Object.fromEntries(Object.entries(base).map(([id, w]) => [id, visuals[id] ? {
 	...w,
 	visual: visuals[id]
 } : w]));
@@ -18229,7 +19043,8 @@ var walks = {
 	...c2bWalks,
 	...sqlWalks,
 	...c3aWalks,
-	...c3bWalks
+	...c3bWalks,
+	...c3cWalks
 };
 /** Hình minh họa trong mục «Làm từng bước»: bảng tính, biểu đồ cột, biểu đồ đường. Dùng màu từ token của app. */
 function WalkVisual({ v, lang }) {
