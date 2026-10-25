@@ -1,10 +1,10 @@
 import { o as __toESM } from "../_runtime.mjs";
 import { J as require_react, S as require_jsx_runtime, b as Link } from "../_libs/@tanstack/react-router+[...].mjs";
-import { A as studyCopy, B as subscribeRaw, F as getRawVersion, I as getServerRawVersion, M as studyNeighbors, O as subscribeProgress, b as getServerProgress, j as studyListTitle, k as getStudy, r as Route$1, y as getProgress } from "./router-DZbn1K3J.mjs";
-import { n as Range, r as Sim, t as Lab } from "./labs-LzVP81TO.mjs";
+import { A as studyCopy, B as subscribeRaw, F as getRawVersion, I as getServerRawVersion, M as studyNeighbors, O as subscribeProgress, b as getServerProgress, j as studyListTitle, k as getStudy, r as Route$1, y as getProgress } from "./router-BKTVoWn3.mjs";
+import { n as Range, r as Sim, t as Lab } from "./labs-Ddtyp-e9.mjs";
 import { t as Tex } from "./tex-t3KOuum9.mjs";
-import { o as relatedOf } from "./map-CVn6ULk1.mjs";
-//#region node_modules/.nitro/vite/services/ssr/assets/khai-niem._conceptId-0GVWt8XT.js
+import { o as relatedOf } from "./map-Co7CziNK.mjs";
+//#region node_modules/.nitro/vite/services/ssr/assets/khai-niem._conceptId-BHJrxOWK.js
 var import_react = /* @__PURE__ */ __toESM(require_react());
 var import_jsx_runtime = require_jsx_runtime();
 var ui$1 = {
@@ -10557,7 +10557,7 @@ var pilotWalks = {
 	}
 };
 /** C0: hiểu việc, giải quyết vấn đề, Excel. Tháng 1 ở Lotus Spa. */
-var c0Walks = {
+var base = {
 	"c0-order": {
 		vi: {
 			story: "Tháng 1, Lotus Spa (3 chi nhánh: Quận 1, Quận 3, Thủ Đức). Chị Lan, chủ chuỗi, gọi bạn vào phòng: «Form đặt hẹn tháng 12 giảm, em xem giúp chị.» Đây là việc đầu tiên của bạn, và cả năm tới bạn sẽ đi cùng câu chuyện này.",
@@ -11195,10 +11195,439 @@ var c0Walks = {
 		}
 	}
 };
+var visuals = {
+	"c0-order": {
+		kind: "bars",
+		title: ["Form theo tháng", "Forms by month"],
+		items: [{
+			label: ["Th.11", "Nov"],
+			value: 220
+		}, {
+			label: ["Th.12", "Dec"],
+			value: 180
+		}],
+		note: ["Giảm 40 form, tức khoảng 18%.", "A drop of 40 forms, about 18%."]
+	},
+	"c0-read": {
+		kind: "bars",
+		title: ["Hình trong thẻ: hai cột", "The card's picture: two bars"],
+		items: [{
+			label: ["Trước", "Before"],
+			value: 220
+		}, {
+			label: ["Sau", "After"],
+			value: 180
+		}],
+		note: ["Khoảng chênh giữa hai đỉnh là 40.", "The gap between the tops is 40."]
+	},
+	"crisp-data": {
+		kind: "table",
+		title: ["File ads_export: thiếu cột form theo kênh", "ads_export file: forms-by-channel column missing"],
+		head: [
+			["Tuần", "Week"],
+			["Kênh", "Channel"],
+			["Chi phí (triệu)", "Spend (million)"],
+			["Tổng form", "Total forms"]
+		],
+		rows: [
+			[
+				1,
+				"GDN",
+				6,
+				50
+			],
+			[
+				1,
+				"Meta",
+				5,
+				50
+			],
+			[
+				1,
+				"TikTok",
+				4,
+				50
+			]
+		],
+		mark: [
+			[0, 3],
+			[1, 3],
+			[2, 3]
+		],
+		note: ["Cột D là tổng cả ba kênh, nên không chia được CPA theo kênh.", "Column D is the total of all three channels, so you cannot divide CPA by channel."]
+	},
+	"crisp-prep": {
+		kind: "table",
+		title: ["TikTok: tuần 5 bị trống", "TikTok: week 5 is blank"],
+		head: [
+			["Tuần", "Week"],
+			["Chi phí (triệu)", "Spend (million)"],
+			["Form", "Forms"]
+		],
+		rows: [
+			[
+				3,
+				4,
+				12
+			],
+			[
+				4,
+				4,
+				12
+			],
+			[
+				5,
+				"",
+				12
+			],
+			[
+				6,
+				4,
+				12
+			]
+		],
+		mark: [[2, 1]],
+		note: ["Ô B3 trống, không phải số 0.", "Cell B3 is blank, not 0."]
+	},
+	"ps-fact": {
+		kind: "bars",
+		title: ["Tỷ lệ form theo kênh (%)", "Form rate by channel (%)"],
+		items: [
+			{
+				label: ["GDN", "GDN"],
+				value: 2
+			},
+			{
+				label: ["Meta", "Meta"],
+				value: 2.5
+			},
+			{
+				label: ["TikTok", "TikTok"],
+				value: 1.5
+			}
+		],
+		unit: "%",
+		note: ["Ngưỡng «yếu» = dưới 2,0%.", "Threshold for “weak” = below 2.0%."]
+	},
+	"ps-smart": {
+		kind: "bars",
+		title: ["Form TikTok mỗi tuần: hiện tại và mục tiêu", "TikTok forms per week: now and target"],
+		items: [{
+			label: ["Hiện tại", "Now"],
+			value: 12
+		}, {
+			label: ["31/1", "31 Jan"],
+			value: 15
+		}]
+	},
+	"ps-opt": {
+		kind: "table",
+		title: ["Ba phương án, cùng một thước đo", "Three options, one measure"],
+		head: [
+			["Phương án", "Option"],
+			["Thời gian", "Time"],
+			["Form TikTok vào 31/1", "TikTok forms on 31 Jan"]
+		],
+		rows: [
+			[
+				"X",
+				"2 ngày / 2 days",
+				"16 | 12"
+			],
+			[
+				"Y",
+				"5 tuần / weeks",
+				12
+			],
+			[
+				"Z",
+				"0",
+				12
+			]
+		],
+		mark: [[0, 2]]
+	},
+	"ps-do": {
+		kind: "bars",
+		title: ["Form TikTok mỗi tuần: trước và sau khi sửa lỗi", "TikTok forms per week: before and after the fix"],
+		items: [{
+			label: ["Trước", "Before"],
+			value: 12
+		}, {
+			label: ["Sau", "After"],
+			value: 15
+		}]
+	},
+	"xl-cell": {
+		kind: "table",
+		title: ["Form tháng 11 (ô B3 là chữ)", "November forms (cell B3 is text)"],
+		head: [["Chi nhánh", "Branch"], ["Form", "Forms"]],
+		rows: [
+			["Quận 1 / D1", 80],
+			["Quận 3 / D3", "'70"],
+			["Thủ Đức / Thu Duc", 70],
+			["SUM", 150]
+		],
+		mark: [[1, 1], [3, 1]],
+		note: ["SUM bỏ qua B3 nên ra 150 thay vì 220.", "SUM skips B3 so it returns 150 instead of 220."]
+	},
+	"xl-lock": {
+		kind: "table",
+		title: ["Tỷ trọng = B2/$B$5", "Share = B2/$B$5"],
+		head: [["Form", "Forms"], ["Tỷ trọng", "Share"]],
+		rows: [
+			[80, "36,4%"],
+			[70, "31,8%"],
+			[70, "31,8%"],
+			[220, "100%"]
+		],
+		mark: [[3, 0]]
+	},
+	"xl-if": {
+		kind: "table",
+		title: ["CPA tuần 4 và tuần 5", "CPA, weeks 4 and 5"],
+		head: [
+			["Chi phí", "Spend"],
+			["Form", "Forms"],
+			["CPA", "CPA"]
+		],
+		rows: [[
+			4,
+			12,
+			.333
+		], [
+			"",
+			12,
+			"chưa có / not yet"
+		]],
+		mark: [[1, 0]]
+	},
+	"xl-keep": {
+		kind: "table",
+		title: ["Lọc GDN: dòng Meta chỉ bị ẩn", "Filter GDN: Meta rows are only hidden"],
+		head: [["Kênh", "Channel"], ["Form", "Forms"]],
+		rows: [
+			["GDN", 18],
+			["GDN", 17],
+			["GDN", 19],
+			["Meta (ẩn / hidden)", 20],
+			["Meta (ẩn / hidden)", 21],
+			["Meta (ẩn / hidden)", 20]
+		],
+		mark: [
+			[0, 1],
+			[1, 1],
+			[2, 1]
+		],
+		note: ["SUMIFS chỉ cộng ba ô tô sáng: 54.", "SUMIFS adds only the three highlighted cells: 54."]
+	},
+	"xl-chart": {
+		kind: "line",
+		title: ["Form tổng 6 tuần", "Total forms, 6 weeks"],
+		xs: [
+			"1",
+			"2",
+			"3",
+			"4",
+			"5",
+			"6"
+		],
+		ys: [
+			48,
+			51,
+			50,
+			47,
+			53,
+			50
+		],
+		note: ["Dao động quanh 50, không dốc xuống.", "Wobbles around 50, no downward slope."]
+	},
+	"xl-pivot": {
+		kind: "bars",
+		title: ["Kết quả pivot: tổng form theo kênh", "Pivot result: total forms by channel"],
+		items: [
+			{
+				label: ["GDN", "GDN"],
+				value: 35
+			},
+			{
+				label: ["Meta", "Meta"],
+				value: 41
+			},
+			{
+				label: ["TikTok", "TikTok"],
+				value: 24
+			}
+		],
+		note: ["35 + 41 + 24 = 100 = 50 × 2 tuần.", "35 + 41 + 24 = 100 = 50 × 2 weeks."]
+	},
+	"xl-look": {
+		kind: "table",
+		title: ["Bảng mã giảm giá", "Discount code table"],
+		head: [["Mã", "Code"], ["Giảm", "Discount"]],
+		rows: [
+			[10, "5%"],
+			[20, "10%"],
+			[30, "15%"]
+		],
+		mark: [[1, 1]],
+		note: ["Mã 25 không có: tìm gần đúng lấy dòng mã 20.", "Code 25 is missing: approximate match takes the code 20 row."]
+	}
+};
+var c0Walks = Object.fromEntries(Object.entries(base).map(([id, w]) => [id, visuals[id] ? {
+	...w,
+	visual: visuals[id]
+} : w]));
 var walks = {
 	...pilotWalks,
 	...c0Walks
 };
+/** Hình minh họa trong mục «Làm từng bước»: bảng tính, biểu đồ cột, biểu đồ đường. Dùng màu từ token của app. */
+function WalkVisual({ v, lang }) {
+	const i = lang === "en" ? 1 : 0;
+	const frame = (body) => /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("figure", {
+		className: "mt-4 rounded-xl border border-line bg-paper p-3",
+		children: [
+			/* @__PURE__ */ (0, import_jsx_runtime.jsx)("figcaption", {
+				className: "text-xs uppercase tracking-widest text-muted",
+				children: v.title[i]
+			}),
+			/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+				className: "mt-2 overflow-x-auto",
+				children: body
+			}),
+			v.note ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+				className: "mt-2 text-sm text-muted",
+				children: v.note[i]
+			}) : null
+		]
+	});
+	if (v.kind === "table") {
+		const marked = new Set((v.mark ?? []).map(([r, c]) => `${r},${c}`));
+		const cols = "ABCDEFGH";
+		return frame(/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("table", {
+			className: "min-w-full border-collapse text-sm tabular-nums",
+			children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("thead", { children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("tr", { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("th", { className: "w-8 border border-line bg-card" }), v.head.map((h, c) => /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("th", {
+				className: "border border-line bg-card px-2 py-1 text-left font-medium",
+				children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+					className: "mr-1 text-xs text-muted",
+					children: cols[c]
+				}), h[i]]
+			}, c))] }) }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("tbody", { children: v.rows.map((row, r) => /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("tr", { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("th", {
+				className: "border border-line bg-card px-2 py-1 text-xs font-normal text-muted",
+				children: r + 1
+			}), row.map((cell, c) => /* @__PURE__ */ (0, import_jsx_runtime.jsx)("td", {
+				className: `border border-line px-2 py-1 ${typeof cell === "number" ? "text-right" : ""} ${marked.has(`${r},${c}`) ? "bg-accent font-medium text-accent-ink" : "bg-card"}`,
+				children: cell
+			}, c))] }, r)) })]
+		}));
+	}
+	const W = 320;
+	const H = 160;
+	const pad = 28;
+	if (v.kind === "bars") {
+		const max = Math.max(...v.items.map((x) => x.value)) * 1.15;
+		const bw = 264 / v.items.length;
+		return frame(/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("svg", {
+			viewBox: `0 0 ${W} ${H}`,
+			className: "w-full max-w-md",
+			role: "img",
+			"aria-label": v.title[i],
+			children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("line", {
+				x1: pad,
+				y1: 132,
+				x2: 292,
+				y2: 132,
+				stroke: "currentColor",
+				opacity: .3
+			}), v.items.map((it, k) => {
+				const h = 104 * it.value / max;
+				const x = pad + k * bw + bw * .2;
+				return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("g", { children: [
+					/* @__PURE__ */ (0, import_jsx_runtime.jsx)("rect", {
+						x,
+						y: 132 - h,
+						width: bw * .6,
+						height: h,
+						rx: 3,
+						className: "fill-accent"
+					}),
+					/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("text", {
+						x: x + bw * .3,
+						y: 132 - h - 4,
+						textAnchor: "middle",
+						fontSize: 11,
+						fill: "currentColor",
+						children: [it.value, v.unit ?? ""]
+					}),
+					/* @__PURE__ */ (0, import_jsx_runtime.jsx)("text", {
+						x: x + bw * .3,
+						y: 146,
+						textAnchor: "middle",
+						fontSize: 11,
+						fill: "currentColor",
+						opacity: .7,
+						children: it.label[i]
+					})
+				] }, k);
+			})]
+		}));
+	}
+	const lo = Math.min(...v.ys);
+	const hi = Math.max(...v.ys);
+	const span = hi - lo || 1;
+	const min = lo - span * .3;
+	const rng = hi + span * .3 - min;
+	const px = (k) => pad + k * 264 / Math.max(v.ys.length - 1, 1);
+	const py = (y) => 132 - (y - min) / rng * 104;
+	return frame(/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("svg", {
+		viewBox: `0 0 ${W} ${H}`,
+		className: "w-full max-w-md",
+		role: "img",
+		"aria-label": v.title[i],
+		children: [
+			/* @__PURE__ */ (0, import_jsx_runtime.jsx)("line", {
+				x1: pad,
+				y1: 132,
+				x2: 292,
+				y2: 132,
+				stroke: "currentColor",
+				opacity: .3
+			}),
+			/* @__PURE__ */ (0, import_jsx_runtime.jsx)("polyline", {
+				fill: "none",
+				strokeWidth: 2,
+				className: "stroke-accent",
+				points: v.ys.map((y, k) => `${px(k)},${py(y)}`).join(" ")
+			}),
+			v.ys.map((y, k) => /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("g", { children: [
+				/* @__PURE__ */ (0, import_jsx_runtime.jsx)("circle", {
+					cx: px(k),
+					cy: py(y),
+					r: 3.5,
+					className: "fill-accent"
+				}),
+				/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("text", {
+					x: px(k),
+					y: py(y) - 8,
+					textAnchor: "middle",
+					fontSize: 11,
+					fill: "currentColor",
+					children: [y, v.unit ?? ""]
+				}),
+				/* @__PURE__ */ (0, import_jsx_runtime.jsx)("text", {
+					x: px(k),
+					y: 146,
+					textAnchor: "middle",
+					fontSize: 11,
+					fill: "currentColor",
+					opacity: .7,
+					children: v.xs[k]
+				})
+			] }, k))
+		]
+	}));
+}
 var heads = {
 	vi: {
 		why: "Biết để làm gì",
@@ -11249,7 +11678,7 @@ var heads = {
 		story: "The Lotus Spa story"
 	}
 };
-function WalkBlock({ walk, head }) {
+function WalkBlock({ walk, head, visual, lang }) {
 	const [open, setOpen] = (0, import_react.useState)(false);
 	return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("section", {
 		className: "mt-8 rounded-card border border-line bg-card p-4",
@@ -11290,6 +11719,10 @@ function WalkBlock({ walk, head }) {
 				className: "mt-1 leading-relaxed",
 				children: walk.problem
 			}),
+			visual ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)(WalkVisual, {
+				v: visual,
+				lang
+			}) : null,
 			/* @__PURE__ */ (0, import_jsx_runtime.jsx)("h3", {
 				className: "mt-5 text-sm font-medium",
 				children: head.steps
@@ -11460,7 +11893,9 @@ function ConceptView({ concept }) {
 			}),
 			walks[concept.id] ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)(WalkBlock, {
 				walk: walks[concept.id][lang],
-				head
+				head,
+				visual: walks[concept.id].visual,
+				lang
 			}) : null,
 			/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("section", {
 				className: "mt-8",
