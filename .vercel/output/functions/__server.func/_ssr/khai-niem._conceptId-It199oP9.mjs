@@ -1,10 +1,10 @@
 import { o as __toESM } from "../_runtime.mjs";
 import { J as require_react, S as require_jsx_runtime, b as Link } from "../_libs/@tanstack/react-router+[...].mjs";
-import { A as studyCopy, B as subscribeRaw, F as getRawVersion, I as getServerRawVersion, M as studyNeighbors, O as subscribeProgress, b as getServerProgress, j as studyListTitle, k as getStudy, r as Route$1, y as getProgress } from "./router-BKTVoWn3.mjs";
-import { n as Range, r as Sim, t as Lab } from "./labs-Ddtyp-e9.mjs";
+import { A as studyCopy, B as subscribeRaw, F as getRawVersion, I as getServerRawVersion, M as studyNeighbors, O as subscribeProgress, b as getServerProgress, j as studyListTitle, k as getStudy, r as Route$1, y as getProgress } from "./router-CGxXTrc_.mjs";
+import { n as Range, r as Sim, t as Lab } from "./labs-6LixJhgP.mjs";
 import { t as Tex } from "./tex-t3KOuum9.mjs";
-import { o as relatedOf } from "./map-Co7CziNK.mjs";
-//#region node_modules/.nitro/vite/services/ssr/assets/khai-niem._conceptId-BHJrxOWK.js
+import { o as relatedOf } from "./map-CVAaVDM3.mjs";
+//#region node_modules/.nitro/vite/services/ssr/assets/khai-niem._conceptId-It199oP9.js
 var import_react = /* @__PURE__ */ __toESM(require_react());
 var import_jsx_runtime = require_jsx_runtime();
 var ui$1 = {
@@ -10557,7 +10557,7 @@ var pilotWalks = {
 	}
 };
 /** C0: hiểu việc, giải quyết vấn đề, Excel. Tháng 1 ở Lotus Spa. */
-var base = {
+var base$1 = {
 	"c0-order": {
 		vi: {
 			story: "Tháng 1, Lotus Spa (3 chi nhánh: Quận 1, Quận 3, Thủ Đức). Chị Lan, chủ chuỗi, gọi bạn vào phòng: «Form đặt hẹn tháng 12 giảm, em xem giúp chị.» Đây là việc đầu tiên của bạn, và cả năm tới bạn sẽ đi cùng câu chuyện này.",
@@ -11195,7 +11195,7 @@ var base = {
 		}
 	}
 };
-var visuals = {
+var visuals$1 = {
 	"c0-order": {
 		kind: "bars",
 		title: ["Form theo tháng", "Forms by month"],
@@ -11474,13 +11474,846 @@ var visuals = {
 		note: ["Mã 25 không có: tìm gần đúng lấy dòng mã 20.", "Code 25 is missing: approximate match takes the code 20 row."]
 	}
 };
-var c0Walks = Object.fromEntries(Object.entries(base).map(([id, w]) => [id, visuals[id] ? {
+var c0Walks = Object.fromEntries(Object.entries(base$1).map(([id, w]) => [id, visuals$1[id] ? {
+	...w,
+	visual: visuals$1[id]
+} : w]));
+/** C1: Python cho khoa học dữ liệu. Tháng 2 ở Lotus Spa. */
+var base = {
+	"py-run": {
+		vi: {
+			story: "Tháng 2. Excel đã cho bạn thấy hạn chế: file 12 tuần × 3 kênh quá nhiều để làm tay. Bạn mở notebook Python đầu tiên và tính lại CPA tuần này (chi 15 triệu, 50 form).",
+			words: [
+				["Ô (cell)", "Một khối code trong notebook. Bấm chạy thì máy chạy khối đó."],
+				["Biến", "Một cái tên giữ một giá trị, ví dụ forms = 50."],
+				["Thứ tự chạy", "Máy chỉ biết những gì đã chạy, theo thứ tự bạn bấm, không phải thứ tự trên màn hình."]
+			],
+			problem: "Ô 1: forms = 50. Ô 2: cpa = 15000 / forms (đơn vị nghìn đồng). Bạn chạy cả hai, được 300. Sau đó sửa ô 1 thành forms = 54 nhưng không chạy lại ô 2. Giá trị cpa là bao nhiêu và cần làm gì?",
+			steps: [
+				["Chạy ô 1 rồi ô 2", "forms = 50, cpa = 15000 ÷ 50 = 300."],
+				["Sửa ô 1 thành 54 và chạy ô 1", "Máy đổi forms thành 54. Nhưng cpa là kết quả đã tính ở lần chạy trước, nó không tự tính lại."],
+				["Xem cpa lúc này", "Vẫn 300. Ô 2 trên màn hình viết 15000 / forms nhưng giá trị cũ vẫn nằm trong bộ nhớ."],
+				["Chạy lại ô 2", "15000 ÷ 54 ≈ 277,8. Bây giờ cpa khớp với forms."]
+			],
+			say: "Notebook nhớ giá trị theo lần chạy, không theo những gì đang nhìn thấy. Nếu bạn gửi chị Lan con số 300 trong khi forms đã là 54, bạn báo sai mà code trông hoàn toàn đúng. Thói quen an toàn: sửa xong thì chạy lại từ trên xuống.",
+			check: ["Nếu bạn chạy ô 2 trước khi chạy ô 1 trong một notebook mới, điều gì xảy ra?", "Lỗi NameError: forms chưa được định nghĩa, vì máy chưa chạy dòng gán forms. Chạy ô 1 trước rồi ô 2 là hết lỗi."]
+		},
+		en: {
+			story: "February. Excel has shown its limits: 12 weeks × 3 channels is too much to do by hand. You open your first Python notebook and recompute this week's CPA (15 million spend, 50 forms).",
+			words: [
+				["Cell", "A block of code in the notebook. Click run and the machine runs that block."],
+				["Variable", "A name that holds a value, for example forms = 50."],
+				["Run order", "The machine only knows what has been run, in the order you clicked, not the order on screen."]
+			],
+			problem: "Cell 1: forms = 50. Cell 2: cpa = 15000 / forms (in thousand dong). You run both and get 300. Then you edit cell 1 to forms = 54 but do not re-run cell 2. What is cpa and what should you do?",
+			steps: [
+				["Run cell 1 then cell 2", "forms = 50, cpa = 15000 ÷ 50 = 300."],
+				["Edit cell 1 to 54 and run cell 1", "The machine changes forms to 54. But cpa is a result computed in the earlier run; it does not recompute itself."],
+				["Look at cpa now", "Still 300. Cell 2 on screen says 15000 / forms but the old value remains in memory."],
+				["Re-run cell 2", "15000 ÷ 54 ≈ 277.8. Now cpa matches forms."]
+			],
+			say: "A notebook remembers values by run, not by what you see. If you send Ms. Lan the number 300 while forms is already 54, you report a wrong number while the code looks perfectly right. A safe habit: after editing, run again from the top.",
+			check: ["If you run cell 2 before cell 1 in a fresh notebook, what happens?", "A NameError: forms is not defined, because the machine has not run the line that assigns forms. Run cell 1 first, then cell 2, and the error is gone."]
+		}
+	},
+	"py-type": {
+		vi: {
+			story: "Thảo xuất form từ hệ thống ra file CSV. Khi bạn đọc vào Python, số form của TikTok tuần này nằm trong biến, nhưng phép cộng cho ra kết quả kỳ lạ.",
+			words: [
+				["int", "Số nguyên, ví dụ 12."],
+				["float", "Số có phần thập phân, ví dụ 333,3."],
+				["str", "Chuỗi chữ, đặt trong dấu nháy, ví dụ \"12\"."],
+				["Ép kiểu", "Đổi một giá trị sang kiểu khác, ví dụ int(\"12\") thành 12."]
+			],
+			problem: "File CSV đọc vào cho tiktok_forms = \"12\" và meta_forms = \"20\" (đều là chuỗi). Bạn viết tiktok_forms + meta_forms. Kết quả là gì, và làm sao có tổng đúng 32?",
+			steps: [
+				["Xem kiểu", "type(tiktok_forms) cho str. Dấu nháy trong \"12\" nói rằng đây là chữ chứ không phải số."],
+				["Chạy phép + trên hai chuỗi", "+ với chuỗi là nối chữ: \"12\" + \"20\" = \"1220\". Không có lỗi, chỉ là kết quả sai."],
+				["Ép kiểu trước khi cộng", "int(\"12\") + int(\"20\") = 12 + 20 = 32."],
+				["Kiểm tra", "type(int(\"12\")) cho int. Tổng 32 khớp với 12 + 20."]
+			],
+			say: "Đây chính là lỗi «số lưu dạng chữ» của Excel, nhưng ở Python nó còn khó thấy hơn: \"1220\" trông như một con số. Mỗi khi đọc dữ liệu từ file, hãy kiểm tra kiểu trước khi tính.",
+			check: ["int(\"12.5\") cho kết quả gì?", "Lỗi ValueError, vì \"12.5\" không phải số nguyên viết thẳng. Dùng float(\"12.5\") để có 12.5, rồi int() nếu cần cắt phần thập phân."]
+		},
+		en: {
+			story: "Thao exports forms from the system to a CSV file. When you read it into Python, TikTok's forms for this week sit in a variable, but addition gives odd results.",
+			words: [
+				["int", "A whole number, for example 12."],
+				["float", "A number with a decimal part, for example 333.3."],
+				["str", "A string of text, in quotes, for example \"12\"."],
+				["Casting", "Converting a value to another type, for example int(\"12\") becomes 12."]
+			],
+			problem: "The CSV is read in with tiktok_forms = \"12\" and meta_forms = \"20\" (both strings). You write tiktok_forms + meta_forms. What is the result, and how do you get the correct total of 32?",
+			steps: [
+				["Check the type", "type(tiktok_forms) gives str. The quotes in \"12\" say it is text, not a number."],
+				["Run + on two strings", "+ on strings joins text: \"12\" + \"20\" = \"1220\". No error, just a wrong result."],
+				["Cast before adding", "int(\"12\") + int(\"20\") = 12 + 20 = 32."],
+				["Check", "type(int(\"12\")) gives int. The total 32 matches 12 + 20."]
+			],
+			say: "This is exactly Excel's “number stored as text” problem, but in Python it is even harder to see: \"1220\" looks like a number. Every time you read data from a file, check the types before calculating.",
+			check: ["What does int(\"12.5\") give?", "A ValueError, because \"12.5\" is not a whole number written plainly. Use float(\"12.5\") to get 12.5, then int() if you want to cut the decimals."]
+		}
+	},
+	"py-op": {
+		vi: {
+			story: "Bạn tính CPA cho tuần có 54 form (tuần sau khi sửa lỗi trang đích) và cần hiểu rõ từng phép toán Python trước khi viết công thức cho 12 tuần.",
+			words: [
+				["/", "Chia thường, luôn cho số thập phân."],
+				["//", "Chia lấy phần nguyên."],
+				["%", "Chia lấy số dư."],
+				["== và =", "= là gán giá trị, == là hỏi «có bằng nhau không»."]
+			],
+			problem: "Chi 15 triệu = 15000 nghìn, 54 form. Tính 15000 / 54, 15000 // 54 và 15000 % 54, rồi giải thích. Sau đó tính xem 15000 % 50 cho gì.",
+			steps: [
+				["15000 / 54", "= 277,78 (làm tròn). Đây là CPA, tức khoảng 277,8 nghìn mỗi form."],
+				["15000 // 54", "54 × 277 = 14958, nằm dưới 15000, còn 54 × 278 = 15012 là vượt. Vậy phần nguyên là 277."],
+				["15000 % 54", "Số dư = 15000 − 14958 = 42."],
+				["Kiểm tra lại", "277 × 54 + 42 = 14958 + 42 = 15000. Phép chia lấy nguyên và dư luôn ghép lại thành số ban đầu."],
+				["15000 % 50", "50 × 300 = 15000, nên số dư là 0. Dư bằng 0 nghĩa là chia hết."]
+			],
+			say: "/ cho CPA thật (277,8), còn // chỉ cho 277, tức bỏ mất 0,8 nghìn mỗi form, khoảng 800 đồng. Khi báo cáo tiền, dùng / chứ đừng dùng // trừ khi bạn muốn cố tình làm tròn xuống. Còn % rất hữu ích để kiểm tra chia hết.",
+			check: ["Viết if forms = 50 thay vì if forms == 50 thì sao?", "Python báo lỗi cú pháp, vì = là gán, không phải so sánh. Muốn hỏi «forms có bằng 50 không» phải viết ==."]
+		},
+		en: {
+			story: "You compute CPA for the week with 54 forms (the week after the landing-page fix) and need to understand each Python operator before writing a formula for 12 weeks.",
+			words: [
+				["/", "Ordinary division, always gives a decimal."],
+				["//", "Division keeping the whole part."],
+				["%", "Division keeping the remainder."],
+				["== and =", "= assigns a value, == asks “are they equal?”."]
+			],
+			problem: "Spend 15 million = 15000 thousand, 54 forms. Compute 15000 / 54, 15000 // 54 and 15000 % 54 and explain them. Then work out what 15000 % 50 gives.",
+			steps: [
+				["15000 / 54", "= 277.78 (rounded). This is the CPA, about 277.8 thousand per form."],
+				["15000 // 54", "54 × 277 = 14958, below 15000, while 54 × 278 = 15012 is over. So the whole part is 277."],
+				["15000 % 54", "Remainder = 15000 − 14958 = 42."],
+				["Check back", "277 × 54 + 42 = 14958 + 42 = 15000. Whole-part and remainder always put back together into the original number."],
+				["15000 % 50", "50 × 300 = 15000, so the remainder is 0. A remainder of 0 means it divides evenly."]
+			],
+			say: "/ gives the real CPA (277.8) while // gives only 277, dropping 0.8 thousand per form, about 800 dong. When reporting money use /, not //, unless you deliberately want to round down. And % is handy for checking divisibility.",
+			check: ["What if you write if forms = 50 instead of if forms == 50?", "Python raises a syntax error, because = assigns, it does not compare. To ask “does forms equal 50” you must write ==."]
+		}
+	},
+	"py-if": {
+		vi: {
+			story: "Chị Lan yêu cầu: kênh nào có CPA trên 300 nghìn thì đánh dấu «xem lại». Bạn viết quy tắc đó thành code.",
+			words: [
+				["if / elif / else", "Chọn một nhánh. Máy đi từ trên xuống và dừng ở nhánh đầu tiên đúng."],
+				["Điều kiện", "Một biểu thức cho True hoặc False, ví dụ cpa > 300."],
+				["Thụt lề", "Dòng thụt vào dưới if thuộc nhánh đó."]
+			],
+			problem: "CPA ba kênh: GDN 333,3; Meta 250; TikTok 333,3 (nghìn). Quy tắc: trên 300 là «xem lại», từ 260 đến 300 là «ổn», còn lại là «tốt». Mỗi kênh rơi vào nhánh nào?",
+			steps: [
+				["Viết nhánh nghiêm nhất trước", "if cpa > 300: \"xem lại\""],
+				["Nhánh thứ hai", "elif cpa >= 260: \"ổn\""],
+				["Nhánh cuối", "else: \"tốt\""],
+				["Chạy GDN (333,3)", "333,3 > 300 đúng, nên dừng ở nhánh đầu: «xem lại»."],
+				["Chạy Meta (250)", "250 > 300 sai, 250 >= 260 cũng sai, rơi vào else: «tốt»."],
+				["Chạy TikTok (333,3)", "Giống GDN: «xem lại». Kết quả: GDN xem lại, Meta tốt, TikTok xem lại."]
+			],
+			say: "Thứ tự nhánh quan trọng. Nếu bạn đặt elif cpa >= 260 lên đầu thì GDN (333,3) cũng đúng nhánh đó và bị gắn «ổn» thay vì «xem lại». Máy dừng ở nhánh đầu tiên đúng, nên viết điều kiện hẹp nhất trước.",
+			check: ["Nếu đổi thứ tự thành: if cpa >= 260 trước, rồi elif cpa > 300, GDN nhận nhãn gì?", "«ổn», vì 333,3 >= 260 đúng nên máy dừng ngay ở nhánh đầu, không bao giờ đến nhánh > 300. Đây là lỗi sai thứ tự nhánh."]
+		},
+		en: {
+			story: "Ms. Lan asks: any channel with CPA above 300 thousand should be marked “review”. You turn that rule into code.",
+			words: [
+				["if / elif / else", "Pick one branch. The machine goes top to bottom and stops at the first true branch."],
+				["Condition", "An expression that gives True or False, for example cpa > 300."],
+				["Indentation", "Lines indented under an if belong to that branch."]
+			],
+			problem: "CPA of the three channels: GDN 333.3; Meta 250; TikTok 333.3 (thousand). Rule: above 300 is “review”, 260 to 300 is “ok”, otherwise “good”. Which branch does each channel land in?",
+			steps: [
+				["Write the strictest branch first", "if cpa > 300: \"review\""],
+				["The second branch", "elif cpa >= 260: \"ok\""],
+				["The last branch", "else: \"good\""],
+				["Run GDN (333.3)", "333.3 > 300 is true, so it stops at the first branch: “review”."],
+				["Run Meta (250)", "250 > 300 is false, 250 >= 260 is also false, so it falls into else: “good”."],
+				["Run TikTok (333.3)", "Same as GDN: “review”. Result: GDN review, Meta good, TikTok review."]
+			],
+			say: "Branch order matters. If you put elif cpa >= 260 first, GDN (333.3) also satisfies that branch and is labelled “ok” instead of “review”. The machine stops at the first true branch, so write the narrowest condition first.",
+			check: ["If you swap the order to: if cpa >= 260 first, then elif cpa > 300, what label does GDN get?", "“ok”, because 333.3 >= 260 is true so the machine stops at the first branch and never reaches > 300. This is a branch-order bug."]
+		}
+	},
+	"py-loop": {
+		vi: {
+			story: "Thay vì cộng tay form từng kênh, bạn dùng vòng lặp để duyệt cả ba kênh trong tuần và cộng lại. Bạn kỳ vọng 50, vì đó là số form mỗi tuần của spa.",
+			words: [
+				["for", "Lặp qua từng phần tử của một danh sách, mỗi lần gán phần tử đó cho biến lặp."],
+				["Biến tích lũy", "Biến bắt đầu từ 0 rồi cộng dồn trong mỗi vòng."],
+				["Vòng lặp", "Một khối code chạy lại nhiều lần."]
+			],
+			problem: "forms = [18, 20, 12] (GDN, Meta, TikTok). Viết vòng lặp cộng tổng và theo dõi biến total qua từng vòng.",
+			steps: [
+				["Khởi tạo", "total = 0 trước vòng lặp."],
+				["Vòng 1: f = 18", "total = 0 + 18 = 18."],
+				["Vòng 2: f = 20", "total = 18 + 20 = 38."],
+				["Vòng 3: f = 12", "total = 38 + 12 = 50."],
+				["Kiểm tra", "50 khớp với 50 form mỗi tuần. Hết danh sách thì vòng dừng."]
+			],
+			say: "Nếu quên dòng total = 0 trước vòng lặp, Python báo lỗi vì total chưa tồn tại. Nếu đặt nó bên trong vòng lặp, mỗi vòng reset về 0 và kết quả cuối chỉ là 12 (phần tử cuối). Vị trí khởi tạo quyết định kết quả.",
+			check: ["Nếu đặt total = 0 bên trong vòng lặp, kết quả cuối là bao nhiêu?", "12. Mỗi vòng total quay về 0 rồi cộng một phần tử, nên sau vòng cuối chỉ còn 0 + 12 = 12."]
+		},
+		en: {
+			story: "Instead of adding each channel's forms by hand, you use a loop to walk the three channels of the week and add them up. You expect 50, since that is the spa's weekly forms.",
+			words: [
+				["for", "Loops through each element of a list, assigning that element to the loop variable each time."],
+				["Accumulator", "A variable that starts at 0 and builds up in each round."],
+				["Loop", "A block of code that runs again and again."]
+			],
+			problem: "forms = [18, 20, 12] (GDN, Meta, TikTok). Write a loop that adds the total and track the variable total through each round.",
+			steps: [
+				["Initialise", "total = 0 before the loop."],
+				["Round 1: f = 18", "total = 0 + 18 = 18."],
+				["Round 2: f = 20", "total = 18 + 20 = 38."],
+				["Round 3: f = 12", "total = 38 + 12 = 50."],
+				["Check", "50 matches 50 forms a week. When the list runs out, the loop stops."]
+			],
+			say: "If you forget total = 0 before the loop, Python errors because total does not exist. If you put it inside the loop, each round resets to 0 and the final result is only 12 (the last element). Where you initialise decides the result.",
+			check: ["If you put total = 0 inside the loop, what is the final result?", "12. Each round total returns to 0 and then adds one element, so after the last round it is only 0 + 12 = 12."]
+		}
+	},
+	"py-fn": {
+		vi: {
+			story: "Bạn đã tính CPA cho ba kênh ba lần với ba đoạn code gần giống nhau. Đến lúc gói phép tính vào một hàm để dùng lại cho cả 12 tuần.",
+			words: [
+				["Hàm", "Khối code có tên, nhận đầu vào và trả đầu ra."],
+				["Tham số", "Tên của đầu vào trong định nghĩa hàm."],
+				["return", "Trả giá trị ra cho nơi gọi hàm."]
+			],
+			problem: "Viết hàm cpa(spend, forms) trả spend / forms. Gọi cho GDN (6000, 18), Meta (5000, 20), TikTok (4000, 12). Sau đó xử lý trường hợp forms = 0.",
+			steps: [
+				["Định nghĩa", "def cpa(spend, forms): return spend / forms"],
+				["Gọi cho GDN", "cpa(6000, 18) = 6000 ÷ 18 = 333,3."],
+				["Gọi cho Meta", "cpa(5000, 20) = 250."],
+				["Gọi cho TikTok", "cpa(4000, 12) = 333,3."],
+				["Thử forms = 0", "cpa(4000, 0) báo ZeroDivisionError vì không chia được cho 0."],
+				["Thêm phòng thủ", "if forms == 0: return None, rồi mới chia. Giờ cpa(4000, 0) trả None thay vì làm hỏng cả vòng lặp."]
+			],
+			say: "Một hàm viết một lần, dùng 36 lần cho 12 tuần × 3 kênh. Sửa công thức ở một chỗ là cả 36 chỗ đúng theo. Quan trọng hơn, bạn nghĩ trước về trường hợp xấu (forms = 0) ngay trong hàm, như bạn đã làm với ô trống ở Excel.",
+			check: ["Hàm không có dòng return thì cpa(6000, 18) trả về gì?", "None, vì hàm chạy xong mà không trả gì. Nếu bạn gán x = cpa(6000, 18) rồi in x, bạn sẽ thấy None chứ không phải 333,3."]
+		},
+		en: {
+			story: "You have computed CPA for the three channels three times with three nearly identical pieces of code. Time to wrap the calculation in a function to reuse for all 12 weeks.",
+			words: [
+				["Function", "A named block of code that takes input and returns output."],
+				["Parameter", "The name of an input in the function's definition."],
+				["return", "Sends a value back to where the function was called."]
+			],
+			problem: "Write a function cpa(spend, forms) that returns spend / forms. Call it for GDN (6000, 18), Meta (5000, 20), TikTok (4000, 12). Then handle the case forms = 0.",
+			steps: [
+				["Define", "def cpa(spend, forms): return spend / forms"],
+				["Call for GDN", "cpa(6000, 18) = 6000 ÷ 18 = 333.3."],
+				["Call for Meta", "cpa(5000, 20) = 250."],
+				["Call for TikTok", "cpa(4000, 12) = 333.3."],
+				["Try forms = 0", "cpa(4000, 0) raises ZeroDivisionError because you cannot divide by 0."],
+				["Add a guard", "if forms == 0: return None, before dividing. Now cpa(4000, 0) returns None instead of breaking the whole loop."]
+			],
+			say: "A function written once is used 36 times for 12 weeks × 3 channels. Fix the formula in one place and all 36 places are right. More importantly, you think about the bad case (forms = 0) inside the function, as you did with blank cells in Excel.",
+			check: ["If the function has no return line, what does cpa(6000, 18) give back?", "None, because the function finishes without returning anything. If you assign x = cpa(6000, 18) and print x you will see None, not 333.3."]
+		}
+	},
+	"py-str": {
+		vi: {
+			story: "File form theo kênh có cột utm_source, nhưng người nhập viết không thống nhất: «tiktok», «TikTok », «TIKTOK». Nếu không làm sạch, form của TikTok bị đếm thiếu.",
+			words: [
+				["Chuỗi", "Văn bản trong dấu nháy. Python đếm từng ký tự, kể cả khoảng trắng."],
+				["strip()", "Cắt khoảng trắng ở hai đầu."],
+				["lower()", "Đổi toàn bộ sang chữ thường."]
+			],
+			problem: "Cột utm_source có 4 giá trị: \"tiktok\", \"TikTok \", \" TIKTOK\", \"meta\". Đếm số dòng của TikTok bằng ==  \"tiktok\" trước và sau khi làm sạch.",
+			steps: [
+				["Đếm trước khi làm sạch", "Chỉ \"tiktok\" khớp chính xác. \"TikTok \" khác vì chữ hoa và có khoảng trắng cuối; \" TIKTOK\" khác vì chữ hoa và khoảng trắng đầu. Đếm được 1."],
+				["Cắt khoảng trắng", "\"TikTok \".strip() cho \"TikTok\"; \" TIKTOK\".strip() cho \"TIKTOK\"."],
+				["Đổi chữ thường", "\"TikTok\".lower() cho \"tiktok\"; \"TIKTOK\".lower() cho \"tiktok\"."],
+				["Gộp thành một bước", "s.strip().lower() áp dụng cho cả bốn giá trị."],
+				["Đếm lại", "Ba giá trị đầu cùng thành \"tiktok\", đếm được 3. \"meta\" vẫn là \"meta\"."]
+			],
+			say: "Chưa làm sạch, TikTok chỉ có 1 dòng thay vì 3, tức mất 2 trong 3 form. Lỗi này không hiện ra lỗi nào, chỉ làm CPA TikTok cao hơn thật. Làm sạch chuỗi rồi mới đếm là bước phải có.",
+			check: ["\"Tik Tok\".strip().lower() == \"tiktok\" có đúng không?", "Không: strip chỉ cắt hai đầu, khoảng trắng giữa vẫn còn nên được \"tik tok\". Cần thêm .replace(\" \", \"\")."]
+		},
+		en: {
+			story: "The per-channel form file has a utm_source column, but the people typing it were inconsistent: “tiktok”, “TikTok ”, “TIKTOK”. Without cleaning, TikTok's forms are undercounted.",
+			words: [
+				["String", "Text in quotes. Python counts every character, including spaces."],
+				["strip()", "Cuts spaces at both ends."],
+				["lower()", "Turns everything to lowercase."]
+			],
+			problem: "The utm_source column has 4 values: \"tiktok\", \"TikTok \", \" TIKTOK\", \"meta\". Count TikTok's rows with == \"tiktok\" before and after cleaning.",
+			steps: [
+				["Count before cleaning", "Only \"tiktok\" matches exactly. \"TikTok \" differs by capitals and a trailing space; \" TIKTOK\" by capitals and a leading space. Count = 1."],
+				["Strip spaces", "\"TikTok \".strip() gives \"TikTok\"; \" TIKTOK\".strip() gives \"TIKTOK\"."],
+				["Lowercase", "\"TikTok\".lower() gives \"tiktok\"; \"TIKTOK\".lower() gives \"tiktok\"."],
+				["Combine into one step", "s.strip().lower() applied to all four values."],
+				["Count again", "The first three all become \"tiktok\", count = 3. \"meta\" stays \"meta\"."]
+			],
+			say: "Before cleaning, TikTok has 1 row instead of 3, losing 2 of 3 forms. This raises no error, it just makes TikTok's CPA look higher than it is. Cleaning strings before counting is a must.",
+			check: ["Is \"Tik Tok\".strip().lower() == \"tiktok\" true?", "No: strip only cuts the ends, the middle space remains so you get \"tik tok\". You need .replace(\" \", \"\") too."]
+		}
+	},
+	"py-list": {
+		vi: {
+			story: "Form GDN theo tuần được lưu trong một danh sách. Bạn cần lấy từng tuần, một đoạn, và tuần cuối mà không viết lại số.",
+			words: [
+				["Danh sách (list)", "Dãy giá trị có thứ tự, đặt trong ngoặc vuông."],
+				["Chỉ số (index)", "Vị trí của phần tử. Bắt đầu từ 0."],
+				["Cắt đoạn (slice)", "a[i:j] lấy từ chỉ số i đến trước chỉ số j."]
+			],
+			problem: "gdn = [18, 17, 19] (tuần 1, 2, 3). Tính gdn[0], gdn[-1], gdn[0:2], len(gdn) và sum(gdn) rồi tính form trung bình mỗi tuần.",
+			steps: [
+				["gdn[0]", "Chỉ số bắt đầu từ 0 nên đây là phần tử đầu: 18 (tuần 1)."],
+				["gdn[-1]", "Âm là đếm từ cuối: 19 (tuần 3)."],
+				["gdn[0:2]", "Lấy chỉ số 0 và 1, không lấy chỉ số 2: [18, 17]."],
+				["len(gdn) và sum(gdn)", "len = 3 phần tử; sum = 18 + 17 + 19 = 54."],
+				["Trung bình", "54 ÷ 3 = 18 form mỗi tuần."]
+			],
+			say: "gdn[1] là tuần 2 chứ không phải tuần 1, vì Python đếm từ 0. Và gdn[0:2] chỉ có hai phần tử, không có ba. Hai chỗ này là nguồn lỗi lệch một đơn vị phổ biến nhất. Quy tắc nhớ: số trước dấu hai chấm tính, số sau không tính.",
+			check: ["gdn[3] cho kết quả gì?", "Lỗi IndexError, vì danh sách chỉ có chỉ số 0, 1, 2. Phần tử cuối là gdn[2] hoặc gdn[-1]."]
+		},
+		en: {
+			story: "GDN's weekly forms are stored in a list. You need to pull out individual weeks, a stretch, and the last week without retyping the numbers.",
+			words: [
+				["List", "An ordered sequence of values, in square brackets."],
+				["Index", "An element's position. Starts at 0."],
+				["Slice", "a[i:j] takes from index i up to but not including index j."]
+			],
+			problem: "gdn = [18, 17, 19] (weeks 1, 2, 3). Compute gdn[0], gdn[-1], gdn[0:2], len(gdn) and sum(gdn), then the average forms per week.",
+			steps: [
+				["gdn[0]", "Indexing starts at 0 so this is the first element: 18 (week 1)."],
+				["gdn[-1]", "Negative counts from the end: 19 (week 3)."],
+				["gdn[0:2]", "Takes indexes 0 and 1, not index 2: [18, 17]."],
+				["len(gdn) and sum(gdn)", "len = 3 elements; sum = 18 + 17 + 19 = 54."],
+				["Average", "54 ÷ 3 = 18 forms per week."]
+			],
+			say: "gdn[1] is week 2, not week 1, because Python counts from 0. And gdn[0:2] has two elements, not three. These two spots are the most common off-by-one errors. Memory rule: the number before the colon counts, the number after does not.",
+			check: ["What does gdn[3] give?", "An IndexError, because the list only has indexes 0, 1, 2. The last element is gdn[2] or gdn[-1]."]
+		}
+	},
+	"py-dict": {
+		vi: {
+			story: "Thay vì nhớ «số thứ hai là Meta», bạn gắn tên kênh vào số form bằng dict. Khi Thảo hỏi «Zalo thì sao?», bạn cần biết dict xử lý khóa không có như thế nào.",
+			words: [
+				["Dict", "Tập các cặp khóa: giá trị, đặt trong ngoặc nhọn."],
+				["Khóa (key)", "Tên dùng để tra, ví dụ \"Meta\"."],
+				["get()", "Tra với giá trị mặc định nếu khóa không có."]
+			],
+			problem: "forms = {\"GDN\": 18, \"Meta\": 20, \"TikTok\": 12}. Tra forms[\"Meta\"], forms[\"Zalo\"], forms.get(\"Zalo\", 0), rồi tính tổng.",
+			steps: [
+				["forms[\"Meta\"]", "Tra theo khóa: 20."],
+				["forms[\"Zalo\"]", "Khóa không có nên báo KeyError. Python không đoán thay bạn."],
+				["forms.get(\"Zalo\", 0)", "get trả giá trị mặc định 0 khi khóa không có."],
+				["Tổng", "sum(forms.values()) = 18 + 20 + 12 = 50."],
+				["Duyệt từng cặp", "for k, v in forms.items(): in ra GDN 18, Meta 20, TikTok 12."]
+			],
+			say: "forms.get(\"Zalo\", 0) trả 0 và che lỗi: có thể Zalo không chạy quảng cáo, hoặc có chạy nhưng tên sai chính tả trong file. Dùng get khi 0 là câu trả lời hợp lý, còn lại để KeyError báo cho bạn biết.",
+			check: ["Khi nào KeyError có lợi hơn get(..., 0)?", "Khi một khóa thiếu là dấu hiệu dữ liệu sai (ví dụ tên kênh viết sai). KeyError làm bạn dừng lại kiểm tra, còn get âm thầm điền 0 và làm tổng thiếu."]
+		},
+		en: {
+			story: "Instead of remembering “the second number is Meta”, you attach channel names to form counts with a dict. When Thao asks “what about Zalo?”, you need to know how a dict handles a missing key.",
+			words: [
+				["Dict", "A set of key: value pairs, in curly braces."],
+				["Key", "The name used to look up, for example \"Meta\"."],
+				["get()", "Looks up with a default value if the key is missing."]
+			],
+			problem: "forms = {\"GDN\": 18, \"Meta\": 20, \"TikTok\": 12}. Look up forms[\"Meta\"], forms[\"Zalo\"], forms.get(\"Zalo\", 0), then compute the total.",
+			steps: [
+				["forms[\"Meta\"]", "Look up by key: 20."],
+				["forms[\"Zalo\"]", "The key is missing so it raises KeyError. Python does not guess for you."],
+				["forms.get(\"Zalo\", 0)", "get returns the default 0 when the key is missing."],
+				["Total", "sum(forms.values()) = 18 + 20 + 12 = 50."],
+				["Walk through pairs", "for k, v in forms.items(): prints GDN 18, Meta 20, TikTok 12."]
+			],
+			say: "forms.get(\"Zalo\", 0) returns 0 and hides the problem: maybe Zalo runs no ads, or it does but its name is misspelled in the file. Use get when 0 is a sensible answer; otherwise let KeyError tell you.",
+			check: ["When is KeyError more useful than get(..., 0)?", "When a missing key signals bad data (for example a misspelled channel name). KeyError stops you to investigate, while get silently fills in 0 and makes the total short."]
+		}
+	},
+	"py-tup": {
+		vi: {
+			story: "Mỗi kênh có một bản ghi cố định trong tuần: tên, chi phí, form. Bạn không muốn ai (kể cả chính mình) vô tình sửa nó giữa chừng, nên dùng tuple.",
+			words: [["Tuple", "Dãy giá trị có thứ tự như list nhưng không sửa được, đặt trong ngoặc tròn."], ["Giải nén (unpack)", "Gán từng phần tử cho một biến riêng trong một dòng."]],
+			problem: "rec = (\"TikTok\", 4000, 12). Giải nén thành ba biến, thử sửa rec[1] = 5000, và dùng tuple (\"TikTok\", 5) làm khóa dict.",
+			steps: [
+				["Giải nén", "name, spend, forms = rec cho name = \"TikTok\", spend = 4000, forms = 12."],
+				["Tính CPA từ biến", "spend / forms = 4000 ÷ 12 ≈ 333,3."],
+				["Thử sửa", "rec[1] = 5000 báo TypeError: tuple không hỗ trợ gán. Bản ghi giữ nguyên 4000."],
+				["Muốn bản ghi mới", "rec2 = (rec[0], 5000, rec[2]) tạo một tuple khác, tuple cũ vẫn còn."],
+				["Tuple làm khóa dict", "{(\"TikTok\", 5): 12} hợp lệ (tên kênh, tuần 5); list thì không làm khóa được."]
+			],
+			say: "Dùng tuple khi một bản ghi không được đổi, và lỗi khi thử đổi là có chủ đích: nó chặn một lần sửa nhầm 4000 thành 5000 mà không ai hay. Còn ghép (kênh, tuần) làm khóa cho phép tra form theo cả hai thứ.",
+			check: ["Tuple (\"TikTok\", 4000, 12) có bao nhiêu phần tử và phần tử cuối là gì?", "3 phần tử, phần tử cuối rec[2] hay rec[-1] là 12."]
+		},
+		en: {
+			story: "Each channel has a fixed record for the week: name, spend, forms. You do not want anyone (yourself included) to change it by accident midway, so you use a tuple.",
+			words: [["Tuple", "An ordered sequence like a list but unchangeable, in round brackets."], ["Unpack", "Assign each element to its own variable in one line."]],
+			problem: "rec = (\"TikTok\", 4000, 12). Unpack into three variables, try rec[1] = 5000, and use the tuple (\"TikTok\", 5) as a dict key.",
+			steps: [
+				["Unpack", "name, spend, forms = rec gives name = \"TikTok\", spend = 4000, forms = 12."],
+				["Compute CPA from the variables", "spend / forms = 4000 ÷ 12 ≈ 333.3."],
+				["Try to change it", "rec[1] = 5000 raises TypeError: a tuple does not support assignment. The record stays 4000."],
+				["Want a new record", "rec2 = (rec[0], 5000, rec[2]) creates a different tuple; the old one remains."],
+				["Tuple as a dict key", "{(\"TikTok\", 5): 12} is valid (channel, week 5); a list cannot be a key."]
+			],
+			say: "Use a tuple when a record must not change, and the error when you try is deliberate: it blocks an accidental change of 4000 to 5000 that nobody notices. Pairing (channel, week) as a key lets you look up forms by both.",
+			check: ["How many elements does (\"TikTok\", 4000, 12) have and what is the last?", "3 elements, and the last, rec[2] or rec[-1], is 12."]
+		}
+	},
+	"py-set": {
+		vi: {
+			story: "Thảo đưa hai file: một file chi phí có ba kênh, một file form chỉ thấy hai kênh. Bạn muốn tìm kênh thiếu ngay thay vì đọc từng dòng.",
+			words: [
+				["Set", "Tập các giá trị không trùng, không có thứ tự, đặt trong ngoặc nhọn."],
+				["Hiệu (−)", "Phần tử của tập này mà tập kia không có."],
+				["Hợp (|) và giao (&)", "Hợp là gộp lại, giao là phần chung."]
+			],
+			problem: "File chi phí: {\"GDN\", \"Meta\", \"TikTok\"}. File form: {\"GDN\", \"Meta\"}. Tìm kênh có chi phí mà không có form, và đếm số kênh khác nhau trong cột utm_source [\"tiktok\", \"meta\", \"gdn\", \"tiktok\", \"meta\"].",
+			steps: [
+				["Hiệu hai tập", "chi_phi − form = {\"TikTok\"}: TikTok có chi phí nhưng không có form."],
+				["Giao hai tập", "chi_phi & form = {\"GDN\", \"Meta\"}: hai kênh có đủ cả hai file."],
+				["Hợp hai tập", "chi_phi | form = {\"GDN\", \"Meta\", \"TikTok\"}: tổng 3 kênh."],
+				["Bỏ trùng một cột", "set([\"tiktok\", \"meta\", \"gdn\", \"tiktok\", \"meta\"]) = {\"tiktok\", \"meta\", \"gdn\"}."],
+				["Đếm", "len của tập đó = 3 kênh khác nhau (cột có 5 dòng nhưng chỉ có 3 giá trị)."]
+			],
+			say: "Chỉ một phép trừ tập đã chỉ ra kênh TikTok thiếu form, thứ mà đọc mắt rất dễ bỏ sót khi file dài hàng nghìn dòng. Và set tự bỏ trùng: 5 dòng nhưng chỉ 3 kênh thật.",
+			check: ["Thứ tự phần tử trong một set có đáng tin không?", "Không. Set không có thứ tự, nên không có «phần tử đầu». Nếu cần thứ tự, đổi sang list rồi sort."]
+		},
+		en: {
+			story: "Thao gives you two files: a spend file with three channels and a forms file that shows only two. You want to find the missing channel at once instead of reading line by line.",
+			words: [
+				["Set", "A collection of values with no duplicates and no order, in curly braces."],
+				["Difference (−)", "Elements of this set that the other lacks."],
+				["Union (|) and intersection (&)", "Union combines, intersection is what they share."]
+			],
+			problem: "Spend file: {\"GDN\", \"Meta\", \"TikTok\"}. Forms file: {\"GDN\", \"Meta\"}. Find the channel with spend but no forms, and count the distinct channels in the utm_source column [\"tiktok\", \"meta\", \"gdn\", \"tiktok\", \"meta\"].",
+			steps: [
+				["Difference of the two sets", "spend − forms = {\"TikTok\"}: TikTok has spend but no forms."],
+				["Intersection of the two sets", "spend & forms = {\"GDN\", \"Meta\"}: two channels present in both files."],
+				["Union of the two sets", "spend | forms = {\"GDN\", \"Meta\", \"TikTok\"}: 3 channels in all."],
+				["Remove duplicates from a column", "set([\"tiktok\", \"meta\", \"gdn\", \"tiktok\", \"meta\"]) = {\"tiktok\", \"meta\", \"gdn\"}."],
+				["Count", "len of that set = 3 distinct channels (the column has 5 rows but only 3 values)."]
+			],
+			say: "A single set subtraction shows TikTok is missing forms, something the eye easily misses when a file has thousands of rows. And a set removes duplicates itself: 5 rows but only 3 real channels.",
+			check: ["Can you trust the order of elements in a set?", "No. A set has no order, so there is no “first element”. If you need order, convert to a list and sort."]
+		}
+	},
+	"py-np": {
+		vi: {
+			story: "Với 12 tuần × 3 kênh, vòng lặp for trở nên dài dòng. Bạn chuyển sang NumPy để tính cho cả ba kênh trong một dòng.",
+			words: [
+				["Mảng (array)", "Dãy số cùng một kiểu, cho phép tính cả mảng một lần."],
+				["Tính theo phần tử", "a / b chia từng cặp phần tử cùng vị trí, không cần vòng lặp."],
+				["Mặt nạ (mask)", "Mảng True/False dùng để lọc phần tử."]
+			],
+			problem: "spend = [6000, 5000, 4000], forms = [18, 20, 12] (GDN, Meta, TikTok). Tính CPA cả ba trong một dòng, rồi lọc kênh có form từ 15 trở lên.",
+			steps: [
+				["Tạo mảng", "spend = np.array([6000, 5000, 4000]), forms = np.array([18, 20, 12])."],
+				["Chia từng cặp", "spend / forms = [6000÷18, 5000÷20, 4000÷12] = [333,3; 250; 333,3]."],
+				["Tổng và trung bình form", "forms.sum() = 50; forms.mean() = 50 ÷ 3 ≈ 16,7."],
+				["Tạo mặt nạ", "forms >= 15 cho [True, True, False] (18 và 20 đạt, 12 không)."],
+				["Lọc", "forms[forms >= 15] = [18, 20]."]
+			],
+			say: "Một dòng spend / forms thay cho cả vòng lặp, và tính đúng theo vị trí: GDN chia cho GDN, Meta cho Meta. Điều kiện là hai mảng phải cùng thứ tự kênh. Nếu một mảng đảo thứ tự, phép chia vẫn chạy và ra số sai mà không báo lỗi.",
+			check: ["np.array([18, 20, \"x\"]) có kiểu gì?", "Kiểu chuỗi: một mảng chỉ có một kiểu, và \"x\" làm cả 18, 20 bị đổi thành chữ. Đây là lý do mảng phải sạch trước khi tính."]
+		},
+		en: {
+			story: "With 12 weeks × 3 channels, a for loop becomes wordy. You switch to NumPy to compute all three channels in one line.",
+			words: [
+				["Array", "A sequence of numbers of one type, letting you calculate the whole array at once."],
+				["Element-wise", "a / b divides each pair of elements in the same position, no loop needed."],
+				["Mask", "A True/False array used to filter elements."]
+			],
+			problem: "spend = [6000, 5000, 4000], forms = [18, 20, 12] (GDN, Meta, TikTok). Compute all three CPAs in one line, then filter channels with at least 15 forms.",
+			steps: [
+				["Create arrays", "spend = np.array([6000, 5000, 4000]), forms = np.array([18, 20, 12])."],
+				["Divide pairwise", "spend / forms = [6000÷18, 5000÷20, 4000÷12] = [333.3; 250; 333.3]."],
+				["Sum and mean of forms", "forms.sum() = 50; forms.mean() = 50 ÷ 3 ≈ 16.7."],
+				["Create a mask", "forms >= 15 gives [True, True, False] (18 and 20 pass, 12 does not)."],
+				["Filter", "forms[forms >= 15] = [18, 20]."]
+			],
+			say: "One line spend / forms replaces the whole loop, and computes by position: GDN divided by GDN, Meta by Meta. The condition is that both arrays must have the same channel order. If one array is reordered, the division still runs and gives wrong numbers without any error.",
+			check: ["What type does np.array([18, 20, \"x\"]) have?", "A string type: an array has one type, and \"x\" turns 18 and 20 into text too. This is why an array must be clean before calculating."]
+		}
+	},
+	"py-ser": {
+		vi: {
+			story: "Hai file về kênh liệt kê kênh theo hai thứ tự khác nhau (chi phí: Meta trước, form: GDN trước). Với mảng NumPy chia sẽ bị lệch kênh. Series canh theo nhãn nên tránh được lỗi này.",
+			words: [["Series", "Dãy giá trị có nhãn (index) đi kèm, từ thư viện pandas."], ["Canh theo nhãn", "Phép tính ghép các phần tử có cùng nhãn, không theo vị trí."]],
+			problem: "forms = Series({\"GDN\": 18, \"Meta\": 20, \"TikTok\": 12}). spend = Series({\"Meta\": 5000, \"GDN\": 6000, \"TikTok\": 4000}) (thứ tự khác). Tính spend / forms và so với chia theo vị trí.",
+			steps: [
+				["Chia theo vị trí (sai)", "Ghép 5000/18, 6000/20, 4000/12 = 277,8; 300; 333,3. Meta và GDN đã bị lệch."],
+				["Chia bằng Series", "pandas ghép theo nhãn: GDN: 6000 ÷ 18 = 333,3."],
+				["Meta", "5000 ÷ 20 = 250."],
+				["TikTok", "4000 ÷ 12 = 333,3."],
+				["Tra một giá trị", "cpa[\"Meta\"] = 250. Tra theo nhãn không cần nhớ vị trí."]
+			],
+			say: "Chia theo vị trí cho Meta 277,8 thay vì 250 và GDN 300 thay vì 333,3, hai con số đều trông hợp lý. Series canh theo nhãn nên đúng dù thứ tự hai file khác nhau. Nếu một nhãn có ở một bên mà không có ở bên kia, kết quả là NaN, một dấu hiệu rõ ràng để dừng lại.",
+			check: ["Nếu spend có thêm nhãn \"Zalo\" mà forms không có, spend / forms cho \"Zalo\" là gì?", "NaN (không có giá trị), vì không có form để chia. Kết quả này báo cho bạn thấy một kênh không khớp giữa hai file."]
+		},
+		en: {
+			story: "The two channel files list channels in different orders (spend: Meta first, forms: GDN first). With NumPy arrays division would misalign channels. A Series aligns by label so it avoids this error.",
+			words: [["Series", "A sequence of values with labels (an index), from the pandas library."], ["Label alignment", "A calculation pairs elements with the same label, not by position."]],
+			problem: "forms = Series({\"GDN\": 18, \"Meta\": 20, \"TikTok\": 12}). spend = Series({\"Meta\": 5000, \"GDN\": 6000, \"TikTok\": 4000}) (different order). Compute spend / forms and compare with dividing by position.",
+			steps: [
+				["Divide by position (wrong)", "Pairs 5000/18, 6000/20, 4000/12 = 277.8; 300; 333.3. Meta and GDN are misaligned."],
+				["Divide with Series", "pandas pairs by label: GDN: 6000 ÷ 18 = 333.3."],
+				["Meta", "5000 ÷ 20 = 250."],
+				["TikTok", "4000 ÷ 12 = 333.3."],
+				["Look up one value", "cpa[\"Meta\"] = 250. Lookup by label needs no memory of positions."]
+			],
+			say: "Dividing by position gives Meta 277.8 instead of 250 and GDN 300 instead of 333.3, both plausible-looking. A Series aligns by label so it is right even when the two files are ordered differently. If a label exists on one side but not the other, the result is NaN, a clear sign to stop and look.",
+			check: ["If spend has an extra label \"Zalo\" that forms lacks, what is spend / forms for \"Zalo\"?", "NaN (no value), because there are no forms to divide by. This result tells you a channel does not match across the two files."]
+		}
+	},
+	"py-frame": {
+		vi: {
+			story: "Đến lúc đưa cả file 3 tuần × 3 kênh vào một bảng pandas (DataFrame): 9 dòng, mỗi dòng là một kênh trong một tuần, giống bảng gốc bạn đã gặp ở pivot của Excel.",
+			words: [
+				["DataFrame", "Bảng có dòng, cột và nhãn, từ pandas."],
+				["loc", "Chọn theo nhãn, gồm cả điểm cuối."],
+				["iloc", "Chọn theo vị trí, không gồm điểm cuối."],
+				["groupby", "Gom các dòng theo một cột rồi tính tổng, đếm hoặc trung bình."]
+			],
+			problem: "Bảng 9 dòng (tuần, kênh, chi phí, form): GDN 6000 với form 18, 17, 19; Meta 5000 với 20, 21, 20; TikTok 4000 với 12, 12, 12. Tính shape, form tổng GDN, form theo kênh, và so loc với iloc cho hai dòng đầu.",
+			steps: [
+				["Kiểm tra kích thước", "df.shape = (9, 4): 9 dòng, 4 cột. 3 tuần × 3 kênh = 9, khớp."],
+				["Form của GDN", "df.loc[df.kenh == \"GDN\", \"form\"].sum() = 18 + 17 + 19 = 54."],
+				["Form theo kênh", "df.groupby(\"kenh\").form.sum(): GDN 54, Meta 20 + 21 + 20 = 61, TikTok 12 + 12 + 12 = 36."],
+				["Kiểm tra tổng", "54 + 61 + 36 = 151 form trong 3 tuần, khớp với 50 + 50 + 51 theo tuần."],
+				["iloc[0:2]", "Lấy vị trí 0 và 1, tức 2 dòng."],
+				["loc[0:2]", "Chỉ số mặc định là 0, 1, 2 nên loc gồm cả điểm cuối: 3 dòng."]
+			],
+			say: "Hai lần nhớ nhầm là loc gồm điểm cuối còn iloc thì không: cùng viết [0:2] mà cho 3 dòng và 2 dòng. Kiểm tra shape và tổng sau mỗi bước (151 form) là cách phát hiện ngay lát cắt lấy nhầm.",
+			check: ["df.loc[0:2] và df.iloc[0:2] khác nhau bao nhiêu dòng?", "Khác 1 dòng: loc lấy 3 dòng (0, 1, 2) còn iloc lấy 2 dòng (0, 1)."]
+		},
+		en: {
+			story: "Time to bring the whole 3 weeks × 3 channels file into one pandas table (DataFrame): 9 rows, each one a channel in one week, like the source table you met in Excel's pivot.",
+			words: [
+				["DataFrame", "A table with rows, columns and labels, from pandas."],
+				["loc", "Selects by label, including the end."],
+				["iloc", "Selects by position, excluding the end."],
+				["groupby", "Groups rows by a column and then sums, counts or averages."]
+			],
+			problem: "A 9-row table (week, channel, spend, forms): GDN 6000 with forms 18, 17, 19; Meta 5000 with 20, 21, 20; TikTok 4000 with 12, 12, 12. Compute shape, GDN's total forms, forms by channel, and compare loc with iloc for the first two rows.",
+			steps: [
+				["Check the size", "df.shape = (9, 4): 9 rows, 4 columns. 3 weeks × 3 channels = 9, matching."],
+				["GDN's forms", "df.loc[df.channel == \"GDN\", \"forms\"].sum() = 18 + 17 + 19 = 54."],
+				["Forms by channel", "df.groupby(\"channel\").forms.sum(): GDN 54, Meta 20 + 21 + 20 = 61, TikTok 12 + 12 + 12 = 36."],
+				["Check the total", "54 + 61 + 36 = 151 forms in 3 weeks, matching 50 + 50 + 51 by week."],
+				["iloc[0:2]", "Takes positions 0 and 1, i.e. 2 rows."],
+				["loc[0:2]", "The default index is 0, 1, 2 so loc includes the end: 3 rows."]
+			],
+			say: "The two things people mix up are that loc includes the end while iloc does not: the same [0:2] gives 3 rows versus 2. Checking shape and the total after each step (151 forms) is how you spot a wrongly taken slice at once.",
+			check: ["How many rows differ between df.loc[0:2] and df.iloc[0:2]?", "1 row: loc takes 3 rows (0, 1, 2) while iloc takes 2 rows (0, 1)."]
+		}
+	},
+	"py-plot": {
+		vi: {
+			story: "Chị Lan muốn xem hình. Bạn dùng bảng pandas vừa tạo để vẽ hai biểu đồ, mỗi biểu đồ trả lời một câu hỏi khác nhau và phải có nhãn đủ để đọc mà không cần hỏi bạn.",
+			words: [
+				["Biểu đồ cột", "So sánh các nhóm rời nhau, như ba kênh."],
+				["Biểu đồ đường", "Một số theo thời gian, như form theo tuần."],
+				["Nhãn trục và đơn vị", "Chữ nói trục đang đo gì và bằng đơn vị nào."]
+			],
+			problem: "Từ bảng 9 dòng: (1) vẽ tổng form 3 tuần theo kênh (GDN 54, Meta 61, TikTok 36); (2) vẽ tổng form theo tuần (tuần 1 là 50, tuần 2 là 50, tuần 3 là 51). Chọn loại biểu đồ và nhãn cho từng cái.",
+			steps: [
+				["Câu hỏi 1: kênh nào nhiều nhất", "Ba nhóm rời nhau, dùng biểu đồ cột. Meta cao nhất (61)."],
+				["Gắn nhãn câu 1", "Tiêu đề «Form theo kênh, 3 tuần», trục dọc «Số form»."],
+				["Câu hỏi 2: tuần có đổi không", "Một số theo thời gian, dùng biểu đồ đường: 50, 50, 51."],
+				["Gắn nhãn câu 2", "Trục ngang «Tuần», trục dọc «Số form tổng»."],
+				["Kiểm tra số trong hình", "54 + 61 + 36 = 151 và 50 + 50 + 51 = 151. Hai hình dùng cùng một tổng."]
+			],
+			say: "Hai hình chia cùng 151 form theo hai cách khác nhau, nên khớp tổng với nhau. Một biểu đồ không có nhãn trục hay đơn vị không trả lời được câu hỏi, vì người xem không biết 61 là form, tiền hay tuần.",
+			check: ["Vì sao không vẽ kênh bằng biểu đồ đường?", "Vì ba kênh không có thứ tự theo thời gian. Đường nối GDN, Meta, TikTok làm người xem tưởng có xu hướng từ trái sang phải, mà thực ra không có."]
+		},
+		en: {
+			story: "Ms. Lan wants to see pictures. You use the pandas table you just built to draw two charts, each answering a different question, and each labelled enough to read without asking you.",
+			words: [
+				["Bar chart", "Compares separate groups, like three channels."],
+				["Line chart", "One number over time, like forms by week."],
+				["Axis label and unit", "Text saying what an axis measures and in what unit."]
+			],
+			problem: "From the 9-row table: (1) plot 3-week total forms by channel (GDN 54, Meta 61, TikTok 36); (2) plot total forms by week (week 1 is 50, week 2 is 50, week 3 is 51). Choose the chart type and labels for each.",
+			steps: [
+				["Question 1: which channel is most", "Three separate groups, use a bar chart. Meta is highest (61)."],
+				["Label chart 1", "Title “Forms by channel, 3 weeks”, vertical axis “Number of forms”."],
+				["Question 2: does the week change", "One number over time, use a line chart: 50, 50, 51."],
+				["Label chart 2", "Horizontal axis “Week”, vertical axis “Total forms”."],
+				["Check the numbers in the picture", "54 + 61 + 36 = 151 and 50 + 50 + 51 = 151. The two charts use the same total."]
+			],
+			say: "The two charts split the same 151 forms in two different ways, so their totals agree. A chart without axis labels or units cannot answer the question, because the viewer does not know whether 61 is forms, money or weeks.",
+			check: ["Why not draw the channels as a line chart?", "Because the three channels have no order in time. A line joining GDN, Meta, TikTok makes viewers imagine a trend from left to right, when there is none."]
+		}
+	},
+	"py-g1": {
+		vi: {
+			story: "Cuối tháng 2, bạn làm bài chấm phần cơ bản. Một câu hỏi rất giống những gì bạn đã làm với số form: lấy phần tử từ một danh sách.",
+			words: [["Bài chấm", "Kiểm tra xem bạn dùng được ý cũ, không dạy ý mới."], ["Chỉ số từ 0", "Phần tử đầu tiên của danh sách có chỉ số 0."]],
+			problem: "Một câu hỏi cho forms = [18, 17, 19, 20] và hỏi forms[1], forms[-1] và forms[1:3]. Giải bằng cách quay lại thẻ danh sách, không đoán đáp án.",
+			steps: [
+				["Nhớ lại luật chỉ số", "Chỉ số bắt đầu từ 0; âm đếm từ cuối; cắt đoạn lấy từ i đến trước j."],
+				["forms[1]", "Chỉ số 1 là phần tử thứ hai: 17."],
+				["forms[-1]", "Phần tử cuối: 20."],
+				["forms[1:3]", "Lấy chỉ số 1 và 2 (không lấy 3): [17, 19]."],
+				["Tự kiểm tra", "Thử đếm: vị trí 0 là 18, 1 là 17, 2 là 19, 3 là 20. Ba đáp án khớp bảng này."]
+			],
+			say: "Bài chấm không có mẹo mới: câu hỏi xoay quanh luật chỉ số mà bạn đã viết ra ở thẻ danh sách. Khi sai, hãy chỉ ra thẻ nào bị lệch (ở đây là «chỉ số từ 0») thay vì trách đề.",
+			check: ["Nếu bạn trả lời forms[1] = 18, bạn nhầm ở đâu?", "Bạn đếm từ 1 thay vì từ 0. Phần tử 18 là forms[0]. Quay lại thẻ danh sách."]
+		},
+		en: {
+			story: "At the end of February you take the basics graded assessment. One question looks a lot like what you have done with form counts: pull elements from a list.",
+			words: [["Graded assessment", "Checks whether you can use the old ideas, teaches no new idea."], ["Index from 0", "The first element of a list has index 0."]],
+			problem: "A question gives forms = [18, 17, 19, 20] and asks for forms[1], forms[-1] and forms[1:3]. Solve it by going back to the list card, not by guessing the answer.",
+			steps: [
+				["Recall the index rules", "Indexing starts at 0; negative counts from the end; a slice takes from i up to but not including j."],
+				["forms[1]", "Index 1 is the second element: 17."],
+				["forms[-1]", "The last element: 20."],
+				["forms[1:3]", "Takes indexes 1 and 2 (not 3): [17, 19]."],
+				["Check yourself", "Count: position 0 is 18, 1 is 17, 2 is 19, 3 is 20. All three answers match this table."]
+			],
+			say: "The assessment has no new trick: the question circles around the index rules you wrote down on the list card. When you get one wrong, point to which card slipped (here “index from 0”) instead of blaming the question.",
+			check: ["If you answered forms[1] = 18, where did you go wrong?", "You counted from 1 instead of 0. The element 18 is forms[0]. Go back to the list card."]
+		}
+	},
+	"py-g2": {
+		vi: {
+			story: "Bài chấm phần thư viện. Một câu yêu cầu lấy các dòng của bảng form theo nhãn. Bạn kiểm tra shape trước khi làm, như đã làm với bảng 9 dòng.",
+			words: [["shape", "Số dòng và số cột của bảng. Kiểm tra trước khi tính."], ["loc và iloc", "loc theo nhãn gồm điểm cuối, iloc theo vị trí không gồm điểm cuối."]],
+			problem: "Bảng 9 dòng với chỉ số mặc định 0 đến 8. Câu hỏi: lấy các dòng từ nhãn 0 đến nhãn 2. Dùng loc hay iloc và được bao nhiêu dòng?",
+			steps: [
+				["Kiểm tra shape", "df.shape = (9, 4). Đúng như mong đợi, nên tiếp tục."],
+				["Đọc đề", "«Đến nhãn 2» là nói theo nhãn, nên dùng loc."],
+				["Chạy df.loc[0:2]", "loc gồm cả điểm cuối: nhãn 0, 1, 2, được 3 dòng."],
+				["Nếu viết iloc[0:2]", "Chỉ lấy vị trí 0 và 1: 2 dòng, thiếu một dòng."],
+				["Kiểm tra", "Đếm lại: 3 dòng khớp với «từ 0 đến 2 gồm cả hai đầu»."]
+			],
+			say: "Hai điều cứu bạn: kiểm tra shape trước khi tính và nhớ loc gồm điểm cuối. Bài chấm không thêm thư viện mới, mà hỏi lại thẻ bảng.",
+			check: ["Nếu shape ra (8, 4) thay vì (9, 4), nên làm gì tiếp?", "Dừng lại, không tính tiếp. Thiếu 1 dòng nghĩa là có thể đã bỏ mất một dòng khi đọc file. Tìm dòng thiếu trước khi vẽ hay tính tổng."]
+		},
+		en: {
+			story: "The libraries graded assessment. One question asks you to take rows of the forms table by label. You check shape before starting, as you did with the 9-row table.",
+			words: [["shape", "The table's number of rows and columns. Check it before calculating."], ["loc and iloc", "loc is by label and includes the end, iloc is by position and excludes the end."]],
+			problem: "A 9-row table with the default index 0 to 8. The question: take the rows from label 0 to label 2. Use loc or iloc, and how many rows do you get?",
+			steps: [
+				["Check shape", "df.shape = (9, 4). As expected, so continue."],
+				["Read the question", "“To label 2” speaks by label, so use loc."],
+				["Run df.loc[0:2]", "loc includes the end: labels 0, 1, 2, giving 3 rows."],
+				["If you wrote iloc[0:2]", "It takes only positions 0 and 1: 2 rows, one short."],
+				["Check", "Count again: 3 rows matches “from 0 to 2 including both ends”."]
+			],
+			say: "Two things save you: check shape before calculating and remember that loc includes the end. The assessment adds no new library; it asks again about the table card.",
+			check: ["If shape shows (8, 4) instead of (9, 4), what next?", "Stop; do not calculate further. A missing row means one may have been dropped while reading the file. Find the missing row before plotting or summing."]
+		}
+	}
+};
+var visuals = {
+	"py-run": {
+		kind: "table",
+		title: ["Notebook sau khi sửa forms nhưng chưa chạy lại ô 2", "Notebook after editing forms but not re-running cell 2"],
+		head: [["Biến", "Variable"], ["Giá trị trong bộ nhớ", "Value in memory"]],
+		rows: [["forms", 54], ["cpa", 300]],
+		mark: [[1, 1]],
+		note: ["cpa vẫn là giá trị cũ (300), chưa khớp với forms = 54.", "cpa is still the old value (300), no longer matching forms = 54."]
+	},
+	"py-op": {
+		kind: "table",
+		title: ["15000 chia cho 54", "15000 divided by 54"],
+		head: [["Phép toán", "Operation"], ["Kết quả", "Result"]],
+		rows: [
+			["15000 / 54", "277.78"],
+			["15000 // 54", 277],
+			["15000 % 54", 42]
+		],
+		mark: [[0, 1]]
+	},
+	"py-if": {
+		kind: "bars",
+		title: ["CPA ba kênh (nghìn đồng) và ngưỡng 300", "CPA of three channels (thousand dong) vs threshold 300"],
+		items: [
+			{
+				label: ["GDN", "GDN"],
+				value: 333.3
+			},
+			{
+				label: ["Meta", "Meta"],
+				value: 250
+			},
+			{
+				label: ["TikTok", "TikTok"],
+				value: 333.3
+			}
+		],
+		note: ["GDN và TikTok vượt 300 nên được gắn «xem lại».", "GDN and TikTok exceed 300 so they are labelled “review”."]
+	},
+	"py-loop": {
+		kind: "table",
+		title: ["Biến total qua từng vòng", "The variable total through each round"],
+		head: [
+			["Vòng", "Round"],
+			["f", "f"],
+			["total sau vòng", "total after round"]
+		],
+		rows: [
+			[
+				1,
+				18,
+				18
+			],
+			[
+				2,
+				20,
+				38
+			],
+			[
+				3,
+				12,
+				50
+			]
+		],
+		mark: [[2, 2]]
+	},
+	"py-list": {
+		kind: "table",
+		title: ["gdn = [18, 17, 19]", "gdn = [18, 17, 19]"],
+		head: [
+			["Chỉ số", "Index"],
+			["Giá trị", "Value"],
+			["Tuần", "Week"]
+		],
+		rows: [
+			[
+				0,
+				18,
+				1
+			],
+			[
+				1,
+				17,
+				2
+			],
+			[
+				2,
+				19,
+				3
+			]
+		],
+		note: ["gdn[-1] là phần tử cuối (19). gdn[0:2] lấy hàng 0 và 1.", "gdn[-1] is the last element (19). gdn[0:2] takes rows 0 and 1."]
+	},
+	"py-ser": {
+		kind: "bars",
+		title: ["CPA theo nhãn (nghìn đồng)", "CPA by label (thousand dong)"],
+		items: [
+			{
+				label: ["GDN", "GDN"],
+				value: 333.3
+			},
+			{
+				label: ["Meta", "Meta"],
+				value: 250
+			},
+			{
+				label: ["TikTok", "TikTok"],
+				value: 333.3
+			}
+		]
+	},
+	"py-frame": {
+		kind: "table",
+		title: ["DataFrame: 3 tuần × 3 kênh (9 dòng)", "DataFrame: 3 weeks × 3 channels (9 rows)"],
+		head: [
+			["tuần", "week"],
+			["kênh", "channel"],
+			["chi phí", "spend"],
+			["form", "forms"]
+		],
+		rows: [
+			[
+				1,
+				"GDN",
+				6e3,
+				18
+			],
+			[
+				1,
+				"Meta",
+				5e3,
+				20
+			],
+			[
+				1,
+				"TikTok",
+				4e3,
+				12
+			],
+			[
+				2,
+				"GDN",
+				6e3,
+				17
+			],
+			[
+				2,
+				"Meta",
+				5e3,
+				21
+			],
+			[
+				2,
+				"TikTok",
+				4e3,
+				12
+			],
+			[
+				3,
+				"GDN",
+				6e3,
+				19
+			],
+			[
+				3,
+				"Meta",
+				5e3,
+				20
+			],
+			[
+				3,
+				"TikTok",
+				4e3,
+				12
+			]
+		],
+		mark: [
+			[0, 3],
+			[3, 3],
+			[6, 3]
+		],
+		note: ["Các ô sáng là form GDN: 18 + 17 + 19 = 54.", "Highlighted cells are GDN forms: 18 + 17 + 19 = 54."]
+	},
+	"py-plot": {
+		kind: "bars",
+		title: ["Form theo kênh, 3 tuần", "Forms by channel, 3 weeks"],
+		items: [
+			{
+				label: ["GDN", "GDN"],
+				value: 54
+			},
+			{
+				label: ["Meta", "Meta"],
+				value: 61
+			},
+			{
+				label: ["TikTok", "TikTok"],
+				value: 36
+			}
+		],
+		note: ["Tổng 151 form, cùng tổng với 50 + 50 + 51 theo tuần.", "Total 151 forms, the same as 50 + 50 + 51 by week."]
+	}
+};
+var c1Walks = Object.fromEntries(Object.entries(base).map(([id, w]) => [id, visuals[id] ? {
 	...w,
 	visual: visuals[id]
 } : w]));
 var walks = {
 	...pilotWalks,
-	...c0Walks
+	...c0Walks,
+	...c1Walks
 };
 /** Hình minh họa trong mục «Làm từng bước»: bảng tính, biểu đồ cột, biểu đồ đường. Dùng màu từ token của app. */
 function WalkVisual({ v, lang }) {
