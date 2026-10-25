@@ -9,7 +9,6 @@ import { hydrateCms } from "@/lib/cms-store";
 const links = [
   { to: "/", vi: "Học", en: "Study", icon: BookOpen },
   { to: "/ban-do", vi: "Bản đồ", en: "Map", icon: Network },
-  { to: "/bai-tap", vi: "Bài tập", en: "Assignments", icon: TableOfContents },
   { to: "/tim-kiem", vi: "Tìm", en: "Search", icon: Search },
   { to: "/cong-thuc", vi: "Công thức", en: "Formulas", icon: TableOfContents },
   { to: "/do-phu", vi: "Độ phủ", en: "Coverage", icon: TableOfContents },

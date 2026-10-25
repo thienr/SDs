@@ -141,16 +141,15 @@ function CellView({ c, t }: { c: Cell; t: (typeof text)["vi"] | (typeof text)["e
   return <div className="my-1"><Md src={c.s} /></div>;
 }
 
-export function AssignView({ a }: { a: Assignment }) {
+export function AssignBody({ a }: { a: Assignment }) {
   const progress = useSyncExternalStore(subscribeProgress, getProgress, getServerProgress);
   const lang = progress.lang;
   const t = text[lang];
   const refs = a.cells.filter((c) => c.ref).map((c) => c.ref as string);
   return (
-    <div className="mx-auto max-w-3xl">
+    <div className="mt-6">
       <p className="text-xs tracking-widest text-muted">{a.course} · {a.file}</p>
-      <h1 className="mt-2 font-display text-4xl leading-tight">{a.title[lang === "en" ? 1 : 0]}</h1>
-      <p className="mt-4 rounded-xl border-l-4 border-accent bg-card p-3 leading-relaxed">{a.story[lang === "en" ? 1 : 0]}</p>
+      <p className="mt-3 rounded-xl border-l-4 border-accent bg-card p-3 leading-relaxed">{a.story[lang === "en" ? 1 : 0]}</p>
       <p className="mt-3 text-sm text-muted">{t.rule}</p>
       <details className="mt-4 rounded-card border border-line p-3">
         <summary className="min-h-11 cursor-pointer text-sm font-medium">{t.map} ({refs.length})</summary>

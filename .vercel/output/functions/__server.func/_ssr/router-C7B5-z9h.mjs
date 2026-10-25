@@ -3,7 +3,7 @@ import { a as getLesson, n as courses$1, s as lessons } from "./catalog-BshCFI1J
 import { J as require_react, S as require_jsx_runtime, _ as lazyRouteComponent, b as Link, d as Scripts, f as HeadContent, g as Outlet, h as createRouter, p as useRouterState, v as createFileRoute, x as useRouter, y as createRootRoute } from "../_libs/@tanstack/react-router+[...].mjs";
 import { a as Settings, c as Network, d as Map$1, i as Sun, l as Moon, m as BookOpen, n as TriangleAlert, o as Search, r as TableOfContents, t as X } from "../_libs/lucide-react.mjs";
 import { a as union, i as string, n as number, r as object, t as literal } from "../_libs/zod.mjs";
-//#region node_modules/.nitro/vite/services/ssr/assets/router-cri9Hc1u.js
+//#region node_modules/.nitro/vite/services/ssr/assets/router-C7B5-z9h.js
 var import_react = /* @__PURE__ */ __toESM(require_react());
 var import_jsx_runtime = require_jsx_runtime();
 var __defProp = Object.defineProperty;
@@ -18889,12 +18889,6 @@ var links = [
 		icon: Network
 	},
 	{
-		to: "/bai-tap",
-		vi: "Bài tập",
-		en: "Assignments",
-		icon: TableOfContents
-	},
-	{
 		to: "/tim-kiem",
 		vi: "Tìm",
 		en: "Search",
@@ -19032,7 +19026,7 @@ function AppShell({ children }) {
 	});
 }
 var styles_default = "/assets/styles-Cr6H6Vze.css";
-var Route$14 = createRootRoute({
+var Route$12 = createRootRoute({
 	head: () => ({
 		meta: [
 			{ charSet: "utf-8" },
@@ -19083,22 +19077,20 @@ function RootComponent() {
 		] })]
 	});
 }
-var $$splitComponentImporter$11 = () => import("./routes-Bf2dFXtm.mjs");
-var Route$13 = createFileRoute("/")({ component: lazyRouteComponent($$splitComponentImporter$11, "component") });
-var $$splitComponentImporter$10 = () => import("./bai-tap-D-Cc88GP.mjs");
-var Route$12 = createFileRoute("/bai-tap")({ component: lazyRouteComponent($$splitComponentImporter$10, "component") });
-var $$splitComponentImporter$9 = () => import("./ban-do-B_w0ln1T.mjs");
-var Route$11 = createFileRoute("/ban-do")({ component: lazyRouteComponent($$splitComponentImporter$9, "component") });
-var $$splitComponentImporter$8 = () => import("./cong-thuc-BUg9Mkdb.mjs");
-var Route$10 = createFileRoute("/cong-thuc")({ component: lazyRouteComponent($$splitComponentImporter$8, "component") });
-var $$splitComponentImporter$7 = () => import("./do-phu-2yktTZ0B.mjs");
-var Route$9 = createFileRoute("/do-phu")({ component: lazyRouteComponent($$splitComponentImporter$7, "component") });
-var $$splitComponentImporter$6 = () => import("./goc-BXwjvKpQ.mjs");
-var Route$8 = createFileRoute("/goc")({ component: lazyRouteComponent($$splitComponentImporter$6, "component") });
-var $$splitComponentImporter$5 = () => import("./tim-kiem-DyKXuL43.mjs");
-var Route$7 = createFileRoute("/tim-kiem")({ component: lazyRouteComponent($$splitComponentImporter$5, "component") });
-var $$splitComponentImporter$4 = () => import("./tu-dien-HWF1UCqs.mjs");
-var Route$6 = createFileRoute("/tu-dien")({ component: lazyRouteComponent($$splitComponentImporter$4, "component") });
+var $$splitComponentImporter$9 = () => import("./routes-CiUrYH7m.mjs");
+var Route$11 = createFileRoute("/")({ component: lazyRouteComponent($$splitComponentImporter$9, "component") });
+var $$splitComponentImporter$8 = () => import("./ban-do-AcR_0ZCe.mjs");
+var Route$10 = createFileRoute("/ban-do")({ component: lazyRouteComponent($$splitComponentImporter$8, "component") });
+var $$splitComponentImporter$7 = () => import("./cong-thuc-HF8jZSZ5.mjs");
+var Route$9 = createFileRoute("/cong-thuc")({ component: lazyRouteComponent($$splitComponentImporter$7, "component") });
+var $$splitComponentImporter$6 = () => import("./do-phu-2yktTZ0B.mjs");
+var Route$8 = createFileRoute("/do-phu")({ component: lazyRouteComponent($$splitComponentImporter$6, "component") });
+var $$splitComponentImporter$5 = () => import("./goc-DU7BiyjR.mjs");
+var Route$7 = createFileRoute("/goc")({ component: lazyRouteComponent($$splitComponentImporter$5, "component") });
+var $$splitComponentImporter$4 = () => import("./tim-kiem-DyKXuL43.mjs");
+var Route$6 = createFileRoute("/tim-kiem")({ component: lazyRouteComponent($$splitComponentImporter$4, "component") });
+var $$splitComponentImporter$3 = () => import("./tu-dien-CDCpG2lQ.mjs");
+var Route$5 = createFileRoute("/tu-dien")({ component: lazyRouteComponent($$splitComponentImporter$3, "component") });
 var CORS = {
 	"access-control-allow-origin": "*",
 	"access-control-allow-methods": "GET, POST, OPTIONS",
@@ -21647,7 +21639,7 @@ async function oneRpc(message, request) {
 	return rpcError(id, -32601, "Method không có.");
 }
 var handle = ({ request }) => handleMcp(request);
-var Route$5 = createFileRoute("/api/mcp")({ server: { handlers: {
+var Route$4 = createFileRoute("/api/mcp")({ server: { handlers: {
 	GET: handle,
 	POST: handle,
 	OPTIONS: handle
@@ -21757,106 +21749,80 @@ async function handleSoMucPost(request) {
 		return apiJson({ error: "Không ghi được hộp thư." }, 500);
 	}
 }
-var Route$4 = createFileRoute("/api/so-muc")({ server: { handlers: {
+var Route$3 = createFileRoute("/api/so-muc")({ server: { handlers: {
 	GET: ({ request }) => handleSoMucGet(request),
 	POST: ({ request }) => handleSoMucPost(request),
 	OPTIONS: () => apiEmpty(204)
 } } });
-var $$splitComponentImporter$3 = () => import("./bai-tap._id-Ck0GMb4O.mjs");
-var Route$3 = createFileRoute("/bai-tap/$id")({ component: lazyRouteComponent($$splitComponentImporter$3, "component") });
-var $$splitComponentImporter$2 = () => import("./bai._lessonId-dygXjrUT.mjs");
+var $$splitComponentImporter$2 = () => import("./bai._lessonId-DDZZXMqF.mjs");
 var Route$2 = createFileRoute("/bai/$lessonId")({ component: lazyRouteComponent($$splitComponentImporter$2, "component") });
-var $$splitComponentImporter$1 = () => import("./khai-niem._conceptId-BlXdp_7n.mjs");
+var $$splitComponentImporter$1 = () => import("./khai-niem._conceptId-CFCr9zBv.mjs");
 var Route$1 = createFileRoute("/khai-niem/$conceptId")({ component: lazyRouteComponent($$splitComponentImporter$1, "component") });
-var $$splitComponentImporter = () => import("./khoa._courseId-CauwjSmG.mjs");
+var $$splitComponentImporter = () => import("./khoa._courseId-CqPzu26Z.mjs");
 var Route = createFileRoute("/khoa/$courseId")({ component: lazyRouteComponent($$splitComponentImporter, "component") });
-var IndexRoute = Route$13.update({
-	id: "/",
-	path: "/",
-	getParentRoute: () => Route$14
-});
-var BaiTapRoute = Route$12.update({
-	id: "/bai-tap",
-	path: "/bai-tap",
-	getParentRoute: () => Route$14
-});
-var BanDoRoute = Route$11.update({
-	id: "/ban-do",
-	path: "/ban-do",
-	getParentRoute: () => Route$14
-});
-var CongThucRoute = Route$10.update({
-	id: "/cong-thuc",
-	path: "/cong-thuc",
-	getParentRoute: () => Route$14
-});
-var DoPhuRoute = Route$9.update({
-	id: "/do-phu",
-	path: "/do-phu",
-	getParentRoute: () => Route$14
-});
-var GocRoute = Route$8.update({
-	id: "/goc",
-	path: "/goc",
-	getParentRoute: () => Route$14
-});
-var TimKiemRoute = Route$7.update({
-	id: "/tim-kiem",
-	path: "/tim-kiem",
-	getParentRoute: () => Route$14
-});
-var TuDienRoute = Route$6.update({
-	id: "/tu-dien",
-	path: "/tu-dien",
-	getParentRoute: () => Route$14
-});
-var ApiMcpRoute = Route$5.update({
-	id: "/api/mcp",
-	path: "/api/mcp",
-	getParentRoute: () => Route$14
-});
-var ApiSoMucRoute = Route$4.update({
-	id: "/api/so-muc",
-	path: "/api/so-muc",
-	getParentRoute: () => Route$14
-});
-var BaiTapIdRoute = Route$3.update({
-	id: "/$id",
-	path: "/$id",
-	getParentRoute: () => BaiTapRoute
-});
-var BaiLessonIdRoute = Route$2.update({
-	id: "/bai/$lessonId",
-	path: "/bai/$lessonId",
-	getParentRoute: () => Route$14
-});
-var KhaiNiemConceptIdRoute = Route$1.update({
-	id: "/khai-niem/$conceptId",
-	path: "/khai-niem/$conceptId",
-	getParentRoute: () => Route$14
-});
-var KhoaCourseIdRoute = Route.update({
-	id: "/khoa/$courseId",
-	path: "/khoa/$courseId",
-	getParentRoute: () => Route$14
-});
-var BaiTapRouteChildren = { BaiTapIdRoute };
 var rootRouteChildren = {
-	IndexRoute,
-	BaiTapRoute: BaiTapRoute._addFileChildren(BaiTapRouteChildren),
-	BanDoRoute,
-	CongThucRoute,
-	DoPhuRoute,
-	GocRoute,
-	TimKiemRoute,
-	TuDienRoute,
-	ApiMcpRoute,
-	ApiSoMucRoute,
-	BaiLessonIdRoute,
-	KhaiNiemConceptIdRoute,
-	KhoaCourseIdRoute
+	IndexRoute: Route$11.update({
+		id: "/",
+		path: "/",
+		getParentRoute: () => Route$12
+	}),
+	BanDoRoute: Route$10.update({
+		id: "/ban-do",
+		path: "/ban-do",
+		getParentRoute: () => Route$12
+	}),
+	CongThucRoute: Route$9.update({
+		id: "/cong-thuc",
+		path: "/cong-thuc",
+		getParentRoute: () => Route$12
+	}),
+	DoPhuRoute: Route$8.update({
+		id: "/do-phu",
+		path: "/do-phu",
+		getParentRoute: () => Route$12
+	}),
+	GocRoute: Route$7.update({
+		id: "/goc",
+		path: "/goc",
+		getParentRoute: () => Route$12
+	}),
+	TimKiemRoute: Route$6.update({
+		id: "/tim-kiem",
+		path: "/tim-kiem",
+		getParentRoute: () => Route$12
+	}),
+	TuDienRoute: Route$5.update({
+		id: "/tu-dien",
+		path: "/tu-dien",
+		getParentRoute: () => Route$12
+	}),
+	ApiMcpRoute: Route$4.update({
+		id: "/api/mcp",
+		path: "/api/mcp",
+		getParentRoute: () => Route$12
+	}),
+	ApiSoMucRoute: Route$3.update({
+		id: "/api/so-muc",
+		path: "/api/so-muc",
+		getParentRoute: () => Route$12
+	}),
+	BaiLessonIdRoute: Route$2.update({
+		id: "/bai/$lessonId",
+		path: "/bai/$lessonId",
+		getParentRoute: () => Route$12
+	}),
+	KhaiNiemConceptIdRoute: Route$1.update({
+		id: "/khai-niem/$conceptId",
+		path: "/khai-niem/$conceptId",
+		getParentRoute: () => Route$12
+	}),
+	KhoaCourseIdRoute: Route.update({
+		id: "/khoa/$courseId",
+		path: "/khoa/$courseId",
+		getParentRoute: () => Route$12
+	})
 };
-var routeTree = Route$14._addFileChildren(rootRouteChildren)._addFileTypes();
+var routeTree = Route$12._addFileChildren(rootRouteChildren)._addFileTypes();
 var router_exports = /* @__PURE__ */ __exportAll({ getRouter: () => getRouter });
 function getRouter() {
 	return createRouter({
@@ -21866,4 +21832,4 @@ function getRouter() {
 	});
 }
 //#endregion
-export { getStudy as A, setRawPatch as B, importProgress as C, openLesson as D, markLesson as E, clearRaw as F, sessionConcepts as H, getRawVersion as I, getServerRawVersion as L, studyListTitle as M, studyNeighbors as N, progressSnapshot as O, batchRaw as P, rawEditCount as R, hydrateProgress as S, lessonStatus as T, subscribeRaw as V, subscribeCms as _, Route$3 as a, getProgress as b, sessionHead as c, cmsEditCount as d, cmsGet as f, setCmsPatch as g, getServerCmsVersion as h, Route$2 as i, studyCopy as j, subscribeProgress as k, batchCms as l, getCmsVersion as m, Route as n, courseHead as o, cmsIsEdited as p, Route$1 as r, moduleHead as s, router_exports as t, clearCms as u, countSeen as v, itemStatus as w, getServerProgress as x, cycleItem as y, rawIsEdited as z };
+export { studyCopy as A, subscribeRaw as B, itemStatus as C, progressSnapshot as D, openLesson as E, getRawVersion as F, getServerRawVersion as I, rawEditCount as L, studyNeighbors as M, batchRaw as N, subscribeProgress as O, clearRaw as P, rawIsEdited as R, importProgress as S, markLesson as T, sessionConcepts as V, countSeen as _, courseHead as a, getServerProgress as b, batchCms as c, cmsGet as d, cmsIsEdited as f, subscribeCms as g, setCmsPatch as h, Route$2 as i, studyListTitle as j, getStudy as k, clearCms as l, getServerCmsVersion as m, Route as n, moduleHead as o, getCmsVersion as p, Route$1 as r, sessionHead as s, router_exports as t, cmsEditCount as u, cycleItem as v, lessonStatus as w, hydrateProgress as x, getProgress as y, setRawPatch as z };
