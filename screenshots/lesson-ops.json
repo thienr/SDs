@@ -1,0 +1,36 @@
+{
+  "url": "http://127.0.0.1:8080/bai/l-49c730f58ee8",
+  "viewports": {
+    "desktop": {
+      "width": 1280,
+      "height": 800,
+      "status": 200,
+      "title": "Sổ Mực",
+      "hasCanvas": false,
+      "bodyTextLen": 2221,
+      "bodyTextHash": "f7d4f0a1e5c0bcdbf275041f0c55e98db413577df262b178fd45e63191b45daa",
+      "bodyTextPrefix": "Sổ Mực Học Tìm Công thức Độ phủ Từ điển Nền tối C1: PYTHON FOR D",
+      "horizontalOverflow": false,
+      "consoleErrors": [],
+      "pageErrors": [],
+      "screenshot": "/workspace/screenshots/lesson-ops.png"
+    },
+    "mobile": {
+      "width": 390,
+      "height": 844,
+      "status": 200,
+      "title": "Sổ Mực",
+      "hasCanvas": false,
+      "bodyTextLen": 2205,
+      "bodyTextHash": "0e1dbe1c840914eac4951c1449ac7a4e29278717429468ae71c3b6fa16a0fe51",
+      "bodyTextPrefix": "Sổ Mực C1: PYTHON FOR DATA SCIENCE M1 Fundamentals of Python · S",
+      "horizontalOverflow": false,
+      "consoleErrors": [],
+      "pageErrors": [],
+      "screenshot": "/workspace/screenshots/lesson-ops-mobile.png"
+    }
+  },
+  "brandWarnings": [],
+  "authWarnings": [],
+  "verdictFile": "/workspace/screenshots/lesson-ops.json"
+}

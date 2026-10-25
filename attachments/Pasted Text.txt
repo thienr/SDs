@@ -1,0 +1,1396 @@
+# Kế hoạch xây app học tương tác cho Thien (giao cho Grok)
+
+## 0. Dành cho Grok: đọc phần này trước
+Bạn sẽ xây một web app học tập cá nhân cho một người học duy nhất tên Thien. App thay thế việc ngồi xem video bài giảng từng đoạn nhỏ trong chương trình upGrad / IIITB Data Science (track Business Analytics). Tài liệu này gồm hai phần:
+- Phần 1 đến 10: app phải làm gì, giải thích kiến thức theo cách nào, giao diện và kỹ thuật ra sao.
+- Phụ lục A: toàn bộ giáo trình lấy từ trang study plan của upGrad, đủ từng video, quiz, bài đọc, bài tập. Đây là khung nội dung bắt buộc của app. Không được bỏ mục nào.
+
+Ngôn ngữ giao diện và nội dung giải thích: tiếng Việt. Giữ nguyên thuật ngữ tiếng Anh (p-value, gradient descent, overfitting...) và ghi nghĩa tiếng Việt lần đầu xuất hiện. Công thức viết bằng KaTeX.
+
+## 1. Mục tiêu
+- Thien hiểu khái niệm qua định nghĩa rõ ràng và hình minh họa/hoạt hình tương tác (kéo slider để xem khái niệm biến đổi), không phải ngồi xem video.
+- Mỗi mục trong giáo trình upGrad có đúng một "thẻ học" trong app. Thẻ nào chưa làm thì hiện rõ là chưa làm.
+- Một buổi học 20 đến 30 phút đủ để Thien nắm được định nghĩa và hình dung được khái niệm hoạt động ra sao.
+- Phạm vi: chỉ định nghĩa và minh họa. App KHÔNG có bài tập, quiz, câu hỏi kiểm tra, ô nhập đáp án, hay bất kỳ câu hỏi nào đặt ngược lại cho Thien. Thien muốn đọc và xem, không bị hỏi.
+
+## 2. Hồ sơ người học (cách Thien học)
+Rút ra từ những gì Thien đã tự làm và đã yêu cầu trước đây. Dùng để quyết định cách giải thích, không cần nhắc lại với Thien.
+- 36 tuổi, giám đốc một agency digital marketing và web ở TP.HCM. Quen với campaign, khách hàng, số liệu quảng cáo, báo cáo cho khách. Ví dụ nên lấy từ marketing, bán lẻ, trung tâm thương mại, quảng cáo, dịch vụ visa, vận hành agency, kèm vài ví dụ ngân hàng/y tế/viễn thông vì giáo trình dùng nhiều.
+- Chọn track Business Analytics, không đi sâu kỹ thuật. Mục tiêu là hiểu đủ để ra quyết định và kể chuyện bằng dữ liệu, sau đó học thạc sĩ ở LJMU. Chiều sâu toán: đủ để hiểu vì sao, không cần chứng minh.
+- Học tốt nhất theo trình tự: tình huống thực tế, vấn đề, vì sao khái niệm này tồn tại, rồi mới đến chi tiết và công thức. Cuối mỗi phần luôn có một insight để nhớ lâu.
+- Thích bản minh họa tương tác: Thien đã tự có các trang HTML với canvas mô phỏng (CLT, CI, hypothesis test, ANOVA, gradient descent, sigmoid, PSI), bảng tổng hợp công thức và case study theo CRISP-DM. App mới phải ít nhất bằng mức minh họa đó và gom vào một chỗ (bỏ phần quiz/bài tập).
+- Thích quy trình đánh số bước (ví dụ CI 4 bước, hypothesis testing 7 bước, pipeline hồi quy 12 bước) và sơ đồ pipeline. Mọi kỹ thuật nên có "các bước làm" rõ ràng.
+- Thích thấy công thức sống: kéo tham số trong minh họa, thấy kết quả đổi theo. Mỗi công thức có một ví dụ thế số có sẵn (do app điền), Thien không phải tự làm.
+- Dễ nhầm giữa các đại lượng gần giống (RSE và R², SE và S, Disjoint và Independent, WHERE và HAVING, fit và transform). Mỗi nhóm dễ nhầm cần một thẻ "Đừng nhầm" đặt cạnh nhau.
+- Bận (điều hành agency), học theo từng buổi ngắn, hay dừng giữa chừng. App phải nhớ đang học đến đâu và mở lại đúng chỗ.
+- Mọi nhận định về bối cảnh/thực tế (thị trường, xu hướng, số liệu ngành) phải có ghi chú nguồn kèm đường link ngay tại điểm đó, không gom cuối trang.
+
+## 3. Khung giải thích cho mỗi bài (mẫu bắt buộc)
+Mỗi "bài" (tương ứng một Segment hoặc một nhóm video liên quan trong Phụ lục A) dùng đúng các khối sau, theo thứ tự. Không có khối nào đặt câu hỏi hay yêu cầu Thien làm gì.
+1. **Tình huống** (30 đến 60 giây đọc): một chuyện có thật hoặc rất giống thật, ưu tiên bối cảnh marketing/kinh doanh. Có con số cụ thể.
+2. **Vấn đề**: câu hỏi mà tình huống đặt ra và cách làm ngây thơ sẽ sai ở đâu.
+3. **Vì sao khái niệm này tồn tại**: nó giải quyết đúng vấn đề ở khối 2 như thế nào, 3 đến 5 câu.
+4. **Định nghĩa**: định nghĩa ngắn bằng lời thường trước, rồi định nghĩa chính xác, rồi công thức (KaTeX) nếu có. Giải nghĩa từng ký hiệu.
+5. **Minh họa**: hình hoặc hoạt hình tương tác cho đúng khái niệm này (mục 4 và 5). Có ví dụ thế số do app điền sẵn, hiện từng bước.
+6. **Đừng nhầm**: bảng đặt cạnh nhau các khái niệm dễ lẫn, nếu có. Chỉ là bảng giải thích, không phải câu hỏi.
+7. **Insight**: 1 đến 3 câu cô đọng, dạng "nhớ một điều thôi thì nhớ điều này".
+8. **Nguồn**: mỗi nhận định thực tế có ghi chú nguồn và link tại chỗ.
+
+Văn phong: câu ngắn, nói như người đồng nghiệp giỏi giải thích cho sếp bận. Không sáo rỗng, không khen, không kết bằng câu hỏi. Nếu một khái niệm cần nền, chèn thẻ "Cần nhớ lại" liên kết sang bài nền.
+
+## 4. Bộ thành phần minh họa (làm một lần, dùng lại)
+- **Slider lab**: canvas hoặc SVG với 1 đến 4 slider, kết quả đổi theo thời gian thực, có nút "Đặt lại" và "Xem giá trị cực đoan".
+- **Ví dụ thế số từng bước**: công thức với số có sẵn, bấm "Bước tiếp" để thấy từng phép tính và ý nghĩa bằng lời. Thien chỉ xem.
+- **Stepper quy trình**: các bước đánh số, bấm từng bước, mỗi bước có ví dụ chạy mẫu đã điền sẵn.
+- **Bảng dữ liệu mẫu** (contingency, ANOVA, confusion matrix): dữ liệu có sẵn, app tính và tô sáng ô đang giải thích.
+- **Đoạn code minh họa** (Python/SQL): chạy được trong trình duyệt (Pyodide, sql.js) với dataset mẫu nhỏ, có nút Chạy và hiện kết quả. Code có sẵn, không yêu cầu Thien viết.
+- **Hoạt hình quá trình**: gradient descent lăn xuống dốc, lấy mẫu lặp lại của CLT, cây quyết định chia nhánh, k-means dịch tâm cụm, RAG chạy qua các bước. Có nút Phát/Tạm dừng/Từng bước.
+- **Sơ đồ tổng quan (mind map)** đầu mỗi chương và bảng công thức tổng hợp.
+- **Từ điển thuật ngữ**: bấm vào thuật ngữ bất kỳ để xem định nghĩa ngắn và bài gốc.
+
+## 5. Thư viện mô phỏng theo chủ đề
+Mỗi dòng là một mô phỏng tối thiểu phải có. Grok có thể thêm.
+
+**Nền tảng (C0, C1, Additional)**
+- CRISP-DM: sơ đồ 6 pha, chạy một case marketing đi qua từng pha.
+- Problem framing (SMART, fact vs opinion, MECE/issue tree): minh họa một đề bài mơ hồ được viết lại từng bước thành đề bài đo được.
+- Excel: bảng tính mini minh họa VLOOKUP/XLOOKUP, pivot, hàm điều kiện.
+- Python cơ bản: biến, vòng lặp, list/dict, NumPy, Pandas, Matplotlib. Mỗi khái niệm có ô code chạy được và trực quan hóa bộ nhớ (biến là cái nhãn dán vào hộp).
+- Toán nền: vector, ma trận, đạo hàm (độ dốc là tốc độ đổi), tích phân (diện tích). Slider hiện tiếp tuyến di chuyển.
+
+**Thống kê, EDA, SQL (C2)**
+- Xác suất, hoán vị/tổ hợp: máy đếm kết quả, cây xác suất, rút bóng có hoàn lại.
+- Phân phối nhị thức: kéo n và p, xem cột xác suất. Nối với biến ngẫu nhiên Bernoulli.
+- PDF/CDF: kéo hai mốc a, b, diện tích tô màu = xác suất.
+- Phân phối chuẩn và Z-score: quy tắc 68-95-99.7, bảng Z tương tác.
+- CLT: chọn phân phối gốc lệch bất kỳ, lấy mẫu lặp lại, histogram của trung bình mẫu dần thành hình chuông. Kéo n để thấy SE = σ/√n.
+- Khoảng tin cậy: sinh 100 khoảng lặp lại, tô đỏ khoảng không chứa μ. Kéo mức tin cậy.
+- Hypothesis testing: vùng bác bỏ, p-value, critical value, Type I/II error và power, kéo cỡ mẫu và effect size.
+- Chi-squared test độc lập và ANOVA: bảng mẫu, app tính từng bước, hình F-distribution.
+- EDA: dataset mẫu, kéo slider ngưỡng IQR/Z-score để thấy outlier/missing được xử lý và biểu đồ đổi.
+- SQL: bảng nhỏ trực quan, chạy câu lệnh từng mệnh đề, hoạt hình thứ tự FROM, WHERE, GROUP BY, HAVING, SELECT, ORDER BY. JOIN dạng biểu đồ Venn và bảng. Window function hiện cửa sổ trượt.
+- MySQL/thiết kế CSDL: ERD mẫu, chuẩn hóa từng bước.
+
+**Machine Learning (C3, C4)**
+- Hồi quy tuyến tính: kéo đường thẳng, thấy residual và RSS, R² đổi. Gradient descent: quả bóng lăn trên mặt chi phí, kéo learning rate để thấy chậm, tốt, phân kỳ.
+- Hồi quy bội: mặt phẳng 3D, VIF, đa cộng tuyến, dummy variable, scaling, Adjusted R².
+- Hồi quy logistic: sigmoid kéo β0, β1, odds/log-odds, ngưỡng cutoff trượt, ma trận nhầm lẫn và đường ROC cập nhật trực tiếp. WOE/IV, PSI, vòng đời mô hình.
+- Cây quyết định: chia nhánh từng bước, Gini/Entropy tính tay, độ sâu cây kéo để thấy overfit.
+- Clustering: K-means từng bước (gán điểm, dời tâm), elbow/silhouette, hierarchical dendrogram.
+- NLP/Text mining: tokenization, stop words, TF-IDF, bag of words trên một vài câu mẫu.
+- Ensemble và Random Forest: nhiều cây bỏ phiếu, OOB error, feature importance. Class imbalance: SMOTE/undersampling hiện điểm dữ liệu.
+- Model selection: bias-variance (kéo độ phức tạp mô hình), cross-validation chia fold, grid/random search. Feature engineering: biến số, hạng mục, thời gian.
+- Time series: phân rã cộng/nhân, moving average, exponential smoothing (kéo α, β, γ), stationarity, ACF/PACF, ARIMA/SARIMAX (kéo p, d, q xem dự báo).
+
+**Trực quan hóa, kể chuyện, GenAI (C5, C6)**
+- Tableau/Power BI/Excel nâng cao: mô phỏng dashboard mini với kéo thả dimension/measure, filter, calculated field. Mỗi bài có bản mô phỏng để xem.
+- Khung tư duy phân tích (issue tree, hypothesis tree, 5 Whys, pyramid principle): minh họa dựng cây cho một vấn đề kinh doanh mẫu.
+- Data storytelling: minh họa trước và sau, một biểu đồ rối được biến thành câu chuyện 3 slide (bối cảnh, xung đột, giải pháp). Nguyên tắc: tiêu đề nêu kết luận, một thông điệp mỗi slide.
+- Operations research: Excel Solver mô phỏng, đồ thị vùng khả thi, sensitivity analysis kéo ràng buộc.
+- GenAI: trực quan token và attention, temperature/top-p kéo để thấy phân phối từ tiếp theo, so sánh đầu ra mẫu của zero-shot, few-shot, chain-of-thought, chi phí API ước tính.
+- RAG: hoạt hình pipeline (chia chunk, embedding, vector store, truy xuất, sinh câu trả lời), không gian embedding 2D để thấy câu hỏi gần đoạn văn nào.
+- Chatbot ShopAssist: sơ đồ 3 giai đoạn, mô phỏng hội thoại.
+- Sinh ảnh: VAE, GAN, diffusion (thêm nhiễu rồi khử nhiễu từng bước), prompt cho ảnh.
+- LangChain: sơ đồ chains, agents, prompt template.
+
+## 6. Nội dung từng bài lấy từ đâu
+Phụ lục A chỉ có tên video, thời lượng, quiz, bài đọc. Không có lời giảng. Vì vậy:
+- Grok tự viết giải thích cho mỗi bài theo khung ở mục 3, dựa trên tên bài và kiến thức chuẩn của chủ đề. Đây là nội dung chính của app.
+- Nếu Thien dán thêm ghi chú/transcript, nạp vào dữ liệu bài tương ứng. Không cần ô nhập trong app.
+- Khi viết nội dung có thông tin thực tế, ghi nguồn và link tại chỗ (mục 2). Không bịa số liệu. Nếu chưa có nguồn, ghi rõ "ví dụ minh họa".
+- Mục kiểu Quiz, Graded, Assignment, Case study trong Phụ lục A vẫn xuất hiện trong danh sách để không sót, nhưng app chỉ hiện một thẻ giải thích khái niệm liên quan (định nghĩa và minh họa). Không dựng bài tập hay chấm điểm.
+- Mỗi bài có trạng thái: Chưa xem, Đang xem, Đã xem. Thien tự đánh dấu một chạm.
+
+## 7. Kiến trúc và dữ liệu
+- Ưu tiên một web app tĩnh chạy offline: HTML/CSS/JS thuần hoặc Vite + React hoặc Svelte. Lưu tiến độ bằng IndexedDB/localStorage, có xuất/nhập JSON để sao lưu.
+- Mô phỏng: Canvas 2D hoặc SVG; D3 cho biểu đồ; KaTeX cho công thức; Pyodide cho Python; sql.js cho SQL; Three.js hoặc canvas giả 3D cho mặt phẳng hồi quy.
+- Giao diện sáng/tối, dùng được trên điện thoại (Thien học lúc di chuyển), chữ lớn dễ đọc.
+- Nguồn nội dung nằm trong file dữ liệu, không nhúng cứng vào code. Cấu trúc đề xuất:
+
+```
+Course { id, title, order }
+Module { id, courseId, title, order, optional }
+Session { id, moduleId, label, title, order, optional }
+Segment { id, sessionId, title, order }      // nhóm video cùng chủ đề
+Item { id, segmentId, kind: video|quiz|reading|assignment|graded,
+       title, durationSec|null, optional, order,
+       lessonId|null }                        // trỏ tới bài học tương tác
+Lesson { id, blocks: [situation, problem, why, definition, illustration,
+         pitfalls, insight, sources], sims: [simId] }
+Progress { itemId|lessonId, status: unseen|viewing|seen, lastOpenedAt }
+```
+- Quy tắc phủ đủ: một script kiểm tra mọi Item trong Phụ lục A đều có Lesson hoặc có lý do ghi rõ (ví dụ Quiz gộp vào bài X). App có trang "Độ phủ" hiện tỷ lệ Item đã có nội dung và danh sách Item còn thiếu.
+- Các Item loại video ngắn "Part 1, Part 2..." của cùng một chủ đề gộp thành một Lesson, nhưng vẫn liệt kê từng Item bên trong để Thien tick được.
+
+## 8. Lộ trình build
+1. **Khung (tuần 1)**: nạp Phụ lục A thành dữ liệu, cây điều hướng Course, Module, Session, Segment, trạng thái từng Item, trang Độ phủ, tìm kiếm, lưu tiến độ.
+2. **Mẫu bài + bộ thành phần (tuần 2)**: làm xong khung bài (mục 3) và các thành phần minh họa (mục 4). Làm hoàn chỉnh 3 bài mẫu: CLT, Gradient Descent, SQL execution order. Thien duyệt cách giải thích trước khi nhân rộng.
+3. **C2 Thống kê, EDA, SQL**: ưu tiên vì đây là nền và Thien đã quen định dạng.
+4. **C3 và C4 (ML)**.
+5. **C5 và C6 (Visualisation, Storytelling, GenAI)**: gần với công việc của Thien nhất, có thể đẩy lên sớm hơn nếu Thien muốn.
+6. **C0, C1, Additional**: nền và ngoại vi, làm dạng gọn.
+7. **Tra cứu**: từ điển thuật ngữ, bảng công thức tổng hợp, mind map từng chương, tìm kiếm toàn app.
+8. **C7 BA Capstone**: khi upGrad mở nội dung, thêm bằng cách nạp dữ liệu mới.
+
+## 9. Tiêu chí nghiệm thu
+- Trang Độ phủ báo 100% Item trong Phụ lục A có Lesson hoặc ghi chú gộp hợp lệ.
+- Mỗi Lesson có đủ các khối bắt buộc trong mục 3 (khối 6 chỉ khi có khái niệm dễ nhầm).
+- Mọi công thức có minh họa hoặc ví dụ thế số đi kèm.
+- Không có bài tập, quiz, ô nhập đáp án hay câu hỏi nào trong app.
+- Mọi mô phỏng chạy mượt trên điện thoại, không cần mạng sau lần tải đầu.
+- Thien mở app, thấy ngay "tiếp tục bài đang xem", và đọc xong một bài trong 20 đến 30 phút.
+- Không số liệu thực tế nào thiếu nguồn.
+
+## 10. Giới hạn của dữ liệu giáo trình (đã biết)
+Dữ liệu Phụ lục A được lấy trực tiếp từ trang study plan, nhưng có vài chỗ thiếu mà Grok cần biết:
+- C0-3 Problem Solving Skills: S4 và S6 chỉ có tiêu đề, chưa lấy được các mục bên trong.
+- C1 Module 4, Session 2: segment cuối chỉ có tiêu đề.
+- C3 Basics of NLP, Session 1: chỉ có tiêu đề.
+- C7 BA Capstone: trang chỉ hiển thị tên module, chưa có nội dung.
+- Một số nhãn trên trang upGrad bị lạc (ví dụ video tên "Checkpointing modes" và "Introduction to DataStream API" nằm trong phần Time Series). Phụ lục giữ nguyên như trên trang để không làm sót.
+- Cách viết "Part 1-5 (10:00 each)" nghĩa là 5 video, mỗi video 10 phút. Thời lượng dạng 01:40:00 là giờ:phút:giây.
+Khi Thien cung cấp thêm, nạp bổ sung vào dữ liệu, không sửa tay trong code.
+
+# Phụ lục A. Giáo trình upGrad đầy đủ
+Cấu trúc: Khóa (Course) > Module > Session > Segment/chủ đề: các mục cách nhau bằng dấu |. Nguồn: https://www.upgrad.com/lxp/learner/program-detail/697d8895ff9c0627b932ccb2/study-plan
+
+
+### C0-1 upGrad Welcome >> M1
+#### S1 Let's Kickstart Your upGrad Journey
+- Navigating the New: A Warm upGrad Welcome: Part1 (10:00) | Part2 (05:00)
+- upGrad's Learner-Centric Product Design (15:00)
+- Inside upGrad: The Engine Powering Your Learning (15:00)
+#### S2 Maximizing Your Learning Experience
+- upGrad LMS: Navigating the Future of Learning (05:00)
+- Harnessing the Power of Community in Learning (05:00)
+- Commit to Originality and Academic Integrity (05:00)
+
+
+### C0-2 Analytics Problem Solving >> Analytics Problem Solving
+#### S1 The CRISP-DM Framework - Business and Data Understanding
+- Introduction - The CRISP-DM Framework - Business and Data Understanding (Online) (10:00) | Define the Business Problem - Business Understanding - Part1 (10:00) | Define the Business Problem - Business Understanding - Part2 (05:00) | Define the Business Problem - Business Understanding - Recall Quiz | Owning an IPL Team - Business Understanding (online) (05:00) | Understanding Raw Data (15:00) | Understanding Raw Data - Recall Quiz | Preparing Data for Analysis (15:00) | Preparing Data for Analysis - Recall Quiz
+#### S2 CRISP-DM Framework - Data Preparation, Modelling, Evaluation and Deployment
+- The Heart of Data Analysis: Modelling (15:00) | The Heart of Data Analysis: Modelling - Recall Quiz | Model Evaluation and Deployment (15:00) | Model Evaluation and Deployment - Recall Quiz | Summary - CRISP-DM Framework - Data Preparation, Modelling, Evaluation and Deployment (15:00)
+
+
+### C0-3 Problem Solving Skills >> M1
+#### S1 Module Overview
+- Module Structure - Problem Solving Skills (online) (05:00) | Meet the Expert: Prashanth Balasubramanian (Online) (05:00)
+#### S2 Understanding the Problems
+- Introduction to Problem-Solving - Understanding the Problems (10:00) | Types of Problems in Business and their Advantages - Part 1 (05:00) | Types of Problems in Business and their Advantages - Part 2 (05:00) | Session Summary - Understanding the Problems (05:00)
+#### S3 Framing the Problem
+- Session Overview - Framing the Problem (05:00) | Session Overview - Framing the Problem - Recall Quiz | Step 1 - Frame the Problem with Precision - Framing the Problem (10:00) | Step 1 - Frame the Problem with Precision - Quiz | Facts and Opinions - Framing the Problem (20:00) | Facts and Opinions - Quiz | Prioritising Key Issues - Framing the Problem (10:00) | Prioritising Key Issues - Quiz | Framing the Problem Using the S.M.A.R.T Framework - Part1 (10:00) | Framing the Problem Using the S.M.A.R.T Framework - Part2 (10:00) | Session Summary - Framing the Problem (05:00) | Framing the Problem: Hospital Discharge Process (online) (10:00)
+#### S4 Analysing the Problem
+- (segment title only; no items captured)
+#### S5 Analysing the Solutions
+- Step 3 - Analysing Possible Solutions - Part 1 (10:00) | Step 3 - Analysing Possible Solutions - Part 2 (10:00) | Step 3 - Analysing Possible Solutions - Quiz | Prioritising Options (15:00) | Prioritising Options - Quiz | Considering Implications - Analysing the Solutions (20:00) | Considering Implications - Quiz | Session Summary - Analysing the Solutions (05:00) | Analysing Solutions: Hospital Discharge Process (Online) (05:00)
+#### S6 Implementing the Solutions
+- (segment title only; no items captured)
+
+
+### C0-4 Data Analysis in Excel >> M1
+#### S1 Module Overview
+- Module Mind Map (10:00)
+#### S2 Introduction to Excel
+- Session Overview - Introduction to Excel (10:00) | Understanding the Excel Interface - Part1 (05:00) | Understanding the Excel Interface - Part2 (05:00) | Slicing and Dicing Data - Sort and Filter - Part1 (10:00) | Part2 (10:00) | Part3 (05:00) | Report Making I – Basic Formatting - Part1 (10:00) | Part2 (05:00) | Part3 (05:00) | Report Making II – Conditional Formatting - Part1 (05:00) | Part2 (05:00) | Part3 (05:00) | Report Making III – Advanced Formatting - Part1 (05:00) | Part2 (05:00) | Part3 (05:00) | Part4 (05:00) | Printing and Page Layout - Part1 (05:00) | Part2 (05:00) | Passwords and Naming Files - Part1 (05:00) | Part2 (05:00) | Summary - Introduction to Excel (10:00)
+#### S3 Data Analysis in Excel – I
+- Session Overview (05:00) | Delimited Files (10:00) | Discovering Shortcuts (15:00) | Introduction to Formulae - Part1 (10:00) | Part2 (05:00) | Complex Functions - Part1 (10:00) | Part2 (05:00) | Cell Referencing and Text Functions (15:00) | Logical Formulae - Part1 (05:00) | Part2 (05:00) | Logical Formulae - Recall Quiz | Anecdotes – I - Part1 (05:00) | Part2 (05:00) | Creating and Formatting Charts (10:00) | Types of Charts - Part1 (10:00) | Part2 (05:00) | Part3 (10:00) | Anecdotes – II - Part1 (05:00) | Part2 (05:00) | Session Summary (Online) (05:00)
+#### S4 Data Analysis in Excel – II
+- Session Overview (05:00) | Creating a Pivot Table (10:00) | Filtering Data in a Pivot Table - Part1 (05:00) | Part2 (05:00) | Part3 (05:00) | Anand's Anecdotes – Pivot Tables (10:00) | VLOOKUP - Part1 (10:00) | Part2 (05:00) | Anand's Anecdotes – VLOOKUP (05:00) | Common Errors in Excel - Part1 (10:00) | Part2 (05:00) | Anecdotes – III (05:00) | Summary - Data Analysis in Excel – II (05:00)
+#### S5 Practice and Graded Questions
+- Introduction - Data Analysis in Excel - Online (05:00) | Practice Questions - Data Analysis in Excel - Online (05:00) | Practice Questions - Recall Quiz
+
+
+### C1: Python for Data Science >> M0 (Welcome to the Program)
+#### S1 Introduction to the Program
+- Seg1: Introduction to the Program and Data Science Landscape
+- Seg2: Program Syllabus and the Common Curriculum
+- Seg3: Business Intelligence
+- Seg4: Business Analysis
+- Seg5: Deep Learning and NLP
+- Seg6: Data Engineering
+#### S2 Succeeding in the Program
+- Seg1: Harnessing the Power of Community in Learning
+- Seg2: Commit to Originality and Academic Integrity
+- Seg3: Planning Your Learning Experience
+- Seg4: Learner Outcome Journey
+- Seg5: Building Accountability
+- Seg6: Statement of Purpose
+#### S3 Program Evaluation
+- Seg1: Grading
+- Seg2: Quiz on Student Manual
+- Seg3: IIITB Document Requirements
+#### S4 Starting the Journey
+- Seg1: Before you Begin
+#### S5 Industry Immersion
+- Seg1: Industry Immersion of the Program
+- Seg2: Roles in the Data Industry - Learner Anecdotes
+#### S7 Prism Coding Console - Tutorial [Opt]
+- Welcome To The Program - S7 | Optional (10:00)
+
+
+### C1: Python for Data Science >> M1 Fundamentals of Python
+#### S1 Introduction to Computer Programming
+- Course Overview (05:00)
+- Module Overview (05:00)
+- Session Overview (05:00)
+- History of Programming: part 1 (05:00) | part 2 (05:00)
+- Computational Thinking (05:00)
+- Software Development Life Cycle: part 1 (05:00) | part 2 (image) (05:00) | quiz
+- Development Tools: part 1 (05:00) | part 2 (table) (05:00) | part 3 (05:00) | part 4 (05:00) | quiz
+- Code Management: part 1 (05:00) | quiz | part 2 (05:00) | part 3 (05:00)
+- Testing and Debugging: part 1 (05:00) | quiz
+- Collaborative Development: part 1 (05:00) | part 2 (05:00) | part 3 (02:00)
+- Code as a Language: part 1 (05:00) | table (05:00) | quiz
+- Programming Paradigms: part 1 (05:00) | part 2 (table) (05:00)
+- Guides to Popular IDEs: part 1 (10:00) | part 2 (10:00)
+- Session Summary (05:00)
+#### S2 Variables and Data Types
+- Session Overview (05:00)
+- Numerics: part 1 (05:00) | codelines (05:00) | quiz
+- Strings: part 1 (06:00) | codelines (02:00) | quiz
+- Booleans: part 1 (03:00) | codelines (03:00) | quiz
+- Input and Output: part 1 (03:00) | codelines (03:00) | quiz
+- NoneType: part 1 (02:00) | codelines (05:00) | quiz
+- Session Summary - text (05:00)
+#### S3 Operators
+- Session Overview (05:00)
+- Arithmetic Operators: part 1 (05:00) | codelines (05:00) | quiz | part 4 (15:00)
+- Assignment Operators: part 1 (05:00) | codelines (05:00) | quiz
+- Comparison Operators: part 1 (05:00) | codelines (05:00) | quiz
+- Logical Operators: part 1 (07:00) | codelines (05:00) | quiz
+- Truthiness and Falsiness: part 1 (07:00) | part 2 (15:00)
+- Membership Operators: part 1 (05:00) | codelines (05:00) | quiz
+- Bitwise Operators (15:00)
+- Identity Operators (10:00)
+- Session Summary - text (05:00)
+- Module Summary - text (05:00)
+#### S4 Practice
+- Coding Best Practices: part 1 (20:00) | codelines (05:00) | file (15:00) | part 4 (10:00)
+- Common Misconceptions - text (05:00)
+- Quiz: Quiz A | Quiz B
+- Coding Practice: coding quiz 1 (15:00) | coding quiz 2 (15:00) | coding quiz 3 (15:00) | coding quiz 4 (15:00)
+- Additional Resources (05:00)
+
+
+### C1: Python for Data Science >> M2 Python Control Structures
+#### S1 Conditionals
+- Module Overview (05:00)
+- Session Overview - part 1 (05:00)
+- The IF Statement: part 1 (05:00) | part 2 (05:00) | quiz | part 3 (02:00)
+- The IF-ELSE Statement: part 1 (05:00) | part 2 (05:00) | quiz | part 3 (01:00)
+- Nested Conditionals: part 1 (05:00) | part 2 (05:00) | part 3 (05:00) | quiz | part 4 (01:00)
+- MATCH-CASE Statements: part 1 (10:00) | part 2 (05:00) | quiz | part 3 (02:00)
+- Session Summary (05:00)
+#### S2 Loops
+- Session Overview (05:00)
+- While Loops: part 1 (10:00) | part 2 (05:00) | quiz 1 | part 3 (05:00) | part 4 (05:00) | part 5 (15:00) | quiz 2 | part 6 (02:00)
+- For Loops: part 1 (05:00) | part 2 (10:00) | part 3 (05:00) | part 4 (05:00) | quiz | part 5 (01:00)
+- Nested Loops: part 1 (05:00) | part 2 (10:00) | part 3 (15:00) | part 4 (05:00) | quiz | part 5 (02:00)
+- Session Summary (05:00)
+#### S3 Functions
+- Session Overview (05:00)
+- Built-In Functions: part 1 (10:00) | quiz | part 2 (01:00)
+- User-Defined Functions: part 1 (10:00) | part 2 (05:00) | quiz | part 3 (01:00)
+- Parameters and Arguments: part 1 (05:00) | part 2 (05:00) | part 3 (12:00) | quiz | part 4 (01:00)
+- Scope Use and Failure: part 1 (15:00) | quiz | part 2 (01:00)
+- Recursion: part 1 (10:00) | part 2 (05:00) | quiz | part 3 (01:00)
+- Multiple Return Values: part 1 (05:00) | part 2 (05:00) | part 3 (10:00) | quiz | part 4 (02:00)
+- Importing Libraries: part 1 (10:00) | part 2 (05:00) | part 3 (05:00) | quiz | part 4 (01:00)
+- Lambdas: part 1 (05:00) | part 2 (05:00) | quiz | part 3 (01:00)
+- Higher-Order Functions: part 1 (05:00) | part 2 (05:00) | quiz | part 3 (05:00)
+- Session Summary (05:00)
+- Module Summary (05:00)
+#### S4 Practice
+- Coding Best Practices: part 1 (05:00) | part 2 (05:00) | part 3 (05:00) | part 4 (05:00)
+- Common Misconceptions (05:00)
+- Quiz: Quiz - part 1 (01:00:00) | Quiz 1 | Quiz 2 | Quiz - part 2 (01:00)
+- Coding Questions: part 1 (30:00) | CQ-Q1 (30:00) | CQ-Q2 (30:00) | CQ-Q3 (30:00) | CQ-Q4 (30:00) | part 2 (01:00)
+- Additional Resources (05:00)
+
+
+### C1: Python for Data Science >> M3 Python Data Structures
+#### S1 Strings
+- Module Overview - Part 1 (05:00)
+- Session Overview - Part 1 (05:00)
+- Creating Strings: Part 1 (05:00) | Ungraded Assessment | Text 1 (01:00)
+- Formatting Strings: Part 1 (05:00) | Part 2 (05:00) | Part 3 (05:00) | Ungraded Assessment | Text 1 (02:00)
+- Operations on Strings: Part 1 (06:00) | Ungraded Assessment | Text 1 (01:00)
+- String Methods: Part 1 (15:00) | Part 2 (03:00) | Ungraded Assessment | Text 1 (01:00)
+- Indexing and Slicing Strings: Part 1 (08:00) | Ungraded Assessment | Text (01:00)
+- Control Flow on Strings: Part 1 (15:00) | Ungraded Assessment | Text (01:00)
+- Session Summary - Text (05:00)
+#### S2 Lists
+- Session Overview - Part (05:00)
+- Creating Lists: Part (05:00) | Ungraded Assessment | Text (01:00)
+- Indexing and Slicing Lists: Part (03:00) | Ungraded Assessment | Text (01:00)
+- Operations on Lists: Part 1 (08:00) | Part 2 (05:00) | Ungraded Assessment | Text (01:00)
+- List Methods: Part 1 (05:00) | Part 2 (04:00) | Ungraded Assessment | Text (01:00)
+- Control Flow on Lists: Part (15:00) | Ungraded Assessment | Text (01:00)
+- List Comprehensions: Part (05:00) | Ungraded Assessment | Text (01:00)
+- More on List Comprehensions: Part (15:00)
+- More Functions on Lists: Part (11:00) | Ungraded Assessment | Text (01:00)
+- Session Summary - Text (05:00)
+#### S3 Dictionaries
+- Session Overview Part 1 (10:00)
+- Creating Dictionaries: Part 1 (10:00) | Ungraded Assessment | Text (01:00)
+- Accessing Dictionaries: Part (04:00) | Ungraded Assessment | Text (01:00)
+- Operations on Dictionaries: Part (05:00) | Ungraded Assessment | Text (01:00)
+- More on Dictionary Operations: Part 1 (05:00) | Part 2 (10:00)
+- Dictionary Methods: Part (05:00) | Ungraded Assessment | Text (01:00)
+- More on Dictionaries: Part 1 (10:00) | Part 2 (10:00) | Ungraded Assessment | Text (01:00)
+- Dictionary Comprehensions: Part 1 (10:00) | Part 2 (10:00) | Ungraded Assessment | Text (01:00)
+- Session Summary - Text (05:00)
+#### S4 Tuples
+- Session Overview - Part 1 (10:00)
+- Creating Tuples: Part (07:00) | Ungraded Assessment | Text (01:00)
+- Indexing and Slicing Tuples: Part (05:00) | Ungraded Assessment | Text (01:00)
+- Operations on Tuples: Part (05:00) | Ungraded Assessment | Text (01:00)
+- Control Flow on Tuples: Part (12:00) | Ungraded Assessment | Text (01:00)
+- Unpacking Tuples: Part (05:00) | Ungraded Assessment | Text (01:00)
+- Session Summary - Text (05:00)
+#### S5 Sets
+- Session Overview (05:00)
+- Creating Sets: Part (07:00) | Ungraded Assessment | Text (01:00)
+- Operations on Sets: Part (07:00) | Ungraded Assessment | Text (01:00)
+- Using Sets to Solve Problems: Part (10:00) | Ungraded Assessment | Text (01:00)
+- Mathematical Operations on Sets: Part 1 (09:00) | Part 2 (06:00) | Ungraded Assessment | Text (01:00)
+- Set Comprehensions: Part (07:00) | Ungraded Assessment | Text (01:00)
+- Session Summary - Text (05:00)
+- Module Summary - Text (05:00)
+#### S6 Practice
+- Coding Best Practices - Text 1 (10:00)
+- Common Misconceptions - Text 1 (05:00)
+- Quizzes - Strings: Text 1 (01:00) | Ungraded Assessment | Text 2 (01:00)
+- Quizzes - Lists: Text 1 (01:00) | Ungraded Assessment | Text 2 (01:00)
+- Quizzes - Dictionaries: Text 1 (01:00) | Ungraded Assessment | Text 2 (01:00)
+- Quizzes - Tuples and Sets: Text 1 (01:00) | Ungraded Assessment | Text 2 (01:00)
+- Coding Practice: Text 1 (01:00) | Length of string (10:00) | Reverse a string (10:00) | Student subject count (10:00) | Calculating total runs (10:00) | Text 2 (01:00)
+- Additional Resources - Text 1 (05:00)
+
+
+### C1: Python for Data Science >> M4 Python Data Science Libraries
+#### S1 NumPy Arrays
+- Module Overview (05:00)
+- Session Overview (05:00)
+- Creating Arrays: part 1 (10:00) | part 2 (10:00) | quiz | part 3 (02:00)
+- Indexing and Slicing Arrays: part 1 (10:00) | part 2 (10:00) | part 3 (15:00) | quiz | part 4 (01:00)
+- Array Manipulations: Part 1 (05:00) | Part 2 (10:00) | quiz | Part 3 (01:00)
+- Reshaping Arrays: part 1 (05:00) | part 2 (10:00) | quiz | part 3 (02:00)
+- Array Reshaping Behaviour: part 1 (20:00) | part 2 (10:00) | quiz | part 3 (01:00)
+- Broadcasting: part 1 (05:00) | part 2 (10:00) | quiz | part 3 (01:00)
+- Operations on Arrays: part 1 (10:00) | part 2 (10:00) | quiz | part 3 (02:00)
+- Image Manipulation (25:00)
+- Session Summary (05:00)
+#### S2 Pandas Series
+- Session Overview (05:00)
+- Creating Series: part 1 (05:00) | part 2 (10:00) | quiz | part 3 (02:00)
+- Indexing and Slicing Series: part 1 (05:00) | part 2 (05:00) | quiz | part 3 (01:00)
+- Operations on Series: part 1 (05:00) | part 2 (10:00) | part 3 (12:00) | quiz | part 4 (01:00)
+- Method Chaining: part 1 (05:00) | part 2 (10:00) | quiz | part 3 (02:00)
+- Working With Series: part 1 (10:00) | quiz | part 2 (01:00)
+- String and Datetime Operations: (title only) | Session Summary
+#### S3 Pandas DataFrames
+- Session Overview (10:00)
+- Creating DataFrames: part 1 (05:00) | part 2 (10:00) | part 3 (10:00) | part 4 (10:00) | quiz | part 5 (01:00)
+- Loading Data to Colab: part 1 (10:00) | quiz | part 2 (02:00)
+- Indexing and Slicing DataFrames: part 1 (05:00) | quiz | part 2 (10:00)
+- Querying a DataFrame: part 1 (16:00) | quiz | part 2 (01:00)
+- Operations on DataFrames: part 1 (10:00) | part 2 (10:00) | quiz | part 3 (02:00)
+- Working With DataFrames: part 1 (35:00) | quiz | part 2 (01:00)
+- Merging DataFrames: part 1 (05:00) | part 2 (10:00) | quiz | part 3 (02:00)
+- Analysing a DataFrame: part 1 (25:00) | quiz | part 2 (02:00)
+- Grouping and Aggregation: part 1 (10:00) | part 2 (10:00) | quiz | part 3 (02:00)
+- Wrangling a DataFrame: part 1 (25:00) | quiz | part 2 (02:00)
+- Session Summary (05:00)
+#### S4 Matplotlib and Seaborn
+- Session Overview: part 1 (05:00) | part 2 (05:00)
+- Scatter Plot: part 1 (05:00) | part 2 (10:00) | quiz | part 3 (02:00)
+- Line Plot: part 1 (05:00) | part 2 (15:00) | quiz | part 3 (02:00)
+- Histogram: part 1 (05:00) | part 2 (20:00) | quiz | part 3 (02:00)
+- Bar Plot: part 1 (10:00) | part 2 (10:00) | quiz | part 3 (02:00)
+- Understanding a Dataset: part 1 (10:00) | quiz | part 2 (01:00)
+- Box Plot: part 1 (05:00) | part 2 (10:00) | quiz | part 3 (01:00)
+- Interpreting a Box Plot: part 1 (20:00) | quiz | part 2 (02:00)
+- Pie Chart: part 1 (05:00) | part 2 (10:00) | quiz | part 3 (01:00)
+- Heat Map: part 1 (05:00) | part 2 (10:00) | quiz | part 3 (02:00)
+- More on Heat Maps: part 1 (15:00) | quiz | part 2 (02:00)
+- Pair Plot: part 1 (05:00) | part 2 (05:00) | quiz | part 3 (05:00)
+- Session Summary (05:00)
+- Module Summary (05:00)
+#### S5 Practice
+- Coding Best Practices: part 1 (10:00) | part 2 (02:00)
+- Common Misconceptions (05:00)
+- Quizzes - NumPy Arrays: part 1 (10:00) | quiz A | quiz B | part 2 (01:00)
+- Quizzes - Loading Data Into Pandas: part 1 (10:00) | quiz | part 2 (01:00)
+- Quizzes - Indexing and Slicing DataFrames: Quiz | text (02:00)
+- Quizzes - Operations on DataFrames: quiz A | quiz B | text (01:00)
+- Quizzes - Visualisation Basics: quiz A | quiz B | text (01:00)
+- Coding Practice - NumPy Arrays: part 1 (01:00) | CQ1 (50:00) | CQ2 (50:00) | CQ3 (50:00) | part 2 (01:00)
+- Coding Practice - Pandas DataFrames: part 1 (02:00) | CQ1 (50:00) | CQ2 (50:00) | CQ3 (50:00) | CQ4 (50:00) | CQ5 (50:00) | CQ6 (50:00) | CQ7 (50:00) | part 2 (01:00)
+- Additional Resources (05:00) | NumPy Pandas LS - 1 (03:50:06) | NumPy Pandas LS - 2 (03:57:05)
+
+
+### C1-G Python Graded Assessments >> Python for Data Science Graded Assessments
+#### S1 Basics of Python
+- Guidelines (09:00) | Graded Questions
+#### S2 Python Data Science Libraries
+- Guidelines (05:00) | Graded Questions
+
+
+### Additional Resources - Part 1 (Math for Data Science, toàn bộ Optional) >> M1
+#### S1 Module Overview [Opt]
+- Module Mind Map (10:00)
+#### S2 Vectors and Vector Spaces [Opt]
+- Session Overview (10:00) | Vectors Basics - 1 (10:00) | Vectors Basics - Quiz 1 | Vector Operations - Dot Product - 1 (10:00) | Dot Product - 2 (10:00) | Dot Product - Quiz 1 | Dot Product Example - 1 (10:00) | Dot Product Example - Quiz | Vector Spaces - 1 (10:00) | Vector Spaces - Quiz | Session Summary (05:00)
+#### S3 Linear Transformations and Matrices [Opt]
+- Session Overview (05:00) | Matrices The Basics (10:00) | Matrices The Basics - Quiz | Matrix Operations I (10:00) | Matrix Operations I - Quiz | Matrix Operations II (10:00) | Matrix Operations II - Quiz | Linear Transformations (10:00) | Linear Transformation - Quiz | Determinants (10:00) | Determinants - Quiz | Systems of Linear Equations (10:00) | Systems of Linear Equations - Quiz | Least Squares Approximation - Part 1 (10:00) | Least Squares Approximation - Quiz | Least Squares Approximation - Part 2 (10:00) | Session Summary (05:00)
+#### S4 Eigenvalues and Eigenvectors [Opt]
+- Session Overview (05:00) | Eigenvectors – What Are They? (10:00) | Eigenvectors: What Are They - Quiz | Calculating Eigenvalues and Eigenvectors (10:00) | Calculating Eigenvalues and Eigenvectors - Quiz | Eigendecomposition of a Matrix (10:00) | Eigendecomposition of a Matrix - Open Response | Session Summary (05:00)
+#### S5 Multivariable Calculus [Opt]
+- Session Overview (05:00) | Functions Primer (10:00) | Functions Primer - Quiz | Functions and Derivatives (10:00) | Functions and Derivatives - Quiz | Differentiation - Part 1 (10:00) | Differentiation - Part 2 (10:00) | Differentiation - Quiz | Critical Points - Maxima and Minima (10:00) | Critical Points - Quiz | Multivariable Functions (10:00) | Partial and Total Derivatives (10:00) | Partial and Total Derivatives - Quiz | Vector Valued Functions (10:00) | Vector Valued Functions - Quiz | The Jacobian - Part 1 (10:00) | The Jacobian - Part 2 (10:00) | The Jacobian - Quiz | The Hessian (10:00) | The Hessian - Quiz | Taylor Series and Linearisation (10:00) | Session Summary (10:00)
+#### S6 Introduction to Probability [Opt]
+- Introduction (05:00) | Introduction - Lecture Notes (10:00) | Permutations (10:00) | Permutations - Quiz | Combinations (10:00) | Definition of Probability - Quiz | Definition of Probability - Part 1 (10:00) | Part 2 (10:00) | Types of Events - Part 1 (10:00) | Part 2 (10:00) | Types of Events - Quiz | Addition Rule for Probability (10:00) | Addition Rule - Quiz | Multiplication Rule - Part 1 (10:00) | Part 2 (10:00) | Multiplication Rule - Quiz | Generating Probability Values (10:00) | Types of Probability - Part 1 (10:00) | Part 2 (10:00) | Part 3 (10:00) | Summary (10:00) | Practice Questions - Quiz
+
+
+### Additional Resources - Part 2 (Descriptive Statistics, toàn bộ Optional) >> M1
+#### S1 Introduction to Descriptive Statistics [Opt]
+- Module Overview - Part1 (05:00) | Part2 (05:00) | Session Overview (05:00) | Introduction to Applied Statistics - Part1 (05:00) | Part2 (05:00) | Recall Quiz | Types of Data - Part1 (10:00) | Part2 (05:00) | Recall Quiz | Practice Questions | Session Summary (05:00)
+#### S2 Measures of Central Tendency [Opt]
+- Session Overview (05:00) | Central Tendency (05:00) | Mean - Part1 (10:00) | Part2 (05:00) | Recall Quiz | Median (15:00) | Median - Recall Quiz | Mode (15:00) | Mode - Recall Quiz | Practice Questions | Session Summary (Online) (05:00)
+#### S3 Measures of Position [Opt]
+- Session Overview (online) (05:00) | Introduction to Measures of Position (05:00) | Recall Quiz | Quartiles (10:00) | Quartiles - Recall Quiz | Deciles and Percentiles - Part1 (05:00) | Part2 (05:00) | Part3 (05:00) | Recall Quiz | Practice Questions | Session Summary (Online) (05:00)
+#### S4 Measures of Variability [Opt]
+- Session Overview (Online) (05:00) | Introduction to Variability (05:00) | Range (05:00) | Range - Recall Quiz | Mean Absolute Deviation (20:00) | Mean Absolute Deviation - Recall Quiz | Variance and Standard Deviation - Part1 (10:00) | Part2 (10:00) | Recall Quiz | Practice Questions | Session Summary (05:00)
+#### S5 Measures of Association [Opt]
+- Session Overview (05:00) | Covariance - Part1 (10:00) | Part2 (05:00) | Part3 (05:00) | Part4 (05:00) | Part5 (10:00) | Covariance - Recall Quiz | Correlation - Part1 (05:00) | Part2 (10:00) | Part3 (05:00) | Part4 (10:00) | Part5 (05:00) | Part6 (05:00) | Correlation - Recall Quiz | Practice Questions | Session Summary (05:00)
+#### S6 Practice Assessment [Opt]
+- Practice Questions - BA and Consulting
+
+
+### C2 Statistics, EDA, SQL >> Hypothesis Testing
+#### S1 Concepts of Hypothesis Testing - I
+- Introduction (05:00)
+- Understanding Hypothesis Testing: Part 1 (10:00) | Part 2 (15:00) | Recall Quiz
+- Null and Alternate Hypotheses: Part 1 (10:00) | Recall Quiz | Part 2 (15:00)
+- Making a Decision: Part 1 (15:00) | Recall Quiz 1 | Part 2 (15:00) | Recall Quiz 2
+- Critical Value Method: Part 1 (20:00) | Recall Quiz 1 | Part 2 (25:00) | Recall Quiz 2
+- Critical Value Method - Examples: Part 1 (10:00) | Recall Quiz 1 | Part 2 (15:00) | Recall Quiz 2 | Part 3 (10:00)
+- Summary (15:00)
+- Graded Questions: Assessment 1 (09:00) | Part 1 (05:00) | Assessment 2 (06:00) | Part 2 (05:00) | Assessment 3 (09:00) | Assessment 4 (06:00)
+#### S2 Concepts of Hypothesis Testing - II
+- Introduction (05:00)
+- The p-value Method (20:00) | Recall Quiz
+- The p-value Method: Examples: Part 1 (05:00) | Recall Quiz 1 | Part 2 (05:00) | Recall Quiz 2 | Part 3 (10:00)
+- Types of Errors (15:00) | Recall Quiz
+- Summary (10:00)
+- Graded Questions: Assessment 1 (03:00) | Assessment 2 (06:00)
+#### S3 Industry Demonstration I
+- Introduction (05:00)
+- Business Understanding: Part 1 (05:00) | Part 2 (05:00)
+- Problem Statement: Part 1 (05:00) | Part 2 (10:00)
+- Hypothesis Formulation: Part 1 (05:00) | Part 2 (10:00)
+- Choosing the Representative Sample: Part 1 (05:00) | Part 2 (05:00) | Part 3 (10:00)
+- Computing the Test-Statistic: Part 1 (05:00) | Part 2 (05:00)
+- Finding the Critical Region: Part 1 (10:00) | Part 2 (10:00)
+- Making the Decision: Part 1 (02:00) | Part 2 (03:00)
+- Using p-value approach (10:00)
+- Changing the Hypothesis (10:00)
+- Graded Questions: Part 1 (05:00) | Assessment 1 (06:00) | Part 2 (10:00) | Assessment 2 (06:00)
+#### S4 Industry Demonstration II
+- Introduction (10:00)
+- T Distribution: Part 1 (15:00) | Recall Quiz 1 | Part 2 (15:00) | Recall Quiz 2
+- Two-Sample Mean Test: Part 1 (10:00) | Recall Quiz 1 | Part 2 (10:00) | Recall Quiz 2
+- Two-Sample Proportion Test (20:00)
+- A/B Testing Demonstration: Part 1 (10:00) | Part 2 (15:00)
+- Industry Relevance: Part 1 (05:00) | Part 2 (05:00)
+- Hypothesis Testing in Python (10:00)
+- Summary (10:00)
+- Coding Practice [Opt]: Coding Practice (01:20:00) | Valid customer IDs - Coding Question (30:00)
+#### S5 Statistics - Interview Practice
+- Introduction (05:00)
+- Distributions and Sampling Methods: Part 1 (05:00) | Part 2 (05:00)
+- Inferential Statistics: Part 1 (05:00) | Part 2 (05:00)
+- Hypothesis Testing: Part 1 (05:00) | Part 2 (05:00)
+- A/B Testing (10:00)
+- Chi-Squared Test (15:00)
+- ANOVA: Part 1 (10:00) | Part 2 (10:00)
+- Practice Questions (25:00) | Recall Quiz
+
+
+### C2 Statistics, EDA, SQL >> Exploratory Data Analysis
+#### S1 Data Sourcing
+- Module Introduction (10:00)
+- Introduction to EDA: Part 1 (10:00) | Part 2 (05:00)
+- Public and Private Data (10:00) | Recall Quiz [Opt]
+- Private Data: Part 1 (20:00) | Part 2 (15:00) | Recall Quiz [Opt]
+- Public Data (10:00)
+- Summary (05:00)
+#### S2 Data Cleaning
+- Introduction (10:00) | Part 2 (10:00)
+- Data Types (30:00) | Recall Quiz
+- Fixing the Rows and Columns: Part 1 (20:00) | Part 2 (10:00) | Part 3 (10:00) | Recall Quiz
+- Impute/Remove Missing Values: Part 1 (20:00) | Part 2 (20:00) | Part 3 (20:00) | Part 4 (20:00) | Recall Quiz
+- Handling Outliers: Part 1 (20:00) | Part 2 (20:00) | Part 3 (20:00) | Part 4 (10:00) | Recall Quiz
+- Standardising Values: Part 1 (10:00) | Part 2 (05:00) | Part 3 (05:00)
+- Fixing Invalid Values and Filter Data: Part 1 (05:00) | Part 2 (05:00)
+- Graded Questions (20:00) | Graded Assessment (24:00)
+- Summary (05:00)
+#### S3 Univariate Analysis
+- Introduction to Univariate Analysis (05:00)
+- Categorical Unordered Univariate Analysis (15:00) | quiz
+- Categorical Ordered Univariate Analysis (15:00) | Recall Quiz
+- Statistics on Numerical Features: Part 1 (15:00) | Part 2 (15:00) | Recall Quiz
+- Graded Questions (05:00) | Graded Assessment (40:00)
+- Summary (05:00)
+#### S4 Bivariate and Multivariate Analysis
+- Introduction (05:00)
+- Numeric - Numeric Analysis: Part 1 (20:00) | Part 2 (15:00) | Recall Quiz
+- Correlation vs Causation (05:00)
+- Numerical - Categorical Analysis: Part 1 (15:00) | Part 2 (15:00) | Recall Quiz
+- Categorical - Categorical Analysis: Part1 (20:00) | Part2 (15:00)
+- Multivariate Analysis: Part1 (15:00) | Part2 (10:00)
+- Graded Questions (05:00) | Graded Quiz (18:00)
+- Summary - Online (05:00)
+- Module Summary (05:00)
+#### S5 EDA: Interview Practice
+- Introduction (10:00)
+- Overview (10:00)
+- Missing Values: Part1 (05:00) | Part2 (05:00)
+- Correlation and Causation: Part1 (05:00) | Part2 (03:00) | Part3 (02:00)
+- Data Visualisation: Part1 (05:00) | Part2 (05:00)
+- Other topics: Part1 (05:00) | Part2 (05:00)
+
+
+### C2 Statistics, EDA, SQL >> Problem Solving in Python [Opt]
+#### S1 Problem-Solving Framework [Opt]
+- Module Overview (05:00) | Session Overview (05:00) | Understanding the Problem (05:00) | Planning an Approach (05:00) | Coding the Program (05:00) | Testing the Program (05:00) | Optimising the Solution (10:00) | Session Summary (05:00)
+#### S2 Popular Python Problems [Opt]
+- Session Overview (05:00) | Two Sum Problem (20:00) | Valid Brackets Problem (20:00) | Roman Numerals Problem (20:00) | Session Summary (05:00) | Module Summary (05:00)
+
+
+### C2 Statistics, EDA, SQL >> Inferential Statistics
+#### S1 Introduction to Probability
+- Introduction: Inferential Statistics (05:00)
+- Permutations (10:00) | Quiz
+- Combinations (10:00) | Quiz
+- Probability: Definition and Properties: Part1 (05:00) | Part2 (05:00) | Quiz
+- Types of Events (10:00) | Quiz
+- Rules of Probability - Addition (10:00) | Quiz
+- Rules of Probability - Multiplication (15:00) | Quiz
+- Summary (05:00)
+- Practice Questions: Quiz
+- Graded Questions: Graded Quiz (21:00)
+#### S2 Basics of Probability
+- Introduction: Basics of Probability (05:00)
+- Random Variables: Part1 (10:00) | Part2 (10:00)
+- Probability Distributions - I (20:00)
+- Probability Distributions - II - Online (10:00) | Quiz
+- Expected Value - I: Part1 (15:00) | Part2 (15:00)
+- Expected Value - II - Online (05:00) | Quiz | Quiz
+- Summary: Basics of Probability (05:00) | Quiz
+- Practice Questions - Online (05:00) | Quiz
+- Graded Questions: Online Part1 (05:00) | Graded Quiz (06:00) | Online Part2 (05:00) | Graded Quiz (03:00)
+#### S3 Discrete Probability Distributions
+- Introduction - Online (05:00)
+- Probability Without Experiment - I: Part1 (10:00) | Part2 (10:00) | Quiz
+- Probability Without Experiment - II - Online (05:00) | Quiz
+- Binomial Distribution: Part1 (08:00) | Part2 (05:00)
+- Binomial Distribution (Examples) (12:00) | Quiz
+- Cumulative Probability (20:00) | Quiz
+- Summary: Discrete Probability Distributions - Online (05:00) | Quiz
+- Practice Questions - Online (05:00) | Quiz
+- Comprehension: Expected Value - Online (05:00) | Quiz
+- Graded Questions: Online1 (05:00) | Graded Quiz (06:00) | Online2 (05:00) | Graded Quiz (09:00) | Online3 (05:00) | Graded Quiz (09:00)
+#### S4 Continuous Probability Distributions
+- Introduction - Online (05:00)
+- Probability Density Functions - I (15:00) | Quiz
+- Probability Density Functions - II - Online (10:00) | Quiz | Quiz | Quiz
+- Normal Distribution (20:00) | Quiz
+- Standard Normal Distribution (21:00) | Quiz
+- Summary: Continuous Probability Distributions - Online (04:00) | Quiz
+- Practice Questions: Quiz
+- Graded Questions: Online (05:00) | Graded Quiz (03:00) | Graded Quiz (06:00) | Graded Quiz (06:00)
+#### S5 Central Limit Theorem
+- Introduction - Online (05:00)
+- Samples (20:00) | Quiz
+- Sampling Distributions (10:00) | Quiz
+- Properties of Sampling Distributions (10:00)
+- Central Limit Theorem: Part1 (05:00) | Part2 (05:00)
+- CLT Demonstration: I: Part1 (08:00) | Part2 (07:00)
+- CLT Demonstration: II: Part1 (10:00) | Part2 (05:00)
+- Summary: CLT - Part I - Online (05:00)
+- Practice Questions - Part I - Online (05:00) | Quiz
+- Estimating Mean Using CLT (10:00)
+- Confidence Interval - Example (10:00) | Quiz
+- Summary: CLT - Part II - Online (05:00) | Quiz
+- Practice Questions - Part II - Online (05:00) | Quiz
+- Graded Questions: CLT: Online1 (05:00) | Graded Quiz (12:00) | Online2 (05:00) | Graded Quiz (09:00)
+- Coding Practice [Opt]: Coding Practice (05:00) | Gambling - Coding Question (30:00) | Lego Stack - Coding Question (45:00)
+#### S6 Applications of Sampling Methods [Opt]
+- Introduction - Online (05:00)
+- Types of Sampling Methods (15:00)
+- Uses of Sampling in Market Research: Part1 (10:00) | Part2 (05:00) | Part3 (05:00)
+- Uses of Sampling in Marketing Campaigns: Part1 (10:00) | Part2 (10:00) | Part3 (10:00)
+- Uses of Sampling in Pilot Testing: Part1 (10:00) | Part2 (10:00)
+- Uses of Sampling in Quality Control (10:00)
+- Practice Questions: Quiz
+#### S7 Inferential Statistics - Additional Resources [Opt]
+- Basics of Probability - Online (10:00)
+- Joint Probability and Conditional Probability - Online (15:00)
+- Bayes' Theorem - Online (15:00)
+- Assessments I: Quiz | Quiz | Quiz
+- Standardised Normal Distribution and Z-Score - Online (10:00)
+- Assessments II: Online (05:00) | Quiz | Quiz | Quiz
+- Sampling Methods - Online (20:00)
+- Sampling and Estimation - Online (20:00)
+- Assessments III: Quiz
+
+
+### C2 Statistics, EDA, SQL >> Database Design and Introduction to MySQL
+#### S1 Database Design
+- Introduction (05:00)
+- What is a Data Warehouse? (10:00) | Recall Quiz
+- Structure of a Data Warehouse (10:00) | Recall Quiz
+- Star Schema (15:00) | Recall Quiz
+- OLAP vs OLTP (20:00) | Recall Quiz
+- SETL (05:00)
+- Entity Constraints: Part 1 (20:00) | Part 2 (10:00) | Recall Quiz
+- Referential Constraints: Part 1 (10:00) | Part 2 (05:00) | Recall Quiz
+- Semantic Constraints (10:00) | Recall Quiz
+- ERDs: Part 1 (10:00) | Part 2 (10:00) | Recall Quiz 1 | Recall Quiz 2
+- Star Schema: A Demonstration (10:00) | Recall Quiz
+- Summary (05:00)
+#### S2 Database Creation in the MySQL Workbench
+- Introduction (05:00)
+- Introduction to DDL and DML Statements (15:00) | Recall Quiz
+- DDL Statements: A Demonstration: Part 1 (04:00) | Part 2 (03:00) | Part 3 (03:00) | Recall Quiz
+- DML Statements: A Demonstration: Part 1 (05:00) | Part 2 (03:00) | Part 3 (03:00) | Recall Quiz
+- Modifying Columns (05:00)
+- DDL and DML Statements (05:00) | Recall Quiz
+#### S3 Querying in MySQL
+- Introduction (05:00)
+- SQL Statements and Operators: Part 1 (15:00) | Part 2 (05:00) | Part 3 (05:00) | Recall Quiz | Basic Select - Coding Question (10:00)
+- Aggregate Functions: Part 1 (10:00) | Part 2 (05:00) | Recall Quiz | Count Querying - Coding Question (15:00)
+- Ordering (10:00) | Basic Ordering - Coding Question (15:00)
+- The Having Clause (15:00) | Recall Quiz
+- String and Date–Time Functions: Part 1 (10:00) | Part 2 (10:00) | Recall Quiz | Basic String Functions - Coding Question (10:00)
+- Regular Expressions (15:00) | Recall Quiz | Basic Regex - Coding Question (15:00)
+- Nested Queries: Part 1 (05:00) | Part 2 (05:00) | Subqueries - Coding Question (15:00)
+- CTEs (10:00) | Recall Quiz
+- Views (05:00)
+- Summary (05:00)
+#### S4 Joins and Set Operations
+- Introduction (05:00)
+- Set Theory (05:00)
+- Types of Joins: Part 1 (05:00) | Part 2 (05:00) | Recall Quiz
+- Types of Joins: A Demonstration: Part 1 (20:00) | Part 2 (15:00) | Part 3 (15:00) | Recall Quiz
+- Outer Joins: A Demonstration (10:00) | Recall Quiz
+- Views with Joins (05:00)
+- Set Operations with SQL: Part 1 (10:00) | Recall Quiz
+- Practice Questions (05:00) | Recall Quiz
+- Summary (05:00)
+#### S5 SQL Practice Case Study
+- SQL Practice Case Study (05:00)
+#### S6 Graded Assessments
+- Graded Questions - I (15:00) | Graded Quiz (12:00)
+#### S7 Practice Coding Questions
+- Practice Questions - II (30:00) | Busiest Actor - Coding Question (15:00) | Third most Busy Actor - Coding Question (15:00) | Practice Questions - III (20:00) | Film-obsessed City - Coding Question (15:00) | Practice Questions - IV (20:00) | Analysis of Movie Categories - Coding Question (25:00) | Science Fiction Enthusiasts - Coding Question (25:00) | Practice Questions - V (20:00) | Movie Fans from Arlington - Coding Question (15:00) | Country-wise Analysis of Movies - Coding Question (15:00)
+
+
+### C2 Statistics, EDA, SQL >> Advanced SQL and Best Practices
+#### S1 Window Functions
+- Introduction (05:00)
+- Rank Functions - I: Part 1 (10:00) | Part 2 (15:00) | Part 3 (10:00) | Most Available Products - Coding Question (04:00)
+- Rank Functions - II: Part 1 (05:00) | Part 2 (10:00) | Ungraded Assessment
+- Rank Functions - III: Part 1 (10:00) | Part 2 (10:00)
+- Partitioning: Part 1 (10:00) | Part 2 (10:00) | Ungraded Assessment | Total Order Amounts - Coding Question (10:00)
+- Named Windows (10:00)
+- Frames - I: Part 1 (05:00) | Part 2 (10:00) | Ungraded Assessment | Kohli in ODIs - Coding Question (10:00)
+- Frames - II (15:00) | Ungraded Assessment
+- Lead and Lag Functions: Part 1 (15:00) | Part 2 (15:00)
+- Summary (15:00)
+#### S2 Case Statements, Stored Routines and Cursors
+- Introduction (05:00)
+- Case Statements - I: Part 1 (14:00) | Part 2 (05:00) | Ungraded Assessment | Tax Slabs - Coding Question (05:00)
+- Case Statements - II (15:00) | Tax Slabs - Coding Question (10:00)
+- UDFs: Part 1 (10:00) | Part 2 (05:00) | Ungraded Assessment
+- Stored Procedures: Part 1 (10:00) | Part 2 (10:00) | Part 3 (10:00)
+- Cursors (07:00)
+- Summary (10:00)
+#### S3 Query Optimisation and Best Practices
+- Introduction (05:00)
+- Best Practices - I: Part 1 (10:00) | Part 2 (10:00)
+- Best Practices - II: Part 1 (10:00) | Part 2 (10:00)
+- Indexing - I (10:00) | Ungraded Assessment
+- Indexing - II: Part 1 (10:00) | Part 2 (10:00) | Ungraded Assessment
+- Order of Query Execution - I: Part 1 (12:00) | Part 2 (15:00) | Ungraded Assessment
+- Order of Query Execution - II (10:00)
+- Joins vs Nested Queries (15:00) | Ungraded Assessment
+- Summary (05:00)
+#### S4 Problem-Solving Using SQL
+- Introduction (05:00)
+- Profitability Analysis - I (15:00)
+- Profitability Analysis - II: Part 1 (15:00) | Part 2 (15:00) | Ungraded Assessment
+- Profitability Analysis - III: Part 1 (07:00) | Part 2 (10:00)
+- Profitable Customers - I (10:00)
+- Profitable Customers - II (10:00)
+- Customers Without Orders - I (10:00)
+- Customers Without Orders - II: Part 1 (10:00) | Part 2 (10:00)
+- Fraud Detection (20:00)
+- Summary (05:00)
+#### S5 Practice Questions
+- Practice Questions - I (10:00) | Most Productive - Coding Question (10:00) | Average Film Length - Coding Question (10:00)
+- Practice Questions - II (10:00) | Film Category vs. City - Coding Question (10:00) | Ad Campaign - Coding Question (10:00) | Comedy Movies - Coding Question (10:00) | Lucky Customers - Coding Question (10:00)
+
+
+### C2 Statistics, EDA, SQL >> EDA Assignment - NYC Taxi Records Analysis
+#### (graded assignment)
+- Introduction | Introduction to EDA Assignment | EDA - NYC Taxi | EDA on NYC Taxi Records (Gradable 1/1)
+
+
+### C2 Statistics, EDA, SQL >> SQL Case Study
+#### (graded assignment)
+- Introduction | Introduction: MySQL Assignment | MySQL - PMFBY | MySQL Assignment: Farmers' Insurance Analysis (Gradable 1/1)
+
+
+### C3 Introduction to Machine Learning >> Linear Regression
+#### S1 Introduction to Simple Linear Regression
+- Introduction (05:00)
+- Introduction to Machine Learning: Part 1 (09:00) | Part 2 (10:00) | Part 3 (09:00) | Ungraded Assessment
+- Regression Line: Part 1 (10:00) | Ungraded Assessment | Part 2 (10:00)
+- Best Fit Line: Part 1 (05:00) | Ungraded Assessment | Part 2 (05:00) | Part 3 (05:00) | Part 4 (05:00)
+- Strength of Simple Linear Regression: Part 1 (02:00) | Ungraded Assessment | Part 2 (05:00) | Part 3 (05:00) | Part 4 (05:00) | Ungraded Assessment | Part 6 (05:00)
+- Summary (05:00) | Summary
+- Interview Practice Questions
+- Graded Questions: 4 x Graded Assessment (03:00 each)
+#### S2 Simple Linear Regression in Python
+- Introduction (10:00)
+- Assumptions of Simple Linear Regression (15:00) | Ungraded Assessment
+- Reading and Understanding the Data: Part 1 (05:00) | Part 2 (05:00) | Part 3 (05:00)
+- Hypothesis Testing in Linear Regression (20:00) | Ungraded Assessment
+- Building a Linear Model: Part 1 (09:00) | Part 2 (09:00) | Part 3 (09:00) | Part 4 (09:00) | Ungraded Assessment
+- Residual Analysis and Predictions: Part 1 (10:00) | Part 2 (10:00) | Ungraded Assessment
+- Linear Regression using SKLearn (15:00) | Ungraded Assessment
+- Summary (05:00) | Ungraded Assessment
+- Interview Practice Questions: 2 x Ungraded Assessment
+- Graded Questions: Graded Assessment (12:00) | Graded Assessment (03:00)
+#### S3 Gradient Descent - Linear Regression
+- Introduction (05:00)
+- Linear Regression Cost Function: Part 1 (08:00) | Part 2 (07:00)
+- Optimisation Methods: Part 1 (08:00) | Part 2 (07:00)
+- Learning Rate: Part 1 (08:00) | Part 2 (07:00)
+- Gradient Descent in Python - I: Part 1 (10:00) | Part 2 (10:00) | Part 3 (10:00)
+- Gradient Descent in Python - II (15:00)
+- Practice Question: Part 1 (10:00) | Ungraded Assessment | Part 2 (15:00) | Ungraded Assessment
+#### S4 Multiple Linear Regression
+- Introduction (05:00)
+- When One Variable Is Not Enough: Part 1 (10:00) | Ungraded Assessment | Part 2 (08:00) | Ungraded Assessment
+- Moving from SLR to MLR - New Considerations (05:00) | Ungraded Assessment
+- Multicollinearity: Part 1 (07:00) | Part 2 (07:00) | Part 3 (07:00) | Ungraded Assessment
+- Dealing with Categorical Variables: Part 1 (10:00) | Ungraded Assessment | Part 2 (10:00)
+- Model Assessment and Comparison (10:00) | Ungraded Assessment
+- Feature Selection: Part 1 (05:00) | Ungraded Assessment | Part 2 (05:00) | Ungraded Assessment
+- Summary (05:00)
+- Interview Practice Questions: 2 x Ungraded Assessment
+- Graded Questions (05:00) | Ungraded Assessment (06:00) | (03:00) | (03:00) | (03:00)
+#### S5 Multiple Linear Regression in Python
+- Introduction (05:00)
+- Reading and Understanding the Data: Part 1 (05:00) | Part 2 (05:00) | Part 3 (05:00) | Part 3 (05:00) | Part 4 (05:00) | Ungraded Assessment
+- Data Preparation: Part 1 (05:00) | Mapping Variables - Ungraded Assessment (45:00) | Part 2 (10:00) | Ungraded Assessment
+- Initial Steps: Part 1 (05:00) | Part 2 (05:00) | Part 3 (05:00)
+- Building the Model - I (15:00)
+- Building the Model - II: Part 1 (10:00) | Part 2 (10:00) | Ungraded Assessment
+- Residual Analysis and Predictions: Part 1 (10:00) | Part 2 (10:00) | Part 3 (10:00) | Ungraded Assessment
+- Variable Selection using RFE: Part 1 (05:00) | Part 2 (05:00) | Part 3 (05:00) | Part 4 (05:00) | Ungraded Assessment
+- Summary - Part 1 (05:00)
+- Interview Practice Questions: Ungraded Assessment (05:00) | 4 x Ungraded Assessment
+- Graded Questions: 4 x Ungraded Assessment (03:00 each)
+#### S6 Industry Relevance of Linear Regression
+- Introduction (05:00)
+- Linear Regression - Revision: Part 1 (10:00) | Part 2 (10:00) | Ungraded Assessment
+- Prediction vs Projection: Part 1 (05:00) | Ungraded Assessment | Part 2 (05:00)
+- Media Company Case Study: Part 1-5 (05:00 each)
+- Exploratory Data Analysis (05:00)
+- Model Building - I: Part 1 (05:00) | Part 2 (05:00) | Ungraded Assessment
+- Model Building - II (10:00) | 2 x Ungraded Assessment
+- Model Building - III (10:00) | Ungraded Assessment
+- Assessing the Model: Part 1 (08:00) | Part 2 (07:00)
+- Interpreting the Results (05:00)
+- Summary: Part 1 (02:00) | Part 2 (03:00)
+
+
+### C3 Introduction to Machine Learning >> Introduction to Tracks
+#### S1 Introduction to the Specialization Tracks
+- Introduction (05:00) | Introduction to the Analytics Landscape (05:00) | Prominent Roles in the Data Industry (10:00) | Deriving the 5 Specialisation Tracks (10:00)
+#### S2 The Business Intelligence/Data Analytics Track [Opt]
+- Introduction (05:00) | What is Business Intelligence/Data Analytics - Part 1 (12:00) | Part 2 (13:00) | Skills Required by Professionals in BI/DA (10:00) | Course Curriculum (15:00) | How to Make the Most of this Specialization (05:00) | Why Should I Opt for This Specialization (10:00)
+#### S3 The Business Analytics Track [Opt]
+- Introduction (05:00) | What is Business Analytics (20:00) | Skills Required by Professionals in BA (10:00) | Course Curriculum (10:00) | How to Make the Most of this Specialization (05:00) | Why Should I Opt for This Specialization (15:00)
+#### S4 The Data Engineering Track [Opt]
+- Introduction (05:00) | What is Data Engineering? (15:00) | What skills are required for a Data Engineer? (20:00) | What is there in the curriculum for this track? (15:00) | How to make the most out of this track? (05:00) | Why should I opt for this specialisation? (10:00)
+#### S5 The Natural Language Processing Track [Opt]
+- Introduction (05:00) | What is Natural Language Processing (10:00) | Typical NLP Job Description (15:00) | Course Curriculum (15:00) | How to Make the Most of this Specialization (10:00) | Why Should I Opt for This Specialization? (10:00)
+#### S6 The Deep Learning Track [Opt]
+- Introduction (05:00) | What is Deep Learning (10:00) | Typical DL Job Description (15:00) | Course Curriculum (10:00) | How to Make the Most of this Specialization (15:00) | Why Should I Opt for This Specialization? (10:00)
+#### S7 FAQ's
+- FAQ related to Track selection (09:00)
+
+
+### C3 Introduction to Machine Learning >> Linear Regression Assignment
+#### S1 Introduction to Linear Regression Assignment
+- Introduction to Linear Regression Assignment (10:00)
+#### S2 Linear Regression - Delivery Time Prediction
+- Dataset and Starter Notebook (10:00) | Business Objective and Dataset Walkthrough (10:00)
+- Assignment Tasks Walkthrough (10:00) | Problem Statement PDF (10:00)
+- Additional Support - Linear Regression (10:00)
+- Final Submission (10:00:00)
+
+
+### C3 Introduction to Machine Learning >> Logistic Regression
+#### S1 Univariate Logistic Regression
+- Module Introduction: Logistic Regression - Part 1 (02:00) | Part 2 (03:00)
+- Introduction: Univariate Logistic Regression (05:00)
+- Binary Classification: Part 1 (03:00) | Part 2 (01:00) | Part 3 (03:00) | Ungraded Assessment
+- Regression - Sigmoid Curve: Part 1 (05:00) | Ungraded Assessment | Part 2 (05:00)
+- Finding the Best Fit Sigmoid Curve - I: Part 1 (05:00) | Part 2 (05:00) | Ungraded Assessment
+- Finding the Best Fit Sigmoid Curve - II (10:00)
+- Odds and Log Odds: Part 1 (10:00) | Part 2 (10:00) | Ungraded Assessment | Part 3 (10:00)
+- Summary (05:00) | Ungraded Assessment
+#### S2 Multivariate Logistic Regression - Model Building
+- Introduction (05:00)
+- Telecom Churn Example: Part 1-5 (01:00 each)
+- Data Cleaning and Preparation - I: Part 1 (05:00) | Part 2 (05:00) | Ungraded Assessment
+- Data Cleaning and Preparation - II: Part 1 (05:00) | Part 2 (05:00) | Ungraded Assessment
+- Building your First Model: Part 1 (10:00) | Ungraded Assessment | Part 2 (10:00) | Ungraded Assessment
+- Feature Elimination using RFE (10:00) | Ungraded Assessment
+- Confusion Matrix and Accuracy: Part 1 (10:00) | Ungraded Assessment | Part 2 (10:00) | Ungraded Assessment
+- Manual Feature Elimination (15:00) | Ungraded Assessment
+- Summary (05:00) | Ungraded Assessment
+- Graded Questions: Graded Assessment (12:00)
+#### S3 Multivariate Logistic Regression - Model Evaluation
+- Introduction (05:00)
+- Metrics Beyond Accuracy: Sensitivity & Specificity (20:00) | Ungraded Assessment
+- Sensitivity and Specificity in Python (10:00) | Ungraded Assessment
+- Understanding ROC Curve: Part 1 (10:00) | Part 2 (07:00) | Part 3 (10:00) | Ungraded Assessment | Part 4 (10:00) | Ungraded Assessment
+- ROC Curve in Python (10:00) | Ungraded Assessment
+- Finding the Optimal Threshold (15:00) | Ungraded Assessment
+- Model Evaluation Metrics - Exercise (10:00) | Ungraded Assessment
+- Precision and Recall: Part 1 (10:00) | Part 2 (10:00) | Part 3 (10:00) | Ungraded Assessment
+- Making Predictions (10:00) | Ungraded Assessment
+- Summary (05:00) | Ungraded Assessment
+- Graded Questions: Graded Assessment (15:00)
+#### S4 Logistic Regression - Industry Applications - Part I
+- Introduction (05:00)
+- Getting familiar with Logistic Regression: Part 1 (05:00) | Ungraded Assessment | Part 2 (10:00) | Ungraded Assessment
+- Nuances: Sample Selection (10:00)
+- Nuances: Segmentation: Part 1 (05:00) | Part 2 (05:00) | Ungraded Assessment
+- Nuances: Variable Transformation - I (05:00)
+- Nuances: Variable Transformation - II: Part 1-4 (05:00 each) | Ungraded Assessment
+- Nuances: Variable Transformation - III: Part 1-3 (03:00 each)
+- Nuances: Variable Transformation - IV (10:00)
+- Graded Questions (05:00) | Graded Assessment (09:00)
+#### S5 Logistic Regression: Industry Applications - Part II
+- Commonly Faced Challenges in Implementation of Logistic Regression (05:00)
+- Model Evaluation (A Second Look) (10:00)
+- Model Validation and Importance of Stability: Part 1 (05:00) | Part 2 (05:00)
+- Tracking of Model Performance Over Time (10:00) | Quiz
+- Summary (03:00) | Quiz
+- Subjective Questions - I (06:00) | II (03:00) | III (06:00)
+- Coding Practice [Opt] (04:00): Fibonacci Series (30:00) | Prime Numbers (30:00) | Armstrong number (30:00) | Two series (30:00)
+#### S6 Multiclassification using Logistic Regression
+- Introduction (05:00)
+- Business Examples (15:00) | Ungraded Assessment
+- Binary Versus Multiclass Classification: Part 1 (03:00) | Part 2 (05:00) | Part 3 (05:00)
+- One vs One (20:00) | Ungraded Assessment
+- One vs Rest (20:00) | Ungraded Assessment
+- Application on an Industry Problem: Part 1 (10:00) | Part 2 (10:00) | Part 3 (10:00) | Ungraded Assessment
+- Understanding the Business Problem Statement: Part 1-4 (03:00 each)
+- Application of One vs Rest Classifier: Part 1-3 (07:00 each)
+- Analysing the Model Parameters: Part 1 (08:00) | Part 2 (07:00)
+- Understanding the Internal Mathematics (15:00)
+- Application of One vs One Classifier (15:00)
+- Summary (05:00)
+- Practice Questions (08:00) | 2 x Ungraded Assessment
+
+
+### C3 Introduction to Machine Learning >> Logistic Regression Interview Questions [Opt]
+#### S1 Subjective Questions [Opt]
+- Subjective Questions - I (01:50:00) | II (50:00) | III (01:00:00)
+#### S2 Practice Questions [Opt]
+- Practice Questions - I: Part 1 (05:00) | Part 2 (05:00) | Quiz | Part 3 (05:00) | Practice Questions - II (05:00)
+
+
+### C3 Introduction to Machine Learning >> Classification using Decision Trees
+#### S1 Introduction to Decision Trees
+- Introduction (05:00)
+- Introduction to Decision Trees (10:00) | Ungraded Assessment
+- Interpreting a Decision Tree: Part 1 (09:00) | Part 2 (09:00) | Part 3 (09:00) | Ungraded Assessment
+- Building Decision Trees (20:00) | Ungraded Assessment
+- Comprehension - Decision Tree Classification in Python: Part 1 (10:00) | Part 2 (10:00) | Part 3 (10:00) | Part 4 (09:00) | Part 5 (10:00) | Ungraded Assessment | Part 6 (10:00)
+- Tree Models Over Linear Models (20:00) | Ungraded Assessment
+- Summary (05:00) | Ungraded Assessment
+- Graded Questions: Graded Assessment (09:00)
+#### S2 Algorithms for Decision Tree Construction
+- Introduction (05:00)
+- Splitting and Homogeneity: Part 1 (15:00) | Ungraded Assessment | Part 2 (15:00)
+- Impurity Measures: Part 1 (15:00) | Part 2 (12:00) | Part 3 (15:00) | Ungraded Assessment
+- Comprehension: The Gini Index (20:00) | Ungraded Assessment
+- Impurity Measures - Ungraded Assessment
+- Feature Importance in Decision Trees (10:00)
+- Summary (05:00) | Ungraded Assessment
+- Graded Questions: Graded Assessment (09:00) | Graded Assessment (09:00)
+#### S3 Hyperparameter Tuning in Decision Trees
+- Introduction (05:00)
+- Disadvantages of Decision Trees (15:00) | Ungraded Assessment
+- Tree Truncation: Part 1 (15:00) | Part 2 (15:00) | Ungraded Assessment
+- Building Decision Trees in Python: Part 1 (10:00) | Part 2 (10:00) | Part 3 (10:00) | Part 4 (09:00) | Part 5 (10:00)
+- Choosing Tree Hyperparameters in Python: Part 1 (20:00) | Part 2 (20:00) | Part 3 (15:00) | Ungraded Assessment
+- Comprehension - Hyperparameters (05:00) | Ungraded Assessment
+- Decision Tree Regression (20:00) | Ungraded Assessment
+- Decision Tree Regression in Python: Part 1-4 (10:00 each)
+- Summary: Part 1 (05:00) | Ungraded Assessment | Part 2 (05:00)
+- Graded Questions (05:00) | Graded Assessment (21:00)
+
+
+### C3 Introduction to Machine Learning >> Unsupervised Learning: Clustering
+#### S1 Introduction to Clustering
+- Introduction (05:00)
+- Understanding Clustering: Part 1 (05:00) | Part 2 (05:00) | Ungraded Assessment
+- Practical Example of Clustering - Customer Segmentation: Part 1-4 (05:00 each) | Ungraded Assessment
+- Summary (02:00) | Ungraded Assessment
+- Graded Questions: Graded Assessment (03:00)
+#### S2 K Means Clustering
+- Introduction (05:00)
+- Euclidean Distance (10:00)
+- Centroid (10:00) | Ungraded Assessment
+- Steps of the Algorithm: Part 1 (05:00) | Part 2 (05:00) | Ungraded Assessment | Part 3 (05:00)
+- K Means Algorithm: Part 1 (05:00) | Part 2 (05:00) | Part 3 (05:00) | Ungraded Assessment | Part 4 (05:00) | Ungraded Assessment
+- K Means++ Algorithm (15:00)
+- Visualising the K Means Algorithm (15:00) | Ungraded Assessment
+- Practical Consideration in K Means Algorithm: Part 1-4 (05:00 each) | Ungraded Assessment
+- Cluster Tendency (10:00)
+- Summary (05:00) | Ungraded Assessment
+- Graded Questions: Ungraded Assessment (09:00)
+#### S3 Executing K Means in Python
+- Introduction (05:00)
+- Understanding and Data Cleaning: Part 1-5 (06:00 each)
+- Data Preparation - I: Part 1 (14:00) | Part 2 (13:00) | Part 3 (13:00)
+- Data Preparation - II: Part 1 (10:00) | Part 2 (10:00) | Part 3 (09:00) | Part 4 (05:00)
+- Making the Clusters (05:00)
+- Optimal Number of Clusters: Part 1 (14:00) | Part 2 (13:00) | Part 3 (13:00)
+- Cluster Analysis: Part 1-3 (10:00 each)
+- Let's Have Some Fun: Part 1 (05:00) | Part 2 (05:00) | Ungraded Assessment
+- Other Behavioural Segmentation Types (10:00)
+- Summary (05:00) | Ungraded Assessment
+- Graded Questions: Graded Assessment (06:00) | Graded Questions (05:00) | Graded Assessment (06:00)
+- Non-Graded Assessments (01:00): Prime Numbers (30:00) | Substring in Alphabetical order (30:00) | Reverse Pyramid (45:00) | Printing A Pyramid (45:00) | Local Minima (45:00) - Coding Questions
+#### S4 Hierarchical Clustering
+- Introduction (05:00)
+- Hierarchical Clustering Algorithm (15:00) | Ungraded Assessment
+- Interpreting the Dendrogram (15:00) | Ungraded Assessment
+- Types of Linkages: Part 1 (04:00) | Part 2 (03:00) | Ungraded Assessment | Part 3 (03:00)
+- Hierarchical Clustering in Python: Part 1 (08:00) | Part 2 (07:00) | Part 3 (08:00) | Ungraded Assessment
+- Industry Insights: Part 1 (09:00) | Part 2 (10:00) | Ungraded Assessment
+- Let's have some fun: Part 1 (05:00) | Part 2 (05:00) | Ungraded Assessment
+- Summary: Part 1 (02:00) | Ungraded Assessment | Part 2 (02:00)
+- Graded Questions - I (01:00) | Graded Assessment (09:00) | Graded Questions - II (05:00) | Graded Assessment (03:00)
+#### S5 Other Forms of Clustering
+- K-Mode Clustering: Part 1 (05:00) | Part 2 (10:00)
+- K-Mode in Python: Part 1 (02:00) | Part 2 (02:00) | Part 3 (03:00) | Part 4 (01:00)
+- K-Prototype in Python: Part 1 (05:00) | Part 2 (05:00)
+- DB Scan Clustering (05:00)
+- Practice Question: Part 1 (02:00) | Ungraded Assessment | Part 2 (02:00)
+- Summary (05:00) | Ungraded Assessment
+- Gaussian Mixture Model (05:00)
+#### S6 Clustering: Interview Questions
+- Introduction (05:00) | Assessments I | Assessments II
+
+
+### C3 Introduction to Machine Learning >> Basics of NLP and Text Mining
+#### S1 Introduction to NLP
+- Introduction to NLP (không hiển thị thời lượng)
+#### S2 Basic Lexical Processing
+- Introduction (05:00)
+- Word Frequencies and Stop Words: Part 1 (06:00) | Part 2 (10:00) | Part 3 (10:00)
+- Tokenisation: Part 1-3 (05:00 each)
+- Bag-of-Words Representation: Part 1 (05:00) | Ungraded Assessment | Part 2 (05:00) | Part 3 (05:00) | Ungraded Assessment
+- Stemming and Lemmatization: Part 1 (05:00) | Ungraded Assessment | Ungraded Assessment (30:00) | Part 2-5 (05:00 each)
+- Final Bag-of-Words Representation: Part 1 (05:00) | Part 2 (05:00)
+- TF-IDF Representation: Part 1 (05:00) | Ungraded Assessment | Part 2 (05:00) | Part 3 (05:00)
+- Summary (05:00) | Ungraded Assessment
+- Graded Questions: Graded Assessment (18:00)
+#### S3 Advanced Lexical Processing
+- Introduction (05:00)
+- Canonicalisation (05:00)
+- Phonetic Hashing: Part 1 (05:00) | Ungraded Assessment | Part 2 (05:00) | Part 3 (05:00)
+- Soundex - Ungraded Assessment (30:00)
+- Edit Distance: Part 1 (05:00) | Part 2 (05:00) | Ungraded Assessment | Part 3 (05:00) | Part 4 (05:00) | Ungraded Assessment
+- Spell Corrector - I: Part 1-4 (05:00 each) | Ungraded Assessment
+- Spell Corrector - II: Part 1-3 (05:00 each)
+- Pointwise Mutual Information - I: Part 1 (12:00) | Part 2 (15:00) | Ungraded Assessment
+- Pointwise Mutual Information - II: Part 1 (07:00) | Part 2 (08:00)
+- Summary (05:00) | Ungraded Assessment
+- Graded Questions: Graded Assessment (09:00)
+
+
+### C3 Introduction to Machine Learning >> Business Problem Solving
+#### S1 Introduction to Business Problem Solving
+- Introduction (10:00) | Business Understanding - Part 1 (05:00) | Part 2 (10:00) | Recall Quiz | Develop Hypotheses (10:00) | Data Collection (10:00) | Problem Mapping - Part 1 (10:00) | Part 2 (15:00) | Part 3 (15:00) | Recall Quiz | Solution Approach - Part 1 (10:00) | Part 2 (10:00) | Recall Quiz | EDA (15:00) | Model Building (10:00) | Model Evaluation (20:00) | Summary (10:00)
+#### S2 Case Study Demonstration
+- Introduction (05:00) | Problem Statement - Part 1 (05:00) | Part 2 (10:00) | Recall Quiz | Problem Mapping - Part 1 (05:00) | Part 2 (10:00) | Part 3 (10:00) | Data Collection and Pre-Processing - Part 1 (10:00) | Part 2 (10:00) | Exploratory Data Analysis - Part 1 (05:00) | Part 2 (10:00) | Model Building - Part 1 (10:00) | Part 2 (10:00) | Part 3 (10:00) | Part 4 (15:00) | Model Evaluation - Part 1 (05:00) | Part 2 (10:00)
+#### S3 Practice Questions
+- Travel Agency - I (2 Recall Quizzes) | Travel Agency - II (3 Recall Quizzes) | Online Games (2 Recall Quizzes) | Practice Case Study (01:00:00)
+
+
+### C3 Introduction to Machine Learning >> Intro to GIT and GITHUB
+#### S1 Version Control System
+- Introduction of Module (20:00) | Why Version Control System? (25:00) | Recall Quiz | Background of Version Control System - Part 1 (15:00) | Part 2 (20:00) | Recall Quiz | Difference Between Git and GitHub (15:00) | GitHub Installation - Part 1-3 (05:00 each) | Basic Git Commands-I - Part 1 (15:00) | Part 2 (30:00) | Recall Quiz | Machine Learning - Jargon Busting (05:00) | Basic Git Commands-II - Part 1 (15:00) | Part 2 (20:00) | Recall Quiz | Resetting and Reverting - Part 1 (10:00) | Part 2 (15:00) | Part 3 (15:00) | Recall Quiz | Working with branches - Part 1 (10:00) | Part 2 (10:00) | Part 3 (20:00) | Recall Quiz | Summary (05:00) | Graded Questions - Assessments (15:00)
+#### S2 Contributing to open source libraries [Opt]
+- Introduction to Session - Part 1 (05:00) | Part 2 (05:00) | Contributing to Open Source Libraries - Part 1 (05:00) | Part 2 (20:00) | Recall Quiz | Part 3 (20:00) | Exercise (45:00) | Summary (15:00) | Practice Questions - Recall Quiz
+#### S3 Portfolio Website Creation [Opt]
+- Introduction to Session - Part 1 (10:00) | Part 2 (10:00) | Portfolio Website Creation - Part 1 (25:00) | Part 2 (25:00) | Summary - Part 1 (05:00) | Part 2 (05:00) | Practice Questions - Recall Quiz
+
+
+### C3 Introduction to Machine Learning >> Logistic Regression Assignment
+#### S1 Introduction to Assignment
+- Logistic Regression Assignment - Introduction (05:00)
+#### S2 Assignment - Predicting Employee Retention
+- Business Objective (05:00) | Assignment Tasks Walkthrough - Part1 (10:00) | Part2 (10:00) | Additional Support (10:00) | Final Submission (10:00:00)
+
+
+### C3 Introduction to Machine Learning >> Common Curriculum Mindmaps
+#### S1 Introduction
+- Introduction (01:00)
+#### S2 Introduction to Python Programming
+- Introduction to Python Programming (01:00)
+#### S3 Python for Data Science
+- Python for Data Science (05:00)
+#### S4 Data Visualisation in Python
+- Data Visualisation in Python (05:00)
+#### S5 Exploratory Data Analysis
+- Exploratory Data Analysis (05:00)
+#### S6 Inferential Statistics
+- Inferential Statistics (05:00)
+#### S7 Linear Regression
+- Linear Regression (05:00)
+#### S8 Logistic Regression
+- Logistic Regression (10:00)
+#### S9 SQL
+- SQL (30:00)
+#### S10 Advanced SQL
+- Advanced SQL (30:00)
+#### S11 Classification Using Decision Trees
+- Classification Using Decision Trees (10:00)
+#### S12 Unsupervised Learning: Clustering
+- Unsupervised Learning: Clustering (10:00)
+#### S13 Basics of NLP
+- Basics of NLP (10:00)
+
+
+### C4 Advanced Machine Learning >> Bagging and Random Forests
+#### S1 Ensembles and Random Forests
+- Ensembles: Part 1 (15:00) | Part 2 (15:00) | Ungraded Assessment
+- Comprehension - Ensembles (40:00) | Ungraded Assessment
+- Some Popular Ensembles: Part 1 (17:00) | Part 2 (17:00) | Part 3 (16:00)
+- Introduction to Random Forests: Part 1 (20:00) | Ungraded Assessment | Part 2 (20:00) | Ungraded Assessment
+- Comprehension - OOB (Out-of-Bag) Error (10:00) | Ungraded Assessment
+- Feature Importance in Random Forests (15:00)
+- Random Forests in Python: Part 1-5 (10:00 each) | Ungraded Assessment
+- Random Forest Regression in Python (15:00)
+- Telecom Churn Prediction: Part 1 (10:00) | Part 2 (10:00) | Part 3 (08:00) | Part 4-8 (10:00 each)
+- Summary (10:00) | Ungraded Assessment
+- Graded Questions: Graded Assessment (09:00) | (06:00)
+#### S2 Class Imbalance
+- Introduction (05:00)
+- Data Understanding and Initial Steps: Part 1 (10:00) | Part 2 (08:00) | Part 3-5 (10:00 each)
+- Feature Engineering: Part 1 (20:00) | Part 2 (15:00) | Part 3 (20:00) | Ungraded Assessment
+- Class Imbalance: Part 1 (20:00) | Part 2 (19:00) | Ungraded Assessment
+- Model Building Using Class Imbalance Techniques: Part 1 (18:00) | Part 2-4 (20:00 each) | Ungraded Assessment
+- Tree Models Using Class Imbalance Techniques: Part 1 (15:00) | Part 1 (15:00) | Ungraded Assessment
+- Conclusion: Part 1 (15:00) | Part 2 (15:00)
+- Summary (05:00) | Ungraded Assessment
+#### S3 Tree Models: Additional Resources
+- Part 1 (16:00) | Part 2 (16:00) | Part 3 (16:00) | Part 5 (16:00)
+
+
+### C4 Advanced Machine Learning >> Model Selection - I
+#### S1 Principles of Model Selection
+- Introduction (05:00)
+- Introduction to Model Selection: Part 1-4 (15:00 each)
+- Simplicity vs Complexity: Part 1 (20:00) | Part 2 (20:00)
+- Overfitting and Underfitting (15:00) | Ungraded Assessment
+- Bias-Variance Tradeoff (25:00) | Ungraded Assessment
+- Comprehension - Bias Variance Tradeoff (05:00) | Ungraded Assessment
+- Model Evaluation - Classification Metrics: Part 1-4 (10:00 each)
+- Model Evaluation - Regression Metrics (10:00)
+- Summary (05:00) | Ungraded Assessment
+- Practice Questions: 3 x Ungraded Assessment
+#### S2 Feature Engineering
+- Introduction (05:00)
+- Introduction to Feature Engineering: Part 1 (20:00) | Part 2 (20:00) | Ungraded Assessment
+- Feature Engineering Using Python: Part 1 (10:00) | Part 2 (10:00)
+- Handling Numeric Features: Part 1-3 (15:00 each) | Ungraded Assessment
+- Handling Categorical Features: Part 1-6 (10:00 each) | Ungraded Assessment
+- Handling Time-Based Features: Part 1-6 (15:00 each) | Ungraded Assessment
+- Summary (05:00) | Ungraded Assessment
+- Practice Questions (10:00) | Ungraded Assessment
+- Graded Questions: Graded Assessment (12:00)
+#### S3 Model Selection - Additional Resources
+- Model and Learning Algorithm (25:00) | Ungraded Assessment
+- Regularisation (10:00) | Ungraded Assessment
+
+
+### C4 Advanced Machine Learning >> Model Selection - II
+#### S1 Model Building and Evaluation
+- Introduction (05:00)
+- Project Pipeline (10:00)
+- Understanding the Data: Part 1-5 (10:00 each)
+- Model Building: Part 1 (20:00) | Part 2 (20:00) | Part 3-5 (15:00 each)
+- Feature Selection using Cross-Validation: Part 1 (20:00) | Part 2 (20:00) | Ungraded Assessment
+- Hyperparameter Tuning using Grid Search CV: Part 1-3 (20:00 each) | Ungraded Assessment
+- Hyperparameter Tuning using Randomized Search CV: Part 1 (20:00) | Part 2 (20:00) | Ungraded Assessment
+- Summary (05:00) | Ungraded Assessment
+- Graded Questions: Graded Assessment (06:00) | Graded Quiz (15:00)
+
+
+### C4 Advanced Machine Learning >> Time Series Forecasting - I
+#### S1 Introduction to Time Series
+- Introduction to the Module: Part 1 (04:00) | Part 2-4 (02:00 each)
+- Types of Forecasting: Part 1-3 (10:00 each) | Ungraded Assessment
+- Basic Steps for Forecasting: Part 1 (10:00) | Part 2 (10:00) | Ungraded Assessment
+- Collect the Data (15:00) | Ungraded Assessment
+- Analyse the Data: Part 1 (10:00) | Ungraded Assessment | Part 2 (10:00) | Part 3 (10:00) | Ungraded Assessment
+- Handling Missing Values: Part 1 (10:00) | Part 2 (10:00) | Ungraded Assessment | Part 3 (10:00) | Ungraded Assessment
+- Handling Outliers: Part 1 (10:00) | Part 2 (10:00) | Ungraded Assessment
+- Additive and Multiplicative Decomposition (20:00) | Ungraded Assessment
+- Summary (05:00) | Ungraded Assessment
+#### S2 Smoothing Techniques
+- Introduction: Part 1 (02:00) | Part 2 (01:00) | Part 3 (02:00)
+- Regression vs Time Series (20:00)
+- (untitled video) (07:01)
+- Basic Forecast Models: Part 1 (13:00) | Part 2 (10:00) | Part 3 (10:00)
+- Error Measures: Part 1 (15:00) | Part 2-4 (10:00 each) | Quiz | Part 5 (10:00) | Quiz
+- Cross-Validation in a Time-Series Forecasting (15:00)
+- Simple Moving Average Method: Part 1-4 (10:00 each) | Part 5 (05:00) | Quiz
+- Simple Exponential Smoothing: Part 1-3 (05:00 each) | Quiz (Introduction to DataStream API - nhãn lạ) | Part 4-7 (05:00 each) | Quiz
+- Holt's Exponential Smoothing: Part 1-4 (15:00 each)
+- (video "Checkpointing modes") (05:49)
+- Holt-Winters' Exponential Smoothing: Part 1 (10:00) | Part 2 (05:00) | Quiz | Part 3 (05:00) | Part 4 (05:00) | Part 5 (10:00) | Quiz
+- Summary (04:00) | Quiz
+#### S3 Graded Questions
+- Graded Questions (05:00) | Graded Quiz (15:00) | Graded Quiz (09:00) | Solutions for Graded Questions (05:00) | Code for In-Video Demonstration (10:00)
+
+
+### C4 Advanced Machine Learning >> Time Series Forecasting - II
+#### S1 Introduction to AR Models
+- Introduction to Auto Regressive Models: Part 1 (03:00) | Part 2 (03:00) | Part 3-4 (02:00 each)
+- Stationarity: Part 1 (10:00) | Part 2 (10:00) | Ungraded Assessment | Part 3 (10:00) | Ungraded Assessment
+- Stationarity Tests: Part 1-4 (10:00 each) | Ungraded Assessment
+- Non-Stationary to Stationary: Part 1 (20:00) | Part 2 (20:00) | Ungraded Assessment
+- ACF and PACF: Part 1 (20:00) | Part 2 (19:00) | Ungraded Assessment
+- The Simple Auto Regressive Model (AR): Part 1-3 (15:00 each) | Ungraded Assessment
+- Moving Average Model (MA): Part 1 (19:00) | Ungraded Assessment | Part 2 (20:00)
+- Summary (04:00) | Quiz
+#### S2 Building AR Models
+- Introduction (05:00)
+- Auto Regressive Moving Average (ARMA): Part 1 (20:00) | Ungraded Assessment | Part 2 (20:00)
+- Auto Regressive Integrated Moving Average (ARIMA): Part 1 (20:00) | Ungraded Assessment | Part 2 (20:00)
+- Seasonal ARIMA: Part 1 (15:00) | Part 2 (15:00) | Ungraded Assessment | Part 3 (15:00)
+- SARIMAX: Part 1-3 (15:00 each) | Ungraded Assessment
+- Choosing the Right Time Series: Method-I (25:00) | Ungraded Assessment | Method-II (30:00)
+- Summary (04:00) | Ungraded Assessment
+- Airline Passenger Code: Part 1 (02:00) | Part 2 (02:00) | Part 3 (01:00)
+#### S3 Graded Questions
+- Graded Questions (03:00) | Graded Assessment (09:00) | (06:00) | (21:00)
+
+
+### C4 Advanced Machine Learning >> Advanced ML Case Study
+#### S1 Introduction to Assignment
+- Introduction (35:00)
+#### S2 Assignment Details - Fraudulent Claim Detection
+- Business Objective (15:00)
+- Assignment Tasks And Evaluation Rubrics: Part1 (20:00) | Part2 (20:00)
+- Additional Support (25:00)
+- Submission (10:00:00)
+
+
+### C5 Data Visualisation and Storytelling >> Basic Visualization using Tableau
+#### S1 Introduction to Tableau
+- Module Overview (05:00) | Session Overview (05:00)
+- What Is Data Analytics?: Part1 (10:00) | Part2 (10:00) | (02:00)
+- Why Data Visualisation?: Part1 (08:00) | Part2 (07:00)
+- What Is Tableau?: Part1 (05:00) | Part2 (10:00)
+- Why Tableau? (15:00)
+- Tableau vs Excel and Power BI: Part1 (05:00) | Part2 (07:00)
+- Exploratory vs Explanatory Analysis (10:00) | Recall Quiz | (02:00)
+- Getting Started With Tableau (01:00) | File1 (03:00) | Part1 (03:00) | Part2 (03:00) | File2 (03:00)
+- Summary – I (05:00) | (05:00)
+#### S2 Visualising and Analysing Data with Tableau – I
+- Session Overview (05:00)
+- Bar Charts (01:00) | File1 (05:00) | Part1 (08:00) | Part2 (04:00) | (05:00) | File2 (04:00) | Recall Quiz | (05:00) | (01:00)
+- Line Charts and Filters (01:00) | File1 (05:00) | Part1 (07:00) | Part2 (04:00) | Part3 (04:00) | Recall Quiz | (05:00) | (02:00)
+- Area Charts: Part1 (07:00) | Part2 (08:00)
+- Box Plots and Pivoting (05:00) | Part1 (10:00) | Part2 (15:00) | Recall Quiz
+- Maps and Hierarchies (04:00) | File (07:00) | Part1 (07:00) | Part2 (07:00)
+- Pie Charts (10:00) | Recall Quiz x2 | (05:00)
+- Treemaps and Grouping: Part1 (07:00) | Part2 (07:00) | Recall Quiz | (07:00)
+- Dashboards – I (20:00)
+- Summary (10:00)
+#### S3 Visualising and Analysing Data With Tableau – II
+- Session Overview (05:00)
+- Joins and Splits (10:00) | Recall Quiz | (02:00) | Recall Quiz
+- Numeric and String Functions: Part1 (10:00) | Part2 (10:00)
+- Logical and Date Functions: Part1 (10:00) | Part2 (15:00)
+- Histograms and Parameters: Part1 (10:00) | Part2 (10:00) | Recall Quiz | (10:00)
+- Scatter Plots (10:00) | Recall Quiz | (05:00)
+- Dual Axis Charts (15:00)
+- Top N Parameters and Calculated Fields: Part1 (05:00) | Part2 (05:00) | Recall Quiz | (05:00)
+- Stacked Bar Charts (10:00) | Recall Quiz | (05:00)
+- Dashboards – II and Filter Actions (10:00) | (10:00)
+- Storytelling: Part1 (05:00) | Part2 (05:00)
+- Summary (10:00)
+#### S4 Practice Questions
+- Practice Questions (05:00) | Practice Questions –I - Recall Quiz | File1 (05:00) | Recall Quiz | (05:00) | Practice Questions –II (10:00) | Recall Quiz | Batting Performance Analysis (40:00) | Recall Quiz
+
+
+### C5 Data Visualisation and Storytelling >> Advanced Excel
+#### S1 Module Overview
+- Module Mindmap (15:00)
+#### S2 Excel functions
+- Session Overview (05:00) | Problem Statement (15:00) | Sort and Filter (05:00) x3 | Recall Quiz | Text Functions: Part1 (05:00) | Part2 (05:00) | Recall Quiz | Statistical Functions: Part1 (05:00) | Part2 (05:00) | Recall Quiz | Logical Functions: Part1 (25:00) | Part2 (20:00) | Recall Quiz | Conditional Formatting (20:00) | Recall Quiz | Summary - Recall Quiz (05:00)
+#### S3 Data Analysis
+- Session Overview (05:00) | LOOKUP functions (25:00) | Recall Quiz | INDEX and MATCH (20:00) | Recall Quiz | Pivot Tables: Part1 (10:00) | Part2 (10:00) | Recall Quiz | What-If Analysis I: Part1 (05:00) | Part2 (05:00) | Part2 (05:00) | Recall Quiz | What-If Analysis II: Part1 (15:00) | Part2 (15:00) | Dashboards: Part1 (10:00) | Part2 (10:00) | Recall Quiz | Summary (10:00) | Practice Questions - Recall Quiz | Practice Questions (05:00)
+#### S4 Advanced Tools and Visualisations
+- Session Overview (05:00) | Recording Macros - Part1 (20:00) x2 | Recall Quiz | Advanced Visualisations: Part1 (15:00) | Part2 (15:00) | Part3 (10:00) | Part4 (10:00) | Part5 (10:00) | Recall Quiz | Advanced Tools and Visualisations (15:00) | Summary (10:00) | Graded Questions (05:00) | Assessment (12:00)
+
+
+### C5 Data Visualisation and Storytelling >> Data Analysis and Visualisation in PowerBI
+#### S1 Module Overview
+- Module Mindmap (05:00)
+#### S2 Getting Started With Power BI
+- Session Overview (05:00) | Overview of Power BI (10:00) | Recall Quiz | Power BI vs Tableau vs Excel (10:00) | Recall Quiz | Power BI Platform Services (10:00) | Recall Quiz | (05:00) | Data Understanding and Final Report - File (10:00) | (05:00) | Power BI Desktop Installation (10:00) | Power BI Desktop Workflow and Interface: Part1-3 (10:00 each) | Recall Quiz | Session summary (05:00) | Recall Quiz | Graded Questions - Assessment (12:00)
+#### S3 Data Acquisition and Transformation in Power BI
+- Session Overview (05:00) | Connecting and Importing Data: Part1 (12:00) | Part2 (12:00) | Recall Quiz | Data Preparation: Part1-3 (13:00 each) | Recall Quiz | Calculated Columns, Measures and Tables Using DAX: Part1-3 (12:00 each) | Recall Quiz | Data Modeling: Part1-3 (13:00 each) | Recall Quiz | (02:00) | Session summary (05:00) | Recall Quiz | Graded Questions - Assessment (12:00)
+#### S4 Visualising and Analysing Data Using Power BI
+- Session overview (05:00) | Best Practices in Power BI: Part1 (10:00) | Part2 (10:00) | Recall Quiz | Building Reports in Power BI: Part1-7 (12:00 each) | Recall Quiz | AI Visuals: Part1-4 (10:00 each) | Recall Quiz | Bookmarks and Performance Analyser: Part1 (12:00) | Part2 (13:00) | Recall Quiz | (10:00) | Session summary (05:00) | Recall Quiz | Practice Questions (10:00) | Recall Quiz | Graded Questions - File1 (02:00) | File2 (02:00) | Assessment (09:00)
+#### S5 Publishing Reports and Scheduling Data Refresh
+- Session Overview (05:00) | Power BI Service and its Interface: Part1-4 (10:00 each) | Recall Quiz | Reports in Power BI Service: Part1-3 (15:00 each) | Recall Quiz | Setting up Data Refresh and Row Level Security: Part1-3 (08:00 each) | Recall Quiz | Dashboards and Apps: Part1 (13:00) | Part2 (13:00) | Recall Quiz | Session Summary (05:00) | Recall Quiz | Graded Questions (02:00) | File1 (10:00) | File2 (10:00) | File3 (10:00) | (08:00) | Assessment (24:00)
+
+
+### C5 Data Visualisation and Storytelling >> Analytical Thinking and Structured Problem Solving using Frameworks
+#### S1 Interviewing Frameworks - I
+- Introduction to the Module (10:00) | Understanding a Business Problem (15:00) | Recall Quiz | Factors to Consider in a Business Problem (15:00) | Recall Quiz | Interviewing: Preparation Part1 (05:00) | Recall Quiz | Part2 (10:00) | Recall Quiz | Interviewing: Do's and Don'ts (10:00) | Recall Quiz | Understanding Business Problems: Frameworks - I (20:00) | Recall Quiz | Frameworks - II (20:00) | Recall Quiz | 5W and 5 WHYs: Industry Case Study Part1 (10:00) | Part2 (10:00) | Part3 (20:00) | Recall Quiz | Summary (05:00)
+#### S2 Interviewing Frameworks - II
+- Introduction (05:00) | Understanding Business Problems: Frameworks - III (20:00) | Recall Quiz | SPIN Framework: Industry Case Study Part1-4 (10:00 each) | Part5 (20:00) | Recall Quiz | Interviewing: Things to keep in mind Part1 (10:00) | Part2 (10:00) | Recall Quiz | Summary (05:00) | Practice Questions (10:00) | Recall Quiz x2
+#### S3 Graded Questions - I
+- Assessment (06:00) | Assessment (09:00) | Assessment (09:00)
+#### S4 Business Model Canvas and Issue Tree Framework
+- Introduction (10:00) | Business Model Canvas (25:00) | Demonstration: Business Model Canvas (25:00) | Recall Quiz | Issue Tree Framework - I: Part1 (10:00) | Recall Quiz | Part2 (10:00) | Recall Quiz | Part3 (10:00) | Part4 (20:00) | Recall Quiz | Issue Tree Framework - II: Part1 (20:00) | Part2 (20:00) | Recall Quiz | Issue Tree Framework: Industry Case Study Part1 (20:00) | Part2 (20:00) | Summary (05:00)
+#### S5 Some Specialised Frameworks for Business Problems
+- Introduction Part1 (02:00) | Part2 (03:00) | 7Ps Framework Part1 (25:00) | Recall Quiz | Part2 (25:00) | 5C Framework - I: Part1 (15:00) | Part2 (15:00) | Recall Quiz | 5C Framework - II: Part1 (20:00) | Part2 (20:00) | Specialized Frameworks: Part1-5 (05:00 each, mỗi phần có Recall Quiz) | Practice Questions (15:00) | Recall Quiz x2 | Summary (10:00)
+#### S6 Graded Questions - II
+- Assessment (06:00) | Assessment (09:00) | Assessment (09:00)
+
+
+### C5 Data Visualisation and Storytelling >> Data Storytelling
+#### S1 Introduction to Data Storytelling
+- Introduction to the Module (10:00) | Pre-Read Assignment Part 1 (05:00) | Part 2 (10:00) | What is Data Storytelling? (10:00) | Importance of Data Storytelling (10:00) | Recall Quiz | Characteristics of a Good Story with Data (10:00) | What Makes Data Storytelling Difficult? (15:00) | Recall Quiz | Summary (05:00)
+#### S2 Components of a Good Story with Data - I
+- Introduction (05:00) | Essential Components of a Good Story with Data (20:00) | Recall Quiz | Importance of Objective and Agenda (15:00) | Recall Quiz | Narrative - I (25:00) | Recall Quiz | Five Patterns of Insights: Part 1 (05:00) | Part 2 (10:00) | Recall Quiz | Analysis Approach: Deriving New Columns: Part 1 (05:00) | Part 2 (10:00) | Part 3 (10:00) | Recall Quiz | Analysis Approach: Summarising Rows (15:00) | Recall Quiz | Insight Overview: Part 1 (05:00) | Part 2 (10:00) | Part 3 (10:00) | Narrative - II: Part 1 (10:00) | Part 2 (10:00) | Summary (05:00) | Practice Questions (50:00) | Recall Quiz | Graded Assessment (06:00) | Graded Assessment (12:00)
+#### S3 Components of a Good Story with Data - II
+- Introduction (05:00) | Structure and Flow - I: Part 1-3 (05:00 each) | Pyramid Principle - I: Part 1 (05:00) | Part 2 (05:00) | Part 3 (10:00) | Recall Quiz | Pyramid Principle - II (15:00) | Recall Quiz | Structure and Flow - II: Part 1 (10:00) | Part 2 (10:00) | Recall Quiz | Visuals (05:00) | Importance of Visualisation: Part 1 (05:00) | Part 2 (05:00) | Visualisation of Quantitative Data: Part 1-3 (05:00 each) | Part 4 (10:00) | Visualisation of Qualitative Variables: Part 1 (05:00) | Part 2 (10:00) | Recall Quiz | Visualisation of Other Types of Information: Part 1 (05:00) | Part 2 (10:00) | Visualisation of Advanced Analytical Techniques (10:00) | Summary (05:00) | Practice Questions - Recall Quiz x2 | Graded Assessment (09:00)
+#### S4 Golden Rules for an Effective Data Storytelling
+- Introduction (05:00) | Visual Design Principles and Storyboarding: Part 1 (05:00) | Part 2 (10:00) | Best Practices for Data Storytelling (15:00) | Ideal Solution for the Home Loans Case Study: Part 1 (15:00) | Part 2 (15:00) | Summary (10:00) | Graded Assessment (09:00)
+
+
+### C5 Data Visualisation and Storytelling >> Advanced Data Visualisation Assignment
+#### S1 Introduction to the Assignment
+- Introduction (15:00)
+#### S2 Visualisation & Analysis on Namma Yatri Data
+- Business Objective Part 1 (13:00) | Part 2 (12:00) | Assignment Tasks (25:00) | Evaluation Rubrics (10:00) | Instructions (05:00) | Submission Guidelines (05:00) | Additional Support (35:00) | Final Submission (10:00)
+
+
+### C6 Business Requirements and GenAI >> Operations Research using Excel
+#### S1 Introduction to OR
+- Introduction (10:00) | History of OR (15:00) | Knapsack problem (10:00) | Quiz | Stages of OR Modelling (20:00) | Quiz | Applications of OR (10:00) | Limitations of OR (10:00) | Quiz | Summary (05:00) | Quiz
+#### S2 Concepts of Optimisation
+- Introduction (05:00) | Business Relevance of Optimisation: Part 1 (10:00) | Part 2 (10:00) | Quiz | Objective Function and Decision Variable: Part 1 (10:00) | Part 2 (10:00) | Quiz | Constraints in Optimisation (20:00) | Sensitivity Analysis (15:00) | Quiz | Summary (05:00) | Quiz | Graded Quiz (09:00)
+#### S3 Optimisation Using Excel - I
+- Introduction: Airline Price Optimisation (05:00) | Objective Function & Decision Variables in Excel: Part 1-3 (05:00 each) | Constraints in Excel (20:00) | Visualising the Results: Part 1 (15:00) | Part 2 (10:00) | Practice Questions (10:00) | Quiz | Summary Quiz | Graded Questions (10:00) | Graded Quiz (12:00) | Graded Questions: Solution (05:00)
+#### S4 Optimisation Using Excel - II
+- Introduction (05:00) | Airline Optimisation: Sensitivity Analysis - I (20:00) | Class Opinion (10:00) | Sensitivity Analysis - II: Part 1-3 (07:00 each) | Class Opinion (10:00) | Airline Optimisation: Connecting Flight: Part 1-3 (10:00 each) | Quiz | Practice Question: Comprehension (05:00) | Quiz | Summary: Part 1-3 (03:00 each) | Quiz | Graded Quiz (15:00)
+
+
+### C6 Business Requirements and GenAI >> Introduction to GenAI and Working with OpenAI APIs
+#### S1 Landscape of Generative AI
+- Session Overview (15:00) | Introduction to the Generative AI Landscape (10:00) | Noteworthy Applications of Generative AI: Part1 (05:00) | Part2 (10:00) | Enterprise Applications of Generative AI: Part1 (05:00) | Part2 (10:00) | What is Generative AI? (20:00) | The Generative AI Stack: Part1 (10:00) | Part2 (10:00) | Session Summary (10:00)
+#### S2 Journey into Generative AI
+- Session Overview (05:00) | Key Breakthroughs in Artificial Intelligence: Part1 (25:00) | Part2 (25:00) | Quiz | Paradigms in AI: ML and DL: Part1 (20:00) | Quiz | Part2 (25:00) | Part3 (25:00) | Paradigms in AI: Gen AI: Part1 (15:00) | Part2 (10:00) | Part3 (10:00) | Session Summary (10:00)
+#### S3 Impact and Use Cases of Generative AI
+- Session Overview (05:00) | Economic Impact of Generative AI: Part1 (05:00) | Part2 (25:00) | Part3 (25:00) | Use Cases of Generative AI in the Industry - I: Part1 (05:00) | Part2 (05:00) | Part3 (10:00) | Industry - II: Part1 (05:00) | Part2 (05:00) | Part3 (10:00) | Use Cases: Categories - I: Part1 (10:00) | Part2 (15:00) | Categories - II: Part1 (10:00) | Part2 (15:00) | Categories - III: Part1 (10:00) | Part2 (10:00) | Skills in Generative AI: Part1 (10:00) | Part2 (20:00) | Part3 (20:00) | Session Summary (05:00) | Module Summary (10:00)
+#### S4 Practice Questions (Optional)
+- Practice Questions - Recall Quiz
+#### S5 Working With OpenAI APIs
+- Topic Overview (10:00) | Introduction to OpenAI Models (35:00) | Quiz | OpenAI API Instructions and Best Practices (20:00) | Chat Completions API: Part1 (30:00) | Part2 (30:00) | Part3 (50:00) | Multi-Turn Conversations With Chat Completions API: Part1 (25:00) | Part2 (30:00) | Quiz | Tracking API Usage and Costs: Part1 (10:00) | Part2 (15:00) | Chat Completions API - Additional Parameters (30:00) | Quiz | Practice Questions - Recall Quiz 1-3 | Summary (05:00)
+#### S6 Prompt Engineering
+- Session Overview (10:00) | What and Why of Prompts: Part1 (15:00) | Part2 (20:00) | Engineering a Good Prompt: Part1 (25:00) | Part2 (25:00) | Quiz | Applying Prompt Engineering for Language Tasks (55:00) | Quiz | Applying Prompt Engineering for Code-Related Tasks: Part1 (10:00) | Part2 (15:00) | Part3 (15:00) | Enhancing LLM Capabilities with Chain-of-Thought: Part1 (20:00) | Part2 (20:00) | Few-Shot Prompting: Part1 (20:00) | Part2 (20:00) | Quiz | Summary (10:00)
+#### S7 Graded Assessments
+- Assessment I (15:00) | Assessment II (15:00)
+
+
+### C6 Business Requirements and GenAI >> Chatbot System Design and Building ShopAssist AI
+#### S1 Designing LLM-Based Systems
+- Session Overview (15:00) | Advanced Prompting: Self-Consistency Part1 (25:00) | Part2 (30:00) | Advanced Prompting: ReAct (30:00) | LLM System Design: Part 1 (20:00) | Part 2 (20:00) | Designing Safe AI Systems: Part1 (15:00) | Part2 (15:00) | Beyond Advanced Prompting: Integrating Data Part1 (25:00) | Part2 (25:00) | Beyond Advanced Prompting: LLM Fine-Tuning (35:00) | Summary (05:00) | Important Instructions Regarding Upcoming Sessions (05:00) | Quizzes (Self-Consistency, ReAct, Integrating Data, Fine-Tuning) | Consistency Selector (code, 15:00)
+#### S2 Introduction to ShopAssist AI
+- Session Overview (05:00) | Important Update Regarding ShopAssist AI Project (15:00) | Project Introduction (15:00) | Chatbot System Design Overview: Part1 (10:00) | Part2 (15:00) | Quiz | System Design - Stage 1: Part1 (05:00) | Part2 (10:00) | Part3 (10:00) | Quiz | System Design - Stage 2: Part1 (05:00) | Part2 (10:00) | Quiz | System Design - Stage 3: Part3 (05:00) | Quiz | Chatbot Implementation - Stage 1 Part 1: Part1 (10:00) | Part2 (20:00) | Part3 (10:00) | Quiz | Stage 1 Part 2: Part1 (15:00) | Part2 (15:00) | Quiz | Summary (05:00)
+#### S3 Introduction to ShopAssist AI - Stage 2
+- Session Overview (05:00) | Stage 1 - Quick Recap (20:00) | Quiz | Chatbot Implementation - Stage 2 (Part 1) (25:00) | Quiz | (Part 2): Part1 (10:00) | Part2 (10:00) | Part3 (15:00) | Quiz | (Part 3): Part1-3 (10:00 each) | Part4 (20:00) | Quiz
+#### S4 Introduction to ShopAssist AI - Stage 3
+- Session Overview (05:00) | Chatbot Implementation - Stage 3: Part1 (35:00) | Part2 (40:00) | Quiz | Summary (10:00)
+#### S5 Practice Assessments
+- Practice Assessments Quiz
+#### S6 Graded Assessments
+- Graded Quiz (09:00)
+
+
+### C6 Business Requirements and GenAI >> Retrieval Augmented Generation with LlamaIndex
+#### S1 Basics of Retrieval Augmented Generation
+- Module Overview (20:00) | Session Overview (25:00) | Why RAG? (20:00) | What is RAG? (30:00) | Semantic Search System (15:00) | Recall Quiz | Word Embeddings: Part1 (30:00) | Part2 (35:00) | Recall Quiz | Semantic Search Pipeline: Part1 (20:00) | Recall Quiz | Part2 (20:00) | Document Ingestion - I: Part1 (15:00) | Part2 (15:00) | Recall Quiz | Document Ingestion - II (15:00) | Recall Quiz | Vector Stores: Part1 (10:00) | Part2 (15:00) | Recall Quiz | Generative Search (20:00) | Recall Quiz | RAG Pipeline (20:00) | Recall Quiz | Summary (05:00) | Recall Quiz
+#### S2 Building RAG applications using LlamaIndex
+- Session Overview (15:00) | Introduction to LlamaIndex (15:00) | Recall Quiz | Data Connectors (15:00) | Recall Quiz | Core Components of LlamaIndex (15:00) | Recall Quiz | Indices - Different Types (15:00) | Recall Quiz | Additional Resources (15:00)
+#### S3 Graded Questions
+- Graded Questions - Assessment (09:00)
+
+
+### C6 Business Requirements and GenAI >> Additional Resources - RAG Pre-Requisites
+#### S1 Semantic Search Demonstration
+- Session Overview (05:00) | Semantic Search on Wikipedia - I: Part1 (20:00) | Part2 (25:00) | Recall Quiz | II: Part1 (10:00) | Part2 (15:00) | III: Part1 (10:00) | Part2 (20:00) | Part3 (20:00) | Summary (10:00) | Recall Quiz (10:00) | Practice Questions (55:00) | Recall Quiz | Practice Questions Solution (05:00)
+#### S2 Vector Stores Demonstration
+- Session Overview (05:00) | Types of Vector Stores: Part1 (10:00) | Part2 (15:00) | Recall Quiz | Vector Database - Chroma - Part2 (15:00) | Creating Chroma Collections: Part1-3 (20:00 each) | Recall Quiz | Querying Chroma Collections (20:00) | Updating Chroma Collections: Part1-3 (20:00 each) | Recall Quiz | Summary (05:00) | Recall Quiz (10:00)
+#### S3 RAG Demonstration
+- Session Overview (15:00) | RAG Demo - Part 1.1: Text Processing: Part1 (15:00) | Part2 (20:00) | Part3 (20:00) | Part 1.2: Chunking & Embeddings: Part1 (15:00) | Part2 (10:00) | Part 2.1: Semantic Search with Cache: Part1 (15:00) | Part2 (20:00) | Part3 (20:00) | Recall Quiz | Part 2.2: Re-Ranking: Part1 (20:00) | Part2 (20:00) | Recall Quiz | Part 3: Generation Layer (35:00) | Summary (10:00) | Recall Quiz (10:00)
+
+
+### C6 Business Requirements and GenAI >> Image Generation using Stable Diffusion
+#### S1 Basics of image generation
+- Introduction to Image Generation (30:00) | Images and their Representation (25:00) | Quiz | Variational Autoencoders (01:40:00) | Quiz x2 | Generative Adversarial Networks (05:00) | Quiz | Diffusion Models: Part 1 (20:00) | Quiz | Part 2 (20:00) | Quiz | Image Generation Conditioned on Text (25:00) | Quiz | Session Summary (05:00) | Graded Quiz (15:00)
+#### S2 PixxelCraftAI
+- Session Overview (05:00) | PixxelCraftAI Application: Part 1 (01:15:00) | Part 2 (01:15:00) | Prompts (20:00) | Graded Quiz (06:00) | Session Summary (05:00) | Module Summary (05:00)
+
+
+### C6 Business Requirements and GenAI >> Course Project: RAG
+#### S1 Introduction to Assignment
+- Introduction (05:00)
+#### S2 RAG on Legal Documents
+- Business Objective (10:00) | Assignment Tasks Walkthrough: Part1 (10:00) | Part2 (10:00) | Additional Support (05:00) | Submission (10:00:00)
+
+
+### C6 Business Requirements and GenAI >> LangChain [Opt]
+#### S1 LangChain [Opt]
+- Module Overview (05:00) | Session Overview (30:00) | Introduction to the LangChain (01:00:00) | Model I/O (03:00) | Quiz | Prompt Template (05:00) | Quiz | Output Parsing (05:00) | Quiz | Working With Documents in LangChain (15:00) | Quiz | Chains (15:00) | Quiz | Agents (10:00) | Quiz | Session Summary (15:00) | Practice Assessments Quiz
+
+
+### C7 BA Capstone >> BA Capstone Project
+#### (module header only — chưa có nội dung session; trang chỉ hiển thị tiêu đề module)
+

@@ -1,0 +1,39 @@
+{
+  "url": "http://127.0.0.1:8080/bai/l-4e729643aa8b",
+  "viewports": {
+    "desktop": {
+      "width": 1280,
+      "height": 800,
+      "status": 200,
+      "title": "Sổ Mực",
+      "hasCanvas": true,
+      "bodyTextLen": 3761,
+      "bodyTextHash": "55c25ff52ac73a1f09b99e0922cafb096d17e3857856a7b752e808af08d7d811",
+      "bodyTextPrefix": "Sổ Mực Học Tìm Công thức Độ phủ Từ điển Nền tối C2 STATISTICS, E",
+      "horizontalOverflow": false,
+      "consoleErrors": [],
+      "pageErrors": [],
+      "screenshot": "/workspace/screenshots/lesson-clt.png"
+    },
+    "mobile": {
+      "width": 390,
+      "height": 844,
+      "status": 200,
+      "title": "Sổ Mực",
+      "hasCanvas": true,
+      "bodyTextLen": 3745,
+      "bodyTextHash": "ddf8db951c9dfae7279fa6f71f90b43ffc5864afb5ca3383bfa0804496dfc636",
+      "bodyTextPrefix": "Sổ Mực C2 STATISTICS, EDA, SQL Inferential Statistics · S5 Centr",
+      "horizontalOverflow": false,
+      "consoleErrors": [],
+      "pageErrors": [],
+      "screenshot": "/workspace/screenshots/lesson-clt-mobile.png"
+    }
+  },
+  "brandWarnings": [
+    "BRAND WARNING: this looks like a game/canvas app but src/lib/og/site.json is missing \"type\": \"x:game\". X uses og:type=x:game to present the unfurl as a game card — set it in /workspace/src/lib/og/site.json per /workspace/.grok/skills/og/SKILL.md. Do not invent x:type or overload twitter:card as the game signal.",
+    "BRAND WARNING: this looks like a game/canvas app but /workspace/public/x-banner.jpg is missing. Games need a 50:11 X feed card (1200×264 JPEG) at public/x-banner.jpg — open /workspace/.grok/skills/og/SKILL.md and finish the brand-asset pass."
+  ],
+  "authWarnings": [],
+  "verdictFile": "/workspace/screenshots/lesson-clt.json"
+}

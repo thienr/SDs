@@ -1,0 +1,838 @@
+{
+  "S1 Let's Kickstart Your upGrad Journey": {
+    "vi": "Làm quen lớp: bài nằm ở đâu, và lộ trình nhìn ra sao. Không có khái niệm để mang vào một brief.",
+    "en": "Meet the class: where a lesson sits, and what the path looks like. No concept to carry into a brief."
+  },
+  "S2 Maximizing Your Learning Experience": {
+    "vi": "Chỗ hỏi, chỗ học, và luật nộp bài: chữ phải là của mình. Xong buổi này thì thôi, đừng học lại.",
+    "en": "Where to ask, where to study, and the rule on submissions: the words have to be yours. Finish this once, then leave it."
+  },
+  "S1 The CRISP-DM Framework - Business and Data Understanding": {
+    "vi": "Viết việc cần quyết trước. Rồi mới hỏi bảng thô đang có là của ai, thiếu gì, và một dòng là một cái gì.",
+    "en": "Write the decision first. Only then ask whose raw table this is, what is missing, and what one row stands for."
+  },
+  "S2 CRISP-DM Framework - Data Preparation, Modelling, Evaluation and Deployment": {
+    "vi": "Làm sạch, rồi mới mô hình nếu việc cần. Chấm bằng thước đã viết. Đưa cho người dùng thứ Hai, không đưa một file điểm.",
+    "en": "Clean first, then a model only if the decision needs it. Score with the ruler you wrote. Hand it to Monday’s user, not a file of scores."
+  },
+  "c-1f3e0f37b6e5||S1 Module Overview": {
+    "vi": "Bản đồ sáu buổi của cách nghĩ. Buổi bốn và buổi sáu trên trang gốc không có video.",
+    "en": "A map of the six thinking sessions. Sessions four and six have no videos on the source page."
+  },
+  "S2 Understanding the Problems": {
+    "vi": "Có việc đã rõ và việc còn rối. Việc rối chưa có một số để tối ưu. Đừng nhảy vào giải.",
+    "en": "Some problems are already clear. Some are still a mess. A mess has no number to optimise yet. Do not jump to a fix."
+  },
+  "S3 Framing the Problem": {
+    "vi": "Tách sự kiện khỏi ý kiến. Chọn việc nào làm trước. Viết SMART: cụ thể, đo được, và có hạn.",
+    "en": "Split facts from opinions. Pick what comes first. Write it SMART: specific, measurable, and dated."
+  },
+  "S4 Analysing the Problem": {
+    "vi": "Trang gốc không liệt kê video. Ý vẫn là: hỏi vì sao cho tới một nguyên nhân bạn làm được, không dừng ở một người.",
+    "en": "The source page lists no videos. The idea is still: ask why until you hit a cause you can act on, not a person."
+  },
+  "S5 Analysing the Solutions": {
+    "vi": "Mỗi cách làm có một hệ quả, kể cả cách không làm. So trước khi chọn. Đừng chọn cái vừa nói trong phòng.",
+    "en": "Each way of acting has a consequence, including doing nothing. Compare before you pick. Do not pick whatever was just said in the room."
+  },
+  "S6 Implementing the Solutions": {
+    "vi": "Trang gốc không liệt kê video. Ý vẫn là: làm một việc, đo lại đúng thước đã viết, rồi sửa. Không phải làm hết mọi ý tưởng.",
+    "en": "The source page lists no videos. The idea is still: do one thing, measure it on the ruler you wrote, then adjust. Not to do every idea."
+  },
+  "c-f3c8d7aa3721||S1 Module Overview": {
+    "vi": "Mục lục Excel nền: định dạng, công thức, rồi pivot và tra cứu. Mindmap không phải một hàm.",
+    "en": "The contents of basic Excel: formatting, formulas, then pivots and lookup. A mindmap is not a function."
+  },
+  "S2 Introduction to Excel": {
+    "vi": "Lọc là giấu dòng, không phải xóa. Định dạng có điều kiện là một cái cờ, không đổi số trong ô.",
+    "en": "A filter hides rows. It does not delete them. Conditional formatting is a flag. It does not change the number in the cell."
+  },
+  "S3 Data Analysis in Excel – I": {
+    "vi": "Công thức, tham chiếu $ , hàm logic, và loại biểu đồ. Biểu đồ tròn nhiều miếng là một câu bị vỡ.",
+    "en": "Formulas, dollar-sign references, logical functions, and chart types. A pie with many slices is a broken sentence."
+  },
+  "S4 Data Analysis in Excel – II": {
+    "vi": "Pivot cộng theo cái bạn kéo vào. VLOOKUP nhìn sang phải và mặc định có thể khớp gần. Lỗi #N/A không phải số 0.",
+    "en": "A pivot adds up whatever you drag in. VLOOKUP looks to the right, and its default can be an approximate match. A #N/A is not the number 0."
+  },
+  "S5 Practice and Graded Questions": {
+    "vi": "Bài luyện và bài chấm. Không có hàm mới. Quay lại ba buổi phía trước nếu một thao tác còn lạ.",
+    "en": "Practice and a grade. No new function. Go back to the three sessions above if a move is still unfamiliar."
+  },
+  "S1 Introduction to the Program": {
+    "vi": "Cửa vào chương trình Python. Không có cú pháp.",
+    "en": "The door into the Python program. No syntax."
+  },
+  "S2 Succeeding in the Program": {
+    "vi": "Cách đi cho hết chương trình. Không phải một cấu trúc dữ liệu.",
+    "en": "How to get through the program. Not a data structure."
+  },
+  "S3 Program Evaluation": {
+    "vi": "Họ chấm thế nào. Không phải cách viết một vòng lặp.",
+    "en": "How they grade. Not how you write a loop."
+  },
+  "S4 Starting the Journey": {
+    "vi": "Bắt đầu lộ trình. Ý Python nằm ở các phần sau, không nằm ở buổi này.",
+    "en": "Starting the path. The Python ideas live in the later parts, not in this session."
+  },
+  "S5 Industry Immersion": {
+    "vi": "Một lát cắt nghề. Không thay cho bài về list hay DataFrame.",
+    "en": "A slice of the job. It does not replace the lesson on lists or DataFrames."
+  },
+  "S7 Prism Coding Console - Tutorial [Opt]": {
+    "vi": "Tour màn hình gõ code. Optional. Cái màn hình không phải là ngôn ngữ.",
+    "en": "A tour of the screen where you type code. Optional. The screen is not the language."
+  },
+  "S1 Introduction to Computer Programming": {
+    "vi": "Một chương trình là các bước viết ra, máy làm lại đúng thứ tự. Sai một bước là sai cả việc.",
+    "en": "A program is steps written down. The machine repeats them in that order. One wrong step and the whole job is wrong."
+  },
+  "S2 Variables and Data Types": {
+    "vi": "Tên là nhãn dán lên một hộp. Đổi tên không đổi hộp. Số và chữ là hai kiểu, không cộng lẫn.",
+    "en": "A name is a label on a box. Renaming does not change the box. Numbers and text are two types. Do not add them together."
+  },
+  "S3 Operators": {
+    "vi": "Một dấu bằng là gán. Hai dấu bằng là so. Chia trong Python 3 ra số thực. Chia lấy nguyên là hai gạch chéo.",
+    "en": "One equals sign assigns. Two compare. Division in Python 3 returns a real number. Integer division is two slashes."
+  },
+  "c-3365bb99f989||S4 Practice": {
+    "vi": "Bài luyện của đúng phần đang đứng. Không có ý mới. Làm sau khi các buổi ý đã đọc.",
+    "en": "A drill for the part you are in. No new idea. Do it after the idea sessions are read."
+  },
+  "S1 Conditionals": {
+    "vi": "if là một cửa. else là cửa còn lại. Đừng viết cửa cho một trường hợp không bao giờ tới rồi tưởng máy sẽ đoán.",
+    "en": "if is a gate. else is the other gate. Do not write a gate for a case that never happens and expect the machine to guess."
+  },
+  "S2 Loops": {
+    "vi": "for đi hết danh sách rồi dừng. while dừng chỉ khi điều kiện đổi. Quên đổi là vòng chạy mãi.",
+    "en": "for walks the list and stops. while stops only when the condition changes. Forget to change it and the loop never ends."
+  },
+  "S3 Functions": {
+    "vi": "Hàm là một việc đặt tên, có đầu vào và một kết quả. Tên sinh ra trong hàm không sống bên ngoài.",
+    "en": "A function is a named job, with inputs and one result. A name born inside the function does not live outside."
+  },
+  "S1 Strings": {
+    "vi": "Chuỗi là chữ. Cắt được. Không sửa tại chỗ: cắt ra là một chuỗi mới. Đếm từ 0.",
+    "en": "A string is text. You can slice it. You do not edit it in place: a slice is a new string. Count from 0."
+  },
+  "S2 Lists": {
+    "vi": "Danh sách có thứ, sửa được, đếm từ 0. Phần tử đầu là vị trí 0, không phải 1.",
+    "en": "A list is ordered, editable, and counted from 0. The first item is position 0, not 1."
+  },
+  "S3 Dictionaries": {
+    "vi": "Từ điển đi từ khóa sang giá trị. Không có trung bình của các khóa. Khóa trùng thì giá trị sau đè giá trị trước.",
+    "en": "A dictionary goes from a key to a value. There is no mean of the keys. A repeated key keeps the later value."
+  },
+  "S4 Tuples": {
+    "vi": "Bộ là một cặp khóa lại. Không thêm phần tử. Hay dùng làm khóa của từ điển vì nó không đổi.",
+    "en": "A tuple is a locked pair. You do not add an item. It is often a dictionary key because it cannot change."
+  },
+  "S5 Sets": {
+    "vi": "Tập chỉ giữ một lần mỗi giá trị, và không hứa thứ tự. Hợp và giao là câu «ai ở cả hai».",
+    "en": "A set keeps each value once, and promises no order. Union and intersection are the sentence “who is in both”."
+  },
+  "S6 Practice": {
+    "vi": "Bài luyện cấu trúc dữ liệu. Không thêm kiểu chứa mới.",
+    "en": "A drill on data structures. No new kind of container."
+  },
+  "S1 NumPy Arrays": {
+    "vi": "Mảng NumPy một kiểu. Phép tính chạy trên cả cột, không cần tự viết vòng. Trộn kiểu thì mảng không còn là số.",
+    "en": "A NumPy array is one type. The operation runs on the whole column. You do not write the loop. Mix types and it is no longer a numeric array."
+  },
+  "S2 Pandas Series": {
+    "vi": "Series là một cột có nhãn dòng. Nhãn không phải một cột cho tới khi bạn kéo nó ra.",
+    "en": "A Series is one column with row labels. The label is not a column until you pull it out."
+  },
+  "S3 Pandas DataFrames": {
+    "vi": "DataFrame là bảng. loc là theo nhãn, iloc là theo vị trí. Lọc rồi gán dễ đụng bản sao, hãy nhìn cảnh báo.",
+    "en": "A DataFrame is a table. loc is by label, iloc is by position. Filter then assign can hit a copy. Read the warning."
+  },
+  "S4 Matplotlib and Seaborn": {
+    "vi": "Vẽ sau khi đã có câu hỏi. Thư viện không chọn hộ trục nào là thời gian, trục nào là kênh.",
+    "en": "Draw after you have a question. The library does not choose which axis is time and which is a channel."
+  },
+  "S5 Practice": {
+    "vi": "Bài luyện thư viện. Không có thư viện mới.",
+    "en": "A drill on the libraries. No new library."
+  },
+  "S1 Basics of Python": {
+    "vi": "Đề chấm phần nền. Học lại tên, cửa, vòng, hàm ở C1. Buổi này không giảng lại.",
+    "en": "A graded paper on the basics. Restudy names, gates, loops, and functions in C1. This session does not reteach them."
+  },
+  "S2 Python Data Science Libraries": {
+    "vi": "Đề chấm phần bảng. Học lại NumPy và Pandas ở C1. Buổi này không giảng lại.",
+    "en": "A graded paper on tables. Restudy NumPy and Pandas in C1. This session does not reteach them."
+  },
+  "S1 Module Overview [Opt]": {
+    "vi": "Mục lục toán nền. Optional. Bản đồ không thay cho véctơ hay đạo hàm.",
+    "en": "Contents of the math foundation. Optional. The map does not replace a vector or a derivative."
+  },
+  "S2 Vectors and Vector Spaces [Opt]": {
+    "vi": "Danh sách có thứ, cộng từng ô, nhân mọi ô, rồi tích vô hướng. Không gian là tập đóng với hai phép đó.",
+    "en": "An ordered list, add slot by slot, scale every slot, then the dot product. A space is a set closed under those two operations."
+  },
+  "S3 Linear Transformations and Matrices [Opt]": {
+    "vi": "Ma trận kéo một véctơ. Nhân là hàng gặp cột. Định thức 0 là bị ép dẹp. Hệ không có điểm chung thì đừng bịa nghiệm.",
+    "en": "A matrix pulls a vector. Multiplication is a row meeting a column. Determinant 0 means flattened. If the lines share no point, do not invent a solution."
+  },
+  "S4 Eigenvalues and Eigenvectors [Opt]": {
+    "vi": "Có hướng chỉ bị kéo, Av = λv. Hướng bị quay thì không phải vectơ riêng. Phân tích riêng cần đủ các hướng đó.",
+    "en": "Some directions are only stretched, Av = λv. A direction that gets turned is not an eigenvector. A decomposition needs enough of those directions."
+  },
+  "S5 Multivariable Calculus [Opt]": {
+    "vi": "Độ dốc tại một chỗ. Giữ các nút kia khi xoay một nút. Gradient của chi phí, không phải của form. Bậc hai phân đáy và yên ngựa. Tiếp tuyến chỉ đúng gần một điểm.",
+    "en": "The slope at one spot. Hold the other knobs when you turn one. The gradient of the cost, not of forms. The second derivative separates a bowl from a saddle. A tangent is only true near one point."
+  },
+  "S6 Introduction to Probability [Opt]": {
+    "vi": "Một phần của cả đám, cộng trừ chỗ chồng, nhân khi đi qua hai cửa. Hoán vị và tổ hợp bản dài nằm ở C2.",
+    "en": "A share of the whole, add and subtract the overlap, multiply when you pass two gates. The long version of permutations and combinations is in C2."
+  },
+  "S1 Introduction to Descriptive Statistics [Opt]": {
+    "vi": "Kiểu cột quyết định phép. Trung bình một cái tên là câu rỗng.",
+    "en": "The column type decides the operation. The mean of a name is an empty sentence."
+  },
+  "S2 Measures of Central Tendency [Opt]": {
+    "vi": "Trung bình bị đuôi kéo. Trung vị thì không. Mode là giá trị gặp nhiều nhất, chữ cũng có mode.",
+    "en": "The mean is pulled by the tail. The median is not. The mode is the value that shows up most. Text has a mode too."
+  },
+  "S3 Measures of Position [Opt]": {
+    "vi": "Sắp dãy rồi cắt. Q2 là trung vị. Phân vị 90 không phải 90% của trung bình. Phần mềm có thể cắt lệch một ô.",
+    "en": "Sort, then cut. Q2 is the median. The 90th percentile is not 90% of the mean. Software can disagree by a point."
+  },
+  "S4 Measures of Variability [Opt]": {
+    "vi": "Khoảng rộng nổ vì một lần gõ sai. MAD là trung bình trị tuyệt đối độ lệch. Mẫu thì phương sai chia n−1, rồi mới căn.",
+    "en": "The range explodes from one typo. MAD is the mean of absolute deviations. A sample variance divides by n−1, and only then do you take the root."
+  },
+  "S5 Measures of Association [Opt]": {
+    "vi": "Hiệp phương sai còn đơn vị. Tương quan bỏ đơn vị, vẫn không phải nguyên nhân. Ba điểm thì đừng brief.",
+    "en": "Covariance still has units. Correlation drops the units and is still not a cause. Three points is not a brief."
+  },
+  "S6 Practice Assessment [Opt]": {
+    "vi": "Bài luyện mô tả. Các số mẫu đã nằm ở các buổi trước. Không có thước mới.",
+    "en": "A descriptive drill. The sample numbers already live in the sessions above. No new ruler."
+  },
+  "S1 Concepts of Hypothesis Testing - I": {
+    "vi": "Vạch bác và câu nhàm viết trước khi mở số. Không vượt vạch thì chưa bác, không phải đã chứng minh bằng nhau.",
+    "en": "The reject line and the dull sentence are written before you open the numbers. Not past the line means you do not reject. It does not prove equality."
+  },
+  "S2 Concepts of Hypothesis Testing - II": {
+    "vi": "p là độ hiếm của dữ liệu nếu câu nhàm đúng. Không phải xác suất câu nhàm đúng. Báo động giả khác bỏ sót.",
+    "en": "p is how rare the data are if the dull sentence is true. Not the probability the dull sentence is true. A false alarm is not a miss."
+  },
+  "S3 Industry Demonstration I": {
+    "vi": "Cùng một luật kiểm định, đi trên một ví dụ: viết câu, chọn mẫu, tính, rồi mới quyết. Đổi câu sau khi thấy số là một cuộc khác.",
+    "en": "The same test rule, walked on one example: write the sentence, pick the sample, compute, then decide. Changing the sentence after the numbers is a different test."
+  },
+  "S4 Industry Demonstration II": {
+    "vi": "t khi chưa biết độ rộng nguồn. Hai trung bình, hai tỷ lệ, và một demo A/B. 2,0% và 2,6% có thể vẫn là nhiễu.",
+    "en": "t when you do not know the source width. Two means, two proportions, and an A/B demo. 2.0% and 2.6% can still be noise."
+  },
+  "S5 Statistics - Interview Practice": {
+    "vi": "Ôn phân phối, khoảng, kiểm định, A/B, chi-square, ANOVA. Không có định nghĩa mới. App không hỏi lại.",
+    "en": "Review of distributions, intervals, tests, A/B, chi-square, ANOVA. No new definition. The app does not quiz you."
+  },
+  "S1 Data Sourcing": {
+    "vi": "Bảng này của ai, ghi để làm gì, một dòng là gì. Hỏi trước khi vẽ.",
+    "en": "Whose table, what it was written for, what one row is. Ask before you chart."
+  },
+  "S2 Data Cleaning": {
+    "vi": "Kiểu, dòng trùng, ô trống không phải 0, điểm xa chưa phải sai, đơn vị phải cùng thước.",
+    "en": "Types, duplicate rows, a blank is not 0, a far point is not automatically wrong, and units need one ruler."
+  },
+  "S3 Univariate Analysis": {
+    "vi": "Một cột. Chữ thì đếm. Có bậc thì giữ bậc. Số thì nhìn trung bình và trung vị có cách nhau không.",
+    "en": "One column. Text is counted. An order stays in that order. For numbers, see whether the mean and the median have split."
+  },
+  "S4 Bivariate and Multivariate Analysis": {
+    "vi": "Hai cột đi cùng chưa phải nguyên nhân. Một số và một chữ là so nhóm. Gộp có thể nói ngược.",
+    "en": "Two columns moving together is not a cause. A number and a text column means compare groups. Pooling can reverse the sentence."
+  },
+  "S5 EDA: Interview Practice": {
+    "vi": "Ôn thiếu, tương quan, và biểu đồ. Không thêm bước làm sạch.",
+    "en": "Review of missing values, correlation, and charts. No new cleaning step."
+  },
+  "S1 Problem-Solving Framework [Opt]": {
+    "vi": "Optional. Hiểu đề, lên hướng, viết, thử, rút gọn. Năm bước, không phải một thuật toán.",
+    "en": "Optional. Understand the prompt, pick an approach, write, test, shorten. Five steps, not an algorithm."
+  },
+  "S2 Popular Python Problems [Opt]": {
+    "vi": "Optional. Two sum, ngoặc, số La Mã là luyện tay. App không giải từng đề.",
+    "en": "Optional. Two-sum, brackets, and Roman numerals are finger drills. The app does not solve each prompt."
+  },
+  "S1 Introduction to Probability": {
+    "vi": "Đếm cách xếp và cách chọn. Rồi một phần của cả đám, việc rời nhau, cộng và nhân.",
+    "en": "Count arrangements and choices. Then a share of the whole, events that overlap, addition and multiplication."
+  },
+  "S2 Basics of Probability": {
+    "vi": "Gán một số cho mỗi việc. Mỗi số một cột xác suất. Giá trị kỳ vọng là mức nếu làm rất nhiều lần.",
+    "en": "Assign a number to each outcome. Each number gets a column of probability. The expected value is the level if you repeat it many times."
+  },
+  "S3 Discrete Probability Distributions": {
+    "vi": "Đếm số lần trúng trong n lần, khi mỗi lần có cùng xác suất và độc lập. Cộng dồn là hỏi từ 0 đến một mốc.",
+    "en": "Count the hits in n tries, when each try has the same probability and is independent. The cumulative asks from 0 up to a mark."
+  },
+  "S4 Continuous Probability Distributions": {
+    "vi": "Hỏi một khoảng, đừng hỏi đúng một điểm. Hình chuông cần tâm và độ rộng. Z là bóp về cùng một thước.",
+    "en": "Ask for an interval, not a single point. A bell needs a center and a width. Z squeezes onto one ruler."
+  },
+  "S5 Central Limit Theorem": {
+    "vi": "Trung bình của nhiều mẫu kéo về hình chuông khi mẫu đủ lớn. Khoảng 95% là về cách làm, không phải về một khoảng vừa vẽ.",
+    "en": "The mean of many samples is pulled toward a bell when the sample is large enough. 95% is about the procedure, not about the one interval you just drew."
+  },
+  "S6 Applications of Sampling Methods [Opt]": {
+    "vi": "Optional. Mẫu lệch thì khay chỉ còn một màu. Đo một phần vì đo hết thì đắt: nghiên cứu, campaign, thử nhỏ, kiểm chất lượng.",
+    "en": "Optional. A biased draw leaves the tray one color. You measure a part because measuring everything is expensive: research, a campaign, a pilot, quality control."
+  },
+  "S7 Inferential Statistics - Additional Resources [Opt]": {
+    "vi": "Optional. Xác suất có điều kiện và Bayes: có tin mới thì nới cái mũ, đừng xóa. Cộng thêm ôn Z và lấy mẫu.",
+    "en": "Optional. Conditional probability and Bayes: new information updates the belief, it does not erase it. Plus a review of Z and sampling."
+  },
+  "S1 Database Design": {
+    "vi": "Kho 18 tháng không phải bảng đang ghi đơn. Giữa ngôi sao là từng sự kiện. Khóa chặn dòng không có cha.",
+    "en": "An 18-month warehouse is not the table taking orders. The middle of a star is each event. A key blocks a row with no parent."
+  },
+  "S2 Database Creation in the MySQL Workbench": {
+    "vi": "DDL đổi khung. DML đổi dòng. Workbench là chỗ bấm. Ý là đừng trộn hai việc đó.",
+    "en": "DDL changes the shape. DML changes rows. The workbench is where you click. The idea is not to mix those two jobs."
+  },
+  "S3 Querying in MySQL": {
+    "vi": "Máy không đọc từ chữ SELECT. WHERE lọc dòng trước khi cộng. HAVING lọc nhóm. Đếm dòng khác đếm ô có số.",
+    "en": "The engine does not start at the word SELECT. WHERE filters rows before the sum. HAVING filters groups. Counting rows is not counting cells that have a number."
+  },
+  "S4 Joins and Set Operations": {
+    "vi": "Khóa không duy nhất thì nối nhân dòng. Left giữ phía trái, trống không phải 0. UNION bỏ bản sao, UNION ALL giữ.",
+    "en": "A key that is not unique multiplies rows. A left join keeps the left side. A blank is not 0. UNION drops copies. UNION ALL keeps them."
+  },
+  "S5 SQL Practice Case Study": {
+    "vi": "Một case để dùng JOIN và nhóm. Không có cú pháp mới.",
+    "en": "A case to use joins and groups. No new syntax."
+  },
+  "c-cca6e1fa1c5f||S6 Graded Assessments": {
+    "vi": "Bài chấm SQL nền. Ý nằm ở thiết kế và câu hỏi phía trước.",
+    "en": "A graded paper on core SQL. The ideas sit in the design and query sessions above."
+  },
+  "S7 Practice Coding Questions": {
+    "vi": "Luyện câu trên một bộ phim mẫu. Không thêm mệnh đề mới.",
+    "en": "Drill queries on a sample film database. No new clause."
+  },
+  "S1 Window Functions": {
+    "vi": "Thêm hạng hoặc tổng chạy mà vẫn còn từng dòng. Hòa hạng có nhảy số. Mỗi nhóm đếm lại từ 1. Ba dòng không chắc là ba tuần.",
+    "en": "Add a rank or a running total and still keep every row. A tie can skip a number. Each group starts again at 1. Three rows are not automatically three weeks."
+  },
+  "S2 Case Statements, Stored Routines and Cursors": {
+    "vi": "CASE viết bậc trong câu. Hàm và thủ tục lưu trên máy chủ. Con trỏ đi từng dòng, thường chậm hơn một câu trên cả tập.",
+    "en": "CASE writes the bands in the query. Functions and procedures live on the server. A cursor walks row by row, and is usually slower than one sentence on the whole set."
+  },
+  "S3 Query Optimisation and Best Practices": {
+    "vi": "Chỉ mục là mục lục cho cột hay lọc. Nó làm mau một kiểu câu, không sửa câu sai. Hàm bọc lên cột có thể làm mục lục không được dùng.",
+    "en": "An index is a lookup list for a column you filter. It speeds one kind of sentence. It does not fix a wrong sentence. Wrapping the column in a function can make the index unused."
+  },
+  "S4 Problem-Solving Using SQL": {
+    "vi": "Một buổi ghép các ý: biết hỏi bảng nào, nối thế nào, cửa sổ lúc nào. Không có mệnh đề lạ.",
+    "en": "One session that stacks the ideas: which table to ask, how to join, when a window is the tool. No strange clause."
+  },
+  "S5 Practice Questions": {
+    "vi": "Luyện SQL nâng. Không thêm ý.",
+    "en": "An advanced SQL drill. No new idea."
+  },
+  "c-cca6e1fa1c5f||(graded assignment)": {
+    "vi": "Bài nộp. Đồ nghề đã có ở EDA hoặc SQL. App không làm hộ.",
+    "en": "A submission. The tools already live in EDA or SQL. The app does not do it for you."
+  },
+  "S1 Introduction to Simple Linear Regression": {
+    "vi": "Một đường cho một cột. Câu đoán là đường, không phải từng chấm.",
+    "en": "One line for one column. The guess is the line, not each dot."
+  },
+  "S2 Simple Linear Regression in Python": {
+    "vi": "Cùng đường đó trên máy. Đọc phần dư, không chỉ đọc hệ số in ra.",
+    "en": "The same line on a machine. Read the residuals, not only the printed coefficient."
+  },
+  "S3 Gradient Descent - Linear Regression": {
+    "vi": "Đi xuống thung lũng chi phí. Bước quá dài thì vọt qua đáy. Không đi xuống form.",
+    "en": "Walk down the cost valley. Too long a step jumps over the bottom. Do not walk down forms."
+  },
+  "S4 Multiple Linear Regression": {
+    "vi": "Nhiều cột. Mỗi hệ số giữ các cột kia đứng yên. Cột đi cùng nhau thì hệ số không ổn. Thêm cột không miễn phí.",
+    "en": "Many columns. Each coefficient holds the others still. Columns that move together make the coefficient unstable. An extra column is not free."
+  },
+  "S5 Multiple Linear Regression in Python": {
+    "vi": "Cùng nhiều cột trên máy. Hệ số in ra không phải thứ tự nguyên nhân.",
+    "en": "The same many columns on a machine. A printed coefficient is not a causal ranking."
+  },
+  "S6 Industry Relevance of Linear Regression": {
+    "vi": "Mang đường ra ngoài vùng đã thấy là giả định, không phải dự báo. Một hệ số không phải nút ngân sách nếu các cột không giữ được.",
+    "en": "Carrying the line outside what you have seen is a what-if, not a forecast. A coefficient is not a budget lever if the other columns cannot be held."
+  },
+  "S1 Introduction to the Specialization Tracks": {
+    "vi": "Có nhiều hướng nghề. Sổ này đi BA. Buổi này không dạy mô hình.",
+    "en": "There are several job tracks. This notebook takes BA. This session does not teach a model."
+  },
+  "S2 The Business Intelligence/Data Analytics Track [Opt]": {
+    "vi": "Optional. Hướng BI. Không phải bài của track BA.",
+    "en": "Optional. The BI direction. Not a lesson of the BA track."
+  },
+  "S3 The Business Analytics Track [Opt]": {
+    "vi": "Optional. Đúng hướng của sổ này, ở mức giới thiệu. Ý nằm ở các phần học, không nằm ở lời chào.",
+    "en": "Optional. This notebook’s direction, as an introduction. The ideas live in the teaching parts, not in the welcome."
+  },
+  "S4 The Data Engineering Track [Opt]": {
+    "vi": "Optional. Hướng kỹ thuật dữ liệu. Không học thay cho hồi quy.",
+    "en": "Optional. The data-engineering direction. Not a substitute for regression."
+  },
+  "S5 The Natural Language Processing Track [Opt]": {
+    "vi": "Optional. Hướng chữ. Phần NLP ngắn của C3 mới là ý trong sổ này.",
+    "en": "Optional. The text direction. The short NLP part of C3 is the idea in this notebook."
+  },
+  "S6 The Deep Learning Track [Opt]": {
+    "vi": "Optional. Hướng mạng sâu. Ngoài phạm vi các ý đang học.",
+    "en": "Optional. The deep-learning direction. Outside the ideas being studied here."
+  },
+  "S7 FAQ's": {
+    "vi": "Câu hay hỏi về cách học. Không có công thức.",
+    "en": "Common questions about how to study. No formula."
+  },
+  "S1 Introduction to Linear Regression Assignment": {
+    "vi": "Cửa vào bài nộp thời gian giao. Không có đường thẳng mới.",
+    "en": "The door into the delivery-time submission. No new straight line."
+  },
+  "S2 Linear Regression - Delivery Time Prediction": {
+    "vi": "Một đề đoán thời gian giao. Dùng đường, phần dư, và thước của brief.",
+    "en": "One brief to guess delivery time. Use the line, the residuals, and the brief’s ruler."
+  },
+  "S1 Univariate Logistic Regression": {
+    "vi": "Một cột, một việc có hoặc không. Đường chữ S nằm giữa 0 và 1. Hệ số nhân odds.",
+    "en": "One column, a yes or no. The S-curve stays between 0 and 1. The coefficient multiplies odds."
+  },
+  "S2 Multivariate Logistic Regression - Model Building": {
+    "vi": "Nhiều cột vẫn một đường cong. Chọn cột không miễn phí, giống hồi quy nhiều biến.",
+    "en": "Many columns are still one curve. Choosing a column is not free, same as multiple regression."
+  },
+  "S3 Multivariate Logistic Regression - Model Evaluation": {
+    "vi": "Bốn ô của ma trận nhầm. Quét ngưỡng. Mỗi nhãn một đường ROC. Accuracy không phải brief khi lớp hiếm.",
+    "en": "The four cells of a confusion matrix. Sweep the threshold. One ROC curve per label. Accuracy is not the brief when the class is rare."
+  },
+  "S4 Logistic Regression - Industry Applications - Part I": {
+    "vi": "Độ nhạy là bắt được người rời. Độ đặc hiệu là để yên người ở. Không phải accuracy.",
+    "en": "Sensitivity is the leavers you caught. Specificity is the stayers you left alone. Not accuracy."
+  },
+  "S5 Logistic Regression: Industry Applications - Part II": {
+    "vi": "Học trên ai thì số chỉ nói về nhóm đó. Tháng 3 không cấp phép cho tháng 12.",
+    "en": "Whoever you fit on, the number talks about that group only. March does not license December."
+  },
+  "S6 Multiclassification using Logistic Regression": {
+    "vi": "Nhiều nhãn thì mỗi nhãn một đường. Đừng nhét ba kênh vào một đường có-không.",
+    "en": "Several labels means one curve per label. Do not stuff three channels into one yes-no curve."
+  },
+  "S1 Subjective Questions [Opt]": {
+    "vi": "Optional. Câu hỏi ôn logistic. Không có định nghĩa mới.",
+    "en": "Optional. Logistic review questions. No new definition."
+  },
+  "S2 Practice Questions [Opt]": {
+    "vi": "Optional. Luyện logistic. Ý nằm ở các buổi phía trước.",
+    "en": "Optional. A logistic drill. The ideas sit in the sessions above."
+  },
+  "S1 Introduction to Decision Trees": {
+    "vi": "Một câu đúng sai mỗi lần. Không phải một độ dốc.",
+    "en": "One yes-or-no question at a time. Not a slope."
+  },
+  "S2 Algorithms for Decision Tree Construction": {
+    "vi": "Chọn câu hỏi nào làm hai phía sạch hơn. Gini và entropy là hai thước độ lẫn, không phải hai sự thật.",
+    "en": "Pick the question that makes the two sides cleaner. Gini and entropy are two rulers for the mix, not two truths."
+  },
+  "S3 Hyperparameter Tuning in Decision Trees": {
+    "vi": "Độ sâu và số dòng tối thiểu là nút bạn đặt. Cây sâu học thuộc. Không phải càng sâu càng đúng.",
+    "en": "Depth and a minimum row count are knobs you set. A deep tree memorises. Deeper is not truer."
+  },
+  "S1 Introduction to Clustering": {
+    "vi": "Chưa có cột câu trả lời thì đừng hỏi accuracy. Cụm là một cách nhóm, không tự thành phân khúc marketing.",
+    "en": "No answer column means do not ask for accuracy. A cluster is a grouping. It does not automatically become a marketing segment."
+  },
+  "S2 K Means Clustering": {
+    "vi": "Gán điểm vào tâm gần nhất, rồi dời tâm. Khởi động xấu thì hai tâm chui một đám. Elbow không chứng minh k.",
+    "en": "Assign each point to the nearest center, then move the center. A bad start puts two centers in one clump. An elbow does not prove k."
+  },
+  "S3 Executing K Means in Python": {
+    "vi": "Cùng vòng gán và dời tâm trên máy. Chạy vài lần. Đừng tin một lần.",
+    "en": "The same assign-and-move loop on a machine. Run it a few times. Do not trust one start."
+  },
+  "S4 Hierarchical Clustering": {
+    "vi": "Dính chỗ gần nhất thì dễ thành một sợi. Dính chỗ xa nhất thì cụm chặt hơn. Không cái nào là sự thật.",
+    "en": "Gluing the nearest pair can chain into a snake. Gluing the farthest pair makes tighter clumps. Neither is the truth."
+  },
+  "S5 Other Forms of Clustering": {
+    "vi": "DBSCAN không ép điểm thưa. GMM cho thuộc một phần. K-modes khi cột là tên, vì tên không có trung bình.",
+    "en": "DBSCAN does not force sparse points in. A GMM allows partial membership. K-modes is for a name column, because a name has no mean."
+  },
+  "S6 Clustering: Interview Questions": {
+    "vi": "Ôn cụm. Không có thuật toán mới.",
+    "en": "A clustering review. No new algorithm."
+  },
+  "S1 Introduction to NLP": {
+    "vi": "Trang gốc chỉ có tên buổi. Ý bắt đầu ở buổi cắt chữ. Chữ chưa thành số thì mô hình chưa ăn được.",
+    "en": "The source page only titles this session. The ideas start when text is cut into pieces. Until text is a number, a model cannot eat it."
+  },
+  "S2 Basic Lexical Processing": {
+    "vi": "Cắt thành mảnh, bỏ từ đi với mọi bài, đếm túi từ. Mất thứ tự câu.",
+    "en": "Cut into pieces, drop words that go with every text, count a bag of words. The order of the sentence is gone."
+  },
+  "S3 Advanced Lexical Processing": {
+    "vi": "TF-IDF hạ từ có khắp nơi. Sửa chính tả đếm số lần sửa. Stem và lemma vứt hình thái. PMI không phải ngữ pháp.",
+    "en": "TF-IDF lowers words that are everywhere. A typo is a count of edits. Stems and lemmas throw the form away. PMI is not grammar."
+  },
+  "S1 Introduction to Business Problem Solving": {
+    "vi": "Gọi tên quyết định trước mô hình. Thước nào, mốc nào, kỳ nào.",
+    "en": "Name the decision before the model. Which ruler, which current mark, which period."
+  },
+  "S2 Case Study Demonstration": {
+    "vi": "Đi một vòng quyết định đó trên một case. Điểm mô hình không thay thước.",
+    "en": "Walk that decision once on a case. A model score does not replace the ruler."
+  },
+  "S3 Practice Questions": {
+    "vi": "Luyện đặt việc. Không có khung mới.",
+    "en": "A drill in framing the job. No new frame."
+  },
+  "S1 Version Control System": {
+    "vi": "Mỗi commit là một ảnh kèm một câu. Nhánh thử đi riêng cho tới khi bạn nhập lại.",
+    "en": "Each commit is a snapshot plus a sentence. A try-line stays separate until you merge."
+  },
+  "S2 Contributing to open source libraries [Opt]": {
+    "vi": "Optional. Các bước góp code cho người khác. Là chỗ bấm, để dạng bài cũ.",
+    "en": "Optional. The steps for contributing code to someone else. Clicks, left as an old lesson."
+  },
+  "S3 Portfolio Website Creation [Opt]": {
+    "vi": "Optional. Làm một trang portfolio. Không phải một lệnh Git mới.",
+    "en": "Optional. Building a portfolio page. Not a new Git command."
+  },
+  "c-96d004f30def||S1 Introduction to Assignment": {
+    "vi": "Cửa vào bài đoán nghỉ việc. Không có đường chữ S mới.",
+    "en": "The door into the retention paper. No new S-curve."
+  },
+  "S2 Assignment - Predicting Employee Retention": {
+    "vi": "Một đề: ai rời. Dùng logistic, ngưỡng, và giá của một lần bỏ sót.",
+    "en": "One brief: who leaves. Use logistic, a threshold, and the cost of a miss."
+  },
+  "S1 Introduction": {
+    "vi": "Buổi mở của mindmap. Bản đồ, không phải bài mới.",
+    "en": "The opening of the mindmaps. A map, not a new lesson."
+  },
+  "S2 Introduction to Python Programming": {
+    "vi": "Sơ đồ Python nền. Học ở C1.",
+    "en": "A map of core Python. Study it in C1."
+  },
+  "S3 Python for Data Science": {
+    "vi": "Sơ đồ thư viện bảng. Học ở C1.",
+    "en": "A map of the table libraries. Study it in C1."
+  },
+  "S4 Data Visualisation in Python": {
+    "vi": "Sơ đồ vẽ bằng Python. Câu hỏi vẫn phải có trước hình.",
+    "en": "A map of drawing in Python. The question still has to exist before the picture."
+  },
+  "S5 Exploratory Data Analysis": {
+    "vi": "Sơ đồ EDA. Học ở C2.",
+    "en": "A map of EDA. Study it in C2."
+  },
+  "S6 Inferential Statistics": {
+    "vi": "Sơ đồ suy diễn. Học ở C2.",
+    "en": "A map of inference. Study it in C2."
+  },
+  "S7 Linear Regression": {
+    "vi": "Sơ đồ đường thẳng. Học ở phần hồi quy.",
+    "en": "A map of the straight line. Study it in the regression part."
+  },
+  "S8 Logistic Regression": {
+    "vi": "Sơ đồ đường chữ S. Học ở phần logistic.",
+    "en": "A map of the S-curve. Study it in the logistic part."
+  },
+  "S9 SQL": {
+    "vi": "Sơ đồ SQL nền. Học ở C2.",
+    "en": "A map of core SQL. Study it in C2."
+  },
+  "S10 Advanced SQL": {
+    "vi": "Sơ đồ cửa sổ và CASE. Học ở SQL nâng.",
+    "en": "A map of windows and CASE. Study it in advanced SQL."
+  },
+  "S11 Classification Using Decision Trees": {
+    "vi": "Sơ đồ cây. Học ở phần cây.",
+    "en": "A map of trees. Study it in the tree part."
+  },
+  "S12 Unsupervised Learning: Clustering": {
+    "vi": "Sơ đồ cụm. Học ở phần cụm.",
+    "en": "A map of clusters. Study it in the clustering part."
+  },
+  "S13 Basics of NLP": {
+    "vi": "Sơ đồ chữ. Học ở phần NLP.",
+    "en": "A map of text. Study it in the NLP part."
+  },
+  "S1 Ensembles and Random Forests": {
+    "vi": "Nhiều cây bỏ phiếu. Mỗi cây một túi và một nhóm cột ngẫu nhiên. Không cây nào là sự thật.",
+    "en": "Many trees vote. Each tree gets a bag and a random handful of columns. No tree is the truth."
+  },
+  "S2 Class Imbalance": {
+    "vi": "Gọi không ai rời thì đúng phần đông. Đừng nhân bản trước khi chia tập. Đổi ngưỡng thường là nút nên thử trước.",
+    "en": "Call nobody a leaver and you match the majority. Do not duplicate rows before the split. Moving the threshold is usually the lever to try first."
+  },
+  "S3 Tree Models: Additional Resources": {
+    "vi": "Ôn rừng và lớp hiếm. Không có họ mô hình mới.",
+    "en": "A review of forests and rare classes. No new family of models."
+  },
+  "S1 Principles of Model Selection": {
+    "vi": "Lệch vì họ mô hình quá thẳng. Nhảy vì khớp từng nhiễu. Ridge co, Lasso có thể về 0. RMSE phạt cú trượt lớn.",
+    "en": "Bias: the family is too straight. Variance: it fits each noise. Ridge shrinks. Lasso can hit 0. RMSE punishes a large miss."
+  },
+  "S2 Feature Engineering": {
+    "vi": "Log của 0 không có. Một mốc thời gian chỉ nói muộn hơn. Biến giả thừa cột nếu mô hình có hệ số chặn.",
+    "en": "Log of 0 does not exist. A raw timestamp mostly says later. A dummy column is one too many if the model has an intercept."
+  },
+  "S3 Model Selection - Additional Resources": {
+    "vi": "Ôn lệch, nhảy, và cách viết cột. Không có thước mới.",
+    "en": "A review of bias, variance, and how a column is written. No new ruler."
+  },
+  "S1 Model Building and Evaluation": {
+    "vi": "Giấu một miếng, học phần còn, lấy trung bình. Lưới chỉ thử ô bạn đã viết. Đừng dùng cách xáo này cho tuần.",
+    "en": "Hide one slice, learn on the rest, average. A grid only tries cells you wrote. Do not use this shuffle for weeks."
+  },
+  "S1 Introduction to Time Series": {
+    "vi": "Giữ thứ tự tuần. Tuần này giống tuần trước thì các dòng không độc lập. Xáo là mất cái bạn định dự báo.",
+    "en": "Keep the weeks in order. If this week looks like last week, the rows are not independent. Shuffle and you lose the thing you meant to forecast."
+  },
+  "S2 Smoothing Techniques": {
+    "vi": "Naive, trung bình trượt, san bằng mũ, Holt, Holt-Winters. MAPE gãy khi số thật là 0. Chấm bằng cách cuốn tới.",
+    "en": "Naive, moving average, exponential smoothing, Holt, Holt-Winters. MAPE breaks when the actual is 0. Score by rolling forward."
+  },
+  "c-a0c17afb8849||S3 Graded Questions": {
+    "vi": "Bài chấm chuỗi thời gian. Ý nằm ở buổi trước đó. App không hỏi lại.",
+    "en": "A graded time-series paper. The ideas sit in the session before it. The app does not quiz you."
+  },
+  "S1 Introduction to AR Models": {
+    "vi": "Dừng, ACF, rồi AR đoán từ các tuần trước. PACF là phần còn sau khi đã tính các bước gần.",
+    "en": "Stationarity, ACF, then AR guesses from earlier weeks. PACF is what is left after the nearer steps are accounted for."
+  },
+  "S2 Building AR Models": {
+    "vi": "Lấy hiệu cho tới khi chuỗi chịu đứng, rồi AR và MA. MA ở đây là cú sốc cũ, không phải trung bình trượt. SARIMAX cần biết cột tuần tới.",
+    "en": "Difference until the series can sit still, then AR and MA. The MA here is an old shock, not a moving average. SARIMAX needs next week’s column known."
+  },
+  "c-a0c17afb8849||S1 Introduction to Assignment": {
+    "vi": "Cửa vào case gian lận. Không có mô hình mới.",
+    "en": "The door into the fraud case. No new model."
+  },
+  "S2 Assignment Details - Fraudulent Claim Detection": {
+    "vi": "Đề lớp hiếm. Accuracy dễ đẹp vô nghĩa. Dùng ý của rừng cây và cách chấm.",
+    "en": "A rare-class brief. Accuracy is easy to make pretty and meaningless. Use the forest ideas and the way you score."
+  },
+  "S1 Introduction to Tableau": {
+    "vi": "Vẽ để khám phá khác vẽ để giải thích. Tableau là một chỗ vẽ, không phải một sự thật khác Excel.",
+    "en": "Drawing to explore is not drawing to explain. Tableau is one place to draw, not a different truth from Excel."
+  },
+  "S2 Visualising and Analysing Data with Tableau – I": {
+    "vi": "Cột so độ lớn và có số 0. Đường là thời gian. Hộp là nửa giữa. Bản đồ khi câu hỏi có chỗ. Tròn là một tổng ít miếng. Dashboard là một quyết định.",
+    "en": "Bars compare size and include 0. A line is time. A box is the middle half. A map only if the question has a place. A pie is one whole with few slices. A dashboard is one decision."
+  },
+  "S3 Visualising and Analysing Data With Tableau – II": {
+    "vi": "Join vẫn nhân dòng nếu khóa không duy nhất. Trường tính là cột của trang. Hai trục dễ nói dối nếu hai thước khác nhau. Story là thứ tự các trang, mỗi trang một câu.",
+    "en": "A join still multiplies rows if the key is not unique. A calculated field is a column of the page. Two axes can lie if the rulers differ. A story is an order of pages, one sentence each."
+  },
+  "S4 Practice Questions": {
+    "vi": "Luyện vẽ, gồm một bài batting. Không có loại biểu đồ mới.",
+    "en": "A drawing drill, including a batting paper. No new chart type."
+  },
+  "c-7ffadedb3906||Advanced Excel||S1 Module Overview": {
+    "vi": "Mục lục Excel nâng: hàm, tra cứu, what-if, macro. Mindmap không phải hàm.",
+    "en": "Contents of advanced Excel: functions, lookup, what-if, macros. The mindmap is not a function."
+  },
+  "S2 Excel functions": {
+    "vi": "Hàm chữ để làm sạch. Hàm đếm phải đúng loại ô. IF lồng sâu thì đổi thành bảng tra. Định dạng có điều kiện vẫn chỉ là cờ.",
+    "en": "Text functions clean. Count functions must count the right kind of cell. A deeply nested IF should become a lookup table. Conditional formatting is still only a flag."
+  },
+  "S3 Data Analysis": {
+    "vi": "VLOOKUP không nhìn sang trái. INDEX và MATCH thì nhìn được. What-if đổi đầu vào của kế hoạch, không đổi quá khứ. Pivot vẫn cộng theo cái bạn kéo.",
+    "en": "VLOOKUP cannot look left. INDEX and MATCH can. What-if changes a plan’s inputs. It does not change the past. A pivot still adds up whatever you drag."
+  },
+  "S4 Advanced Tools and Visualisations": {
+    "vi": "Macro lặp cú bấm, không kiểm tra cú bấm đúng. Biểu đồ nâng vẫn phải có một câu. Phần cuối có bài chấm.",
+    "en": "A macro repeats clicks. It does not check the click was right. A fancier chart still needs one sentence. The end includes a grade."
+  },
+  "c-7ffadedb3906||Data Analysis and Visualisation in PowerBI||S1 Module Overview": {
+    "vi": "Mục lục Power BI: mô hình, DAX, trang, rồi đăng và làm mới. Cài phần mềm không phải ý.",
+    "en": "Contents of Power BI: the model, DAX, pages, then publish and refresh. Installing the software is not the idea."
+  },
+  "S2 Getting Started With Power BI": {
+    "vi": "Power BI là mô hình cộng trang, không phải một file Excel được tô màu. So với Tableau và Excel ở việc đó, không ở logo.",
+    "en": "Power BI is a model plus pages, not a coloured Excel file. Compare it with Tableau and Excel on that job, not on the logo."
+  },
+  "S3 Data Acquisition and Transformation in Power BI": {
+    "vi": "Power Query chạy lại mỗi lần làm mới. Cột tính lưu theo dòng. Measure tính trong bộ lọc đang bật. Quan hệ sai hạt thì số bị nhân.",
+    "en": "Power Query runs again on every refresh. A calculated column is stored per row. A measure is computed in the filters that are on. A relationship at the wrong grain multiplies the numbers."
+  },
+  "S4 Visualising and Analysing Data Using Power BI": {
+    "vi": "Một trang một câu. Visual AI đoán một hình, bạn vẫn chịu câu. Bookmark là một trạng thái trang đã lưu, không phải một phân tích mới.",
+    "en": "One page, one sentence. An AI visual guesses a picture. You still own the sentence. A bookmark is a saved page state, not a new analysis."
+  },
+  "S5 Publishing Reports and Scheduling Data Refresh": {
+    "vi": "Trang đã đăng là số của lần làm mới cuối. Nguồn không tới được thì lịch không cứu. RLS giấu dòng theo người, khách không tắt được như một slicer.",
+    "en": "A published page is the numbers of the last refresh. If the source cannot be reached, the schedule does not save you. Row-level security hides rows by person. A guest cannot turn it off like a slicer."
+  },
+  "S1 Interviewing Frameworks - I": {
+    "vi": "5W và 5 Why. Dừng ở nguyên nhân làm được, không dừng ở một người để khiển trách.",
+    "en": "5W and 5 Whys. Stop at a cause you can act on, not at a person to blame."
+  },
+  "S2 Interviewing Frameworks - II": {
+    "vi": "SPIN: tình huống, vấn đề, hệ quả, rồi cái họ cần. Là câu hỏi, không phải bài chào hàng.",
+    "en": "SPIN: situation, problem, implication, then what they need. Questions, not a pitch."
+  },
+  "S3 Graded Questions - I": {
+    "vi": "Bài chấm khung phỏng vấn. Không có khung mới.",
+    "en": "A graded paper on interview frames. No new frame."
+  },
+  "S4 Business Model Canvas and Issue Tree Framework": {
+    "vi": "Canvas là chín ô của một việc kinh doanh. Cây vấn đề chia hết và không chồng. Một ý nằm ở hai nhánh là cây hỏng.",
+    "en": "The canvas is nine boxes of a business. An issue tree splits everything and overlaps nothing. One idea on two branches means the tree is broken."
+  },
+  "S5 Some Specialised Frameworks for Business Problems": {
+    "vi": "7P là checklist dịch vụ, không phải bảng xếp hạng. 5C là năm chỗ nhìn: mình, khách, đối thủ, đối tác, bối cảnh.",
+    "en": "7Ps is a service checklist, not a ranking. 5Cs are five places to look: you, customers, competitors, partners, context."
+  },
+  "S6 Graded Questions - II": {
+    "vi": "Bài chấm các khung. Ý nằm ở canvas, cây, 7P, 5C.",
+    "en": "A graded paper on the frames. The ideas sit in the canvas, the tree, 7Ps, and 5Cs."
+  },
+  "S1 Introduction to Data Storytelling": {
+    "vi": "Biểu đồ không phải câu chuyện. Câu chuyện có bối cảnh, xung đột, và một hướng. Khó vì người nghe không sống trong file của bạn.",
+    "en": "A chart is not a story. A story has a context, a conflict, and a direction. It is hard because the listener does not live in your file."
+  },
+  "S2 Components of a Good Story with Data - I": {
+    "vi": "Viết mục tiêu và người nghe trước. Insight thường là xu hướng, khác biệt, tỷ trọng, điểm lạ, hoặc đi cùng. Tóm dòng là để ra câu, không phải để có thêm một cột.",
+    "en": "Write the objective and the audience first. An insight is usually a trend, a difference, a share, a strange point, or moving together. Summarising rows is how you get a sentence, not how you get an extra column."
+  },
+  "S3 Components of a Good Story with Data - II": {
+    "vi": "Kim tự tháp: câu trả lời lên đầu, rồi lý do. Mỗi hình một thông điệp. Tiêu đề là một câu, không phải tên biểu đồ.",
+    "en": "The pyramid: the answer first, then the reasons. One message per picture. The title is a sentence, not the chart’s name."
+  },
+  "S4 Golden Rules for an Effective Data Storytelling": {
+    "vi": "Storyboard trước khi trang trí. Case vay nhà là đi hết các bước, các số là ví dụ minh họa, không phải hồ sơ một ngân hàng.",
+    "en": "Storyboard before you decorate. The home-loan case walks the steps. The numbers are an illustration, not a real bank’s file."
+  },
+  "S1 Introduction to the Assignment": {
+    "vi": "Cửa vào bài trực quan. Rubric là cách chấm, không phải một loại biểu đồ.",
+    "en": "The door into the visualisation paper. The rubric is how they grade, not a chart type."
+  },
+  "S2 Visualisation & Analysis on Namma Yatri Data": {
+    "vi": "Một đề trên một bộ dữ liệu. Dùng các ý Tableau và kể chuyện. App không làm hộ.",
+    "en": "One brief on one dataset. Use the Tableau and storytelling ideas. The app does not do it for you."
+  },
+  "S1 Introduction to OR": {
+    "vi": "Vận trù viết một quyết định thành mục tiêu, biến, và ràng buộc. Không phải lịch sử ngành là phần phải nhớ.",
+    "en": "Operations research writes a decision as an objective, variables, and constraints. The history of the field is not the part to remember."
+  },
+  "S2 Concepts of Optimisation": {
+    "vi": "Mục tiêu khác biến được xoay. Ràng buộc là giới không được phá. Độ nhạy chỉ đúng khi góc đang chọn chưa đổi.",
+    "en": "The objective is not the knob you turn. A constraint is a limit you may not break. Sensitivity holds only while the chosen corner has not changed."
+  },
+  "S3 Optimisation Using Excel - I": {
+    "vi": "Solver tìm một góc của vùng khả thi trên bài tuyến tính. Vùng rỗng thì không có kế hoạch. Ví dụ minh họa là chia ngân sách kênh.",
+    "en": "Solver finds a corner of the feasible region on a linear problem. An empty region means there is no plan. The illustration is splitting a channel budget."
+  },
+  "S4 Optimisation Using Excel - II": {
+    "vi": "Nới một ràng buộc rồi xem mục tiêu đổi bao nhiêu. Thêm một đường bay nối là thêm biến và thêm ràng buộc, không phải sửa tay cho đẹp.",
+    "en": "Loosen one constraint and see how the objective moves. Adding a connecting flight adds variables and constraints. It is not a manual touch-up."
+  },
+  "S1 Landscape of Generative AI": {
+    "vi": "Máy sinh đoán tiếp, không tra sổ của agency. Có tầng app, mô hình, dữ liệu, và cách chấm.",
+    "en": "A generative model guesses what comes next. It does not look up the agency’s books. There is an app layer, a model, data, and a way to score."
+  },
+  "S2 Journey into Generative AI": {
+    "vi": "Học máy đoán một nhãn. Học sâu là một họ mô hình. GenAI đoán chuỗi tiếp theo. Đừng gọi cả ba là một.",
+    "en": "Machine learning guesses a label. Deep learning is a family of models. GenAI guesses the next span. Do not call all three the same thing."
+  },
+  "S3 Impact and Use Cases of Generative AI": {
+    "vi": "Các ví dụ ngành là chuyện có thể làm, không phải số liệu để brief nếu không có nguồn. Trong sổ này mọi con số dạng đó là ví dụ minh họa.",
+    "en": "Industry examples are things that can be done, not figures for a brief unless there is a source. In this notebook any such number is an illustration."
+  },
+  "S4 Practice Questions (Optional)": {
+    "vi": "Optional. Luyện chữ về GenAI. Không có khái niệm mới.",
+    "en": "Optional. A drill on the GenAI words. No new concept."
+  },
+  "S5 Working With OpenAI APIs": {
+    "vi": "Một lượt gọi là một danh sách lời thoại. Temperature làm phân phối phẳng hơn, không làm đúng hơn. Tiền là token vào cộng token ra.",
+    "en": "One call is a list of messages. Temperature flattens the distribution. It does not make the answer truer. The bill is tokens in plus tokens out."
+  },
+  "S6 Prompt Engineering": {
+    "vi": "Prompt là việc, ngữ cảnh, định dạng. Few-shot là vài ví dụ, ví dụ xấu thì máy học luôn cái xấu. Xin các bước không phải một chứng minh.",
+    "en": "A prompt is the task, the context, and the format. Few-shot is a few examples. A bad example gets learned too. Asking for steps is not a proof."
+  },
+  "S7 Graded Assessments": {
+    "vi": "Bài chấm prompt và API. Ý nằm ở hai buổi trước.",
+    "en": "A graded paper on prompts and the API. The ideas sit in the two sessions above."
+  },
+  "S1 Designing LLM-Based Systems": {
+    "vi": "Vài đường suy luận rồi lấy số đông. Nghĩ, gọi công cụ, nhìn, rồi mới nói. Sửa trọng số khác đưa tài liệu vào. Phải chặn máy bịa giá và luật.",
+    "en": "Several lines of reasoning, then a majority. Think, call a tool, look, then speak. Changing weights is not the same as handing in a document. Stop the machine inventing a price and a rule."
+  },
+  "S2 Introduction to ShopAssist AI": {
+    "vi": "Chặng một: bot nói theo prompt và ý định. Chưa có catalog thật thì chưa được bịa SKU.",
+    "en": "Stage one: the bot talks from the prompt and the intent. Without the real catalog it must not invent a SKU."
+  },
+  "S3 Introduction to ShopAssist AI - Stage 2": {
+    "vi": "Chặng hai: gọi công cụ tìm hàng, rồi nói từ cái công cụ trả về. Không nói từ trí nhớ.",
+    "en": "Stage two: call a tool to search products, then speak from what the tool returned. Not from memory."
+  },
+  "S4 Introduction to ShopAssist AI - Stage 3": {
+    "vi": "Chặng ba: chấm các ca. Câu hay trong một demo không phải là hệ đã xong.",
+    "en": "Stage three: score the cases. A nice sentence in one demo does not mean the system is done."
+  },
+  "S5 Practice Assessments": {
+    "vi": "Luyện thiết kế bot. Không có chặng mới.",
+    "en": "A drill on the bot design. No new stage."
+  },
+  "c-7e0b1f4942db||S6 Graded Assessments": {
+    "vi": "Bài chấm chatbot. Ý nằm ở ba chặng.",
+    "en": "A graded paper on the chatbot. The ideas sit in the three stages."
+  },
+  "S1 Basics of Retrieval Augmented Generation": {
+    "vi": "Mô hình không nhớ PDF. Tìm đoạn gần câu hỏi rồi mới viết. Gần không có nghĩa là đúng điều khoản.",
+    "en": "The model does not remember the PDF. Find a passage near the question, then write. Near does not mean the right clause."
+  },
+  "S2 Building RAG applications using LlamaIndex": {
+    "vi": "Connector, chỉ mục, câu hỏi. Chỉ mục không tự biết file đã sửa nếu bạn không nạp lại.",
+    "en": "A connector, an index, a question. The index does not notice a changed file unless you load it again."
+  },
+  "c-7e0b1f4942db||S3 Graded Questions": {
+    "vi": "Bài chấm RAG. Đường ống đã có ở buổi đầu của phần.",
+    "en": "A graded RAG paper. The pipe already exists in the first session of the part."
+  },
+  "S1 Semantic Search Demonstration": {
+    "vi": "Demo tìm theo nghĩa, không theo đúng từ khóa. Vẫn có thể trả một đoạn gần mà sai việc.",
+    "en": "A demo of search by meaning, not by exact keyword. It can still return a near passage about the wrong job."
+  },
+  "S2 Vector Stores Demonstration": {
+    "vi": "Một collection là một xô vector. Không cập nhật thì bạn đang tìm tháng trước.",
+    "en": "A collection is a bucket of vectors. Skip the update and you are searching last month."
+  },
+  "S3 RAG Demonstration": {
+    "vi": "Cắt, nhúng, tìm, xếp lại, rồi viết. Xếp lại vì đoạn gần nhất chưa chắc là đoạn nên trích.",
+    "en": "Chunk, embed, search, re-rank, then write. Re-rank because the nearest passage is not always the one to quote."
+  },
+  "S1 Basics of image generation": {
+    "vi": "Ảnh là lưới số. VAE nén và nhòe. GAN có mạng giả và mạng chấm. Diffusion thêm nhiễu rồi gỡ. Chữ chỉ lái, không bảo chứng.",
+    "en": "An image is a grid of numbers. A VAE compresses and blurs. A GAN has a faker and a judge. Diffusion adds noise then removes it. Text only steers. It does not certify."
+  },
+  "S2 PixxelCraftAI": {
+    "vi": "Một ứng dụng đi các bước sinh ảnh, cộng cách viết prompt: chủ thể, ánh sáng, khung. Tính từ thừa không thêm sự thật.",
+    "en": "One app walking the image steps, plus how a prompt is written: subject, light, frame. Extra adjectives do not add a fact."
+  },
+  "c-7e0b1f4942db||S1 Introduction to Assignment": {
+    "vi": "Cửa vào bài RAG trên tài liệu. Không có đường ống mới.",
+    "en": "The door into the document RAG paper. No new pipe."
+  },
+  "S2 RAG on Legal Documents": {
+    "vi": "Đề: trả lời từ đoạn được tìm, không bịa điều khoản. Dùng ý RAG.",
+    "en": "The brief: answer from a retrieved passage, do not invent a clause. Use the RAG ideas."
+  },
+  "S1 LangChain [Opt]": {
+    "vi": "Optional. Template có lỗ. Chain là bước cố định. Agent tự chọn công cụ và có thể lặp, nên phải chặn số bước.",
+    "en": "Optional. A template has holes. A chain is fixed steps. An agent picks a tool and can loop, so cap the steps."
+  },
+  "(module header only — chưa có nội dung session; trang chỉ hiển thị tiêu đề module)": {
+    "vi": "Chưa có buổi. Không có mục lục con. Khi upGrad mở đề, chỗ này mới có nội dung.",
+    "en": "No session yet. No inner contents. When upGrad opens a brief, this is where the content will go."
+  }
+}

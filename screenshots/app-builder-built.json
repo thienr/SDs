@@ -1,0 +1,38 @@
+{
+  "url": "http://127.0.0.1:8081/",
+  "viewports": {
+    "desktop": {
+      "width": 1280,
+      "height": 800,
+      "status": 200,
+      "title": "Sổ Mực",
+      "hasCanvas": false,
+      "bodyTextLen": 1836,
+      "bodyTextHash": "dd9d9a572cde0b7879a0617e11890eb4756714e2489229584f07e3b92b41ef10",
+      "bodyTextPrefix": "Sổ Mực Học Tìm Công thức Độ phủ Từ điển Nội dung gốc VI EN Nền t",
+      "horizontalOverflow": false,
+      "consoleErrors": [],
+      "pageErrors": [],
+      "screenshot": "/workspace/screenshots/app-builder-built.png"
+    },
+    "mobile": {
+      "width": 390,
+      "height": 844,
+      "status": 200,
+      "title": "Sổ Mực",
+      "hasCanvas": false,
+      "bodyTextLen": 1807,
+      "bodyTextHash": "893001b8b90cc713fb7fec9ea8e39c5995ce1ed7612e838e0aad6baeeaaa7609",
+      "bodyTextPrefix": "Sổ Mực VI EN Mọi khóa Đi Business Analytics Sổ Mực Các khóa đi đ",
+      "horizontalOverflow": false,
+      "consoleErrors": [],
+      "pageErrors": [],
+      "screenshot": "/workspace/screenshots/app-builder-built-mobile.png"
+    }
+  },
+  "brandWarnings": [],
+  "authWarnings": [],
+  "verdictFile": "/workspace/screenshots/app-builder-built.json",
+  "divergesFromBaseline": false,
+  "baselineReasons": []
+}

@@ -1,0 +1,36 @@
+{
+  "url": "http://127.0.0.1:8080/bai/l-93272c96846e",
+  "viewports": {
+    "desktop": {
+      "width": 1280,
+      "height": 800,
+      "status": 200,
+      "title": "Sổ Mực",
+      "hasCanvas": false,
+      "bodyTextLen": 2527,
+      "bodyTextHash": "29c95f04664de55007635646fa3e26d705fbe9b780705745989fdfd715448434",
+      "bodyTextPrefix": "Sổ Mực Học Tìm Công thức Độ phủ Từ điển Nền tối C5 DATA VISUALIS",
+      "horizontalOverflow": false,
+      "consoleErrors": [],
+      "pageErrors": [],
+      "screenshot": "/workspace/screenshots/lesson-excel.png"
+    },
+    "mobile": {
+      "width": 390,
+      "height": 844,
+      "status": 200,
+      "title": "Sổ Mực",
+      "hasCanvas": false,
+      "bodyTextLen": 2511,
+      "bodyTextHash": "253c7bc726cca1f73f626593dcf1e628a6aca1347cacc52b568180f3e99f7e34",
+      "bodyTextPrefix": "Sổ Mực C5 DATA VISUALISATION AND STORYTELLING Advanced Excel · S",
+      "horizontalOverflow": false,
+      "consoleErrors": [],
+      "pageErrors": [],
+      "screenshot": "/workspace/screenshots/lesson-excel-mobile.png"
+    }
+  },
+  "brandWarnings": [],
+  "authWarnings": [],
+  "verdictFile": "/workspace/screenshots/lesson-excel.json"
+}

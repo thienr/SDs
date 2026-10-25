@@ -1,0 +1,36 @@
+{
+  "url": "http://127.0.0.1:8080/",
+  "viewports": {
+    "desktop": {
+      "width": 1280,
+      "height": 800,
+      "status": 200,
+      "title": "Sổ Mực",
+      "hasCanvas": false,
+      "bodyTextLen": 1764,
+      "bodyTextHash": "0578fc59f0a595c94d34f23c04b6a4881c3b2f52418c9a9573f2ba6d06e77a78",
+      "bodyTextPrefix": "Sổ Mực Học Tìm Công thức Độ phủ Từ điển Nền tối BUSINESS ANALYTI",
+      "horizontalOverflow": false,
+      "consoleErrors": [],
+      "pageErrors": [],
+      "screenshot": "/workspace/screenshots/home-try.png"
+    },
+    "mobile": {
+      "width": 390,
+      "height": 844,
+      "status": 200,
+      "title": "Sổ Mực",
+      "hasCanvas": false,
+      "bodyTextLen": 1748,
+      "bodyTextHash": "bddb2006b2576fe2b365e5292f4ea18b1f5107f20cdda13cd691c62e5a1c6f96",
+      "bodyTextPrefix": "Sổ Mực BUSINESS ANALYTICS · THIEN Sổ Mực Đọc định nghĩa, kéo hìn",
+      "horizontalOverflow": false,
+      "consoleErrors": [],
+      "pageErrors": [],
+      "screenshot": "/workspace/screenshots/home-try-mobile.png"
+    }
+  },
+  "brandWarnings": [],
+  "authWarnings": [],
+  "verdictFile": "/workspace/screenshots/home-try.json"
+}

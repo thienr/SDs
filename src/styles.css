@@ -1,0 +1,86 @@
+@import "tailwindcss";
+
+:root {
+  --paper: #f3eee6;
+  --ink: #1c1915;
+  --muted: #6f675e;
+  --card: #fbf7f1;
+  --line: #e4dacb;
+  --accent: #b5461f;
+  --accent-ink: #fff8f3;
+  --good: #2f6b4f;
+  --good-ink: #f3faf6;
+  --shadow: 0 12px 40px rgb(28 25 21 / 0.06);
+  color-scheme: light;
+}
+
+:root[data-theme="dark"] {
+  --paper: #141210;
+  --ink: #f3eee6;
+  --muted: #b3a89c;
+  --card: #1e1b17;
+  --line: #3a332c;
+  --accent: #e07a4c;
+  --accent-ink: #1c100c;
+  --good: #8fcead;
+  --good-ink: #13241c;
+  --shadow: 0 12px 40px rgb(0 0 0 / 0.35);
+  color-scheme: dark;
+}
+
+@theme inline {
+  --font-sans: "Outfit", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Fraunces", ui-serif, georgia, serif;
+  --color-paper: var(--paper);
+  --color-ink: var(--ink);
+  --color-muted: var(--muted);
+  --color-card: var(--card);
+  --color-line: var(--line);
+  --color-accent: var(--accent);
+  --color-accent-ink: var(--accent-ink);
+  --color-good: var(--good);
+  --color-good-ink: var(--good-ink);
+  --radius-card: 1.25rem;
+}
+
+@layer base {
+  button:not(:disabled),
+  [role="button"]:not(:disabled) {
+    cursor: pointer;
+  }
+
+  html,
+  body {
+    background: var(--paper);
+    color: var(--ink);
+  }
+
+  body {
+    font-family: var(--font-sans);
+    text-rendering: optimizeLegibility;
+  }
+
+  ::selection {
+    background: color-mix(in srgb, var(--accent) 28%, transparent);
+  }
+}
+
+@utility font-display {
+  font-family: var(--font-display);
+}
+
+.reading {
+  max-width: 42rem;
+  min-width: 0;
+}
+
+.reading pre {
+  max-width: 100%;
+  overflow-x: auto;
+  white-space: pre-wrap;
+}
+
+.lab-range {
+  accent-color: var(--accent);
+  height: 2.75rem;
+}

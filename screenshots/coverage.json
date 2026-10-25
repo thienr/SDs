@@ -1,0 +1,36 @@
+{
+  "url": "http://127.0.0.1:8080/do-phu",
+  "viewports": {
+    "desktop": {
+      "width": 1280,
+      "height": 800,
+      "status": 200,
+      "title": "Sổ Mực",
+      "hasCanvas": false,
+      "bodyTextLen": 244,
+      "bodyTextHash": "b90007ce8195b8c8d84723ac05ee1f91f91fe9ee3e19eb7a13df5a9ca7c2fd84",
+      "bodyTextPrefix": "Sổ Mực Học Tìm Công thức Độ phủ Từ điển Nền tối Độ phủ 2951/2951",
+      "horizontalOverflow": false,
+      "consoleErrors": [],
+      "pageErrors": [],
+      "screenshot": "/workspace/screenshots/coverage.png"
+    },
+    "mobile": {
+      "width": 390,
+      "height": 844,
+      "status": 200,
+      "title": "Sổ Mực",
+      "hasCanvas": false,
+      "bodyTextLen": 228,
+      "bodyTextHash": "5d99c2e7a580e3a61ad0824a66d457bff567d27ef66c947a6c89df53d7228e98",
+      "bodyTextPrefix": "Sổ Mực Độ phủ 2951/2951 mục trong phụ lục có một bài để đọc. Khô",
+      "horizontalOverflow": false,
+      "consoleErrors": [],
+      "pageErrors": [],
+      "screenshot": "/workspace/screenshots/coverage-mobile.png"
+    }
+  },
+  "brandWarnings": [],
+  "authWarnings": [],
+  "verdictFile": "/workspace/screenshots/coverage.json"
+}

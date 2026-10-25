@@ -1,0 +1,36 @@
+{
+  "url": "http://127.0.0.1:8080/khai-niem/infer-intro",
+  "viewports": {
+    "desktop": {
+      "width": 1280,
+      "height": 800,
+      "status": 200,
+      "title": "Sổ Mực",
+      "hasCanvas": false,
+      "bodyTextLen": 926,
+      "bodyTextHash": "f9b4701d768dfaf9dfcf91b77907431513086a4c709334372af5580f8a25e75b",
+      "bodyTextPrefix": "Sổ Mực Học Tìm Công thức Độ phủ Từ điển Nền tối C2 · INFERENTIAL",
+      "horizontalOverflow": false,
+      "consoleErrors": [],
+      "pageErrors": [],
+      "screenshot": "/workspace/screenshots/concept-intro.png"
+    },
+    "mobile": {
+      "width": 390,
+      "height": 844,
+      "status": 200,
+      "title": "Sổ Mực",
+      "hasCanvas": false,
+      "bodyTextLen": 910,
+      "bodyTextHash": "990951c73486baacefddeb89b7526becb9ae8793f417b462c5892001f65e9720",
+      "bodyTextPrefix": "Sổ Mực C2 · INFERENTIAL STATISTICS · S1 INTRODUCTION TO PROBABIL",
+      "horizontalOverflow": false,
+      "consoleErrors": [],
+      "pageErrors": [],
+      "screenshot": "/workspace/screenshots/concept-intro-mobile.png"
+    }
+  },
+  "brandWarnings": [],
+  "authWarnings": [],
+  "verdictFile": "/workspace/screenshots/concept-intro.json"
+}
