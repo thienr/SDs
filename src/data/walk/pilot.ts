@@ -1,5 +1,7 @@
 /** «Làm từng bước với số thật»: một bài tính đầy đủ cho mỗi khái niệm, để chỉ đọc trang này cũng hiểu. */
 export type WalkText = {
+  /** Chỗ khái niệm này nằm trong câu chuyện Lotus Spa (xem docs/STORY.md). */
+  story?: string;
   words: [string, string][];
   problem: string;
   steps: [string, string][];
@@ -8,7 +10,7 @@ export type WalkText = {
 };
 export type Walk = { vi: WalkText; en: WalkText };
 
-export const walks: Record<string, Walk> = {
+export const pilotWalks: Record<string, Walk> = {
   bayes: {
     vi: {
       words: [

@@ -35,6 +35,7 @@ const heads = {
     say: "Kết luận bằng lời",
     check: "Tự kiểm tra",
     reveal: "Xem đáp án",
+    story: "Câu chuyện Lotus Spa",
   },
   en: {
     why: "What you use it for",
@@ -58,6 +59,7 @@ const heads = {
     say: "The conclusion in words",
     check: "Check yourself",
     reveal: "Show answer",
+    story: "The Lotus Spa story",
   },
 } as const;
 
@@ -66,6 +68,12 @@ function WalkBlock({ walk, head }: { walk: WalkText; head: Record<string, string
   return (
     <section className="mt-8 rounded-card border border-line bg-card p-4">
       <h2 className="text-xs uppercase tracking-widest text-muted">{head.walk}</h2>
+      {walk.story ? (
+        <div className="mt-3 rounded-xl border-l-4 border-accent bg-paper p-3">
+          <p className="text-xs uppercase tracking-widest text-muted">{head.story}</p>
+          <p className="mt-1 leading-relaxed">{walk.story}</p>
+        </div>
+      ) : null}
       <h3 className="mt-3 text-sm font-medium">{head.words}</h3>
       <dl className="mt-1 space-y-2">
         {walk.words.map(([term, meaning]) => (
