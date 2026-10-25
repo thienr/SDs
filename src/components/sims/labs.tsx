@@ -12,6 +12,40 @@ function tone() {
   };
 }
 
+type Ink = ReturnType<typeof tone>;
+
+/** Số trên trục ngang, nằm sát đáy ô vẽ. */
+function xTicks(ctx: CanvasRenderingContext2D, c: Ink, h: number, items: [number, string][]) {
+  ctx.fillStyle = c.muted;
+  ctx.strokeStyle = c.line;
+  ctx.font = "11px Outfit, sans-serif";
+  ctx.textAlign = "center";
+  ctx.textBaseline = "alphabetic";
+  items.forEach(([px, label]) => {
+    ctx.beginPath();
+    ctx.moveTo(px, h - 15);
+    ctx.lineTo(px, h - 11);
+    ctx.stroke();
+    ctx.fillText(label, px, h - 2);
+  });
+  ctx.textAlign = "left";
+}
+
+/** Dòng chú thích ở góc trên bên trái: nói trục nào là gì. */
+function caption(ctx: CanvasRenderingContext2D, c: Ink, text: string) {
+  const maxW = ctx.canvas.getBoundingClientRect().width - 12;
+  let size = 11;
+  ctx.font = `${size}px Outfit, sans-serif`;
+  while (ctx.measureText(text).width > maxW && size > 8) {
+    size -= 0.5;
+    ctx.font = `${size}px Outfit, sans-serif`;
+  }
+  ctx.fillStyle = c.muted;
+  ctx.textAlign = "left";
+  ctx.textBaseline = "alphabetic";
+  ctx.fillText(text, 6, 12);
+}
+
 function sampleOf(kind: string, rng: () => number) {
   if (kind === "uniform") return rng() * 6 - 1;
   if (kind === "bimodal") return rng() < 0.5 ? gauss(rng) * 0.55 - 1.4 : gauss(rng) * 0.45 + 1.5;
@@ -53,9 +87,8 @@ export function CltLab() {
       ctx.fillRect(4 + i * bw, h - 18 - bh, bw - gap, bh);
     });
     ctx.globalAlpha = 1;
-    ctx.fillStyle = c.muted;
-    ctx.font = "12px Outfit, sans-serif";
-    ctx.fillText("histogram của trung bình mẫu", 4, 14);
+    caption(ctx, c, "ngang: trung bình một mẫu · cao: số mẫu");
+    xTicks(ctx, c, h, [[4, min.toFixed(1)], [w / 2, ((min + max) / 2).toFixed(1)], [w - 4, max.toFixed(1)]]);
   }, [means]);
   const sdPop = kind === "uniform" ? Math.sqrt(3) : kind === "bimodal" ? 1.5 : 1;
   const se = sdPop / Math.sqrt(n);
@@ -104,11 +137,11 @@ export function CiLab() {
     const x = (v: number) => ((v - lo) / (hi - lo)) * (w - 16) + 8;
     ctx.strokeStyle = c.good;
     ctx.beginPath();
-    ctx.moveTo(x(50), 8);
-    ctx.lineTo(x(50), h - 8);
+    ctx.moveTo(x(50), 18);
+    ctx.lineTo(x(50), h - 18);
     ctx.stroke();
     intervals.forEach((row, i) => {
-      const y = 12 + (i * (h - 20)) / intervals.length;
+      const y = 22 + (i * (h - 46)) / intervals.length;
       ctx.strokeStyle = row.hit ? c.ink : c.accent;
       ctx.globalAlpha = row.hit ? 0.35 : 0.95;
       ctx.beginPath();
@@ -117,6 +150,8 @@ export function CiLab() {
       ctx.stroke();
     });
     ctx.globalAlpha = 1;
+    caption(ctx, c, "mỗi gạch: khoảng tin cậy của một mẫu · xanh: μ");
+    xTicks(ctx, c, h, [32, 41, 50, 59, 68].map((v) => [x(v), String(v)] as [number, string]));
   }, [intervals]);
   return (
     <Lab title="80 khoảng tin cậy, đường xanh là μ" onReset={() => { setLevel(95); setN(30); }} onExtreme={() => setLevel(level > 90 ? 80 : 99)}>
@@ -177,6 +212,7 @@ export function HypothesisLab() {
     ctx.font = "12px Outfit, sans-serif";
     ctx.fillText("H0", X(0) - 8, 16);
     ctx.fillText("H1", X(effect) - 8, 16);
+    xTicks(ctx, c, h, [-4, -2, 0, 2, 4].map((v) => [X(v), v === 0 ? "z = 0" : String(v)] as [number, string]));
   }, [alpha, effect, zobs, zcrit]);
   return (
     <Lab title="Vùng bác bỏ, p-value và hiệu thật" onReset={() => { setAlpha(5); setEffect(1.2); setZobs(2.1); }} onExtreme={() => setEffect(effect > 0.4 ? 0 : 2.8)}>
@@ -222,6 +258,8 @@ export function NormalLab() {
     }
     ctx.strokeStyle = c.ink;
     ctx.stroke();
+    caption(ctx, c, "ngang: giây · vùng tô: giữa hai mốc");
+    xTicks(ctx, c, h, [-3, -2, -1, 0, 1, 2, 3].map((k) => [X(mu + k * sd), String(Math.round(mu + k * sd))] as [number, string]));
   }, [mu, sd, a, b]);
   const z = (30 - mu) / sd;
   return (
@@ -254,10 +292,12 @@ export function BinomialLab() {
     const peak = Math.max(...bars);
     const bw = (w - 8) / bars.length;
     bars.forEach((v, k) => {
-      const bh = (v / peak) * (h - 20);
+      const bh = (v / peak) * (h - 40);
       ctx.fillStyle = k === Math.round(n * p) ? c.good : c.accent;
-      ctx.fillRect(4 + k * bw, h - 8 - bh, Math.max(1, bw - 1), bh);
+      ctx.fillRect(4 + k * bw, h - 20 - bh, Math.max(1, bw - 1), bh);
     });
+    caption(ctx, c, "ngang: số lần trúng k · cao: xác suất");
+    xTicks(ctx, c, h, [0, Math.round(n / 4), Math.round(n / 2), Math.round((3 * n) / 4), n].map((k) => [4 + (k + 0.5) * bw, String(k)] as [number, string]));
   }, [bars, n, p]);
   return (
     <Lab title="Nhị thức: kéo n và p" onReset={() => { setN(40); setP(0.08); }} onExtreme={() => setP(p > 0.2 ? 0.05 : 0.5)}>
@@ -292,9 +332,9 @@ export function RegressionLab() {
     const c = tone();
     ctx.clearRect(0, 0, w, h);
     const X = (x: number) => 28 + ((x - 1) / 13) * (w - 40);
-    const Y = (y: number) => h - 20 - ((y - 20) / 90) * (h - 32);
+    const Y = (y: number) => h - 20 - ((y - 20) / 90) * (h - 44);
     ctx.strokeStyle = c.line;
-    ctx.strokeRect(28, 8, w - 40, h - 28);
+    ctx.strokeRect(28, 20, w - 40, h - 40);
     REG_PTS.forEach(([x, y]) => {
       ctx.strokeStyle = c.accent;
       ctx.beginPath();
@@ -312,6 +352,14 @@ export function RegressionLab() {
     ctx.moveTo(X(1), Y(yhat(1)));
     ctx.lineTo(X(14), Y(yhat(14)));
     ctx.stroke();
+    ctx.lineWidth = 1;
+    ctx.fillStyle = c.muted;
+    ctx.font = "11px Outfit, sans-serif";
+    ctx.textAlign = "right";
+    [20, 60, 100].forEach((v) => ctx.fillText(String(v), 24, Y(v) + 4));
+    ctx.textAlign = "left";
+    caption(ctx, c, "ngang: chi tiêu (triệu) · dọc: số form");
+    xTicks(ctx, c, h, [2, 4, 6, 8, 10, 12, 14].map((v) => [X(v), String(v)] as [number, string]));
   }, [m, b]);
   const fit = () => {
     const xs = REG_PTS.map((p) => p[0]);
@@ -361,7 +409,7 @@ export function GdLab() {
     const hi = 6;
     const X = (x: number) => ((x - lo) / (hi - lo)) * (ww - 16) + 8;
     const peak = cost(-2);
-    const Y = (y: number) => h - 16 - (y / peak) * (h - 32);
+    const Y = (y: number) => h - 22 - (y / peak) * (h - 46);
     ctx.beginPath();
     for (let i = 0; i <= 80; i++) {
       const x = lo + ((hi - lo) * i) / 80;
@@ -376,6 +424,8 @@ export function GdLab() {
     ctx.beginPath();
     ctx.arc(X(ball), Y(cost(ball)), 7, 0, Math.PI * 2);
     ctx.fill();
+    caption(ctx, c, "ngang: tham số w · dọc: chi phí J(w)");
+    xTicks(ctx, c, h, [-2, 0, 2.2, 4, 6].map((v) => [X(v), String(v)] as [number, string]));
   }, [w]);
   return (
     <Lab title="Quả bóng trên hàm chi phí một tham số" onReset={() => { setW(-1); setLr(0.15); setPlay(false); }} onExtreme={() => setLr(lr < 0.8 ? 1.05 : 0.02)}>
@@ -414,8 +464,8 @@ export function SigmoidLab() {
   const ref = useCanvas((ctx, w, h) => {
     const c = tone();
     ctx.clearRect(0, 0, w, h);
-    const X = (x: number) => 8 + (x / 80) * (w - 16);
-    const Y = (v: number) => h - 16 - v * (h - 28);
+    const X = (x: number) => 26 + (x / 80) * (w - 34);
+    const Y = (v: number) => h - 24 - v * (h - 44);
     ctx.beginPath();
     for (let x = 0; x <= 80; x++) {
       const zz = b0 + b1 * x;
@@ -428,7 +478,7 @@ export function SigmoidLab() {
     ctx.strokeStyle = c.accent;
     ctx.setLineDash([4, 4]);
     ctx.beginPath();
-    ctx.moveTo(8, Y(cut));
+    ctx.moveTo(26, Y(cut));
     ctx.lineTo(w - 8, Y(cut));
     ctx.stroke();
     ctx.setLineDash([]);
@@ -436,6 +486,13 @@ export function SigmoidLab() {
     ctx.beginPath();
     ctx.arc(X(xDemo), Y(p), 5, 0, Math.PI * 2);
     ctx.fill();
+    ctx.fillStyle = c.muted;
+    ctx.font = "11px Outfit, sans-serif";
+    ctx.textAlign = "right";
+    [0, 0.5, 1].forEach((v) => ctx.fillText(String(v), 22, Y(v) + 4));
+    ctx.textAlign = "left";
+    caption(ctx, c, "ngang: biến x · dọc: xác suất · nét đứt: ngưỡng");
+    xTicks(ctx, c, h, [0, 20, 40, 60, 80].map((v) => [X(v), String(v)] as [number, string]));
   }, [b0, b1, cut, p]);
   return (
     <Lab title="Sigmoid, ngưỡng và ma trận nhầm" onReset={() => { setB0(-2.2); setB1(0.08); setCut(0.35); }} onExtreme={() => setCut(cut > 0.5 ? 0.2 : 0.8)}>
@@ -504,6 +561,8 @@ export function KmeansLab() {
       ctx.lineWidth = 2;
       ctx.strokeRect(16 + ct[0] * (w - 32) - 7, h - 16 - ct[1] * (h - 32) - 7, 14, 14);
     });
+    ctx.lineWidth = 1;
+    caption(ctx, c, "hai biến chuẩn hóa 0–1 · ô vuông: tâm cụm");
   }, [step]);
   return (
     <Lab title="K-means: gán rồi dời tâm" onReset={() => setStep(0)} onExtreme={() => setStep(1)}>

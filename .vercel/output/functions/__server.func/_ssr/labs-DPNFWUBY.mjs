@@ -1,7 +1,7 @@
 import { o as __toESM } from "../_runtime.mjs";
 import { J as require_react, S as require_jsx_runtime } from "../_libs/@tanstack/react-router+[...].mjs";
-import { O as subscribeProgress, b as getServerProgress, y as getProgress } from "./router-Bd8qiDpA.mjs";
-//#region node_modules/.nitro/vite/services/ssr/assets/labs-BQfzGGBR.js
+import { O as subscribeProgress, b as getServerProgress, y as getProgress } from "./router-E9LIu1SF.mjs";
+//#region node_modules/.nitro/vite/services/ssr/assets/labs-DPNFWUBY.js
 var import_react = /* @__PURE__ */ __toESM(require_react());
 var import_jsx_runtime = require_jsx_runtime();
 function cssVar(name, fallback) {
@@ -123,6 +123,36 @@ function tone() {
 		card: cssVar("--card", "#fbf7f1")
 	};
 }
+/** Số trên trục ngang, nằm sát đáy ô vẽ. */
+function xTicks(ctx, c, h, items) {
+	ctx.fillStyle = c.muted;
+	ctx.strokeStyle = c.line;
+	ctx.font = "11px Outfit, sans-serif";
+	ctx.textAlign = "center";
+	ctx.textBaseline = "alphabetic";
+	items.forEach(([px, label]) => {
+		ctx.beginPath();
+		ctx.moveTo(px, h - 15);
+		ctx.lineTo(px, h - 11);
+		ctx.stroke();
+		ctx.fillText(label, px, h - 2);
+	});
+	ctx.textAlign = "left";
+}
+/** Dòng chú thích ở góc trên bên trái: nói trục nào là gì. */
+function caption(ctx, c, text) {
+	const maxW = ctx.canvas.getBoundingClientRect().width - 12;
+	let size = 11;
+	ctx.font = `${size}px Outfit, sans-serif`;
+	while (ctx.measureText(text).width > maxW && size > 8) {
+		size -= .5;
+		ctx.font = `${size}px Outfit, sans-serif`;
+	}
+	ctx.fillStyle = c.muted;
+	ctx.textAlign = "left";
+	ctx.textBaseline = "alphabetic";
+	ctx.fillText(text, 6, 12);
+}
 function sampleOf(kind, rng) {
 	if (kind === "uniform") return rng() * 6 - 1;
 	if (kind === "bimodal") return rng() < .5 ? gauss(rng) * .55 - 1.4 : gauss(rng) * .45 + 1.5;
@@ -167,9 +197,12 @@ function CltLab() {
 			ctx.fillRect(4 + i * bw, h - 18 - bh, bw - gap, bh);
 		});
 		ctx.globalAlpha = 1;
-		ctx.fillStyle = c.muted;
-		ctx.font = "12px Outfit, sans-serif";
-		ctx.fillText("histogram của trung bình mẫu", 4, 14);
+		caption(ctx, c, "ngang: trung bình một mẫu · cao: số mẫu");
+		xTicks(ctx, c, h, [
+			[4, min.toFixed(1)],
+			[w / 2, ((min + max) / 2).toFixed(1)],
+			[w - 4, max.toFixed(1)]
+		]);
 	}, [means]);
 	const se = (kind === "uniform" ? Math.sqrt(3) : kind === "bimodal" ? 1.5 : 1) / Math.sqrt(n);
 	return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Lab, {
@@ -251,11 +284,11 @@ function CiLab() {
 		const x = (v) => (v - lo) / 36 * (w - 16) + 8;
 		ctx.strokeStyle = c.good;
 		ctx.beginPath();
-		ctx.moveTo(x(50), 8);
-		ctx.lineTo(x(50), h - 8);
+		ctx.moveTo(x(50), 18);
+		ctx.lineTo(x(50), h - 18);
 		ctx.stroke();
 		intervals.forEach((row, i) => {
-			const y = 12 + i * (h - 20) / intervals.length;
+			const y = 22 + i * (h - 46) / intervals.length;
 			ctx.strokeStyle = row.hit ? c.ink : c.accent;
 			ctx.globalAlpha = row.hit ? .35 : .95;
 			ctx.beginPath();
@@ -264,6 +297,14 @@ function CiLab() {
 			ctx.stroke();
 		});
 		ctx.globalAlpha = 1;
+		caption(ctx, c, "mỗi gạch: khoảng tin cậy của một mẫu · xanh: μ");
+		xTicks(ctx, c, h, [
+			32,
+			41,
+			50,
+			59,
+			68
+		].map((v) => [x(v), String(v)]));
 	}, [intervals]);
 	return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Lab, {
 		title: "80 khoảng tin cậy, đường xanh là μ",
@@ -355,6 +396,13 @@ function HypothesisLab() {
 		ctx.font = "12px Outfit, sans-serif";
 		ctx.fillText("H0", X(0) - 8, 16);
 		ctx.fillText("H1", X(effect) - 8, 16);
+		xTicks(ctx, c, h, [
+			-4,
+			-2,
+			0,
+			2,
+			4
+		].map((v) => [X(v), v === 0 ? "z = 0" : String(v)]));
 	}, [
 		alpha,
 		effect,
@@ -449,6 +497,16 @@ function NormalLab() {
 		}
 		ctx.strokeStyle = c.ink;
 		ctx.stroke();
+		caption(ctx, c, "ngang: giây · vùng tô: giữa hai mốc");
+		xTicks(ctx, c, h, [
+			-3,
+			-2,
+			-1,
+			0,
+			1,
+			2,
+			3
+		].map((k) => [X(mu + k * sd), String(Math.round(mu + k * sd))]));
 	}, [
 		mu,
 		sd,
@@ -541,10 +599,18 @@ function BinomialLab() {
 		const peak = Math.max(...bars);
 		const bw = (w - 8) / bars.length;
 		bars.forEach((v, k) => {
-			const bh = v / peak * (h - 20);
+			const bh = v / peak * (h - 40);
 			ctx.fillStyle = k === Math.round(n * p) ? c.good : c.accent;
-			ctx.fillRect(4 + k * bw, h - 8 - bh, Math.max(1, bw - 1), bh);
+			ctx.fillRect(4 + k * bw, h - 20 - bh, Math.max(1, bw - 1), bh);
 		});
+		caption(ctx, c, "ngang: số lần trúng k · cao: xác suất");
+		xTicks(ctx, c, h, [
+			0,
+			Math.round(n / 4),
+			Math.round(n / 2),
+			Math.round(3 * n / 4),
+			n
+		].map((k) => [4 + (k + .5) * bw, String(k)]));
 	}, [
 		bars,
 		n,
@@ -612,9 +678,9 @@ function RegressionLab() {
 		const c = tone();
 		ctx.clearRect(0, 0, w, h);
 		const X = (x) => 28 + (x - 1) / 13 * (w - 40);
-		const Y = (y) => h - 20 - (y - 20) / 90 * (h - 32);
+		const Y = (y) => h - 20 - (y - 20) / 90 * (h - 44);
 		ctx.strokeStyle = c.line;
-		ctx.strokeRect(28, 8, w - 40, h - 28);
+		ctx.strokeRect(28, 20, w - 40, h - 40);
 		REG_PTS.forEach(([x, y]) => {
 			ctx.strokeStyle = c.accent;
 			ctx.beginPath();
@@ -632,6 +698,26 @@ function RegressionLab() {
 		ctx.moveTo(X(1), Y(yhat(1)));
 		ctx.lineTo(X(14), Y(yhat(14)));
 		ctx.stroke();
+		ctx.lineWidth = 1;
+		ctx.fillStyle = c.muted;
+		ctx.font = "11px Outfit, sans-serif";
+		ctx.textAlign = "right";
+		[
+			20,
+			60,
+			100
+		].forEach((v) => ctx.fillText(String(v), 24, Y(v) + 4));
+		ctx.textAlign = "left";
+		caption(ctx, c, "ngang: chi tiêu (triệu) · dọc: số form");
+		xTicks(ctx, c, h, [
+			2,
+			4,
+			6,
+			8,
+			10,
+			12,
+			14
+		].map((v) => [X(v), String(v)]));
 	}, [m, b]);
 	const fit = () => {
 		const xs = REG_PTS.map((p) => p[0]);
@@ -723,7 +809,7 @@ function GdLab() {
 		const hi = 6;
 		const X = (x) => (x - lo) / 8 * (ww - 16) + 8;
 		const peak = cost(-2);
-		const Y = (y) => h - 16 - y / peak * (h - 32);
+		const Y = (y) => h - 22 - y / peak * (h - 46);
 		ctx.beginPath();
 		for (let i = 0; i <= 80; i++) {
 			const x = lo + 8 * i / 80;
@@ -738,6 +824,14 @@ function GdLab() {
 		ctx.beginPath();
 		ctx.arc(X(ball), Y(cost(ball)), 7, 0, Math.PI * 2);
 		ctx.fill();
+		caption(ctx, c, "ngang: tham số w · dọc: chi phí J(w)");
+		xTicks(ctx, c, h, [
+			-2,
+			0,
+			2.2,
+			4,
+			6
+		].map((v) => [X(v), String(v)]));
 	}, [w]);
 	return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Lab, {
 		title: "Quả bóng trên hàm chi phí một tham số",
@@ -856,8 +950,8 @@ function SigmoidLab() {
 	const ref = useCanvas((ctx, w, h) => {
 		const c = tone();
 		ctx.clearRect(0, 0, w, h);
-		const X = (x) => 8 + x / 80 * (w - 16);
-		const Y = (v) => h - 16 - v * (h - 28);
+		const X = (x) => 26 + x / 80 * (w - 34);
+		const Y = (v) => h - 24 - v * (h - 44);
 		ctx.beginPath();
 		for (let x = 0; x <= 80; x++) {
 			const zz = b0 + b1 * x;
@@ -870,7 +964,7 @@ function SigmoidLab() {
 		ctx.strokeStyle = c.accent;
 		ctx.setLineDash([4, 4]);
 		ctx.beginPath();
-		ctx.moveTo(8, Y(cut));
+		ctx.moveTo(26, Y(cut));
 		ctx.lineTo(w - 8, Y(cut));
 		ctx.stroke();
 		ctx.setLineDash([]);
@@ -878,6 +972,23 @@ function SigmoidLab() {
 		ctx.beginPath();
 		ctx.arc(X(xDemo), Y(p), 5, 0, Math.PI * 2);
 		ctx.fill();
+		ctx.fillStyle = c.muted;
+		ctx.font = "11px Outfit, sans-serif";
+		ctx.textAlign = "right";
+		[
+			0,
+			.5,
+			1
+		].forEach((v) => ctx.fillText(String(v), 22, Y(v) + 4));
+		ctx.textAlign = "left";
+		caption(ctx, c, "ngang: biến x · dọc: xác suất · nét đứt: ngưỡng");
+		xTicks(ctx, c, h, [
+			0,
+			20,
+			40,
+			60,
+			80
+		].map((v) => [X(v), String(v)]));
 	}, [
 		b0,
 		b1,
@@ -1078,6 +1189,8 @@ function KmeansLab() {
 			ctx.lineWidth = 2;
 			ctx.strokeRect(16 + ct[0] * (w - 32) - 7, h - 16 - ct[1] * (h - 32) - 7, 14, 14);
 		});
+		ctx.lineWidth = 1;
+		caption(ctx, c, "hai biến chuẩn hóa 0–1 · ô vuông: tâm cụm");
 	}, [step]);
 	return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Lab, {
 		title: "K-means: gán rồi dời tâm",

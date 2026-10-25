@@ -1,10 +1,10 @@
 import { o as __toESM } from "../_runtime.mjs";
 import { J as require_react, S as require_jsx_runtime, b as Link } from "../_libs/@tanstack/react-router+[...].mjs";
-import { A as studyCopy, B as subscribeRaw, F as getRawVersion, I as getServerRawVersion, M as studyNeighbors, O as subscribeProgress, b as getServerProgress, j as studyListTitle, k as getStudy, r as Route$1, y as getProgress } from "./router-Bd8qiDpA.mjs";
-import { n as Range, r as Sim, t as Lab } from "./labs-BQfzGGBR.mjs";
+import { A as studyCopy, B as subscribeRaw, F as getRawVersion, I as getServerRawVersion, M as studyNeighbors, O as subscribeProgress, b as getServerProgress, j as studyListTitle, k as getStudy, r as Route$1, y as getProgress } from "./router-E9LIu1SF.mjs";
+import { n as Range, r as Sim, t as Lab } from "./labs-DPNFWUBY.mjs";
 import { t as Tex } from "./tex-t3KOuum9.mjs";
-import { o as relatedOf } from "./map-By7eMKFr.mjs";
-//#region node_modules/.nitro/vite/services/ssr/assets/khai-niem._conceptId-DvnHJ9i5.js
+import { o as relatedOf } from "./map-BTKNCWhe.mjs";
+//#region node_modules/.nitro/vite/services/ssr/assets/khai-niem._conceptId-BEXbidP4.js
 var import_react = /* @__PURE__ */ __toESM(require_react());
 var import_jsx_runtime = require_jsx_runtime();
 var ui$1 = {
@@ -6801,7 +6801,9 @@ var heads = {
 		prev: "Từ trước",
 		next: "Tiếp theo",
 		links: "Dây nối",
-		onMap: "Xem trên bản đồ"
+		onMap: "Xem trên bản đồ",
+		v2d: "Đồ thị kéo được",
+		v3d: "Cảnh 3D"
 	},
 	en: {
 		why: "What you use it for",
@@ -6815,7 +6817,9 @@ var heads = {
 		prev: "Previous",
 		next: "Next",
 		links: "Connections",
-		onMap: "See on the map"
+		onMap: "See on the map",
+		v2d: "Interactive chart",
+		v3d: "3D scene"
 	}
 };
 function ConceptView({ concept }) {
@@ -6828,6 +6832,9 @@ function ConceptView({ concept }) {
 	const prevText = near.prev ? studyCopy(near.prev, lang) : null;
 	const nextText = near.next ? studyCopy(near.next, lang) : null;
 	const rel = relatedOf(concept.id);
+	const hasDemo = Boolean(demos[concept.id]);
+	const hasLab = Boolean(concept.sim) && !hasDemo;
+	const [view, setView] = (0, import_react.useState)("2d");
 	return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("article", {
 		className: "reading mx-auto",
 		children: [
@@ -6886,12 +6893,24 @@ function ConceptView({ concept }) {
 						className: "text-xs uppercase tracking-widest text-muted",
 						children: head.see
 					}),
+					hasLab ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+						className: "mt-3 inline-flex rounded-full border border-line bg-card p-1 text-sm",
+						role: "tablist",
+						children: ["2d", "3d"].map((id) => /* @__PURE__ */ (0, import_jsx_runtime.jsx)("button", {
+							type: "button",
+							role: "tab",
+							"aria-selected": view === id,
+							className: `min-h-10 rounded-full px-4 ${view === id ? "bg-ink text-paper" : ""}`,
+							onClick: () => setView(id),
+							children: id === "2d" ? head.v2d : head.v3d
+						}, id))
+					}) : null,
 					/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
 						className: "mt-3",
-						children: demos[concept.id] ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)(DataDemo, {
+						children: hasDemo ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)(DataDemo, {
 							demo: demos[concept.id],
 							lang
-						}) : /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Stage3D, {
+						}) : hasLab && view === "2d" ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Sim, { id: concept.sim }) : /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Stage3D, {
 							scene: concept.scene,
 							lang
 						})
@@ -7010,7 +7029,7 @@ function ConceptView({ concept }) {
 				className: "mt-6 inline-block text-sm text-accent underline",
 				children: head.onMap
 			}),
-			concept.sim || concept.widget ? /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("section", {
+			concept.sim && hasDemo || concept.widget ? /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("section", {
 				className: "mt-8",
 				children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("h2", {
 					className: "text-xs uppercase tracking-widest text-muted",
@@ -7020,7 +7039,7 @@ function ConceptView({ concept }) {
 					children: [concept.widget ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)(InferWidget, {
 						id: concept.widget,
 						lang
-					}) : null, concept.sim ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Sim, { id: concept.sim }) : null]
+					}) : null, concept.sim && hasDemo ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Sim, { id: concept.sim }) : null]
 				})]
 			}) : null,
 			/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {

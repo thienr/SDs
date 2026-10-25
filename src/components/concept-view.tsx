@@ -1,5 +1,5 @@
 import { Link } from "@tanstack/react-router";
-import { useSyncExternalStore } from "react";
+import { useState, useSyncExternalStore } from "react";
 import { DataDemo } from "@/components/sims/data-demo";
 import { Stage3D } from "@/components/sims/stage3d";
 import { demos } from "@/data/demos";
@@ -25,6 +25,8 @@ const heads = {
     next: "Tiếp theo",
     links: "Dây nối",
     onMap: "Xem trên bản đồ",
+    v2d: "Đồ thị kéo được",
+    v3d: "Cảnh 3D",
   },
   en: {
     why: "What you use it for",
@@ -39,6 +41,8 @@ const heads = {
     next: "Next",
     links: "Connections",
     onMap: "See on the map",
+    v2d: "Interactive chart",
+    v3d: "3D scene",
   },
 } as const;
 
@@ -52,6 +56,9 @@ export function ConceptView({ concept }: { concept: StudyConcept }) {
   const prevText = near.prev ? studyCopy(near.prev, lang) : null;
   const nextText = near.next ? studyCopy(near.next, lang) : null;
   const rel = relatedOf(concept.id);
+  const hasDemo = Boolean(demos[concept.id]);
+  const hasLab = Boolean(concept.sim) && !hasDemo;
+  const [view, setView] = useState<"2d" | "3d">("2d");
   return (
     <article className="reading mx-auto">
       <p className="text-xs uppercase tracking-widest text-muted">{concept.eyebrow} · {concept.session}</p>
@@ -75,8 +82,24 @@ export function ConceptView({ concept }: { concept: StudyConcept }) {
 
       <section className="mt-6">
         <h2 className="text-xs uppercase tracking-widest text-muted">{head.see}</h2>
+        {hasLab ? (
+          <div className="mt-3 inline-flex rounded-full border border-line bg-card p-1 text-sm" role="tablist">
+            {(["2d", "3d"] as const).map((id) => (
+              <button
+                key={id}
+                type="button"
+                role="tab"
+                aria-selected={view === id}
+                className={`min-h-10 rounded-full px-4 ${view === id ? "bg-ink text-paper" : ""}`}
+                onClick={() => setView(id)}
+              >
+                {id === "2d" ? head.v2d : head.v3d}
+              </button>
+            ))}
+          </div>
+        ) : null}
         <div className="mt-3">
-          {demos[concept.id] ? <DataDemo demo={demos[concept.id]} lang={lang} /> : <Stage3D scene={concept.scene} lang={lang} />}
+          {hasDemo ? <DataDemo demo={demos[concept.id]} lang={lang} /> : hasLab && view === "2d" ? <Sim id={concept.sim as string} /> : <Stage3D scene={concept.scene} lang={lang} />}
         </div>
         <p className="mt-3 text-lg leading-relaxed">{text.see}</p>
       </section>
@@ -148,12 +171,12 @@ export function ConceptView({ concept }: { concept: StudyConcept }) {
         </Link>
       )}
 
-      {concept.sim || concept.widget ? (
+      {(concept.sim && hasDemo) || concept.widget ? (
         <section className="mt-8">
           <h2 className="text-xs uppercase tracking-widest text-muted">{head.more}</h2>
           <div className="mt-3">
             {concept.widget ? <InferWidget id={concept.widget} lang={lang} /> : null}
-            {concept.sim ? <Sim id={concept.sim} /> : null}
+            {concept.sim && hasDemo ? <Sim id={concept.sim} /> : null}
           </div>
         </section>
       ) : null}
