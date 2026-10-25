@@ -1,9 +1,10 @@
 import { o as __toESM } from "../_runtime.mjs";
 import { J as require_react, S as require_jsx_runtime, b as Link } from "../_libs/@tanstack/react-router+[...].mjs";
-import { A as studyCopy, B as subscribeRaw, F as getRawVersion, I as getServerRawVersion, M as studyNeighbors, O as subscribeProgress, b as getServerProgress, k as getStudy, r as Route$1, y as getProgress } from "./router-Cmae0Fsu.mjs";
-import { n as Range, r as Sim, t as Lab } from "./labs-DQmdhYN4.mjs";
+import { A as studyCopy, B as subscribeRaw, F as getRawVersion, I as getServerRawVersion, M as studyNeighbors, O as subscribeProgress, b as getServerProgress, j as studyListTitle, k as getStudy, r as Route$1, y as getProgress } from "./router-DKbiobYL.mjs";
+import { n as Range, r as Sim, t as Lab } from "./labs-AIgye1CM.mjs";
 import { t as Tex } from "./tex-t3KOuum9.mjs";
-//#region node_modules/.nitro/vite/services/ssr/assets/khai-niem._conceptId-4JvGE-Sf.js
+import { o as relatedOf } from "./map-IFSRoNC1.mjs";
+//#region node_modules/.nitro/vite/services/ssr/assets/khai-niem._conceptId-CVZt_y9r.js
 var import_react = /* @__PURE__ */ __toESM(require_react());
 var import_jsx_runtime = require_jsx_runtime();
 var wideBeats = {
@@ -3742,7 +3743,9 @@ var heads = {
 		precise: "Nói cho đúng",
 		more: "Kéo thêm",
 		prev: "Từ trước",
-		next: "Tiếp theo"
+		next: "Tiếp theo",
+		links: "Dây nối",
+		onMap: "Xem trên bản đồ"
 	},
 	en: {
 		why: "What you use it for",
@@ -3754,7 +3757,9 @@ var heads = {
 		precise: "The precise version",
 		more: "Try it",
 		prev: "Previous",
-		next: "Next"
+		next: "Next",
+		links: "Connections",
+		onMap: "See on the map"
 	}
 };
 function ConceptView({ concept }) {
@@ -3766,6 +3771,7 @@ function ConceptView({ concept }) {
 	const near = studyNeighbors(concept.id);
 	const prevText = near.prev ? studyCopy(near.prev, lang) : null;
 	const nextText = near.next ? studyCopy(near.next, lang) : null;
+	const rel = relatedOf(concept.id);
 	return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("article", {
 		className: "reading mx-auto",
 		children: [
@@ -3912,6 +3918,38 @@ function ConceptView({ concept }) {
 			/* @__PURE__ */ (0, import_jsx_runtime.jsx)("blockquote", {
 				className: "mt-8 border-l-4 border-accent pl-4 font-display text-2xl leading-snug",
 				children: text.insight
+			}),
+			rel.length > 0 ? /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("section", {
+				className: "mt-8",
+				children: [
+					/* @__PURE__ */ (0, import_jsx_runtime.jsx)("h2", {
+						className: "text-xs uppercase tracking-widest text-muted",
+						children: head.links
+					}),
+					/* @__PURE__ */ (0, import_jsx_runtime.jsx)("ul", {
+						className: "mt-3 space-y-3",
+						children: rel.map((r) => /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("li", { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Link, {
+							to: "/khai-niem/$conceptId",
+							params: { conceptId: r.id },
+							className: "font-medium underline",
+							children: studyListTitle(r.id, lang)
+						}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+							className: "mt-1 text-sm text-muted",
+							children: lang === "en" ? r.en : r.vi
+						})] }, r.id))
+					}),
+					/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Link, {
+						to: "/ban-do",
+						hash: concept.id,
+						className: "mt-3 inline-block text-sm text-accent underline",
+						children: head.onMap
+					})
+				]
+			}) : /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Link, {
+				to: "/ban-do",
+				hash: concept.id,
+				className: "mt-6 inline-block text-sm text-accent underline",
+				children: head.onMap
 			}),
 			concept.sim || concept.widget ? /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("section", {
 				className: "mt-8",

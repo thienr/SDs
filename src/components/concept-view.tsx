@@ -4,7 +4,8 @@ import { Stage3D } from "@/components/sims/stage3d";
 import { Sim } from "@/components/sims/labs";
 import { InferWidget } from "@/components/sims/infer-widgets";
 import { Tex } from "@/components/tex";
-import { studyCopy, studyNeighbors, type StudyConcept } from "@/data/study";
+import { relatedOf } from "@/data/map";
+import { studyCopy, studyListTitle, studyNeighbors, type StudyConcept } from "@/data/study";
 import { getProgress, getServerProgress, subscribeProgress } from "@/lib/progress";
 import { getRawVersion, getServerRawVersion, subscribeRaw } from "@/lib/raw-store";
 
@@ -20,6 +21,8 @@ const heads = {
     more: "Kéo thêm",
     prev: "Từ trước",
     next: "Tiếp theo",
+    links: "Dây nối",
+    onMap: "Xem trên bản đồ",
   },
   en: {
     why: "What you use it for",
@@ -32,6 +35,8 @@ const heads = {
     more: "Try it",
     prev: "Previous",
     next: "Next",
+    links: "Connections",
+    onMap: "See on the map",
   },
 } as const;
 
@@ -44,6 +49,7 @@ export function ConceptView({ concept }: { concept: StudyConcept }) {
   const near = studyNeighbors(concept.id);
   const prevText = near.prev ? studyCopy(near.prev, lang) : null;
   const nextText = near.next ? studyCopy(near.next, lang) : null;
+  const rel = relatedOf(concept.id);
   return (
     <article className="reading mx-auto">
       <p className="text-xs uppercase tracking-widest text-muted">{concept.eyebrow} · {concept.session}</p>
@@ -116,6 +122,29 @@ export function ConceptView({ concept }: { concept: StudyConcept }) {
       </section>
 
       <blockquote className="mt-8 border-l-4 border-accent pl-4 font-display text-2xl leading-snug">{text.insight}</blockquote>
+
+      {rel.length > 0 ? (
+        <section className="mt-8">
+          <h2 className="text-xs uppercase tracking-widest text-muted">{head.links}</h2>
+          <ul className="mt-3 space-y-3">
+            {rel.map((r) => (
+              <li key={r.id}>
+                <Link to="/khai-niem/$conceptId" params={{ conceptId: r.id }} className="font-medium underline">
+                  {studyListTitle(r.id, lang)}
+                </Link>
+                <p className="mt-1 text-sm text-muted">{lang === "en" ? r.en : r.vi}</p>
+              </li>
+            ))}
+          </ul>
+          <Link to="/ban-do" hash={concept.id} className="mt-3 inline-block text-sm text-accent underline">
+            {head.onMap}
+          </Link>
+        </section>
+      ) : (
+        <Link to="/ban-do" hash={concept.id} className="mt-6 inline-block text-sm text-accent underline">
+          {head.onMap}
+        </Link>
+      )}
 
       {concept.sim || concept.widget ? (
         <section className="mt-8">

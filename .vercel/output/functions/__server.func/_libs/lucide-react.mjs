@@ -137,9 +137,72 @@ var Map = createLucideIcon("map", [
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
+var Minus = createLucideIcon("minus", [["path", {
+	d: "M5 12h14",
+	key: "1ays0h"
+}]]);
+/**
+* @license lucide-react v0.510.0 - ISC
+*
+* This source code is licensed under the ISC license.
+* See the LICENSE file in the root directory of this source tree.
+*/
 var Moon = createLucideIcon("moon", [["path", {
 	d: "M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z",
 	key: "a7tn18"
+}]]);
+/**
+* @license lucide-react v0.510.0 - ISC
+*
+* This source code is licensed under the ISC license.
+* See the LICENSE file in the root directory of this source tree.
+*/
+var Network = createLucideIcon("network", [
+	["rect", {
+		x: "16",
+		y: "16",
+		width: "6",
+		height: "6",
+		rx: "1",
+		key: "4q2zg0"
+	}],
+	["rect", {
+		x: "2",
+		y: "16",
+		width: "6",
+		height: "6",
+		rx: "1",
+		key: "8cvhb9"
+	}],
+	["rect", {
+		x: "9",
+		y: "2",
+		width: "6",
+		height: "6",
+		rx: "1",
+		key: "1egb70"
+	}],
+	["path", {
+		d: "M5 16v-3a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1v3",
+		key: "1jsf9p"
+	}],
+	["path", {
+		d: "M12 12V8",
+		key: "2874zd"
+	}]
+]);
+/**
+* @license lucide-react v0.510.0 - ISC
+*
+* This source code is licensed under the ISC license.
+* See the LICENSE file in the root directory of this source tree.
+*/
+var Plus = createLucideIcon("plus", [["path", {
+	d: "M5 12h14",
+	key: "1ays0h"
+}], ["path", {
+	d: "M12 5v14",
+	key: "s699le"
 }]]);
 /**
 * @license lucide-react v0.510.0 - ISC
@@ -283,4 +346,4 @@ var X = createLucideIcon("x", [["path", {
 	key: "d8bk6v"
 }]]);
 //#endregion
-export { Settings as a, Map as c, BookOpen as d, Sun as i, Circle as l, TriangleAlert as n, Search as o, TableOfContents as r, Moon as s, X as t, Check as u };
+export { Settings as a, Network as c, Map as d, Circle as f, Sun as i, Moon as l, BookOpen as m, TriangleAlert as n, Search as o, Check as p, TableOfContents as r, Plus as s, X as t, Minus as u };
