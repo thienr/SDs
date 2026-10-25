@@ -1,7 +1,7 @@
 import { o as __toESM } from "../_runtime.mjs";
 import { J as require_react, S as require_jsx_runtime } from "../_libs/@tanstack/react-router+[...].mjs";
-import { O as subscribeProgress, b as getServerProgress, y as getProgress } from "./router-Dz5qs_-7.mjs";
-//#region node_modules/.nitro/vite/services/ssr/assets/labs-CohWlndb.js
+import { O as subscribeProgress, b as getServerProgress, y as getProgress } from "./router-E7iIJF7x.mjs";
+//#region node_modules/.nitro/vite/services/ssr/assets/labs-Z7di7tsM.js
 var import_react = /* @__PURE__ */ __toESM(require_react());
 var import_jsx_runtime = require_jsx_runtime();
 function cssVar(name, fallback) {
