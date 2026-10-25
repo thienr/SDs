@@ -1,4 +1,4 @@
-import { useEffect, useRef, useSyncExternalStore, type ReactNode } from "react";
+import { useCallback, useEffect, useRef, useSyncExternalStore, type ReactNode } from "react";
 import { getProgress, getServerProgress, subscribeProgress } from "@/lib/progress";
 
 export function cssVar(name: string, fallback: string) {
@@ -6,6 +6,52 @@ export function cssVar(name: string, fallback: string) {
   const value = getComputedStyle(document.documentElement).getPropertyValue(name).trim();
   return value || fallback;
 }
+
+export function tone() {
+  return {
+    ink: cssVar("--ink", "#1c1915"),
+    muted: cssVar("--muted", "#6f675e"),
+    accent: cssVar("--accent", "#b5461f"),
+    good: cssVar("--good", "#2f6b4f"),
+    line: cssVar("--line", "#e4dacb"),
+    card: cssVar("--card", "#fbf7f1"),
+  };
+}
+
+export type Ink = ReturnType<typeof tone>;
+
+/** Số trên trục ngang, nằm sát đáy ô vẽ. */
+export function xTicks(ctx: CanvasRenderingContext2D, c: Ink, h: number, items: [number, string][]) {
+  ctx.fillStyle = c.muted;
+  ctx.strokeStyle = c.line;
+  ctx.font = "11px Outfit, sans-serif";
+  ctx.textAlign = "center";
+  ctx.textBaseline = "alphabetic";
+  items.forEach(([px, label]) => {
+    ctx.beginPath();
+    ctx.moveTo(px, h - 15);
+    ctx.lineTo(px, h - 11);
+    ctx.stroke();
+    ctx.fillText(label, px, h - 2);
+  });
+  ctx.textAlign = "left";
+}
+
+/** Dòng chú thích ở góc trên bên trái: nói trục nào là gì. */
+export function caption(ctx: CanvasRenderingContext2D, c: Ink, text: string) {
+  const maxW = ctx.canvas.getBoundingClientRect().width - 12;
+  let size = 11;
+  ctx.font = `${size}px Outfit, sans-serif`;
+  while (ctx.measureText(text).width > maxW && size > 8) {
+    size -= 0.5;
+    ctx.font = `${size}px Outfit, sans-serif`;
+  }
+  ctx.fillStyle = c.muted;
+  ctx.textAlign = "left";
+  ctx.textBaseline = "alphabetic";
+  ctx.fillText(text, 6, 12);
+}
+
 
 export function useCanvas(draw: (ctx: CanvasRenderingContext2D, w: number, h: number) => void, deps: unknown[]) {
   const ref = useRef<HTMLCanvasElement>(null);
@@ -29,6 +75,17 @@ export function useCanvas(draw: (ctx: CanvasRenderingContext2D, w: number, h: nu
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, deps);
   return ref;
+}
+
+export function useLang(): "vi" | "en" {
+  const lang = useSyncExternalStore(subscribeProgress, getProgress, getServerProgress).lang;
+  return lang === "en" ? "en" : "vi";
+}
+
+/** t("tiếng Việt", "English") chọn theo ngôn ngữ đang bật. */
+export function useT() {
+  const lang = useLang();
+  return useCallback((vi: string, en: string) => (lang === "en" ? en : vi), [lang]);
 }
 
 export function Lab({
