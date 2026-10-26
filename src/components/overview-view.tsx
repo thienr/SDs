@@ -1,4 +1,5 @@
 import { Link } from "@tanstack/react-router";
+import { CodeExplain } from "@/components/code-block";
 import { useState } from "react";
 import type { Overview } from "@/data/overview";
 import { studyListTitle } from "@/data/study";
@@ -27,7 +28,7 @@ export function OverviewBody({ ov, lang }: { ov: Overview; lang: Lang }) {
         if (b.k === "h") return <h2 key={i} className="mt-8 font-display text-2xl leading-snug">{b.x}</h2>;
         if (b.k === "p") return <p key={i} className="mt-3 leading-relaxed">{b.x}</p>;
         if (b.k === "note") return <p key={i} className="mt-4 rounded-xl border-l-4 border-accent bg-paper p-3 leading-relaxed">{b.x}</p>;
-        if (b.k === "code") return <pre key={i} className="mt-3 overflow-x-auto rounded-xl bg-paper p-3 text-sm leading-relaxed"><code>{b.x}</code></pre>;
+        if (b.k === "code") return <CodeExplain key={i} code={b.x} lang={lang}><pre className="mt-3 overflow-x-auto rounded-xl bg-paper p-3 text-sm leading-relaxed"><code>{b.x}</code></pre></CodeExplain>;
         if (b.k === "ul")
           return (
             <ul key={i} className="mt-3 list-disc space-y-2 pl-5 leading-relaxed">

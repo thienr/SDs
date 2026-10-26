@@ -1,3 +1,4 @@
+import { CodeExplain } from "@/components/code-block";
 import { Fragment, useState, useSyncExternalStore, type ReactNode } from "react";
 import type { Assignment, Cell, Guide, Result } from "@/data/assign/types";
 import { getProgress, getServerProgress, subscribeProgress } from "@/lib/progress";
@@ -66,7 +67,8 @@ function Md({ src }: { src: string }) {
       i++;
       while (i < lines.length && !/^\s*```/.test(lines[i])) buf.push(lines[i++]);
       i++;
-      out.push(<pre key={k++} className="my-2 overflow-x-auto rounded-xl bg-paper p-3 text-sm">{buf.join("\n")}</pre>);
+      const body = buf.join("\n");
+      out.push(<CodeExplain key={k++} code={body}><pre className="my-2 overflow-x-auto rounded-xl bg-paper p-3 text-sm">{body}</pre></CodeExplain>);
       continue;
     }
     if (/^\s*\|/.test(line)) {
@@ -139,13 +141,13 @@ function GuideBox({ g, r, t }: { g: Guide; r?: Result; t: (typeof text)["vi"] | 
               {r.text ? <pre className="mt-2 overflow-x-auto rounded-xl bg-paper p-3 text-sm">{r.text}</pre> : null}
               <details className="mt-2">
                 <summary className="min-h-11 cursor-pointer text-sm text-muted">{t.ran}</summary>
-                <pre className="mt-1 overflow-x-auto rounded-xl bg-paper p-3 text-sm">{r.code}</pre>
+                <CodeExplain code={r.code}><pre className="mt-1 overflow-x-auto rounded-xl bg-paper p-3 text-sm">{r.code}</pre></CodeExplain>
               </details>
             </div>
           ) : (
             <>
               <h4 className="mt-4 text-sm font-medium">{t.code}</h4>
-              <pre className="mt-1 overflow-x-auto rounded-xl bg-paper p-3 text-sm">{g.code}</pre>
+              <CodeExplain code={g.code}><pre className="mt-1 overflow-x-auto rounded-xl bg-paper p-3 text-sm">{g.code}</pre></CodeExplain>
             </>
           )}
           {g.read?.length ? (
@@ -188,7 +190,7 @@ function GuideBox({ g, r, t }: { g: Guide; r?: Result; t: (typeof text)["vi"] | 
 function CellView({ c, t }: { c: Cell; t: (typeof text)["vi"] | (typeof text)["en"] }) {
   if (c.t === "code") {
     if (!c.s.trim()) return null;
-    return <pre className="my-2 overflow-x-auto rounded-xl border border-line bg-paper p-3 text-sm" aria-label={t.starter}>{c.s}</pre>;
+    return <CodeExplain code={c.s}><pre className="my-2 overflow-x-auto rounded-xl border border-line bg-paper p-3 text-sm" aria-label={t.starter}>{c.s}</pre></CodeExplain>;
   }
   return <div className="my-1"><Md src={c.s} /></div>;
 }

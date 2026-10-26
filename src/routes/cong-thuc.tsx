@@ -1,3 +1,4 @@
+import { CodeExplain } from "@/components/code-block";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useMemo, useState, useSyncExternalStore } from "react";
 import { Tex } from "@/components/tex";
@@ -77,7 +78,7 @@ function FormulaPage() {
                 {f.code ? (
                   <div className="mt-3">
                     <p className="text-xs uppercase tracking-widest text-muted">{f.codeLang}</p>
-                    <pre className="mt-1 overflow-x-auto rounded-lg bg-ink/5 p-3 text-sm leading-relaxed"><code>{f.code}</code></pre>
+                    <CodeExplain code={f.code} lang={lang} hint={f.codeLang}><pre className="mt-1 overflow-x-auto rounded-lg bg-ink/5 p-3 text-sm leading-relaxed"><code>{f.code}</code></pre></CodeExplain>
                   </div>
                 ) : (
                   <Tex tex={f.tex} block />
