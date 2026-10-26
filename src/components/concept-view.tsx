@@ -1,3 +1,4 @@
+import { ReportCard } from "@/components/report-card";
 import { remember } from "@/data/remember";
 import { Link } from "@tanstack/react-router";
 import { useState, useSyncExternalStore } from "react";
@@ -288,6 +289,8 @@ export function ConceptView({ concept }: { concept: StudyConcept }) {
       )}
 
       <UpgradLink concept={concept} lang={lang} />
+
+      <ReportCard conceptId={concept.id} title={text.title} lang={lang} />
 
       <div className="mt-8 grid gap-3 sm:grid-cols-2">
         {near.prev && prevText ? (
