@@ -1,4 +1,4 @@
-//#region node_modules/.nitro/vite/services/ssr/assets/_tanstack-start-manifest_v-C7hud1nu.js
+//#region node_modules/.nitro/vite/services/ssr/assets/_tanstack-start-manifest_v-Bsr5eqJT.js
 var tsrStartManifest = () => ({ routes: {
 	__root__: {
 		filePath: "/tmp/claude-0/-home-claude/b7900409-a548-5903-9b69-7da6c0ed2a15/scratchpad/repo/src/routes/__root.tsx",
@@ -17,7 +17,7 @@ var tsrStartManifest = () => ({ routes: {
 			"/khoa/$courseId"
 		],
 		preloads: [
-			"/assets/index-CBeHmtjd.js",
+			"/assets/index-DEyT3KJK.js",
 			"/assets/catalog-CzRCyCPn.js",
 			"/assets/preload-helper-B5LIgY8d.js",
 			"/assets/useMatch-CJ0MMYF1.js",
@@ -26,27 +26,27 @@ var tsrStartManifest = () => ({ routes: {
 		scripts: [{ attrs: {
 			type: "module",
 			async: !0,
-			src: "/assets/index-CBeHmtjd.js"
+			src: "/assets/index-DEyT3KJK.js"
 		} }]
 	},
 	"/": {
 		filePath: "/tmp/claude-0/-home-claude/b7900409-a548-5903-9b69-7da6c0ed2a15/scratchpad/repo/src/routes/index.tsx",
 		children: void 0,
-		preloads: ["/assets/routes-DjCvWP5g.js", "/assets/cms-live-DGnknG6E.js"]
+		preloads: ["/assets/routes-CLqRdIgH.js", "/assets/cms-live-slAZ9_F_.js"]
 	},
 	"/ban-do": {
 		filePath: "/tmp/claude-0/-home-claude/b7900409-a548-5903-9b69-7da6c0ed2a15/scratchpad/repo/src/routes/ban-do.tsx",
 		children: void 0,
-		preloads: ["/assets/ban-do-C6six8jw.js", "/assets/map-B0KoN8y8.js"]
+		preloads: ["/assets/ban-do-DuB9qzTo.js", "/assets/map-CMlCMUx8.js"]
 	},
 	"/cong-thuc": {
 		filePath: "/tmp/claude-0/-home-claude/b7900409-a548-5903-9b69-7da6c0ed2a15/scratchpad/repo/src/routes/cong-thuc.tsx",
 		children: void 0,
 		css: ["/assets/tex-Bv5fr4tV.css"],
 		preloads: [
-			"/assets/cong-thuc-B4VNTWpz.js",
+			"/assets/cong-thuc-CAD8kdlv.js",
 			"/assets/tex-AJbpNxbG.js",
-			"/assets/cms-live-DGnknG6E.js"
+			"/assets/reference-wpcugMlz.js"
 		]
 	},
 	"/do-phu": {
@@ -57,7 +57,7 @@ var tsrStartManifest = () => ({ routes: {
 	"/goc": {
 		filePath: "/tmp/claude-0/-home-claude/b7900409-a548-5903-9b69-7da6c0ed2a15/scratchpad/repo/src/routes/goc.tsx",
 		children: void 0,
-		preloads: ["/assets/goc-CPV_00ET.js", "/assets/cms-live-DGnknG6E.js"]
+		preloads: ["/assets/goc-BeRsbeXU.js", "/assets/cms-live-slAZ9_F_.js"]
 	},
 	"/tim-kiem": {
 		filePath: "/tmp/claude-0/-home-claude/b7900409-a548-5903-9b69-7da6c0ed2a15/scratchpad/repo/src/routes/tim-kiem.tsx",
@@ -67,17 +67,17 @@ var tsrStartManifest = () => ({ routes: {
 	"/tu-dien": {
 		filePath: "/tmp/claude-0/-home-claude/b7900409-a548-5903-9b69-7da6c0ed2a15/scratchpad/repo/src/routes/tu-dien.tsx",
 		children: void 0,
-		preloads: ["/assets/tu-dien-Cy5CoD6x.js", "/assets/cms-live-DGnknG6E.js"]
+		preloads: ["/assets/tu-dien-DjKKw4qh.js", "/assets/reference-wpcugMlz.js"]
 	},
 	"/bai/$lessonId": {
 		filePath: "/tmp/claude-0/-home-claude/b7900409-a548-5903-9b69-7da6c0ed2a15/scratchpad/repo/src/routes/bai.$lessonId.tsx",
 		children: void 0,
 		css: ["/assets/tex-Bv5fr4tV.css"],
 		preloads: [
-			"/assets/bai._lessonId-B6U3eAwp.js",
-			"/assets/labs-OuqJuI1S.js",
+			"/assets/bai._lessonId-Dh8sj_f2.js",
+			"/assets/labs-3jj_CRaK.js",
 			"/assets/tex-AJbpNxbG.js",
-			"/assets/cms-live-DGnknG6E.js"
+			"/assets/cms-live-slAZ9_F_.js"
 		]
 	},
 	"/khai-niem/$conceptId": {
@@ -85,16 +85,17 @@ var tsrStartManifest = () => ({ routes: {
 		children: void 0,
 		css: ["/assets/tex-Bv5fr4tV.css"],
 		preloads: [
-			"/assets/khai-niem._conceptId-C_thUp0r.js",
-			"/assets/labs-OuqJuI1S.js",
+			"/assets/khai-niem._conceptId-Ca6kbraF.js",
+			"/assets/labs-3jj_CRaK.js",
 			"/assets/tex-AJbpNxbG.js",
-			"/assets/map-B0KoN8y8.js"
+			"/assets/map-CMlCMUx8.js",
+			"/assets/walk-CO-oO7pe.js"
 		]
 	},
 	"/khoa/$courseId": {
 		filePath: "/tmp/claude-0/-home-claude/b7900409-a548-5903-9b69-7da6c0ed2a15/scratchpad/repo/src/routes/khoa.$courseId.tsx",
 		children: void 0,
-		preloads: ["/assets/khoa._courseId-B2tQbaEU.js", "/assets/cms-live-DGnknG6E.js"]
+		preloads: ["/assets/khoa._courseId-BTPROo6S.js", "/assets/cms-live-slAZ9_F_.js"]
 	}
 } });
 //#endregion
