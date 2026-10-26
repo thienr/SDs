@@ -368,7 +368,7 @@ export const c4En: Record<string, C4En> = {
     prior: "Holt has a level and a slope. The season is the third component, and it needs a period you set.",
     see: "This picture shows Holt-Winters. A wave repeats on a level, and the wave's period is supplied by you.",
     plain: "Holt-Winters adds a seasonal component to level and slope. The period is an input, not a result.",
-    situation: "Weekly forms with period 7. Holt-Winters needs you to say 7; it doesn't decide between 7 and 52. You need more than one cycle to see the shape. With one year of weekly data, the annual season has not repeated even once.",
+    situation: "Daily forms with period 7. Holt-Winters needs you to say 7; it doesn't decide between 7 and 52. You need more than one cycle to see the shape. With one year of weekly data, the annual season has not repeated even once.",
     use: [
       "Supply the period: 7, 52 or 12.",
       "Have at least two cycles before trusting a season.",

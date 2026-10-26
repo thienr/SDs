@@ -560,7 +560,7 @@ export const mlEn: Record<string, MlEn> = {
       "Merge by a stated rule: nearest point, farthest point, or average.",
       "Cut the tree horizontally at a height you can explain.",
     ],
-    precise: "A dendrogram is the tree diagram that records the merges. The height of a joint shows how far apart the two groups were at that moment. Linkage is the rule for measuring distance between groups. Plugging in: if the last two joints are at heights 5 and 8, a cut at height 6 gives 3 groups, while a cut at height 9 gives only 1 group. Common mix-up: the cut is still your choice, and you need to standardize the columns first, otherwise the money column will overpower the others.",
+    precise: "A dendrogram is the tree diagram that records the merges. The height of a joint shows how far apart the two groups were at that moment. Linkage is the rule for measuring distance between groups. Plugging in: if the last two joints are at heights 5 and 8, a cut at height 6 (above the joint at 5, below the joint at 8) gives 2 groups, while a cut at height 9 gives only 1 group. For 3 groups, cut below 5. Common mix-up: the cut is still your choice, and you need to standardize the columns first, otherwise the money column will overpower the others.",
     insight: "The tree shows how groups nest, but you still have to cut it and name the pieces.",
     symbols: [],
   },

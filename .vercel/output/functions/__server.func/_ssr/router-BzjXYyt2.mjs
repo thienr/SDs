@@ -3,7 +3,7 @@ import { c as lessons, o as getLesson, r as courses$1 } from "./catalog-DhneT6we
 import { J as require_react, S as require_jsx_runtime, _ as lazyRouteComponent, b as Link, d as Scripts, f as HeadContent, g as Outlet, h as createRouter, p as useRouterState, v as createFileRoute, x as useRouter, y as createRootRoute } from "../_libs/@tanstack/react-router+[...].mjs";
 import { a as Settings, c as Moon, d as ChevronRight, i as Sun, l as Map$1, n as TriangleAlert, o as Search, p as BookOpen, r as TableOfContents, s as Network, t as X } from "../_libs/lucide-react.mjs";
 import { a as union, i as string, n as number, r as object, t as literal } from "../_libs/zod.mjs";
-//#region node_modules/.nitro/vite/services/ssr/assets/router-9fV-CodP.js
+//#region node_modules/.nitro/vite/services/ssr/assets/router-BzjXYyt2.js
 var import_react = /* @__PURE__ */ __toESM(require_react());
 var import_jsx_runtime = require_jsx_runtime();
 var __defProp = Object.defineProperty;
@@ -15697,7 +15697,7 @@ var c4En = {
 		prior: "Holt has a level and a slope. The season is the third component, and it needs a period you set.",
 		see: "This picture shows Holt-Winters. A wave repeats on a level, and the wave's period is supplied by you.",
 		plain: "Holt-Winters adds a seasonal component to level and slope. The period is an input, not a result.",
-		situation: "Weekly forms with period 7. Holt-Winters needs you to say 7; it doesn't decide between 7 and 52. You need more than one cycle to see the shape. With one year of weekly data, the annual season has not repeated even once.",
+		situation: "Daily forms with period 7. Holt-Winters needs you to say 7; it doesn't decide between 7 and 52. You need more than one cycle to see the shape. With one year of weekly data, the annual season has not repeated even once.",
 		use: [
 			"Supply the period: 7, 52 or 12.",
 			"Have at least two cycles before trusting a season.",
@@ -16414,7 +16414,7 @@ var c4Concepts = [
 				title: "Holt-Winters: có mùa khi bạn đưa chu kỳ vào, máy không tự tìm",
 				see: "Hình này thể hiện Holt-Winters. Một sóng lặp lại trên một mức, và chu kỳ của sóng là do bạn đưa vào.",
 				scene: "x-hw",
-				situation: "Form theo tuần với chu kỳ 7. Holt-Winters cần bạn nói 7, nó không tự quyết định là 7 hay 52. Cần hơn một vòng để thấy hình dạng. Với một năm dữ liệu theo tuần, mùa năm chưa lặp lại lần nào.",
+				situation: "Form theo ngày với chu kỳ 7. Holt-Winters cần bạn nói 7, nó không tự quyết định là 7 hay 52. Cần hơn một vòng để thấy hình dạng. Với một năm dữ liệu theo tuần, mùa năm chưa lặp lại lần nào.",
 				use: [
 					"Đưa chu kỳ vào: 7, 52 hoặc 12.",
 					"Có ít nhất hai vòng dữ liệu trước khi tin một mùa.",
@@ -17856,7 +17856,7 @@ var restEn = {
 			"Tell apart a group that is both high and wide from a group that is high and tight.",
 			"With many groups, don't open a test for every pair while you are still looking."
 		],
-		precise: "A group mean hides the spread. Plugging in: GDN has 4 weeks totalling 160 so the mean is 40, and the weeks differ by only 2 forms. Facebook totals 160 so the mean is 40, but one week has only 10 and another has 100. Common mix-up: a channel that is high because of one holiday week differs from a channel that is high every week. If a test is needed, it must be written in advance and not be one test for every pair you just saw.",
+		precise: "A group mean hides the spread. Plugging in: GDN has 4 weeks totalling 160 so the mean is 40, and every week is within 2 forms of the mean (38 to 42 spans 4 forms). Facebook totals 160 so the mean is 40, but one week has only 10 and another has 100. Common mix-up: a channel that is high because of one holiday week differs from a channel that is high every week. If a test is needed, it must be written in advance and not be one test for every pair you just saw.",
 		insight: "A group name does not sit on a number axis; don't ask for its r.",
 		symbols: []
 	},
@@ -18926,7 +18926,7 @@ var restSessions = [
 					"Khi có nhiều nhóm, đừng mở một kiểm định cho từng cặp trong lúc đang xem."
 				],
 				plain: "Khi một cột số gặp một cột chữ, bạn so sánh các đám dữ liệu theo nhóm. Không có hệ số tương quan cho một cái tên.",
-				precise: "Trung bình nhóm giấu độ rộng. Thế số: GDN có 4 tuần, tổng 160 nên trung bình 40, các tuần chỉ lệch 2 form. Facebook tổng 160 nên trung bình 40, nhưng có tuần chỉ 10 và có tuần 100. Dễ nhầm: một kênh trung bình cao nhờ một tuần lễ khác với một kênh tuần nào cũng cao. Nếu cần kiểm định, nó phải được viết trước và không phải một cuộc cho mọi cặp bạn vừa nhìn thấy.",
+				precise: "Trung bình nhóm giấu độ rộng. Thế số: GDN có 4 tuần, tổng 160 nên trung bình 40, mỗi tuần cách trung bình tối đa 2 form (38 đến 42 là khoảng 4 form). Facebook tổng 160 nên trung bình 40, nhưng có tuần chỉ 10 và có tuần 100. Dễ nhầm: một kênh trung bình cao nhờ một tuần lễ khác với một kênh tuần nào cũng cao. Nếu cần kiểm định, nó phải được viết trước và không phải một cuộc cho mọi cặp bạn vừa nhìn thấy.",
 				formula: null,
 				symbols: [],
 				sim: null,
@@ -23164,7 +23164,7 @@ var gapEn = {
 		title: "Text functions return text; they don't turn text into numbers",
 		why: "So the LEFT of a code isn't added up like money.",
 		prior: "Cells in C0 already have types. The text functions of advanced Excel still return text.",
-		see: "This picture shows text functions such as LEFT, RIGHT, MID and TRIM. All of them return text. To get a number you need a deliberate type conversion on top. LEFT of \"80 form\" takes out \"80\", which is still text, so adding that column gives 0 or a joined string, depending on the cell.",
+		see: "This picture shows text functions such as LEFT, RIGHT, MID and TRIM. All of them return text. To get a number you need a deliberate type conversion on top. LEFT of \"80 form\" takes out \"80\", which is still text, so SUM skips that column and gives 0, while & joins strings; to make it a number, convert on purpose (VALUE or *1).",
 		plain: "Cleaning text is one step. Converting to a number is a later step, and only when it really is a number.",
 		situation: "For code F-12, LEFT takes the letter F and TRIM removes extra spaces. None of them gives the number 12 unless you split and convert the type. A column of codes shouldn't be added.",
 		use: [
@@ -24305,7 +24305,7 @@ var gapEn = {
 		title: "A template is a mold with blanks; for a blank, don't let the model fill in the source",
 		why: "So a missing prompt variable isn't replaced by the model's memory.",
 		prior: "A prompt is the task, the context and the output format. A template is how the product fills those places from data instead of by hand each time.",
-		see: "This picture shows a template in LangChain. A template has variables. A variable not passed leaves that place blank or raises an error, depending on how you write it. Don't make the model \"figure out the blank\". If the `policy` variable isn't passed and the model still writes a policy, that is a policy with no source.",
+		see: "This picture shows a template in LangChain. A template has variables. A variable not passed makes LangChain raise an error rather than quietly leave a blank. Don't make the model \"figure out the blank\". If the `policy` variable isn't passed and the model still writes a policy, that is a policy with no source.",
 		plain: "If a variable is missing, stop, or say it is missing. Don't call the model.",
 		situation: "The mold \"use only the following passage: {passage}\". If passage is empty but the call is still made, every later answer is outside RAG, even though the code sits in a library called LangChain.",
 		use: [
@@ -27630,7 +27630,7 @@ var gapConcepts = [
 		module: "Advanced Excel",
 		video: "Text functions",
 		title: "Hàm xử lý chuỗi trả về chữ; nó không biến chữ thành số",
-		see: "Hình này thể hiện các hàm chuỗi như LEFT, RIGHT, MID và TRIM. Chúng đều trả về chữ. Muốn có số thì cần bọc thêm một lần đổi kiểu có chủ đích. LEFT của «80 form» lấy ra «80» vẫn là chữ, nên cộng cột đó cho ra 0 hoặc ra chuỗi nối, tùy ô.",
+		see: "Hình này thể hiện các hàm chuỗi như LEFT, RIGHT, MID và TRIM. Chúng đều trả về chữ. Muốn có số thì cần bọc thêm một lần đổi kiểu có chủ đích. LEFT của «80 form» lấy ra «80» vẫn là chữ, nên SUM bỏ qua cột đó và ra 0, còn & thì nối chuỗi; muốn thành số phải đổi có chủ ý (VALUE hoặc *1).",
 		scene: "g-xa-text",
 		situation: "Mã F-12: LEFT lấy chữ F, TRIM bỏ dấu cách thừa. Không hàm nào trong đó ra số 12 trừ khi bạn tách rồi đổi kiểu. Cột mã không nên được cộng.",
 		use: [
@@ -29493,7 +29493,7 @@ var gapConcepts = [
 		module: "LangChain",
 		video: "Templates",
 		title: "Template là một khuôn có các chỗ trống; chỗ trống thì đừng để mô hình tự điền nguồn",
-		see: "Hình này thể hiện template trong LangChain. Template có các biến. Biến không được truyền thì chỗ đó trống hoặc báo lỗi, tùy cách bạn viết. Đừng bắt mô hình «tự hiểu chỗ trống». Nếu biến `policy` không được truyền mà mô hình vẫn viết một chính sách, thì đó là một chính sách không có nguồn.",
+		see: "Hình này thể hiện template trong LangChain. Template có các biến. Biến không được truyền thì LangChain báo lỗi thay vì để trống âm thầm. Đừng bắt mô hình «tự hiểu chỗ trống». Nếu biến `policy` không được truyền mà mô hình vẫn viết một chính sách, thì đó là một chính sách không có nguồn.",
 		scene: "g-lc-tpl",
 		situation: "Khuôn «chỉ dùng đoạn sau: {passage}». Nếu passage rỗng mà vẫn gọi thì mọi câu trả lời sau đó nằm ngoài RAG, dù code nằm trong một thư viện tên LangChain.",
 		use: [
@@ -30187,7 +30187,7 @@ var mlEn = {
 			"Merge by a stated rule: nearest point, farthest point, or average.",
 			"Cut the tree horizontally at a height you can explain."
 		],
-		precise: "A dendrogram is the tree diagram that records the merges. The height of a joint shows how far apart the two groups were at that moment. Linkage is the rule for measuring distance between groups. Plugging in: if the last two joints are at heights 5 and 8, a cut at height 6 gives 3 groups, while a cut at height 9 gives only 1 group. Common mix-up: the cut is still your choice, and you need to standardize the columns first, otherwise the money column will overpower the others.",
+		precise: "A dendrogram is the tree diagram that records the merges. The height of a joint shows how far apart the two groups were at that moment. Linkage is the rule for measuring distance between groups. Plugging in: if the last two joints are at heights 5 and 8, a cut at height 6 (above the joint at 5, below the joint at 8) gives 2 groups, while a cut at height 9 gives only 1 group. For 3 groups, cut below 5. Common mix-up: the cut is still your choice, and you need to standardize the columns first, otherwise the money column will overpower the others.",
 		insight: "The tree shows how groups nest, but you still have to cut it and name the pieces.",
 		symbols: []
 	},
@@ -31268,7 +31268,7 @@ var mlConcepts = [
 					"Cắt ngang cây ở một độ cao mà bạn giải thích được."
 				],
 				plain: "Gom cụm phân cấp dán dần các nhóm gần nhau từng bước. Bạn cắt cây ở một độ cao để ra một số nhóm K.",
-				precise: "Dendrogram là sơ đồ cây ghi lại các lần dán. Độ cao của một mối nối cho biết hai nhóm lúc đó cách nhau bao xa. Linkage là quy tắc đo khoảng cách giữa các nhóm. Thế số: giả sử hai mối nối cuối cùng ở độ cao 5 và 8. Nhát cắt tại độ cao 6 cho 3 nhóm, còn nhát cắt tại độ cao 9 chỉ cho 1 nhóm. Dễ nhầm: nhát cắt vẫn là một lựa chọn của bạn, và cần chuẩn hóa các cột trước, nếu không cột tiền sẽ át các cột khác.",
+				precise: "Dendrogram là sơ đồ cây ghi lại các lần dán. Độ cao của một mối nối cho biết hai nhóm lúc đó cách nhau bao xa. Linkage là quy tắc đo khoảng cách giữa các nhóm. Thế số: giả sử hai mối nối cuối cùng ở độ cao 5 và 8. Nhát cắt tại độ cao 6 (trên mối nối ở 5, dưới mối nối ở 8) cho 2 nhóm, còn nhát cắt tại độ cao 9 chỉ cho 1 nhóm. Muốn 3 nhóm thì cắt thấp hơn 5. Dễ nhầm: nhát cắt vẫn là một lựa chọn của bạn, và cần chuẩn hóa các cột trước, nếu không cột tiền sẽ át các cột khác.",
 				formula: null,
 				symbols: [],
 				sim: "kmeans",
@@ -35551,19 +35551,19 @@ function RootComponent() {
 		] })]
 	});
 }
-var $$splitComponentImporter$9 = () => import("./routes-B0m3UEV0.mjs");
+var $$splitComponentImporter$9 = () => import("./routes-BM3dRhOy.mjs");
 var Route$11 = createFileRoute("/")({ component: lazyRouteComponent($$splitComponentImporter$9, "component") });
-var $$splitComponentImporter$8 = () => import("./ban-do-B_RivYOE.mjs");
+var $$splitComponentImporter$8 = () => import("./ban-do-K_FsR2I9.mjs");
 var Route$10 = createFileRoute("/ban-do")({ component: lazyRouteComponent($$splitComponentImporter$8, "component") });
-var $$splitComponentImporter$7 = () => import("./cong-thuc-B6HpkB9X.mjs");
+var $$splitComponentImporter$7 = () => import("./cong-thuc-k4yH4HlT.mjs");
 var Route$9 = createFileRoute("/cong-thuc")({ component: lazyRouteComponent($$splitComponentImporter$7, "component") });
 var $$splitComponentImporter$6 = () => import("./do-phu-kafhI8o9.mjs");
 var Route$8 = createFileRoute("/do-phu")({ component: lazyRouteComponent($$splitComponentImporter$6, "component") });
-var $$splitComponentImporter$5 = () => import("./goc-nBYKCRO4.mjs");
+var $$splitComponentImporter$5 = () => import("./goc-Bw6reUc-.mjs");
 var Route$7 = createFileRoute("/goc")({ component: lazyRouteComponent($$splitComponentImporter$5, "component") });
 var $$splitComponentImporter$4 = () => import("./tim-kiem-7KFEY_R2.mjs");
 var Route$6 = createFileRoute("/tim-kiem")({ component: lazyRouteComponent($$splitComponentImporter$4, "component") });
-var $$splitComponentImporter$3 = () => import("./tu-dien-cbfXSjqa.mjs");
+var $$splitComponentImporter$3 = () => import("./tu-dien-DTtFhQ3G.mjs");
 var Route$5 = createFileRoute("/tu-dien")({ component: lazyRouteComponent($$splitComponentImporter$3, "component") });
 var CORS = {
 	"access-control-allow-origin": "*",
@@ -36410,11 +36410,11 @@ var Route$3 = createFileRoute("/api/so-muc")({ server: { handlers: {
 	POST: ({ request }) => handleSoMucPost(request),
 	OPTIONS: () => apiEmpty(204)
 } } });
-var $$splitComponentImporter$2 = () => import("./bai._lessonId-0rrFzNFI.mjs");
+var $$splitComponentImporter$2 = () => import("./bai._lessonId-BiP0c_6d.mjs");
 var Route$2 = createFileRoute("/bai/$lessonId")({ component: lazyRouteComponent($$splitComponentImporter$2, "component") });
-var $$splitComponentImporter$1 = () => import("./khai-niem._conceptId-B8mrzLvd.mjs");
+var $$splitComponentImporter$1 = () => import("./khai-niem._conceptId-DB2-NOxs.mjs");
 var Route$1 = createFileRoute("/khai-niem/$conceptId")({ component: lazyRouteComponent($$splitComponentImporter$1, "component") });
-var $$splitComponentImporter = () => import("./khoa._courseId-CJYhhMXf.mjs");
+var $$splitComponentImporter = () => import("./khoa._courseId-Cw-1HFKY.mjs");
 var Route = createFileRoute("/khoa/$courseId")({ component: lazyRouteComponent($$splitComponentImporter, "component") });
 var rootRouteChildren = {
 	IndexRoute: Route$11.update({

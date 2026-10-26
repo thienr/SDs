@@ -862,7 +862,7 @@ export const mlSessions: { title: string; module: string; concepts: Card[] }[] =
           "Cắt ngang cây ở một độ cao mà bạn giải thích được.",
         ],
         plain: "Gom cụm phân cấp dán dần các nhóm gần nhau từng bước. Bạn cắt cây ở một độ cao để ra một số nhóm K.",
-        precise: "Dendrogram là sơ đồ cây ghi lại các lần dán. Độ cao của một mối nối cho biết hai nhóm lúc đó cách nhau bao xa. Linkage là quy tắc đo khoảng cách giữa các nhóm. Thế số: giả sử hai mối nối cuối cùng ở độ cao 5 và 8. Nhát cắt tại độ cao 6 cho 3 nhóm, còn nhát cắt tại độ cao 9 chỉ cho 1 nhóm. Dễ nhầm: nhát cắt vẫn là một lựa chọn của bạn, và cần chuẩn hóa các cột trước, nếu không cột tiền sẽ át các cột khác.",
+        precise: "Dendrogram là sơ đồ cây ghi lại các lần dán. Độ cao của một mối nối cho biết hai nhóm lúc đó cách nhau bao xa. Linkage là quy tắc đo khoảng cách giữa các nhóm. Thế số: giả sử hai mối nối cuối cùng ở độ cao 5 và 8. Nhát cắt tại độ cao 6 (trên mối nối ở 5, dưới mối nối ở 8) cho 2 nhóm, còn nhát cắt tại độ cao 9 chỉ cho 1 nhóm. Muốn 3 nhóm thì cắt thấp hơn 5. Dễ nhầm: nhát cắt vẫn là một lựa chọn của bạn, và cần chuẩn hóa các cột trước, nếu không cột tiền sẽ át các cột khác.",
         formula: null,
         symbols: [],
         sim: "kmeans",

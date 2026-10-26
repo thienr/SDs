@@ -435,7 +435,7 @@ export const restEn: Record<string, RestEn> = {
       "Tell apart a group that is both high and wide from a group that is high and tight.",
       "With many groups, don't open a test for every pair while you are still looking.",
     ],
-    precise: "A group mean hides the spread. Plugging in: GDN has 4 weeks totalling 160 so the mean is 40, and the weeks differ by only 2 forms. Facebook totals 160 so the mean is 40, but one week has only 10 and another has 100. Common mix-up: a channel that is high because of one holiday week differs from a channel that is high every week. If a test is needed, it must be written in advance and not be one test for every pair you just saw.",
+    precise: "A group mean hides the spread. Plugging in: GDN has 4 weeks totalling 160 so the mean is 40, and every week is within 2 forms of the mean (38 to 42 spans 4 forms). Facebook totals 160 so the mean is 40, but one week has only 10 and another has 100. Common mix-up: a channel that is high because of one holiday week differs from a channel that is high every week. If a test is needed, it must be written in advance and not be one test for every pair you just saw.",
     insight: "A group name does not sit on a number axis; don't ask for its r.",
     symbols: [],
   },
