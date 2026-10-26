@@ -161,7 +161,7 @@ export const addEn: Record<string, AddEn> = {
       "Read λ as the stretch factor, with a negative λ meaning a flip.",
       "Remember that not every matrix has enough eigenvectors to serve as axes.",
     ],
-    precise: "Av = λv, with v nonzero. λ is the eigenvalue and v the matching eigenvector. Plugging in: A = [[2, 0], [0, 1]] and v = (1, 0) give Av = (2, 0) = 2v, so λ = 2. With v = (1, 1) we get Av = (2, 1), not a multiple of v, so v is not an eigenvector. Eigendecomposition writes a matrix as change axes, stretch by the λ's, change axes back, when there are enough independent eigenvectors. A shear matrix may lack both such directions over the reals.",
+    precise: "Av = λv, with v nonzero. λ is the eigenvalue and v the matching eigenvector. Plugging in: A = [[2, 0], [0, 1]] and v = (1, 0) give Av = (2, 0) = 2v, so λ = 2. With v = (1, 1) we get Av = (2, 1), not a multiple of v, so v is not an eigenvector. Eigendecomposition writes a matrix as change axes, stretch by the λ's, change axes back, when there are enough independent eigenvectors. A shear has only one eigen-direction, so it cannot be diagonalised, while a rotation has none over the reals.",
     insight: "Not every direction is an eigenvector; you must check the output direction is still the input direction.",
     symbols: [
       "v is the direction that is not rotated by the matrix; in the example (1, 0).",

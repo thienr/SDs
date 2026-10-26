@@ -425,7 +425,7 @@ export const gapConcepts: Card[] = [
     module: "M1",
     video: "A cell",
     title: "Một ô trong Excel chứa số, chữ hoặc công thức",
-    see: "Hình này thể hiện ba loại nội dung của một ô (cell). Ô số cộng được, ô chữ chỉ nối được, và công thức tự tính lại khi ô nó tham chiếu đổi. «80» cộng «20» dạng chữ ra «8020», không ra 100.",
+    see: "Hình này thể hiện ba loại nội dung của một ô (cell). Ô số cộng được, ô chữ thì SUM bỏ qua, và công thức tự tính lại khi ô nó tham chiếu đổi. Nối «80» và «20» dạng chữ bằng & ra «8020», không ra 100.",
     scene: "g-xl-cell",
     situation: "Cột form bị để dạng chữ vì có dấu cách thừa. Tổng cả cột ra 0, nhưng điều đó không có nghĩa là tuần đó hết form. Hàm SUM bỏ qua các ô chữ mà không báo lỗi.",
     use: [
@@ -3575,7 +3575,7 @@ export const gapConcepts: Card[] = [
           "Không gọi bookmark là phân quyền.",
         ],
     plain: "Muốn giấu dữ liệu thì viết role. Muốn giúp người xem tập trung thì dùng slicer.",
-    precise: "RLS lọc trên mô hình theo vai trò. Một measure dùng CALCULATE để bỏ bộ lọc có thể vô tình nhìn ra ngoài vai trò, tùy cách viết, nên phải kiểm bằng đúng tài khoản. Ẩn một trang không phải RLS: ai biết đường vẫn vào được và dữ liệu vẫn nằm trong mô hình của họ. Thế số: 4 trưởng kênh cần 4 role, mỗi role giữ đúng dòng của mã kênh tương ứng.",
+    precise: "RLS lọc trên mô hình theo vai trò. DAX không gỡ được bộ lọc của RLS (CALCULATE, ALL hay REMOVEFILTERS chỉ thu hẹp thêm, không nới ra). Cái hay sai là cách viết role, nhất là role động dùng USERPRINCIPALNAME, và bộ lọc trên một bảng lan sang bảng khác qua quan hệ, nên phải kiểm bằng «view as» đúng tài khoản. Ẩn một trang không phải RLS: ai biết đường vẫn vào được và dữ liệu vẫn nằm trong mô hình của họ. Thế số: 4 trưởng kênh cần 4 role, mỗi role giữ đúng dòng của mã kênh tương ứng.",
     formula: null,
     symbols: [],
     sim: null,

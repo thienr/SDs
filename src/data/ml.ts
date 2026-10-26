@@ -192,7 +192,7 @@ export const mlSessions: { title: string; module: string; concepts: Card[] }[] =
         use: [
           "Dùng biểu đồ phần dư theo giá trị đường dự đoán, hoặc theo x, để kiểm tra mô hình.",
           "Một dải ngẫu nhiên, không có hình dạng, là kết quả mong muốn.",
-          "Hình cong, hình kèn hoặc một cụm tuần cùng nằm một phía cho thấy đường đang thiếu một yếu tố.",
+          "Hình cong hoặc một cụm tuần cùng nằm một phía cho thấy đường đang thiếu một yếu tố; hình kèn (độ tản ra không đều) cho thấy sai số không đều. Ngoài ra, histogram phần dư nên gần dạng chuông và tập trung quanh 0.",
         ],
         plain: "Phần dư là số thật trừ số trên đường. Biểu đồ phần dư là nơi các vấn đề của mô hình lộ ra.",
         precise: "Phần dư là e = y − ŷ. Thế số: e = 90 − 80 = +10. Khi đường có hệ số chặn, tổng các phần dư gần bằng 0, nên không thể yên tâm chỉ vì «phần dư trung bình bằng 0». Cần nhìn hình của chúng. Dễ nhầm: dự đoán cho tuần mới là số trên đường, còn cỡ phần dư cho biết đường đã trượt bao xa ở các tuần tương tự.",
@@ -267,7 +267,7 @@ export const mlSessions: { title: string; module: string; concepts: Card[] }[] =
         sim: "gd",
         widget: null,
         insight: "Mô hình được dẫn đến đáy của hàm chi phí mà bạn đã chọn, chứ không được «dạy» một cách trừu tượng.",
-        why: "Để bạn thấy máy đang làm nhỏ đại lượng nào khi không còn công thức gọn để giải trực tiếp.",
+        why: "Để bạn thấy máy đang làm nhỏ đại lượng nào khi bạn không giải trực tiếp được hoặc không muốn giải (nhiều cột, hoặc mô hình không có công thức đóng).",
         prior: "Với một cột đầu vào, có công thức cho đường tốt nhất. Với nhiều hệ số, ta phải tìm dần, và muốn tìm thì cần một hàm chi phí.",
       }),
       card({

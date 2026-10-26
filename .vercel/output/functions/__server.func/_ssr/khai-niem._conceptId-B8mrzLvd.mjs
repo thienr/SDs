@@ -1,12 +1,12 @@
 import { o as __toESM } from "../_runtime.mjs";
 import { n as course_default } from "./catalog-DhneT6we.mjs";
 import { J as require_react, S as require_jsx_runtime, b as Link } from "../_libs/@tanstack/react-router+[...].mjs";
-import { B as getServerRawVersion, F as studyListTitle, G as overviews, I as studyNeighbors, K as getAssignmentByConcept, N as getStudy, P as studyCopy, W as subscribeRaw, b as subscribeProgress, d as getProgress, f as getServerProgress, r as Route$1, z as getRawVersion } from "./router-D2ogNbnO.mjs";
-import { n as Tex, t as CodeExplain } from "./tex-C4hnRKYp.mjs";
-import { n as Range, r as Sim, t as Lab } from "./labs-CmQwJMbe.mjs";
-import { r as relatedOf } from "./map-CTzSiltU.mjs";
+import { B as getServerRawVersion, F as studyListTitle, G as overviews, I as studyNeighbors, K as getAssignmentByConcept, N as getStudy, P as studyCopy, W as subscribeRaw, b as subscribeProgress, d as getProgress, f as getServerProgress, r as Route$1, z as getRawVersion } from "./router-9fV-CodP.mjs";
+import { n as Tex, t as CodeExplain } from "./tex-BJrbv3NU.mjs";
+import { n as Range, r as Sim, t as Lab } from "./labs-BYVJYmoN.mjs";
+import { r as relatedOf } from "./map-DfZEWy05.mjs";
 import { t as walks } from "./walk-BWyJOgjD.mjs";
-//#region node_modules/.nitro/vite/services/ssr/assets/khai-niem._conceptId-C9w4e884.js
+//#region node_modules/.nitro/vite/services/ssr/assets/khai-niem._conceptId-B8mrzLvd.js
 var import_react = /* @__PURE__ */ __toESM(require_react());
 var import_jsx_runtime = require_jsx_runtime();
 var ui = {
@@ -3743,7 +3743,7 @@ var m4 = {
 			c: "green",
 			s: 3.4
 		})),
-		F("Trung bình bị tuần 120 kéo lên 30: hai số cách nhau xa là dấu hiệu có đuôi.", "The mean is dragged to 30 by week 120: two numbers far apart signal a tail.", bars("b", [
+		F("Trung bình bị tuần 120 kéo lên khoảng 32,5: hai số cách nhau xa là dấu hiệu có đuôi.", "The mean is dragged to about 32.5 by week 120: two numbers far apart signal a tail.", bars("b", [
 			18,
 			19,
 			20,
