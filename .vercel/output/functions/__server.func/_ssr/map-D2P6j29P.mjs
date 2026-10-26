@@ -1,5 +1,5 @@
-import { q as sessionConcepts } from "./router-BmhFvZJd.mjs";
-//#region node_modules/.nitro/vite/services/ssr/assets/map-BBdo8rgG.js
+import { q as sessionConcepts } from "./router-u5WgQmaY.mjs";
+//#region node_modules/.nitro/vite/services/ssr/assets/map-D2P6j29P.js
 var relatedLinks = [
 	[
 		"permut",

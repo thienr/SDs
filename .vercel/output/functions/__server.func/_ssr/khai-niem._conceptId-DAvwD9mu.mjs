@@ -1,14 +1,127 @@
 import { o as __toESM } from "../_runtime.mjs";
 import { n as course_default } from "./catalog-DhneT6we.mjs";
 import { J as require_react, S as require_jsx_runtime, b as Link } from "../_libs/@tanstack/react-router+[...].mjs";
-import { B as getServerRawVersion, F as studyListTitle, G as overviews, I as studyNeighbors, K as getAssignmentByConcept, N as getStudy, P as studyCopy, W as subscribeRaw, b as subscribeProgress, d as getProgress, f as getServerProgress, r as Route$1, z as getRawVersion } from "./router-BmhFvZJd.mjs";
-import { n as Tex, t as CodeExplain } from "./tex-CLDRIoL5.mjs";
-import { n as Range, r as Sim, t as Lab } from "./labs-B_32xfHI.mjs";
-import { r as relatedOf } from "./map-BBdo8rgG.mjs";
+import { B as getServerRawVersion, F as studyListTitle, G as overviews, I as studyNeighbors, K as getAssignmentByConcept, N as getStudy, P as studyCopy, W as subscribeRaw, b as subscribeProgress, d as getProgress, f as getServerProgress, r as Route$1, z as getRawVersion } from "./router-u5WgQmaY.mjs";
+import { n as Tex, t as CodeExplain } from "./tex-BCdRTTup.mjs";
+import { n as Range, r as Sim, t as Lab } from "./labs-BBni6P3b.mjs";
+import { r as relatedOf } from "./map-D2P6j29P.mjs";
+import { a as useReports, t as addReport } from "./report-store-DANHpKt5.mjs";
 import { t as walks } from "./walk-BWyJOgjD.mjs";
-//#region node_modules/.nitro/vite/services/ssr/assets/khai-niem._conceptId-LlKJs3Qo.js
+//#region node_modules/.nitro/vite/services/ssr/assets/khai-niem._conceptId-DAvwD9mu.js
 var import_react = /* @__PURE__ */ __toESM(require_react());
 var import_jsx_runtime = require_jsx_runtime();
+var words = {
+	vi: {
+		ask: "Thẻ này có vấn đề?",
+		wrong: "Báo thẻ sai",
+		unclear: "Khó hiểu",
+		notePh: "Ghi thêm chỗ nào sai hoặc khó hiểu (không bắt buộc)",
+		send: "Lưu báo cáo",
+		cancel: "Hủy",
+		done: "Đã lưu. Gửi danh sách này cho Claude để sửa.",
+		view: (n) => `Xem ${n} báo cáo`,
+		mine: (n) => `Thẻ này đã có ${n} báo cáo của bạn.`
+	},
+	en: {
+		ask: "Something wrong with this card?",
+		wrong: "Report an error",
+		unclear: "Hard to follow",
+		notePh: "Say what is wrong or unclear (optional)",
+		send: "Save report",
+		cancel: "Cancel",
+		done: "Saved. Send the list to Claude to fix.",
+		view: (n) => `View ${n} reports`,
+		mine: (n) => `You have ${n} reports on this card.`
+	}
+};
+function ReportCard({ conceptId, title, lang }) {
+	const t = words[lang];
+	const reports = useReports();
+	const mine = reports.filter((r) => r.conceptId === conceptId).length;
+	const [kind, setKind] = (0, import_react.useState)(null);
+	const [note, setNote] = (0, import_react.useState)("");
+	const [saved, setSaved] = (0, import_react.useState)(false);
+	const btn = "inline-flex min-h-11 items-center rounded-full border border-line px-4 text-sm hover:bg-card";
+	return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("section", {
+		className: "mt-10 rounded-card border border-line p-4",
+		"aria-label": t.ask,
+		children: [
+			/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+				className: "text-sm text-muted",
+				children: t.ask
+			}),
+			/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+				className: "mt-2 flex flex-wrap gap-2",
+				children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("button", {
+					type: "button",
+					className: btn,
+					onClick: () => {
+						setKind("wrong");
+						setSaved(false);
+					},
+					children: t.wrong
+				}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("button", {
+					type: "button",
+					className: btn,
+					onClick: () => {
+						setKind("unclear");
+						setSaved(false);
+					},
+					children: t.unclear
+				})]
+			}),
+			kind ? /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+				className: "mt-3",
+				children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("textarea", {
+					value: note,
+					onChange: (e) => setNote(e.target.value),
+					placeholder: t.notePh,
+					rows: 3,
+					className: "w-full rounded-lg border border-line bg-paper p-3 text-base"
+				}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+					className: "mt-2 flex gap-2",
+					children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("button", {
+						type: "button",
+						className: "inline-flex min-h-11 items-center rounded-full bg-accent px-5 text-sm text-white",
+						onClick: () => {
+							addReport({
+								conceptId,
+								title,
+								kind,
+								note: note.trim(),
+								lang
+							});
+							setKind(null);
+							setNote("");
+							setSaved(true);
+						},
+						children: t.send
+					}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("button", {
+						type: "button",
+						className: btn,
+						onClick: () => {
+							setKind(null);
+							setNote("");
+						},
+						children: t.cancel
+					})]
+				})]
+			}) : null,
+			saved ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+				className: "mt-3 text-sm text-accent",
+				children: t.done
+			}) : mine > 0 ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+				className: "mt-3 text-sm text-muted",
+				children: t.mine(mine)
+			}) : null,
+			reports.length > 0 ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Link, {
+				to: "/bao-loi",
+				className: "mt-3 inline-flex min-h-11 items-center text-sm text-accent underline",
+				children: t.view(reports.length)
+			}) : null
+		]
+	});
+}
 /** «Nhớ một câu»: đúng một câu để học thuộc cho mỗi thẻ. [VI, EN]. Số và quy tắc phải khớp transcript hoặc kiến thức chuẩn. */
 var remember = {
 	"infer-intro": ["Suy luận thống kê là dùng một mẫu nhỏ để kết luận về cả tập lớn, và luôn kèm mức bất định.", "Inferential statistics uses a small sample to conclude about the whole population, always with a stated uncertainty."],
@@ -9935,6 +10048,11 @@ function ConceptView({ concept }) {
 			] }),
 			/* @__PURE__ */ (0, import_jsx_runtime.jsx)(UpgradLink, {
 				concept,
+				lang
+			}),
+			/* @__PURE__ */ (0, import_jsx_runtime.jsx)(ReportCard, {
+				conceptId: concept.id,
+				title: text.title,
 				lang
 			}),
 			/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {

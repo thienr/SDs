@@ -11,6 +11,7 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as BanDoRouteImport } from './routes/ban-do'
+import { Route as BaoLoiRouteImport } from './routes/bao-loi'
 import { Route as CongThucRouteImport } from './routes/cong-thuc'
 import { Route as DoPhuRouteImport } from './routes/do-phu'
 import { Route as GocRouteImport } from './routes/goc'
@@ -30,6 +31,11 @@ const IndexRoute = IndexRouteImport.update({
 const BanDoRoute = BanDoRouteImport.update({
   id: '/ban-do',
   path: '/ban-do',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const BaoLoiRoute = BaoLoiRouteImport.update({
+  id: '/bao-loi',
+  path: '/bao-loi',
   getParentRoute: () => rootRouteImport,
 } as any)
 const CongThucRoute = CongThucRouteImport.update({
@@ -86,6 +92,7 @@ const KhoaCourseIdRoute = KhoaCourseIdRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/ban-do': typeof BanDoRoute
+  '/bao-loi': typeof BaoLoiRoute
   '/cong-thuc': typeof CongThucRoute
   '/do-phu': typeof DoPhuRoute
   '/goc': typeof GocRoute
@@ -100,6 +107,7 @@ export interface FileRoutesByFullPath {
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/ban-do': typeof BanDoRoute
+  '/bao-loi': typeof BaoLoiRoute
   '/cong-thuc': typeof CongThucRoute
   '/do-phu': typeof DoPhuRoute
   '/goc': typeof GocRoute
@@ -115,6 +123,7 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/ban-do': typeof BanDoRoute
+  '/bao-loi': typeof BaoLoiRoute
   '/cong-thuc': typeof CongThucRoute
   '/do-phu': typeof DoPhuRoute
   '/goc': typeof GocRoute
@@ -131,6 +140,7 @@ export interface FileRouteTypes {
   fullPaths:
     | '/'
     | '/ban-do'
+    | '/bao-loi'
     | '/cong-thuc'
     | '/do-phu'
     | '/goc'
@@ -145,6 +155,7 @@ export interface FileRouteTypes {
   to:
     | '/'
     | '/ban-do'
+    | '/bao-loi'
     | '/cong-thuc'
     | '/do-phu'
     | '/goc'
@@ -159,6 +170,7 @@ export interface FileRouteTypes {
     | '__root__'
     | '/'
     | '/ban-do'
+    | '/bao-loi'
     | '/cong-thuc'
     | '/do-phu'
     | '/goc'
@@ -174,6 +186,7 @@ export interface FileRouteTypes {
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   BanDoRoute: typeof BanDoRoute
+  BaoLoiRoute: typeof BaoLoiRoute
   CongThucRoute: typeof CongThucRoute
   DoPhuRoute: typeof DoPhuRoute
   GocRoute: typeof GocRoute
@@ -200,6 +213,13 @@ declare module '@tanstack/react-router' {
       path: '/ban-do'
       fullPath: '/ban-do'
       preLoaderRoute: typeof BanDoRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/bao-loi': {
+      id: '/bao-loi'
+      path: '/bao-loi'
+      fullPath: '/bao-loi'
+      preLoaderRoute: typeof BaoLoiRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/cong-thuc': {
@@ -278,6 +298,7 @@ declare module '@tanstack/react-router' {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   BanDoRoute: BanDoRoute,
+  BaoLoiRoute: BaoLoiRoute,
   CongThucRoute: CongThucRoute,
   DoPhuRoute: DoPhuRoute,
   GocRoute: GocRoute,
