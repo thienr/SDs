@@ -89,7 +89,7 @@ function Shape({ a }: { a: Actor }) {
     const head = a.k === "arrow" && len > 2.5;
     return (
       <g opacity={o} style={tr}>
-        <line x1={a.x} y1={a.y} x2={head ? x2 - ux * hs * 0.8 : x2} y2={head ? y2 - uy * hs * 0.8 : y2} stroke={stroke} strokeWidth={a.w ?? 0.6} strokeDasharray={a.d ? "1.6 1.2" : undefined} strokeLinecap="round" style={tr} />
+        <line x1={a.x} y1={a.y} x2={head ? x2 - ux * hs * 0.8 : x2} y2={head ? y2 - uy * hs * 0.8 : y2} stroke={stroke} strokeWidth={a.w && a.w > 0 ? a.w : 0.6} strokeDasharray={a.d ? "1.6 1.2" : undefined} strokeLinecap="round" style={tr} />
         {head ? <polygon points={`${x2},${y2} ${x2 - ux * hs - uy * hs * 0.55},${y2 - uy * hs + ux * hs * 0.55} ${x2 - ux * hs + uy * hs * 0.55},${y2 - uy * hs - ux * hs * 0.55}`} fill={stroke} style={tr} /> : null}
         {a.t ? <text x={(a.x + x2) / 2} y={(a.y + y2) / 2 - 1.2} textAnchor="middle" fontSize={a.s ?? 2.8} fill={stroke}>{a.t}</text> : null}
       </g>

@@ -71,3 +71,45 @@ export function numline(p: string, from: number, to: number, o: { y?: number; x0
   return out;
 }
 export const at = (v: number, from: number, to: number, x0 = 8, x1 = 92) => x0 + ((v - from) / (to - from)) * (x1 - x0);
+
+/** Hai hộp cạnh nhau (trái/phải) cùng hàng. */
+export function pair(p: string, a: string, b: string, o: { y?: number; ca?: Col; cb?: Col; fa?: Col; fb?: Col; oa?: number; ob?: number; h?: number; d?: boolean } = {}): Actor[] {
+  const y = o.y ?? 26;
+  const h = o.h ?? 16;
+  return [
+    box(`${p}a`, 28, y, 40, h, a, { c: o.ca ?? "blue", f: o.fa, o: o.oa }),
+    box(`${p}b`, 72, y, 40, h, b, { c: o.cb ?? "accent", f: o.fb, o: o.ob, d: o.d }),
+  ];
+}
+/** Danh sách hộp xếp dọc, mỗi hộp một dòng. */
+export function stack(p: string, labels: string[], o: { x?: number; w?: number; y0?: number; gap?: number; h?: number; on?: number[]; c?: Col; bad?: number[] } = {}): Actor[] {
+  const gap = o.gap ?? 10;
+  const h = o.h ?? 8;
+  return labels.map((t, i) => {
+    const on = !o.on || o.on.includes(i);
+    const bad = o.bad?.includes(i);
+    return box(`${p}${i}`, o.x ?? 50, (o.y0 ?? 10) + i * gap, o.w ?? 72, h, t, { c: bad ? "red" : on ? (o.c ?? "blue") : "mute", f: on && o.on ? (bad ? "red" : "blue") : undefined, o: on ? 1 : 0.4, s: 3 });
+  });
+}
+
+/** Đường cong chuông (nhiều đoạn thẳng ngắn). df=0 → chuẩn; df>0 → đuôi dày hơn (t). */
+export function bell(p: string, cx: number, base: number, o: { w?: number; h?: number; c?: Col; fat?: number; op?: number } = {}): Actor[] {
+  const w = o.w ?? 70;
+  const h = o.h ?? 26;
+  const fat = o.fat ?? 0;
+  const n = 28;
+  const out: Actor[] = [];
+  const f = (u: number) => (fat ? Math.pow(1 + (u * u) / (2 + fat), -(1.2 + fat * 0.5)) : Math.exp(-(u * u) / 2));
+  let px = 0;
+  let py = 0;
+  for (let i = 0; i <= n; i++) {
+    const u = -3 + (6 * i) / n;
+    const x = cx + (u / 3) * (w / 2);
+    const y = base - f(u) * h;
+    if (i > 0) out.push(ln(`${p}${i}`, px, py, x, y, o.c ?? "blue", { w: 0.7, o: o.op ?? 1 }));
+    px = x;
+    py = y;
+  }
+  out.push(ln(`${p}ax`, cx - w / 2, base, cx + w / 2, base, "mute", { w: 0.3 }));
+  return out;
+}

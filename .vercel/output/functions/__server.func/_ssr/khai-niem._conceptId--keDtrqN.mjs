@@ -1,11 +1,11 @@
 import { o as __toESM } from "../_runtime.mjs";
 import { n as course_default } from "./catalog-DhneT6we.mjs";
 import { J as require_react, S as require_jsx_runtime, b as Link } from "../_libs/@tanstack/react-router+[...].mjs";
-import { A as studyCopy, B as subscribeRaw, F as getRawVersion, I as getServerRawVersion, M as studyNeighbors, O as subscribeProgress, V as overviews, b as getServerProgress, j as studyListTitle, k as getStudy, r as Route$1, y as getProgress } from "./router-Dwop-hev.mjs";
-import { n as Range, r as Sim, t as Lab } from "./labs-tRY-Ocq9.mjs";
+import { A as studyCopy, B as subscribeRaw, F as getRawVersion, I as getServerRawVersion, M as studyNeighbors, O as subscribeProgress, V as overviews, b as getServerProgress, j as studyListTitle, k as getStudy, r as Route$1, y as getProgress } from "./router-DTKOv4LZ.mjs";
+import { n as Range, r as Sim, t as Lab } from "./labs-CzW0NVSd.mjs";
 import { t as Tex } from "./tex-t3KOuum9.mjs";
-import { o as relatedOf } from "./map-rStoFiIw.mjs";
-//#region node_modules/.nitro/vite/services/ssr/assets/khai-niem._conceptId-CVAqoTz-.js
+import { o as relatedOf } from "./map-DbEMqzlY.mjs";
+//#region node_modules/.nitro/vite/services/ssr/assets/khai-niem._conceptId--keDtrqN.js
 var import_react = /* @__PURE__ */ __toESM(require_react());
 var import_jsx_runtime = require_jsx_runtime();
 var ui = {
@@ -351,7 +351,7 @@ function Shape({ a }) {
 					x2: head ? x2 - ux * hs * .8 : x2,
 					y2: head ? y2 - uy * hs * .8 : y2,
 					stroke,
-					strokeWidth: a.w ?? .6,
+					strokeWidth: a.w && a.w > 0 ? a.w : .6,
 					strokeDasharray: a.d ? "1.6 1.2" : void 0,
 					strokeLinecap: "round",
 					style: tr
@@ -698,6 +698,60 @@ function numline(p, from, to, o = {}) {
 	return out;
 }
 var at = (v, from, to, x0 = 8, x1 = 92) => x0 + (v - from) / (to - from) * (x1 - x0);
+/** Hai hộp cạnh nhau (trái/phải) cùng hàng. */
+function pair(p, a, b, o = {}) {
+	const y = o.y ?? 26;
+	const h = o.h ?? 16;
+	return [box(`${p}a`, 28, y, 40, h, a, {
+		c: o.ca ?? "blue",
+		f: o.fa,
+		o: o.oa
+	}), box(`${p}b`, 72, y, 40, h, b, {
+		c: o.cb ?? "accent",
+		f: o.fb,
+		o: o.ob,
+		d: o.d
+	})];
+}
+/** Danh sách hộp xếp dọc, mỗi hộp một dòng. */
+function stack(p, labels, o = {}) {
+	const gap = o.gap ?? 10;
+	const h = o.h ?? 8;
+	return labels.map((t, i) => {
+		const on = !o.on || o.on.includes(i);
+		const bad = o.bad?.includes(i);
+		return box(`${p}${i}`, o.x ?? 50, (o.y0 ?? 10) + i * gap, o.w ?? 72, h, t, {
+			c: bad ? "red" : on ? o.c ?? "blue" : "mute",
+			f: on && o.on ? bad ? "red" : "blue" : void 0,
+			o: on ? 1 : .4,
+			s: 3
+		});
+	});
+}
+/** Đường cong chuông (nhiều đoạn thẳng ngắn). df=0 → chuẩn; df>0 → đuôi dày hơn (t). */
+function bell(p, cx, base, o = {}) {
+	const w = o.w ?? 70;
+	const h = o.h ?? 26;
+	const fat = o.fat ?? 0;
+	const n = 28;
+	const out = [];
+	const f = (u) => fat ? Math.pow(1 + u * u / (2 + fat), -(1.2 + fat * .5)) : Math.exp(-(u * u) / 2);
+	let px = 0;
+	let py = 0;
+	for (let i = 0; i <= n; i++) {
+		const u = -3 + 6 * i / n;
+		const x = cx + u / 3 * (w / 2);
+		const y = base - f(u) * h;
+		if (i > 0) out.push(ln(`${p}${i}`, px, py, x, y, o.c ?? "blue", {
+			w: .7,
+			o: o.op ?? 1
+		}));
+		px = x;
+		py = y;
+	}
+	out.push(ln(`${p}ax`, cx - w / 2, base, cx + w / 2, base, "mute", { w: .3 }));
+	return out;
+}
 var m1 = {
 	"crisp-biz": M([
 		F("Spa Lotus có một file form: ngày, kênh, số form. Đây chỉ là nguyên liệu.", "Lotus Spa has a form file: date, channel, number of forms. It is only raw material.", box("f", 50, 18, 46, 16, "file form\nngày · kênh · số form", { f: "soft" })),
@@ -2095,9 +2149,1741 @@ var m2 = {
 		}))
 	])
 };
+var C = [
+	"C0\nđặt câu hỏi",
+	"C1\nlàm với máy",
+	"C2\nsuy diễn",
+	"C3\nmô hình"
+];
+var sc = (n) => chain("c", C, {
+	y: 22,
+	on: n,
+	all: true,
+	h: 14
+});
+var m3 = {
+	"c0-order": M([
+		F("Giáo trình có bốn khóa nối tiếp: C0 đặt câu hỏi, C1 làm việc với máy, C2 suy diễn, C3 mô hình.", "The syllabus has four courses in sequence: C0 asking, C1 working with the machine, C2 inference, C3 models.", ...sc(0)),
+		F("C3 cần một dòng dữ liệu để dự đoán; dòng đó chỉ có sau C1 và C2.", "C3 needs a data row to predict from; that row only exists after C1 and C2.", ...sc(3), arr("a", 50, 34, 50, 44, "red", { d: true }), txt("t", 50, 52, "nhảy tới C3 → chưa có gì để đếm", {
+			c: "red",
+			s: 3.4
+		})),
+		F("Đi đúng thứ tự: mỗi khóa dựa vào khóa trước.", "Go in order: each course builds on the previous one.", ...sc(2), txt("t", 50, 46, "Toán và mô tả là bản ngắn, tùy chọn", {
+			c: "mute",
+			s: 3
+		}))
+	]),
+	"c0-read": M([
+		F("Một thẻ gồm bốn phần: lý do cần ý đó, nối với ý trước, hình minh họa, câu định nghĩa.", "A card has four parts: why it matters, link to the previous idea, an illustration, a definition.", ...chain("c", [
+			"lý do",
+			"nối ý trước",
+			"hình",
+			"định nghĩa"
+		], {
+			y: 26,
+			on: 0,
+			all: true,
+			h: 14
+		})),
+		F("Bạn đọc lần lượt từng phần, không phải xem hết một video.", "You read part by part, not watch a whole video.", ...chain("c", [
+			"lý do",
+			"nối ý trước",
+			"hình",
+			"định nghĩa"
+		], {
+			y: 26,
+			on: 2,
+			h: 14
+		})),
+		F("Dừng khi câu định nghĩa đã khớp với hình. Sổ không chấm điểm.", "Stop when the definition matches the picture. The notebook does not grade.", ...chain("c", [
+			"lý do",
+			"nối ý trước",
+			"hình",
+			"định nghĩa"
+		], {
+			y: 26,
+			on: 3,
+			h: 14
+		}), txt("t", 50, 46, "khớp hình = xong thẻ", {
+			c: "green",
+			s: 3.6
+		}))
+	]),
+	"or-obj": M([
+		F("Hai loại ô khác nhau: biến quyết định (bạn chọn) và hàm mục tiêu (công thức).", "Two different cells: decision variables (you choose) and the objective (a formula).", ...pair("p", "biến quyết định\nsố suất mỗi kênh", "hàm mục tiêu\ndoanh thu = công thức", {
+			ca: "blue",
+			cb: "accent"
+		})),
+		F("Bạn chỉ gõ số suất; doanh thu tự ra từ công thức của các suất đó.", "You only type slots; revenue comes out of the formula of those slots.", ...pair("p", "gõ: 10, 20, 5", "doanh thu = tổng(suất × giá)", {
+			ca: "blue",
+			cb: "accent",
+			fb: "soft"
+		}), arr("a", 48, 26, 52, 26, "mute")),
+		F("Nếu gõ cả doanh thu, bạn tự điền đáp án và không còn gì để giải.", "If you type revenue too, you fill in the answer yourself and nothing is left to solve.", ...pair("p", "gõ: 10, 20, 5", "gõ cả doanh thu", {
+			ca: "blue",
+			cb: "red",
+			d: true
+		}), txt("t", 50, 46, "tự điền đáp án = không còn bài toán", {
+			c: "red",
+			s: 3.4
+		}))
+	]),
+	"or-con": M([
+		F("Ngân sách là 100. Mỗi suất có đơn giá riêng.", "The budget is 100. Each slot has its own unit cost.", box("b", 50, 20, 70, 14, "ngân sách ≤ 100", {
+			f: "accent",
+			c: "accent"
+		})),
+		F("Tổng số suất × đơn giá phải nhỏ hơn hoặc bằng 100.", "Total slots × unit cost must be at most 100.", box("b", 50, 12, 70, 10, "ngân sách ≤ 100", { c: "accent" }), ...stack("s", [
+			"kênh A: 10 × 3 = 30",
+			"kênh B: 20 × 2 = 40",
+			"kênh C: 5 × 6 = 30"
+		], {
+			y0: 26,
+			gap: 10,
+			w: 60
+		}), txt("t", 50, 56, "tổng = 100 ≤ 100", {
+			c: "green",
+			s: 3.4
+		})),
+		F("Quên dòng này thì «tối ưu» cứ tăng số suất mãi; đổi ≤ thành ≥ thì có thể không còn phương án.", "Forget the row and the “optimum” keeps adding slots; flip ≤ to ≥ and there may be no feasible plan.", box("b", 28, 24, 38, 14, "quên giới hạn\n→ tăng mãi", { c: "red" }), box("c", 72, 24, 38, 14, "viết ≥ thay ≤\n→ vô nghiệm", {
+			c: "red",
+			d: true
+		}), txt("t", 50, 46, "mỗi nguồn lực: một bất đẳng thức", {
+			c: "mute",
+			s: 3.2
+		}))
+	]),
+	"or-solv": M([
+		F("Hai biến, ràng buộc là các đường thẳng: vùng khả thi là một đa giác.", "Two variables with linear constraints: the feasible region is a polygon.", ln("p1", 20, 40, 20, 12, "blue"), ln("p2", 20, 12, 70, 12, "blue"), ln("p3", 70, 12, 82, 36, "blue"), ln("p4", 82, 36, 55, 44, "blue"), ln("p5", 55, 44, 20, 40, "blue")),
+		F("Với mục tiêu tuyến tính, solver chỉ cần xét các đỉnh: nó dừng ở một đỉnh.", "With a linear objective, the solver only needs to check the corners: it stops at a corner.", ln("p1", 20, 40, 20, 12, "blue"), ln("p2", 20, 12, 70, 12, "blue"), ln("p3", 70, 12, 82, 36, "blue"), ln("p4", 82, 36, 55, 44, "blue"), ln("p5", 55, 44, 20, 40, "blue"), ...[
+			[20, 40],
+			[20, 12],
+			[70, 12],
+			[82, 36],
+			[55, 44]
+		].map(([x, y], i) => ({
+			id: `v${i}`,
+			k: "dot",
+			x,
+			y,
+			r: i === 3 ? 2.2 : 1.2,
+			c: i === 3 ? "accent" : "blue"
+		})), txt("t", 50, 54, "tối ưu nằm ở một đỉnh", {
+			c: "accent",
+			s: 3.4
+		})),
+		F("Thêm một bình phương vào mục tiêu: đường đồng mức cong, tối ưu có thể nằm giữa, và solver có thể dừng ở cực trị cục bộ.", "Add a square to the objective: contours curve, the optimum can be inside, and the solver may stop at a local extremum.", ln("p1", 20, 40, 20, 12, "blue", { o: .5 }), ln("p2", 20, 12, 70, 12, "blue", { o: .5 }), ln("p3", 70, 12, 82, 36, "blue", { o: .5 }), ln("p4", 82, 36, 55, 44, "blue", { o: .5 }), ln("p5", 55, 44, 20, 40, "blue", { o: .5 }), {
+			id: "r",
+			k: "ring",
+			x: 48,
+			y: 28,
+			r: 8,
+			c: "red"
+		}, {
+			id: "d",
+			k: "dot",
+			x: 48,
+			y: 28,
+			r: 1.8,
+			c: "red"
+		}, txt("t", 50, 54, "bài cong: thử nhiều điểm xuất phát", {
+			c: "red",
+			s: 3.2
+		}))
+	]),
+	"or-sheet": M([
+		F("Trang tính: B2:B4 là biến, B6 là mục tiêu, B8 ≤ B9 là giới hạn.", "Sheet: B2:B4 are variables, B6 the objective, B8 ≤ B9 the constraint.", ...stack("s", [
+			"B2:B4 — biến (Solver được sửa)",
+			"B6 — mục tiêu (công thức)",
+			"B8 ≤ B9 — giới hạn ngân sách",
+			"B12 — «nhớ kiểm tra giá»"
+		], {
+			y0: 12,
+			gap: 11,
+			w: 76,
+			on: [
+				0,
+				1,
+				2
+			]
+		})),
+		F("Solver chỉ đọc ba vùng đã khai báo, không đọc B12.", "Solver reads only the three declared ranges, not B12.", ...stack("s", [
+			"B2:B4 — biến (Solver được sửa)",
+			"B6 — mục tiêu (công thức)",
+			"B8 ≤ B9 — giới hạn ngân sách",
+			"B12 — «nhớ kiểm tra giá»"
+		], {
+			y0: 12,
+			gap: 11,
+			w: 76,
+			on: [
+				0,
+				1,
+				2
+			],
+			bad: []
+		}), txt("t", 50, 54, "B12 không tham gia bài toán", {
+			c: "mute",
+			s: 3
+		})),
+		F("Một giới hạn gõ thành ghi chú thì không phải giới hạn; phải là một ô công thức được khai báo.", "A constraint typed as a note is not a constraint; it must be a declared formula cell.", ...stack("s", ["B8 ≤ B9 — khai báo trong Solver", "B12: «ngân sách tối đa 100» (chữ)"], {
+			y0: 18,
+			gap: 16,
+			w: 76,
+			on: [0],
+			bad: [1]
+		}), txt("t", 50, 54, "chữ ghi chú ≠ giới hạn", {
+			c: "red",
+			s: 3.4
+		}))
+	]),
+	"ga-next": M([
+		F("Prompt: «Giá gói spa là bao nhiêu?», không kèm bảng giá.", "Prompt: “How much is the spa package?”, no price list attached.", box("p", 50, 24, 70, 14, "Giá gói spa là bao nhiêu?\n(không có bảng giá)", { c: "blue" })),
+		F("Mô hình tính phân phối xác suất trên các mảnh chữ kế tiếp, rồi chọn một mảnh.", "The model computes a probability over next text pieces and picks one.", box("p", 50, 8, 70, 9, "Giá gói spa là...", {
+			o: .6,
+			s: 3
+		}), ...[
+			"800.000",
+			"1.200.000",
+			"950.000"
+		].map((t, i) => box(`o${i}`, 22 + i * 28, 30, 24, 10, t, {
+			c: "gold",
+			s: 3
+		})), txt("t", 50, 48, "mỗi mảnh có một xác suất", {
+			c: "mute",
+			s: 3
+		})),
+		F("Một số được viết ra, nghe hợp lý; nó không được tra từ cơ sở dữ liệu của công ty.", "A number gets written and sounds plausible; it was not looked up in the company's database.", box("p", 28, 26, 38, 14, "«1.200.000»\n(được sinh ra)", { c: "gold" }), box("d", 72, 26, 38, 14, "bảng giá thật\n(không có trong prompt)", {
+			c: "red",
+			d: true
+		}), txt("t", 50, 48, "đừng báo con số này cho khách", {
+			c: "red",
+			s: 3.4
+		}))
+	]),
+	"ga-vs": M([
+		F("Hai việc khác nhau: đoán một cột và nối tiếp một đoạn chữ.", "Two different jobs: predict a column and continue a text.", ...pair("p", "học máy\nđoán một cột", "GenAI\nnối tiếp đoạn chữ")),
+		F("Học máy: «khách này có rời đi không?» — có nhãn, có tập chấm, có một ô đúng.", "ML: “will this customer leave?” — labelled, with a test set and one right cell.", box("a", 50, 16, 80, 12, "khách này có rời đi không?  →  có / không", { c: "blue" }), box("b", 50, 36, 80, 12, "chấm bằng tập kiểm tra có nhãn", {
+			f: "blue",
+			c: "blue"
+		})),
+		F("GenAI: «viết một tin nhắn» — không có một ô đúng duy nhất, nên thước đo của việc 1 không áp được.", "GenAI: “write a message” — no single right cell, so the first job's metric does not apply.", box("a", 50, 16, 80, 12, "viết một tin nhắn cho khách", { c: "accent" }), box("b", 50, 36, 80, 12, "không có một ô đúng duy nhất", {
+			c: "red",
+			d: true
+		}), txt("t", 50, 52, "gọi đúng tên việc trước khi chọn thước đo", {
+			c: "mute",
+			s: 3.2
+		}))
+	]),
+	"ga-stack": M([
+		F("Ba tầng: model, data, sản phẩm.", "Three layers: model, data, product.", ...stack("l", [
+			"sản phẩm (nút, giao diện)",
+			"data (tài liệu trong lần gọi)",
+			"model (viết câu)"
+		], {
+			y0: 14,
+			gap: 14,
+			w: 70,
+			h: 10
+		})),
+		F("Cùng một model: lần gọi có dán chính sách đổi trả cho câu khác lần không dán. Đó là tầng data.", "Same model: a call with the return policy pasted gives different text than one without. That is the data layer.", ...stack("l", [
+			"sản phẩm (nút, giao diện)",
+			"data (dán chính sách đổi trả)",
+			"model (viết câu)"
+		], {
+			y0: 14,
+			gap: 14,
+			w: 70,
+			h: 10,
+			on: [1]
+		})),
+		F("Sản phẩm chưa có nút «đặt lịch» thì người dùng vẫn chỉ nhận được một đoạn chữ. Đó là tầng sản phẩm.", "If the product has no “book” button, users still only get text. That is the product layer.", ...stack("l", [
+			"sản phẩm (chưa có nút đặt lịch)",
+			"data (dán chính sách đổi trả)",
+			"model (viết câu)"
+		], {
+			y0: 14,
+			gap: 14,
+			w: 70,
+			h: 10,
+			on: [0]
+		}), txt("t", 50, 56, "nói rõ bạn đang đụng tầng nào", {
+			c: "mute",
+			s: 3
+		}))
+	]),
+	"ga-use": M([
+		F("Hai việc cùng dùng một mô hình: nháp tiêu đề và gửi giá cho khách.", "Two jobs, one model: drafting a headline and sending prices to a customer.", ...pair("p", "nháp tiêu đề\n(người sửa lại)", "tự gửi giá\ncho khách")),
+		F("Giá của một lần sai: tiêu đề tệ thì sửa; giá sai gửi đi có thể thành một hợp đồng.", "Cost of one error: a bad headline is edited; a wrong price sent can become a contract.", ...pair("p", "sai → sửa\ngiá thấp", "sai → hợp đồng\ngiá cao", {
+			ca: "green",
+			cb: "red",
+			fa: "soft"
+		})),
+		F("Hai việc không dùng chung một nút: việc giá cao phải có người duyệt hoặc nguồn kiểm được.", "The two jobs should not share a button: the high-cost one needs a reviewer or a checkable source.", ...pair("p", "tự động\nvới người sửa", "có người duyệt\n+ nguồn kiểm được", {
+			ca: "green",
+			cb: "red"
+		}))
+	]),
+	"ga-chat": M([
+		F("Một lần gọi gồm các message: system và user.", "One call contains messages: system and user.", box("s", 50, 14, 76, 10, "system: «chỉ dùng bảng giá đính kèm»", { c: "blue" }), box("u", 50, 30, 76, 10, "user: dán bảng giá + câu hỏi", { c: "accent" })),
+		F("Thiếu một trong hai thì lần gọi không đủ thông tin.", "Missing either one means the call lacks information.", box("s", 50, 14, 76, 10, "system: «chỉ dùng bảng giá đính kèm»", { c: "blue" }), box("u", 50, 30, 76, 10, "user: (chưa dán bảng giá)", {
+			c: "red",
+			d: true
+		}), txt("t", 50, 48, "không có bảng giá → không có nguồn", {
+			c: "red",
+			s: 3.4
+		})),
+		F("Mô hình không giữ hộ: lần gọi sau ứng dụng phải gửi lại cả hai.", "The model keeps nothing: on the next call the app must send both again.", box("a", 28, 22, 38, 14, "lần gọi 1\nsystem + user", { c: "blue" }), box("b", 72, 22, 38, 14, "lần gọi 2\ngửi lại cả hai", { c: "accent" }), arr("x", 48, 22, 52, 22, "mute"), txt("t", 50, 44, "system không phải khóa pháp lý", {
+			c: "mute",
+			s: 3
+		}))
+	]),
+	"ga-tok": M([
+		F("Cửa sổ ngữ cảnh có một trần token.", "The context window has a token ceiling.", box("w", 50, 24, 80, 18, "", {
+			c: "blue",
+			f: "soft"
+		}), txt("t", 50, 10, "trần token", {
+			c: "blue",
+			s: 3.2
+		})),
+		F("Bảng giá dài một trang nằm trọn trong trần: lần gọi thấy được nó.", "A one-page price list fits inside the ceiling: the call sees it.", box("w", 50, 24, 80, 18, "", {
+			c: "blue",
+			f: "soft"
+		}), box("p", 50, 24, 40, 10, "bảng giá 1 trang", {
+			f: "green",
+			c: "green"
+		})),
+		F("Chôn nó ở cuối một lần dán khổng lồ thì có thể không còn trong cửa sổ, nhưng hóa đơn vẫn tính phần đã gửi.", "Bury it at the end of a giant paste and it may fall out of the window, yet the bill counts what was sent.", box("w", 36, 24, 52, 18, "", {
+			c: "blue",
+			f: "soft"
+		}), box("big", 58, 24, 56, 12, "đoạn dán khổng lồ …………… bảng giá", {
+			c: "red",
+			o: .8,
+			s: 2.8
+		}), txt("t", 50, 50, "ngoài trần = không thấy, vẫn bị tính tiền", {
+			c: "red",
+			s: 3.2
+		}))
+	]),
+	"ga-prompt": M([
+		F("Một prompt gồm ba phần: việc cần làm, ngữ cảnh, dạng đầu ra.", "A prompt has three parts: the task, the context, the output format.", ...chain("c", [
+			"việc cần làm",
+			"ngữ cảnh",
+			"dạng đầu ra"
+		], {
+			y: 26,
+			on: 0,
+			all: true
+		})),
+		F("Việc: trả lời có được hoàn tiền không. Ngữ cảnh: đoạn chính sách đính kèm, không bịa thêm.", "Task: answer whether a refund is allowed. Context: the attached policy; no inventions.", ...chain("c", [
+			"trả lời có\nhoàn tiền không",
+			"đoạn chính sách\nđính kèm",
+			"dạng đầu ra"
+		], {
+			y: 26,
+			on: 1,
+			h: 18
+		})),
+		F("Dạng: một câu có dẫn đúng chỗ trong đoạn, hoặc nói «không thấy trong đoạn».", "Format: one sentence citing the passage, or “not found in the passage”.", ...chain("c", [
+			"trả lời có\nhoàn tiền không",
+			"đoạn chính sách\nđính kèm",
+			"một câu có dẫn\nhoặc «không thấy»"
+		], {
+			y: 26,
+			on: 2,
+			h: 18
+		}))
+	]),
+	"ga-few": M([
+		F("Muốn đầu ra là «có / không / không thấy trong đoạn».", "You want the output to be “yes / no / not in the passage”.", box("g", 50, 24, 70, 14, "đầu ra: có | không | không thấy", { c: "accent" })),
+		F("Đưa ba mẫu đúng dạng đó vào prompt.", "Put three examples of exactly that format into the prompt.", ...[
+			"mẫu 1 → có",
+			"mẫu 2 → không",
+			"mẫu 3 → không thấy"
+		].map((t, i) => box(`e${i}`, 50, 12 + i * 12, 60, 9, t, {
+			c: "blue",
+			s: 3
+		}))),
+		F("Mẫu cố định dạng câu, nhưng không làm đoạn chính sách đúng hơn: chúng chỉ giúp dễ kiểm.", "Examples fix the sentence shape but do not make the policy any truer; they only make answers easier to check.", ...pair("p", "ví dụ\ncố định dạng", "dữ liệu\nvẫn phải đúng", {
+			ca: "blue",
+			cb: "red",
+			d: true
+		}))
+	]),
+	"ga-cot": M([
+		F("Context không có giá. Mô hình vẫn được bảo «viết từng bước».", "The context has no price. The model is still told to “write step by step”.", box("c", 28, 24, 38, 14, "context:\nkhông có giá", {
+			c: "red",
+			d: true
+		}), box("s", 72, 24, 38, 14, "«hãy viết\ntừng bước»", { c: "blue" })),
+		F("Chuỗi bước vẫn viết ra một mức giá và một lý do nghe hợp lý.", "The chain still writes a price and a sensible-sounding reason.", ...stack("s", [
+			"bước 1: gói thường ~ 1 triệu",
+			"bước 2: cộng phụ phí",
+			"bước 3: giá = 1.200.000"
+		], {
+			y0: 10,
+			gap: 11,
+			w: 70
+		})),
+		F("Không bước nào trỏ về nguồn trong context, nên đó không phải bằng chứng: đừng thu tiền theo giá đó.", "No step points to a source in the context, so it is not evidence: do not charge that price.", ...stack("s", [
+			"bước 1: gói thường ~ 1 triệu",
+			"bước 2: cộng phụ phí",
+			"bước 3: giá = 1.200.000"
+		], {
+			y0: 10,
+			gap: 11,
+			w: 70,
+			bad: [
+				0,
+				1,
+				2
+			],
+			on: [
+				0,
+				1,
+				2
+			]
+		}), txt("t", 50, 50, "bước không trỏ nguồn → bỏ", {
+			c: "red",
+			s: 3.4
+		}))
+	]),
+	"sa-tune": M([
+		F("Chính sách đổi trả sửa một câu.", "The return policy changes by one sentence.", box("p", 50, 24, 70, 14, "chính sách: «7 ngày» → «14 ngày»", { c: "accent" })),
+		F("RAG: đổi tài liệu được tìm; câu mới có ngay ở lần gọi sau.", "RAG: change the searched document; the new sentence appears on the next call.", ...chain("c", [
+			"sửa tài liệu",
+			"xây lại index",
+			"câu trả lời mới"
+		], {
+			y: 26,
+			on: 2
+		})),
+		F("Fine-tune: huấn luyện lại cả mô hình vì một câu là nhầm tầng; nó đổi cách viết, không đổi sự thật như một bảng tra.", "Fine-tune: retraining the whole model for one sentence is the wrong layer; it changes style, not facts like a lookup table.", ...pair("p", "RAG\nđổi tài liệu", "fine-tune\nđổi trọng số", {
+			ca: "green",
+			cb: "red",
+			fa: "green",
+			d: true
+		}), txt("t", 50, 46, "sự thật thay đổi → RAG; giọng văn ổn định → xét fine-tune", {
+			c: "mute",
+			s: 3
+		}))
+	]),
+	"sa-react": M([
+		F("Khách hỏi: «còn hàng không?»", "Customer asks: “is it in stock?”", ...chain("r", [
+			"suy nghĩ",
+			"gọi catalog",
+			"nhìn kết quả"
+		], {
+			y: 26,
+			on: 0,
+			all: true
+		})),
+		F("Bước act: gọi catalog theo mã. Bước observe: số catalog trả về.", "Act: call the catalog by code. Observe: the number the catalog returns.", ...chain("r", [
+			"suy nghĩ",
+			"gọi catalog\ntheo mã A12",
+			"catalog trả:\ncòn 0"
+		], {
+			y: 26,
+			on: 2,
+			h: 18
+		})),
+		F("Không có bước đó thì phải nói «chưa tra», không được bịa «còn 3». Vòng lặp cần một trần số bước.", "Without that step say “not checked yet”, never invent “3 left”. The loop needs a step ceiling.", box("a", 28, 26, 38, 14, "không tra\n→ «còn 3»", {
+			c: "red",
+			d: true
+		}), box("b", 72, 26, 38, 14, "không tra\n→ «chưa tra»", { c: "green" }))
+	]),
+	"sa-stage": M([
+		F("Ba chặng: nói theo prompt, gọi catalog, chấm các ca.", "Three stages: talk from the prompt, call the catalog, score the cases.", ...chain("s", [
+			"1 nói theo\nprompt",
+			"2 gọi\ncatalog",
+			"3 chấm\ncác ca"
+		], {
+			y: 26,
+			on: 0,
+			all: true,
+			h: 18
+		})),
+		F("Chặng 1 chưa có catalog nên chưa được nói giá. Chặng 2 mới có kết quả catalog.", "Stage 1 has no catalog so it may not quote prices. Stage 2 has catalog results.", ...chain("s", [
+			"1 nói theo\nprompt",
+			"2 gọi\ncatalog",
+			"3 chấm\ncác ca"
+		], {
+			y: 26,
+			on: 1,
+			h: 18
+		})),
+		F("Chặng 3 so các ca với thước đo viết trước; chặng nào chưa có log thì chưa xảy ra.", "Stage 3 compares cases to a metric written beforehand; a stage without a log has not happened.", ...chain("s", [
+			"1 nói theo\nprompt",
+			"2 gọi\ncatalog",
+			"3 chấm\ncác ca"
+		], {
+			y: 26,
+			on: 2,
+			h: 18
+		}), txt("t", 50, 48, "không bịa một cuộc hội thoại", {
+			c: "red",
+			s: 3.2
+		}))
+	]),
+	"sa-tool": M([
+		F("Mã A12 gọi catalog: trả về giá và tồn kho.", "Code A12 calls the catalog: it returns price and stock.", box("q", 28, 26, 38, 14, "tra mã A12", { c: "blue" }), box("r", 72, 26, 38, 14, "giá: 900.000\ntồn: 4", {
+			f: "green",
+			c: "green"
+		}), arr("a", 48, 26, 52, 26, "mute")),
+		F("Câu trả lời nhắc lại đúng các trường đó và không thêm gì.", "The answer repeats exactly those fields and adds nothing.", box("r", 28, 26, 38, 14, "giá: 900.000\ntồn: 4", { c: "green" }), box("a", 72, 26, 38, 14, "«A12: 900.000đ,\ncòn 4»", { c: "accent" }), arr("x", 48, 26, 52, 26, "green")),
+		F("Gói không có mã: không có dòng thì không có số; trả «không thấy mã», đừng đoán giá gần đúng.", "A package with no code: no row means no number; answer “code not found”, not a rough price.", box("q", 28, 26, 38, 14, "tra mã ???", { c: "blue" }), box("r", 72, 26, 38, 14, "không thấy mã", { c: "green" }), arr("x", 48, 26, 52, 26, "mute"), txt("t", 50, 48, "không có dòng ≠ giá 0", {
+			c: "red",
+			s: 3.4
+		}))
+	]),
+	"sa-score": M([
+		F("Ca viết trước: mã A12, catalog trả «hết hàng».", "Case written first: code A12, catalog says “out of stock”.", box("c", 50, 24, 70, 14, "ca: mã A12 → catalog: hết hàng", { c: "blue" })),
+		F("Mô hình nói «còn hàng», rất chắc. Ca này sai.", "The model says “in stock”, very confidently. This case fails.", box("c", 28, 24, 38, 14, "đúng:\nhết hàng", { c: "green" }), box("m", 72, 24, 38, 14, "mô hình:\ncòn hàng", {
+			c: "red",
+			f: "red"
+		})),
+		F("Ba lần cùng nói «còn hàng» không làm nó đúng; thước đo là kết quả catalog, không phải số lần lặp lại.", "Saying “in stock” three times does not make it right; the metric is the catalog result, not repetition.", ...[
+			"còn hàng",
+			"còn hàng",
+			"còn hàng"
+		].map((t, i) => box(`m${i}`, 18 + i * 32, 22, 26, 10, t, {
+			c: "red",
+			s: 3
+		})), box("c", 50, 42, 70, 10, "catalog: hết hàng → cả ba đều sai", {
+			c: "green",
+			s: 3
+		}))
+	]),
+	"rag-why": M([
+		F("Một file PDF nội bộ nằm ngoài mô hình.", "An internal PDF lives outside the model.", pair("p", "file PDF nội bộ", "mô hình", {
+			ca: "gold",
+			cb: "blue"
+		})[0], pair("p", "file PDF nội bộ", "mô hình", {
+			ca: "gold",
+			cb: "blue"
+		})[1]),
+		F("RAG thêm một bước tìm: lấy vài đoạn của file rồi đặt vào prompt.", "RAG adds a search step: fetch a few passages of the file and put them in the prompt.", ...chain("r", [
+			"file PDF",
+			"tìm đoạn",
+			"đoạn vào prompt",
+			"mô hình"
+		], {
+			y: 26,
+			on: 2,
+			h: 14
+		})),
+		F("Không có đoạn nào vào prompt thì câu trả lời về file là câu không nguồn, dù bạn nói «RAG».", "With no passage in the prompt the answer about the file has no source, however much you say “RAG”.", ...chain("r", [
+			"file PDF",
+			"tìm đoạn",
+			"(rỗng)",
+			"mô hình"
+		], {
+			y: 26,
+			on: 3,
+			h: 14
+		}), txt("t", 50, 48, "phải thấy đoạn nào đã vào prompt", {
+			c: "red",
+			s: 3.2
+		}))
+	]),
+	"rag-chunk": M([
+		F("Một mục dài 8 dòng, trong đó dòng 1 là lời hứa và dòng 6 là điều kiện.", "A section of 8 lines: line 1 is the promise, line 6 is the condition.", ...Array.from({ length: 8 }, (_, i) => box(`l${i}`, 50, 6 + i * 7, 70, 6, i === 0 ? "dòng 1: hoàn tiền" : i === 5 ? "dòng 6: điều kiện" : `dòng ${i + 1}`, {
+			c: i === 0 || i === 5 ? "accent" : "mute",
+			s: 2.8
+		}))),
+		F("Cắt mỗi mảnh 2 dòng: lời hứa và điều kiện nằm ở hai mảnh khác nhau.", "Cut into 2-line chunks: the promise and the condition land in different chunks.", ...Array.from({ length: 8 }, (_, i) => box(`l${i}`, i % 2 === 0 ? 40 : 40, 6 + i * 7, 56, 6, i === 0 ? "dòng 1: hoàn tiền" : i === 5 ? "dòng 6: điều kiện" : `dòng ${i + 1}`, {
+			c: Math.floor(i / 2) === 0 ? "blue" : Math.floor(i / 2) === 2 ? "red" : "mute",
+			s: 2.8
+		})), txt("m1", 82, 9, "mảnh 1", {
+			s: 2.8,
+			c: "blue"
+		}), txt("m3", 82, 37, "mảnh 3", {
+			s: 2.8,
+			c: "red"
+		})),
+		F("Hỏi về hoàn tiền có thể chỉ tìm thấy mảnh 1: lời hứa mà không có điều kiện.", "A refund question may only find chunk 1: the promise without its condition.", box("m1", 50, 20, 70, 14, "mảnh 1: «hoàn tiền»", {
+			f: "gold",
+			c: "gold"
+		}), box("m3", 50, 40, 70, 12, "mảnh 3: «chỉ trong 7 ngày» (không được tìm)", {
+			c: "red",
+			d: true,
+			s: 3
+		}), txt("t", 50, 56, "cắt đoạn là cắt nghĩa", {
+			c: "red",
+			s: 3.4
+		}))
+	]),
+	"rag-vec": M([
+		F("Kho có hai tài liệu: FAQ marketing và điều khoản.", "The store holds two documents: a marketing FAQ and the terms.", ...pair("p", "FAQ marketing", "điều khoản", {
+			ca: "gold",
+			cb: "blue"
+		})),
+		F("Câu hỏi dùng chữ của FAQ nên FAQ đứng thứ nhất, điều khoản thứ hai.", "The question uses FAQ wording so the FAQ ranks first and the terms second.", ...stack("r", ["1. FAQ marketing", "2. điều khoản"], {
+			y0: 14,
+			gap: 14,
+			w: 60,
+			h: 10,
+			on: [0]
+		}), txt("t", 50, 46, "gần nhất theo độ gần, chưa phải đúng nhất", {
+			c: "mute",
+			s: 3
+		})),
+		F("Trả lời theo top-1 là trả lời nhầm tài liệu: lấy vài đoạn, đọc, rồi mới viết.", "Answering from top-1 uses the wrong document: take a few passages, read, then write.", ...stack("r", ["1. FAQ marketing", "2. điều khoản"], {
+			y0: 14,
+			gap: 14,
+			w: 60,
+			h: 10,
+			on: [0, 1],
+			bad: [0]
+		}), txt("t", 50, 46, "top-1 không phải kết luận", {
+			c: "red",
+			s: 3.4
+		}))
+	]),
+	"rag-idx": M([
+		F("8 giờ: xây index khi điều khoản ghi «7 ngày».", "8:00: the index is built when the policy says “7 days”.", box("i", 28, 24, 38, 14, "8h: index\n«7 ngày»", { c: "blue" }), box("f", 72, 24, 38, 14, "file nguồn\n«7 ngày»", { c: "blue" })),
+		F("9 giờ: file sửa thành «14 ngày», nhưng index vẫn là bản 8 giờ.", "9:00: the file becomes “14 days”, but the index is still the 8:00 version.", box("i", 28, 24, 38, 14, "index (8h)\n«7 ngày»", { c: "red" }), box("f", 72, 24, 38, 14, "file nguồn (9h)\n«14 ngày»", {
+			f: "green",
+			c: "green"
+		})),
+		F("Cả buổi sáng bot nói 7 ngày: đó là chỉ mục cũ, không phải mô hình ngoan cố. Phải xây lại index khi nguồn đổi.", "All morning the bot says 7 days: a stale index, not a stubborn model. Rebuild the index when the source changes.", ...chain("c", [
+			"file đổi",
+			"xây lại index",
+			"bot nói 14"
+		], {
+			y: 26,
+			on: 2
+		}))
+	]),
+	"rag-rank": M([
+		F("Có 20 đoạn xếp theo độ gần; điều khoản đúng đứng thứ 15.", "20 passages ordered by similarity; the right clause is 15th.", ...Array.from({ length: 20 }, (_, i) => box(`p${i}`, 8 + i % 10 * 9.4, 20 + Math.floor(i / 10) * 12, 8, 8, String(i + 1), {
+			c: i === 14 ? "accent" : "mute",
+			f: i === 14 ? "accent" : "soft",
+			s: 2.8
+		}))),
+		F("Re-rank đọc lại cả danh sách và kéo điều khoản đó lên đầu.", "Re-rank reads the list again and lifts that clause to the top.", ...Array.from({ length: 20 }, (_, i) => box(`p${i}`, 8 + i % 10 * 9.4, 20 + Math.floor(i / 10) * 12, 8, 8, String(i + 1), {
+			c: i === 14 ? "green" : "mute",
+			f: i === 14 ? "green" : "soft",
+			s: 2.8
+		})), box("t", 50, 52, 70, 8, "re-rank: đoạn 15 → hạng 1", {
+			c: "green",
+			s: 3
+		})),
+		F("Nhưng nếu bước tìm chỉ giữ 5 đoạn đầu thì đoạn 15 không bao giờ vào danh sách: re-rank không tìm hộ.", "But if the search keeps only the top 5, passage 15 never enters the list: re-rank cannot find it for you.", ...Array.from({ length: 20 }, (_, i) => box(`p${i}`, 8 + i % 10 * 9.4, 20 + Math.floor(i / 10) * 12, 8, 8, String(i + 1), {
+			c: i < 5 ? "blue" : i === 14 ? "red" : "mute",
+			f: i < 5 ? "soft" : "soft",
+			o: i < 5 || i === 14 ? 1 : .35,
+			s: 2.8
+		})), txt("t", 50, 52, "chỉ giữ 5 đoạn → đoạn 15 ngoài danh sách", {
+			c: "red",
+			s: 3.2
+		}))
+	]),
+	"rag-near": M([
+		F("Buổi demo chạy một câu hỏi và tìm được một đoạn.", "The demo runs one question and finds one passage.", box("d", 50, 24, 60, 14, "demo: 1 câu hỏi → 1 đoạn", { c: "blue" })),
+		F("Đó chưa phải đánh giá: đánh giá cần một bộ ca, gồm cả ca mà độ gần sẽ phản bội.", "That is not an evaluation: evaluation needs a set of cases, including ones where similarity betrays you.", ...[
+			"ca 1 (demo)",
+			"ca 2",
+			"ca 3: độ gần sai"
+		].map((t, i) => box(`c${i}`, 50, 12 + i * 12, 60, 9, t, {
+			c: i === 2 ? "red" : "blue",
+			s: 3,
+			o: i === 0 ? 1 : .9
+		}))),
+		F("Giữ một bộ ca; demo chỉ là một câu trong bộ đó, nếu nó đáng nằm trong bộ.", "Keep a case set; the demo is just one row in it, if it deserves to be.", box("s", 50, 24, 76, 18, "bộ ca: demo là một dòng", {
+			c: "green",
+			f: "soft"
+		}), txt("t", 50, 46, "một lần chạy được ≠ một kết quả", {
+			c: "mute",
+			s: 3.2
+		}))
+	]),
+	"rag-store": M([
+		F("Hai collection trong Chroma: policy-2026-09 và policy-2026-10.", "Two Chroma collections: policy-2026-09 and policy-2026-10.", ...pair("p", "policy-2026-09", "policy-2026-10", {
+			ca: "blue",
+			cb: "blue"
+		})),
+		F("Lần gọi trỏ nhầm vào policy-2026-09 nên câu trả lời bám theo tháng 9.", "The call points at policy-2026-09, so the answer follows September.", ...pair("p", "policy-2026-09\n← lần gọi trỏ vào", "policy-2026-10", {
+			ca: "red",
+			fa: "red",
+			cb: "mute",
+			ob: .4
+		})),
+		F("Đó không phải embedding hỏng: ghi tên kho trong log, đừng nói «đã tìm vector store» như thể chỉ có một kho.", "Not a broken embedding: log the collection name; do not say “searched the vector store” as if there were one.", ...pair("p", "log: tìm trong\npolicy-2026-10", "tên kho phải\nnằm trong log", {
+			ca: "green",
+			cb: "accent"
+		}))
+	]),
+	"rag-demo": M([
+		F("Buổi RAG Demonstration chạy một câu và in ra một câu trả lời.", "The RAG demonstration runs one question and prints one answer.", ...chain("r", [
+			"câu hỏi",
+			"đoạn đã tìm",
+			"câu đã viết"
+		], {
+			y: 26,
+			on: 2,
+			all: true
+		})),
+		F("Giữ đoạn đã tìm cạnh câu đã viết: có cặp đó mới có một ca.", "Keep the retrieved passage next to the written answer: only that pair makes a case.", ...pair("p", "đoạn đã tìm\n«hoàn tiền: không nêu số»", "câu đã viết\n«hoàn 500.000đ»", {
+			ca: "blue",
+			cb: "red"
+		})),
+		F("Kiểm tra: số tiền trong câu có nằm trong đoạn không? Không thì câu bịa số.", "Check: is the amount in the answer inside the passage? If not, the answer invented it.", ...pair("p", "đoạn: không có\nsố tiền", "câu: có số\n500.000đ", {
+			ca: "blue",
+			cb: "red",
+			d: true
+		}), txt("t", 50, 46, "số không nằm trong đoạn → bịa", {
+			c: "red",
+			s: 3.4
+		}))
+	])
+};
+var m4 = {
+	"im-grid": M([
+		F("Một bức ảnh biển hiệu chia thành lưới ô nhỏ.", "A photo of a shop sign is divided into a grid of small cells.", ...Array.from({ length: 24 }, (_, i) => box(`g${i}`, 20 + i % 6 * 12, 10 + Math.floor(i / 6) * 9, 11, 8, "", {
+			c: "mute",
+			f: "soft"
+		}))),
+		F("Mỗi ô là một con số độ sáng, không phải «chữ» hay «đường phố».", "Each cell is a brightness number, not “letters” or “a street”.", ...Array.from({ length: 24 }, (_, i) => box(`g${i}`, 20 + i % 6 * 12, 10 + Math.floor(i / 6) * 9, 11, 8, String(i * 37 % 99), {
+			c: "blue",
+			f: "soft",
+			s: 2.8
+		}))),
+		F("Prompt «một góc phố» cho ra một lưới số trông giống góc phố; nó không phải địa chỉ bạn có thể gửi khách đến.", "A “street corner” prompt yields a number grid that looks like one; it is not an address you can send customers to.", box("a", 28, 26, 38, 14, "lưới số\ntrông như góc phố", { c: "blue" }), box("b", 72, 26, 38, 14, "địa chỉ thật\n(không có)", {
+			c: "red",
+			d: true
+		}), txt("t", 50, 48, "biển hiệu trông thật ≠ có thật", {
+			c: "red",
+			s: 3.4
+		}))
+	]),
+	"im-vae": M([
+		F("Ảnh biển hiệu có một chữ nhỏ ở góc.", "The sign photo has a small word in the corner.", box("i", 50, 22, 60, 24, "ảnh gốc: chữ nhỏ rõ nét", { c: "blue" })),
+		F("VAE nén ảnh thành một mã ngắn, chỉ giữ phần chung.", "A VAE compresses the image to a short code that keeps only the common parts.", ...chain("v", [
+			"ảnh gốc",
+			"mã ngắn",
+			"ảnh dựng lại"
+		], {
+			y: 26,
+			on: 1
+		})),
+		F("Chữ nhỏ là phần riêng, đã bị bỏ khi nén: sau khi dựng lại nó thành một vệt mờ.", "The small word is a specific detail dropped in compression: after rebuilding it is a blur.", ...pair("p", "ảnh gốc\nchữ rõ", "dựng lại\nchữ thành vệt", {
+			ca: "blue",
+			cb: "red",
+			fb: "soft"
+		}), txt("t", 50, 48, "không phải «phông chữ nghệ thuật»", {
+			c: "red",
+			s: 3.2
+		}))
+	]),
+	"im-gan": M([
+		F("GAN có hai bên: kẻ làm giả viết ảnh, người chê phân biệt thật giả.", "A GAN has two sides: a forger writes images and a critic tells real from fake.", ...pair("p", "kẻ làm giả", "người chê", {
+			ca: "accent",
+			cb: "blue"
+		})),
+		F("Kẻ làm giả viết một đôi giày không có mã; người chê không bắt được và gật đầu.", "The forger writes a shoe with no SKU; the critic cannot catch it and nods.", box("a", 24, 22, 32, 12, "giày không mã", { c: "accent" }), arr("x", 41, 22, 55, 22, "mute"), box("b", 76, 22, 32, 12, "người chê: «ổn»", { c: "green" })),
+		F("Người chê gật không có nghĩa là kho của bạn có đôi giày đó.", "The critic's nod does not mean your stock has that shoe.", box("a", 28, 24, 38, 14, "người chê\ngật đầu", { c: "green" }), box("b", 72, 24, 38, 14, "kho của bạn:\nkhông có", {
+			c: "red",
+			d: true
+		}), txt("t", 50, 46, "ảnh đẹp ≠ sản phẩm tồn tại", {
+			c: "red",
+			s: 3.4
+		}))
+	]),
+	"im-diff": M([
+		F("Diffusion bắt đầu từ ảnh toàn nhiễu.", "Diffusion starts from an all-noise image.", ...Array.from({ length: 18 }, (_, i) => dot(`n${i}`, 20 + i % 6 * 12, 14 + Math.floor(i / 6) * 10, "mute", 1.4))),
+		F("Mỗi bước gỡ bớt một ít nhiễu theo hướng prompt mô tả, dần hiện ra một bao bì.", "Each step removes a little noise toward what the prompt describes, gradually revealing a package.", ...chain("d", [
+			"toàn nhiễu",
+			"bớt nhiễu",
+			"hiện hình",
+			"bao bì"
+		], {
+			y: 26,
+			on: 2,
+			h: 14
+		})),
+		F("Mã vạch trên bao bì chỉ là các ô nhiễu còn sót lại, không phải mã trong hệ thống; nó không tra từ một kho ảnh.", "The barcode is leftover noise cells, not a code in your system; it was not looked up in an image store.", ...pair("p", "mã vạch\ntrong ảnh", "mã trong\nhệ thống", {
+			ca: "red",
+			cb: "mute",
+			d: true
+		}), txt("t", 50, 46, "chỉ là nhiễu còn sót", {
+			c: "red",
+			s: 3.4
+		}))
+	]),
+	"im-txt": M([
+		F("Prompt mô tả một bao bì, gửi vào mô hình sinh ảnh.", "A prompt describes a package and goes into an image model.", ...chain("p", [
+			"prompt",
+			"mô hình ảnh",
+			"ảnh"
+		], {
+			y: 26,
+			on: 2,
+			all: true
+		})),
+		F("Ảnh ra chỉ là một hình minh họa, chưa phải một bao bì đã in.", "The output is only an illustration, not a printed package.", ...pair("p", "ảnh minh họa", "bao bì đã in", {
+			ca: "blue",
+			cb: "mute",
+			d: true,
+			ob: .5
+		})),
+		F("Prompt lái bức ảnh nhưng không chứng nhận nó: đừng bịa thông số cho sản phẩm trong ảnh.", "A prompt steers the picture but does not certify it: do not invent specs for the product shown.", box("a", 28, 26, 38, 14, "prompt lái ảnh", { c: "blue" }), box("b", 72, 26, 38, 14, "chứng nhận\nthông số (không có)", {
+			c: "red",
+			d: true
+		}), txt("t", 50, 48, "chỉ ghi thông số lấy từ nguồn thật", {
+			c: "mute",
+			s: 3
+		}))
+	]),
+	"rag-job": M([
+		F("Bài yêu cầu RAG trên các văn bản được giao.", "The assignment requires RAG over the assigned documents.", box("s", 50, 24, 70, 16, "văn bản được giao\n(phạm vi của bài)", {
+			c: "green",
+			f: "soft"
+		})),
+		F("Câu trả lời dẫn một điều khoản nằm trong các văn bản đó là câu trong bài.", "An answer quoting a clause that is inside those texts is in scope.", box("s", 50, 20, 70, 16, "văn bản được giao", {
+			c: "green",
+			f: "soft"
+		}), box("c", 50, 20, 40, 8, "điều khoản trong file", {
+			c: "green",
+			f: "green"
+		})),
+		F("Một điều khoản không có trong đó là câu ngoài bài, dù ngoài đời nó có thật.", "A clause not in them is out of scope, even if it is real in life.", box("s", 36, 24, 52, 18, "văn bản được giao", {
+			c: "green",
+			f: "soft"
+		}), box("c", 82, 24, 30, 12, "điều khoản lạ", {
+			c: "red",
+			d: true
+		}), txt("t", 50, 48, "đúng ngoài đời ≠ đúng trong bài", {
+			c: "red",
+			s: 3.4
+		}))
+	]),
+	"lc-tpl": M([
+		F("Khuôn: «chỉ dùng đoạn sau: {passage}». Chỗ trống {passage} chờ được điền.", "Template: “use only this passage: {passage}”. The {passage} slot waits to be filled.", box("t", 50, 24, 80, 14, "chỉ dùng đoạn sau: {passage}", { c: "blue" })),
+		F("Điền một đoạn tìm được vào chỗ trống: lần gọi bám theo nguồn.", "Fill the slot with a retrieved passage: the call stays tied to a source.", box("t", 50, 16, 80, 12, "chỉ dùng đoạn sau: «hoàn tiền trong 14 ngày»", {
+			c: "green",
+			s: 3
+		}), txt("n", 50, 36, "có nguồn → còn trong RAG", {
+			c: "green",
+			s: 3.4
+		})),
+		F("Nếu passage rỗng mà vẫn gọi, mọi câu trả lời sau đó nằm ngoài RAG dù code dùng LangChain.", "If passage is empty and you still call, every answer is outside RAG even if the code uses LangChain.", box("t", 50, 16, 80, 12, "chỉ dùng đoạn sau: ( rỗng )", {
+			c: "red",
+			d: true,
+			s: 3
+		}), txt("n", 50, 36, "tên thư viện không tạo ra nguồn", {
+			c: "red",
+			s: 3.4
+		}))
+	]),
+	"lc-parse": M([
+		F("Dạng yêu cầu: «có» hoặc «không», kèm đúng mã.", "The required form: “yes” or “no”, with the exact code.", box("p", 50, 24, 70, 14, "dạng: có|không + mã", { c: "blue" })),
+		F("Mô hình viết: «tôi nghĩ là có, khoảng 2 triệu». Không đúng dạng.", "The model writes: “I think yes, about 2 million”. Wrong shape.", ...chain("c", ["mô hình viết\n«tôi nghĩ là có…»", "parser"], {
+			y: 26,
+			on: 1,
+			h: 18
+		})),
+		F("Parser vỡ và báo lỗi dạng. Kết quả đúng của hệ thống là lỗi, không phải «có».", "The parser breaks and reports a shape error. The system's right result is the error, not “yes”.", box("a", 28, 24, 38, 14, "parser:\nlỗi dạng", {
+			c: "red",
+			f: "red"
+		}), box("b", 72, 24, 38, 14, "đừng đọc thành\n«có»", {
+			c: "mute",
+			d: true
+		}), txt("t", 50, 46, "không đoán ý mô hình", {
+			c: "red",
+			s: 3.4
+		}))
+	]),
+	"lc-agent": M([
+		F("Chain là đường đã vẽ sẵn: tra catalog rồi trả lời.", "A chain is a pre-drawn path: query the catalog, then answer.", ...chain("c", ["tra catalog", "trả lời"], {
+			y: 26,
+			on: 1,
+			x0: 25,
+			x1: 75
+		})),
+		F("Agent tự chọn bước sau: catalog hay chính sách tùy câu hỏi.", "An agent picks the next step itself: catalog or policy depending on the question.", box("q", 20, 26, 22, 12, "câu hỏi mở", { c: "accent" }), box("a", 62, 12, 30, 10, "catalog", { c: "blue" }), box("b", 62, 40, 30, 10, "chính sách", { c: "blue" }), arr("x", 31, 24, 47, 14, "mute"), arr("y", 31, 28, 47, 38, "mute")),
+		F("Cả hai đều cần trần: dừng sau vài bước dù chưa «hài lòng».", "Both need a ceiling: stop after a few steps even if not “satisfied”.", ...chain("c", [
+			"bước 1",
+			"bước 2",
+			"bước 3",
+			"dừng"
+		], {
+			y: 26,
+			on: 3,
+			h: 14
+		}), txt("t", 50, 48, "trần số bước = bắt buộc", {
+			c: "red",
+			s: 3.4
+		}))
+	]),
+	"cap-none": M([
+		F("Một capstone vẫn bắt đầu bằng câu: ai quyết định điều gì?", "A capstone still starts with: who decides what?", box("q", 50, 24, 74, 14, "ai quyết định điều gì?", {
+			f: "accent",
+			c: "accent"
+		})),
+		F("Sau đó đi đúng các bước CRISP-DM quen thuộc.", "Then follow the familiar CRISP-DM steps.", ...chain("c", [
+			"hiểu bài toán",
+			"hiểu dữ liệu",
+			"chuẩn bị",
+			"mô hình",
+			"đánh giá"
+		], {
+			y: 26,
+			on: 0,
+			h: 14
+		})),
+		F("Không có công thức mới nào tên là capstone: nó chỉ là một bài làm.", "No new formula is named capstone: it is just an assignment.", box("a", 50, 24, 70, 14, "capstone = bài làm\nkhông có buổi dạy thêm", { c: "mute" }))
+	]),
+	"ht-h0": M([
+		F("Hai bản quảng cáo A và B. Muốn biết B có khác A không.", "Two ads A and B. We want to know whether B differs from A.", ...pair("p", "bản A", "bản B", {
+			ca: "blue",
+			cb: "accent"
+		})),
+		F("H0 (giả thuyết không): tỷ lệ form của B bằng A. H1: hai tỷ lệ khác nhau.", "H0 (null): B's form rate equals A's. H1: the two rates differ.", box("a", 28, 24, 38, 16, "H0\nB = A", { c: "blue" }), box("b", 72, 24, 38, 16, "H1\nB ≠ A", { c: "accent" })),
+		F("«B thắng» chưa phải giả thuyết mà là kết luận, chỉ được nói sau khi có bằng chứng.", "“B wins” is a conclusion, not a hypothesis, to be said only after evidence.", box("a", 28, 24, 38, 14, "H0 / H1\n(viết trước)", { c: "green" }), box("b", 72, 24, 38, 14, "«B thắng»\n(kết luận sau)", {
+			c: "red",
+			d: true
+		}), arr("x", 48, 24, 52, 24, "mute"))
+	]),
+	"ht-p": M([
+		F("Giả sử H0 đúng: hai bản bằng nhau, và mẫu hay lệch quanh 0.", "Assume H0 is true: the two ads are equal and samples scatter around 0.", ...bell("b", 50, 46, {
+			w: 80,
+			h: 28
+		}), txt("t", 50, 52, "mức chênh giữa hai bản", {
+			s: 2.8,
+			c: "mute"
+		})),
+		F("Mẫu của bạn lệch ở đây: phần đuôi từ chỗ đó ra ngoài là p-value.", "Your sample sits here: the tail beyond it is the p-value.", ...bell("b", 50, 46, {
+			w: 80,
+			h: 28
+		}), ln("m", 74, 46, 74, 20, "accent", { w: .7 }), txt("t", 80, 18, "p ≈ 0,03", {
+			c: "accent",
+			s: 3.6
+		})),
+		F("p = 0,03: nếu H0 đúng, lệch như thế chỉ gặp khoảng 3 lần trong 100 lần làm lại. Đó không phải xác suất H0 đúng.", "p = 0.03: if H0 is true you would see a gap this big about 3 times in 100 repeats. It is not the probability H0 is true.", ...bell("b", 50, 46, {
+			w: 80,
+			h: 28,
+			op: .5
+		}), ...Array.from({ length: 3 }, (_, i) => dot(`d${i}`, 78 + i * 4, 40, "accent", 1.2)), txt("t", 50, 10, "độ hiếm của mẫu, không phải P(H0 đúng)", {
+			c: "red",
+			s: 3.2
+		}))
+	]),
+	"ht-err": M([
+		F("Hai thực tế có thể xảy ra, và hai cách bạn hô.", "Two realities and two calls you can make.", box("a", 28, 14, 38, 10, "thật sự bằng nhau", { c: "blue" }), box("b", 72, 14, 38, 10, "thật sự khác", { c: "accent" }), box("c", 28, 36, 38, 10, "bạn hô «khác»", { c: "mute" }), box("d", 72, 36, 38, 10, "bạn hô «bằng»", { c: "mute" })),
+		F("Thật sự bằng nhau mà bạn hô «khác»: báo động giả (loại I), cỡ α = 5%.", "Truly equal but you call “different”: false alarm (type I), size α = 5%.", box("a", 28, 14, 38, 10, "thật sự bằng nhau", { c: "blue" }), box("c", 28, 36, 38, 10, "bạn hô «khác»", {
+			c: "red",
+			f: "red"
+		}), arr("x", 28, 20, 28, 31, "red"), txt("t", 70, 28, "báo động giả (loại I)", {
+			c: "red",
+			s: 3.2
+		})),
+		F("Thật sự khác mà bạn hô «bằng»: bỏ sót (loại II). Với α = 5%, 100 lần làm đúng luật thì khoảng 5 lần vẫn hô sai ở trường hợp bằng nhau.", "Truly different but you call “equal”: a miss (type II). With α = 5%, about 5 of 100 rule-following runs still shout wrong when truly equal.", box("b", 72, 14, 38, 10, "thật sự khác", { c: "accent" }), box("d", 72, 36, 38, 10, "bạn hô «bằng»", {
+			c: "red",
+			f: "red"
+		}), arr("x", 72, 20, 72, 31, "red"), txt("t", 28, 28, "bỏ sót (loại II)", {
+			c: "red",
+			s: 3.2
+		}))
+	]),
+	"ht-t": M([
+		F("12 tuần dữ liệu, độ lệch chuẩn tính từ chính 12 tuần đó.", "12 weeks of data, with the standard deviation estimated from those 12 weeks.", bars("b", [
+			8,
+			9,
+			10,
+			10,
+			11,
+			12,
+			10,
+			9,
+			11,
+			12,
+			10,
+			11
+		], [
+			"",
+			"",
+			"",
+			"",
+			"",
+			"",
+			"",
+			"",
+			"",
+			"",
+			"",
+			""
+		], {
+			c: "blue",
+			max: 14,
+			show: false,
+			base: 40,
+			h: 26,
+			x0: 10,
+			x1: 90
+		}), txt("t", 50, 50, "độ lệch chuẩn cũng là ước lượng", {
+			c: "mute",
+			s: 3
+		})),
+		F("Phân phối chuẩn có đuôi mỏng; vạch bác ở đây.", "The normal curve has thin tails; its cutoff sits here.", ...bell("b", 50, 44, {
+			w: 80,
+			h: 28,
+			op: 1
+		}), ln("c1", 66, 44, 66, 24, "red", {
+			w: .6,
+			d: true
+		}), txt("t", 66, 20, "vạch chuẩn", {
+			c: "red",
+			s: 2.8
+		})),
+		F("Phân phối t với 11 bậc tự do đuôi dày hơn, vạch đứng xa hơn: khó bác quá sớm.", "The t curve with 11 degrees of freedom has fatter tails, its cutoff sits farther out: harder to reject too early.", ...bell("b", 50, 44, {
+			w: 80,
+			h: 28,
+			op: .35
+		}), ...bell("f", 50, 44, {
+			w: 80,
+			h: 28,
+			fat: 4,
+			c: "accent"
+		}), ln("c1", 66, 44, 66, 24, "red", {
+			w: .6,
+			d: true,
+			o: .4
+		}), ln("c2", 71, 44, 71, 24, "accent", { w: .7 }), txt("t", 71, 20, "vạch t", {
+			c: "accent",
+			s: 2.8
+		}))
+	]),
+	"ht-means": M([
+		F("GDN trung bình 120.000đ (độ lệch chuẩn 30.000đ, 36 form), Facebook 135.000đ (40.000đ, 36 form).", "GDN averages 120,000 (SD 30,000, 36 forms), Facebook 135,000 (40,000, 36 forms).", ...numline("n", 100, 160, {
+			y: 36,
+			ticks: [
+				100,
+				120,
+				135,
+				160
+			]
+		}), dot("a", at(120, 100, 160), 36, "blue", 2), dot("b", at(135, 100, 160), 36, "accent", 2), txt("la", at(120, 100, 160), 26, "GDN 120", {
+			s: 3,
+			c: "blue"
+		}), txt("lb", at(135, 100, 160), 26, "FB 135", {
+			s: 3,
+			c: "accent"
+		})),
+		F("Khoảng cách giữa hai trung bình là 15.000đ, nhưng mỗi trung bình có sai số của nó.", "The gap between the means is 15,000, but each mean has its own error.", ...numline("n", 100, 160, {
+			y: 36,
+			ticks: [
+				100,
+				120,
+				135,
+				160
+			]
+		}), ring("a", at(120, 100, 160), 36, 6, "blue"), ring("b", at(135, 100, 160), 36, 6.8, "accent"), dot("a2", at(120, 100, 160), 36, "blue", 2), dot("b2", at(135, 100, 160), 36, "accent", 2), txt("t", 50, 12, "sai số ≈ 8.000đ; chênh 15.000đ", {
+			c: "mute",
+			s: 3
+		})),
+		F("So khoảng cách với sai số: khoảng 1,9 sai số, gần ngưỡng; phép kiểm định cho biết đó có thể chỉ là nhiễu.", "Compare the gap with its error: about 1.9 errors, near the threshold; the test says whether it may be only noise.", bars("b", [1.9, 2], ["chênh / sai số", "ngưỡng ≈ 2"], {
+			c: ["accent", "mute"],
+			max: 3,
+			base: 46,
+			h: 28,
+			x0: 25,
+			x1: 75
+		}))
+	]),
+	"ht-props": M([
+		F("Mỗi bản có 2.000 người xem. A: 40 form (2,0%). B: 52 form (2,6%).", "Each ad has 2,000 viewers. A: 40 forms (2.0%). B: 52 forms (2.6%).", bars("b", [2, 2.6], ["A 2,0%", "B 2,6%"], {
+			c: ["blue", "accent"],
+			max: 3,
+			base: 46,
+			h: 30,
+			x0: 25,
+			x1: 75,
+			unit: "%"
+		})),
+		F("Chênh 0,6 điểm phần trăm. Câu hỏi: chênh đó có lớn hơn nhiễu do chọn mẫu không?", "A gap of 0.6 percentage points. Question: is it bigger than sampling noise?", bars("b", [2, 2.6], ["A 2,0%", "B 2,6%"], {
+			c: ["blue", "accent"],
+			max: 3,
+			base: 46,
+			h: 30,
+			x0: 25,
+			x1: 75,
+			unit: "%"
+		}), ln("g", 62, 14, 62, 22, "red", { w: .7 }), txt("t", 50, 8, "chênh 0,6 điểm", {
+			c: "red",
+			s: 3.2
+		})),
+		F("Sai số ở cỡ mẫu này khoảng 0,45 điểm; chênh 0,6 chỉ ≈ 1,3 sai số, chưa đủ để kết luận.", "At this sample size the error is about 0.45 points; the 0.6 gap is only ≈ 1.3 errors, not enough to conclude.", bars("b", [1.3, 2], ["chênh / sai số", "ngưỡng ≈ 2"], {
+			c: ["accent", "mute"],
+			max: 3,
+			base: 46,
+			h: 28,
+			x0: 25,
+			x1: 75
+		}), txt("t", 50, 8, "2,0% và 2,6% vẫn có thể là nhiễu", {
+			c: "red",
+			s: 3.2
+		}))
+	]),
+	"ht-peek": M([
+		F("Bạn xem p mỗi ngày và định dừng khi p < 5%.", "You check p every day and plan to stop when p < 5%.", ...[
+			.3,
+			.12,
+			.2,
+			.07,
+			.04,
+			.09,
+			.15
+		].map((v, i) => dot(`d${i}`, 12 + i * 12, 44 - v * 100, v < .05 ? "green" : "mute", 1.4)), ln("l", 6, 39, 94, 39, "red", {
+			d: true,
+			w: .4
+		}), txt("t", 20, 8, "p theo ngày", {
+			s: 3,
+			c: "mute"
+		})),
+		F("Mỗi ngày là một lần được hô; chỉ cần một ngày chạm dưới 5% là bạn dừng.", "Each day is another chance to call it; one day under 5% and you stop.", ...[
+			.3,
+			.12,
+			.2,
+			.07,
+			.04,
+			.09,
+			.15
+		].map((v, i) => dot(`d${i}`, 12 + i * 12, 44 - v * 100, v < .05 ? "red" : "mute", 1.6)), ring("r", 60, 40, 4, "red"), ln("l", 6, 39, 94, 39, "red", {
+			d: true,
+			w: .4
+		})),
+		F("Nhiều lần được hô thì tỷ lệ báo động giả thật cao hơn 5% đã viết. Phải định cỡ mẫu hoặc ngày dừng trước.", "With many chances the real false-alarm rate exceeds the written 5%. Fix the sample size or stop day beforehand.", bars("b", [5, 20], ["viết: 5%", "thực tế: cao hơn"], {
+			c: ["mute", "red"],
+			max: 25,
+			base: 46,
+			h: 28,
+			x0: 25,
+			x1: 75,
+			unit: "%"
+		}), txt("t", 50, 8, "nhìn trộm làm 5% không còn là 5%", {
+			c: "red",
+			s: 3.2
+		}))
+	]),
+	"ht-chi": M([
+		F("Bảng thực tế: GDN 30 mua / 70 không; TikTok 10 mua / 90 không.", "Observed table: GDN 30 buy / 70 not; TikTok 10 buy / 90 not.", bars("b", [30, 10], ["GDN mua", "TikTok mua"], {
+			c: ["blue", "accent"],
+			max: 40,
+			base: 46,
+			h: 28,
+			x0: 25,
+			x1: 75
+		})),
+		F("Nếu kênh và việc mua không liên quan, mỗi kênh kỳ vọng 20 người mua.", "If channel and buying were unrelated, each channel would expect 20 buyers.", bars("b", [30, 10], ["GDN mua", "TikTok mua"], {
+			c: ["blue", "accent"],
+			max: 40,
+			base: 46,
+			h: 28,
+			x0: 25,
+			x1: 75
+		}), ln("e1", 14, 32, 50, 32, "mute", {
+			d: true,
+			w: .4
+		}), ln("e2", 50, 32, 86, 32, "mute", {
+			d: true,
+			w: .4
+		}), txt("t", 50, 8, "kỳ vọng = 20 mỗi ô", {
+			c: "mute",
+			s: 3
+		})),
+		F("Chi-bình phương cộng độ lệch của cả bảng: (30−20)²/20 + (10−20)²/20 + … nhìn cả bảng, không từng ô.", "Chi-square adds the gaps of the whole table: (30−20)²/20 + (10−20)²/20 + … the whole table, not one cell.", box("a", 50, 24, 80, 14, "χ² = Σ (quan sát − kỳ vọng)² / kỳ vọng\n= 5 + 5 + 1,25 + 1,25 = 12,5", {
+			c: "accent",
+			s: 3
+		}), txt("t", 50, 46, "một số cho cả bảng", {
+			c: "mute",
+			s: 3
+		}))
+	]),
+	"ht-anova": M([
+		F("Ba kênh với ba số đo giá mỗi form: 10–12, 11–13, 19–21 (nghìn đồng).", "Three channels with three cost-per-form measures: 10–12, 11–13, 19–21 (thousand).", ...[
+			[
+				10,
+				11,
+				12
+			],
+			[
+				11,
+				12,
+				13
+			],
+			[
+				19,
+				20,
+				21
+			]
+		].flatMap((g, k) => g.map((v, i) => dot(`d${k}${i}`, 16 + k * 34, 44 - (v - 8) * 2.8, [
+			"blue",
+			"gold",
+			"accent"
+		][k], 1.6)))),
+		F("Trung bình từng kênh: 11, 12, 20. Khoảng cách giữa các kênh lớn hơn khoảng cách trong từng kênh.", "Channel means: 11, 12, 20. The gaps between channels exceed the spread within each channel.", ...[
+			[
+				10,
+				11,
+				12
+			],
+			[
+				11,
+				12,
+				13
+			],
+			[
+				19,
+				20,
+				21
+			]
+		].flatMap((g, k) => g.map((v, i) => dot(`d${k}${i}`, 16 + k * 34, 44 - (v - 8) * 2.8, [
+			"blue",
+			"gold",
+			"accent"
+		][k], 1.6))), ...[
+			11,
+			12,
+			20
+		].map((m, k) => ln(`m${k}`, 8 + k * 34, 44 - (m - 8) * 2.8, 26 + k * 34, 44 - (m - 8) * 2.8, "ink", { w: .6 }))),
+		F("ANOVA so hai phần đó trong một cuộc kiểm định (thay vì ba cuộc), rồi mới hỏi kênh nào khác kênh nào.", "ANOVA compares those two parts in one test (not three), and only then asks which pairs differ.", box("a", 28, 24, 38, 14, "giữa các kênh\n(lớn)", { c: "accent" }), box("b", 72, 24, 38, 14, "trong từng kênh\n(nhỏ)", { c: "blue" }), txt("t", 50, 46, "tỷ số F lớn → có kênh khác", {
+			c: "green",
+			s: 3.4
+		}))
+	]),
+	"eda-ask": M([
+		F("«Làm EDA» chưa phải một câu hỏi.", "“Do EDA” is not yet a question.", box("q", 50, 24, 60, 14, "«làm EDA»", {
+			c: "red",
+			d: true
+		})),
+		F("Câu viết được: tỷ lệ form tháng này có khác tháng trước không, và khác bao nhiêu form?", "A writable question: does this month's form rate differ from last month's, and by how many forms?", box("q", 50, 24, 84, 16, "tỷ lệ form tháng này có khác tháng trước không,\nvà khác bao nhiêu form?", {
+			f: "accent",
+			c: "accent",
+			s: 3
+		})),
+		F("Câu hỏi quyết định cột nào cần nhìn và hình nào cần vẽ.", "The question decides which columns to look at and which chart to draw.", ...chain("c", [
+			"câu hỏi",
+			"cột cần xem",
+			"hình cần vẽ"
+		], {
+			y: 26,
+			on: 2
+		}))
+	]),
+	"eda-src": M([
+		F("Hai file: chuyến taxi công khai và khách spa của bạn.", "Two files: public taxi trips and your own spa customers.", ...pair("p", "file chuyến taxi\ncông khai", "khách spa\ncủa bạn", {
+			ca: "mute",
+			cb: "accent"
+		})),
+		F("Một tỷ lệ tính trên file taxi nói về chuyến taxi, không nói về cửa hàng của bạn.", "A rate computed on the taxi file describes taxi trips, not your shop.", box("a", 28, 24, 38, 14, "tỷ lệ trên\nfile taxi", { c: "mute" }), box("b", 72, 24, 38, 14, "tỷ lệ đặt lịch\ncủa bạn", {
+			c: "red",
+			d: true
+		}), txt("t", 50, 46, "không thay thế nhau", {
+			c: "red",
+			s: 3.4
+		})),
+		F("Trước khi tính, hỏi: bảng này ghi ai?", "Before computing, ask: who does this table record?", box("q", 50, 24, 70, 14, "bảng này ghi ai?", {
+			f: "accent",
+			c: "accent"
+		}))
+	]),
+	"eda-type": M([
+		F("Bốn cột, bốn kiểu: kênh (chữ), số sao (chữ có thứ tự), ngày form (ngày), chi tiêu (số).", "Four columns, four types: channel (text), stars (ordered text), form date (date), spend (number).", ...[
+			["kênh", "chữ"],
+			["số sao", "chữ có\nthứ tự"],
+			["ngày form", "ngày"],
+			["chi tiêu", "số"]
+		].map(([a, b], i) => box(`c${i}`, 14 + i * 24, 24, 21, 18, `${a}\n${b}`, {
+			c: [
+				"mute",
+				"gold",
+				"blue",
+				"accent"
+			][i],
+			s: 3
+		}))),
+		F("Mỗi kiểu cho phép phép tính khác nhau: số thì trung bình được, ngày thì khoảng cách, chữ thì đếm.", "Each type allows different operations: numbers average, dates measure gaps, text is counted.", ...[
+			["kênh", "đếm"],
+			["số sao", "thứ hạng"],
+			["ngày form", "khoảng\ncách"],
+			["chi tiêu", "trung bình"]
+		].map(([a, b], i) => box(`c${i}`, 14 + i * 24, 24, 21, 18, `${a}\n${b}`, {
+			c: [
+				"mute",
+				"gold",
+				"blue",
+				"accent"
+			][i],
+			s: 3
+		}))),
+		F("Trung bình của chữ «GDN» không tồn tại.", "The mean of the text “GDN” does not exist.", box("a", 50, 24, 66, 14, "trung bình(«GDN», «Facebook»)  →  không tồn tại", {
+			c: "red",
+			d: true,
+			s: 3
+		}))
+	]),
+	"eda-row": M([
+		F("Một khách để lại form hai lần vì tải lại trang: hai dòng.", "One customer submitted twice because of a page reload: two rows.", ...stack("r", [
+			"Lan — 2.000.000đ",
+			"Lan — 2.000.000đ",
+			"Minh — 1.000.000đ"
+		], {
+			y0: 10,
+			gap: 11,
+			w: 70,
+			on: [0, 1],
+			c: "blue"
+		})),
+		F("SUM chi tiêu tính Lan hai lần: 5.000.000 thay vì 3.000.000.", "SUM counts Lan twice: 5,000,000 instead of 3,000,000.", ...stack("r", [
+			"Lan — 2.000.000đ",
+			"Lan — 2.000.000đ",
+			"Minh — 1.000.000đ"
+		], {
+			y0: 10,
+			gap: 11,
+			w: 70,
+			on: [0, 1],
+			bad: [1]
+		}), txt("t", 50, 46, "tổng bị nhân đôi", {
+			c: "red",
+			s: 3.6
+		})),
+		F("Mỗi dòng phải là một thứ bạn gọi tên được: một khách, một đơn, một lượt form.", "Each row must be a thing you can name: a customer, an order, a form submission.", box("q", 50, 24, 70, 14, "mỗi dòng = ?\nmột khách, hay một lần gửi?", {
+			f: "accent",
+			c: "accent"
+		}))
+	]),
+	"eda-miss": M([
+		F("1.000 khách, cột tuổi có 100 ô trống; 900 người khai trung bình 35 tuổi.", "1,000 customers; the age column has 100 blanks; the 900 who answered average 35.", box("a", 38, 24, 58, 16, "900 người khai\ntrung bình 35", { c: "blue" }), box("b", 82, 24, 24, 16, "100 ô\ntrống", {
+			c: "gold",
+			d: true
+		})),
+		F("Điền 0 cho 100 người đó thì trung bình tụt còn 31,5 và có «khách 0 tuổi».", "Filling 0 for those 100 drops the mean to 31.5 and creates “0-year-old customers”.", box("a", 38, 24, 58, 16, "900 người: 35", { c: "blue" }), box("b", 82, 24, 24, 16, "100 ô = 0", {
+			c: "red",
+			f: "red"
+		}), txt("t", 50, 46, "trung bình mới = 31,5", {
+			c: "red",
+			s: 3.6
+		})),
+		F("Ô trống là «chưa biết», không phải số 0: bỏ riêng, hoặc điền có lý do và ghi lại.", "A blank means “unknown”, not zero: set aside, or fill with a stated reason.", box("a", 28, 24, 38, 14, "ô trống\n= chưa biết", { c: "green" }), box("b", 72, 24, 38, 14, "số 0\n= đã biết là 0", { c: "mute" }))
+	]),
+	"eda-scale": M([
+		F("Hai cột: chi tiêu tính bằng triệu đồng (khoảng 0–10), thời gian xem tính bằng giây (khoảng 0–600).", "Two columns: spend in millions (about 0–10), watch time in seconds (about 0–600).", ...pair("p", "chi tiêu\n0 … 10", "thời gian xem\n0 … 600", {
+			ca: "blue",
+			cb: "accent"
+		})),
+		F("Khi tính khoảng cách để gom cụm, cột có số lớn chiếm hết tiếng nói; chi tiêu gần như bị bỏ.", "When measuring distances for clustering the big-number column dominates; spend is almost ignored.", bars("b", [10, 600], ["chi tiêu", "thời gian xem"], {
+			c: ["blue", "accent"],
+			max: 600,
+			show: false,
+			base: 46,
+			h: 30,
+			x0: 25,
+			x1: 75
+		}), txt("t", 50, 8, "khoảng cách do cột giây quyết định", {
+			c: "red",
+			s: 3.2
+		})),
+		F("Đổi sang điểm z: mỗi cột cùng thước, nên có trọng lượng như nhau.", "Switch to z-scores: each column on the same scale carries equal weight.", bars("b", [1, 1], ["chi tiêu (z)", "thời gian (z)"], {
+			c: ["blue", "accent"],
+			max: 2,
+			show: false,
+			base: 46,
+			h: 30,
+			x0: 25,
+			x1: 75
+		}), txt("t", 50, 8, "cùng một thước", {
+			c: "green",
+			s: 3.4
+		}))
+	]),
+	"eda-bad": M([
+		F("Ba giá trị lạ: tỷ lệ form 200%, ngày hẹn năm sau, tuổi −3.", "Three odd values: form rate 200%, appointment date next year, age −3.", ...stack("r", [
+			"tỷ lệ form = 200%",
+			"ngày hẹn: năm sau (file đã khóa)",
+			"tuổi = −3"
+		], {
+			y0: 12,
+			gap: 12,
+			w: 70,
+			c: "red",
+			bad: [
+				0,
+				1,
+				2
+			],
+			on: [
+				0,
+				1,
+				2
+			]
+		})),
+		F("Đó không phải khách lạ (điểm xa) mà là giá trị không được phép: lỗi nhập.", "These are not unusual customers (outliers) but forbidden values: entry errors.", box("a", 28, 24, 38, 14, "điểm xa\n(hợp lệ, hiếm)", { c: "blue" }), box("b", 72, 24, 38, 14, "không hợp lệ\n(sai luật)", { c: "red" })),
+		F("Lọc theo luật miền giá trị trước, rồi mới xét điểm xa.", "Filter by domain rules first, then consider outliers.", ...chain("c", [
+			"luật miền giá trị",
+			"lọc giá trị sai",
+			"xét điểm xa"
+		], {
+			y: 26,
+			on: 1
+		}))
+	]),
+	"eda-cat": M([
+		F("Bảng có 400 dòng GDN, 550 Facebook, 250 TikTok: tổng 1.200.", "The table has 400 GDN, 550 Facebook, 250 TikTok rows: 1,200 in all.", bars("b", [
+			400,
+			550,
+			250
+		], [
+			"GDN",
+			"Facebook",
+			"TikTok"
+		], {
+			c: [
+				"blue",
+				"gold",
+				"accent"
+			],
+			max: 600,
+			base: 46,
+			h: 30,
+			x0: 15,
+			x1: 85
+		})),
+		F("Phần của từng kênh: 33%, 46%, 21%.", "Each channel's share: 33%, 46%, 21%.", bars("b", [
+			33,
+			46,
+			21
+		], [
+			"GDN",
+			"Facebook",
+			"TikTok"
+		], {
+			c: [
+				"blue",
+				"gold",
+				"accent"
+			],
+			max: 55,
+			unit: "%",
+			base: 46,
+			h: 30,
+			x0: 15,
+			x1: 85
+		})),
+		F("Chữ không có thứ tự thì thứ tự vẽ cột không mang nghĩa: đếm, đừng nối đường.", "Unordered text means bar order carries no meaning: count, do not connect with a line.", bars("b", [
+			46,
+			33,
+			21
+		], [
+			"Facebook",
+			"GDN",
+			"TikTok"
+		], {
+			c: [
+				"gold",
+				"blue",
+				"accent"
+			],
+			max: 55,
+			unit: "%",
+			base: 46,
+			h: 30,
+			x0: 15,
+			x1: 85
+		}), txt("t", 50, 6, "xếp từ lớn đến nhỏ cho dễ đọc", {
+			c: "mute",
+			s: 3
+		}))
+	]),
+	"eda-ord": M([
+		F("Đánh giá 1–5 sao: 40 người cho 5 sao, 30 cho 1 sao, 30 cho 3 sao.", "Ratings 1–5: 40 give 5 stars, 30 give 1 star, 30 give 3 stars.", bars("b", [
+			30,
+			0,
+			30,
+			0,
+			40
+		], [
+			"1★",
+			"2★",
+			"3★",
+			"4★",
+			"5★"
+		], {
+			c: "gold",
+			max: 45,
+			base: 46,
+			h: 30,
+			x0: 15,
+			x1: 85
+		})),
+		F("Trung bình 3,2 trông như «tạm ổn».", "The mean 3.2 looks like “so-so”.", bars("b", [
+			30,
+			0,
+			30,
+			0,
+			40
+		], [
+			"1★",
+			"2★",
+			"3★",
+			"4★",
+			"5★"
+		], {
+			c: "gold",
+			max: 45,
+			base: 46,
+			h: 30,
+			x0: 15,
+			x1: 85
+		}), ln("m", at(3.2, 1, 5, 15, 85), 12, at(3.2, 1, 5, 15, 85), 46, "red", {
+			d: true,
+			w: .6
+		}), txt("t", at(3.2, 1, 5, 15, 85), 8, "trung bình 3,2", {
+			c: "red",
+			s: 3
+		})),
+		F("Thật ra khách chia hai cực: giữ nguyên các bậc, đừng chỉ nhìn một con số.", "In truth customers split into two poles: keep the levels, do not look at a single number.", bars("b", [
+			30,
+			0,
+			30,
+			0,
+			40
+		], [
+			"1★",
+			"2★",
+			"3★",
+			"4★",
+			"5★"
+		], {
+			c: [
+				"red",
+				"gold",
+				"gold",
+				"gold",
+				"green"
+			],
+			max: 45,
+			base: 46,
+			h: 30,
+			x0: 15,
+			x1: 85
+		}), txt("t", 50, 8, "hai cực: 1★ và 5★", {
+			c: "red",
+			s: 3.4
+		}))
+	]),
+	"eda-num": M([
+		F("Tám tuần: 18, 19, 20, 20, 20, 21, 22 và 120.", "Eight weeks: 18, 19, 20, 20, 20, 21, 22 and 120.", bars("b", [
+			18,
+			19,
+			20,
+			20,
+			20,
+			21,
+			22,
+			120
+		], [
+			"18",
+			"19",
+			"20",
+			"20",
+			"20",
+			"21",
+			"22",
+			"120"
+		], {
+			c: [
+				"blue",
+				"blue",
+				"blue",
+				"blue",
+				"blue",
+				"blue",
+				"blue",
+				"red"
+			],
+			max: 120,
+			show: false,
+			base: 46,
+			h: 32
+		})),
+		F("Trung vị là 20: chỗ giữa của các tuần.", "The median is 20: the middle of the weeks.", bars("b", [
+			18,
+			19,
+			20,
+			20,
+			20,
+			21,
+			22,
+			120
+		], [
+			"18",
+			"19",
+			"20",
+			"20",
+			"20",
+			"21",
+			"22",
+			"120"
+		], {
+			c: "blue",
+			max: 120,
+			show: false,
+			base: 46,
+			h: 32
+		}), ln("m", 6, 46 - 20 / 120 * 32, 94, 46 - 20 / 120 * 32, "green", {
+			d: true,
+			w: .6
+		}), txt("t", 50, 6, "trung vị = 20", {
+			c: "green",
+			s: 3.4
+		})),
+		F("Trung bình bị tuần 120 kéo lên 30: hai số cách nhau xa là dấu hiệu có đuôi.", "The mean is dragged to 30 by week 120: two numbers far apart signal a tail.", bars("b", [
+			18,
+			19,
+			20,
+			20,
+			20,
+			21,
+			22,
+			120
+		], [
+			"18",
+			"19",
+			"20",
+			"20",
+			"20",
+			"21",
+			"22",
+			"120"
+		], {
+			c: "blue",
+			max: 120,
+			show: false,
+			base: 46,
+			h: 32
+		}), ln("m", 6, 46 - 20 / 120 * 32, 94, 46 - 20 / 120 * 32, "green", {
+			d: true,
+			w: .6
+		}), ln("a", 6, 38, 94, 38, "red", {
+			d: true,
+			w: .6
+		}), txt("t", 50, 6, "trung bình 30 ≠ trung vị 20", {
+			c: "red",
+			s: 3.4
+		}))
+	]),
+	"eda-r": M([
+		F("Các tuần của một tài khoản: chi tiêu càng cao, số form thường càng cao.", "Weeks of one account: more spend usually means more forms.", ...[
+			[2, 6],
+			[3, 10],
+			[4, 9],
+			[5, 15],
+			[6, 14],
+			[7, 22],
+			[8, 16],
+			[9, 24]
+		].map(([x, y], i) => dot(`d${i}`, 12 + x * 8, 48 - y * 1.5, "blue", 1.5))),
+		F("r = 0,6 nói hai cột đi cùng nhau, ở mức vừa.", "r = 0.6 says the two columns move together, moderately.", ...[
+			[2, 6],
+			[3, 10],
+			[4, 9],
+			[5, 15],
+			[6, 14],
+			[7, 22],
+			[8, 16],
+			[9, 24]
+		].map(([x, y], i) => dot(`d${i}`, 12 + x * 8, 48 - y * 1.5, "blue", 1.5)), ln("l", 24, 40, 90, 12, "accent", { w: .7 }), txt("t", 30, 8, "r = 0,6", {
+			c: "accent",
+			s: 3.6
+		})),
+		F("Một tuần cụ thể vẫn có thể lệch xa đường tóm tắt: r không phải một đường chắc chắn.", "A specific week can still sit far from the summary line: r is not a certain line.", ...[
+			[2, 6],
+			[3, 10],
+			[4, 9],
+			[5, 15],
+			[6, 14],
+			[7, 22],
+			[8, 16],
+			[9, 24]
+		].map(([x, y], i) => dot(`d${i}`, 12 + x * 8, 48 - y * 1.5, i === 6 ? "red" : "blue", 1.5)), ln("l", 24, 40, 90, 12, "accent", { w: .7 }), ring("r", 76, 24, 4, "red"))
+	]),
+	"eda-cause": M([
+		F("Tuần nào số form tăng thì đơn kem gần cửa hàng cũng tăng.", "Weeks with more forms also have more cream orders near the shop.", ...[
+			[1, 2],
+			[2, 3],
+			[3, 3.5],
+			[4, 5],
+			[5, 6]
+		].map(([x, y], i) => dot(`d${i}`, 20 + x * 12, 46 - y * 5, "green", 1.6)), txt("t", 50, 8, "form ↑  kem ↑ (đi cùng nhau)", {
+			c: "green",
+			s: 3.4
+		})),
+		F("Tắt kem không phải kế hoạch media: hai thứ không kéo nhau.", "Switching off cream is not a media plan: the two do not drag each other.", box("a", 28, 24, 38, 14, "form ↑", { c: "blue" }), box("b", 72, 24, 38, 14, "kem ↑", { c: "gold" }), arr("x", 48, 24, 52, 24, "red", { d: true }), txt("t", 50, 46, "mũi tên nhân quả: chưa có", {
+			c: "red",
+			s: 3.4
+		})),
+		F("Cả hai cùng tăng theo mùa lễ: một nguyên nhân thứ ba.", "Both rise with the holiday season: a third cause.", box("m", 50, 10, 40, 10, "mùa lễ", {
+			f: "accent",
+			c: "accent"
+		}), box("a", 28, 34, 30, 12, "form ↑", { c: "blue" }), box("b", 72, 34, 30, 12, "kem ↑", { c: "gold" }), arr("x", 42, 16, 30, 28, "accent"), arr("y", 58, 16, 70, 28, "accent"))
+	]),
+	"eda-group": M([
+		F("Số form mỗi tuần: GDN 38, 40, 42, 40 và Facebook 10, 20, 30, 100.", "Weekly forms: GDN 38, 40, 42, 40 and Facebook 10, 20, 30, 100.", ...[
+			38,
+			40,
+			42,
+			40
+		].map((v, i) => dot(`g${i}`, 14 + i * 7, 46 - v / 100 * 36, "blue", 1.6)), ...[
+			10,
+			20,
+			30,
+			100
+		].map((v, i) => dot(`f${i}`, 62 + i * 7, 46 - v / 100 * 36, "gold", 1.6))),
+		F("Cả hai kênh đều có trung bình 40.", "Both channels have a mean of 40.", ...[
+			38,
+			40,
+			42,
+			40
+		].map((v, i) => dot(`g${i}`, 14 + i * 7, 46 - v / 100 * 36, "blue", 1.6)), ...[
+			10,
+			20,
+			30,
+			100
+		].map((v, i) => dot(`f${i}`, 62 + i * 7, 46 - v / 100 * 36, "gold", 1.6)), ln("m1", 10, 31.6, 44, 31.6, "blue", {
+			d: true,
+			w: .5
+		}), ln("m2", 58, 31.6, 92, 31.6, "gold", {
+			d: true,
+			w: .5
+		}), txt("t", 50, 6, "trung bình = 40 ở cả hai", {
+			c: "mute",
+			s: 3.2
+		})),
+		F("GDN khít, Facebook rất rộng: so nhóm phải nhìn cả độ rộng, không chỉ trung bình.", "GDN is tight, Facebook very wide: comparing groups needs spread, not just means.", ...[
+			38,
+			40,
+			42,
+			40
+		].map((v, i) => dot(`g${i}`, 14 + i * 7, 46 - v / 100 * 36, "blue", 1.6)), ...[
+			10,
+			20,
+			30,
+			100
+		].map((v, i) => dot(`f${i}`, 62 + i * 7, 46 - v / 100 * 36, "gold", 1.6)), box("a", 28, 8, 30, 8, "GDN: khít", {
+			c: "blue",
+			s: 3
+		}), box("b", 76, 8, 30, 8, "Facebook: rộng", {
+			c: "red",
+			s: 3
+		}))
+	])
+};
 var motions = {
 	...m1,
-	...m2
+	...m2,
+	...m3,
+	...m4
 };
 /** Viết gọn một bảng. */
 function T(name, c, r, m) {
