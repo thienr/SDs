@@ -1,5 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useEffect, useState, useSyncExternalStore } from "react";
+import { CoverInfo, Disclosure, ModuleTree, tocWords } from "@/components/toc-tree";
 import { sessionConcepts } from "@/data/place";
 import { liveCourse } from "@/lib/cms-live";
 import { getCmsVersion, getServerCmsVersion, subscribeCms } from "@/lib/cms-store";
@@ -21,6 +22,7 @@ function Home() {
   useSyncExternalStore(subscribeCms, getCmsVersion, getServerCmsVersion);
   const lang = progress.lang;
   const [notice, setNotice] = useState("");
+  const [openCourse, setOpenCourse] = useState<string | null>(null);
   useEffect(() => {
     hydrateProgress();
   }, []);
@@ -60,11 +62,23 @@ function Home() {
           );
           return (
             <li key={course.id}>
-              <Link to="/khoa/$courseId" params={{ courseId: course.id }} className="block min-h-16 py-3">
-                <span className="text-xs text-muted">{String(index + 1).padStart(2, "0")}{course.optional ? " · optional" : ""} · {ideas} {lang === "en" ? "ideas" : "ý"}</span>
-                <span className="mt-1 block font-medium">{course.title}</span>
-                <span className="mt-1 block text-sm text-muted">{head.why}</span>
-              </Link>
+              <Disclosure
+                open={openCourse === course.id}
+                onToggle={() => setOpenCourse(openCourse === course.id ? null : course.id)}
+                head={
+                  <span className="block py-1">
+                    <span className="text-xs text-muted">{String(index + 1).padStart(2, "0")}{course.optional ? " · optional" : ""} · {ideas} {lang === "en" ? "ideas" : "ý"}</span>
+                    <span className="mt-1 block font-medium">{course.title}</span>
+                    {openCourse !== course.id ? <span className="mt-1 block text-sm text-muted">{head.why}</span> : null}
+                  </span>
+                }
+              >
+                <CoverInfo plain={head.plain} why={head.why} prior={head.prior} lang={lang} editHash={`course:${course.id}`} />
+                <Link to="/khoa/$courseId" params={{ courseId: course.id }} className="mb-2 inline-flex min-h-11 items-center text-sm text-accent underline">
+                  {tocWords[lang].page}
+                </Link>
+                <ModuleTree course={course} lang={lang} />
+              </Disclosure>
             </li>
           );
         })}

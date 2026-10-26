@@ -2,11 +2,10 @@ import { o as __toESM } from "../_runtime.mjs";
 import { a as getCourse } from "./catalog-DhneT6we.mjs";
 import { o as getCmsVersion, s as getServerCmsVersion, u as subscribeCms } from "./cms-store-DEQCGuiI.mjs";
 import { a as liveCourse } from "./cms-live-BOIfHz8S.mjs";
-import { a as getProgress, h as subscribeProgress, o as getServerProgress } from "./place-BaQa8e2N.mjs";
-import { a as getServerRawVersion, h as subscribeRaw, i as getRawVersion } from "./study-DstPvIVW.mjs";
+import { A as subscribeProgress, _ as subscribeRaw, a as getServerRawVersion, b as getProgress, i as getRawVersion, x as getServerProgress } from "./study-CcBfLB2x.mjs";
 import { J as require_react, S as require_jsx_runtime, b as Link, p as useRouterState } from "../_libs/@tanstack/react-router+[...].mjs";
-import { a as ModuleTree, n as Route } from "./router-DwcYq-o0.mjs";
-//#region node_modules/.nitro/vite/services/ssr/assets/khoa._courseId-I3TlgrXC.js
+import { n as Route, s as ModuleTree } from "./router-C-Gbrr8y.mjs";
+//#region node_modules/.nitro/vite/services/ssr/assets/khoa._courseId-CV00HR2A.js
 var import_react = /* @__PURE__ */ __toESM(require_react());
 var import_jsx_runtime = require_jsx_runtime();
 function CoursePage() {
