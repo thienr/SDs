@@ -1,3 +1,4 @@
+import { remember } from "@/data/remember";
 import { Link } from "@tanstack/react-router";
 import { useState, useSyncExternalStore } from "react";
 import { DataDemo } from "@/components/sims/data-demo";
@@ -242,6 +243,13 @@ export function ConceptView({ concept }: { concept: StudyConcept }) {
           </ul>
         ) : null}
       </section>
+
+      {remember[concept.id] ? (
+        <section className="mt-8 rounded-card border border-accent bg-card px-4 py-3">
+          <h2 className="text-xs uppercase tracking-widest text-accent">{lang === "en" ? "Remember in one line" : "Nhớ một câu"}</h2>
+          <p className="mt-2 leading-relaxed">{remember[concept.id][lang === "en" ? 1 : 0]}</p>
+        </section>
+      ) : null}
 
       <blockquote className="mt-8 border-l-4 border-accent pl-4 font-display text-2xl leading-snug">{text.insight}</blockquote>
 

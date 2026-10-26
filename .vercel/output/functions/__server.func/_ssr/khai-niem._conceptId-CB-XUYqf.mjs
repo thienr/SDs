@@ -1,14 +1,44 @@
 import { o as __toESM } from "../_runtime.mjs";
 import { n as course_default } from "./catalog-DhneT6we.mjs";
 import { J as require_react, S as require_jsx_runtime, b as Link } from "../_libs/@tanstack/react-router+[...].mjs";
-import { B as getServerRawVersion, F as studyListTitle, G as overviews, I as studyNeighbors, K as getAssignmentByConcept, N as getStudy, P as studyCopy, W as subscribeRaw, b as subscribeProgress, d as getProgress, f as getServerProgress, r as Route$1, z as getRawVersion } from "./router-9fV-CodP.mjs";
-import { n as Tex, t as CodeExplain } from "./tex-BJrbv3NU.mjs";
-import { n as Range, r as Sim, t as Lab } from "./labs-BYVJYmoN.mjs";
-import { r as relatedOf } from "./map-DfZEWy05.mjs";
+import { B as getServerRawVersion, F as studyListTitle, G as overviews, I as studyNeighbors, K as getAssignmentByConcept, N as getStudy, P as studyCopy, W as subscribeRaw, b as subscribeProgress, d as getProgress, f as getServerProgress, r as Route$1, z as getRawVersion } from "./router-D0NqqQTt.mjs";
+import { n as Tex, t as CodeExplain } from "./tex-Du1L4egu.mjs";
+import { n as Range, r as Sim, t as Lab } from "./labs-CK3uVI5N.mjs";
+import { r as relatedOf } from "./map-BmZwFx1A.mjs";
 import { t as walks } from "./walk-BWyJOgjD.mjs";
-//#region node_modules/.nitro/vite/services/ssr/assets/khai-niem._conceptId-B8mrzLvd.js
+//#region node_modules/.nitro/vite/services/ssr/assets/khai-niem._conceptId-CB-XUYqf.js
 var import_react = /* @__PURE__ */ __toESM(require_react());
 var import_jsx_runtime = require_jsx_runtime();
+/** «Nhớ một câu»: đúng một câu để học thuộc cho mỗi thẻ. [VI, EN]. Số và quy tắc phải khớp transcript hoặc kiến thức chuẩn. */
+var remember = {
+	"infer-intro": ["Suy luận thống kê là dùng một mẫu nhỏ để kết luận về cả tập lớn, và luôn kèm mức bất định.", "Inferential statistics uses a small sample to conclude about the whole population, always with a stated uncertainty."],
+	permut: ["Hoán vị (thứ tự quan trọng): P(n,k) = n! / (n−k)!.", "Permutation (order matters): P(n,k) = n! / (n−k)!."],
+	combin: ["Tổ hợp (thứ tự không quan trọng): C(n,k) = n! / (k!(n−k)!), tức hoán vị chia cho k!.", "Combination (order doesn't matter): C(n,k) = n! / (k!(n−k)!), i.e. the permutation divided by k!."],
+	"prob-def": ["Xác suất là số từ 0 đến 1: 0 là không thể, 1 là chắc chắn, và P(không A) = 1 − P(A).", "Probability is a number from 0 to 1: 0 is impossible, 1 is certain, and P(not A) = 1 − P(A)."],
+	events: ["Loại trừ nhau là không thể cùng xảy ra; độc lập là biết cái này không đổi xác suất cái kia, và hai biến cố loại trừ nhau (xác suất > 0) thì không độc lập.", "Mutually exclusive means they cannot happen together; independent means knowing one doesn't change the other, and exclusive events with positive probability are not independent."],
+	"add-rule": ["P(A hoặc B) = P(A) + P(B) − P(A và B); phải trừ phần chung vì nó bị đếm hai lần.", "P(A or B) = P(A) + P(B) − P(A and B); subtract the overlap because it is counted twice."],
+	"mul-rule": ["P(A và B) = P(A) × P(B | A); chỉ khi hai biến cố độc lập mới nhân thẳng P(A) × P(B).", "P(A and B) = P(A) × P(B | A); only when A and B are independent does it reduce to P(A) × P(B)."],
+	rv: ["Biến ngẫu nhiên là quy tắc gán một con số cho mỗi kết quả của một phép thử ngẫu nhiên.", "A random variable is a rule that assigns a number to each outcome of a random experiment."],
+	dist: ["Phân phối xác suất cho biết mỗi giá trị có bao nhiêu xác suất, và tổng tất cả bằng 1.", "A probability distribution says how much probability each value has, and they all add up to 1."],
+	ev: ["Giá trị kỳ vọng E[X] = Σ x · P(X = x): mức trung bình sau rất nhiều lần lặp lại.", "Expected value E[X] = Σ x · P(X = x): the long-run average over many repeats."],
+	"no-exp": ["Có thể tính xác suất từ một mô hình giả định mà chưa cần quan sát dữ liệu thật.", "You can compute a probability from an assumed model before observing any real data."],
+	binomial: ["Nhị thức đếm số lần thành công trong n lần thử độc lập, cùng xác suất p: P(X=k) = C(n,k) pᵏ (1−p)ⁿ⁻ᵏ.", "Binomial counts successes in n independent tries with the same p: P(X=k) = C(n,k) pᵏ (1−p)ⁿ⁻ᵏ."],
+	cdf: ["Xác suất tích lũy F(k) = P(X ≤ k): cộng dồn từ giá trị nhỏ nhất đến mốc k.", "Cumulative probability F(k) = P(X ≤ k): add up from the smallest value to the cutoff k."],
+	pdf: ["Với biến liên tục, xác suất của một khoảng là diện tích dưới đường mật độ; xác suất tại đúng một điểm bằng 0.", "For a continuous variable, the probability of a range is the area under the density curve; the probability at one exact point is 0."],
+	normal: ["Phân phối chuẩn là hình chuông đối xứng, chỉ cần trung bình μ và độ lệch chuẩn σ là xác định hoàn toàn.", "The normal distribution is a symmetric bell fully set by the mean μ and the standard deviation σ."],
+	zscore: ["z = (x − μ) / σ: cho biết x cách trung bình bao nhiêu độ lệch chuẩn, âm là thấp hơn, dương là cao hơn.", "z = (x − μ) / σ: how many standard deviations x is from the mean, negative below and positive above."],
+	samples: ["Mẫu là một phần lấy ra từ tổng thể để nói về phần bạn chưa đo; mẫu nhỏ chưa phải cả tổng thể.", "A sample is a part drawn from the population to speak about the part you didn't measure; it is not the whole."],
+	"samp-dist": ["Phân phối mẫu là phân phối của một thống kê (như trung bình mẫu) khi lấy mẫu lặp lại; độ lệch chuẩn của nó là sai số chuẩn SE = σ / √n.", "A sampling distribution is the distribution of a statistic (such as the sample mean) over repeated sampling; its standard deviation is the standard error SE = σ / √n."],
+	"samp-props": ["Lấy mẫu công bằng thì trung bình các trung bình mẫu bằng μ, và n càng lớn thì Var = σ²/n càng nhỏ; mẫu lớn không sửa được mẫu chệch.", "With fair sampling the mean of sample means equals μ, and a larger n shrinks Var = σ²/n; a bigger sample doesn't fix a biased draw."],
+	clt: ["Định lý giới hạn trung tâm: với n đủ lớn (thường quanh 30, lệch nhiều thì cần lớn hơn), trung bình mẫu xấp xỉ chuẩn N(μ, σ²/n) dù dữ liệu gốc không chuẩn.", "Central Limit Theorem: for large enough n (often around 30, more if skewed), the sample mean is approximately N(μ, σ²/n) even if the data are not normal."],
+	"clt-est": ["Ước lượng trung bình: đừng nói một con số, hãy nói một khoảng x̄ ± z·s/√n quanh trung bình mẫu.", "Estimating a mean: don't give one number, give a range x̄ ± z·s/√n around the sample mean."],
+	ci: ["Khoảng tin cậy 95% nói về phương pháp: lặp lại nhiều lần thì khoảng chứa giá trị thật khoảng 95% số lần, chứ không phải xác suất 95% cho riêng một khoảng.", "A 95% confidence interval describes the method: repeated many times, about 95% of the intervals contain the true value; it is not a 95% chance for one particular interval."],
+	"samp-types": ["Cách lấy mẫu là một phần của kết luận: mẫu chệch thì kết luận chệch, và khoảng tin cậy không sửa được điều đó.", "How you sample is part of the conclusion: a biased draw gives a biased conclusion, and a confidence interval can't repair it."],
+	"samp-use": ["Dùng mẫu khi đo cả tổng thể quá tốn kém hoặc không cần thiết, và mẫu phải giống tổng thể.", "Use a sample when measuring the whole population is too costly or unnecessary, and it must resemble the population."],
+	joint: ["Xác suất đồng thời là cả hai cùng xảy ra; xác suất có điều kiện P(A | B) = P(A và B) / P(B), và P(A | B) khác P(B | A).", "Joint probability is both happening; conditional probability P(A | B) = P(A and B) / P(B), and P(A | B) is not P(B | A)."],
+	bayes: ["Bayes: P(A | B) = P(B | A) · P(A) / P(B); xác suất ban đầu được cập nhật khi có thông tin mới.", "Bayes: P(A | B) = P(B | A) · P(A) / P(B); the starting probability is updated when new information arrives."],
+	"samp-est": ["Ước lượng điểm (như p̂ = số thuận lợi / n) chỉ là một con số từ mẫu, không phải giá trị thật; cần kèm một khoảng.", "A point estimate (like p̂ = favorable / n) is one number from the sample, not the true value; pair it with a range."]
+};
 var ui = {
 	vi: {
 		step: "Bước",
@@ -9566,6 +9596,16 @@ function ConceptView({ concept }) {
 						}) : null
 					]
 				}),
+				remember[concept.id] ? /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("section", {
+					className: "mt-8 rounded-card border border-accent bg-card px-4 py-3",
+					children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("h2", {
+						className: "text-xs uppercase tracking-widest text-accent",
+						children: lang === "en" ? "Remember in one line" : "Nhớ một câu"
+					}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+						className: "mt-2 leading-relaxed",
+						children: remember[concept.id][lang === "en" ? 1 : 0]
+					})]
+				}) : null,
 				/* @__PURE__ */ (0, import_jsx_runtime.jsx)("blockquote", {
 					className: "mt-8 border-l-4 border-accent pl-4 font-display text-2xl leading-snug",
 					children: text.insight
