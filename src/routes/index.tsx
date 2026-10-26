@@ -1,5 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useEffect, useState, useSyncExternalStore } from "react";
+import { setOpenCourse, useTocMemory } from "@/lib/toc-memory";
 import { CoverInfo, Disclosure, ModuleTree, tocWords } from "@/components/toc-tree";
 import { sessionConcepts } from "@/data/place";
 import { liveCourse } from "@/lib/cms-live";
@@ -22,7 +23,8 @@ function Home() {
   useSyncExternalStore(subscribeCms, getCmsVersion, getServerCmsVersion);
   const lang = progress.lang;
   const [notice, setNotice] = useState("");
-  const [openCourse, setOpenCourse] = useState<string | null>(null);
+  const mem = useTocMemory();
+  const openCourse = mem.course;
   useEffect(() => {
     hydrateProgress();
   }, []);
@@ -64,7 +66,7 @@ function Home() {
             <li key={course.id}>
               <Disclosure
                 open={openCourse === course.id}
-                onToggle={() => setOpenCourse(openCourse === course.id ? null : course.id)}
+                onToggle={() => setOpenCourse(openCourse === course.id ? "" : course.id)}
                 head={
                   <span className="block py-1">
                     <span className="text-xs text-muted">{String(index + 1).padStart(2, "0")}{course.optional ? " · optional" : ""} · {ideas} {lang === "en" ? "ideas" : "ý"}</span>

@@ -1,11 +1,12 @@
 import { Link } from "@tanstack/react-router";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { ChevronRight } from "lucide-react";
 import { sessionConcepts } from "@/data/place";
 import { studyListTitle } from "@/data/study";
 import { liveModule, liveSession } from "@/lib/cms-live";
 import { getLesson, lessons, type Course } from "@/lib/catalog";
 import { lessonStatus, type Lang } from "@/lib/progress";
+import { useTocMemory } from "@/lib/toc-memory";
 import { rawIsEdited } from "@/lib/raw-store";
 
 /** Các khóa chỉ học qua thẻ khái niệm, không liệt kê bài giảng gốc. */
@@ -17,8 +18,8 @@ const trackOnly = new Set([
 ]);
 
 const words = {
-  vi: { why: "Biết để làm gì", prior: "Nối với cái trước", editCourse: "Sửa đầu khóa", editPart: "Sửa đầu phần", page: "Mở trang khóa", seen: "Đã xem", viewing: "Đang xem", not: "Chưa xem", edited: "đã sửa", none: "Buổi này chưa có thẻ riêng." },
-  en: { why: "What you use it for", prior: "How it links", editCourse: "Edit this opener", editPart: "Edit this part", page: "Open the course page", seen: "Seen", viewing: "Reading", not: "Not yet", edited: "edited", none: "No cards for this session yet." },
+  vi: { why: "Biết để làm gì", prior: "Nối với cái trước", editCourse: "Sửa đầu khóa", editPart: "Sửa đầu phần", page: "Mở trang khóa", last: "đọc dở ở đây", seen: "Đã xem", viewing: "Đang xem", not: "Chưa xem", edited: "đã sửa", none: "Buổi này chưa có thẻ riêng." },
+  en: { why: "What you use it for", prior: "How it links", editCourse: "Edit this opener", editPart: "Edit this part", page: "Open the course page", last: "you stopped here", seen: "Seen", viewing: "Reading", not: "Not yet", edited: "edited", none: "No cards for this session yet." },
 };
 
 /** Nút có mũi tên bung xuống. */
@@ -53,7 +54,7 @@ export function CoverInfo({ plain, why, prior, lang, editHash, onNavigate }: { p
   );
 }
 
-function SessionLinks({ course, modTitle, sessionId, lessonIds, lang, onNavigate }: { course: Course; modTitle: string; sessionId: string; lessonIds: string[]; lang: Lang; onNavigate?: () => void }) {
+function SessionLinks({ course, modTitle, sessionId, lessonIds, lang, onNavigate, lastItem }: { lastItem?: string | null; course: Course; modTitle: string; sessionId: string; lessonIds: string[]; lang: Lang; onNavigate?: () => void }) {
   const t = words[lang];
   const ids = sessionConcepts[sessionId] ?? [];
   const real = ids.filter((id) => !id.startsWith("d-"));
@@ -65,9 +66,10 @@ function SessionLinks({ course, modTitle, sessionId, lessonIds, lang, onNavigate
     <ul className="mb-2 space-y-0.5">
       {ids.map((id) => (
         <li key={id}>
-          <Link to="/khai-niem/$conceptId" params={{ conceptId: id }} onClick={onNavigate} className="flex min-h-11 items-center justify-between gap-3 rounded-lg px-2 text-sm hover:bg-card">
+          <Link to="/khai-niem/$conceptId" params={{ conceptId: id }} onClick={onNavigate} className={`flex min-h-11 items-center justify-between gap-3 rounded-lg px-2 text-sm hover:bg-card ${lastItem === id ? "bg-card ring-1 ring-accent" : ""}`}>
             <span className="font-medium">
               {studyListTitle(id, lang)}
+              {lastItem === id ? <span className="ml-2 text-xs font-normal text-accent">{t.last}</span> : null}
               {rawIsEdited(id, lang) ? <span className="ml-2 text-xs font-normal text-accent">{t.edited}</span> : null}
             </span>
           </Link>
@@ -79,8 +81,8 @@ function SessionLinks({ course, modTitle, sessionId, lessonIds, lang, onNavigate
         const st = lessonStatus(id);
         return (
           <li key={id}>
-            <Link to="/bai/$lessonId" params={{ lessonId: id }} onClick={onNavigate} className="flex min-h-11 items-center justify-between gap-3 rounded-lg px-2 text-sm hover:bg-card">
-              <span className="font-medium">{lesson.title}</span>
+            <Link to="/bai/$lessonId" params={{ lessonId: id }} onClick={onNavigate} className={`flex min-h-11 items-center justify-between gap-3 rounded-lg px-2 text-sm hover:bg-card ${lastItem === id ? "bg-card ring-1 ring-accent" : ""}`}>
+              <span className="font-medium">{lesson.title}{lastItem === id ? <span className="ml-2 text-xs font-normal text-accent">{t.last}</span> : null}</span>
               <span className="shrink-0 text-xs text-muted">{st === "seen" ? t.seen : st === "viewing" ? t.viewing : t.not}</span>
             </Link>
           </li>
@@ -95,7 +97,13 @@ function SessionLinks({ course, modTitle, sessionId, lessonIds, lang, onNavigate
  * phần «bìa» (giới thiệu) cũng bung ra ngay tại chỗ.
  */
 export function ModuleTree({ course, lang, openIds, onNavigate }: { course: Course; lang: Lang; openIds?: string[]; onNavigate?: () => void }) {
-  const [open, setOpen] = useState<Set<string>>(() => new Set(openIds ?? []));
+  const mem = useTocMemory();
+  const last = mem.read && mem.read.course === course.id ? mem.read : null;
+  const [open, setOpen] = useState<Set<string>>(() => new Set([...(openIds ?? []), ...(last?.mod ? [`m:${last.mod}`] : []), ...(last?.ses ? [`s:${last.ses}`] : [])]));
+  useEffect(() => {
+    const add = [...(last?.mod ? [`m:${last.mod}`] : []), ...(last?.ses ? [`s:${last.ses}`] : [])];
+    if (add.length) setOpen((prev) => (add.every((k) => prev.has(k)) ? prev : new Set([...prev, ...add])));
+  }, [last?.mod, last?.ses]);
   const toggle = (k: string) =>
     setOpen((prev) => {
       const n = new Set(prev);
@@ -143,7 +151,7 @@ export function ModuleTree({ course, lang, openIds, onNavigate }: { course: Cour
                         }
                       >
                         {blurb ? <p className="mb-1 text-sm leading-relaxed text-muted">{blurb}</p> : null}
-                        <SessionLinks course={course} modTitle={mod.title} sessionId={s.id} lessonIds={s.lessonIds} lang={lang} onNavigate={onNavigate} />
+                        <SessionLinks lastItem={last?.ses === s.id ? last.item : null} course={course} modTitle={mod.title} sessionId={s.id} lessonIds={s.lessonIds} lang={lang} onNavigate={onNavigate} />
                       </Disclosure>
                     </li>
                   );
