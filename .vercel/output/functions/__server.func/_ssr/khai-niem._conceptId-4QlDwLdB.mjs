@@ -1,12 +1,12 @@
 import { o as __toESM } from "../_runtime.mjs";
 import { n as course_default } from "./catalog-DhneT6we.mjs";
 import { J as require_react, S as require_jsx_runtime, b as Link } from "../_libs/@tanstack/react-router+[...].mjs";
-import { B as getServerRawVersion, F as studyListTitle, G as overviews, I as studyNeighbors, K as getAssignmentByConcept, N as getStudy, P as studyCopy, W as subscribeRaw, b as subscribeProgress, d as getProgress, f as getServerProgress, r as Route$1, z as getRawVersion } from "./router-BQK4QVNP.mjs";
-import { n as Tex, t as CodeExplain } from "./tex-DYE02OUf.mjs";
-import { n as Range, r as Sim, t as Lab } from "./labs-hYC2Pga5.mjs";
-import { r as relatedOf } from "./map-DhxRqab9.mjs";
+import { B as getServerRawVersion, F as studyListTitle, G as overviews, I as studyNeighbors, K as getAssignmentByConcept, N as getStudy, P as studyCopy, W as subscribeRaw, b as subscribeProgress, d as getProgress, f as getServerProgress, r as Route$1, z as getRawVersion } from "./router-PiIKfcl9.mjs";
+import { n as Tex, t as CodeExplain } from "./tex-BBUV6crW.mjs";
+import { n as Range, r as Sim, t as Lab } from "./labs-C-sGGagR.mjs";
+import { r as relatedOf } from "./map-CTatL-p8.mjs";
 import { t as walks } from "./walk-BWyJOgjD.mjs";
-//#region node_modules/.nitro/vite/services/ssr/assets/khai-niem._conceptId-CERcSvAR.js
+//#region node_modules/.nitro/vite/services/ssr/assets/khai-niem._conceptId-4QlDwLdB.js
 var import_react = /* @__PURE__ */ __toESM(require_react());
 var import_jsx_runtime = require_jsx_runtime();
 /** «Nhớ một câu»: đúng một câu để học thuộc cho mỗi thẻ. [VI, EN]. Số và quy tắc phải khớp transcript hoặc kiến thức chuẩn. */
@@ -81,7 +81,59 @@ var remember = {
 	"sql-lag": ["LAG và LEAD lấy giá trị dòng liền kề theo thứ tự sắp xếp; thiếu ngày trong dữ liệu thì «dòng trước» không phải hôm qua.", "LAG and LEAD take the value of the adjacent row in sort order; if a day is missing from the data, the \"previous row\" is not yesterday."],
 	"sql-case": ["CASE là luật if viết ngay trong câu truy vấn để người khác chạy lại được.", "CASE is an if-rule written right inside the query so someone else can rerun it."],
 	"sql-cte": ["CTE đặt tên cho một truy vấn con để dễ đọc; view lưu lại câu hỏi đó; không cái nào tự thành một bản sao dữ liệu.", "A CTE names a subquery for readability; a view saves that question; neither automatically becomes a copy of the data."],
-	"sql-idx": ["Chỉ mục như mục lục của bảng: làm một loại truy vấn nhanh hơn, không làm nó đúng hơn hay đổi ý nghĩa câu lệnh.", "An index is the table's table of contents: it makes one kind of query faster, not more correct, and doesn't change the statement's meaning."]
+	"sql-idx": ["Chỉ mục như mục lục của bảng: làm một loại truy vấn nhanh hơn, không làm nó đúng hơn hay đổi ý nghĩa câu lệnh.", "An index is the table's table of contents: it makes one kind of query faster, not more correct, and doesn't change the statement's meaning."],
+	"ml-what": ["Học có giám sát học từ những dòng đã có đáp án rồi dự đoán đáp án cho dòng chưa có.", "Supervised learning learns from rows that already have the answer, then predicts the answer for a row that doesn't."],
+	"slr-line": ["Hồi quy tuyến tính đơn: ŷ = β₀ + β₁x, một đường thẳng từ một cột đầu vào ra đáp án.", "Simple linear regression: ŷ = β₀ + β₁x, one straight line from one input column to the answer."],
+	"slr-fit": ["Bình phương tối thiểu chọn hệ số chặn và độ dốc làm tổng bình phương phần dư RSS = Σ(y − ŷ)² nhỏ nhất.", "Least squares picks the intercept and slope that make the residual sum of squares RSS = Σ(y − ŷ)² smallest."],
+	"slr-r2": ["R² = 1 − RSS/TSS là phần phương sai của y mà đường giải thích được; không phải tỷ lệ điểm nằm trên đường.", "R² = 1 − RSS/TSS is the share of the variance of y the line explains; it is not the share of points on the line."],
+	"slr-assume": ["Muốn suy luận về độ dốc cần quan hệ thẳng, phần dư độc lập và độ tản đều (và phần dư xấp xỉ chuẩn khi mẫu nhỏ).", "To make inferences about the slope you need a straight relationship, independent residuals and an even spread (and roughly normal residuals in small samples)."],
+	"slr-resid": ["Phần dư e = y − ŷ; vẽ biểu đồ phần dư: dải ngẫu nhiên là tốt, hình cong hay hình kèn là cảnh báo.", "The residual is e = y − ŷ; plot the residuals: a random band is good, a curve or funnel is a warning."],
+	"slr-test": ["Kiểm định độ dốc: t = β̂₁ / SE(β̂₁), hỏi nếu độ dốc thật bằng 0 thì độ dốc này có hiếm không.", "Testing the slope: t = β̂₁ / SE(β̂₁), asking how rare a slope this far from 0 would be if the true slope were 0."],
+	"gd-cost": ["Hàm chi phí đo bộ hệ số hiện tại tệ đến đâu; với đường thẳng là J(w) = Σ(y − ŷ)².", "The cost function measures how bad the current coefficients are; for a straight line it is J(w) = Σ(y − ŷ)²."],
+	"gd-step": ["Gradient descent: w := w − η·∇J(w), mỗi bước đi ngược hướng dốc rồi lặp lại.", "Gradient descent: w := w − η·∇J(w), each step goes against the slope, then repeats."],
+	"gd-rate": ["Tốc độ học η là độ dài mỗi bước: quá nhỏ thì chậm, quá lớn thì nhảy qua đáy.", "The learning rate η is the length of each step: too small is slow, too large overshoots the bottom."],
+	"mlr-why": ["Hồi quy bội đưa nhiều cột vào một phương trình: ŷ = β₀ + β₁x₁ + β₂x₂ + ⋯.", "Multiple regression puts several columns into one equation: ŷ = β₀ + β₁x₁ + β₂x₂ + ⋯."],
+	"mlr-coef": ["Hệ số của một cột là độ dốc của cột đó khi các cột khác trong mô hình được giữ cố định.", "A coefficient is the slope of that column when the other columns in the model are held fixed."],
+	"mlr-vif": ["VIFⱼ = 1 / (1 − R²ⱼ); trên 5 là đáng lo (ứng với R²ⱼ > 0,8), vì các cột đầu vào đang đoán được nhau.", "VIFⱼ = 1 / (1 − R²ⱼ); above 5 is worrying (R²ⱼ > 0.8) because the input columns are predicting each other."],
+	"mlr-dummy": ["Biến giả là cột 0/1 cho một mức của biến phân loại; mô hình có hệ số chặn thì bỏ đi một mức.", "A dummy variable is a 0/1 column for one level of a categorical variable; with an intercept, one level is dropped."],
+	"mlr-select": ["R² không bao giờ giảm khi thêm cột, R² hiệu chỉnh thì có thể giảm: R²adj = 1 − (1 − R²)(n − 1)/(n − p − 1).", "R² never falls when you add a column, adjusted R² can: R²adj = 1 − (1 − R²)(n − 1)/(n − p − 1)."],
+	"logit-why": ["Hồi quy tuyến tính trên cột 0/1 có thể cho dự đoán ngoài khoảng 0 đến 1, nên không còn là xác suất.", "Linear regression on a 0/1 column can predict outside 0 to 1, so it is no longer a probability."],
+	"logit-sig": ["Hồi quy logistic đưa điểm tuyến tính qua hàm sigmoid thành xác suất: P(y=1 ∣ x) = 1 / (1 + e^−(β₀+β₁x)).", "Logistic regression passes a linear score through the sigmoid to get a probability: P(y=1 ∣ x) = 1 / (1 + e^−(β₀+β₁x))."],
+	"logit-odds": ["Điểm của logistic là log-odds; x tăng một đơn vị thì odds nhân với e^β₁, không phải cộng thêm xác suất.", "The logistic score is the log-odds; one unit more of x multiplies the odds by e^β₁; it does not add probability."],
+	"logit-many": ["Logistic bội dùng cùng đường cong chữ S với điểm được dựng từ nhiều cột.", "Multiple logistic regression uses the same S-curve with a score built from several columns."],
+	"logit-cm": ["Ma trận nhầm lẫn đếm bốn ô (TP, FP, FN, TN); accuracy = (TP + TN) / N chỉ là một con số trong bốn ô đó.", "The confusion matrix counts four cells (TP, FP, FN, TN); accuracy = (TP + TN) / N is just one number from them."],
+	"logit-pr": ["Precision = TP/(TP+FP) cho biết danh sách gọi sạch đến đâu; recall = TP/(TP+FN) cho biết bắt được bao nhiêu người thật sự rời; hạ ngưỡng thì recall tăng, precision giảm.", "Precision = TP/(TP+FP) says how clean the call list is; recall = TP/(TP+FN) says how many real leavers you catch; lowering the threshold raises recall and lowers precision."],
+	"logit-roc": ["Đường ROC vẽ tỷ lệ dương thật theo tỷ lệ dương giả khi quét ngưỡng từ cao xuống thấp.", "The ROC curve plots the true positive rate against the false positive rate as the threshold sweeps from high to low."],
+	"logit-rest": ["Một-đấu-tất-cả: huấn luyện một hồi quy logistic cho mỗi nhãn, rồi so sánh các xác suất.", "One-versus-rest trains one logistic regression per label, then compares the probabilities."],
+	"tree-ask": ["Cây quyết định hỏi một câu có/không ở mỗi nút; lá là một nhãn, hoặc một giá trị trung bình nếu dự đoán số.", "A decision tree asks one yes/no question per node; a leaf is a label, or an average when predicting a number."],
+	"tree-gini": ["Gini G = 1 − Σpₖ² đo độ lẫn của một nút; câu hỏi tốt làm độ lẫn giảm.", "Gini G = 1 − Σpₖ² measures how mixed a node is; a good question makes it fall."],
+	"tree-deep": ["Cây quá sâu học thuộc cả nhiễu của dữ liệu đã thấy; giới hạn độ sâu để chống quá khớp.", "A tree that is too deep memorizes the noise of the data it has seen; limit the depth to prevent overfitting."],
+	"clus-why": ["Phân cụm nhóm các dòng theo khoảng cách giữa chúng khi bảng không có cột đáp án.", "Clustering groups rows by the distance between them when the table has no answer column."],
+	"km-loop": ["K-means lặp hai bước: gán mỗi điểm cho tâm gần nhất, rồi dời mỗi tâm về trung bình các điểm của nó.", "K-means repeats two steps: assign each point to the nearest center, then move each center to the mean of its points."],
+	"km-k": ["Đồ thị khuỷu tay là hình để nhìn, không phải phép kiểm định; chọn K ở chỗ thêm nhóm không còn siết cụm đáng kể.", "The elbow plot is a picture to look at, not a test; pick K where adding a group no longer tightens the clusters much."],
+	"hier": ["Phân cụm phân cấp gộp dần các nhóm gần nhau, rồi cắt cây ở một độ cao để được K nhóm; số nhóm là số nhánh bị cắt ngang.", "Hierarchical clustering merges nearby groups step by step, then you cut the tree at a height to get K groups; K is the number of branches the cut crosses."],
+	"nlp-tok": ["Token là một mẩu văn bản; từ dừng là từ rất phổ biến được bỏ đi trước khi đếm.", "A token is a piece of text; a stop word is a very common word dropped before counting."],
+	"nlp-bow": ["Túi từ đếm các token và bỏ thứ tự của từ.", "Bag-of-words counts the tokens and throws away word order."],
+	"nlp-tfidf": ["TF-IDF = tf × log(N / df): từ xuất hiện trong mọi tài liệu thì có trọng số thấp.", "TF-IDF = tf × log(N / df): a word found in every document gets a low weight."],
+	"nlp-edit": ["Khoảng cách chỉnh sửa là số thao tác một ký tự ít nhất để biến chuỗi này thành chuỗi kia; một lỗi gõ là một thao tác.", "Edit distance is the fewest single-character edits to turn one string into another; one typo is one edit."],
+	"biz-map": ["Bắt đầu từ quyết định và con số có thể làm đổi quyết định; mô hình là bước cuối.", "Start from the decision and the number that would change it; the model is the last step."],
+	"biz-metric": ["Đo thành công bằng con số nằm trong quyết định kinh doanh; accuracy, R² và AUC chỉ là dụng cụ, không phải mục tiêu.", "Measure success with the number inside the business decision; accuracy, R² and AUC are instruments, not the goal."],
+	"pred-proj": ["Dự đoán là đoán dòng mới cùng loại với dữ liệu đã học; đẩy biến đến vùng chưa từng thấy rồi đọc đường thẳng là một giả định, không phải dự đoán.", "Prediction guesses a new row of the same kind as the data learned from; pushing a variable to a region never seen and reading the line is an assumption, not a prediction."],
+	"logit-spec": ["Độ nhạy = TP/(TP+FN) là tỷ lệ người rời bạn bắt được; độ đặc hiệu = TN/(TN+FP) là tỷ lệ người ở lại bạn để yên; không cái nào là accuracy.", "Sensitivity = TP/(TP+FN) is the share of leavers you catch; specificity = TN/(TN+FP) is the share of stayers you leave alone; neither is accuracy."],
+	"logit-who": ["Xác suất học từ nhóm nào chỉ nói về nhóm đó; đổi nhóm là đổi câu hỏi.", "A probability learned on one group speaks only about that group; changing the group changes the question."],
+	"logit-drift": ["Mô hình đứng yên còn dữ liệu có thể đã đổi; điểm số cũ không tự đúng cho tháng mới.", "The model stands still but the data may have changed; an old score doesn't automatically hold for the new month."],
+	"tree-line": ["Đường thẳng là một độ dốc cho cả khoảng; cây là các bậc thang và không tiếp tục leo ngoài vùng đã thấy.", "A line is one slope across the whole range; a tree is steps and doesn't keep climbing outside the region seen."],
+	"tree-imp": ["Độ quan trọng của một cột trong cây là mức nó làm các nhóm sạch hơn qua các lần cắt; không phải tác động nhân quả lên kết quả.", "A column's importance in a tree is how much it made the groups cleaner across its cuts; it is not a causal effect on the outcome."],
+	"tree-num": ["Cây hồi quy dự đoán một số bằng trung bình của lá, không có hệ số nhân.", "A regression tree predicts a number with the average of its leaf; there is no multiplier coefficient."],
+	"km-start": ["K-means++ chọn tâm kế tiếp xa các tâm đã chọn; đó là cách khởi tạo, không phải cách chọn K.", "K-means++ picks the next center far from the centers already chosen; it is a way to start, not a way to choose K."],
+	"link-how": ["Linkage là luật đo khoảng cách giữa hai cụm đang lớn lên; đổi luật thì hình dạng cụm đổi.", "Linkage is the rule for measuring distance between two growing clusters; changing the rule changes the cluster shape."],
+	"db-scan": ["DBSCAN coi một vùng dày đặc là cụm; điểm không đủ láng giềng được để là nhiễu, không bị nhét vào cụm.", "DBSCAN treats a dense region as a cluster; a point without enough neighbours is left as noise, not stuffed into a cluster."],
+	"gmm-soft": ["GMM cho mỗi điểm một tỷ lệ thuộc về từng đám mây hình bầu dục; đó là nhãn mềm, không phải nhãn cứng.", "A GMM gives each point a share of belonging to each oval cloud; it is a soft label, not a hard one."],
+	"k-mode": ["K-modes dùng yếu vị (mode) làm tâm vì tên không có trung bình; K-prototype trộn cột chữ với cột số.", "K-modes uses the mode as the center because a name has no mean; K-prototype mixes text columns with numeric columns."],
+	"nlp-stem": ["Stemming cắt đuôi từ theo luật; lemmatisation đưa từ về dạng từ điển; cả hai gộp các dạng của một từ, và có thể gộp nhầm hai từ khác nhau.", "Stemming chops word endings by rule; lemmatisation returns a word to its dictionary form; both merge the forms of one word, and can wrongly merge two different words."],
+	"nlp-pmi": ["PMI(x, y) = log [P(x, y) / (P(x) P(y))]: cao khi hai từ đi cùng nhau nhiều hơn mức độc lập dự đoán; từ đi với mọi thứ thì điểm thấp.", "PMI(x, y) = log [P(x, y) / (P(x) P(y))]: high when two words appear together more than independence predicts; a word that goes with everything scores low."],
+	"git-commit": ["Commit là ảnh chụp các tệp tại một thời điểm kèm một câu mô tả; không phải nút Save trong trí nhớ.", "A commit is a snapshot of the files at one moment with a descriptive sentence; it is not a Save button in your memory."],
+	"git-branch": ["Nhánh là một dòng ảnh chụp riêng; nhánh chính không đổi cho đến khi bạn gộp nhánh thử vào.", "A branch is a separate line of snapshots; the main branch doesn't change until you merge the trial line in."]
 };
 var ui = {
 	vi: {
