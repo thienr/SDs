@@ -1,9 +1,9 @@
 import { o as __toESM } from "../_runtime.mjs";
 import { r as courses } from "./catalog-DhneT6we.mjs";
 import { J as require_react, S as require_jsx_runtime, b as Link, p as useRouterState } from "../_libs/@tanstack/react-router+[...].mjs";
-import { A as studyCopy, B as subscribeRaw, F as getRawVersion, H as sessionConcepts, I as getServerRawVersion, L as rawEditCount, N as batchRaw, O as subscribeProgress, P as clearRaw, R as rawIsEdited, b as getServerProgress, g as subscribeCms, h as setCmsPatch, k as getStudy, l as clearCms, m as getServerCmsVersion, p as getCmsVersion, u as cmsEditCount, y as getProgress, z as setRawPatch } from "./router-DTKOv4LZ.mjs";
-import { c as saveCms, n as importCms, r as listCms, t as exportCms } from "./cms-live-DUypcn7f.mjs";
-//#region node_modules/.nitro/vite/services/ssr/assets/goc-3ZC7JiQB.js
+import { A as studyCopy, B as subscribeRaw, F as getRawVersion, H as sessionConcepts, I as getServerRawVersion, L as rawEditCount, N as batchRaw, O as subscribeProgress, P as clearRaw, R as rawIsEdited, b as getServerProgress, g as subscribeCms, h as setCmsPatch, k as getStudy, l as clearCms, m as getServerCmsVersion, p as getCmsVersion, u as cmsEditCount, y as getProgress, z as setRawPatch } from "./router-CYFwjeM5.mjs";
+import { c as saveCms, n as importCms, r as listCms, t as exportCms } from "./cms-live-B3aiHxBt.mjs";
+//#region node_modules/.nitro/vite/services/ssr/assets/goc--oiHL4KN.js
 var import_react = /* @__PURE__ */ __toESM(require_react());
 var import_jsx_runtime = require_jsx_runtime();
 var RAW_NOTE = "so-muc-raw v1. Sửa chữ trong cards. Giữ nguyên id và lang. Không thêm câu hỏi, quiz, hay ô đáp án. Số chưa có nguồn phải ghi ví dụ minh họa. Không bịa số liệu. course, session, place, video chỉ để đọc: sửa cũng bị bỏ qua. Trả lại đúng JSON này, hoặc khối ===== CARD =====.";
@@ -454,19 +454,19 @@ function CmsPanel({ kind, lang, needle, onlyEdited, focusId }) {
 						}) : null,
 						kind === "course" || kind === "module" ? /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(import_jsx_runtime.Fragment, { children: [
 							/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Field, {
-								label: vi ? "Nói cho dễ" : "In plain words",
+								label: vi ? "Hiểu nhanh" : "In plain words",
 								value: draft.plain,
 								onChange: (value) => set("plain", value),
 								tall: true
 							}),
 							/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Field, {
-								label: vi ? "Biết để làm gì" : "What you use it for",
+								label: vi ? "Vì sao cần biết" : "What you use it for",
 								value: draft.why,
 								onChange: (value) => set("why", value),
 								tall: true
 							}),
 							/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Field, {
-								label: vi ? "Nối với cái trước" : "How it links",
+								label: vi ? "Liên hệ với bài trước" : "How it links",
 								value: draft.prior,
 								onChange: (value) => set("prior", value),
 								tall: true
@@ -811,48 +811,48 @@ function BridgePanel({ lang, onApply }) {
 var fields = [
 	{
 		key: "title",
-		vi: "Tên ý",
+		vi: "Tên khái niệm",
 		en: "Title"
 	},
 	{
 		key: "why",
-		vi: "Biết để làm gì",
+		vi: "Vì sao cần biết",
 		en: "What you use it for",
 		tall: true
 	},
 	{
 		key: "prior",
-		vi: "Nối với cái trước",
+		vi: "Liên hệ với bài trước",
 		en: "How it links",
 		tall: true
 	},
 	{
 		key: "see",
-		vi: "Nhìn cái này",
+		vi: "Quan sát",
 		en: "Look at this",
 		tall: true
 	},
 	{
 		key: "plain",
-		vi: "Nói cho dễ",
+		vi: "Hiểu nhanh",
 		en: "In plain words",
 		tall: true
 	},
 	{
 		key: "situation",
-		vi: "Ví dụ",
+		vi: "Tình huống minh họa",
 		en: "Example",
 		tall: true
 	},
 	{
 		key: "use",
-		vi: "Cách dùng, mỗi dòng một bước",
+		vi: "Cách áp dụng, mỗi dòng một bước",
 		en: "Steps, one per line",
 		tall: true
 	},
 	{
 		key: "precise",
-		vi: "Nói cho đúng",
+		vi: "Định nghĩa chính xác",
 		en: "The precise version",
 		tall: true
 	},
@@ -871,7 +871,7 @@ var fields = [
 	},
 	{
 		key: "insight",
-		vi: "Nhớ một điều",
+		vi: "Ghi nhớ",
 		en: "One thing to keep",
 		tall: true
 	}
@@ -1343,7 +1343,7 @@ function RawPage() {
 								}) : null,
 								card.edited && !dirty ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
 									className: "text-sm text-muted",
-									children: vi ? "Đang đè bản in" : "Overriding the printed card"
+									children: vi ? "Đang dùng bản đã sửa" : "Overriding the printed card"
 								}) : null
 							]
 						})

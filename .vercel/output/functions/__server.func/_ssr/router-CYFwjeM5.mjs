@@ -1,9 +1,9 @@
 import { o as __toESM } from "../_runtime.mjs";
 import { c as lessons, o as getLesson, r as courses$1 } from "./catalog-DhneT6we.mjs";
 import { J as require_react, S as require_jsx_runtime, _ as lazyRouteComponent, b as Link, d as Scripts, f as HeadContent, g as Outlet, h as createRouter, p as useRouterState, v as createFileRoute, x as useRouter, y as createRootRoute } from "../_libs/@tanstack/react-router+[...].mjs";
-import { a as Settings, c as Network, d as Map$1, i as Sun, l as Moon, m as BookOpen, n as TriangleAlert, o as Search, r as TableOfContents, t as X } from "../_libs/lucide-react.mjs";
+import { a as Settings, c as Moon, f as BookOpen, i as Sun, l as Map$1, n as TriangleAlert, o as Search, r as TableOfContents, s as Network, t as X } from "../_libs/lucide-react.mjs";
 import { a as union, i as string, n as number, r as object, t as literal } from "../_libs/zod.mjs";
-//#region node_modules/.nitro/vite/services/ssr/assets/router-DTKOv4LZ.js
+//#region node_modules/.nitro/vite/services/ssr/assets/router-CYFwjeM5.js
 var import_react = /* @__PURE__ */ __toESM(require_react());
 var import_jsx_runtime = require_jsx_runtime();
 var __defProp = Object.defineProperty;
@@ -5096,7 +5096,7 @@ var restSessions = [
 			title: "Sai lầm loại I và loại II: báo động giả và bỏ sót",
 			see: "Hình này thể hiện hai loại sai lầm (types of errors). Một bên là báo động giả, bên kia là bỏ sót, và hai loại này không cộng lại thành «xác suất bạn sai».",
 			scene: "x-err",
-			situation: "Với α = 5%, nếu hai bản quảng cáo thật sự bằng nhau, cứ làm đúng luật 100 lần thì khoảng 5 lần vẫn hô «khác». Con số này không nói 5% quyết định của bạn là sai.",
+			situation: "Với α = 5%, nếu hai bản quảng cáo thật sự bằng nhau, cứ làm đúng luật 100 lần thì khoảng 5 lần vẫn báo «khác». Con số này không nói 5% quyết định của bạn là sai.",
 			use: [
 				"Dùng khi cần nói rõ rủi ro của một kết luận A/B.",
 				"Gọi báo động giả là bác H0 khi H0 đúng, và bỏ sót là không bác khi H0 sai.",
@@ -5121,7 +5121,7 @@ var restSessions = [
 			],
 			sim: null,
 			widget: null,
-			insight: "5% là tỷ lệ hô nhầm khi không có gì để hô, không phải tỷ lệ bạn đang sai.",
+			insight: "5% là tỷ lệ báo nhầm khi không có gì để báo, không phải tỷ lệ bạn đang sai.",
 			why: "Để bạn không hiểu «sai số 5%» thành «5% quyết định của tôi là sai».",
 			prior: "p-value và vạch đều có thể đưa ra quyết định sai. Bài này đặt tên cho hai kiểu sai đó."
 		}), card$2({
@@ -5248,14 +5248,14 @@ var restSessions = [
 				title: "Nhìn trộm kết quả A/B: dừng khi vừa thấy đẹp thì 5% không còn là 5%",
 				see: "Hình này thể hiện vấn đề nhìn trộm trong kiểm thử A/B (A/B testing). Vạch bị kéo tới đúng chỗ viên đang đứng, nên viên vừa «vượt» chỉ vì bạn dời vạch.",
 				scene: "x-peek",
-				situation: "Bạn xem kết quả mỗi ngày và định dừng ngay khi p xuống dưới 5%. Bạn đã cho mình nhiều lần được hô, nên tỷ lệ báo động giả thật cao hơn 5% đã viết.",
+				situation: "Bạn xem kết quả mỗi ngày và định dừng ngay khi p xuống dưới 5%. Bạn đã cho mình nhiều lần được báo, nên tỷ lệ báo động giả thật cao hơn 5% đã viết.",
 				use: [
 					"Dùng khi chạy A/B với nhiều lần xem số giữa chừng.",
 					"Chốt cỡ mẫu hoặc một luật dừng trước khi chạy.",
 					"Nếu muốn xem nhiều lần, hãy dùng luật được tính cho việc xem nhiều lần."
 				],
 				plain: "Mỗi lần xem rồi tự cho phép dừng là thêm một cơ hội báo động giả. α bạn viết cho một lần xem không còn là α của cả quá trình.",
-				precise: "Kiểm định lặp trên cùng một thí nghiệm mà không hiệu chỉnh làm xác suất báo động giả tăng. Thế số: nếu mỗi lần xem có 5% cơ hội báo động giả và bạn xem 5 lần, xác suất ít nhất một lần hô nhầm là khoảng 1 − 0,95^5 ≈ 23% nếu coi các lần xem độc lập; thực tế thấp hơn một chút nhưng vẫn vượt xa 5%. Dễ nhầm: đổi H0 sau khi thấy bản nào đang dẫn cũng vậy, vì p không còn là xác suất tính dưới câu đã viết. Luật dừng viết trước, như cỡ mẫu cố định, giữ α gần mức bạn chốt.",
+				precise: "Kiểm định lặp trên cùng một thí nghiệm mà không hiệu chỉnh làm xác suất báo động giả tăng. Thế số: nếu mỗi lần xem có 5% cơ hội báo động giả và bạn xem 5 lần, xác suất ít nhất một lần báo nhầm là khoảng 1 − 0,95^5 ≈ 23% nếu coi các lần xem độc lập; thực tế thấp hơn một chút nhưng vẫn vượt xa 5%. Dễ nhầm: đổi H0 sau khi thấy bản nào đang dẫn cũng vậy, vì p không còn là xác suất tính dưới câu đã viết. Luật dừng viết trước, như cỡ mẫu cố định, giữ α gần mức bạn chốt.",
 				formula: null,
 				symbols: [],
 				sim: null,
@@ -5338,7 +5338,7 @@ var restSessions = [
 			],
 			sim: null,
 			widget: null,
-			insight: "Nhiều kiểm định t là nhiều lần được hô nhầm, một kiểm định F chỉ là một lần.",
+			insight: "Nhiều kiểm định t là nhiều lần được báo nhầm, một kiểm định F chỉ là một lần.",
 			why: "Để ba kênh không bị so từng cặp thành nhiều bài test riêng lẻ.",
 			prior: "Chi-bình phương dùng cho chữ với chữ. Nhiều mức của một biến số dùng một cuộc kiểm định F."
 		})]
@@ -19818,8 +19818,8 @@ var links = [
 	},
 	{
 		to: "/ban-do",
-		vi: "Bản đồ",
-		en: "Map",
+		vi: "Sơ đồ",
+		en: "Mind map",
 		icon: Network
 	},
 	{
@@ -19959,7 +19959,7 @@ function AppShell({ children }) {
 		})]
 	});
 }
-var styles_default = "/assets/styles-UUE5Mnwa.css";
+var styles_default = "/assets/styles-QK0N1CVf.css";
 var Route$12 = createRootRoute({
 	head: () => ({
 		meta: [
@@ -20011,19 +20011,19 @@ function RootComponent() {
 		] })]
 	});
 }
-var $$splitComponentImporter$9 = () => import("./routes-BMYQJ-SA.mjs");
+var $$splitComponentImporter$9 = () => import("./routes-C7jehIA6.mjs");
 var Route$11 = createFileRoute("/")({ component: lazyRouteComponent($$splitComponentImporter$9, "component") });
-var $$splitComponentImporter$8 = () => import("./ban-do-HyfuqSA-.mjs");
+var $$splitComponentImporter$8 = () => import("./ban-do-B_ynTti3.mjs");
 var Route$10 = createFileRoute("/ban-do")({ component: lazyRouteComponent($$splitComponentImporter$8, "component") });
-var $$splitComponentImporter$7 = () => import("./cong-thuc-ov4RuwE2.mjs");
+var $$splitComponentImporter$7 = () => import("./cong-thuc-DrMi2Xmf.mjs");
 var Route$9 = createFileRoute("/cong-thuc")({ component: lazyRouteComponent($$splitComponentImporter$7, "component") });
 var $$splitComponentImporter$6 = () => import("./do-phu-kafhI8o9.mjs");
 var Route$8 = createFileRoute("/do-phu")({ component: lazyRouteComponent($$splitComponentImporter$6, "component") });
-var $$splitComponentImporter$5 = () => import("./goc-3ZC7JiQB.mjs");
+var $$splitComponentImporter$5 = () => import("./goc--oiHL4KN.mjs");
 var Route$7 = createFileRoute("/goc")({ component: lazyRouteComponent($$splitComponentImporter$5, "component") });
 var $$splitComponentImporter$4 = () => import("./tim-kiem-7KFEY_R2.mjs");
 var Route$6 = createFileRoute("/tim-kiem")({ component: lazyRouteComponent($$splitComponentImporter$4, "component") });
-var $$splitComponentImporter$3 = () => import("./tu-dien-Cp4Y9pMl.mjs");
+var $$splitComponentImporter$3 = () => import("./tu-dien-BhPV44ay.mjs");
 var Route$5 = createFileRoute("/tu-dien")({ component: lazyRouteComponent($$splitComponentImporter$3, "component") });
 var CORS = {
 	"access-control-allow-origin": "*",
@@ -22688,11 +22688,11 @@ var Route$3 = createFileRoute("/api/so-muc")({ server: { handlers: {
 	POST: ({ request }) => handleSoMucPost(request),
 	OPTIONS: () => apiEmpty(204)
 } } });
-var $$splitComponentImporter$2 = () => import("./bai._lessonId-BTe7Kv1r.mjs");
+var $$splitComponentImporter$2 = () => import("./bai._lessonId-NnIcfLsP.mjs");
 var Route$2 = createFileRoute("/bai/$lessonId")({ component: lazyRouteComponent($$splitComponentImporter$2, "component") });
-var $$splitComponentImporter$1 = () => import("./khai-niem._conceptId--keDtrqN.mjs");
+var $$splitComponentImporter$1 = () => import("./khai-niem._conceptId-8vadO5xk.mjs");
 var Route$1 = createFileRoute("/khai-niem/$conceptId")({ component: lazyRouteComponent($$splitComponentImporter$1, "component") });
-var $$splitComponentImporter = () => import("./khoa._courseId-CQ98tP9-.mjs");
+var $$splitComponentImporter = () => import("./khoa._courseId-CzztyVV4.mjs");
 var Route = createFileRoute("/khoa/$courseId")({ component: lazyRouteComponent($$splitComponentImporter, "component") });
 var rootRouteChildren = {
 	IndexRoute: Route$11.update({

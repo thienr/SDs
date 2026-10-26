@@ -4,7 +4,7 @@ import { getProgress, getServerProgress, subscribeProgress } from "@/lib/progres
 
 const text = {
   vi: {
-    starter: "Starter, giữ nguyên",
+    starter: "Mã khởi đầu, giữ nguyên",
     guide: "Hướng dẫn đi kèm",
     think: "Nghĩ trước khi gõ",
     steps: "Các bước",

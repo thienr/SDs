@@ -1,5 +1,5 @@
-import { H as sessionConcepts } from "./router-DTKOv4LZ.mjs";
-//#region node_modules/.nitro/vite/services/ssr/assets/map-DbEMqzlY.js
+import { H as sessionConcepts } from "./router-CYFwjeM5.mjs";
+//#region node_modules/.nitro/vite/services/ssr/assets/map-Cmf2Csdy.js
 var relatedLinks = [
 	[
 		"permut",
@@ -1819,22 +1819,6 @@ var mapNodeIds = (() => {
 	return out;
 })();
 var nodeSet = new Set(mapNodeIds);
-/** Dây tiếp nối: hai khái niệm liền nhau trong cùng chủ đề. */
-var chainEdges = (() => {
-	const last = /* @__PURE__ */ new Map();
-	const out = [];
-	for (const id of mapNodeIds) {
-		const t = topicIndexOf(id);
-		const prev = last.get(t);
-		if (prev) out.push({
-			a: prev,
-			b: id,
-			kind: "next"
-		});
-		last.set(t, id);
-	}
-	return out;
-})();
 /** Dây liên quan, viết tay. */
 var relatedEdges = relatedLinks.filter(([a, b]) => nodeSet.has(a) && nodeSet.has(b)).map(([a, b, vi, en]) => ({
 	a,
@@ -1862,96 +1846,9 @@ for (const e of relatedEdges) {
 function relatedOf(id) {
 	return adjacency.get(id) ?? [];
 }
-var WORLD = {
-	w: 1800,
-	h: 1300
-};
-function topicCenter(i) {
-	const angle = i / topics.length * Math.PI * 2 - Math.PI / 2;
-	return {
-		x: WORLD.w / 2 + Math.cos(angle) * 640,
-		y: WORLD.h / 2 + Math.sin(angle) * 470
-	};
-}
-/** Bố cục lực đơn giản, cố định hạt giống để mọi lần mở đều giống nhau. */
-function computeLayout() {
-	const ids = mapNodeIds;
-	const n = ids.length;
-	const index = new Map(ids.map((id, i) => [id, i]));
-	const topic = ids.map((id) => topicIndexOf(id));
-	const centers = topics.map((_, i) => topicCenter(i));
-	let seed = 12345;
-	const rand = () => {
-		seed = (seed * 1664525 + 1013904223) % 4294967296;
-		return seed / 4294967296;
-	};
-	const x = new Float64Array(n);
-	const y = new Float64Array(n);
-	const vx = new Float64Array(n);
-	const vy = new Float64Array(n);
-	for (let i = 0; i < n; i++) {
-		const c = centers[topic[i]];
-		x[i] = c.x + (rand() - .5) * 120;
-		y[i] = c.y + (rand() - .5) * 120;
-	}
-	const springs = [];
-	for (const e of chainEdges) springs.push([
-		index.get(e.a),
-		index.get(e.b),
-		42,
-		.035
-	]);
-	for (const e of relatedEdges) springs.push([
-		index.get(e.a),
-		index.get(e.b),
-		110,
-		.012
-	]);
-	const steps = 280;
-	for (let s = 0; s < steps; s++) {
-		const cool = 1 - s / steps;
-		for (let i = 0; i < n; i++) {
-			const c = centers[topic[i]];
-			vx[i] += (c.x - x[i]) * .012 * cool;
-			vy[i] += (c.y - y[i]) * .012 * cool;
-		}
-		for (let i = 0; i < n; i++) for (let j = i + 1; j < n; j++) {
-			const dx = x[i] - x[j];
-			const dy = y[i] - y[j];
-			const d2 = dx * dx + dy * dy + .01;
-			if (d2 > 6400) continue;
-			const d = Math.sqrt(d2);
-			const f = 520 / d2 * cool;
-			vx[i] += dx / d * f;
-			vy[i] += dy / d * f;
-			vx[j] -= dx / d * f;
-			vy[j] -= dy / d * f;
-		}
-		for (const [a, b, len, k] of springs) {
-			const dx = x[b] - x[a];
-			const dy = y[b] - y[a];
-			const d = Math.sqrt(dx * dx + dy * dy) + .01;
-			const f = (d - len) * k;
-			vx[a] += dx / d * f;
-			vy[a] += dy / d * f;
-			vx[b] -= dx / d * f;
-			vy[b] -= dy / d * f;
-		}
-		for (let i = 0; i < n; i++) {
-			vx[i] *= .82;
-			vy[i] *= .82;
-			x[i] += vx[i];
-			y[i] += vy[i];
-		}
-	}
-	const out = {};
-	ids.forEach((id, i) => {
-		out[id] = {
-			x: x[i],
-			y: y[i]
-		};
-	});
-	return out;
+/** Các khái niệm của một chủ đề, theo đúng thứ tự học. */
+function topicConcepts(topicIndex) {
+	return mapNodeIds.filter((id) => topicIndexOf(id) === topicIndex);
 }
 //#endregion
-export { relatedEdges as a, topicIndexOf as c, mapNodeIds as i, topics as l, chainEdges as n, relatedOf as o, computeLayout as r, topicCenter as s, WORLD as t };
+export { topicIndexOf as a, topicConcepts as i, relatedEdges as n, topics as o, relatedOf as r, mapNodeIds as t };

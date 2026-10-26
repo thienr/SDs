@@ -57,7 +57,7 @@ export function LessonView({ lesson }: { lesson: Lesson }) {
       </Link>
       <p className="mt-3 text-sm text-muted">
         Đọc khoảng {shown.readMin} phút · {formatMinutes(shown.videoSec)} · {statusLabel(status)}
-        {shown.factId === "fallback" ? " · bản đồ buổi" : ""}
+        {shown.factId === "fallback" ? " · tóm tắt buổi" : ""}
       </p>
       <div className="mt-4 flex flex-wrap gap-2">
         <button type="button" className="min-h-11 rounded-full bg-accent px-4 text-sm text-accent-ink" onClick={() => markLesson(lesson.id, "seen")}>

@@ -1,11 +1,11 @@
 import { o as __toESM } from "../_runtime.mjs";
 import { n as course_default } from "./catalog-DhneT6we.mjs";
 import { J as require_react, S as require_jsx_runtime, b as Link } from "../_libs/@tanstack/react-router+[...].mjs";
-import { A as studyCopy, B as subscribeRaw, F as getRawVersion, I as getServerRawVersion, M as studyNeighbors, O as subscribeProgress, V as overviews, b as getServerProgress, j as studyListTitle, k as getStudy, r as Route$1, y as getProgress } from "./router-DTKOv4LZ.mjs";
-import { n as Range, r as Sim, t as Lab } from "./labs-CzW0NVSd.mjs";
+import { A as studyCopy, B as subscribeRaw, F as getRawVersion, I as getServerRawVersion, M as studyNeighbors, O as subscribeProgress, V as overviews, b as getServerProgress, j as studyListTitle, k as getStudy, r as Route$1, y as getProgress } from "./router-CYFwjeM5.mjs";
+import { n as Range, r as Sim, t as Lab } from "./labs-dcuVej9e.mjs";
 import { t as Tex } from "./tex-t3KOuum9.mjs";
-import { o as relatedOf } from "./map-DbEMqzlY.mjs";
-//#region node_modules/.nitro/vite/services/ssr/assets/khai-niem._conceptId--keDtrqN.js
+import { r as relatedOf } from "./map-Cmf2Csdy.mjs";
+//#region node_modules/.nitro/vite/services/ssr/assets/khai-niem._conceptId-8vadO5xk.js
 var import_react = /* @__PURE__ */ __toESM(require_react());
 var import_jsx_runtime = require_jsx_runtime();
 var ui = {
@@ -3069,15 +3069,15 @@ var m4 = {
 		}))
 	]),
 	"ht-err": M([
-		F("Hai thực tế có thể xảy ra, và hai cách bạn hô.", "Two realities and two calls you can make.", box("a", 28, 14, 38, 10, "thật sự bằng nhau", { c: "blue" }), box("b", 72, 14, 38, 10, "thật sự khác", { c: "accent" }), box("c", 28, 36, 38, 10, "bạn hô «khác»", { c: "mute" }), box("d", 72, 36, 38, 10, "bạn hô «bằng»", { c: "mute" })),
-		F("Thật sự bằng nhau mà bạn hô «khác»: báo động giả (loại I), cỡ α = 5%.", "Truly equal but you call “different”: false alarm (type I), size α = 5%.", box("a", 28, 14, 38, 10, "thật sự bằng nhau", { c: "blue" }), box("c", 28, 36, 38, 10, "bạn hô «khác»", {
+		F("Hai thực tế có thể xảy ra, và hai cách bạn kết luận.", "Two realities and two calls you can make.", box("a", 28, 14, 38, 10, "thật sự bằng nhau", { c: "blue" }), box("b", 72, 14, 38, 10, "thật sự khác", { c: "accent" }), box("c", 28, 36, 38, 10, "bạn báo «khác»", { c: "mute" }), box("d", 72, 36, 38, 10, "bạn báo «bằng»", { c: "mute" })),
+		F("Thật sự bằng nhau mà bạn báo «khác»: báo động giả (loại I), cỡ α = 5%.", "Truly equal but you call “different”: false alarm (type I), size α = 5%.", box("a", 28, 14, 38, 10, "thật sự bằng nhau", { c: "blue" }), box("c", 28, 36, 38, 10, "bạn báo «khác»", {
 			c: "red",
 			f: "red"
 		}), arr("x", 28, 20, 28, 31, "red"), txt("t", 70, 28, "báo động giả (loại I)", {
 			c: "red",
 			s: 3.2
 		})),
-		F("Thật sự khác mà bạn hô «bằng»: bỏ sót (loại II). Với α = 5%, 100 lần làm đúng luật thì khoảng 5 lần vẫn hô sai ở trường hợp bằng nhau.", "Truly different but you call “equal”: a miss (type II). With α = 5%, about 5 of 100 rule-following runs still shout wrong when truly equal.", box("b", 72, 14, 38, 10, "thật sự khác", { c: "accent" }), box("d", 72, 36, 38, 10, "bạn hô «bằng»", {
+		F("Thật sự khác mà bạn báo «bằng»: bỏ sót (loại II). Với α = 5%, 100 lần làm đúng luật thì khoảng 5 lần vẫn báo sai ở trường hợp bằng nhau.", "Truly different but you call “equal”: a miss (type II). With α = 5%, about 5 of 100 rule-following runs still shout wrong when truly equal.", box("b", 72, 14, 38, 10, "thật sự khác", { c: "accent" }), box("d", 72, 36, 38, 10, "bạn báo «bằng»", {
 			c: "red",
 			f: "red"
 		}), arr("x", 72, 20, 72, 31, "red"), txt("t", 28, 28, "bỏ sót (loại II)", {
@@ -3240,7 +3240,7 @@ var m4 = {
 			s: 3,
 			c: "mute"
 		})),
-		F("Mỗi ngày là một lần được hô; chỉ cần một ngày chạm dưới 5% là bạn dừng.", "Each day is another chance to call it; one day under 5% and you stop.", ...[
+		F("Mỗi ngày là một lần được báo; chỉ cần một ngày chạm dưới 5% là bạn dừng.", "Each day is another chance to call it; one day under 5% and you stop.", ...[
 			.3,
 			.12,
 			.2,
@@ -3252,7 +3252,7 @@ var m4 = {
 			d: true,
 			w: .4
 		})),
-		F("Nhiều lần được hô thì tỷ lệ báo động giả thật cao hơn 5% đã viết. Phải định cỡ mẫu hoặc ngày dừng trước.", "With many chances the real false-alarm rate exceeds the written 5%. Fix the sample size or stop day beforehand.", bars("b", [5, 20], ["viết: 5%", "thực tế: cao hơn"], {
+		F("Nhiều lần được báo thì tỷ lệ báo động giả thật cao hơn 5% đã viết. Phải định cỡ mẫu hoặc ngày dừng trước.", "With many chances the real false-alarm rate exceeds the written 5%. Fix the sample size or stop day beforehand.", bars("b", [5, 20], ["viết: 5%", "thực tế: cao hơn"], {
 			c: ["mute", "red"],
 			max: 25,
 			base: 46,
@@ -3879,11 +3879,2300 @@ var m4 = {
 		}))
 	])
 };
+var scat = (pre, pts, c = "blue", x0 = 12, sx = 8, base = 48, sy = 1.5) => pts.map(([x, y], i) => dot(`${pre}${i}`, x0 + x * sx, base - y * sy, c, 1.5));
+var m5 = {
+	"eda-tab": M([
+		F("Bảng: GDN có 30 người mua trên 100 dòng; cả bảng có 40 người mua.", "Table: GDN has 30 buyers out of 100 rows; the whole table has 40 buyers.", box("a", 28, 24, 38, 14, "GDN: 100 dòng\n30 mua", { c: "blue" }), box("b", 72, 24, 38, 14, "cả bảng\n40 mua", { c: "mute" })),
+		F("30 / 100 = 30%: phần dòng GDN có mua (chia theo hàng).", "30 / 100 = 30%: the share of GDN rows that buy (divide by the row).", box("a", 28, 24, 38, 14, "30 mua\ntrên 100 dòng GDN", {
+			f: "blue",
+			c: "blue"
+		}), box("b", 72, 24, 38, 14, "= 30%", {
+			c: "blue",
+			s: 6
+		}), arr("x", 48, 24, 52, 24, "mute")),
+		F("30 / 40 = 75%: phần người mua đến từ GDN (chia theo cột). Hai phần trăm khác nhau vì mẫu số khác nhau.", "30 / 40 = 75%: the share of buyers that come from GDN (divide by the column). Different denominators, different percentages.", box("a", 28, 24, 38, 14, "30 mua GDN\ntrên 40 mua cả bảng", {
+			f: "accent",
+			c: "accent"
+		}), box("b", 72, 24, 38, 14, "= 75%", {
+			c: "accent",
+			s: 6
+		}), arr("x", 48, 24, 52, 24, "mute"), txt("t", 50, 46, "luôn nói «phần của cái gì»", {
+			c: "mute",
+			s: 3.2
+		}))
+	]),
+	"eda-flip": M([
+		F("Khách mới: TikTok 30%, GDN 20%. Khách cũ: cả hai 90%.", "New customers: TikTok 30%, GDN 20%. Existing: both 90%.", bars("b", [
+			30,
+			20,
+			90,
+			90
+		], [
+			"TikTok mới",
+			"GDN mới",
+			"TikTok cũ",
+			"GDN cũ"
+		], {
+			c: [
+				"accent",
+				"blue",
+				"accent",
+				"blue"
+			],
+			max: 100,
+			unit: "%",
+			base: 46,
+			h: 30,
+			x0: 12,
+			x1: 88
+		})),
+		F("Trong từng nhóm, TikTok không thua GDN.", "Within each group TikTok is not behind GDN.", bars("b", [
+			30,
+			20,
+			90,
+			90
+		], [
+			"TikTok mới",
+			"GDN mới",
+			"TikTok cũ",
+			"GDN cũ"
+		], {
+			c: [
+				"green",
+				"mute",
+				"mute",
+				"mute"
+			],
+			max: 100,
+			unit: "%",
+			base: 46,
+			h: 30,
+			x0: 12,
+			x1: 88
+		}), txt("t", 50, 6, "mới: 30% > 20%; cũ: 90% = 90%", {
+			c: "green",
+			s: 3.2
+		})),
+		F("Gộp lại GDN 70% còn TikTok 40%: GDN thắng chỉ vì phần lớn khách của nó là khách cũ. Luôn xem theo nhóm.", "Pooled, GDN is 70% and TikTok 40%: GDN wins only because most of its customers are existing ones. Always look by group.", bars("b", [40, 70], ["TikTok gộp", "GDN gộp"], {
+			c: ["accent", "blue"],
+			max: 100,
+			unit: "%",
+			base: 46,
+			h: 30,
+			x0: 25,
+			x1: 75
+		}), txt("t", 50, 6, "nghịch lý Simpson", {
+			c: "red",
+			s: 3.6
+		}))
+	]),
+	"pred-proj": M([
+		F("Đường học trên các tuần chi 2–12 triệu: form = 3 + 2,5 × chi.", "A line learned on weeks spending 2–12 million: forms = 3 + 2.5 × spend.", ...scat("d", [
+			[2, 8],
+			[3, 10],
+			[4, 13],
+			[6, 17],
+			[8, 22],
+			[10, 28],
+			[12, 33]
+		], "blue", 6, 5.5, 46, .8), ln("l", 17, 39.6, 72, 46 - 33 * .8, "accent", { w: .7 })),
+		F("Chi 8 triệu → 23 form: nằm trong vùng đã học, là một dự đoán.", "Spend 8 million → 23 forms: inside the learned range, a prediction.", ...scat("d", [
+			[2, 8],
+			[3, 10],
+			[4, 13],
+			[6, 17],
+			[8, 22],
+			[10, 28],
+			[12, 33]
+		], "blue", 6, 5.5, 46, .8), ln("l", 17, 39.6, 72, 46 - 33 * .8, "accent", { w: .7 }), ring("r", 50, 46 - 23 * .8, 3, "green"), txt("t", 50, 8, "8 triệu → 23 form (trong vùng đã học)", {
+			c: "green",
+			s: 3
+		})),
+		F("Chi 40 triệu → 103 form chỉ là một giả định: đường không hứa đúng ngoài vùng đã học.", "Spend 40 million → 103 forms is only an assumption: the line makes no promise outside the learned range.", ...scat("d", [
+			[2, 8],
+			[3, 10],
+			[4, 13],
+			[6, 17],
+			[8, 22],
+			[10, 28],
+			[12, 33]
+		], "blue", 6, 5.5, 46, .8), ln("l", 17, 39.6, 72, 46 - 33 * .8, "accent", { w: .7 }), ln("e", 72, 46 - 33 * .8, 94, 12, "red", {
+			w: .7,
+			d: true
+		}), ring("r", 94, 12, 3, "red"), txt("t", 60, 6, "40 triệu → 103 form (ngoại suy)", {
+			c: "red",
+			s: 3
+		}))
+	]),
+	"logit-spec": M([
+		F("20 người rời, 80 người ở lại.", "20 churners, 80 who stay.", box("a", 24, 24, 28, 14, "20 người rời", { c: "red" }), box("b", 66, 24, 52, 14, "80 người ở lại", { c: "blue" })),
+		F("Gọi trúng 15 trên 20 người rời: độ nhạy = 15/20 = 75%.", "Catching 15 of 20 churners: sensitivity = 15/20 = 75%.", box("a", 24, 24, 28, 14, "rời: gọi trúng 15/20", {
+			f: "red",
+			c: "red",
+			s: 3
+		}), box("b", 66, 24, 52, 14, "80 người ở lại", {
+			c: "blue",
+			o: .5
+		}), txt("t", 50, 46, "độ nhạy = 75%", {
+			c: "red",
+			s: 3.6
+		})),
+		F("Gọi nhầm 8 trong 80 người ở lại: độ đặc hiệu = 72/80 = 90%. Accuracy 87% chủ yếu vì khách ở lại đông.", "Wrongly flagging 8 of 80 who stay: specificity = 72/80 = 90%. Accuracy of 87% is mostly because stayers are many.", box("a", 24, 24, 28, 14, "rời", {
+			c: "red",
+			o: .5
+		}), box("b", 66, 24, 52, 14, "ở lại: gọi đúng 72/80", {
+			f: "blue",
+			c: "blue",
+			s: 3
+		}), txt("t", 50, 46, "độ đặc hiệu = 90%", {
+			c: "blue",
+			s: 3.6
+		}))
+	]),
+	"logit-who": M([
+		F("Mô hình học trên những người nghe máy.", "The model learned from people who answered the phone.", box("a", 28, 24, 38, 16, "học trên:\nngười nghe máy", {
+			c: "green",
+			f: "soft"
+		}), box("b", 72, 24, 38, 16, "chưa học:\nngười không nghe", {
+			c: "red",
+			d: true
+		})),
+		F("Gán xác suất đó cho người không nghe máy là một câu khác mà mô hình chưa được học.", "Applying that probability to people who did not answer is a different claim the model has not learned.", box("a", 28, 24, 38, 16, "học trên:\nngười nghe máy", {
+			c: "green",
+			o: .5
+		}), box("b", 72, 24, 38, 16, "áp lên người\nkhông nghe", { c: "red" }), arr("x", 46, 24, 54, 24, "red")),
+		F("File chỉ có khách đã đặt lịch cũng không nói được gì về người chưa từng gọi: nói rõ mẫu là ai.", "A file with only customers who booked says nothing about people who never called: state who the sample is.", box("a", 50, 24, 74, 14, "mẫu = khách đã đặt lịch\n→ chỉ nói về khách đã đặt lịch", {
+			c: "accent",
+			s: 3
+		}))
+	]),
+	"logit-drift": M([
+		F("Tháng 3: GDN chiếm phần lớn form; AUC = 0,82.", "March: GDN dominates forms; AUC = 0.82.", bars("b", [
+			70,
+			20,
+			10
+		], [
+			"GDN",
+			"TikTok",
+			"Facebook"
+		], {
+			c: [
+				"blue",
+				"accent",
+				"gold"
+			],
+			max: 80,
+			unit: "%",
+			base: 44,
+			h: 26,
+			x0: 15,
+			x1: 85
+		}), txt("t", 50, 6, "tháng 3 · AUC 0,82", {
+			c: "blue",
+			s: 3.4
+		})),
+		F("Tháng 12: TikTok chiếm phần lớn và tỷ lệ rời bỏ cũng đổi.", "December: TikTok dominates and the churn rate also changes.", bars("b", [
+			20,
+			70,
+			10
+		], [
+			"GDN",
+			"TikTok",
+			"Facebook"
+		], {
+			c: [
+				"blue",
+				"accent",
+				"gold"
+			],
+			max: 80,
+			unit: "%",
+			base: 44,
+			h: 26,
+			x0: 15,
+			x1: 85
+		}), txt("t", 50, 6, "tháng 12 · cơ cấu đã đổi", {
+			c: "accent",
+			s: 3.4
+		})),
+		F("AUC tháng 3 không cấp phép cho tháng 12: chấm lại trên dữ liệu tháng mới.", "March's AUC does not license December: score again on the new month's data.", ...chain("c", [
+			"dữ liệu\nmới",
+			"chấm lại",
+			"dùng hay không"
+		], {
+			y: 26,
+			on: 1,
+			h: 18
+		}))
+	]),
+	"tree-line": M([
+		F("Số form nhảy lên khi chi vượt 5 triệu, rồi đứng yên.", "Forms jump when spend exceeds 5 million, then stay flat.", ...[
+			1,
+			2,
+			3,
+			4
+		].map((x, i) => dot(`a${i}`, 12 + x * 8, 40, "blue", 1.5)), ...[
+			6,
+			7,
+			8,
+			9,
+			10
+		].map((x, i) => dot(`b${i}`, 12 + x * 8, 20, "blue", 1.5)), ln("s", 52, 8, 52, 46, "mute", {
+			d: true,
+			w: .4
+		})),
+		F("Đường thẳng lấy một độ dốc và trượt cả hai phía.", "A straight line takes one slope and slides across both sides.", ...[
+			1,
+			2,
+			3,
+			4
+		].map((x, i) => dot(`a${i}`, 12 + x * 8, 40, "blue", 1.5)), ...[
+			6,
+			7,
+			8,
+			9,
+			10
+		].map((x, i) => dot(`b${i}`, 12 + x * 8, 20, "blue", 1.5)), ln("l", 16, 44, 94, 16, "red", { w: .7 }), ln("s", 52, 8, 52, 46, "mute", {
+			d: true,
+			w: .4
+		})),
+		F("Cây cắt một bậc ở 5 triệu: mỗi bên một mức, khớp hình bậc thang.", "A tree cuts one step at 5 million: one level per side, matching the staircase.", ...[
+			1,
+			2,
+			3,
+			4
+		].map((x, i) => dot(`a${i}`, 12 + x * 8, 40, "blue", 1.5)), ...[
+			6,
+			7,
+			8,
+			9,
+			10
+		].map((x, i) => dot(`b${i}`, 12 + x * 8, 20, "blue", 1.5)), ln("c1", 14, 40, 52, 40, "green", { w: .8 }), ln("c2", 52, 20, 94, 20, "green", { w: .8 }), ln("c3", 52, 40, 52, 20, "green", { w: .8 }), txt("t", 50, 6, "ngoài vết cắt cuối, bậc chỉ là trung bình lá ở mép", {
+			c: "mute",
+			s: 2.8
+		}))
+	]),
+	"tree-imp": M([
+		F("«Số lần ghé» và «số lần xem» gần như là một cột viết hai lần.", "“Visits” and “views” are almost one column written twice.", ...pair("p", "số lần ghé", "số lần xem", {
+			ca: "blue",
+			cb: "blue"
+		})),
+		F("Cây có thể dồn hết điểm quan trọng cho một trong hai.", "The tree may pile all importance on one of the two.", bars("b", [90, 10], ["số lần ghé", "số lần xem"], {
+			c: ["accent", "mute"],
+			max: 100,
+			base: 46,
+			h: 28,
+			x0: 25,
+			x1: 75
+		})),
+		F("Điểm này nói cột nào làm nhóm sạch hơn, không nói «lần ghé gây ra form».", "This score says which column made groups cleaner, not that “visits cause forms”.", box("a", 28, 24, 38, 14, "làm nhóm\nsạch hơn", { c: "green" }), box("b", 72, 24, 38, 14, "gây ra form", {
+			c: "red",
+			d: true
+		}), txt("t", 50, 46, "biểu đồ này không nói câu thứ hai", {
+			c: "red",
+			s: 3.2
+		}))
+	]),
+	"tree-num": M([
+		F("Cây số có hai lá: «chi dưới 5 triệu» trung bình 12 form, lá còn lại 28 form.", "A numeric tree has two leaves: “spend under 5 million” averages 12 forms, the other 28.", box("a", 28, 26, 38, 14, "lá 1: chi < 5\nTB = 12", { c: "blue" }), box("b", 72, 26, 38, 14, "lá 2: chi ≥ 5\nTB = 28", { c: "accent" })),
+		F("Tuần chi 4 triệu được gán đúng 12: không nội suy giữa 12 và 28.", "A week spending 4 million gets exactly 12: no interpolation between 12 and 28.", ...numline("n", 0, 10, {
+			y: 40,
+			ticks: [
+				0,
+				5,
+				10
+			]
+		}), ln("a", at(0, 0, 10), 28, at(5, 0, 10), 28, "blue", { w: .9 }), ln("b", at(5, 0, 10), 14, at(10, 0, 10), 14, "accent", { w: .9 }), dot("p", at(4, 0, 10), 28, "red", 2), txt("t", at(4, 0, 10), 20, "chi 4 → 12", {
+			c: "red",
+			s: 3
+		})),
+		F("Tuần chi 40 triệu vẫn nhận số của lá ở mép (28): cây không ngoại suy.", "A week spending 40 million still receives the edge leaf's value (28): trees do not extrapolate.", ...numline("n", 0, 45, {
+			y: 40,
+			ticks: [
+				0,
+				5,
+				40
+			]
+		}), ln("a", at(0, 0, 45), 28, at(5, 0, 45), 28, "blue", { w: .9 }), ln("b", at(5, 0, 45), 14, at(45, 0, 45), 14, "accent", { w: .9 }), dot("p", at(40, 0, 45), 14, "red", 2), txt("t", at(40, 0, 45), 8, "chi 40 → 28", {
+			c: "red",
+			s: 3
+		}))
+	]),
+	"km-start": M([
+		F("Hai đám khách, k = 2.", "Two customer clusters, k = 2.", ...Array.from({ length: 8 }, (_, i) => dot(`a${i}`, 14 + i % 4 * 5, 16 + Math.floor(i / 4) * 5, "blue", 1.2)), ...Array.from({ length: 4 }, (_, i) => dot(`b${i}`, 72 + i % 2 * 5, 36 + Math.floor(i / 2) * 5, "gold", 1.2))),
+		F("Khởi động ngẫu nhiên có thể thả cả hai tâm vào đám đông: đám kia không có tâm.", "Random starts may drop both centres in the big cluster: the other has none.", ...Array.from({ length: 8 }, (_, i) => dot(`a${i}`, 14 + i % 4 * 5, 16 + Math.floor(i / 4) * 5, "blue", 1.2)), ...Array.from({ length: 4 }, (_, i) => dot(`b${i}`, 72 + i % 2 * 5, 36 + Math.floor(i / 2) * 5, "gold", 1.2)), ring("c1", 20, 19, 8, "red"), ring("c2", 25, 22, 8, "red")),
+		F("K-means++ chọn tâm sau ở xa tâm trước nên mỗi đám có một tâm. Vẫn nên chạy vài lần.", "K-means++ picks the next centre far from the first so each cluster gets one. Still run it a few times.", ...Array.from({ length: 8 }, (_, i) => dot(`a${i}`, 14 + i % 4 * 5, 16 + Math.floor(i / 4) * 5, "blue", 1.2)), ...Array.from({ length: 4 }, (_, i) => dot(`b${i}`, 72 + i % 2 * 5, 36 + Math.floor(i / 2) * 5, "gold", 1.2)), ring("c1", 20, 19, 8, "green"), ring("c2", 74, 38, 7, "green"))
+	]),
+	"link-how": M([
+		F("Khách spa xếp thành một dải theo giờ đến.", "Spa customers form a strip by arrival hour.", ...Array.from({ length: 10 }, (_, i) => dot(`d${i}`, 10 + i * 8.5, 30 + i % 2 * 2, "blue", 1.6))),
+		F("Single linkage dính ở chỗ gần nhất nên nối cả dải thành một sợi.", "Single linkage joins at the closest point so the whole strip becomes one chain.", ...Array.from({ length: 10 }, (_, i) => dot(`d${i}`, 10 + i * 8.5, 30 + i % 2 * 2, "blue", 1.6)), ...Array.from({ length: 9 }, (_, i) => ln(`l${i}`, 10 + i * 8.5, 30 + i % 2 * 2, 18.5 + i * 8.5, 30 + (i + 1) % 2 * 2, "red", { w: .6 })), txt("t", 50, 12, "single: một sợi dài", {
+			c: "red",
+			s: 3.4
+		})),
+		F("Complete chỉ dính khi cả cụm còn chặt, nên dải bị chia thành nhiều cụm; average ở giữa. Không cách nào là sự thật.", "Complete joins only while the whole cluster is tight, so the strip splits; average sits between. No method is the truth.", ...Array.from({ length: 10 }, (_, i) => dot(`d${i}`, 10 + i * 8.5, 30 + i % 2 * 2, i < 5 ? "blue" : "gold", 1.6)), ring("r1", 27, 31, 18, "blue"), ring("r2", 69, 31, 18, "gold"), txt("t", 50, 12, "complete: các cụm chặt", {
+			c: "green",
+			s: 3.4
+		}))
+	]),
+	"db-scan": M([
+		F("Đa số khách đến trong giờ vàng; vài người đến lúc 2 giờ sáng.", "Most customers arrive in prime hours; a few come at 2 am.", ...Array.from({ length: 12 }, (_, i) => dot(`d${i}`, 52 + i % 4 * 3.5, 22 + Math.floor(i / 4) * 4, "blue", 1.4)), dot("o1", 14, 40, "mute", 1.4), dot("o2", 24, 12, "mute", 1.4)),
+		F("Bạn chọn bán kính và số hàng xóm tối thiểu, không chọn k.", "You choose a radius and a minimum neighbour count, not k.", ...Array.from({ length: 12 }, (_, i) => dot(`d${i}`, 52 + i % 4 * 3.5, 22 + Math.floor(i / 4) * 4, "blue", 1.4)), dot("o1", 14, 40, "mute", 1.4), dot("o2", 24, 12, "mute", 1.4), ring("r", 57, 27, 4, "accent"), txt("t", 30, 52, "bán kính + số hàng xóm tối thiểu", {
+			c: "accent",
+			s: 3.2
+		})),
+		F("Đám đặc là cụm; hai điểm thưa được để là nhiễu thay vì ép vào đám.", "The dense blob is a cluster; the two sparse points stay as noise instead of being forced in.", ...Array.from({ length: 12 }, (_, i) => dot(`d${i}`, 52 + i % 4 * 3.5, 22 + Math.floor(i / 4) * 4, "green", 1.4)), ring("cl", 57, 27, 12, "green"), dot("o1", 14, 40, "red", 1.6), dot("o2", 24, 12, "red", 1.6), txt("t", 22, 50, "nhiễu", {
+			c: "red",
+			s: 3.2
+		}))
+	]),
+	"gmm-soft": M([
+		F("Hai nhóm: «gói lẻ» và «gói tháng». Một khách nằm giữa.", "Two groups: “single sessions” and “monthly plan”. One customer sits between.", ...Array.from({ length: 6 }, (_, i) => dot(`a${i}`, 14 + i % 3 * 4, 22 + Math.floor(i / 3) * 4, "blue", 1.4)), ...Array.from({ length: 6 }, (_, i) => dot(`b${i}`, 72 + i % 3 * 4, 22 + Math.floor(i / 3) * 4, "gold", 1.4)), dot("x", 46, 25, "red", 2)),
+		F("K-means phải chọn một nhóm: khách đó bị xếp hoàn toàn vào một bên.", "K-means must choose one group: the customer goes wholly to one side.", ...Array.from({ length: 6 }, (_, i) => dot(`a${i}`, 14 + i % 3 * 4, 22 + Math.floor(i / 3) * 4, "blue", 1.4)), ...Array.from({ length: 6 }, (_, i) => dot(`b${i}`, 72 + i % 3 * 4, 22 + Math.floor(i / 3) * 4, "gold", 1.4)), dot("x", 46, 25, "red", 2), arr("g", 46, 25, 30, 25, "blue"), txt("t", 50, 44, "k-means: 100% «gói lẻ»", {
+			c: "blue",
+			s: 3.4
+		})),
+		F("GMM cho hai phần: 0,6 gói lẻ và 0,4 gói tháng. Với đám hình vòng cung, bầu dục này sẽ mô tả sai.", "GMM gives two shares: 0.6 single and 0.4 monthly. For arc-shaped clusters these ellipses describe them wrongly.", ...Array.from({ length: 6 }, (_, i) => dot(`a${i}`, 14 + i % 3 * 4, 22 + Math.floor(i / 3) * 4, "blue", 1.4)), ...Array.from({ length: 6 }, (_, i) => dot(`b${i}`, 72 + i % 3 * 4, 22 + Math.floor(i / 3) * 4, "gold", 1.4)), dot("x", 46, 25, "red", 2), box("t", 50, 44, 60, 10, "GMM: 0,6 gói lẻ · 0,4 gói tháng", {
+			c: "red",
+			s: 3
+		}))
+	]),
+	"k-mode": M([
+		F("Kênh của ba khách trong một cụm: GDN, GDN, Facebook.", "The channels of three customers in a cluster: GDN, GDN, Facebook.", ...[
+			"GDN",
+			"GDN",
+			"Facebook"
+		].map((t, i) => box(`c${i}`, 20 + i * 30, 24, 26, 12, t, { c: "blue" }))),
+		F("Mode (giá trị gặp nhiều nhất) là GDN; trung bình của mã kênh không có nghĩa.", "The mode (most frequent value) is GDN; the mean of channel codes is meaningless.", ...[
+			"GDN",
+			"GDN",
+			"Facebook"
+		].map((t, i) => box(`c${i}`, 20 + i * 30, 18, 26, 12, t, {
+			c: i < 2 ? "green" : "mute",
+			f: i < 2 ? "green" : "soft"
+		})), box("m", 50, 42, 50, 10, "mode = GDN", { c: "green" })),
+		F("K-modes xử lý cột chữ. Chỉ K-prototype ghép được cột số (chi tiêu) với cột chữ (kênh).", "K-modes handles text columns. Only K-prototype can mix numbers (spend) with text (channel).", box("a", 28, 24, 38, 14, "K-modes\nchỉ cột chữ", { c: "blue" }), box("b", 72, 24, 38, 14, "K-prototype\nsố + chữ", { c: "accent" }))
+	]),
+	"nlp-stem": M([
+		F("Review có «đã chờ», «chờ mãi» và «sự chờ».", "Reviews contain “waited”, “waiting forever” and “the wait”.", ...[
+			"đã chờ",
+			"chờ mãi",
+			"sự chờ"
+		].map((t, i) => box(`c${i}`, 20 + i * 30, 24, 26, 12, t, { c: "blue" }))),
+		F("Cắt đuôi dồn cả ba về một mảnh «chờ»; nhưng cũng có thể dồn hai nghĩa khác nhau vào một mảnh.", "Stemming folds all three into one piece “wait”; it can also fold two different meanings into one.", ...[
+			"đã chờ",
+			"chờ mãi",
+			"sự chờ"
+		].map((t, i) => box(`c${i}`, 20 + i * 30, 12, 26, 10, t, {
+			c: "blue",
+			o: .6,
+			s: 3
+		})), ...[
+			0,
+			1,
+			2
+		].map((i) => arr(`a${i}`, 20 + i * 30, 18, 50, 34, "mute")), box("s", 50, 42, 30, 10, "mảnh: chờ", {
+			f: "accent",
+			c: "accent"
+		})),
+		F("Lemmatisation thận trọng hơn vì dùng từ điển, nhưng vẫn bỏ đi hình thái như thì và mức độ.", "Lemmatisation is more careful because it uses a dictionary, but it still drops forms like tense and degree.", box("a", 28, 24, 38, 14, "cắt đuôi\nthô, nhanh", { c: "accent" }), box("b", 72, 24, 38, 14, "lemma\nthận trọng hơn", { c: "green" }))
+	]),
+	"nlp-pmi": M([
+		F("1.000 review: «chờ» có trong 50, «lâu» trong 100, cả hai cùng có trong 20.", "1,000 reviews: “wait” in 50, “long” in 100, both together in 20.", box("a", 28, 24, 38, 14, "«chờ»: 50\n«lâu»: 100", { c: "blue" }), box("b", 72, 24, 38, 14, "cả hai: 20", { c: "accent" })),
+		F("Nếu độc lập: 50/1000 × 100/1000 × 1000 = 5 câu có cả hai.", "If independent: 50/1000 × 100/1000 × 1000 = 5 reviews with both.", bars("b", [5, 20], ["nếu độc lập", "thực tế"], {
+			c: ["mute", "accent"],
+			max: 24,
+			base: 46,
+			h: 28,
+			x0: 25,
+			x1: 75
+		}), txt("t", 30, 12, "kỳ vọng 5", {
+			c: "mute",
+			s: 3
+		})),
+		F("Thực tế 20 gấp 4 lần kỳ vọng 5: PMI = log₂(4) = 2. Hai chữ đi cùng nhau nhiều hơn mức ngẫu nhiên.", "Observed 20 is 4× the expected 5: PMI = log₂(4) = 2. The two words co-occur more than chance.", box("a", 50, 24, 74, 16, "PMI = log₂(20 / 5) = 2", {
+			f: "accent",
+			c: "accent"
+		}), txt("t", 50, 46, "đi cùng nhau ≠ nguyên nhân", {
+			c: "mute",
+			s: 3.2
+		}))
+	]),
+	"git-commit": M([
+		F("Mỗi commit là một ảnh chụp của dự án.", "Each commit is a snapshot of the project.", ...chain("c", [
+			"ảnh 1",
+			"ảnh 2",
+			"ảnh 3"
+		], {
+			y: 26,
+			on: 2,
+			all: true
+		})),
+		F("Câu mô tả tốt: «thêm cột kênh vào file form» cho biết ảnh này khác ảnh trước ở đâu.", "A good message: “add channel column to form file” tells what differs from the previous snapshot.", ...chain("c", [
+			"ảnh 1",
+			"ảnh 2",
+			"ảnh 3"
+		], {
+			y: 14,
+			on: 2,
+			all: true,
+			h: 9
+		}), box("m", 50, 38, 80, 12, "«thêm cột kênh vào file form»", {
+			c: "green",
+			f: "soft"
+		})),
+		F("Câu «update» thì không ai biết đổi gì.", "A message “update” tells nobody what changed.", ...chain("c", [
+			"ảnh 1",
+			"ảnh 2",
+			"ảnh 3"
+		], {
+			y: 14,
+			on: 2,
+			all: true,
+			h: 9
+		}), box("m", 50, 38, 80, 12, "«update»", {
+			c: "red",
+			d: true
+		}))
+	]),
+	"git-branch": M([
+		F("Nhánh chính (main) đang chạy báo cáo.", "The main branch is running the report.", ln("m", 10, 20, 90, 20, "blue", { w: .9 }), txt("t", 12, 12, "main: báo cáo đang chạy", {
+			a: "start",
+			c: "blue",
+			s: 3
+		})),
+		F("Bạn thử đổi cách tính giá form trên một nhánh riêng; main đứng yên.", "You try a new form-price formula on a separate branch; main stays still.", ln("m", 10, 20, 90, 20, "blue", { w: .9 }), ln("b1", 30, 20, 40, 38, "accent", { w: .9 }), ln("b2", 40, 38, 66, 38, "accent", { w: .9 }), txt("t", 52, 46, "nhánh thử", {
+			c: "accent",
+			s: 3
+		})),
+		F("Chỉ nhập lại khi thử xong và đúng; nhập khi chưa xong, báo cáo sẽ gãy.", "Merge back only when done and correct; merging early breaks the report.", ln("m", 10, 20, 90, 20, "blue", { w: .9 }), ln("b1", 30, 20, 40, 38, "accent", { w: .9 }), ln("b2", 40, 38, 66, 38, "accent", { w: .9 }), arr("b3", 66, 38, 76, 22, "green", { w: .9 }), txt("t", 80, 34, "nhập khi đã xong", {
+			c: "green",
+			s: 3
+		}))
+	]),
+	"ens-bag": M([
+		F("1.000 khách. Mỗi cây rút lại 1.000 dòng, có hoàn lại.", "1,000 customers. Each tree redraws 1,000 rows with replacement.", box("a", 50, 24, 80, 14, "1.000 khách", { c: "blue" })),
+		F("Có khách vào túi hai lần, có khách không vào túi của cây này.", "Some customers enter the bag twice, others do not enter this tree's bag.", ...[
+			"Lan ×2",
+			"Minh ×1",
+			"An ×0"
+		].map((t, i) => box(`c${i}`, 20 + i * 30, 24, 26, 12, t, {
+			c: i === 0 ? "accent" : i === 2 ? "mute" : "blue",
+			f: i === 0 ? "accent" : "soft",
+			d: i === 2
+		}))),
+		F("Cây khác thấy một túi hơi khác nên các cây không chép lại nhau.", "Other trees see a slightly different bag so the trees do not copy each other.", ...[
+			"cây 1",
+			"cây 2",
+			"cây 3"
+		].map((t, i) => box(`c${i}`, 20 + i * 30, 20, 26, 10, t, { c: "green" })), ...[
+			"Lan ×2 · An ×0",
+			"Lan ×0 · An ×1",
+			"Lan ×1 · An ×3"
+		].map((t, i) => box(`d${i}`, 20 + i * 30, 36, 28, 10, t, {
+			c: "blue",
+			s: 2.6
+		})))
+	]),
+	"rf-col": M([
+		F("Nếu cây nào cũng nhìn mọi cột, cột «số lần ghé» luôn thắng.", "If every tree sees every column, “visits” always wins.", ...[
+			"cây 1",
+			"cây 2",
+			"cây 3"
+		].flatMap((t, i) => [
+			box(`t${i}`, 20 + i * 30, 12, 24, 9, t, { c: "blue" }),
+			box(`c${i}`, 20 + i * 30, 34, 24, 9, "cắt theo ghé", {
+				c: "accent",
+				f: "accent"
+			}),
+			arr(`a${i}`, 20 + i * 30, 17, 20 + i * 30, 29, "mute")
+		])),
+		F("Mọi cây cắt cùng một chỗ nên đều giống nhau và rừng thành một cây nhân bản.", "All trees cut at the same place so they match, and the forest is one cloned tree.", ...[
+			"cây 1",
+			"cây 2",
+			"cây 3"
+		].flatMap((t, i) => [
+			box(`t${i}`, 20 + i * 30, 12, 24, 9, t, { c: "blue" }),
+			box(`c${i}`, 20 + i * 30, 34, 24, 9, "cắt theo ghé", {
+				c: "red",
+				f: "red"
+			}),
+			arr(`a${i}`, 20 + i * 30, 17, 20 + i * 30, 29, "mute")
+		]), txt("t", 50, 52, "cây giống nhau → rừng vô ích", {
+			c: "red",
+			s: 3.2
+		})),
+		F("Mỗi nhát cắt chỉ được nhìn một nhóm cột ngẫu nhiên: có lúc cây phải cắt theo cột khác.", "Each split sees only a random subset of columns: sometimes a tree must split on another column.", ...[
+			"cây 1",
+			"cây 2",
+			"cây 3"
+		].flatMap((t, i) => [
+			box(`t${i}`, 20 + i * 30, 12, 24, 9, t, { c: "blue" }),
+			box(`c${i}`, 20 + i * 30, 34, 24, 9, [
+				"theo ghé",
+				"theo chi",
+				"theo kênh"
+			][i], {
+				c: "green",
+				f: "green"
+			}),
+			arr(`a${i}`, 20 + i * 30, 17, 20 + i * 30, 29, "mute")
+		]))
+	]),
+	"imb-trap": M([
+		F("100 khách: 92 ở lại và 8 rời đi.", "100 customers: 92 stay and 8 leave.", bars("b", [92, 8], ["ở lại", "rời đi"], {
+			c: ["blue", "red"],
+			max: 100,
+			base: 46,
+			h: 30,
+			x0: 25,
+			x1: 75
+		})),
+		F("Mô hình gọi mọi người là «ở lại»: accuracy = 92/100 = 92%.", "A model that calls everyone “stays”: accuracy = 92/100 = 92%.", box("a", 50, 24, 74, 14, "gọi tất cả «ở lại»\naccuracy = 92%", {
+			c: "green",
+			s: 3.4
+		})),
+		F("Nhưng bạn không giữ được ai trong 8 người rời. Bài rời bỏ không phải bài toán accuracy.", "But you retain none of the 8 who leave. Churn is not an accuracy problem.", box("a", 28, 24, 38, 14, "accuracy 92%", { c: "green" }), box("b", 72, 24, 38, 14, "giữ được\n0 / 8 người rời", {
+			c: "red",
+			f: "red"
+		}), txt("t", 50, 46, "đẹp trên giấy, vô ích trên thực tế", {
+			c: "red",
+			s: 3.2
+		}))
+	]),
+	"imb-fix": M([
+		F("8 khách rời bị chép thành 16 dòng trước khi chia tập.", "8 churners are copied into 16 rows before splitting.", box("a", 28, 24, 38, 14, "8 người rời", { c: "red" }), arr("x", 48, 24, 52, 24, "mute"), box("b", 72, 24, 38, 14, "16 dòng\n(8 người)", {
+			c: "red",
+			f: "red"
+		})),
+		F("Cùng một người có thể vừa ở tập học vừa ở tập chấm: điểm đẹp giả.", "The same person can sit in both train and test: inflated score.", box("a", 28, 24, 38, 14, "tập học\nLan (bản 1)", { c: "blue" }), box("b", 72, 24, 38, 14, "tập chấm\nLan (bản 2)", { c: "green" }), txt("t", 50, 46, "nhân bản trước khi chia = rò rỉ", {
+			c: "red",
+			s: 3.2
+		})),
+		F("Cách an toàn: đổi trọng số (vẫn 8 người nhưng bỏ sót đắt hơn) hoặc đổi ngưỡng; thường thử đổi ngưỡng trước.", "Safer: change class weights (still 8 people but a miss costs more) or move the threshold; try the threshold first.", ...chain("c", [
+			"đổi ngưỡng",
+			"đổi trọng số",
+			"nhân bản (sau khi chia)"
+		], {
+			y: 26,
+			on: 0,
+			h: 14
+		}))
+	]),
+	"bv-bias": M([
+		F("Số form theo mức chi là một hình cong.", "Forms versus spend is a curve.", ...[
+			[1, 6],
+			[2, 14],
+			[3, 22],
+			[4, 28],
+			[5, 31],
+			[6, 32],
+			[7, 31],
+			[8, 28]
+		].map(([x, y], i) => dot(`d${i}`, 10 + x * 9, 46 - y, "blue", 1.5))),
+		F("Đường thẳng trượt cả tập học lẫn tuần mới: đó là lệch (bias).", "A straight line misses both the training and new weeks: that is bias.", ...[
+			[1, 6],
+			[2, 14],
+			[3, 22],
+			[4, 28],
+			[5, 31],
+			[6, 32],
+			[7, 31],
+			[8, 28]
+		].map(([x, y], i) => dot(`d${i}`, 10 + x * 9, 46 - y, "blue", 1.5)), ln("l", 16, 40, 90, 26, "red", { w: .7 }), txt("t", 50, 8, "quá thẳng → lệch", {
+			c: "red",
+			s: 3.4
+		})),
+		F("Cây rất sâu khớp từng tuần nhiễu: tập học đẹp nhưng tuần mới xấu. Đó là nhảy (variance).", "A very deep tree fits every noisy week: pretty on training, ugly on new weeks. That is variance.", ...[
+			[1, 6],
+			[2, 14],
+			[3, 22],
+			[4, 28],
+			[5, 31],
+			[6, 32],
+			[7, 31],
+			[8, 28]
+		].map(([x, y], i) => dot(`d${i}`, 10 + x * 9, 46 - y, "blue", 1.5)), ...[
+			[
+				1,
+				6,
+				2,
+				14
+			],
+			[
+				2,
+				14,
+				3,
+				22
+			],
+			[
+				3,
+				22,
+				4,
+				28
+			],
+			[
+				4,
+				28,
+				5,
+				34
+			],
+			[
+				5,
+				34,
+				6,
+				29
+			],
+			[
+				6,
+				29,
+				7,
+				33
+			],
+			[
+				7,
+				33,
+				8,
+				28
+			]
+		].map(([x1, y1, x2, y2], i) => ln(`z${i}`, 10 + x1 * 9, 46 - y1, 10 + x2 * 9, 46 - y2, "accent", { w: .7 })), txt("t", 50, 8, "khớp từng nhiễu → nhảy", {
+			c: "accent",
+			s: 3.4
+		}))
+	]),
+	"reg-ridge": M([
+		F("Chi tiêu tính bằng đồng và bằng triệu đồng cùng nằm trong mô hình.", "Spend in VND and in millions of VND both sit in the model.", ...pair("p", "chi (đồng)", "chi (triệu)", {
+			ca: "blue",
+			cb: "blue"
+		})),
+		F("Không co: hai hệ số giằng co nhau, ví dụ +50 và −48.", "Without shrinking: the two coefficients fight, for example +50 and −48.", bars("b", [50, 48], ["+50", "−48"], {
+			c: ["accent", "red"],
+			max: 55,
+			show: false,
+			base: 46,
+			h: 28,
+			x0: 25,
+			x1: 75
+		}), txt("t", 50, 6, "giằng co", {
+			c: "red",
+			s: 3.4
+		})),
+		F("Ridge kéo cả hai về gần 0, ví dụ 1,0 và 0,9, và hiếm khi làm một cột thành đúng 0.", "Ridge pulls both near 0, e.g. 1.0 and 0.9, and rarely makes a column exactly 0.", bars("b", [1, .9], ["1,0", "0,9"], {
+			c: ["green", "green"],
+			max: 55,
+			show: false,
+			base: 46,
+			h: 28,
+			x0: 25,
+			x1: 75
+		}), txt("t", 50, 6, "co đều, không về đúng 0", {
+			c: "green",
+			s: 3.4
+		}))
+	]),
+	"reg-lasso": M([
+		F("Mô hình có mười cột kênh và hành vi.", "The model has ten channel and behaviour columns.", ...Array.from({ length: 10 }, (_, i) => box(`c${i}`, 12 + i % 5 * 19, 18 + Math.floor(i / 5) * 14, 16, 9, `cột ${i + 1}`, {
+			c: "blue",
+			s: 2.8
+		}))),
+		F("Lasso có thể đưa hệ số của vài cột về đúng 0 và giữ lại những cột kia.", "Lasso can set some coefficients to exactly 0 and keep the others.", ...Array.from({ length: 10 }, (_, i) => box(`c${i}`, 12 + i % 5 * 19, 18 + Math.floor(i / 5) * 14, 16, 9, `cột ${i + 1}`, {
+			c: [
+				1,
+				4,
+				6,
+				8
+			].includes(i) ? "mute" : "green",
+			d: [
+				1,
+				4,
+				6,
+				8
+			].includes(i),
+			o: [
+				1,
+				4,
+				6,
+				8
+			].includes(i) ? .4 : 1,
+			s: 2.8
+		}))),
+		F("Cột về 0 không có nghĩa nó vô dụng ngoài đời, chỉ là mô hình này không cần nó.", "A column set to 0 is not useless in real life; this model just does not need it.", box("a", 28, 24, 38, 14, "hệ số = 0\ntrong mô hình này", {
+			c: "mute",
+			d: true
+		}), box("b", 72, 24, 38, 14, "vô dụng ngoài đời?\nkhông nhất thiết", { c: "red" }))
+	]),
+	"met-reg": M([
+		F("Ba tuần lệch 2, 2 và 10 form.", "Three weeks off by 2, 2 and 10 forms.", bars("b", [
+			2,
+			2,
+			10
+		], [
+			"tuần 1",
+			"tuần 2",
+			"tuần 3"
+		], {
+			c: [
+				"blue",
+				"blue",
+				"red"
+			],
+			max: 11,
+			base: 46,
+			h: 28,
+			x0: 20,
+			x1: 80
+		})),
+		F("MAE = (2 + 2 + 10) / 3 ≈ 4,67 form: trung bình khoảng lệch.", "MAE = (2 + 2 + 10) / 3 ≈ 4.67 forms: the average gap.", bars("b", [
+			2,
+			2,
+			10
+		], [
+			"tuần 1",
+			"tuần 2",
+			"tuần 3"
+		], {
+			c: "blue",
+			max: 11,
+			base: 46,
+			h: 28,
+			x0: 20,
+			x1: 80
+		}), ln("m", 8, 46 - 4.67 / 11 * 28, 92, 46 - 4.67 / 11 * 28, "green", {
+			d: true,
+			w: .6
+		}), txt("t", 50, 6, "MAE ≈ 4,67", {
+			c: "green",
+			s: 3.4
+		})),
+		F("RMSE = √((4 + 4 + 100) / 3) = 6,0 form: tuần lệch 10 bị phạt nặng hơn nên kéo RMSE cao hơn MAE.", "RMSE = √((4 + 4 + 100) / 3) = 6.0 forms: the week off by 10 is penalised harder, pulling RMSE above MAE.", bars("b", [
+			2,
+			2,
+			10
+		], [
+			"tuần 1",
+			"tuần 2",
+			"tuần 3"
+		], {
+			c: "blue",
+			max: 11,
+			base: 46,
+			h: 28,
+			x0: 20,
+			x1: 80
+		}), ln("m", 8, 46 - 4.67 / 11 * 28, 92, 46 - 4.67 / 11 * 28, "green", {
+			d: true,
+			w: .5
+		}), ln("r", 8, 46 - 6 / 11 * 28, 92, 46 - 6 / 11 * 28, "red", {
+			d: true,
+			w: .7
+		}), txt("t", 50, 6, "RMSE 6,0 > MAE 4,67", {
+			c: "red",
+			s: 3.4
+		}))
+	]),
+	"fe-num": M([
+		F("Hầu hết tuần chi dưới 5 triệu, có một tuần chi 80 triệu.", "Most weeks spend under 5 million; one week spends 80 million.", bars("b", [
+			2,
+			3,
+			3,
+			4,
+			4,
+			5,
+			80
+		], [
+			"",
+			"",
+			"",
+			"",
+			"",
+			"",
+			"80"
+		], {
+			c: [
+				"blue",
+				"blue",
+				"blue",
+				"blue",
+				"blue",
+				"blue",
+				"red"
+			],
+			max: 80,
+			show: false,
+			base: 46,
+			h: 32
+		})),
+		F("Log kéo cái đuôi về: tuần 80 không còn át cả cột.", "Log pulls the tail in: week 80 no longer dwarfs the column.", bars("b", [
+			.7,
+			1.1,
+			1.1,
+			1.4,
+			1.4,
+			1.6,
+			4.4
+		], [
+			"",
+			"",
+			"",
+			"",
+			"",
+			"",
+			"log 80"
+		], {
+			c: [
+				"blue",
+				"blue",
+				"blue",
+				"blue",
+				"blue",
+				"blue",
+				"accent"
+			],
+			max: 5,
+			show: false,
+			base: 46,
+			h: 32
+		})),
+		F("Nhưng log(0) không tồn tại: tuần chi 0 phải dùng log(1 + x) hoặc một luật khác.", "But log(0) does not exist: a zero-spend week needs log(1 + x) or another rule.", box("a", 28, 24, 38, 14, "log(0)\nkhông có nghĩa", {
+			c: "red",
+			d: true
+		}), box("b", 72, 24, 38, 14, "log(1 + x)\ncó nghĩa với 0", { c: "green" }))
+	]),
+	"fe-cat": M([
+		F("Ba kênh: GDN, Facebook, TikTok.", "Three channels: GDN, Facebook, TikTok.", ...[
+			"GDN",
+			"Facebook",
+			"TikTok"
+		].map((t, i) => box(`c${i}`, 20 + i * 30, 24, 26, 12, t, { c: "blue" }))),
+		F("Ba cột 0/1 cộng với hệ số chặn: một cột là thừa vì biết hai cột là biết cột thứ ba.", "Three 0/1 columns plus an intercept: one is redundant, since two columns imply the third.", ...[
+			"GDN 1/0/0",
+			"FB 0/1/0",
+			"TikTok 0/0/1"
+		].map((t, i) => box(`c${i}`, 20 + i * 30, 24, 26, 12, t, {
+			c: "blue",
+			s: 3
+		})), txt("t", 50, 44, "cột 3 = 1 − cột 1 − cột 2", {
+			c: "red",
+			s: 3.2
+		})),
+		F("Bỏ một kênh làm mốc. Cây quyết định thì có thể giữ cả ba.", "Drop one channel as the baseline. Decision trees can keep all three.", ...[
+			"GDN (mốc)",
+			"FB 0/1",
+			"TikTok 0/1"
+		].map((t, i) => box(`c${i}`, 20 + i * 30, 24, 26, 12, t, {
+			c: i === 0 ? "mute" : "green",
+			d: i === 0,
+			s: 3
+		})))
+	]),
+	"fe-time": M([
+		F("Cột ngày để nguyên: đường đọc nó như «càng muộn càng nhiều form».", "A raw date column: a line reads it as “later means more forms”.", ...[
+			1,
+			2,
+			3,
+			4,
+			5,
+			6,
+			7
+		].map((x, i) => dot(`d${i}`, 14 + x * 10, 44 - x * 4, "blue", 1.5)), ln("l", 24, 40, 84, 16, "red", { w: .7 })),
+		F("Nhưng chủ nhật và thứ hai không phải hai bậc của đường thẳng đó: tuần có chu kỳ.", "But Sunday and Monday are not two steps on that line: the week is cyclic.", ...[
+			.5,
+			1,
+			.6,
+			.55,
+			.6,
+			.9,
+			1.2
+		].map((v, i) => box(`w${i}`, 14 + i * 12, 40 - v * 20, 9, 5, [
+			"T2",
+			"T3",
+			"T4",
+			"T5",
+			"T6",
+			"T7",
+			"CN"
+		][i], {
+			c: "accent",
+			s: 2.8
+		}))),
+		F("Tách thứ, giờ, tháng nếu đó mới là câu bạn hỏi.", "Split into weekday, hour, month if that is the question you ask.", ...chain("c", [
+			"ngày",
+			"thứ",
+			"giờ",
+			"tháng"
+		], {
+			y: 26,
+			on: 1,
+			h: 14
+		}))
+	]),
+	"cv-fold": M([
+		F("Chia khách thành bốn phần.", "Split the customers into four folds.", ...[
+			0,
+			1,
+			2,
+			3
+		].map((i) => box(`f${i}`, 14 + i * 24, 24, 21, 12, `phần ${i + 1}`, { c: "blue" }))),
+		F("Mỗi lượt học trên ba phần và chấm phần bị giấu: lượt 1 giấu phần 1.", "Each round trains on three folds and scores the hidden one: round 1 hides fold 1.", ...[
+			0,
+			1,
+			2,
+			3
+		].map((i) => box(`f${i}`, 14 + i * 24, 24, 21, 12, i === 0 ? "giấu" : "học", {
+			c: i === 0 ? "accent" : "blue",
+			f: i === 0 ? "accent" : "soft"
+		}))),
+		F("RMSE bốn lượt: 5,8, 6,2, 6,0, 6,4 → trung bình 6,1. Chỉnh độ sâu trên chính bốn lần này thì điểm hơi đẹp hơn sự thật.", "RMSE over four rounds: 5.8, 6.2, 6.0, 6.4 → mean 6.1. Tuning depth on these same four folds makes the score slightly rosier than the truth.", bars("b", [
+			5.8,
+			6.2,
+			6,
+			6.4
+		], [
+			"lượt 1",
+			"lượt 2",
+			"lượt 3",
+			"lượt 4"
+		], {
+			c: "blue",
+			max: 7,
+			base: 46,
+			h: 26,
+			x0: 15,
+			x1: 85
+		}), txt("t", 50, 8, "trung bình = 6,1", {
+			c: "accent",
+			s: 3.4
+		}))
+	]),
+	"cv-grid": M([
+		F("Độ sâu thử 2, 4, 8; số cột mỗi nhát cắt thử 2, 4.", "Depth tries 2, 4, 8; columns per split tries 2, 4.", ...[
+			2,
+			4,
+			8
+		].flatMap((d, i) => [2, 4].map((c, j) => box(`g${i}${j}`, 24 + i * 26, 20 + j * 14, 22, 10, `${d} × ${c}`, {
+			c: "blue",
+			s: 3
+		})))),
+		F("Lưới thử 3 × 2 = 6 cặp, mỗi cặp một điểm.", "The grid tries 3 × 2 = 6 pairs, one score each.", ...[
+			2,
+			4,
+			8
+		].flatMap((d, i) => [2, 4].map((c, j) => box(`g${i}${j}`, 24 + i * 26, 20 + j * 14, 22, 10, `${d} × ${c}`, {
+			c: "green",
+			f: "green",
+			s: 3
+		})))),
+		F("Độ sâu 3 không được thử vì bạn không viết ra: lưới không ra khỏi khoảng bạn đặt.", "Depth 3 is never tried because you did not write it: the grid never leaves your range.", ...[
+			2,
+			4,
+			8
+		].flatMap((d, i) => [2, 4].map((c, j) => box(`g${i}${j}`, 24 + i * 26, 20 + j * 14, 22, 10, `${d} × ${c}`, {
+			c: "mute",
+			o: .5,
+			s: 3
+		}))), box("x", 50, 48, 50, 9, "độ sâu 3: không có trong lưới", {
+			c: "red",
+			d: true,
+			s: 3
+		}))
+	]),
+	"ts-order": M([
+		F("Số form tuần này giống tuần trước hơn là giống một tuần ngẫu nhiên.", "This week's forms look more like last week's than like a random week.", ...[
+			20,
+			22,
+			25,
+			27,
+			30,
+			32,
+			35,
+			38
+		].map((v, i) => dot(`d${i}`, 12 + i * 10, 46 - v * .9, "blue", 1.5)), ...[
+			20,
+			22,
+			25,
+			27,
+			30,
+			32,
+			35
+		].map((v, i) => ln(`l${i}`, 12 + i * 10, 46 - v * .9, 22 + i * 10, 46 - [
+			22,
+			25,
+			27,
+			30,
+			32,
+			35,
+			38
+		][i] * .9, "blue", { w: .5 }))),
+		F("Xáo các dòng rồi mới học: không còn «tuần tới» để dự báo.", "Shuffle the rows and then learn: there is no “next week” left to forecast.", ...[
+			30,
+			20,
+			38,
+			25,
+			35,
+			22,
+			32,
+			27
+		].map((v, i) => dot(`d${i}`, 12 + i * 10, 46 - v * .9, "red", 1.5)), txt("t", 50, 8, "đống số không thứ tự", {
+			c: "red",
+			s: 3.4
+		})),
+		F("Giữ nguyên thứ tự; học trên quá khứ và chấm trên tương lai của nó.", "Keep the order; learn on the past and score on its future.", ...chain("c", ["quá khứ\n(học)", "tương lai\n(chấm)"], {
+			y: 26,
+			on: 1,
+			h: 18,
+			x0: 25,
+			x1: 75
+		}))
+	]),
+	"ts-dep": M([
+		F("Phần dư của đường form theo mức chi: tuần này cùng dấu với tuần trước suốt một tháng.", "Residuals of forms-on-spend: this week shares the sign of last week for a whole month.", ...[
+			3,
+			4,
+			3.5,
+			2,
+			1,
+			-1,
+			-2,
+			-3,
+			-2.5,
+			-1
+		].map((v, i) => dot(`d${i}`, 8 + i * 9, 26 - v * 3.2, v > 0 ? "accent" : "blue", 1.5)), ln("z", 6, 26, 94, 26, "mute", { w: .3 })),
+		F("Các dòng không độc lập: mỗi tuần mang một phần tuần trước.", "The rows are not independent: each week carries part of the previous week.", ...[
+			3,
+			4,
+			3.5,
+			2,
+			1,
+			-1,
+			-2,
+			-3,
+			-2.5,
+			-1
+		].map((v, i) => dot(`d${i}`, 8 + i * 9, 26 - v * 3.2, v > 0 ? "accent" : "blue", 1.5)), ln("z", 6, 26, 94, 26, "mute", { w: .3 }), ...[
+			3,
+			4,
+			3.5,
+			2,
+			1,
+			-1,
+			-2,
+			-3,
+			-2.5
+		].map((v, i) => ln(`l${i}`, 8 + i * 9, 26 - v * 3.2, 17 + i * 9, 26 - [
+			4,
+			3.5,
+			2,
+			1,
+			-1,
+			-2,
+			-3,
+			-2.5,
+			-1
+		][i] * 3.2, "mute", { w: .4 }))),
+		F("Sai số chuẩn của hệ số vì vậy quá tự tin: đây là một chuỗi, không phải một đống dòng độc lập.", "So the coefficient's standard error is overconfident: this is a series, not a pile of independent rows.", box("a", 28, 24, 38, 14, "sai số chuẩn\ntính theo độc lập", {
+			c: "red",
+			d: true
+		}), box("b", 72, 24, 38, 14, "thực tế: chuỗi\nphụ thuộc", { c: "green" }), txt("t", 50, 46, "quá tự tin", {
+			c: "red",
+			s: 3.6
+		}))
+	])
+};
+/** Đường nối các điểm theo thứ tự (chuỗi thời gian). */
+function ser(p, v, o = {}) {
+	const x0 = o.x0 ?? 8;
+	const x1 = o.x1 ?? 92;
+	const base = o.base ?? 46;
+	const h = o.h ?? 32;
+	const max = o.max ?? Math.max(...v);
+	const min = o.min ?? 0;
+	const px = (i) => x0 + (i + (o.from ?? 0)) / Math.max(1, v.length - 1 + (o.from ?? 0)) * (x1 - x0);
+	const py = (y) => base - (y - min) / (max - min) * h;
+	const out = [];
+	v.forEach((y, i) => {
+		out.push(dot(`${p}d${i}`, px(i), py(y), o.c ?? "blue", 1.3));
+		if (i > 0) out.push(ln(`${p}l${i}`, px(i - 1), py(v[i - 1]), px(i), py(y), o.c ?? "blue", { w: .6 }));
+	});
+	return out;
+}
+var vec = (p, x, y, c = "blue", o0 = 20, base = 46, s = 3) => arr(p, o0, base, o0 + x * s, base - y * s, c, { w: .8 });
+var axes = (p, o0 = 20, base = 46) => [ln(`${p}x`, o0, base, 90, base, "mute", { w: .3 }), ln(`${p}y`, o0, base, o0, 4, "mute", { w: .3 })];
+var m6 = {
+	"ts-decomp": M([
+		F("Hai kiểu mùa: cộng thêm hay nhân lên.", "Two kinds of season: additive or multiplicative.", ...pair("p", "cộng\n+20 form", "nhân\n×1,4", {
+			ca: "blue",
+			cb: "accent"
+		})),
+		F("Kiểu cộng: tháng lễ luôn thêm khoảng 20 form dù nền cao hay thấp.", "Additive: a holiday month always adds about 20 forms whether the baseline is high or low.", bars("b", [
+			40,
+			60,
+			80,
+			100
+		], [
+			"nền 40",
+			"lễ",
+			"nền 80",
+			"lễ"
+		], {
+			c: [
+				"blue",
+				"accent",
+				"blue",
+				"accent"
+			],
+			max: 110,
+			base: 46,
+			h: 28,
+			x0: 15,
+			x1: 85
+		}), txt("t", 50, 6, "+20 ở cả hai mức nền", {
+			c: "accent",
+			s: 3.4
+		})),
+		F("Kiểu nhân: lễ là ×1,4 nên nền gấp đôi thì phần mùa cũng gấp đôi. Chọn theo dữ liệu, đừng đoán từ một năm.", "Multiplicative: a holiday is ×1.4, so a doubled baseline doubles the seasonal part. Choose from data, not from one year.", bars("b", [
+			40,
+			56,
+			80,
+			112
+		], [
+			"nền 40",
+			"lễ",
+			"nền 80",
+			"lễ"
+		], {
+			c: [
+				"blue",
+				"accent",
+				"blue",
+				"accent"
+			],
+			max: 115,
+			base: 46,
+			h: 28,
+			x0: 15,
+			x1: 85
+		}), txt("t", 50, 6, "+16 rồi +32: mùa lớn theo nền", {
+			c: "accent",
+			s: 3.4
+		}))
+	]),
+	"ts-naive": M([
+		F("Tuần trước 40 form, nên câu ngây nói tuần này cũng 40.", "Last week 40 forms, so the naive forecast says this week 40 too.", box("a", 28, 24, 38, 14, "tuần trước: 40", { c: "blue" }), arr("x", 48, 24, 52, 24, "mute"), box("b", 72, 24, 38, 14, "dự báo ngây: 40", { c: "accent" })),
+		F("Mô hình RMSE 9, câu ngây RMSE 6: mô hình tệ hơn câu ngây.", "Model RMSE 9, naive RMSE 6: the model is worse than the naive line.", bars("b", [9, 6], ["mô hình", "ngây"], {
+			c: ["red", "green"],
+			max: 10,
+			base: 46,
+			h: 28,
+			x0: 25,
+			x1: 75
+		}), txt("t", 50, 6, "chưa đáng dùng", {
+			c: "red",
+			s: 3.6
+		})),
+		F("Dữ liệu có mùa năm thì câu ngây có thể là «bằng tuần cùng kỳ năm trước».", "With yearly seasonality the naive line may be “same as the same week last year”.", ...chain("c", ["tuần cùng kỳ\nnăm trước", "dự báo ngây\ntuần này"], {
+			y: 26,
+			on: 1,
+			h: 18,
+			x0: 25,
+			x1: 75
+		}))
+	]),
+	"ts-sma": M([
+		F("Ba tuần gần nhất: 20, 24 và 80 form (lễ).", "The last three weeks: 20, 24 and 80 forms (holiday).", bars("b", [
+			20,
+			24,
+			80
+		], [
+			"t−3",
+			"t−2",
+			"t−1"
+		], {
+			c: [
+				"blue",
+				"blue",
+				"accent"
+			],
+			max: 90,
+			base: 46,
+			h: 30,
+			x0: 20,
+			x1: 80
+		})),
+		F("SMA = (20 + 24 + 80) / 3 ≈ 41,3: tuần lễ được cân như một tuần thường.", "SMA = (20 + 24 + 80) / 3 ≈ 41.3: the holiday week weighs like an ordinary week.", bars("b", [
+			20,
+			24,
+			80
+		], [
+			"t−3",
+			"t−2",
+			"t−1"
+		], {
+			c: [
+				"blue",
+				"blue",
+				"accent"
+			],
+			max: 90,
+			base: 46,
+			h: 30,
+			x0: 20,
+			x1: 80
+		}), ln("m", 8, 46 - 41.3 / 90 * 30, 92, 46 - 41.3 / 90 * 30, "red", {
+			d: true,
+			w: .6
+		}), txt("t", 50, 6, "SMA ≈ 41,3", {
+			c: "red",
+			s: 3.4
+		})),
+		F("Khi lễ đã qua, 80 vẫn nằm trong cửa sổ một lúc: dự báo phản ứng chậm.", "After the holiday, 80 stays in the window for a while: the forecast reacts slowly.", bars("b", [
+			24,
+			80,
+			22
+		], [
+			"t−3",
+			"t−2",
+			"t−1"
+		], {
+			c: [
+				"blue",
+				"accent",
+				"blue"
+			],
+			max: 90,
+			base: 46,
+			h: 30,
+			x0: 20,
+			x1: 80
+		}), ln("m", 8, 32, 92, 32, "red", {
+			d: true,
+			w: .6
+		}), txt("t", 50, 6, "vẫn cao dù tuần mới thấp", {
+			c: "red",
+			s: 3.4
+		}))
+	]),
+	"ts-holt": M([
+		F("Form tăng khoảng 3 mỗi tuần suốt một quý, mức hiện tại 40.", "Forms rise about 3 per week all quarter; the current level is 40.", ...ser("s", [
+			28,
+			31,
+			34,
+			37,
+			40
+		], {
+			max: 70,
+			x1: 50
+		})),
+		F("Holt cộng độ dốc đó vào các tuần tới.", "Holt adds that slope to the coming weeks.", ...ser("s", [
+			28,
+			31,
+			34,
+			37,
+			40
+		], {
+			max: 70,
+			x1: 50
+		}), ln("f", 50, 46 - 40 / 70 * 32, 66, 23.6, "accent", {
+			d: true,
+			w: .7
+		})),
+		F("Đẩy dự báo thật xa thì dốc vẫn chạy và có thể ra số vô lý; một tháng lễ nhảy một lần không phải dốc cả năm.", "Push the forecast far out and the slope keeps running into a silly number; a one-off holiday jump is not a yearlong slope.", ...ser("s", [
+			28,
+			31,
+			34,
+			37,
+			40
+		], {
+			max: 70,
+			x1: 50
+		}), ln("f", 50, 46 - 40 / 70 * 32, 92, 46 - 120 / 70 * 32, "red", {
+			d: true,
+			w: .7
+		}), txt("t", 70, 8, "dốc chạy mãi", {
+			c: "red",
+			s: 3.2
+		}))
+	]),
+	"ts-hw": M([
+		F("Form theo tuần có chu kỳ 7 (ngày).", "Weekly-ish forms with a cycle of 7 (days).", ...ser("s", [
+			20,
+			22,
+			30,
+			28,
+			26,
+			40,
+			38,
+			21,
+			23,
+			31,
+			29,
+			27,
+			41,
+			39
+		], { max: 45 })),
+		F("Holt-Winters cần bạn nói 7: nó không tự quyết định là 7 hay 52.", "Holt-Winters needs you to say 7: it does not decide between 7 and 52.", ...ser("s", [
+			20,
+			22,
+			30,
+			28,
+			26,
+			40,
+			38,
+			21,
+			23,
+			31,
+			29,
+			27,
+			41,
+			39
+		], { max: 45 }), ln("a", 8, 50, 52, 50, "accent", { w: .7 }), txt("t", 30, 56, "chu kỳ = 7 (do bạn khai)", {
+			c: "accent",
+			s: 3
+		})),
+		F("Cần hơn một vòng để thấy hình dạng; một năm dữ liệu tuần thì mùa năm chưa lặp lại lần nào.", "You need more than one cycle to see the shape; a year of weekly data has not repeated its yearly season even once.", box("a", 50, 24, 76, 14, "1 năm dữ liệu tuần\n= mùa năm mới xuất hiện 1 lần", {
+			c: "red",
+			s: 3
+		}))
+	]),
+	"ts-mape": M([
+		F("Số thật 10, đoán 12: lệch tương đối 2 / 10 = 20%.", "Actual 10, guess 12: relative error 2 / 10 = 20%.", box("a", 28, 24, 38, 14, "thật 10\nđoán 12", { c: "blue" }), box("b", 72, 24, 38, 14, "2 / 10 = 20%", {
+			c: "green",
+			s: 4
+		})),
+		F("Số thật 0, đoán 3: không chia được cho 0, MAPE gãy.", "Actual 0, guess 3: you cannot divide by 0, MAPE breaks.", box("a", 28, 24, 38, 14, "thật 0\nđoán 3", { c: "blue" }), box("b", 72, 24, 38, 14, "3 / 0\n= không có", {
+			c: "red",
+			d: true
+		})),
+		F("MAE vẫn là 3 form dùng được; RMSE thì phạt tuần lệch lớn hơn.", "MAE is still a usable 3 forms; RMSE penalises large misses harder.", ...pair("p", "MAE = 3 form\nvẫn dùng được", "RMSE\nphạt lệch lớn", {
+			ca: "green",
+			cb: "accent"
+		}))
+	]),
+	"ts-walk": M([
+		F("Học đến hết tháng 6, chấm tháng 7.", "Learn through June, score July.", ...["T1–6", "T7"].map((t, i) => box(`f${i}`, 30 + i * 36, 24, i === 0 ? 50 : 20, 12, t, {
+			c: i === 0 ? "blue" : "accent",
+			f: i === 1 ? "accent" : "soft"
+		}))),
+		F("Rồi học đến hết tháng 7, chấm tháng 8: cuốn tới từng bước.", "Then learn through July, score August: roll forward step by step.", ...["T1–7", "T8"].map((t, i) => box(`f${i}`, 30 + i * 36, 24, i === 0 ? 50 : 20, 12, t, {
+			c: i === 0 ? "blue" : "accent",
+			f: i === 1 ? "accent" : "soft"
+		}))),
+		F("Xáo tuần vào k-fold: mô hình thấy tuần 8 khi đang chấm tuần 7. Đó không còn là dự báo.", "Shuffling weeks into k-fold: the model sees week 8 while scoring week 7. That is no longer forecasting.", ...["tuần 8 (học)", "tuần 7 (chấm)"].map((t, i) => box(`f${i}`, 28 + i * 44, 24, 36, 12, t, { c: i === 0 ? "red" : "accent" })), arr("x", 46, 24, 54, 24, "red"), txt("t", 50, 46, "nhìn thấy tương lai", {
+			c: "red",
+			s: 3.4
+		}))
+	]),
+	"ts-stat": M([
+		F("Form dao động quanh 40 suốt năm với độ rộng không đổi: tạm gọi là dừng.", "Forms oscillate around 40 all year with constant width: call it stationary.", ...ser("s", [
+			40,
+			44,
+			38,
+			42,
+			37,
+			43,
+			39,
+			41,
+			36,
+			42
+		], {
+			min: 20,
+			max: 60,
+			c: "green"
+		})),
+		F("Form tăng đều thì chưa dừng: tâm đi theo thời gian.", "A steadily rising series is not stationary: its centre moves with time.", ...ser("s", [
+			20,
+			24,
+			27,
+			33,
+			36,
+			42,
+			45,
+			50,
+			54,
+			58
+		], {
+			min: 15,
+			max: 60,
+			c: "red"
+		})),
+		F("Lấy tuần này trừ tuần trước cho các bước thay đổi, ổn định hơn; muốn dự báo mức phải cộng ngược lại.", "Subtract last week from this week to get the changes, steadier; to forecast levels you add them back.", ...ser("s", [
+			4,
+			3,
+			6,
+			3,
+			6,
+			3,
+			5,
+			4,
+			4
+		], {
+			min: 0,
+			max: 10,
+			c: "accent"
+		}), txt("t", 50, 8, "phần thay đổi: tạm dừng", {
+			c: "accent",
+			s: 3.2
+		}))
+	]),
+	"ts-acf": M([
+		F("Form tuần này tương quan 0,6 với tuần trước và 0,3 với hai tuần trước (ACF).", "This week's forms correlate 0.6 with last week and 0.3 with two weeks ago (ACF).", bars("b", [.6, .3], ["trễ 1", "trễ 2"], {
+			c: "blue",
+			max: 1,
+			base: 46,
+			h: 28,
+			x0: 30,
+			x1: 70
+		}), txt("t", 50, 6, "ACF", {
+			c: "blue",
+			s: 3.6
+		})),
+		F("PACF hỏi phần còn lại sau khi đã tính các bước gần hơn: trễ 2 có thể còn rất ít.", "PACF asks what remains after accounting for nearer lags: lag 2 may be tiny.", bars("b", [.6, .05], ["trễ 1", "trễ 2"], {
+			c: "accent",
+			max: 1,
+			base: 46,
+			h: 28,
+			x0: 30,
+			x1: 70
+		}), txt("t", 50, 6, "PACF", {
+			c: "accent",
+			s: 3.6
+		})),
+		F("Chuỗi ngắn hay cho hình nói dối: đừng chọn bậc chỉ vì một cột vượt vạch.", "Short series often draw a lying picture: do not pick an order just because one bar crosses the line.", bars("b", [
+			.6,
+			.3,
+			.25,
+			.1
+		], [
+			"1",
+			"2",
+			"3",
+			"4"
+		], {
+			c: "blue",
+			max: 1,
+			base: 46,
+			h: 28,
+			x0: 20,
+			x1: 80
+		}), ln("v", 8, 46 - .28 * 28, 92, 46 - .28 * 28, "red", {
+			d: true,
+			w: .5
+		}), txt("t", 50, 6, "một cột vượt vạch ≠ một quy luật", {
+			c: "red",
+			s: 3.2
+		}))
+	]),
+	"ts-ar": M([
+		F("Giả sử tuần này ≈ 10 + 0,5 × tuần trước.", "Suppose this week ≈ 10 + 0.5 × last week.", box("a", 50, 24, 74, 14, "tuần này = 10 + 0,5 × tuần trước", { c: "accent" })),
+		F("Tuần trước 40 form thì dự báo 10 + 0,5 × 40 = 30.", "If last week was 40, the forecast is 10 + 0.5 × 40 = 30.", ...chain("c", [
+			"tuần trước\n40",
+			"10 + 0,5 × 40",
+			"dự báo\n30"
+		], {
+			y: 26,
+			on: 2,
+			h: 16
+		})),
+		F("Hệ số 0,5 không phải «một nửa nguyên nhân»: nó là mức bám trên một chuỗi đã được cho là dừng.", "The 0.5 is not “half the cause”: it is the stickiness of a series assumed stationary.", box("a", 28, 24, 38, 14, "0,5 = mức bám", { c: "green" }), box("b", 72, 24, 38, 14, "một nửa nguyên nhân", {
+			c: "red",
+			d: true
+		}))
+	]),
+	"ts-ma": M([
+		F("Một tuần lỗi tracking làm form hụt 15.", "One tracking-error week drops forms by 15.", ...ser("s", [
+			40,
+			41,
+			25,
+			33,
+			38,
+			40,
+			40
+		], {
+			min: 15,
+			max: 45,
+			c: "blue"
+		}), ring("r", at(2, 0, 6), 46 - 10 / 30 * 32, 4, "red")),
+		F("Tuần sau còn vương lại một phần của cú sốc đó: đó là MA trong ARIMA.", "The week after still carries part of that shock: that is the MA in ARIMA.", ...ser("s", [
+			40,
+			41,
+			25,
+			33,
+			38,
+			40,
+			40
+		], {
+			min: 15,
+			max: 45,
+			c: "blue"
+		}), ring("r", at(2, 0, 6), 46 - 10 / 30 * 32, 4, "red"), ring("q", at(3, 0, 6), 26.8, 3, "accent"), txt("t", 50, 8, "cú sốc cũ còn vương lại", {
+			c: "accent",
+			s: 3.2
+		})),
+		F("Trung bình của ba tuần gần nhất là một việc khác, dù cũng gọi «trung bình trượt». Đừng trộn hai thứ trong báo cáo.", "The average of the last three weeks is a different thing, though also called “moving average”. Do not mix them in a report.", ...pair("p", "MA trong ARIMA\ncú sốc cũ", "trung bình trượt\n3 tuần gần nhất", {
+			ca: "accent",
+			cb: "blue"
+		}))
+	]),
+	"ts-arima": M([
+		F("Form có hướng đi lên: lấy hiệu một lần (d = 1).", "Forms trend up: difference once (d = 1).", ...chain("c", [
+			"chuỗi có hướng",
+			"lấy hiệu\nd = 1",
+			"AR và MA"
+		], {
+			y: 26,
+			on: 1,
+			h: 16
+		})),
+		F("Rồi AR và MA chạy trên phần thay đổi: đó là ARIMA. Mùa tuần cần SARIMA với chu kỳ 7.", "Then AR and MA run on the changes: that is ARIMA. A weekly season needs SARIMA with period 7.", ...chain("c", [
+			"lấy hiệu",
+			"AR + MA",
+			"mùa 7 → SARIMA"
+		], {
+			y: 26,
+			on: 2,
+			h: 14
+		})),
+		F("Thêm cột khuyến mãi là SARIMAX, và bạn phải biết khuyến mãi tuần tới; nếu chưa biết thì bạn đang đoán luôn cả khuyến mãi.", "Adding a promo column makes SARIMAX, and you must know next week's promo; if not, you are guessing the promo too.", box("a", 28, 24, 38, 14, "SARIMAX\ncần cột khuyến mãi", { c: "blue" }), box("b", 72, 24, 38, 14, "khuyến mãi tuần tới\nchưa biết → đoán", {
+			c: "red",
+			d: true
+		}))
+	]),
+	"math-vec": M([
+		F("Một tuần: chi 10 triệu, thu 80 form, viết (10, 80).", "One week: spend 10 million, 80 forms, written (10, 80).", ...axes("a"), vec("v", 10, 20, "blue", 20, 46, 2.5), txt("t", 60, 12, "(10, 80)", {
+			c: "blue",
+			s: 3.6
+		})),
+		F("Đổi chỗ thành (80, 10) là một tuần hoàn toàn khác: ô đầu là chi tiêu.", "Swapping to (80, 10) is a totally different week: the first cell is spend.", ...axes("a"), vec("v", 10, 20, "mute", 20, 46, 2.5), vec("w", 20, 10 / 4, "red", 20, 46, 2.5), txt("t", 60, 12, "(80, 10) ≠ (10, 80)", {
+			c: "red",
+			s: 3.4
+		})),
+		F("Véctơ là một danh sách số có thứ tự: vị trí mỗi số có nghĩa.", "A vector is an ordered list of numbers: each position has a meaning.", ...pair("p", "ô 1\nchi tiêu", "ô 2\nsố form", {
+			ca: "blue",
+			cb: "accent"
+		}))
+	]),
+	"math-add": M([
+		F("Hai tuần: (10, 80) và (2, 5).", "Two weeks: (10, 80) and (2, 5).", ...axes("a"), arr("u", 20, 46, 60, 14, "blue", { w: .8 }), arr("v", 20, 46, 28, 36, "accent", { w: .8 })),
+		F("Cộng từng ô: (10 + 2, 80 + 5) = (12, 85).", "Add cell by cell: (10 + 2, 80 + 5) = (12, 85).", box("a", 50, 24, 74, 14, "(10, 80) + (2, 5) = (12, 85)", {
+			c: "green",
+			s: 3.6
+		})),
+		F("Nhân với 2: (20, 160); cả chi tiêu lẫn form cùng gấp đôi, không phải chỉ một ô.", "Multiply by 2: (20, 160); spend and forms both double, not just one cell.", box("a", 50, 24, 74, 14, "2 × (10, 80) = (20, 160)", {
+			c: "accent",
+			s: 3.6
+		}), txt("t", 50, 44, "mọi ô cùng nhân", {
+			c: "mute",
+			s: 3.2
+		}))
+	]),
+	"math-dot": M([
+		F("Tuần A là (2, 3) và tuần B là (4, 1).", "Week A is (2, 3) and week B is (4, 1).", ...axes("a"), arr("u", 20, 46, 44, 22, "blue", { w: .8 }), arr("v", 20, 46, 68, 38, "accent", { w: .8 })),
+		F("Tích vô hướng = 2 × 4 + 3 × 1 = 11: nhân từng ô rồi cộng.", "Dot product = 2 × 4 + 3 × 1 = 11: multiply cell by cell, then add.", box("a", 50, 24, 74, 14, "2 × 4 + 3 × 1 = 11", {
+			f: "accent",
+			c: "accent",
+			s: 4
+		})),
+		F("Hai trục (1, 0) và (0, 1) cho 1 × 0 + 0 × 1 = 0: không cùng hướng chút nào.", "The two axes (1, 0) and (0, 1) give 1 × 0 + 0 × 1 = 0: not aligned at all.", ...axes("a"), arr("u", 20, 46, 50, 46, "blue", { w: .8 }), arr("v", 20, 46, 20, 16, "accent", { w: .8 }), txt("t", 60, 24, "1×0 + 0×1 = 0", {
+			c: "green",
+			s: 3.4
+		}))
+	]),
+	"math-mat": M([
+		F("Ma trận [[2, 0], [0, 1]] và tuần (3, 4).", "Matrix [[2, 0], [0, 1]] and week (3, 4).", ...pair("p", "ma trận\n[[2,0],[0,1]]", "tuần\n(3, 4)", {
+			ca: "accent",
+			cb: "blue"
+		})),
+		F("Hàng 1 tạo ô 1: 2×3 + 0×4 = 6. Hàng 2 tạo ô 2: 0×3 + 1×4 = 4.", "Row 1 makes cell 1: 2×3 + 0×4 = 6. Row 2 makes cell 2: 0×3 + 1×4 = 4.", box("a", 50, 16, 74, 10, "hàng 1: 2×3 + 0×4 = 6", { c: "accent" }), box("b", 50, 32, 74, 10, "hàng 2: 0×3 + 1×4 = 4", { c: "accent" })),
+		F("Kết quả (6, 4): chi tiêu được nhân đôi, số form giữ nguyên.", "Result (6, 4): spend doubled, forms unchanged.", ...axes("a"), arr("u", 20, 46, 44, 14, "mute", {
+			w: .6,
+			d: true
+		}), arr("v", 20, 46, 68, 14, "green", { w: .9 }))
+	]),
+	"math-mul": M([
+		F("A cỡ 2×3 nhân với cột B gồm 3 số: các cỡ khớp nhau (3 = 3).", "A (2×3) times a column B of 3 numbers: sizes match (3 = 3).", ...pair("p", "A: 2 hàng\n× 3 cột", "B: 3 số", {
+			ca: "blue",
+			cb: "accent"
+		}), txt("t", 50, 46, "3 cột = 3 số → làm được", {
+			c: "green",
+			s: 3.4
+		})),
+		F("Kết quả có 2 số: mỗi hàng của A gặp cột B ra một số.", "The result has 2 numbers: each row of A meets column B once.", ...chain("c", [
+			"A (2×3)",
+			"× B (3)",
+			"= 2 số"
+		], {
+			y: 26,
+			on: 2
+		})),
+		F("Nhân A với một cột chỉ có 2 số thì không làm được; và AB thường khác BA.", "Multiplying A by a column of only 2 numbers is impossible; and AB usually differs from BA.", box("a", 28, 24, 38, 14, "A × (2 số)\nkhông làm được", {
+			c: "red",
+			d: true
+		}), box("b", 72, 24, 38, 14, "AB ≠ BA\n(thường)", { c: "accent" }))
+	]),
+	"math-det": M([
+		F("Ma trận [[2, 0], [0, 1]] biến hình vuông 1×1 thành hình chữ nhật 2×1.", "Matrix [[2, 0], [0, 1]] turns a 1×1 square into a 2×1 rectangle.", box("a", 28, 26, 14, 14, "1×1", { c: "mute" }), arr("x", 38, 26, 50, 26, "mute"), box("b", 70, 26, 28, 14, "2×1", {
+			c: "blue",
+			f: "soft"
+		})),
+		F("Định thức 2 × 1 − 0 × 0 = 2: diện tích gấp đôi.", "Determinant 2 × 1 − 0 × 0 = 2: the area doubles.", box("a", 28, 26, 14, 14, "diện tích 1", {
+			c: "mute",
+			s: 2.8
+		}), box("b", 70, 26, 28, 14, "diện tích 2", {
+			f: "green",
+			c: "green"
+		}), txt("t", 50, 46, "det = 2", {
+			c: "green",
+			s: 3.6
+		})),
+		F("[[1, 2], [2, 4]]: hàng dưới gấp hai hàng trên, định thức 1×4 − 2×2 = 0, mặt phẳng bị ép thành một đường.", "[[1, 2], [2, 4]]: the bottom row is twice the top row, determinant 1×4 − 2×2 = 0, the plane is squashed to a line.", box("a", 28, 26, 14, 14, "hình vuông", {
+			c: "mute",
+			s: 2.8
+		}), ln("l", 52, 26, 90, 26, "red", { w: 1.2 }), txt("t", 50, 46, "det = 0 → ép thành một đường", {
+			c: "red",
+			s: 3.4
+		}))
+	]),
+	"math-sys": M([
+		F("Hai đường: x + y = 3 và x − y = 1.", "Two lines: x + y = 3 and x − y = 1.", ...axes("a", 14, 46), ln("l1", 20, 12, 70, 46, "blue", { w: .7 }), ln("l2", 20, 46, 70, 12, "accent", { w: .7 })),
+		F("Chúng gặp nhau tại (2, 1): nghiệm duy nhất nằm trên cả hai đường.", "They meet at (2, 1): the unique solution lies on both lines.", ...axes("a", 14, 46), ln("l1", 20, 12, 70, 46, "blue", { w: .7 }), ln("l2", 20, 46, 70, 12, "accent", { w: .7 }), ring("r", 45, 29, 3.5, "green"), txt("t", 45, 8, "(2, 1)", {
+			c: "green",
+			s: 3.6
+		})),
+		F("Đổi điều kiện sau thành 2x + 2y = 5: hai đường song song, không có điểm nào thỏa cả hai.", "Change the second to 2x + 2y = 5: the lines are parallel and no point satisfies both.", ...axes("a", 14, 46), ln("l1", 20, 12, 70, 46, "blue", { w: .7 }), ln("l2", 20, 6, 70, 40, "red", { w: .7 }), txt("t", 50, 54, "song song → vô nghiệm", {
+			c: "red",
+			s: 3.4
+		}))
+	]),
+	"math-eig": M([
+		F("Ma trận [[2, 0], [0, 1]] kéo giãn mặt phẳng.", "The matrix [[2, 0], [0, 1]] stretches the plane.", ...axes("a"), arr("u", 20, 46, 42, 46, "blue", { w: .8 }), arr("v", 20, 46, 20, 24, "accent", { w: .8 })),
+		F("(1, 0) thành (2, 0): cùng hướng, dài gấp 2 → λ = 2. (0, 1) giữ nguyên → λ = 1.", "(1, 0) becomes (2, 0): same direction, twice as long → λ = 2. (0, 1) stays → λ = 1.", ...axes("a"), arr("u", 20, 46, 42, 46, "mute", {
+			w: .6,
+			d: true
+		}), arr("u2", 20, 46, 64, 46, "green", { w: .9 }), arr("v", 20, 46, 20, 24, "accent", { w: .9 }), txt("t", 60, 20, "λ = 2 và λ = 1", {
+			c: "green",
+			s: 3.4
+		})),
+		F("(1, 1) thành (2, 1): lệch hướng nên không phải vectơ riêng.", "(1, 1) becomes (2, 1): the direction changes, so it is not an eigenvector.", ...axes("a"), arr("u", 20, 46, 42, 24, "mute", {
+			w: .6,
+			d: true
+		}), arr("u2", 20, 46, 64, 24, "red", { w: .9 }), txt("t", 60, 20, "bị quay → không phải", {
+			c: "red",
+			s: 3.4
+		}))
+	]),
+	"math-deriv": M([
+		F("form ≈ 20 + 6x − 0,1x², x là số triệu chi: đường cong dần.", "forms ≈ 20 + 6x − 0.1x², x in millions of spend: a flattening curve.", ...ser("s", [
+			20,
+			25.9,
+			31.6,
+			37.1,
+			42.4,
+			47.5,
+			52.4,
+			57.1,
+			61.6,
+			65.9,
+			70
+		], {
+			min: 15,
+			max: 75,
+			c: "blue"
+		})),
+		F("Độ dốc là 6 − 0,2x: tại x = 0 thêm 1 triệu được khoảng 6 form.", "The slope is 6 − 0.2x: at x = 0 one more million gives about 6 forms.", ...ser("s", [
+			20,
+			25.9,
+			31.6,
+			37.1,
+			42.4,
+			47.5,
+			52.4,
+			57.1,
+			61.6,
+			65.9,
+			70
+		], {
+			min: 15,
+			max: 75,
+			c: "blue"
+		}), ln("t", 8, 46 - 5 / 60 * 32, 30, 46 - 5 / 60 * 32 - 5.4, "green", { w: .8 }), txt("x", 28, 8, "x = 0: dốc 6", {
+			c: "green",
+			s: 3.2
+		})),
+		F("Tại x = 10 độ dốc chỉ còn 6 − 2 = 4: thêm một triệu chỉ được khoảng 4 form.", "At x = 10 the slope is 6 − 2 = 4: one more million adds only about 4 forms.", ...ser("s", [
+			20,
+			25.9,
+			31.6,
+			37.1,
+			42.4,
+			47.5,
+			52.4,
+			57.1,
+			61.6,
+			65.9,
+			70
+		], {
+			min: 15,
+			max: 75,
+			c: "blue"
+		}), ln("t", 72, 46 - 55 / 60 * 32 + 2, 92, 46 - 55 / 60 * 32 - 8, "red", { w: .8 }), txt("x", 70, 8, "x = 10: dốc 4", {
+			c: "red",
+			s: 3.2
+		}))
+	]),
+	"math-jac": M([
+		F("Hai nút (chi, email) và hai đầu ra (form, lead đủ điều kiện).", "Two knobs (spend, email) and two outputs (forms, qualified leads).", ...pair("p", "nút: chi, email", "đầu ra: form, lead", {
+			ca: "blue",
+			cb: "accent"
+		})),
+		F("Mỗi đầu ra có một đạo hàm riêng theo mỗi nút: bảng 2×2 gồm bốn ô.", "Each output has a partial derivative for each knob: a 2×2 table of four cells.", ...[
+			"∂form/∂chi",
+			"∂form/∂email",
+			"∂lead/∂chi",
+			"∂lead/∂email"
+		].map((t, i) => box(`c${i}`, 30 + i % 2 * 40, 16 + Math.floor(i / 2) * 16, 36, 12, t, {
+			c: "accent",
+			s: 3
+		}))),
+		F("Chỉ có một đầu ra thì bảng thu về một hàng: chính là gradient.", "With a single output the table shrinks to one row: the gradient.", ...["∂form/∂chi", "∂form/∂email"].map((t, i) => box(`c${i}`, 30 + i * 40, 24, 36, 12, t, {
+			c: "green",
+			s: 3
+		})), ...["∂lead/∂chi", "∂lead/∂email"].map((t, i) => box(`d${i}`, 30 + i * 40, 40, 36, 12, t, {
+			c: "mute",
+			d: true,
+			o: .3,
+			s: 3
+		})))
+	]),
+	"math-hess": M([
+		F("Một nút: f(w) = (w − 2)² có đạo hàm bậc hai 2: cong lên, nên là một đáy.", "One knob: f(w) = (w − 2)² has second derivative 2: curves up, so it is a bottom.", ...ser("s", [
+			9,
+			4,
+			1,
+			0,
+			1,
+			4,
+			9
+		], {
+			min: 0,
+			max: 9,
+			c: "green",
+			base: 44
+		}), txt("t", 50, 8, "cong lên → đáy", {
+			c: "green",
+			s: 3.4
+		})),
+		F("Hai nút: x² − y² cong lên theo x và cong xuống theo y.", "Two knobs: x² − y² curves up along x and down along y.", ...ser("a", [
+			9,
+			4,
+			1,
+			0,
+			1,
+			4,
+			9
+		], {
+			min: 0,
+			max: 9,
+			c: "blue",
+			base: 36,
+			h: 24,
+			x0: 8,
+			x1: 46
+		}), ...ser("b", [
+			0,
+			5,
+			8,
+			9,
+			8,
+			5,
+			0
+		], {
+			min: 0,
+			max: 9,
+			c: "red",
+			base: 36,
+			h: 24,
+			x0: 54,
+			x1: 92
+		}), txt("t1", 27, 8, "theo x: lên", {
+			c: "blue",
+			s: 3
+		}), txt("t2", 73, 8, "theo y: xuống", {
+			c: "red",
+			s: 3
+		})),
+		F("Đạo hàm bậc nhất bằng 0 tại gốc, nhưng đó là một yên ngựa chứ không phải đáy.", "The first derivative is 0 at the origin, but that is a saddle, not a bottom.", box("a", 28, 24, 38, 14, "đạo hàm = 0\ntại gốc", { c: "blue" }), box("b", 72, 24, 38, 14, "yên ngựa\nkhông phải đáy", {
+			c: "red",
+			f: "red"
+		}))
+	]),
+	"math-taylor": M([
+		F("Tại mức chi 10 triệu, tiếp tuyến dùng độ dốc 4 form mỗi triệu.", "At spend 10 million the tangent uses a slope of 4 forms per million.", ...ser("s", [
+			20,
+			25.9,
+			31.6,
+			37.1,
+			42.4,
+			47.5,
+			52.4,
+			57.1,
+			61.6,
+			65.9,
+			70
+		], {
+			min: 15,
+			max: 100,
+			c: "blue"
+		})),
+		F("Thêm 0,2 triệu thì tiếp tuyến gần đúng sát đường cong.", "Add 0.2 million and the tangent is close to the curve.", ...ser("s", [
+			20,
+			25.9,
+			31.6,
+			37.1,
+			42.4,
+			47.5,
+			52.4,
+			57.1,
+			61.6,
+			65.9,
+			70
+		], {
+			min: 15,
+			max: 100,
+			c: "blue"
+		}), ln("t", 60, 34.83764705882353, 92, 46 - (65.9 - 15) / 85 * 32 - 11, "green", { w: .8 }), ring("r", 60, 46 - (65.9 - 15) / 85 * 32, 3, "green")),
+		F("Nhảy thêm 20 triệu thì đường bậc hai đã cong đi, và tiếp tuyến cho số lớn hơn nhiều so với thực tế.", "Jump another 20 million and the quadratic has bent away; the tangent gives a much larger number than reality.", ...ser("s", [
+			20,
+			25.9,
+			31.6,
+			37.1,
+			42.4,
+			47.5,
+			52.4,
+			57.1,
+			61.6,
+			65.9,
+			70
+		], {
+			min: 15,
+			max: 100,
+			c: "blue",
+			x1: 60
+		}), ln("t", 40, 32.83764705882353, 94, 8, "red", {
+			w: .8,
+			d: true
+		}), txt("x", 70, 54, "ở xa: tiếp tuyến lệch", {
+			c: "red",
+			s: 3.2
+		}))
+	]),
+	"ds-type": M([
+		F("Ba kiểu: số (chi tiêu), chữ (kênh), chữ có thứ bậc (số sao).", "Three types: number (spend), text (channel), ordered text (stars).", ...[
+			["số", "chi tiêu"],
+			["chữ", "kênh"],
+			["chữ có\nthứ bậc", "1–5 sao"]
+		].map(([a, b], i) => box(`c${i}`, 18 + i * 32, 24, 28, 18, `${a}\n${b}`, {
+			c: [
+				"accent",
+				"blue",
+				"gold"
+			][i],
+			s: 3
+		}))),
+		F("Mã hóa Google, Meta, TikTok thành 1, 2, 3 thì thứ tự 1 < 2 < 3 là do bạn tự gán.", "Encoding Google, Meta, TikTok as 1, 2, 3 makes 1 < 2 < 3 an order you invented.", ...[
+			"Google = 1",
+			"Meta = 2",
+			"TikTok = 3"
+		].map((t, i) => box(`c${i}`, 20 + i * 30, 24, 26, 12, t, {
+			c: "blue",
+			s: 3
+		}))),
+		F("«Trung bình mã kênh» là câu vô nghĩa: 2 không phải kênh nào cả.", "“Mean channel code” is meaningless: 2 is not a channel.", box("a", 50, 24, 70, 14, "TB(1, 2, 3) = 2 = ?", {
+			c: "red",
+			d: true
+		}))
+	]),
+	"ds-center": M([
+		F("Tám tuần: 2, 4, 4, 4, 5, 5, 7, 9.", "Eight weeks: 2, 4, 4, 4, 5, 5, 7, 9.", bars("b", [
+			2,
+			4,
+			4,
+			4,
+			5,
+			5,
+			7,
+			9
+		], [
+			"2",
+			"4",
+			"4",
+			"4",
+			"5",
+			"5",
+			"7",
+			"9"
+		], {
+			c: "blue",
+			max: 9,
+			show: false,
+			base: 44,
+			h: 28
+		})),
+		F("Trung bình = 40 / 8 = 5; trung vị = (4 + 5) / 2 = 4,5.", "Mean = 40 / 8 = 5; median = (4 + 5) / 2 = 4.5.", bars("b", [
+			2,
+			4,
+			4,
+			4,
+			5,
+			5,
+			7,
+			9
+		], [
+			"2",
+			"4",
+			"4",
+			"4",
+			"5",
+			"5",
+			"7",
+			"9"
+		], {
+			c: "blue",
+			max: 9,
+			show: false,
+			base: 44,
+			h: 28
+		}), ln("m", 8, 44 - 5 / 9 * 28, 92, 44 - 5 / 9 * 28, "accent", {
+			d: true,
+			w: .6
+		}), ln("d", 8, 30, 92, 30, "green", {
+			d: true,
+			w: .6
+		}), txt("t", 50, 6, "TB 5 · trung vị 4,5: gần nhau", {
+			c: "mute",
+			s: 3.2
+		})),
+		F("Thêm một giá trị cực đoan 90: trung bình nhảy lên, trung vị gần như đứng yên.", "Add an extreme value 90: the mean jumps, the median barely moves.", bars("b", [
+			2,
+			4,
+			4,
+			4,
+			5,
+			5,
+			7,
+			90
+		], [
+			"2",
+			"4",
+			"4",
+			"4",
+			"5",
+			"5",
+			"7",
+			"90"
+		], {
+			c: [
+				"blue",
+				"blue",
+				"blue",
+				"blue",
+				"blue",
+				"blue",
+				"blue",
+				"red"
+			],
+			max: 90,
+			show: false,
+			base: 44,
+			h: 28
+		}), txt("t", 50, 6, "TB 15,1 · trung vị 4,5", {
+			c: "red",
+			s: 3.4
+		}))
+	]),
+	"ds-mode": M([
+		F("Dãy 2, 4, 4, 4, 5, 5, 7, 9: đếm số lần mỗi giá trị xuất hiện.", "The series 2, 4, 4, 4, 5, 5, 7, 9: count how often each value appears.", bars("b", [
+			1,
+			3,
+			2,
+			1,
+			1
+		], [
+			"2",
+			"4",
+			"5",
+			"7",
+			"9"
+		], {
+			c: "blue",
+			max: 4,
+			base: 46,
+			h: 28,
+			x0: 20,
+			x1: 80
+		})),
+		F("Số 4 xuất hiện 3 lần, nhiều nhất: mode là 4.", "The value 4 appears 3 times, most often: the mode is 4.", bars("b", [
+			1,
+			3,
+			2,
+			1,
+			1
+		], [
+			"2",
+			"4",
+			"5",
+			"7",
+			"9"
+		], {
+			c: [
+				"blue",
+				"accent",
+				"blue",
+				"blue",
+				"blue"
+			],
+			max: 4,
+			base: 46,
+			h: 28,
+			x0: 20,
+			x1: 80
+		}), txt("t", 50, 6, "mode = 4", {
+			c: "accent",
+			s: 3.6
+		})),
+		F("Nếu 5 cũng xuất hiện 3 lần thì có hai mode. Với cột kênh, mode là kênh có nhiều khách nhất.", "If 5 also appeared 3 times there would be two modes. For a channel column the mode is the channel with the most customers.", bars("b", [
+			400,
+			550,
+			250
+		], [
+			"GDN",
+			"Facebook",
+			"TikTok"
+		], {
+			c: [
+				"blue",
+				"accent",
+				"blue"
+			],
+			max: 600,
+			base: 46,
+			h: 28,
+			x0: 20,
+			x1: 80
+		}), txt("t", 50, 6, "mode = Facebook", {
+			c: "accent",
+			s: 3.4
+		}))
+	]),
+	"ds-q": M([
+		F("Dãy đã sắp: 2, 4, 4, 4 | 5, 5, 7, 9; chia làm nửa dưới và nửa trên.", "Sorted: 2, 4, 4, 4 | 5, 5, 7, 9; split into a lower and an upper half.", bars("b", [
+			2,
+			4,
+			4,
+			4,
+			5,
+			5,
+			7,
+			9
+		], [
+			"2",
+			"4",
+			"4",
+			"4",
+			"5",
+			"5",
+			"7",
+			"9"
+		], {
+			c: [
+				"blue",
+				"blue",
+				"blue",
+				"blue",
+				"gold",
+				"gold",
+				"gold",
+				"gold"
+			],
+			max: 9,
+			show: false,
+			base: 44,
+			h: 28
+		})),
+		F("Trung vị mỗi nửa: Q1 = 4 và Q3 = 6; trung vị cả dãy Q2 = 4,5.", "Median of each half: Q1 = 4 and Q3 = 6; the overall median Q2 = 4.5.", bars("b", [
+			2,
+			4,
+			4,
+			4,
+			5,
+			5,
+			7,
+			9
+		], [
+			"2",
+			"4",
+			"4",
+			"4",
+			"5",
+			"5",
+			"7",
+			"9"
+		], {
+			c: [
+				"blue",
+				"blue",
+				"blue",
+				"blue",
+				"gold",
+				"gold",
+				"gold",
+				"gold"
+			],
+			max: 9,
+			show: false,
+			base: 44,
+			h: 28
+		}), txt("t", 50, 6, "Q1 = 4 · Q2 = 4,5 · Q3 = 6", {
+			c: "accent",
+			s: 3.4
+		})),
+		F("IQR = Q3 − Q1 = 6 − 4 = 2. Phần mềm khác có thể cắt lệch một chút.", "IQR = Q3 − Q1 = 6 − 4 = 2. Other software may cut slightly differently.", box("a", 50, 24, 74, 14, "IQR = 6 − 4 = 2", {
+			f: "accent",
+			c: "accent",
+			s: 4
+		}), txt("t", 50, 46, "ghi rõ cách cắt", {
+			c: "mute",
+			s: 3.2
+		}))
+	]),
+	"ds-var": M([
+		F("Dãy 2, 4, 4, 4, 5, 5, 7, 9 có trung bình 5.", "The series has mean 5.", bars("b", [
+			2,
+			4,
+			4,
+			4,
+			5,
+			5,
+			7,
+			9
+		], [
+			"2",
+			"4",
+			"4",
+			"4",
+			"5",
+			"5",
+			"7",
+			"9"
+		], {
+			c: "blue",
+			max: 9,
+			show: false,
+			base: 44,
+			h: 28
+		}), ln("m", 8, 44 - 5 / 9 * 28, 92, 44 - 5 / 9 * 28, "accent", {
+			d: true,
+			w: .6
+		})),
+		F("Bình phương độ lệch: 9, 1, 1, 1, 0, 0, 4, 16 → tổng 32.", "Squared deviations: 9, 1, 1, 1, 0, 0, 4, 16 → sum 32.", bars("b", [
+			9,
+			1,
+			1,
+			1,
+			0,
+			0,
+			4,
+			16
+		], [
+			"2",
+			"4",
+			"4",
+			"4",
+			"5",
+			"5",
+			"7",
+			"9"
+		], {
+			c: "gold",
+			max: 16,
+			base: 44,
+			h: 28
+		}), txt("t", 50, 6, "tổng = 32", {
+			c: "accent",
+			s: 3.6
+		})),
+		F("Mẫu chia n − 1: 32 / 7 ≈ 4,57. Nếu có toàn bộ tổng thể, chia n: 32 / 8 = 4.", "Sample divides by n − 1: 32 / 7 ≈ 4.57. With the whole population divide by n: 32 / 8 = 4.", ...pair("p", "mẫu: 32 / 7\n≈ 4,57", "tổng thể: 32 / 8\n= 4", {
+			ca: "blue",
+			cb: "accent"
+		}))
+	]),
+	"ds-sd": M([
+		F("Phương sai mẫu là 4,57 form²: đơn vị là bình phương.", "Sample variance is 4.57 forms²: the unit is squared.", box("a", 50, 24, 60, 14, "phương sai = 4,57 form²", {
+			c: "gold",
+			s: 3.6
+		})),
+		F("Độ lệch chuẩn = √4,57 ≈ 2,14 form: về lại đơn vị gốc.", "Standard deviation = √4.57 ≈ 2.14 forms: back to the original unit.", ...chain("c", [
+			"4,57 form²",
+			"căn bậc hai",
+			"2,14 form"
+		], {
+			y: 26,
+			on: 2
+		})),
+		F("Báo cáo «độ rộng là 4,57 form» là sai đơn vị: phải là 2,14 form.", "Reporting “the spread is 4.57 forms” is the wrong unit: it should be 2.14 forms.", box("a", 28, 24, 38, 14, "4,57 form\n(sai đơn vị)", {
+			c: "red",
+			d: true
+		}), box("b", 72, 24, 38, 14, "2,14 form\n(đúng)", { c: "green" }))
+	]),
+	"ds-cov": M([
+		F("Ba tuần: chi 1, 2, 3 triệu; form 2, 2, 5. Trung bình chi 2, form 3.", "Three weeks: spend 1, 2, 3 million; forms 2, 2, 5. Mean spend 2, forms 3.", ...[
+			[1, 2],
+			[2, 2],
+			[3, 5]
+		].map(([x, y], i) => dot(`d${i}`, 20 + x * 18, 46 - y * 7, "blue", 1.8)), ln("mx", 56, 8, 56, 46, "mute", {
+			d: true,
+			w: .3
+		}), ln("my", 12, 25, 90, 25, "mute", {
+			d: true,
+			w: .3
+		})),
+		F("Tích hai độ lệch từng tuần: (−1)(−1) = 1, 0 × (−1) = 0, (1)(2) = 2 → tổng 3.", "Product of the two deviations per week: (−1)(−1) = 1, 0 × (−1) = 0, (1)(2) = 2 → sum 3.", ...[
+			[1, 2],
+			[2, 2],
+			[3, 5]
+		].map(([x, y], i) => dot(`d${i}`, 20 + x * 18, 46 - y * 7, "blue", 1.8)), box("a", 50, 8, 70, 9, "1 + 0 + 2 = 3", {
+			c: "accent",
+			s: 3.4
+		})),
+		F("Hiệp phương sai mẫu = 3 / 2 = 1,5 (triệu × form). Dương: cùng phía trung bình.", "Sample covariance = 3 / 2 = 1.5 (million × forms). Positive: same side of the means.", box("a", 50, 24, 74, 14, "cov = 3 / (n − 1) = 1,5", {
+			f: "accent",
+			c: "accent",
+			s: 3.8
+		}), txt("t", 50, 46, "đơn vị: triệu × form", {
+			c: "mute",
+			s: 3.2
+		}))
+	]),
+	"ds-corr": M([
+		F("Với chi và form ở bài trước: cov = 1,5, độ lệch chuẩn chi = 1, form = √3.", "With spend and forms from before: cov = 1.5, SD of spend = 1, of forms = √3.", box("a", 50, 24, 74, 14, "cov = 1,5 · sd chi = 1 · sd form = √3", {
+			c: "blue",
+			s: 3.2
+		})),
+		F("r = 1,5 / (1 × √3) ≈ 0,87: không còn đơn vị.", "r = 1.5 / (1 × √3) ≈ 0.87: unit-free.", box("a", 50, 24, 74, 14, "r = 1,5 / √3 ≈ 0,87", {
+			f: "accent",
+			c: "accent",
+			s: 4
+		})),
+		F("Đổi chi sang đồng thì r vẫn là 0,87; nhưng ba điểm là quá ít, và r không phải nguyên nhân.", "Switching spend to VND, r is still 0.87; but three points are too few, and r is not causation.", ...pair("p", "triệu hay đồng\nr = 0,87", "3 điểm: quá ít\nđể báo cáo", {
+			ca: "green",
+			cb: "red"
+		}))
+	])
+};
 var motions = {
 	...m1,
 	...m2,
 	...m3,
-	...m4
+	...m4,
+	...m5,
+	...m6
 };
 /** Viết gọn một bảng. */
 function T(name, c, r, m) {
@@ -11492,7 +13781,7 @@ var base$7 = {
 	},
 	"ht-err": {
 		vi: {
-			story: "Không bác được H0 không có nghĩa B vô dụng. Bạn kiểm tra hai kiểu sai của cuộc thử trang B: hô «khác» khi không khác, và bỏ sót khi có khác.",
+			story: "Không bác được H0 không có nghĩa B vô dụng. Bạn kiểm tra hai kiểu sai của cuộc thử trang B: báo «khác» khi không khác, và bỏ sót khi có khác.",
 			words: [
 				["Sai lầm loại I", "Bác H0 khi H0 đúng (báo động giả). Xác suất là α."],
 				["Sai lầm loại II", "Không bác H0 khi H1 đúng (bỏ sót). Xác suất là β."],
@@ -11500,7 +13789,7 @@ var base$7 = {
 			],
 			problem: "Giả sử B thật sự tốt hơn: 2,6% so với 2,0% của A, mỗi trang 2.000 người. Sai số chuẩn khi H1 đúng là 0,00474, vạch bác bỏ là 1,96. Tính sức mạnh và xác suất bỏ sót.",
 			steps: [
-				["Sai loại I", "α = 5%: nếu hai trang bằng nhau, 100 lần thử thì khoảng 5 lần hô nhầm «khác»."],
+				["Sai loại I", "α = 5%: nếu hai trang bằng nhau, 100 lần thử thì khoảng 5 lần báo nhầm «khác»."],
 				["Chênh thật tính theo sai số", "(0,026 − 0,020) ÷ 0,00474 = 0,006 ÷ 0,00474 ≈ 1,27."],
 				["Phải vượt vạch", "Cần z vượt 1,96, tức phải vượt thêm 1,96 − 1,27 = 0,69 so với chênh thật."],
 				["Sức mạnh", "P(Z > 0,69) ≈ 0,245, khoảng 24%."],
@@ -11623,8 +13912,8 @@ var base$7 = {
 	"ht-peek": {
 		vi: {
 			story: "Thảo nóng ruột và xem kết quả trang B mỗi ngày, định dừng khi p < 0,05. Bạn cảnh báo rằng cách này làm 5% không còn là 5%.",
-			words: [["Nhìn trộm", "Xem kết quả nhiều lần và dừng ngay khi thấy đẹp."], ["Sai lầm loại I tích lũy", "Càng nhiều lần được hô «khác», xác suất báo động giả càng cao."]],
-			problem: "Thảo xem kết quả 5 lần, mỗi lần dùng α = 5% và hô «khác» nếu bất kỳ lần nào có p < 0,05. Nếu hai trang thật sự bằng nhau, xác suất báo động giả tối đa là bao nhiêu (coi 5 lần là độc lập)?",
+			words: [["Nhìn trộm", "Xem kết quả nhiều lần và dừng ngay khi thấy đẹp."], ["Sai lầm loại I tích lũy", "Càng nhiều lần được báo «khác», xác suất báo động giả càng cao."]],
+			problem: "Thảo xem kết quả 5 lần, mỗi lần dùng α = 5% và báo «khác» nếu bất kỳ lần nào có p < 0,05. Nếu hai trang thật sự bằng nhau, xác suất báo động giả tối đa là bao nhiêu (coi 5 lần là độc lập)?",
 			steps: [
 				["Một lần không báo động", "1 − 0,05 = 0,95."],
 				["Cả 5 lần không báo động", "0,95⁵ = 0,7738."],
@@ -19331,7 +21620,7 @@ function WalkVisual({ v, lang }) {
 }
 var text = {
 	vi: {
-		starter: "Starter, giữ nguyên",
+		starter: "Mã khởi đầu, giữ nguyên",
 		guide: "Hướng dẫn đi kèm",
 		think: "Nghĩ trước khi gõ",
 		steps: "Các bước",
@@ -32952,27 +35241,27 @@ var assignments = [
 var getAssignmentByConcept = (conceptId) => assignments.find((a) => a.concepts.includes(conceptId));
 var heads = {
 	vi: {
-		why: "Biết để làm gì",
-		prior: "Nối với cái trước",
+		why: "Vì sao cần biết",
+		prior: "Liên hệ với bài trước",
 		see: "Quan sát",
-		plain: "Nói cho dễ",
-		example: "Tình huống (mọi số là số minh họa)",
-		use: "Khi nào dùng",
-		precise: "Nói cho đúng",
-		more: "Kéo thêm",
+		plain: "Hiểu nhanh",
+		example: "Tình huống minh họa (số liệu giả định)",
+		use: "Cách áp dụng",
+		precise: "Định nghĩa chính xác",
+		more: "Tự thử điều chỉnh",
 		prev: "Từ trước",
 		next: "Tiếp theo",
-		links: "Dây nối",
-		onMap: "Xem trên bản đồ",
+		links: "Khái niệm liên quan",
+		onMap: "Xem trên sơ đồ tư duy",
 		v2d: "Đồ thị kéo được",
 		v3d: "Cảnh 3D",
-		walk: "Làm từng bước với số thật",
+		walk: "Làm từng bước với số liệu thật",
 		words: "Từ cần biết",
 		problem: "Bài toán",
 		steps: "Từng bước",
 		say: "Kết luận bằng lời",
 		check: "Tự kiểm tra",
-		reveal: "Xem đáp án",
+		reveal: "Hiện đáp án",
 		story: "Câu chuyện Lotus Spa"
 	},
 	en: {
@@ -32980,7 +35269,7 @@ var heads = {
 		prior: "How it links",
 		see: "Watch it",
 		plain: "In plain words",
-		example: "Situation (all numbers are illustrations)",
+		example: "Illustrative situation (made-up numbers)",
 		use: "When to use it",
 		precise: "The precise version",
 		more: "Try it",
