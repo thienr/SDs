@@ -2,7 +2,9 @@ import { Link, useRouterState } from "@tanstack/react-router";
 import { useMemo, useState } from "react";
 import { useSyncExternalStore } from "react";
 import { Map as MapIcon, X } from "lucide-react";
-import { sessionConcepts, sessionOfConcept } from "@/data/place";
+import { sessionOfConcept } from "@/data/place";
+import { CoverInfo, Disclosure, ModuleTree, tocWords } from "@/components/toc-tree";
+import { liveCourse } from "@/lib/cms-live";
 import { studyNeighbors } from "@/data/study";
 import { courses, getLesson } from "@/lib/catalog";
 import { getProgress, getServerProgress, subscribeProgress } from "@/lib/progress";
@@ -78,7 +80,7 @@ export function MapBar() {
       ? "All courses"
       : "Mọi khóa";
   const spot = near && near.index >= 0 ? `${near.index + 1}/${near.total}` : null;
-  const shownCourse = openedCourse ?? here.courseId;
+  const shownCourse = openedCourse === null ? here.courseId : openedCourse || null;
 
   return (
     <>
@@ -102,50 +104,29 @@ export function MapBar() {
             <ol className="divide-y divide-line">
               {courses.map((item, index) => {
                 const expanded = shownCourse === item.id;
+                const head = liveCourse(item.id, lang);
+                const openIds = [
+                  ...(here.courseId === item.id && here.moduleId ? [`m:${here.moduleId}`] : []),
+                  ...(here.courseId === item.id && here.sessionId ? [`s:${here.sessionId}`] : []),
+                ];
                 return (
-                  <li key={item.id} className="py-2">
-                    <div className="flex items-center gap-2">
-                      <button
-                        type="button"
-                        className={`min-h-11 flex-1 rounded-card px-2 text-left ${item.id === here.courseId ? "text-accent" : ""}`}
-                        onClick={() => setOpenedCourse(expanded ? null : item.id)}
-                      >
-                        <span className="text-xs text-muted">{String(index + 1).padStart(2, "0")}{item.optional ? " · optional" : ""}</span>
-                        <span className="block font-medium">{item.title}</span>
-                      </button>
-                      <Link to="/khoa/$courseId" params={{ courseId: item.id }} className="inline-flex min-h-11 items-center px-3 text-sm text-accent" onClick={() => setOpen(false)}>
-                        {lang === "en" ? "Open" : "Mở"}
+                  <li key={item.id}>
+                    <Disclosure
+                      open={expanded}
+                      onToggle={() => setOpenedCourse(expanded ? "" : item.id)}
+                      head={
+                        <span className={item.id === here.courseId ? "text-accent" : ""}>
+                          <span className="text-xs text-muted">{String(index + 1).padStart(2, "0")}{item.optional ? " · optional" : ""}</span>
+                          <span className="block font-medium">{item.title}</span>
+                        </span>
+                      }
+                    >
+                      <CoverInfo plain={head.plain} why={head.why} prior={head.prior} lang={lang} editHash={`course:${item.id}`} onNavigate={() => setOpen(false)} />
+                      <Link to="/khoa/$courseId" params={{ courseId: item.id }} className="mb-2 inline-flex min-h-11 items-center text-sm text-accent underline" onClick={() => setOpen(false)}>
+                        {tocWords[lang].page}
                       </Link>
-                    </div>
-                    {expanded ? (
-                      <ol className="mt-1 space-y-3 pl-2">
-                        {item.modules.map((module) => (
-                          <li key={module.id}>
-                            <a href={`/khoa/${item.id}#mod-${module.id}`} className="block min-h-11 py-1 text-sm font-medium" onClick={() => setOpen(false)}>
-                              {module.title}
-                            </a>
-                            <ol className="space-y-1">
-                              {module.sessions.map((row) => {
-                                const count = sessionConcepts[row.id]?.length ?? 0;
-                                const on = row.id === here.sessionId;
-                                return (
-                                  <li key={row.id}>
-                                    <a
-                                      href={`/khoa/${item.id}#ses-${row.id}`}
-                                      className={`flex min-h-11 items-baseline justify-between gap-3 py-1 text-sm ${on ? "text-accent" : "text-muted"}`}
-                                      onClick={() => setOpen(false)}
-                                    >
-                                      <span>{row.title}</span>
-                                      {count > 0 ? <span className="shrink-0 text-xs">{count}</span> : null}
-                                    </a>
-                                  </li>
-                                );
-                              })}
-                            </ol>
-                          </li>
-                        ))}
-                      </ol>
-                    ) : null}
+                      <ModuleTree course={item} lang={lang} openIds={openIds} onNavigate={() => setOpen(false)} />
+                    </Disclosure>
                   </li>
                 );
               })}
