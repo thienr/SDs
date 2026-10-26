@@ -118,6 +118,16 @@ var Check = createLucideIcon("check", [["path", {
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
+var ChevronRight = createLucideIcon("chevron-right", [["path", {
+	d: "m9 18 6-6-6-6",
+	key: "mthhwq"
+}]]);
+/**
+* @license lucide-react v0.510.0 - ISC
+*
+* This source code is licensed under the ISC license.
+* See the LICENSE file in the root directory of this source tree.
+*/
 var Circle = createLucideIcon("circle", [["circle", {
 	cx: "12",
 	cy: "12",
@@ -336,4 +346,4 @@ var X = createLucideIcon("x", [["path", {
 	key: "d8bk6v"
 }]]);
 //#endregion
-export { Settings as a, Moon as c, Check as d, BookOpen as f, Sun as i, Map as l, TriangleAlert as n, Search as o, ArrowLeft as p, TableOfContents as r, Network as s, X as t, Circle as u };
+export { Settings as a, Moon as c, ChevronRight as d, Check as f, Sun as i, Map as l, ArrowLeft as m, TriangleAlert as n, Search as o, BookOpen as p, TableOfContents as r, Network as s, X as t, Circle as u };

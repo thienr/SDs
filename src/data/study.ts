@@ -1,3 +1,4 @@
+import { getAssignmentByConcept } from "@/data/assign";
 import { addConcepts, addCopy, getAddConcept, type AddConcept } from "@/data/add";
 import { c4Concepts, c4Copy, getC4Concept, type C4Concept } from "@/data/c4";
 import { getMoreConcept, moreConcepts, moreCopy, type MoreConcept } from "@/data/c3more";
@@ -94,7 +95,9 @@ export function studyCopy(concept: StudyConcept, lang: Lang, bare = false): RawT
   const base = bareCopy(concept, lang);
   if (bare) return base;
   const ov = overviews[concept.id];
-  return applyRaw(concept.id, lang, ov ? { ...base, title: ov.title } : base);
+  const asg = getAssignmentByConcept(concept.id);
+  const titled = ov ? { ...base, title: ov.title } : asg ? { ...base, title: asg.title[lang === "en" ? 1 : 0] } : base;
+  return applyRaw(concept.id, lang, titled);
 }
 
 function bareCopy(concept: StudyConcept, lang: Lang): RawText {
