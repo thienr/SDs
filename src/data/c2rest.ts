@@ -683,7 +683,7 @@ export const restSessions: { title: string; module: string; concepts: Card[] }[]
           "Khi có nhiều nhóm, đừng mở một kiểm định cho từng cặp trong lúc đang xem.",
         ],
         plain: "Khi một cột số gặp một cột chữ, bạn so sánh các đám dữ liệu theo nhóm. Không có hệ số tương quan cho một cái tên.",
-        precise: "Trung bình nhóm giấu độ rộng. Thế số: GDN có 4 tuần, tổng 160 nên trung bình 40, các tuần chỉ lệch 2 form. Facebook tổng 160 nên trung bình 40, nhưng có tuần chỉ 10 và có tuần 100. Dễ nhầm: một kênh trung bình cao nhờ một tuần lễ khác với một kênh tuần nào cũng cao. Nếu cần kiểm định, nó phải được viết trước và không phải một cuộc cho mọi cặp bạn vừa nhìn thấy.",
+        precise: "Trung bình nhóm giấu độ rộng. Thế số: GDN có 4 tuần, tổng 160 nên trung bình 40, mỗi tuần cách trung bình tối đa 2 form (38 đến 42 là khoảng 4 form). Facebook tổng 160 nên trung bình 40, nhưng có tuần chỉ 10 và có tuần 100. Dễ nhầm: một kênh trung bình cao nhờ một tuần lễ khác với một kênh tuần nào cũng cao. Nếu cần kiểm định, nó phải được viết trước và không phải một cuộc cho mọi cặp bạn vừa nhìn thấy.",
         formula: null,
         symbols: [],
         sim: null,
