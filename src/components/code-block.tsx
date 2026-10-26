@@ -1,5 +1,6 @@
-import { useMemo, useState, useSyncExternalStore } from "react";
+import { useEffect, useMemo, useState, useSyncExternalStore } from "react";
 import { explainCode } from "@/lib/explain-code";
+import { handNote, loadNotes } from "@/lib/explain-code/notes";
 import { getProgress, getServerProgress, subscribeProgress, type Lang } from "@/lib/progress";
 
 const ui = {
@@ -7,9 +8,20 @@ const ui = {
   en: { open: "Translate this code into plain language", close: "Hide translation", piece: "Code", plain: "In plain words", steps: "Read left to right", lang: { Python: "Python", SQL: "SQL", Excel: "Excel", Shell: "Terminal" } },
 };
 
+function useNotes() {
+  const [ready, setReady] = useState(false);
+  useEffect(() => {
+    let live = true;
+    loadNotes().then(() => live && setReady(true)).catch(() => {});
+    return () => { live = false; };
+  }, []);
+  return ready;
+}
+
 function Explain({ code, lang, hint }: { code: string; lang: Lang; hint?: string }) {
   const t = ui[lang];
-  const ex = useMemo(() => explainCode(code, lang, hint), [code, lang, hint]);
+  const ready = useNotes();
+  const ex = useMemo(() => handNote(code, lang) ?? explainCode(code, lang, hint), [code, lang, hint, ready]);
   if (!ex) return null;
   return (
     <div className="mt-2 rounded-xl border border-line bg-paper p-3 text-ink">
@@ -46,7 +58,8 @@ export function CodeExplain({ code, lang: langProp, hint, children }: { code: st
   const lang: Lang = langProp ?? progress.lang;
   const [open, setOpen] = useState(false);
   const t = ui[lang];
-  const can = useMemo(() => !!explainCode(code, lang, hint), [code, lang, hint]);
+  const ready = useNotes();
+  const can = useMemo(() => !!handNote(code, lang) || !!explainCode(code, lang, hint), [code, lang, hint, ready]);
   return (
     <>
       {children}
