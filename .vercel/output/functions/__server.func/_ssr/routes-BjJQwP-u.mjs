@@ -1,11 +1,8 @@
 import { o as __toESM } from "../_runtime.mjs";
 import { d as stats, o as getLesson, r as courses } from "./catalog-DhneT6we.mjs";
-import { o as getCmsVersion, s as getServerCmsVersion, u as subscribeCms } from "./cms-store-DEQCGuiI.mjs";
-import { a as liveCourse } from "./cms-live-BOIfHz8S.mjs";
-import { A as subscribeProgress, C as importProgress, O as progressSnapshot, S as hydrateProgress, b as getProgress, d as sessionConcepts, v as countSeen, x as getServerProgress } from "./study-CcBfLB2x.mjs";
 import { J as require_react, S as require_jsx_runtime, b as Link } from "../_libs/@tanstack/react-router+[...].mjs";
-import { a as CoverInfo, c as words, o as Disclosure, s as ModuleTree } from "./router-C-Gbrr8y.mjs";
-//#region node_modules/.nitro/vite/services/ssr/assets/routes-CCvm4RLN.js
+import { A as getServerCmsVersion, J as setOpenCourse, M as subscribeCms, Y as useTocMemory, a as CoverInfo, b as subscribeProgress, c as words, d as getProgress, f as getServerProgress, k as getCmsVersion, l as countSeen, m as importProgress, o as Disclosure, p as hydrateProgress, q as sessionConcepts, s as ModuleTree, w as liveCourse, y as progressSnapshot } from "./router-D2ogNbnO.mjs";
+//#region node_modules/.nitro/vite/services/ssr/assets/routes-BjJQwP-u.js
 var import_react = /* @__PURE__ */ __toESM(require_react());
 var import_jsx_runtime = require_jsx_runtime();
 function Home() {
@@ -13,7 +10,7 @@ function Home() {
 	(0, import_react.useSyncExternalStore)(subscribeCms, getCmsVersion, getServerCmsVersion);
 	const lang = progress.lang;
 	const [notice, setNotice] = (0, import_react.useState)("");
-	const [openCourse, setOpenCourse] = (0, import_react.useState)(null);
+	const openCourse = useTocMemory().course;
 	(0, import_react.useEffect)(() => {
 		hydrateProgress();
 	}, []);
@@ -68,7 +65,7 @@ function Home() {
 					const ideas = course.modules.reduce((sum, mod) => sum + mod.sessions.reduce((inner, session) => inner + (sessionConcepts[session.id]?.length ?? 0), 0), 0);
 					return /* @__PURE__ */ (0, import_jsx_runtime.jsx)("li", { children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Disclosure, {
 						open: openCourse === course.id,
-						onToggle: () => setOpenCourse(openCourse === course.id ? null : course.id),
+						onToggle: () => setOpenCourse(openCourse === course.id ? "" : course.id),
 						head: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", {
 							className: "block py-1",
 							children: [

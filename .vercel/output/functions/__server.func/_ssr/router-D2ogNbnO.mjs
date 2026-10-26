@@ -1,149 +1,393 @@
-import { c as lessons } from "./catalog-DhneT6we.mjs";
-//#region node_modules/.nitro/vite/services/ssr/assets/progress-gn6mCtAR.js
-var KEY$1 = "so-muc-v1";
-var empty = {
-	items: {},
-	lastLessonId: null,
-	theme: "light",
-	lang: "vi"
+import { o as __toESM } from "../_runtime.mjs";
+import { c as lessons, o as getLesson, r as courses$1 } from "./catalog-DhneT6we.mjs";
+import { J as require_react, S as require_jsx_runtime, _ as lazyRouteComponent, b as Link, d as Scripts, f as HeadContent, g as Outlet, h as createRouter, p as useRouterState, v as createFileRoute, x as useRouter, y as createRootRoute } from "../_libs/@tanstack/react-router+[...].mjs";
+import { a as Settings, c as Moon, d as ChevronRight, i as Sun, l as Map$1, n as TriangleAlert, o as Search, p as BookOpen, r as TableOfContents, s as Network, t as X } from "../_libs/lucide-react.mjs";
+import { a as union, i as string, n as number, r as object, t as literal } from "../_libs/zod.mjs";
+//#region node_modules/.nitro/vite/services/ssr/assets/router-D2ogNbnO.js
+var import_react = /* @__PURE__ */ __toESM(require_react());
+var import_jsx_runtime = require_jsx_runtime();
+var __defProp = Object.defineProperty;
+var __exportAll = (all, no_symbols) => {
+	let target = {};
+	for (var name in all) __defProp(target, name, {
+		get: all[name],
+		enumerable: true
+	});
+	if (!no_symbols) __defProp(target, Symbol.toStringTag, { value: "Module" });
+	return target;
 };
-var state$1 = empty;
-var listeners$1 = /* @__PURE__ */ new Set();
-function emit$1() {
-	if (typeof window !== "undefined") {
-		localStorage.setItem(KEY$1, JSON.stringify(state$1));
-		document.documentElement.dataset.theme = state$1.theme;
-		document.documentElement.lang = state$1.lang === "en" ? "en" : "vi";
-	}
-	listeners$1.forEach((listener) => listener());
+var FALLBACK_MESSAGE = "An unexpected error occurred. Try reloading the page.";
+function errorMessage(error) {
+	if (error instanceof Error && error.message) return error.message;
+	if (typeof error === "string" && error) return error;
+	return FALLBACK_MESSAGE;
 }
-function hydrateProgress() {
-	if (typeof window === "undefined") return;
-	try {
-		const raw = localStorage.getItem(KEY$1);
-		if (raw) {
-			const parsed = JSON.parse(raw);
-			state$1 = {
-				items: parsed.items ?? {},
-				lastLessonId: parsed.lastLessonId ?? null,
-				theme: parsed.theme === "dark" ? "dark" : "light",
-				lang: parsed.lang === "en" ? "en" : "vi"
-			};
-		}
-	} catch {
-		state$1 = empty;
-	}
-	document.documentElement.dataset.theme = state$1.theme;
-	document.documentElement.lang = state$1.lang === "en" ? "en" : "vi";
-	listeners$1.forEach((listener) => listener());
+function AppErrorComponent({ error }) {
+	return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("main", {
+		className: "flex min-h-screen flex-col items-center justify-center gap-3 px-6 text-center bg-zinc-50 text-zinc-900 dark:bg-zinc-950 dark:text-zinc-50",
+		children: [
+			/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+				className: "text-red-500",
+				"aria-hidden": "true",
+				children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(TriangleAlert, {
+					className: "size-10",
+					strokeWidth: 2
+				})
+			}),
+			/* @__PURE__ */ (0, import_jsx_runtime.jsx)("h1", {
+				className: "text-lg font-semibold",
+				children: "Something went wrong"
+			}),
+			/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+				className: "max-w-md text-sm break-words text-zinc-500 dark:text-zinc-400",
+				children: errorMessage(error)
+			})
+		]
+	});
 }
-function subscribeProgress(listener) {
-	listeners$1.add(listener);
-	return () => listeners$1.delete(listener);
+/**
+* Path-based preview hosts serve the dev server under `/{port_id}/` and strip
+* that prefix before forwarding, so SSR sees `/` while the browser URL keeps the
+* prefix. TanStack Start resets `basepath` on hydration, so a `rewrite` keeps
+* client routing and generated links aligned with the public URL.
+*/
+var PATH_BASED_PREVIEW_HOSTS = /* @__PURE__ */ new Set([
+	"preview.grok.genai.mil",
+	"preview.grok.mil",
+	"preview.grokgsac.com"
+]);
+var PORT_ID_PREFIX = /^\/hds-[a-z0-9]+-\d+-[a-z0-9]+(?=\/|$)/i;
+function previewPathPrefix(hostname, pathname) {
+	if (!PATH_BASED_PREVIEW_HOSTS.has(hostname.toLowerCase())) return void 0;
+	return PORT_ID_PREFIX.exec(pathname)?.[0];
 }
-function getProgress() {
-	return state$1;
-}
-function getServerProgress() {
-	return empty;
-}
-function itemStatus(id) {
-	return state$1.items[id] ?? "unseen";
-}
-function lessonStatus(lessonId) {
-	const lesson = lessons.find((item) => item.id === lessonId);
-	if (!lesson || lesson.items.length === 0) return state$1.lastLessonId === lessonId ? "viewing" : "unseen";
-	const statuses = lesson.items.map((item) => itemStatus(item.id));
-	if (statuses.every((status) => status === "seen")) return "seen";
-	if (statuses.some((status) => status !== "unseen")) return "viewing";
-	return "unseen";
-}
-function openLesson(lessonId) {
-	const lesson = lessons.find((item) => item.id === lessonId);
-	const items = { ...state$1.items };
-	if (lesson) {
-		for (const item of lesson.items) if (!items[item.id]) items[item.id] = "viewing";
-	}
-	state$1 = {
-		...state$1,
-		items,
-		lastLessonId: lessonId
-	};
-	emit$1();
-}
-function cycleItem(id) {
-	const order = [
-		"unseen",
-		"viewing",
-		"seen"
-	];
-	const next = order[(order.indexOf(itemStatus(id)) + 1) % order.length];
-	state$1 = {
-		...state$1,
-		items: {
-			...state$1.items,
-			[id]: next
-		}
-	};
-	emit$1();
-}
-function markLesson(lessonId, status) {
-	const lesson = lessons.find((item) => item.id === lessonId);
-	if (!lesson) return;
-	const items = { ...state$1.items };
-	for (const item of lesson.items) items[item.id] = status;
-	state$1 = {
-		...state$1,
-		items,
-		lastLessonId: lessonId
-	};
-	emit$1();
-}
-function setTheme(theme) {
-	state$1 = {
-		...state$1,
-		theme
-	};
-	emit$1();
-}
-function toggleTheme() {
-	setTheme(state$1.theme === "dark" ? "light" : "dark");
-}
-function setLang(lang) {
-	state$1 = {
-		...state$1,
-		lang
-	};
-	emit$1();
-}
-function progressSnapshot() {
-	return JSON.stringify({
-		version: 1,
-		exportedAt: (/* @__PURE__ */ new Date()).toISOString(),
-		...state$1
-	}, null, 2);
-}
-function importProgress(text) {
-	const parsed = JSON.parse(text);
-	if (!parsed || typeof parsed !== "object" || !parsed.items) throw new Error("Tệp không đúng định dạng sổ học");
-	state$1 = {
-		items: parsed.items ?? {},
-		lastLessonId: parsed.lastLessonId ?? null,
-		theme: parsed.theme === "dark" ? "dark" : state$1.theme,
-		lang: parsed.lang === "en" ? "en" : state$1.lang
-	};
-	emit$1();
-}
-function countSeen() {
-	const items = lessons.flatMap((lesson) => lesson.items);
+function prefixRewrite(prefix) {
 	return {
-		seen: items.filter((item) => itemStatus(item.id) === "seen").length,
-		viewing: items.filter((item) => itemStatus(item.id) === "viewing").length,
-		total: items.length
+		input: ({ url }) => {
+			if (url.pathname === prefix) url.pathname = "/";
+			else if (url.pathname.startsWith(`${prefix}/`)) url.pathname = url.pathname.slice(prefix.length);
+			return url;
+		},
+		output: ({ url }) => {
+			url.pathname = `${prefix}${url.pathname}`;
+			return url;
+		}
 	};
 }
-//#endregion
-//#region node_modules/.nitro/vite/services/ssr/assets/study-CcBfLB2x.js
+function previewPathRewrite() {
+	if (typeof window === "undefined") return void 0;
+	const prefix = previewPathPrefix(window.location.hostname, window.location.pathname);
+	return prefix ? prefixRewrite(prefix) : void 0;
+}
+/**
+* App-wide client provider mounted once near the root (in `src/routes/__root.tsx`):
+*
+*   <AuthProvider><Outlet /></AuthProvider>
+*
+* Better Auth's React client (`@/lib/auth/client`) needs NO context provider —
+* its `useSession()` works standalone — so this is a passthrough today. It's
+* kept as the single, stable mount point for any future client-side providers
+* (e.g. a toast or theme provider) without churning the root shell.
+*/
+function AuthProvider({ children }) {
+	return /* @__PURE__ */ (0, import_jsx_runtime.jsx)(import_jsx_runtime.Fragment, { children });
+}
+var CONNECTOR_TOKEN_READY_EVENT = "grok:connector-token-ready";
+function isGrokEmbedderOrigin(origin) {
+	try {
+		const url = new URL(origin);
+		if (url.protocol !== "https:" && url.protocol !== "http:") return false;
+		const host = url.hostname.toLowerCase();
+		if (host === "grok.com" || host.endsWith(".grok.com")) return true;
+		if (host === "localhost" || host === "127.0.0.1" || host === "[::1]") return true;
+		return false;
+	} catch {
+		return false;
+	}
+}
+function isSandboxPreviewGuestHost(hostname) {
+	const host = hostname.toLowerCase();
+	return host === "grok-sandbox.com" || host.endsWith(".grok-sandbox.com");
+}
+function isRemintPreviewPair(guestHost, parentHost) {
+	const guest = guestHost.toLowerCase();
+	const parent = parentHost.toLowerCase();
+	const i = guest.indexOf(".preview.");
+	if (i <= 0) return false;
+	const label = guest.slice(0, i);
+	const rest = guest.slice(i + 9);
+	if (label.includes(".") || !rest.includes(".")) return false;
+	return parent === rest || parent === `grok.${rest}`;
+}
+function resolveParentEmbedderOrigin(parentIsSelf, referrer, ancestorOrigin, guestHostname = "") {
+	if (parentIsSelf) return null;
+	for (const candidate of [referrer, ancestorOrigin ?? ""].filter(Boolean)) try {
+		const url = new URL(candidate.includes("://") ? candidate : `https://${candidate}`);
+		if (url.protocol !== "https:" && url.protocol !== "http:") continue;
+		if (isGrokEmbedderOrigin(url.origin)) return url.origin;
+		if (isSandboxPreviewGuestHost(guestHostname) || isRemintPreviewPair(guestHostname, url.hostname)) return url.origin;
+	} catch {}
+	return null;
+}
+/**
+* Guest side of the grok-web ↔ sandbox preview postMessage bridge.
+*
+* Activates only when this page is framed by an allowlisted Grok embedder.
+* Top-level runs (download/export, local `npm run dev`, deployed sites) noop.
+*/
+var PREVIEW_BRIDGE_CHANNEL = "grok-preview-bridge";
+var EnvelopeSchema = object({
+	channel: literal(PREVIEW_BRIDGE_CHANNEL),
+	version: number().int().positive(),
+	type: string().min(1)
+});
+var HelloSchema = EnvelopeSchema.extend({ type: literal("hello") });
+var NavigateSchema = EnvelopeSchema.extend({
+	type: literal("navigate"),
+	path: string().min(1)
+});
+var HistorySchema = EnvelopeSchema.extend({
+	type: literal("history"),
+	delta: union([literal(-1), literal(1)])
+});
+var ConnectorTokenReadySchema = EnvelopeSchema.extend({ type: literal("connector-token-ready") });
+function isSafeBridgePath(path) {
+	if (!path.startsWith("/") || path.startsWith("//") || path.includes("\\")) return false;
+	try {
+		return new URL(path, "https://preview.invalid").origin === "https://preview.invalid";
+	} catch {
+		return false;
+	}
+}
+/**
+* Origin of the Grok embedder framing this page, or null when the page runs
+* top-level (download/export, local `npm run dev`, deployed sites) or under a
+* non-Grok parent. Client-only; null during SSR.
+*/
+function resolveCurrentEmbedderOrigin() {
+	if (typeof window === "undefined") return null;
+	const ancestorOrigin = typeof location.ancestorOrigins !== "undefined" && location.ancestorOrigins.length > 0 ? location.ancestorOrigins[0] : null;
+	return resolveParentEmbedderOrigin(window.parent === window, document.referrer, ancestorOrigin, window.location.hostname);
+}
+/**
+* Install host↔guest messaging. Returns a dispose function.
+* Noops (returns a no-op dispose) when not embedded under a Grok parent.
+*/
+function installPreviewHostBridge(options = {}) {
+	const parentOrigin = resolveCurrentEmbedderOrigin();
+	if (parentOrigin === null) return () => {};
+	const ROOT_STATE_KEY = "__grokPreviewBridgeRoot";
+	const originalPushState = window.history.pushState.bind(window.history);
+	const originalReplaceState = window.history.replaceState.bind(window.history);
+	const isAtHistoryRoot = () => {
+		const state = window.history.state;
+		return Boolean(state && typeof state === "object" && state[ROOT_STATE_KEY] === true);
+	};
+	try {
+		const current = window.history.state;
+		if (!(current !== null && typeof current === "object" && Object.prototype.hasOwnProperty.call(current, ROOT_STATE_KEY))) {
+			const isRoot = window.history.length <= 1;
+			originalReplaceState(current && typeof current === "object" ? {
+				...current,
+				[ROOT_STATE_KEY]: isRoot
+			} : { [ROOT_STATE_KEY]: isRoot }, "", window.location.href);
+		}
+	} catch {}
+	const post = (message) => {
+		window.parent.postMessage(message, parentOrigin);
+	};
+	const reportLocation = () => {
+		post({
+			channel: PREVIEW_BRIDGE_CHANNEL,
+			version: 1,
+			type: "location",
+			path: window.location.pathname || "/",
+			search: window.location.search,
+			hash: window.location.hash
+		});
+	};
+	const reportRoutes = () => {
+		const paths = options.getRoutePaths?.() ?? [];
+		post({
+			channel: PREVIEW_BRIDGE_CHANNEL,
+			version: 1,
+			type: "routes",
+			paths
+		});
+	};
+	const defaultNavigate = (path) => {
+		if (!isSafeBridgePath(path)) return;
+		try {
+			const url = new URL(path, window.location.origin);
+			if (url.origin !== window.location.origin) return;
+			const next = `${url.pathname}${url.search}${url.hash}`;
+			window.history.pushState(window.history.state, "", next);
+			window.dispatchEvent(new PopStateEvent("popstate", { state: window.history.state }));
+		} catch {}
+	};
+	const navigate = (path) => {
+		if (!isSafeBridgePath(path)) return;
+		if (options.navigate) {
+			options.navigate(path);
+			return;
+		}
+		defaultNavigate(path);
+	};
+	const announce = () => {
+		reportLocation();
+		reportRoutes();
+		post({
+			channel: PREVIEW_BRIDGE_CHANNEL,
+			version: 1,
+			type: "ready"
+		});
+	};
+	const onHello = (data) => {
+		if (!HelloSchema.safeParse(data).success) return;
+		announce();
+	};
+	const onNavigate = (data) => {
+		const parsed = NavigateSchema.safeParse(data);
+		if (!parsed.success) return;
+		navigate(parsed.data.path);
+		queueMicrotask(reportLocation);
+	};
+	const onHistory = (data) => {
+		const parsed = HistorySchema.safeParse(data);
+		if (!parsed.success) return;
+		if (parsed.data.delta === -1 && isAtHistoryRoot()) return;
+		window.history.go(parsed.data.delta);
+	};
+	const onConnectorTokenReady = (data) => {
+		if (!ConnectorTokenReadySchema.safeParse(data).success) return;
+		window.dispatchEvent(new Event(CONNECTOR_TOKEN_READY_EVENT));
+	};
+	const hostMessageHandlers = /* @__PURE__ */ new Map([
+		["hello", onHello],
+		["navigate", onNavigate],
+		["history", onHistory],
+		["connector-token-ready", onConnectorTokenReady]
+	]);
+	const onMessage = (event) => {
+		if (event.source !== window.parent) return;
+		if (event.origin !== parentOrigin) return;
+		const envelope = EnvelopeSchema.safeParse(event.data);
+		if (!envelope.success || envelope.data.version !== 1) return;
+		hostMessageHandlers.get(envelope.data.type)?.(event.data);
+	};
+	const onPopState = () => {
+		reportLocation();
+	};
+	const onHashChange = () => {
+		reportLocation();
+	};
+	window.history.pushState = (data, unused, url) => {
+		const next = data && typeof data === "object" ? {
+			...data,
+			[ROOT_STATE_KEY]: false
+		} : data;
+		originalPushState(next, unused, url);
+		reportLocation();
+	};
+	window.history.replaceState = (data, unused, url) => {
+		const next = isAtHistoryRoot() ? {
+			...data && typeof data === "object" ? data : {},
+			[ROOT_STATE_KEY]: true
+		} : data;
+		originalReplaceState(next, unused, url);
+		reportLocation();
+	};
+	window.addEventListener("message", onMessage);
+	window.addEventListener("popstate", onPopState);
+	window.addEventListener("hashchange", onHashChange);
+	announce();
+	return () => {
+		window.removeEventListener("message", onMessage);
+		window.removeEventListener("popstate", onPopState);
+		window.removeEventListener("hashchange", onHashChange);
+		window.history.pushState = originalPushState;
+		window.history.replaceState = originalReplaceState;
+	};
+}
+/** Collect static path patterns from a TanStack route tree (best-effort). */
+function collectRoutePathsFromTree(routeTree) {
+	const paths = /* @__PURE__ */ new Set();
+	const walk = (node) => {
+		if (!node || typeof node !== "object") return;
+		const record = node;
+		const full = typeof record.fullPath === "string" ? record.fullPath : typeof record.path === "string" ? record.path : null;
+		if (full !== null && full !== "") paths.add(full.startsWith("/") ? full : `/${full}`);
+		else if (full === "") paths.add("/");
+		const children = record.children;
+		if (Array.isArray(children)) for (const child of children) walk(child);
+		else if (children && typeof children === "object") for (const child of Object.values(children)) walk(child);
+	};
+	walk(routeTree);
+	return [...paths];
+}
+/**
+* Mount once in `__root.tsx` so the Grok preview chrome can drive navigation
+* (and later receive registered routes). Noops when the app is not embedded.
+*/
+function PreviewHostBridge() {
+	const router = useRouter();
+	(0, import_react.useEffect)(() => {
+		return installPreviewHostBridge({
+			navigate: (path) => {
+				router.history.push(path);
+			},
+			getRoutePaths: () => collectRoutePathsFromTree(router.routeTree)
+		});
+	}, [router]);
+	return null;
+}
+var KEY$3 = "so-muc:toc";
+var empty$1 = {
+	course: null,
+	read: null
+};
+var cache$1 = null;
+var subs = /* @__PURE__ */ new Set();
+function load() {
+	if (cache$1) return cache$1;
+	try {
+		const raw = typeof localStorage === "undefined" ? null : localStorage.getItem(KEY$3);
+		cache$1 = raw ? {
+			...empty$1,
+			...JSON.parse(raw)
+		} : empty$1;
+	} catch {
+		cache$1 = empty$1;
+	}
+	return cache$1;
+}
+function save(next) {
+	cache$1 = next;
+	try {
+		localStorage.setItem(KEY$3, JSON.stringify(next));
+	} catch {}
+	subs.forEach((f) => f());
+}
+function setOpenCourse(course) {
+	save({
+		...load(),
+		course
+	});
+}
+function setLastRead(read) {
+	const r = load().read;
+	if (r && r.course === read.course && r.mod === read.mod && r.ses === read.ses && r.item === read.item) return;
+	save({
+		course: read.course,
+		read
+	});
+}
+function useTocMemory() {
+	return (0, import_react.useSyncExternalStore)((f) => {
+		subs.add(f);
+		return () => subs.delete(f);
+	}, load, () => empty$1);
+}
 /** Official session id to idea ids, in file order. */
 var sessionConcepts = {
 	"s-0eda968df057": [
@@ -32178,30 +32422,30 @@ var overviews = {
 	...ov5,
 	...ov6
 };
-var KEY = "so-muc-raw-v1";
-var state = { patches: {} };
-var version = 0;
-var listeners = /* @__PURE__ */ new Set();
+var KEY$2 = "so-muc-raw-v1";
+var state$2 = { patches: {} };
+var version$1 = 0;
+var listeners$2 = /* @__PURE__ */ new Set();
 function keyOf(id, lang) {
 	return `${lang}:${id}`;
 }
-var quiet = false;
-function emit() {
-	if (quiet) return;
-	version += 1;
-	if (typeof window !== "undefined") localStorage.setItem(KEY, JSON.stringify({
+var quiet$1 = false;
+function emit$2() {
+	if (quiet$1) return;
+	version$1 += 1;
+	if (typeof window !== "undefined") localStorage.setItem(KEY$2, JSON.stringify({
 		version: 1,
-		patches: state.patches
+		patches: state$2.patches
 	}));
-	listeners.forEach((listener) => listener());
+	listeners$2.forEach((listener) => listener());
 }
 function batchRaw(run) {
-	quiet = true;
+	quiet$1 = true;
 	try {
 		run();
 	} finally {
-		quiet = false;
-		emit();
+		quiet$1 = false;
+		emit$2();
 	}
 }
 function isText(value) {
@@ -32212,49 +32456,49 @@ function isText(value) {
 function hydrateRaw() {
 	if (typeof window === "undefined") return;
 	try {
-		const raw = localStorage.getItem(KEY);
+		const raw = localStorage.getItem(KEY$2);
 		if (raw) {
 			const parsed = JSON.parse(raw);
 			const patches = {};
 			for (const [key, value] of Object.entries(parsed.patches ?? {})) if (isText(value)) patches[key] = value;
-			state = { patches };
+			state$2 = { patches };
 		}
 	} catch {
-		state = { patches: {} };
+		state$2 = { patches: {} };
 	}
-	version += 1;
-	listeners.forEach((listener) => listener());
+	version$1 += 1;
+	listeners$2.forEach((listener) => listener());
 }
 function subscribeRaw(listener) {
-	listeners.add(listener);
-	return () => listeners.delete(listener);
+	listeners$2.add(listener);
+	return () => listeners$2.delete(listener);
 }
 function getRawVersion() {
-	return version;
+	return version$1;
 }
 function getServerRawVersion() {
 	return 0;
 }
 function applyRaw(id, lang, base) {
-	return state.patches[keyOf(id, lang)] ?? base;
+	return state$2.patches[keyOf(id, lang)] ?? base;
 }
 function rawIsEdited(id, lang) {
-	return Boolean(state.patches[keyOf(id, lang)]);
+	return Boolean(state$2.patches[keyOf(id, lang)]);
 }
 function rawEditCount() {
-	return Object.keys(state.patches).length;
+	return Object.keys(state$2.patches).length;
 }
 function setRawPatch(id, lang, text) {
 	const key = keyOf(id, lang);
-	const patches = { ...state.patches };
+	const patches = { ...state$2.patches };
 	if (text) patches[key] = text;
 	else delete patches[key];
-	state = { patches };
-	emit();
+	state$2 = { patches };
+	emit$2();
 }
 function clearRaw() {
-	state = { patches: {} };
-	emit();
+	state$2 = { patches: {} };
+	emit$2();
 }
 var MATH = "c-0598c14acf8d";
 var DESC = "c-75c5d36b41f2";
@@ -32373,5 +32617,3875 @@ function studyListTitle(id, lang) {
 	const concept = getStudy(id);
 	return concept ? studyCopy(concept, lang).title : id;
 }
+var courses = {
+	"c-779b43bacf62": {
+		"why": {
+			"vi": "Để khỏi lạc trong lớp học trước khi đụng tới số.",
+			"en": "So you are not lost in the classroom before you touch a number."
+		},
+		"plain": {
+			"vi": "Khóa này không có công thức. Nó chỉ nói lớp nằm ở đâu, bài nằm ở đâu, cộng đồng hỏi ở đâu, và bài nộp phải là chữ của mình. Đọc một lượt rồi đi tiếp. Đừng học lại khóa này mỗi tuần.",
+			"en": "This course has no formula. It only says where the class is, where a lesson is, where to ask, and that submitted work has to be your own words. Read it once and move on. Do not restudy it every week."
+		},
+		"prior": {
+			"vi": "Đây là cửa vào. Chưa có khóa nào đứng trước.",
+			"en": "This is the door. No course stands in front of it."
+		}
+	},
+	"c-7780a48d5816": {
+		"why": {
+			"vi": "Để một brief agency không bị nhảy thẳng vào biểu đồ.",
+			"en": "So an agency brief does not jump straight to a chart."
+		},
+		"plain": {
+			"vi": "CRISP-DM là sáu pha, đi theo vòng, không phải một đường một chiều. Hiểu việc cần quyết. Hiểu bảng đang có. Làm sạch. Làm mô hình nếu việc cần. Chấm bằng thước đã viết. Đưa cho người sẽ dùng thứ Hai tới. Mô hình không phải là dự án.",
+			"en": "CRISP-DM is six phases, walked in a loop, not a one-way line. Understand the decision. Understand the table you have. Clean it. Model only if the decision needs it. Score with a ruler you wrote first. Hand it to the person who will use it next Monday. The model is not the project."
+		},
+		"prior": {
+			"vi": "Cổng lớp học chỉ cho biết chỗ bấm. Khóa này mới là cách đặt một bài toán.",
+			"en": "The classroom door only showed where to click. This course is how you frame a problem."
+		}
+	},
+	"c-1f3e0f37b6e5": {
+		"why": {
+			"vi": "Để «tăng doanh thu» bị viết lại thành một việc đo được.",
+			"en": "So “raise revenue” gets rewritten into a job you can measure."
+		},
+		"plain": {
+			"vi": "Khóa này là cách nghĩ, trước Excel và trước mô hình. Có việc đã rõ và việc còn rối. Tách sự kiện khỏi ý kiến. Chọn việc nào làm trước. Viết SMART. So phương án cùng hệ quả của nó. Rồi mới làm, và đo lại. Hai buổi trên giáo trình gốc chỉ có tên, không có video. App vẫn nói ý của hai buổi đó, và ghi rõ là trang gốc không liệt kê bài.",
+			"en": "This course is how to think, before Excel and before a model. Some problems are already clear. Some are still a mess. Split facts from opinions. Pick what to do first. Write it SMART. Compare options and their consequences. Then do it, and measure again. Two sessions in the source only have a title, no videos. The app still teaches those ideas, and says the source page did not list the lessons."
+		},
+		"prior": {
+			"vi": "CRISP đã có sáu pha. Khóa này là cách viết câu của pha đầu cho chặt.",
+			"en": "CRISP already has six phases. This course is how to write the first phase’s sentence tightly."
+		}
+	},
+	"c-f3c8d7aa3721": {
+		"why": {
+			"vi": "Để một file khách gửi sang không bị đọc sai ngay từ ô đầu.",
+			"en": "So a file a client sends is not misread from the first cell."
+		},
+		"plain": {
+			"vi": "Excel ở khóa này là nơi số đang sống, chưa phải dashboard đẹp. Biết lọc khác với xóa. Biết $ khóa ô. Biết IF là một cửa. Biết biểu đồ nào đi với câu nào. Biết pivot cộng theo cái bạn kéo. Biết VLOOKUP nhìn sang phải và rất dễ lấy nhầm hàng. Phần bài tập chấm vẫn để dạng bài cũ. App không hỏi lại.",
+			"en": "Excel here is where the numbers live, not a pretty dashboard yet. Filtering is not deleting. A dollar sign locks a cell. IF is a gate. A chart has to match the question. A pivot adds up whatever you drag. VLOOKUP looks to the right and can grab the wrong row. The graded practice stays as the old lesson list. The app does not quiz you."
+		},
+		"prior": {
+			"vi": "Đã biết viết câu hỏi cho chặt. Khóa này là bảng mà câu hỏi đó sẽ đọc.",
+			"en": "You can write the question tightly. This course is the sheet that question will read."
+		}
+	},
+	"c-3365bb99f989": {
+		"why": {
+			"vi": "Để một việc lặp lại được giao cho máy, và làm lại đúng từng bước.",
+			"en": "So a repeated job can be handed to the machine, and redone the same way."
+		},
+		"plain": {
+			"vi": "Python ở đây là công cụ, không phải một nghề lập trình. Một chương trình là một công thức viết ra. Tên là nhãn dán lên hộp. Kiểu quyết định phép được dùng. Nhánh là cửa. Vòng là làm lại. Hàm là một việc đặt tên. Rồi tới chuỗi, danh sách, từ điển, và bảng Pandas. Buổi chào chương trình và buổi luyện đề không phải ý mới. Ý nằm ở các phần sau.",
+			"en": "Python here is a tool, not a career in programming. A program is a recipe written down. A name is a label on a box. The type decides which operation is allowed. A branch is a gate. A loop does it again. A function is a named job. Then strings, lists, dictionaries, and a Pandas table. The welcome sessions and the practice drills are not new ideas. The ideas are in the later parts."
+		},
+		"prior": {
+			"vi": "Excel làm một bảng trước mắt. Python làm lại bảng đó khi số dòng vượt quá cái bạn muốn bấm tay.",
+			"en": "Excel works a table in front of you. Python redoes that table when the row count outgrows what you want to click."
+		}
+	},
+	"c-5ebd125743f2": {
+		"why": {
+			"vi": "Để biết chỗ này là bài chấm, không phải bài học mới.",
+			"en": "So you know this slot is a graded paper, not a new lesson."
+		},
+		"plain": {
+			"vi": "C1-G là bài chấm Python trên upGrad. Sổ Mực không ra đề, không có ô đáp án. Muốn hiểu lại thì quay về C1, đúng ý: tên, nhánh, vòng, bảng. Mục lục dưới chỉ để khỏi tưởng khóa này bị thiếu bài giảng.",
+			"en": "C1-G is the graded Python paper on upGrad. Sổ Mực does not set questions and has no answer box. To restudy, go back to C1, to the idea itself: names, branches, loops, tables. The contents below exist so this course does not look like a missing lecture."
+		},
+		"prior": {
+			"vi": "Các ý Python đã nằm ở C1. Khóa này không thêm khái niệm.",
+			"en": "The Python ideas already live in C1. This course adds no concept."
+		}
+	},
+	"c-0598c14acf8d": {
+		"why": {
+			"vi": "Để các khóa sau nói véctơ, độ dốc, xác suất mà không bị hụt chữ.",
+			"en": "So later courses can say vector, slope, and probability without a missing word."
+		},
+		"plain": {
+			"vi": "Đây là bản ngắn, toàn bộ optional. Một véctơ là một danh sách có thứ. Ma trận kéo danh sách đó. Định thức 0 là hình bị ép. Đạo hàm là độ dốc tại một chỗ. Gradient đi xuống chi phí, không đi xuống form. Cuối khóa là xác suất đủ để đọc: một phần, hoặc, và. Hoán vị, tổ hợp, và các luật dài nằm ở C2. Bài tập cuối không thành câu hỏi.",
+			"en": "This is the short version, all optional. A vector is an ordered list. A matrix pulls that list. Determinant 0 means the shape was flattened. A derivative is the slope at one spot. The gradient walks down the cost, not down the forms. The end is enough probability to read: a share, or, and. Permutations, combinations, and the long rules live in C2. The closing drill is not turned into questions."
+		},
+		"prior": {
+			"vi": "Chưa cần khóa này để mở Excel. Cần nó trước khi một hệ số hồi quy bị đọc như một nút ngân sách.",
+			"en": "You do not need this course to open Excel. You need it before a regression coefficient is read as a budget lever."
+		}
+	},
+	"c-75c5d36b41f2": {
+		"why": {
+			"vi": "Để một cột số được mô tả đúng trước khi bị đem đi kết luận.",
+			"en": "So a numeric column is described properly before anyone concludes from it."
+		},
+		"plain": {
+			"vi": "Khóa này nhìn một cột, rồi hai cột, chưa suy ra cả nguồn. Dãy ví dụ dùng suốt: 2, 4, 4, 4, 5, 5, 7, 9. Trung bình 5. Trung vị 4,5. Mode 4. Phương sai mẫu 32/7, độ lệch chuẩn khoảng 2,14. Hiệp phương sai còn dính đơn vị. Tương quan bỏ đơn vị và vẫn không phải nguyên nhân. Bài luyện cuối không phải ý mới.",
+			"en": "This course looks at one column, then two, and does not yet infer the whole source. The example list used throughout is 2, 4, 4, 4, 5, 5, 7, 9. Mean 5. Median 4.5. Mode 4. Sample variance 32/7, standard deviation about 2.14. Covariance still carries units. Correlation drops the units and is still not a cause. The closing drill is not a new idea."
+		},
+		"prior": {
+			"vi": "Toán đã có một phần của cả đám. Khóa này là cách tóm một cột thật.",
+			"en": "The math course already has a share of a whole. This course is how you summarise a real column."
+		}
+	},
+	"c-cca6e1fa1c5f": {
+		"why": {
+			"vi": "Để một mẫu quảng cáo nói được về phần còn lại, và câu SQL hỏi đúng bảng.",
+			"en": "So an ads sample can speak for the rest, and a SQL sentence asks the right table."
+		},
+		"plain": {
+			"vi": "Ba việc lớn. Suy diễn: từ mẫu ra một kết luận có vạch viết trước. EDA: hỏi trước, rồi mới nhìn kiểu cột, ô trống, điểm xa, và chỗ gộp bảng nói ngược. SQL: biết bảng nào đang ghi đơn, bảng nào là kho, rồi hỏi đúng thứ tự máy đọc. Bài nộp taxi, case SQL, quiz phỏng vấn, và bài Python optional không bị biến thành đề. Ý của chúng, nếu có, nằm ở các phần học.",
+			"en": "Three big jobs. Inference: from a sample to a conclusion whose line was written first. EDA: ask first, then look at column type, blanks, far points, and the pool that reverses the story. SQL: know which table is taking orders and which is the warehouse, then ask in the order the engine reads. The taxi assignment, the SQL case, the interview quizzes, and the optional Python puzzles are not turned into papers. Their ideas, when they have one, sit in the teaching parts."
+		},
+		"prior": {
+			"vi": "Mô tả đã tóm một cột. Khóa này mới được phép nói về phần chưa đo, và hỏi cái bảng.",
+			"en": "Description already summarised a column. This course is when you may speak about the part you did not measure, and ask the table."
+		}
+	},
+	"c-96d004f30def": {
+		"why": {
+			"vi": "Để một dòng mới có một câu đoán, kèm chỗ câu đó có thể nói dối.",
+			"en": "So a new row gets a guess, plus the place that guess can lie."
+		},
+		"plain": {
+			"vi": "Học máy ở đây là đoán, không phải chứng minh. Đường thẳng, nhiều cột, rồi xác suất có hoặc không. Cây hỏi từng câu đúng sai. Cụm dùng khi chưa có nhãn. Chữ được đếm, không được hiểu hộ. Trước mô hình là viết quyết định và thước. Git ở mức một câu: mỗi commit là một ảnh, nhánh thử không đụng nhánh chính. Bài tập, mindmap, quiz phỏng vấn, và các track nghề để nguyên dạng bài cũ.",
+			"en": "Machine learning here is a guess, not a proof. A straight line, then many columns, then a yes-or-no probability. A tree asks one yes-or-no at a time. Clusters are for when there is no label. Text is counted, not understood for you. Before the model, write the decision and the ruler. Git stays at one sentence: a commit is a snapshot, a try-line does not touch main. Assignments, mindmaps, interview quizzes, and the career tracks stay as the old lesson list."
+		},
+		"prior": {
+			"vi": "C2 đã có mẫu, bảng sạch, và câu SQL. C3 dùng cái bảng đó để đoán một dòng chưa thấy.",
+			"en": "C2 already has samples, a clean table, and a SQL sentence. C3 uses that table to guess a row it has not seen."
+		}
+	},
+	"c-a0c17afb8849": {
+		"why": {
+			"vi": "Để một mô hình đỡ nhảy, và một tuần tới không bị học từ tương lai.",
+			"en": "So a model jumps less, and next week is not learned from the future."
+		},
+		"plain": {
+			"vi": "Nhiều cây bỏ phiếu thì đỡ nhảy, không sửa một họ mô hình đã lệch. Ridge co hệ số. Lasso có thể đưa một hệ số về đúng 0. Chọn nút bằng cách giấu một miếng, không phải bằng cách nhìn đáp án. Chuỗi tuần phải đứng đúng thứ tự. MA trong ARIMA là cú sốc cũ, không phải trung bình trượt. Case gian lận để dạng bài nộp.",
+			"en": "Many trees voting jumps less. It does not fix a family of models that was already biased. Ridge shrinks a coefficient. Lasso can set one to exactly 0. Pick knobs by hiding a slice, not by peeking at the answer. Weeks stay in order. The MA in ARIMA is an old shock, not a moving-average smoother. The fraud case stays a submitted paper."
+		},
+		"prior": {
+			"vi": "C3 đã có một cây và một đường. C4 là nhiều cây, một mức phạt, rồi dự báo tuần.",
+			"en": "C3 already has one tree and one line. C4 is many trees, a penalty, then a forecast of the week."
+		}
+	},
+	"c-7ffadedb3906": {
+		"why": {
+			"vi": "Để một buổi báo cáo có một câu, không phải mười hai biểu đồ.",
+			"en": "So a reporting meeting has one sentence, not twelve charts."
+		},
+		"plain": {
+			"vi": "Khóa này gần việc đang làm nhất. Tableau, Excel nâng, và Power BI là ba chỗ vẽ, không phải ba sự thật. Một trang một quyết định. Rồi các khung để hỏi cho hết việc: 5 Why, SPIN, canvas, cây vấn đề, 7P, 5C. Cuối là kể: bối cảnh, xung đột, câu trả lời đứng trước. Bài Namma Yatri là bài nộp, không phải một ý mới.",
+			"en": "This course is the closest to the work you already do. Tableau, advanced Excel, and Power BI are three places to draw, not three truths. One page, one decision. Then the frames that make you ask the whole job: 5 Whys, SPIN, the canvas, an issue tree, 7Ps, 5Cs. The end is the telling: context, conflict, the answer first. The Namma Yatri paper is a submission, not a new idea."
+		},
+		"prior": {
+			"vi": "Đã có số và đã có mô hình. Khóa này là cách đưa cái đó vào một buổi mà sếp còn ngồi.",
+			"en": "You already have numbers and a model. This course is how that lands in a meeting a boss will still sit through."
+		}
+	},
+	"c-7e0b1f4942db": {
+		"why": {
+			"vi": "Để một kế hoạch bị ràng buộc được viết thành bài toán, và một câu máy viết không bị tin nhầm.",
+			"en": "So a constrained plan can be written as a problem, and a machine-written sentence is not trusted by mistake."
+		},
+		"plain": {
+			"vi": "Nửa đầu là vận trù: mục tiêu, biến quyết định, ràng buộc, và chỗ Solver dừng. Nửa sau là máy sinh chữ và ảnh. Mô hình không có file của bạn trong đầu. RAG đi lấy một đoạn rồi mới viết. Chatbot ShopAssist có ba chặng: nói theo prompt, gọi công cụ, rồi chấm câu trả lời. Ảnh là lưới số bị thêm nhiễu rồi gỡ nhiễu. LangChain là cách nối các bước đó, optional. Bài nộp RAG để dạng bài cũ.",
+			"en": "The first half is operations research: an objective, decision variables, constraints, and where Solver stops. The second half is a machine that writes text and images. The model does not have your file in its head. RAG fetches a passage, then writes. The ShopAssist bot has three stages: talk from the prompt, call a tool, then score the answer. An image is a grid of numbers that gets noise added and then removed. LangChain is how those steps are chained, and it is optional. The RAG submission stays an old lesson."
+		},
+		"prior": {
+			"vi": "C5 đã kể một câu từ số có sẵn. C6 là lúc số chưa chọn xong, hoặc câu do máy viết.",
+			"en": "C5 already told a sentence from numbers you had. C6 is when the numbers are not chosen yet, or the sentence is written by a machine."
+		}
+	},
+	"c-cbba2e56c4a9": {
+		"why": {
+			"vi": "Để khỏi tưởng capstone đã có bài mà app giấu.",
+			"en": "So you do not think the capstone already has lessons the app is hiding."
+		},
+		"plain": {
+			"vi": "Trang giáo trình chỉ có tên module. Chưa có buổi, chưa có video. Không có gì để tóm thành ý. Khi upGrad mở nội dung, chỗ này sẽ được nạp thêm. Trước đó, đừng bịa một đồ án.",
+			"en": "The syllabus page only has the module name. No sessions, no videos. There is nothing to turn into an idea. When upGrad opens the content, this is where it will be added. Until then, do not invent a project."
+		},
+		"prior": {
+			"vi": "Các khóa trước là đồ nghề. Capstone là chỗ dùng đồ nghề đó vào một đề, khi đề xuất hiện.",
+			"en": "The earlier courses are the tools. The capstone is where those tools meet a brief, once the brief exists."
+		}
+	}
+};
+var modules = {
+	"c-779b43bacf62||M1": {
+		"why": {
+			"vi": "Để biết cửa nào là bài, cửa nào là cộng đồng, cửa nào là luật nộp bài.",
+			"en": "So you know which door is a lesson, which is the community, and which is the rule on submitted work."
+		},
+		"plain": {
+			"vi": "Hai buổi. Buổi một là làm quen lớp. Buổi hai là cách học cho xong: chỗ bấm, chỗ hỏi, và không nộp chữ của người khác. Không có khái niệm số ở đây.",
+			"en": "Two sessions. The first is meeting the class. The second is how to finish: where to click, where to ask, and not handing in someone else’s words. There is no numeric concept here."
+		},
+		"prior": {
+			"vi": "Chưa có phần nào trước. Đây là cả khóa.",
+			"en": "Nothing comes before this part. It is the whole course."
+		}
+	},
+	"c-7780a48d5816||Analytics Problem Solving": {
+		"why": {
+			"vi": "Để sáu pha CRISP không bị nhớ thành một cái slogan.",
+			"en": "So the six CRISP phases are not remembered as a slogan."
+		},
+		"plain": {
+			"vi": "Buổi một là hiểu việc và hiểu bảng thô. Buổi hai là làm mô hình, chấm, và đưa vào dùng. Ví dụ minh họa xuyên suốt là một campaign, không phải một đội IPL. Các quiz nhớ lại không được làm thành câu hỏi.",
+			"en": "Session one is the decision and the raw table. Session two is the model, the score, and the handoff. The running illustration is a campaign, not an IPL team. The recall quizzes are not turned into questions."
+		},
+		"prior": {
+			"vi": "Khóa mở đầu chỉ có bản đồ lớp. Phần này là bản đồ một dự án.",
+			"en": "The opening course only had a map of the class. This part is the map of a project."
+		}
+	},
+	"c-1f3e0f37b6e5||M1": {
+		"why": {
+			"vi": "Để một đề bài của khách đi từ câu cảm thán tới việc làm được trong tuần.",
+			"en": "So a client’s brief goes from a complaint to a job that can be done this week."
+		},
+		"plain": {
+			"vi": "Thứ tự: hiểu loại việc, viết lại cho chặt, phân tích vì sao, so cách làm, rồi triển khai và đo. Buổi phân tích vấn đề và buổi triển khai trên trang gốc không có danh sách video. Hai ý đó vẫn được dạy, và được ghi là nguồn không liệt kê bài.",
+			"en": "The order is: know the kind of problem, rewrite it tightly, analyse why, compare ways to act, then ship and measure. The analyse session and the implement session have no video list on the source page. Those two ideas are still taught, and marked as missing from the source list."
+		},
+		"prior": {
+			"vi": "CRISP nói tên sáu pha. Phần này là kỹ thuật viết pha đầu và pha chót.",
+			"en": "CRISP names six phases. This part is how you write the first phase and the last."
+		}
+	},
+	"c-f3c8d7aa3721||M1": {
+		"why": {
+			"vi": "Để file Excel khách gửi không bị cộng nhầm, lọc nhầm, hoặc tra nhầm hàng.",
+			"en": "So a client’s Excel file is not summed wrong, filtered wrong, or looked up on the wrong row."
+		},
+		"plain": {
+			"vi": "Sau một buổi mục lục là giao diện và định dạng, rồi công thức, rồi pivot và VLOOKUP. Buổi cuối là bài luyện và bài chấm, không có ý mới. Mindmap đầu phần cũng chỉ là bản đồ, không phải một khái niệm.",
+			"en": "After a contents session come the interface and formatting, then formulas, then pivots and VLOOKUP. The last session is practice and a grade, with no new idea. The opening mindmap is only a map, not a concept."
+		},
+		"prior": {
+			"vi": "Đã viết được câu hỏi. Phần này là bảng tính câu hỏi đó sẽ chạm vào.",
+			"en": "The question can be written. This part is the sheet that question will touch."
+		}
+	},
+	"c-3365bb99f989||M0 (Welcome to the Program)": {
+		"why": {
+			"vi": "Để khỏi học nhầm phần chào chương trình thành kiến thức Python.",
+			"en": "So the program welcome is not studied as if it were Python."
+		},
+		"plain": {
+			"vi": "Các buổi ở đây là cách vào chương trình, cách đánh giá, và một tour màn hình code. Không có kiểu dữ liệu, không có vòng lặp. Ý Python bắt đầu ở phần sau.",
+			"en": "The sessions here are how you enter the program, how it is graded, and a tour of the code screen. No data types, no loops. The Python ideas start in the next part."
+		},
+		"prior": {
+			"vi": "Excel đã xong ở C0. Phần này chỉ là cửa vào C1.",
+			"en": "Excel already finished in C0. This part is only the door into C1."
+		}
+	},
+	"c-3365bb99f989||M1 Fundamentals of Python": {
+		"why": {
+			"vi": "Để một tên, một kiểu, và một phép tính không bị dùng lẫn.",
+			"en": "So a name, a type, and an operation are not mixed up."
+		},
+		"plain": {
+			"vi": "Máy làm đúng thứ tự bạn viết. Tên là nhãn, không phải cái hộp. Số và chữ không cộng được với nhau theo kiểu tiền. Dấu bằng một lần là gán, hai lần là so. Buổi practice là bài luyện, không thêm ý.",
+			"en": "The machine does exactly the order you wrote. A name is a label, not the box. A number and text do not add like money. One equals sign assigns. Two compare. The practice session is a drill, and adds no idea."
+		},
+		"prior": {
+			"vi": "Phần chào không có cú pháp. Phần này là cú pháp tối thiểu để một dòng chạy.",
+			"en": "The welcome part has no syntax. This part is the minimum syntax for a line to run."
+		}
+	},
+	"c-3365bb99f989||M2 Python Control Structures": {
+		"why": {
+			"vi": "Để máy biết lúc nào làm, lúc nào làm lại, và lúc nào gọi một việc đã đặt tên.",
+			"en": "So the machine knows when to act, when to repeat, and when to call a named job."
+		},
+		"plain": {
+			"vi": "if là một cửa. for đi hết một danh sách. while dễ chạy mãi nếu cửa không bao giờ đóng. Hàm nhận đầu vào và trả một kết quả. Biến tạo trong hàm không sống ở ngoài. Buổi practice không phải ý mới.",
+			"en": "if is a gate. for walks a whole list. while can run forever if the gate never closes. A function takes inputs and returns one result. A name born inside the function does not live outside. The practice session is not a new idea."
+		},
+		"prior": {
+			"vi": "Đã có tên và phép tính. Phần này là thứ tự không còn là một đường thẳng.",
+			"en": "Names and operations exist. This part is when the order is no longer a straight line."
+		}
+	},
+	"c-3365bb99f989||M3 Python Data Structures": {
+		"why": {
+			"vi": "Để một đám giá trị có chỗ nằm đúng: chuỗi, danh sách, từ điển, bộ, tập.",
+			"en": "So a pile of values has the right home: string, list, dictionary, tuple, or set."
+		},
+		"plain": {
+			"vi": "Chuỗi là chữ, cắt được, không sửa tại chỗ. Danh sách có thứ, sửa được, đếm từ 0. Từ điển là khóa sang giá trị. Bộ là một cặp khóa lại, hay dùng làm khóa. Tập chỉ giữ cái chưa có, và không có thứ tự. Buổi practice là luyện, không thêm ý.",
+			"en": "A string is text, sliceable, not edited in place. A list is ordered, editable, and counted from 0. A dictionary goes from a key to a value. A tuple is a locked pair, often used as a key. A set keeps only what is not already there, and has no order. The practice session is a drill, not a new idea."
+		},
+		"prior": {
+			"vi": "Đã điều khiển được một giá trị. Phần này là nhiều giá trị trong một tên.",
+			"en": "One value can already be steered. This part is many values under one name."
+		}
+	},
+	"c-3365bb99f989||M4 Python Data Science Libraries": {
+		"why": {
+			"vi": "Để một bảng hàng nghìn dòng không bị viết bằng vòng for nếu một câu của thư viện đã làm được.",
+			"en": "So a table of thousands of rows is not written as a for-loop when one library sentence already does it."
+		},
+		"plain": {
+			"vi": "NumPy là mảng một kiểu, làm phép trên cả cột. Series là một cột có nhãn. DataFrame là bảng. Matplotlib và Seaborn vẽ câu bạn đã chọn, không vẽ hộ câu. Buổi practice và đoạn cuối trang gốc có thể chỉ còn tên. Ý là bốn công cụ này.",
+			"en": "NumPy is a one-type array, and it operates on a whole column. A Series is one column with labels. A DataFrame is the table. Matplotlib and Seaborn draw the question you already chose. They do not invent the question. The practice session, and a tail of the source page that may only have a title, are not extra ideas. The ideas are these four tools."
+		},
+		"prior": {
+			"vi": "Danh sách Python làm được bảng nhỏ. Phần này là bảng đúng nghĩa của một file khách.",
+			"en": "A Python list can hold a small table. This part is the table a client file actually is."
+		}
+	},
+	"c-5ebd125743f2||Python for Data Science Graded Assessments": {
+		"why": {
+			"vi": "Để chỗ bài chấm không bị đọc như một bài giảng bị thiếu.",
+			"en": "So the graded slot is not read as a lecture that went missing."
+		},
+		"plain": {
+			"vi": "Hai buổi: Python nền, và thư viện bảng. Đều là đề chấm. Không có định nghĩa mới. Học lại ở C1 nếu một chữ trong đề không thuộc về mình.",
+			"en": "Two sessions: core Python, and the table libraries. Both are graded papers. No new definition. Restudy C1 if a word in the paper is not yours yet."
+		},
+		"prior": {
+			"vi": "C1 đã dạy các ý. Phần này chỉ là cửa nộp.",
+			"en": "C1 already taught the ideas. This part is only the door you submit through."
+		}
+	},
+	"c-0598c14acf8d||M1": {
+		"why": {
+			"vi": "Để véctơ, ma trận, độ dốc và một phần xác suất đủ đọc các khóa sau.",
+			"en": "So vectors, matrices, slope, and a slice of probability are enough to read the later courses."
+		},
+		"plain": {
+			"vi": "Mục lục gốc đi từ véctơ, sang ma trận và định thức, sang vectơ riêng, sang đạo hàm nhiều biến, rồi một cửa vào xác suất. Mindmap đầu không phải ý. Bài luyện xác suất cũng không. Bản dài của xác suất là C2.",
+			"en": "The source contents run from vectors, to matrices and determinants, to eigenvectors, to derivatives in several variables, then a door into probability. The opening mindmap is not an idea. The probability drill is not either. The long version of probability is C2."
+		},
+		"prior": {
+			"vi": "Không cần phần này để lọc một cột Excel. Cần trước khi đọc một hệ số.",
+			"en": "You do not need this part to filter an Excel column. You need it before reading a coefficient."
+		}
+	},
+	"c-75c5d36b41f2||M1": {
+		"why": {
+			"vi": "Để trung bình, trung vị, độ rộng và tương quan không bị gọi nhầm tên nhau.",
+			"en": "So the mean, the median, the width, and the correlation are not called by each other’s names."
+		},
+		"plain": {
+			"vi": "Một buổi về kiểu cột. Một buổi về tâm. Một buổi về vị trí trong dãy đã sắp. Một buổi về độ rộng, nhớ mẫu chia n−1. Một buổi về hai cột đi cùng. Buổi cuối là bài luyện, không thêm số mới.",
+			"en": "One session on column type. One on the center. One on position in a sorted list. One on width, and a sample divides by n−1. One on two columns moving together. The last session is a drill, and adds no new number."
+		},
+		"prior": {
+			"vi": "Toán đã nói một phần của cả đám. Phần này áp cái đó lên một cột ví dụ cố định.",
+			"en": "The math course already said a share of a whole. This part puts that on one fixed example column."
+		}
+	},
+	"c-cca6e1fa1c5f||Hypothesis Testing": {
+		"why": {
+			"vi": "Để hai bản quảng cáo không bị gọi là khác chỉ vì tuần này nhìn đẹp.",
+			"en": "So two ads are not called different just because this week looked better."
+		},
+		"plain": {
+			"vi": "Viết câu nhàm và vạch trước khi mở số. p là độ hiếm nếu câu nhàm đúng, không phải xác suất câu nhàm đúng. Có báo động giả và có bỏ sót. Rồi tới t, hai trung bình, hai tỷ lệ, chi-square, ANOVA. Hai buổi demo ngành là cùng các ý đó trên một ví dụ. Buổi phỏng vấn là ôn, không phải ý mới. Bài chấm không thành câu hỏi.",
+			"en": "Write the dull sentence and the line before you open the numbers. p is how rare the result is if the dull sentence is true, not the probability that the dull sentence is true. There is a false alarm and there is a miss. Then t, two means, two proportions, chi-square, ANOVA. The two industry demos are those same ideas on one example. The interview session is review, not a new idea. The graded papers are not turned into questions."
+		},
+		"prior": {
+			"vi": "Khoảng tin cậy đã bọc một số. Phần này là câu có hoặc không về số đó.",
+			"en": "A confidence interval already wraps a number. This part is a yes-or-no sentence about that number."
+		}
+	},
+	"c-cca6e1fa1c5f||Exploratory Data Analysis": {
+		"why": {
+			"vi": "Để khỏi vẽ trước khi biết bảng của ai, và khỏi xóa một điểm chỉ vì nó xa.",
+			"en": "So you do not chart before you know whose table it is, and do not delete a point only because it is far."
+		},
+		"plain": {
+			"vi": "Hỏi trước. Biết nguồn bảng. Sửa kiểu, dòng trùng, ô trống, điểm xa, đơn vị. Rồi một cột, rồi hai cột. Đi cùng nhau chưa phải nguyên nhân. Gộp nhóm có thể nói ngược. Buổi phỏng vấn là ôn. Bài taxi là bài nộp.",
+			"en": "Ask first. Know the source of the table. Fix types, duplicate rows, blanks, far points, units. Then one column, then two. Moving together is not a cause. Pooling groups can reverse the sentence. The interview session is review. The taxi paper is a submission."
+		},
+		"prior": {
+			"vi": "Kiểm định kết luận sau khi bảng đã sạch. Phần này là lúc bảng còn bẩn.",
+			"en": "A test concludes after the table is clean. This part is while the table is still dirty."
+		}
+	},
+	"c-cca6e1fa1c5f||Problem Solving in Python [Opt]": {
+		"why": {
+			"vi": "Để một bài code optional không bị nhầm thành kiến thức thống kê mới.",
+			"en": "So an optional coding drill is not mistaken for a new statistics idea."
+		},
+		"plain": {
+			"vi": "Năm bước: hiểu đề, lên hướng, viết, thử, rồi rút gọn. Các bài two sum, ngoặc, số La Mã là luyện tay. App không giải hộ từng đề. Optional.",
+			"en": "Five steps: understand the prompt, pick an approach, write, test, then shorten. Two-sum, brackets, and Roman numerals are finger drills. The app does not solve each prompt for you. Optional."
+		},
+		"prior": {
+			"vi": "Python nền nằm ở C1. Phần này chỉ là cách đứng trước một đề lạ.",
+			"en": "Core Python lives in C1. This part is only how you stand in front of an unfamiliar prompt."
+		}
+	},
+	"c-cca6e1fa1c5f||Inferential Statistics": {
+		"why": {
+			"vi": "Để một tuần quảng cáo không bị nói thành cả tháng.",
+			"en": "So one week of ads is not spoken of as the whole month."
+		},
+		"plain": {
+			"vi": "Đếm cách, rồi một phần của cả đám, rồi biến ngẫu nhiên và giá trị kỳ vọng. Nhị thức đếm số lần trúng. Chuẩn là hình chuông. CLT nói trung bình của nhiều mẫu kéo về chuông. Khoảng tin cậy 95% là về cách làm, không phải về một khoảng vừa vẽ. Buổi lấy mẫu optional nối sang nghiên cứu thị trường. Buổi tài liệu thêm là Bayes và vài ôn tập.",
+			"en": "Count the ways, then a share of the whole, then a random variable and an expected value. The binomial counts hits. The normal is a bell. The CLT says the mean of many samples is pulled toward a bell. A 95% interval is about the procedure, not about the one interval you just drew. The optional sampling session connects this to market research. The extra-readings session is Bayes and some review."
+		},
+		"prior": {
+			"vi": "Mô tả đã tóm cột đang có. Phần này nói về cột chưa đo hết.",
+			"en": "Description already summarised the column you have. This part talks about the column you did not fully measure."
+		}
+	},
+	"c-cca6e1fa1c5f||Database Design and Introduction to MySQL": {
+		"why": {
+			"vi": "Để một câu SELECT không bị hỏi nhầm cái bảng đang ghi đơn hôm nay.",
+			"en": "So a SELECT is not aimed at the table that is taking today’s orders when you meant the warehouse."
+		},
+		"plain": {
+			"vi": "Kho khác bảng giao dịch. Giữa ngôi sao là từng sự kiện. Khóa ngoại chặn dòng mồ côi. Rồi mới tới thứ tự máy đọc câu, HAVING, đếm, nối, và UNION. Buổi case, buổi chấm, và buổi code luyện không thêm ý. Workbench chỉ là chỗ bấm. Ý là DDL khác DML.",
+			"en": "A warehouse is not the transactions table. The middle of a star is each event. A foreign key blocks an orphan row. Only then comes the order the engine reads a sentence, HAVING, counts, joins, and UNION. The case, the grade, and the coding drills add no idea. The workbench is only where you click. The idea is that DDL is not DML."
+		},
+		"prior": {
+			"vi": "EDA nhìn một file. Phần này là lúc file đó thành nhiều bảng có khóa.",
+			"en": "EDA looks at one file. This part is when that file becomes several tables with keys."
+		}
+	},
+	"c-cca6e1fa1c5f||Advanced SQL and Best Practices": {
+		"why": {
+			"vi": "Để hạng, tổng chạy, và bậc chi tiêu không bị tính bằng cách xuất ra Excel rồi làm tay.",
+			"en": "So a rank, a running total, and a spend band are not done by exporting to Excel and working by hand."
+		},
+		"plain": {
+			"vi": "Cửa sổ giữ từng dòng. Hạng có nhảy số và không nhảy. Partition đếm lại từ 1 trong từng nhóm. Frame là vài dòng quanh dòng này, không phải cả kênh. Lag là dòng trước theo thứ bạn sắp. CASE viết bậc trong câu. CTE đặt tên câu con. Chỉ mục làm mau, không làm đúng. Thủ tục, con trỏ, và tối ưu câu là phần còn của buổi sau. Buổi luyện đề không thêm ý.",
+			"en": "A window keeps every row. Rank can skip or not skip. A partition starts again at 1 inside each group. A frame is a few rows around this one, not the whole channel. Lag is the previous row in your sort. CASE writes the bands in the query. A CTE names an inner query. An index makes a sentence faster, not truer. Procedures, cursors, and query cost are the rest of the later session. The drill session adds no idea."
+		},
+		"prior": {
+			"vi": "Đã hỏi được một bảng và nối được hai bảng. Phần này là hỏi mà vẫn giữ từng dòng.",
+			"en": "You can already ask one table and join two. This part is asking while still keeping every row."
+		}
+	},
+	"c-cca6e1fa1c5f||EDA Assignment - NYC Taxi Records Analysis": {
+		"why": {
+			"vi": "Để bài taxi không bị tưởng là một chương thống kê mới.",
+			"en": "So the taxi paper is not mistaken for a new statistics chapter."
+		},
+		"plain": {
+			"vi": "Đây là bài nộp: lấy bảng chuyến, làm sạch, rồi trả lời một brief. Mọi ý cần dùng đã nằm ở phần EDA. App không làm hộ bài, không chấm.",
+			"en": "This is a submission: take the trips table, clean it, answer a brief. Every idea you need already sits in the EDA part. The app does not do the paper and does not grade it."
+		},
+		"prior": {
+			"vi": "Phần EDA là đồ nghề. Phần này là một đề để dùng đồ nghề đó.",
+			"en": "The EDA part is the tool kit. This part is one brief to use it on."
+		}
+	},
+	"c-cca6e1fa1c5f||SQL Case Study": {
+		"why": {
+			"vi": "Để case SQL không bị đọc như cú pháp mới.",
+			"en": "So the SQL case is not read as new syntax."
+		},
+		"plain": {
+			"vi": "Một đề hỏi nhiều bảng. Cần JOIN, nhóm, và có thể một cửa sổ. Không có khái niệm lạ so với hai phần SQL phía trước. App không viết hộ câu trả.",
+			"en": "One brief asks several tables. You need a JOIN, a group, and maybe a window. Nothing here is strange compared with the two SQL parts above. The app does not write the answer for you."
+		},
+		"prior": {
+			"vi": "Cú pháp đã có. Phần này là một câu chuyện cần cả cú pháp đó.",
+			"en": "The syntax already exists. This part is one story that needs all of it."
+		}
+	},
+	"c-96d004f30def||Linear Regression": {
+		"why": {
+			"vi": "Để «thêm một triệu thì được thêm bao nhiêu form» không bị nói khi đường đã chui ra ngoài dữ liệu.",
+			"en": "So “one more million buys this many forms” is not said once the line has left the data."
+		},
+		"plain": {
+			"vi": "Một đường, phần trượt bình phương, R² là phần phương sai chứ không phải phần điểm nằm trên đường. Giả định nằm ở phần dư. Gradient đi xuống chi phí. Nhiều cột thì mỗi hệ số giữ các cột kia. Buổi Python là cùng ý trên máy. Buổi ngành là lúc hệ số bị mang ra khỏi vùng đã thấy.",
+			"en": "One line, squared misses, and R² is a share of variance, not the share of points on the line. The assumptions live in the residuals. Gradient descent walks down the cost. With many columns, each coefficient holds the others still. The Python session is the same idea on a machine. The industry session is when a coefficient is carried outside the region you have seen."
+		},
+		"prior": {
+			"vi": "Tương quan chỉ nói đi cùng. Phần này vẽ một đường và gọi đó là một câu đoán.",
+			"en": "Correlation only said they move together. This part draws a line and calls it a guess."
+		}
+	},
+	"c-96d004f30def||Introduction to Tracks": {
+		"why": {
+			"vi": "Để mục chọn nghề không bị học như một thuật toán.",
+			"en": "So the career-track menu is not studied as an algorithm."
+		},
+		"plain": {
+			"vi": "Các buổi là giới thiệu hướng BI, BA, data engineering, NLP, deep learning, và FAQ. Không có công thức. Track của sổ này là BA. Các hướng kia để nguyên bài cũ, đọc nếu muốn biết mình không đi đường đó.",
+			"en": "The sessions introduce BI, BA, data engineering, NLP, deep learning, and an FAQ. No formula. This notebook’s track is BA. The other directions stay as old lessons, to read if you want to know you are not on that path."
+		},
+		"prior": {
+			"vi": "Hồi quy vừa là công cụ đầu. Phần này không thêm công cụ. Nó chỉ nói có nhiều nghề.",
+			"en": "Regression was just the first tool. This part adds no tool. It only says there are several jobs."
+		}
+	},
+	"c-96d004f30def||Linear Regression Assignment": {
+		"why": {
+			"vi": "Để bài thời gian giao hàng không bị tưởng là một định lý mới.",
+			"en": "So the delivery-time paper is not mistaken for a new theorem."
+		},
+		"plain": {
+			"vi": "Một đề: đoán thời gian giao từ các cột đã có. Đường thẳng, phần dư, và thước của brief. App không làm hộ bài nộp.",
+			"en": "One brief: guess delivery time from columns you have. A straight line, the residuals, and the brief’s ruler. The app does not do the submission."
+		},
+		"prior": {
+			"vi": "Phần hồi quy đã dạy đường. Phần này là một bảng để đi đường đó.",
+			"en": "The regression part already taught the line. This part is one table to walk that line on."
+		}
+	},
+	"c-96d004f30def||Logistic Regression": {
+		"why": {
+			"vi": "Để xác suất rời không bị cộng bằng một đường thẳng chui ra ngoài 0 và 1.",
+			"en": "So the chance of leaving is not added up with a straight line that escapes 0 and 1."
+		},
+		"plain": {
+			"vi": "Đường chữ S. Hệ số nhân odds, không cộng xác suất. Nhiều cột vẫn là một đường cong. Rồi ma trận nhầm, precision-recall, ROC. Buổi ngành thêm độ nhạy, ai được học, và độ trôi theo tháng. Đa lớp là mỗi nhãn một đường. Quiz phỏng vấn ở phần riêng, không phải ý mới.",
+			"en": "An S-curve. A coefficient multiplies odds. It does not add probability. Many columns are still one curve. Then the confusion matrix, precision-recall, and ROC. The industry sessions add sensitivity, who the fit is about, and drift across months. Multiclass is one curve per label. The interview quiz is a separate part, not a new idea."
+		},
+		"prior": {
+			"vi": "Đường thẳng đoán một số. Phần này đoán có hoặc không.",
+			"en": "A straight line guesses a number. This part guesses yes or no."
+		}
+	},
+	"c-96d004f30def||Logistic Regression Interview Questions [Opt]": {
+		"why": {
+			"vi": "Để buổi hỏi đáp không bị học thay cho định nghĩa.",
+			"en": "So the Q&A session is not studied in place of the definition."
+		},
+		"plain": {
+			"vi": "Toàn câu hỏi ôn. Optional. Ý nằm ở phần logistic phía trước. App không biến các câu đó thành đề.",
+			"en": "All review questions. Optional. The ideas sit in the logistic part above. The app does not turn those questions into a paper."
+		},
+		"prior": {
+			"vi": "Đã có đường chữ S và cách chấm. Phần này chỉ nhắc lại bằng câu hỏi của người khác.",
+			"en": "The S-curve and the scoring already exist. This part only repeats them as someone else’s questions."
+		}
+	},
+	"c-96d004f30def||Classification using Decision Trees": {
+		"why": {
+			"vi": "Để một loạt câu đúng-sai không bị kể thành một độ dốc.",
+			"en": "So a run of yes-or-no questions is not told as if it were a slope."
+		},
+		"plain": {
+			"vi": "Cây hỏi từng cột. Gini hoặc entropy đo độ lẫn. Cây sâu thì học thuộc. So với đường thẳng, cây là bậc thang, và ra ngoài vết cắt cuối thì chỉ còn trung bình của lá mép. Độ quan trọng là cột nào làm nhóm sạch hơn, không phải cột nào gây ra. Buổi chỉnh nút là độ sâu và số dòng tối thiểu, không phải sự thật mới.",
+			"en": "A tree asks one column at a time. Gini or entropy measures the mix. A deep tree memorises. Against a straight line, a tree is steps, and past the last cut you only have the edge leaf’s average. Importance is which column cleaned the groups, not which column caused the outcome. The tuning session is depth and a minimum row count, not a new truth."
+		},
+		"prior": {
+			"vi": "Logistic là một đường cong trơn. Phần này cắt không gian thành các hộp.",
+			"en": "Logistic is one smooth curve. This part cuts the space into boxes."
+		}
+	},
+	"c-96d004f30def||Unsupervised Learning: Clustering": {
+		"why": {
+			"vi": "Để một cụm không bị gọi là phân khúc chỉ vì máy ra một số.",
+			"en": "So a cluster is not called a segment just because the machine returned a number."
+		},
+		"plain": {
+			"vi": "Không có cột câu trả lời. K-means gán rồi dời tâm. Chỗ gập của elbow không chứng minh k. Khởi động ++ đỡ đặt hai tâm vào một đám. Phân cấp dính theo kiểu gần nhất hoặc xa nhất. DBSCAN để điểm thưa là nhiễu. GMM cho một điểm thuộc hai đám một phần. K-modes dùng khi cột là tên. Buổi Python là cùng vòng lặp. Buổi phỏng vấn là ôn.",
+			"en": "There is no answer column. K-means assigns, then moves the center. An elbow bend does not prove k. A ++ start makes it harder to drop two centers in one clump. Hierarchical clustering glues by the nearest or the farthest. DBSCAN leaves sparse points as noise. A GMM lets one point belong partly to two clouds. K-modes is for when the column is a name. The Python session is the same loop. The interview session is review."
+		},
+		"prior": {
+			"vi": "Cây và logistic cần nhãn. Phần này là lúc chưa có nhãn.",
+			"en": "Trees and logistic need a label. This part is when there is no label yet."
+		}
+	},
+	"c-96d004f30def||Basics of NLP and Text Mining": {
+		"why": {
+			"vi": "Để một đống đánh giá spa không bị đọc như một cột số.",
+			"en": "So a pile of spa reviews is not read as a numeric column."
+		},
+		"plain": {
+			"vi": "Buổi mở trên trang gốc chỉ có tên. Ý bắt đầu khi cắt câu thành mảnh, bỏ từ đi với mọi bài, đếm, rồi đo một lỗi chính tả bằng số lần sửa. Stem cắt đuôi. Lemma về từ từ điển. PMI là hai chữ đi cùng nhiều hơn nếu chúng độc lập. Không cái nào là ngữ pháp, và không cái nào hiểu ý khách.",
+			"en": "The opening session on the source page is only a title. The ideas start when you cut a sentence into pieces, drop words that go with every review, count, then measure a typo by how many edits it takes. A stem chops an ending. A lemma returns the dictionary word. PMI is two words showing up together more than if they were independent. None of this is grammar, and none of it understands the guest."
+		},
+		"prior": {
+			"vi": "Các mô hình phía trước ăn số. Phần này ăn chữ, sau khi chữ đã thành số đếm.",
+			"en": "The models above eat numbers. This part eats text, after the text has become a count."
+		}
+	},
+	"c-96d004f30def||Business Problem Solving": {
+		"why": {
+			"vi": "Để mô hình không được bênh bằng accuracy khi thước của brief không nhích.",
+			"en": "So a model is not defended with accuracy when the brief’s ruler did not move."
+		},
+		"plain": {
+			"vi": "Gọi tên quyết định trước. Viết thước, mốc, cửa sổ thời gian, và hàng rào không được tệ đi. Buổi case là đi một vòng việc đó. Buổi câu hỏi luyện không thêm khung mới.",
+			"en": "Name the decision first. Write the ruler, the current mark, the time window, and the fence that must not get worse. The case session walks that once. The practice questions add no new frame."
+		},
+		"prior": {
+			"vi": "Đã có đường, cây, cụm, chữ. Phần này chọn cái nào được phép đụng tới quyết định.",
+			"en": "You already have a line, a tree, clusters, and text. This part picks which of them may touch the decision."
+		}
+	},
+	"c-96d004f30def||Intro to GIT and GITHUB": {
+		"why": {
+			"vi": "Để một bản thử không đè lên bản đang chạy.",
+			"en": "So a try does not overwrite the version that is running."
+		},
+		"plain": {
+			"vi": "Hai ý. Commit là một ảnh của file kèm một câu, không phải nút Save trong đầu. Nhánh là một đường thử. Nhánh chính đứng yên tới khi nhập lại. Các bước cài đặt, góp repo người khác, và làm web portfolio vẫn là bài cũ, vì đó là chỗ bấm chứ không phải ý.",
+			"en": "Two ideas. A commit is a snapshot of the files plus a sentence, not a Save button that lives in your head. A branch is a try-line. Main stays put until you merge. Install steps, contributing to someone else’s repo, and building a portfolio site stay old lessons, because those are clicks, not ideas."
+		},
+		"prior": {
+			"vi": "Mô hình đã có file. Phần này là cách giữ các đời của file đó.",
+			"en": "The model already has files. This part is how you keep the generations of those files."
+		}
+	},
+	"c-96d004f30def||Logistic Regression Assignment": {
+		"why": {
+			"vi": "Để bài nghỉ việc không bị học như một chương mới.",
+			"en": "So the retention paper is not studied as a new chapter."
+		},
+		"plain": {
+			"vi": "Một đề: đoán người rời. Đường chữ S, điểm cắt, và giá của một lần bỏ sót. App không làm hộ bài.",
+			"en": "One brief: guess who leaves. An S-curve, a cutoff, and the cost of a miss. The app does not do the paper."
+		},
+		"prior": {
+			"vi": "Phần logistic đã có đủ ý. Phần này là một bảng nhân sự để đi các ý đó.",
+			"en": "The logistic part already has the ideas. This part is one staff table to walk them on."
+		}
+	},
+	"c-96d004f30def||Common Curriculum Mindmaps": {
+		"why": {
+			"vi": "Để mười ba sơ đồ không bị đếm thành mười ba bài học mới.",
+			"en": "So thirteen diagrams are not counted as thirteen new lessons."
+		},
+		"plain": {
+			"vi": "Mỗi buổi là một bản đồ của một phần đã học: Python, EDA, suy diễn, hồi quy, logistic, SQL, cây, cụm, NLP. Nhìn để thấy các ý đứng cạnh nhau. Không có định nghĩa mới. Muốn học thì bấm về đúng phần.",
+			"en": "Each session is a map of a part you already studied: Python, EDA, inference, regression, logistic, SQL, trees, clusters, NLP. Look to see the ideas side by side. No new definition. To study, go back to the part itself."
+		},
+		"prior": {
+			"vi": "Các phần phía trước là nội dung. Phần này là mục lục vẽ lại.",
+			"en": "The parts above are the content. This part is the contents redrawn."
+		}
+	},
+	"c-a0c17afb8849||Bagging and Random Forests": {
+		"why": {
+			"vi": "Để một cây nhảy không bị thay bằng một cây khác cũng nhảy y vậy.",
+			"en": "So one jumpy tree is not replaced by another tree that jumps the same way."
+		},
+		"plain": {
+			"vi": "Nhiều cây bỏ phiếu. Mỗi cây một túi rút có hoàn lại. Mỗi nhát cắt chỉ thấy vài cột. Lớp hiếm: đừng nhân bản trước khi chia tập. Accuracy 92% khi không ai bị gọi là rời thì chưa phải brief. Buổi tài liệu thêm không thêm ý ngoài các câu đó.",
+			"en": "Many trees vote. Each tree gets a bag drawn with replacement. Each cut sees only a few columns. For a rare class, do not duplicate rows before the split. Being 92% right by calling nobody a leaver is not the brief. The extra-readings session adds nothing beyond those sentences."
+		},
+		"prior": {
+			"vi": "Một cây đã biết hỏi. Phần này là nhiều cây hỏi hơi khác nhau.",
+			"en": "One tree already knows how to ask. This part is many trees asking slightly different questions."
+		}
+	},
+	"c-a0c17afb8849||Model Selection - I": {
+		"why": {
+			"vi": "Để chọn mô hình không bị làm bằng cách nhìn điểm trên chính các dòng đã học.",
+			"en": "So choosing a model is not done by looking at the score on the rows it already learned."
+		},
+		"plain": {
+			"vi": "Lệch là họ mô hình không đủ hình. Nhảy là đổi mẫu thì đổi đường. Ridge co. Lasso có thể về đúng 0. Phải cùng thước trước. RMSE phạt cú trượt lớn. Log của 0 không có. Biến giả thừa một cột nếu có hệ số chặn. Một mốc thời gian không phải thứ trong tuần. Buổi tài liệu thêm là ôn.",
+			"en": "Bias: the family cannot make the shape. Variance: change the sample and the line changes. Ridge shrinks. Lasso can hit exact 0. Put columns on one scale first. RMSE punishes a large miss. Log of 0 does not exist. A dummy column is one too many if there is an intercept. A raw timestamp is not the weekday. The extra-readings session is review."
+		},
+		"prior": {
+			"vi": "Rừng cây đã giảm nhảy của cây. Phần này là các nút khác: phạt, thước, và cách viết cột.",
+			"en": "A forest already calms a tree’s jump. This part is the other knobs: a penalty, a ruler, and how a column is written."
+		}
+	},
+	"c-a0c17afb8849||Model Selection - II": {
+		"why": {
+			"vi": "Để nút được chọn trên một miếng giấu, không phải trên cả bảng.",
+			"en": "So a knob is chosen on a hidden slice, not on the whole table."
+		},
+		"plain": {
+			"vi": "Mỗi lượt giấu một phần, học phần còn, rồi lấy trung bình. Lưới chỉ thử những ô bạn đã viết. Chỉnh trên chính các lần giấu đó thì điểm hơi đẹp hơn sự thật. Với tuần, không dùng cách xáo này. Cách đó nằm ở phần chuỗi thời gian.",
+			"en": "Each round hides one slice, learns on the rest, then averages. A grid only tries the cells you wrote down. Tuning on those same hides makes the score a bit prettier than the truth. For weeks, do not use this shuffle. That method lives in the time-series part."
+		},
+		"prior": {
+			"vi": "Đã có các nút. Phần này là cách thử nút mà không nhìn lén đáp án.",
+			"en": "The knobs already exist. This part is how you try them without peeking at the answer."
+		}
+	},
+	"c-a0c17afb8849||Time Series Forecasting - I": {
+		"why": {
+			"vi": "Để tuần tới không bị đoán bằng một mô hình đã thấy tuần tới.",
+			"en": "So next week is not guessed by a model that has already seen next week."
+		},
+		"plain": {
+			"vi": "Giữ thứ tự. Tuần này giống tuần trước thì các dòng không độc lập. Mùa có thể cộng hoặc nhân. Naive là «bằng tuần trước». Trung bình trượt chậm ở khúc cua. San bằng mũ nặng về tuần mới. Holt thêm dốc. Holt-Winters cần bạn đưa chu kỳ. MAPE gãy khi tuần thật là 0. Chấm bằng cách cuốn tới, không xáo. Buổi chấm không thêm ý.",
+			"en": "Keep the order. If this week looks like last week, the rows are not independent. A season can add or multiply. Naive is “same as last week”. A moving average is late on a turn. Exponential smoothing weighs the new week more. Holt adds a slope. Holt-Winters needs you to give the period. MAPE breaks when the actual week is 0. Score by rolling forward, not by shuffling. The graded session adds no idea."
+		},
+		"prior": {
+			"vi": "Cross-validation thường xáo dòng. Phần này cấm xáo, vì thứ tự là nội dung.",
+			"en": "Cross-validation usually shuffles rows. This part forbids the shuffle, because the order is the content."
+		}
+	},
+	"c-a0c17afb8849||Time Series Forecasting - II": {
+		"why": {
+			"vi": "Để AR, MA và ARIMA không bị dùng như ba cái tên của một đường trung bình.",
+			"en": "So AR, MA, and ARIMA are not used as three names for one average."
+		},
+		"plain": {
+			"vi": "Dừng là tâm và độ rộng không phụ thuộc lúc bạn nhìn. ACF là tương quan với tuần cách k bước. AR đoán từ các tuần trước. MA trong ARIMA là cú sốc cũ còn vương, không phải trung bình trượt. ARIMA lấy hiệu cho tới khi chuỗi chịu đứng, rồi mới AR và MA. SARIMAX cần biết cột tuần tới, nếu không bạn đang đoán luôn cột đó. Buổi xây mô hình là đi các bước này. Buổi chấm không thêm ý.",
+			"en": "Stationary means the center and the width do not depend on when you look. ACF is the correlation with the week k steps back. AR guesses from earlier weeks. The MA in ARIMA is an old shock still hanging around, not a moving average. ARIMA differences until the series can sit still, then adds AR and MA. SARIMAX needs next week’s column known, or you are forecasting that column too. The model-building session walks these steps. The graded session adds no idea."
+		},
+		"prior": {
+			"vi": "Phần trước làm mượt và chấm cho công bằng. Phần này viết một phương trình cho tuần này.",
+			"en": "The previous part smoothed and scored fairly. This part writes an equation for this week."
+		}
+	},
+	"c-a0c17afb8849||Advanced ML Case Study": {
+		"why": {
+			"vi": "Để case gian lận không bị học như một họ mô hình mới.",
+			"en": "So the fraud case is not studied as a new family of models."
+		},
+		"plain": {
+			"vi": "Một đề: phát hiện hồ sơ gian. Lớp hiếm, nên accuracy dễ đẹp một cách vô nghĩa. Đồ nghề đã có ở rừng cây và phần chọn mô hình. App không làm hộ bài nộp.",
+			"en": "One brief: detect a fraudulent claim. The class is rare, so accuracy is easy to make pretty and meaningless. The tools already live in the forest and the model-selection parts. The app does not do the submission."
+		},
+		"prior": {
+			"vi": "Các ý của C4 đã đủ để đọc một đề. Phần này là đề.",
+			"en": "C4’s ideas are already enough to read a brief. This part is the brief."
+		}
+	},
+	"c-7ffadedb3906||Basic Visualization using Tableau": {
+		"why": {
+			"vi": "Để mỗi biểu đồ trả một câu, và trục không bị cắt cho cột nhìn cao.",
+			"en": "So each chart answers one question, and an axis is not cut to make a bar look tall."
+		},
+		"plain": {
+			"vi": "Vẽ để khám phá khác vẽ để giải thích. Cột để so độ lớn, trục có số 0. Đường để thấy thời gian, không để nối các kênh không có thứ tự. Hộp là trung vị và nửa giữa. Bản đồ chỉ khi câu hỏi có chỗ. Tròn là một tổng, ít miếng. Treemap khi nhiều tên. Dashboard là một quyết định. Rồi join, trường tính, hai trục, và story. Buổi luyện là bài, không thêm loại biểu đồ.",
+			"en": "Drawing to explore is not drawing to explain. A bar compares size, and the axis includes 0. A line is for time, not for joining channels that have no order. A box is the median and the middle half. A map only if the question has a place. A pie is one whole, few slices. A treemap is for many names. A dashboard is one decision. Then joins, calculated fields, two axes, and a story. The practice session is a drill, and adds no chart type."
+		},
+		"prior": {
+			"vi": "Đã có số sạch. Phần này là cách đưa số đó lên một trang người khác đọc trong một phút.",
+			"en": "The numbers are already clean. This part is how those numbers land on a page someone else reads in a minute."
+		}
+	},
+	"c-7ffadedb3906||Advanced Excel": {
+		"why": {
+			"vi": "Để tra cứu, what-if và macro không bị dùng sai việc.",
+			"en": "So lookup, what-if, and macros are not given the wrong job."
+		},
+		"plain": {
+			"vi": "Hàm chữ để làm sạch trước khi tính. Hàm thống kê phải đúng loại đếm. IF lồng sâu thì nên đổi thành bảng tra. INDEX và MATCH nhìn được sang trái, VLOOKUP thì không. What-if đổi đầu vào của một kế hoạch, không đổi quá khứ. Macro lặp lại cú bấm, không kiểm tra cú bấm đó đúng. Buổi đầu là mục lục. Buổi cuối có bài chấm.",
+			"en": "Text functions clean a column before you calculate. Statistical functions have to count the right kind of cell. A deeply nested IF should become a lookup table. INDEX and MATCH can look left. VLOOKUP cannot. What-if changes the inputs of a plan. It does not change the past. A macro repeats clicks. It does not check that the click was right. The first session is a contents page. The last session includes a grade."
+		},
+		"prior": {
+			"vi": "Excel nền đã có lọc và VLOOKUP. Phần này là lúc file đủ rối để những thứ đó chưa đủ.",
+			"en": "Basic Excel already has filters and VLOOKUP. This part is when the file is messy enough that those are not enough."
+		}
+	},
+	"c-7ffadedb3906||Data Analysis and Visualisation in PowerBI": {
+		"why": {
+			"vi": "Để một measure không bị viết như một cột tính, và một báo cáo đã đăng không bị tưởng là số sống.",
+			"en": "So a measure is not written as a calculated column, and a published report is not mistaken for live numbers."
+		},
+		"plain": {
+			"vi": "Power BI là mô hình cộng trang vẽ. Power Query làm sạch mỗi lần làm mới. Cột tính lưu theo dòng. Measure tính trong ngữ cảnh lọc. Quan hệ sai hạt thì số bị nhân. Một trang một câu. RLS giấu dòng theo người, không phải một slicer khách tắt được. Lịch làm mới mà nguồn không tới được thì trang vẫn là số cũ. Cài đặt phần mềm là bài cũ. Bài chấm không thành ý mới.",
+			"en": "Power BI is a model plus pages. Power Query cleans again on every refresh. A calculated column is stored per row. A measure is computed in the filter context. A relationship at the wrong grain multiplies the numbers. One page, one sentence. Row-level security hides rows by person. It is not a slicer the guest can turn off. If a scheduled refresh cannot reach the source, the page is still yesterday’s numbers. Installing the software stays an old lesson. The graded papers are not new ideas."
+		},
+		"prior": {
+			"vi": "Tableau vẽ trên bảng bạn đưa. Phần này thêm một lớp mô hình đứng giữa bảng và trang.",
+			"en": "Tableau draws on the table you give it. This part adds a model layer between the table and the page."
+		}
+	},
+	"c-7ffadedb3906||Analytical Thinking and Structured Problem Solving using Frameworks": {
+		"why": {
+			"vi": "Để một buổi hỏi khách không bị thành một danh sách câu hỏi nhớ lòng.",
+			"en": "So a client interview does not become a memorised list of questions."
+		},
+		"plain": {
+			"vi": "5W và 5 Why dừng ở một nguyên nhân làm được, không dừng ở một người. SPIN đi từ tình huống tới hệ quả rồi tới cái họ cần. Canvas là chín ô của một mô hình kinh doanh. Cây vấn đề chia cho hết và không chồng. 7P là checklist dịch vụ. 5C là công ty, khách, đối thủ, đối tác, bối cảnh. Hai buổi chấm không thêm khung.",
+			"en": "5W and 5 Whys stop at a cause you can act on, not at a person. SPIN walks from the situation to the consequence to what they need. The canvas is nine boxes of a business. An issue tree splits without gaps and without overlap. 7Ps is a service checklist. 5Cs are company, customers, competitors, collaborators, and context. The two graded sessions add no frame."
+		},
+		"prior": {
+			"vi": "Biểu đồ đã có câu. Phần này là lúc chưa có biểu đồ vì chưa biết hỏi gì.",
+			"en": "A chart already has a sentence. This part is when there is no chart yet because you do not know what to ask."
+		}
+	},
+	"c-7ffadedb3906||Data Storytelling": {
+		"why": {
+			"vi": "Để một slide không mở bằng biểu đồ khi người nghe chưa biết buổi họp để làm gì.",
+			"en": "So a slide does not open with a chart when the room does not yet know what the meeting is for."
+		},
+		"plain": {
+			"vi": "Một câu chuyện số có bối cảnh, xung đột, và một hướng. Viết mục tiêu và người nghe trước. Vài dạng insight: xu hướng, khác biệt, tỷ trọng, điểm lạ, đi cùng. Kim tự tháp đặt câu trả lời lên đầu. Mỗi hình một thông điệp, tiêu đề là một câu. Storyboard trước khi trang trí. Case vay nhà là một ví dụ đi hết các bước, không phải một bộ số thật của một ngân hàng.",
+			"en": "A data story has a context, a conflict, and a direction. Write the objective and the audience first. A few insight shapes: a trend, a difference, a share, a strange point, moving together. The pyramid puts the answer first. One message per picture, and the title is a sentence. Storyboard before you decorate. The home-loan case walks all of these steps. It is not a real bank’s numbers."
+		},
+		"prior": {
+			"vi": "Đã có biểu đồ và đã có khung hỏi. Phần này xếp chúng thành một buổi nghe được.",
+			"en": "You already have charts and a way to ask. This part puts them into a meeting someone can hear."
+		}
+	},
+	"c-7ffadedb3906||Advanced Data Visualisation Assignment": {
+		"why": {
+			"vi": "Để bài Namma Yatri không bị học như một loại biểu đồ mới.",
+			"en": "So the Namma Yatri paper is not studied as a new chart type."
+		},
+		"plain": {
+			"vi": "Một đề trực quan trên một bộ dữ liệu. Rubric là cách họ chấm, không phải một định nghĩa. Mọi loại hình cần dùng đã nằm ở Tableau và phần kể chuyện. App không làm hộ bài.",
+			"en": "One visualisation brief on one dataset. The rubric is how they grade, not a definition. Every picture you need already lives in Tableau and the storytelling part. The app does not do the paper."
+		},
+		"prior": {
+			"vi": "Phần vẽ và phần kể đã có ý. Phần này là một đề để dùng các ý đó.",
+			"en": "The drawing part and the telling part already have the ideas. This part is one brief to use them on."
+		}
+	},
+	"c-7e0b1f4942db||Operations Research using Excel": {
+		"why": {
+			"vi": "Để một kế hoạch media không bị «tối ưu» bằng cách thử tay đến khi vừa mắt.",
+			"en": "So a media plan is not called optimised because you clicked until it looked fine."
+		},
+		"plain": {
+			"vi": "Viết mục tiêu, biến được phép xoay, và ràng buộc không được phá. Bài tuyến tính thì lời giải nằm ở một góc của vùng khả thi. Độ nhạy nói một ràng buộc nới thêm một đơn vị thì mục tiêu đổi bao nhiêu, chỉ trong lúc góc đó còn là góc đang chọn. Solver trên bài cong có thể dừng ở một chỗ tốt tại chỗ. Ví dụ gốc là giá vé máy bay. Ví dụ mình dùng là phân bổ ngân sách kênh. Bài chấm không thêm ý.",
+			"en": "Write the objective, the knobs you may turn, and the constraints you may not break. For a linear problem the answer sits at a corner of the feasible region. Sensitivity says how the objective moves if you loosen one constraint by one unit, only while that corner stays the chosen corner. On a curved problem Solver can stop at a local good spot. The source example is airline fares. The example here is splitting a channel budget. The graded papers add no idea."
+		},
+		"prior": {
+			"vi": "What-if của Excel đổi một ô để xem. Phần này tìm ô tốt nhất dưới các giới hạn.",
+			"en": "Excel what-if changes one cell to look. This part finds the best cell under the limits."
+		}
+	},
+	"c-7e0b1f4942db||Introduction to GenAI and Working with OpenAI APIs": {
+		"why": {
+			"vi": "Để một câu máy viết không bị dán vào proposal như một số liệu.",
+			"en": "So a machine-written sentence is not pasted into a proposal as if it were a figure."
+		},
+		"plain": {
+			"vi": "Máy sinh đoán từ tiếp theo. Nó không phải cơ sở dữ liệu của agency. Có tầng ứng dụng, tầng mô hình, tầng dữ liệu, tầng chấm. Gọi API là gửi một danh sách lời thoại. Temperature làm phân phối từ phẳng hơn, không làm câu đúng hơn. Tiền tính bằng token vào và token ra. Prompt là việc, ngữ cảnh, định dạng. Few-shot là vài ví dụ. Chain-of-thought là xin các bước, không phải một chứng minh. Bài chấm và bài luyện không thêm ý.",
+			"en": "A generative model guesses the next token. It is not the agency’s database. There is an app layer, a model layer, a data layer, and an eval layer. An API call sends a list of messages. Temperature flattens the next-word distribution. It does not make the sentence truer. The bill is tokens in plus tokens out. A prompt is the task, the context, and the format. Few-shot is a few examples. Chain-of-thought asks for steps. It is not a proof. The graded papers and drills add no idea."
+		},
+		"prior": {
+			"vi": "Các mô hình C3 đoán một ô. Phần này đoán từ tiếp theo trong một câu.",
+			"en": "The C3 models guess a cell. This part guesses the next word in a sentence."
+		}
+	},
+	"c-7e0b1f4942db||Chatbot System Design and Building ShopAssist AI": {
+		"why": {
+			"vi": "Để một chatbot bán hàng không bị thả viết giá và chính sách từ trí nhớ.",
+			"en": "So a sales chatbot is not left to invent a price and a policy from memory."
+		},
+		"plain": {
+			"vi": "Self-consistency là vài đường suy luận rồi lấy số đông, không phải một đường đúng. ReAct là nghĩ, gọi công cụ, nhìn kết quả, rồi mới nói. Fine-tune sửa trọng số. RAG đổi tài liệu đưa vào. ShopAssist đi ba chặng: nói theo prompt, tìm trong catalog bằng công cụ, rồi chấm các ca. Ba chặng đó là thiết kế, không phải một transcript để học thuộc. Bài luyện và bài chấm không thêm ý.",
+			"en": "Self-consistency is several lines of reasoning and then a majority, not one true line. ReAct is think, call a tool, look at the result, then speak. Fine-tuning changes weights. RAG changes the documents you hand in. ShopAssist walks three stages: talk from the prompt, search the catalog with a tool, then score the cases. Those stages are a design, not a transcript to memorise. The drills and the grade add no idea."
+		},
+		"prior": {
+			"vi": "Đã gọi được API một lượt. Phần này là một hệ nhiều lượt, có công cụ và có chặng.",
+			"en": "You can already call an API once. This part is a system of many turns, with tools and with stages."
+		}
+	},
+	"c-7e0b1f4942db||Retrieval Augmented Generation with LlamaIndex": {
+		"why": {
+			"vi": "Để câu trả lời về file nội bộ không bị bịa khi file không nằm trong prompt.",
+			"en": "So an answer about an internal file is not invented when the file is not in the prompt."
+		},
+		"plain": {
+			"vi": "Mô hình không nhớ PDF của bạn. RAG tìm một đoạn gần câu hỏi rồi mới viết. Embedding đặt câu gần câu, không phải tìm đúng từ khóa, và cũng không phải sự thật. Cắt quá dài thì loãng, cắt quá ngắn thì mất câu. Kho vector trả về đoạn gần nhất, không trả về câu đúng. LlamaIndex nối connector, chỉ mục, và câu hỏi. Chỉ mục không tự biết file đã đổi nếu bạn không nạp lại. Buổi chấm không thêm ý.",
+			"en": "The model does not remember your PDF. RAG finds a passage near the question, then writes. An embedding places a sentence near a sentence. It is not a keyword search, and it is not the truth. A chunk that is too long gets dilute. A chunk that is too short loses the sentence. A vector store returns the nearest passages, not the right sentence. LlamaIndex connects a connector, an index, and a question. The index does not notice that a file changed unless you load it again. The graded session adds no idea."
+		},
+		"prior": {
+			"vi": "Chatbot đã cần tài liệu thật. Phần này là cách đưa tài liệu đó vào câu trả lời.",
+			"en": "The bot already needed real documents. This part is how those documents get into the answer."
+		}
+	},
+	"c-7e0b1f4942db||Additional Resources - RAG Pre-Requisites": {
+		"why": {
+			"vi": "Để các bước demo không bị nhớ thành sản phẩm.",
+			"en": "So the demo steps are not remembered as the product."
+		},
+		"plain": {
+			"vi": "Ba buổi làm mẫu: tìm ngữ nghĩa, một kho vector kiểu Chroma, rồi cả đường RAG gồm cắt, nhúng, tìm, xếp lại, và viết. Xếp lại là vì đoạn gần nhất chưa chắc là đoạn nên trích. Đây là optional so với ý chính ở phần RAG. Không có khái niệm lạ ngoài các bước đó.",
+			"en": "Three demo sessions: semantic search, a vector store such as Chroma, then a full RAG path of chunk, embed, search, re-rank, and write. Re-ranking exists because the nearest passage is not always the one you should quote. This is optional next to the main ideas in the RAG part. Nothing here is strange beyond those steps."
+		},
+		"prior": {
+			"vi": "Phần RAG đã nói đường ống. Phần này đi chậm từng khớp của đường ống đó.",
+			"en": "The RAG part already named the pipe. This part walks each joint of that pipe slowly."
+		}
+	},
+	"c-7e0b1f4942db||Image Generation using Stable Diffusion": {
+		"why": {
+			"vi": "Để một prompt ảnh không bị tưởng là một hợp đồng về sự thật.",
+			"en": "So an image prompt is not mistaken for a contract about facts."
+		},
+		"plain": {
+			"vi": "Ảnh là lưới số. VAE nén rồi vẽ lại, và cái giá là nét nhòe. GAN có một mạng giả và một mạng chấm. Diffusion thêm nhiễu rồi học gỡ nhiễu từng bước. Chữ điều khiển bước gỡ đó, không bảo chứng nội dung. Buổi PixxelCraft là một ứng dụng đi các bước này, cộng cách viết prompt. Bài chấm không thêm ý.",
+			"en": "An image is a grid of numbers. A VAE compresses and draws back, and the cost is blur. A GAN has one network that fakes and one that judges. Diffusion adds noise, then learns to remove it step by step. Text steers that removal. It does not certify the content. The PixxelCraft session is one app walking these steps, plus how a prompt is written. The graded papers add no idea."
+		},
+		"prior": {
+			"vi": "Phần chữ đoán từ. Phần này đoán một lưới điểm ảnh.",
+			"en": "The text part guesses a word. This part guesses a grid of pixels."
+		}
+	},
+	"c-7e0b1f4942db||Course Project: RAG": {
+		"why": {
+			"vi": "Để bài RAG trên văn bản luật không bị học như một kiến trúc mới.",
+			"en": "So the legal-document RAG paper is not studied as a new architecture."
+		},
+		"plain": {
+			"vi": "Một đề: hỏi trên một tập tài liệu, phải trả lời từ đoạn được tìm, không bịa điều khoản. Đường ống đã có ở phần RAG. App không làm hộ bài nộp.",
+			"en": "One brief: ask over a set of documents, and answer from a retrieved passage, not an invented clause. The pipe already exists in the RAG part. The app does not do the submission."
+		},
+		"prior": {
+			"vi": "Ý RAG đã đủ để đọc đề. Phần này là đề.",
+			"en": "The RAG ideas are enough to read the brief. This part is the brief."
+		}
+	},
+	"c-7e0b1f4942db||LangChain [Opt]": {
+		"why": {
+			"vi": "Để một chuỗi bước và một agent không bị gọi là cùng một thứ.",
+			"en": "So a chain of steps and an agent are not called the same thing."
+		},
+		"plain": {
+			"vi": "Optional. Template là câu có lỗ để điền, đừng dán bí mật vào ví dụ. Parser xin một dạng đầu ra, mô hình vẫn có thể phá dạng đó. Chain là bước A rồi bước B, cố định. Agent tự chọn công cụ và có thể lặp. Phải giới hạn số bước. Buổi luyện không thêm ý.",
+			"en": "Optional. A template is a sentence with holes. Do not paste a secret into the example. A parser asks for an output shape. The model can still break that shape. A chain is step A then step B, fixed. An agent picks a tool and can loop. Cap the number of steps. The practice quiz adds no idea."
+		},
+		"prior": {
+			"vi": "RAG và chatbot đã là các bước. Phần này là một thư viện để nối các bước đó, không phải một mô hình mới.",
+			"en": "RAG and the bot are already steps. This part is a library that chains those steps. It is not a new model."
+		}
+	},
+	"c-cbba2e56c4a9||BA Capstone Project": {
+		"why": {
+			"vi": "Để trang này không trống một cách khó hiểu.",
+			"en": "So this page is not empty in a confusing way."
+		},
+		"plain": {
+			"vi": "Giáo trình chưa mở buổi nào. Không có mục lục con. Không có ý để học. Khi có đề, đề sẽ cần gần như mọi khóa phía trước: câu hỏi, bảng sạch, một mô hình vừa đủ, và một câu kể.",
+			"en": "The syllabus has not opened a session. There is no inner contents list. There is no idea to study. When a brief appears, it will need almost every course above: a question, a clean table, a model that is only as big as the decision, and one sentence to tell."
+		},
+		"prior": {
+			"vi": "Đây là phần duy nhất của khóa, và nó đang trống vì nguồn đang trống.",
+			"en": "This is the only part of the course, and it is empty because the source is empty."
+		}
+	}
+};
+var sessions = {
+	"S1 Let's Kickstart Your upGrad Journey": {
+		"vi": "Làm quen lớp: bài nằm ở đâu, và lộ trình nhìn ra sao. Không có khái niệm để mang vào một brief.",
+		"en": "Meet the class: where a lesson sits, and what the path looks like. No concept to carry into a brief."
+	},
+	"S2 Maximizing Your Learning Experience": {
+		"vi": "Chỗ hỏi, chỗ học, và luật nộp bài: chữ phải là của mình. Xong buổi này thì thôi, đừng học lại.",
+		"en": "Where to ask, where to study, and the rule on submissions: the words have to be yours. Finish this once, then leave it."
+	},
+	"S1 The CRISP-DM Framework - Business and Data Understanding": {
+		"vi": "Viết việc cần quyết trước. Rồi mới hỏi bảng thô đang có là của ai, thiếu gì, và một dòng là một cái gì.",
+		"en": "Write the decision first. Only then ask whose raw table this is, what is missing, and what one row stands for."
+	},
+	"S2 CRISP-DM Framework - Data Preparation, Modelling, Evaluation and Deployment": {
+		"vi": "Làm sạch, rồi mới mô hình nếu việc cần. Chấm bằng thước đã viết. Đưa cho người dùng thứ Hai, không đưa một file điểm.",
+		"en": "Clean first, then a model only if the decision needs it. Score with the ruler you wrote. Hand it to Monday’s user, not a file of scores."
+	},
+	"c-1f3e0f37b6e5||S1 Module Overview": {
+		"vi": "Bản đồ sáu buổi của cách nghĩ. Buổi bốn và buổi sáu trên trang gốc không có video.",
+		"en": "A map of the six thinking sessions. Sessions four and six have no videos on the source page."
+	},
+	"S2 Understanding the Problems": {
+		"vi": "Có việc đã rõ và việc còn rối. Việc rối chưa có một số để tối ưu. Đừng nhảy vào giải.",
+		"en": "Some problems are already clear. Some are still a mess. A mess has no number to optimise yet. Do not jump to a fix."
+	},
+	"S3 Framing the Problem": {
+		"vi": "Tách sự kiện khỏi ý kiến. Chọn việc nào làm trước. Viết SMART: cụ thể, đo được, và có hạn.",
+		"en": "Split facts from opinions. Pick what comes first. Write it SMART: specific, measurable, and dated."
+	},
+	"S4 Analysing the Problem": {
+		"vi": "Trang gốc không liệt kê video. Ý vẫn là: hỏi vì sao cho tới một nguyên nhân bạn làm được, không dừng ở một người.",
+		"en": "The source page lists no videos. The idea is still: ask why until you hit a cause you can act on, not a person."
+	},
+	"S5 Analysing the Solutions": {
+		"vi": "Mỗi cách làm có một hệ quả, kể cả cách không làm. So trước khi chọn. Đừng chọn cái vừa nói trong phòng.",
+		"en": "Each way of acting has a consequence, including doing nothing. Compare before you pick. Do not pick whatever was just said in the room."
+	},
+	"S6 Implementing the Solutions": {
+		"vi": "Trang gốc không liệt kê video. Ý vẫn là: làm một việc, đo lại đúng thước đã viết, rồi sửa. Không phải làm hết mọi ý tưởng.",
+		"en": "The source page lists no videos. The idea is still: do one thing, measure it on the ruler you wrote, then adjust. Not to do every idea."
+	},
+	"c-f3c8d7aa3721||S1 Module Overview": {
+		"vi": "Mục lục Excel nền: định dạng, công thức, rồi pivot và tra cứu. Mindmap không phải một hàm.",
+		"en": "The contents of basic Excel: formatting, formulas, then pivots and lookup. A mindmap is not a function."
+	},
+	"S2 Introduction to Excel": {
+		"vi": "Lọc là giấu dòng, không phải xóa. Định dạng có điều kiện là một cái cờ, không đổi số trong ô.",
+		"en": "A filter hides rows. It does not delete them. Conditional formatting is a flag. It does not change the number in the cell."
+	},
+	"S3 Data Analysis in Excel – I": {
+		"vi": "Công thức, tham chiếu $ , hàm logic, và loại biểu đồ. Biểu đồ tròn nhiều miếng là một câu bị vỡ.",
+		"en": "Formulas, dollar-sign references, logical functions, and chart types. A pie with many slices is a broken sentence."
+	},
+	"S4 Data Analysis in Excel – II": {
+		"vi": "Pivot cộng theo cái bạn kéo vào. VLOOKUP nhìn sang phải và mặc định có thể khớp gần. Lỗi #N/A không phải số 0.",
+		"en": "A pivot adds up whatever you drag in. VLOOKUP looks to the right, and its default can be an approximate match. A #N/A is not the number 0."
+	},
+	"S5 Practice and Graded Questions": {
+		"vi": "Bài luyện và bài chấm. Không có hàm mới. Quay lại ba buổi phía trước nếu một thao tác còn lạ.",
+		"en": "Practice and a grade. No new function. Go back to the three sessions above if a move is still unfamiliar."
+	},
+	"S1 Introduction to the Program": {
+		"vi": "Cửa vào chương trình Python. Không có cú pháp.",
+		"en": "The door into the Python program. No syntax."
+	},
+	"S2 Succeeding in the Program": {
+		"vi": "Cách đi cho hết chương trình. Không phải một cấu trúc dữ liệu.",
+		"en": "How to get through the program. Not a data structure."
+	},
+	"S3 Program Evaluation": {
+		"vi": "Họ chấm thế nào. Không phải cách viết một vòng lặp.",
+		"en": "How they grade. Not how you write a loop."
+	},
+	"S4 Starting the Journey": {
+		"vi": "Bắt đầu lộ trình. Ý Python nằm ở các phần sau, không nằm ở buổi này.",
+		"en": "Starting the path. The Python ideas live in the later parts, not in this session."
+	},
+	"S5 Industry Immersion": {
+		"vi": "Một lát cắt nghề. Không thay cho bài về list hay DataFrame.",
+		"en": "A slice of the job. It does not replace the lesson on lists or DataFrames."
+	},
+	"S7 Prism Coding Console - Tutorial [Opt]": {
+		"vi": "Tour màn hình gõ code. Optional. Cái màn hình không phải là ngôn ngữ.",
+		"en": "A tour of the screen where you type code. Optional. The screen is not the language."
+	},
+	"S1 Introduction to Computer Programming": {
+		"vi": "Một chương trình là các bước viết ra, máy làm lại đúng thứ tự. Sai một bước là sai cả việc.",
+		"en": "A program is steps written down. The machine repeats them in that order. One wrong step and the whole job is wrong."
+	},
+	"S2 Variables and Data Types": {
+		"vi": "Tên là nhãn dán lên một hộp. Đổi tên không đổi hộp. Số và chữ là hai kiểu, không cộng lẫn.",
+		"en": "A name is a label on a box. Renaming does not change the box. Numbers and text are two types. Do not add them together."
+	},
+	"S3 Operators": {
+		"vi": "Một dấu bằng là gán. Hai dấu bằng là so. Chia trong Python 3 ra số thực. Chia lấy nguyên là hai gạch chéo.",
+		"en": "One equals sign assigns. Two compare. Division in Python 3 returns a real number. Integer division is two slashes."
+	},
+	"c-3365bb99f989||S4 Practice": {
+		"vi": "Bài luyện của đúng phần đang đứng. Không có ý mới. Làm sau khi các buổi ý đã đọc.",
+		"en": "A drill for the part you are in. No new idea. Do it after the idea sessions are read."
+	},
+	"S1 Conditionals": {
+		"vi": "if là một cửa. else là cửa còn lại. Đừng viết cửa cho một trường hợp không bao giờ tới rồi tưởng máy sẽ đoán.",
+		"en": "if is a gate. else is the other gate. Do not write a gate for a case that never happens and expect the machine to guess."
+	},
+	"S2 Loops": {
+		"vi": "for đi hết danh sách rồi dừng. while dừng chỉ khi điều kiện đổi. Quên đổi là vòng chạy mãi.",
+		"en": "for walks the list and stops. while stops only when the condition changes. Forget to change it and the loop never ends."
+	},
+	"S3 Functions": {
+		"vi": "Hàm là một việc đặt tên, có đầu vào và một kết quả. Tên sinh ra trong hàm không sống bên ngoài.",
+		"en": "A function is a named job, with inputs and one result. A name born inside the function does not live outside."
+	},
+	"S1 Strings": {
+		"vi": "Chuỗi là chữ. Cắt được. Không sửa tại chỗ: cắt ra là một chuỗi mới. Đếm từ 0.",
+		"en": "A string is text. You can slice it. You do not edit it in place: a slice is a new string. Count from 0."
+	},
+	"S2 Lists": {
+		"vi": "Danh sách có thứ, sửa được, đếm từ 0. Phần tử đầu là vị trí 0, không phải 1.",
+		"en": "A list is ordered, editable, and counted from 0. The first item is position 0, not 1."
+	},
+	"S3 Dictionaries": {
+		"vi": "Từ điển đi từ khóa sang giá trị. Không có trung bình của các khóa. Khóa trùng thì giá trị sau đè giá trị trước.",
+		"en": "A dictionary goes from a key to a value. There is no mean of the keys. A repeated key keeps the later value."
+	},
+	"S4 Tuples": {
+		"vi": "Bộ là một cặp khóa lại. Không thêm phần tử. Hay dùng làm khóa của từ điển vì nó không đổi.",
+		"en": "A tuple is a locked pair. You do not add an item. It is often a dictionary key because it cannot change."
+	},
+	"S5 Sets": {
+		"vi": "Tập chỉ giữ một lần mỗi giá trị, và không hứa thứ tự. Hợp và giao là câu «ai ở cả hai».",
+		"en": "A set keeps each value once, and promises no order. Union and intersection are the sentence “who is in both”."
+	},
+	"S6 Practice": {
+		"vi": "Bài luyện cấu trúc dữ liệu. Không thêm kiểu chứa mới.",
+		"en": "A drill on data structures. No new kind of container."
+	},
+	"S1 NumPy Arrays": {
+		"vi": "Mảng NumPy một kiểu. Phép tính chạy trên cả cột, không cần tự viết vòng. Trộn kiểu thì mảng không còn là số.",
+		"en": "A NumPy array is one type. The operation runs on the whole column. You do not write the loop. Mix types and it is no longer a numeric array."
+	},
+	"S2 Pandas Series": {
+		"vi": "Series là một cột có nhãn dòng. Nhãn không phải một cột cho tới khi bạn kéo nó ra.",
+		"en": "A Series is one column with row labels. The label is not a column until you pull it out."
+	},
+	"S3 Pandas DataFrames": {
+		"vi": "DataFrame là bảng. loc là theo nhãn, iloc là theo vị trí. Lọc rồi gán dễ đụng bản sao, hãy nhìn cảnh báo.",
+		"en": "A DataFrame is a table. loc is by label, iloc is by position. Filter then assign can hit a copy. Read the warning."
+	},
+	"S4 Matplotlib and Seaborn": {
+		"vi": "Vẽ sau khi đã có câu hỏi. Thư viện không chọn hộ trục nào là thời gian, trục nào là kênh.",
+		"en": "Draw after you have a question. The library does not choose which axis is time and which is a channel."
+	},
+	"S5 Practice": {
+		"vi": "Bài luyện thư viện. Không có thư viện mới.",
+		"en": "A drill on the libraries. No new library."
+	},
+	"S1 Basics of Python": {
+		"vi": "Đề chấm phần nền. Học lại tên, cửa, vòng, hàm ở C1. Buổi này không giảng lại.",
+		"en": "A graded paper on the basics. Restudy names, gates, loops, and functions in C1. This session does not reteach them."
+	},
+	"S2 Python Data Science Libraries": {
+		"vi": "Đề chấm phần bảng. Học lại NumPy và Pandas ở C1. Buổi này không giảng lại.",
+		"en": "A graded paper on tables. Restudy NumPy and Pandas in C1. This session does not reteach them."
+	},
+	"S1 Module Overview [Opt]": {
+		"vi": "Mục lục toán nền. Optional. Bản đồ không thay cho véctơ hay đạo hàm.",
+		"en": "Contents of the math foundation. Optional. The map does not replace a vector or a derivative."
+	},
+	"S2 Vectors and Vector Spaces [Opt]": {
+		"vi": "Danh sách có thứ, cộng từng ô, nhân mọi ô, rồi tích vô hướng. Không gian là tập đóng với hai phép đó.",
+		"en": "An ordered list, add slot by slot, scale every slot, then the dot product. A space is a set closed under those two operations."
+	},
+	"S3 Linear Transformations and Matrices [Opt]": {
+		"vi": "Ma trận kéo một véctơ. Nhân là hàng gặp cột. Định thức 0 là bị ép dẹp. Hệ không có điểm chung thì đừng bịa nghiệm.",
+		"en": "A matrix pulls a vector. Multiplication is a row meeting a column. Determinant 0 means flattened. If the lines share no point, do not invent a solution."
+	},
+	"S4 Eigenvalues and Eigenvectors [Opt]": {
+		"vi": "Có hướng chỉ bị kéo, Av = λv. Hướng bị quay thì không phải vectơ riêng. Phân tích riêng cần đủ các hướng đó.",
+		"en": "Some directions are only stretched, Av = λv. A direction that gets turned is not an eigenvector. A decomposition needs enough of those directions."
+	},
+	"S5 Multivariable Calculus [Opt]": {
+		"vi": "Độ dốc tại một chỗ. Giữ các nút kia khi xoay một nút. Gradient của chi phí, không phải của form. Bậc hai phân đáy và yên ngựa. Tiếp tuyến chỉ đúng gần một điểm.",
+		"en": "The slope at one spot. Hold the other knobs when you turn one. The gradient of the cost, not of forms. The second derivative separates a bowl from a saddle. A tangent is only true near one point."
+	},
+	"S6 Introduction to Probability [Opt]": {
+		"vi": "Một phần của cả đám, cộng trừ chỗ chồng, nhân khi đi qua hai cửa. Hoán vị và tổ hợp bản dài nằm ở C2.",
+		"en": "A share of the whole, add and subtract the overlap, multiply when you pass two gates. The long version of permutations and combinations is in C2."
+	},
+	"S1 Introduction to Descriptive Statistics [Opt]": {
+		"vi": "Kiểu cột quyết định phép. Trung bình một cái tên là câu rỗng.",
+		"en": "The column type decides the operation. The mean of a name is an empty sentence."
+	},
+	"S2 Measures of Central Tendency [Opt]": {
+		"vi": "Trung bình bị đuôi kéo. Trung vị thì không. Mode là giá trị gặp nhiều nhất, chữ cũng có mode.",
+		"en": "The mean is pulled by the tail. The median is not. The mode is the value that shows up most. Text has a mode too."
+	},
+	"S3 Measures of Position [Opt]": {
+		"vi": "Sắp dãy rồi cắt. Q2 là trung vị. Phân vị 90 không phải 90% của trung bình. Phần mềm có thể cắt lệch một ô.",
+		"en": "Sort, then cut. Q2 is the median. The 90th percentile is not 90% of the mean. Software can disagree by a point."
+	},
+	"S4 Measures of Variability [Opt]": {
+		"vi": "Khoảng rộng nổ vì một lần gõ sai. MAD là trung bình trị tuyệt đối độ lệch. Mẫu thì phương sai chia n−1, rồi mới căn.",
+		"en": "The range explodes from one typo. MAD is the mean of absolute deviations. A sample variance divides by n−1, and only then do you take the root."
+	},
+	"S5 Measures of Association [Opt]": {
+		"vi": "Hiệp phương sai còn đơn vị. Tương quan bỏ đơn vị, vẫn không phải nguyên nhân. Ba điểm thì đừng brief.",
+		"en": "Covariance still has units. Correlation drops the units and is still not a cause. Three points is not a brief."
+	},
+	"S6 Practice Assessment [Opt]": {
+		"vi": "Bài luyện mô tả. Các số mẫu đã nằm ở các buổi trước. Không có thước mới.",
+		"en": "A descriptive drill. The sample numbers already live in the sessions above. No new ruler."
+	},
+	"S1 Concepts of Hypothesis Testing - I": {
+		"vi": "Vạch bác và câu nhàm viết trước khi mở số. Không vượt vạch thì chưa bác, không phải đã chứng minh bằng nhau.",
+		"en": "The reject line and the dull sentence are written before you open the numbers. Not past the line means you do not reject. It does not prove equality."
+	},
+	"S2 Concepts of Hypothesis Testing - II": {
+		"vi": "p là độ hiếm của dữ liệu nếu câu nhàm đúng. Không phải xác suất câu nhàm đúng. Báo động giả khác bỏ sót.",
+		"en": "p is how rare the data are if the dull sentence is true. Not the probability the dull sentence is true. A false alarm is not a miss."
+	},
+	"S3 Industry Demonstration I": {
+		"vi": "Cùng một luật kiểm định, đi trên một ví dụ: viết câu, chọn mẫu, tính, rồi mới quyết. Đổi câu sau khi thấy số là một cuộc khác.",
+		"en": "The same test rule, walked on one example: write the sentence, pick the sample, compute, then decide. Changing the sentence after the numbers is a different test."
+	},
+	"S4 Industry Demonstration II": {
+		"vi": "t khi chưa biết độ rộng nguồn. Hai trung bình, hai tỷ lệ, và một demo A/B. 2,0% và 2,6% có thể vẫn là nhiễu.",
+		"en": "t when you do not know the source width. Two means, two proportions, and an A/B demo. 2.0% and 2.6% can still be noise."
+	},
+	"S5 Statistics - Interview Practice": {
+		"vi": "Ôn phân phối, khoảng, kiểm định, A/B, chi-square, ANOVA. Không có định nghĩa mới. App không hỏi lại.",
+		"en": "Review of distributions, intervals, tests, A/B, chi-square, ANOVA. No new definition. The app does not quiz you."
+	},
+	"S1 Data Sourcing": {
+		"vi": "Bảng này của ai, ghi để làm gì, một dòng là gì. Hỏi trước khi vẽ.",
+		"en": "Whose table, what it was written for, what one row is. Ask before you chart."
+	},
+	"S2 Data Cleaning": {
+		"vi": "Kiểu, dòng trùng, ô trống không phải 0, điểm xa chưa phải sai, đơn vị phải cùng thước.",
+		"en": "Types, duplicate rows, a blank is not 0, a far point is not automatically wrong, and units need one ruler."
+	},
+	"S3 Univariate Analysis": {
+		"vi": "Một cột. Chữ thì đếm. Có bậc thì giữ bậc. Số thì nhìn trung bình và trung vị có cách nhau không.",
+		"en": "One column. Text is counted. An order stays in that order. For numbers, see whether the mean and the median have split."
+	},
+	"S4 Bivariate and Multivariate Analysis": {
+		"vi": "Hai cột đi cùng chưa phải nguyên nhân. Một số và một chữ là so nhóm. Gộp có thể nói ngược.",
+		"en": "Two columns moving together is not a cause. A number and a text column means compare groups. Pooling can reverse the sentence."
+	},
+	"S5 EDA: Interview Practice": {
+		"vi": "Ôn thiếu, tương quan, và biểu đồ. Không thêm bước làm sạch.",
+		"en": "Review of missing values, correlation, and charts. No new cleaning step."
+	},
+	"S1 Problem-Solving Framework [Opt]": {
+		"vi": "Optional. Hiểu đề, lên hướng, viết, thử, rút gọn. Năm bước, không phải một thuật toán.",
+		"en": "Optional. Understand the prompt, pick an approach, write, test, shorten. Five steps, not an algorithm."
+	},
+	"S2 Popular Python Problems [Opt]": {
+		"vi": "Optional. Two sum, ngoặc, số La Mã là luyện tay. App không giải từng đề.",
+		"en": "Optional. Two-sum, brackets, and Roman numerals are finger drills. The app does not solve each prompt."
+	},
+	"S1 Introduction to Probability": {
+		"vi": "Đếm cách xếp và cách chọn. Rồi một phần của cả đám, việc rời nhau, cộng và nhân.",
+		"en": "Count arrangements and choices. Then a share of the whole, events that overlap, addition and multiplication."
+	},
+	"S2 Basics of Probability": {
+		"vi": "Gán một số cho mỗi việc. Mỗi số một cột xác suất. Giá trị kỳ vọng là mức nếu làm rất nhiều lần.",
+		"en": "Assign a number to each outcome. Each number gets a column of probability. The expected value is the level if you repeat it many times."
+	},
+	"S3 Discrete Probability Distributions": {
+		"vi": "Đếm số lần trúng trong n lần, khi mỗi lần có cùng xác suất và độc lập. Cộng dồn là hỏi từ 0 đến một mốc.",
+		"en": "Count the hits in n tries, when each try has the same probability and is independent. The cumulative asks from 0 up to a mark."
+	},
+	"S4 Continuous Probability Distributions": {
+		"vi": "Hỏi một khoảng, đừng hỏi đúng một điểm. Hình chuông cần tâm và độ rộng. Z là bóp về cùng một thước.",
+		"en": "Ask for an interval, not a single point. A bell needs a center and a width. Z squeezes onto one ruler."
+	},
+	"S5 Central Limit Theorem": {
+		"vi": "Trung bình của nhiều mẫu kéo về hình chuông khi mẫu đủ lớn. Khoảng 95% là về cách làm, không phải về một khoảng vừa vẽ.",
+		"en": "The mean of many samples is pulled toward a bell when the sample is large enough. 95% is about the procedure, not about the one interval you just drew."
+	},
+	"S6 Applications of Sampling Methods [Opt]": {
+		"vi": "Optional. Mẫu lệch thì khay chỉ còn một màu. Đo một phần vì đo hết thì đắt: nghiên cứu, campaign, thử nhỏ, kiểm chất lượng.",
+		"en": "Optional. A biased draw leaves the tray one color. You measure a part because measuring everything is expensive: research, a campaign, a pilot, quality control."
+	},
+	"S7 Inferential Statistics - Additional Resources [Opt]": {
+		"vi": "Optional. Xác suất có điều kiện và Bayes: có tin mới thì nới cái mũ, đừng xóa. Cộng thêm ôn Z và lấy mẫu.",
+		"en": "Optional. Conditional probability and Bayes: new information updates the belief, it does not erase it. Plus a review of Z and sampling."
+	},
+	"S1 Database Design": {
+		"vi": "Kho 18 tháng không phải bảng đang ghi đơn. Giữa ngôi sao là từng sự kiện. Khóa chặn dòng không có cha.",
+		"en": "An 18-month warehouse is not the table taking orders. The middle of a star is each event. A key blocks a row with no parent."
+	},
+	"S2 Database Creation in the MySQL Workbench": {
+		"vi": "DDL đổi khung. DML đổi dòng. Workbench là chỗ bấm. Ý là đừng trộn hai việc đó.",
+		"en": "DDL changes the shape. DML changes rows. The workbench is where you click. The idea is not to mix those two jobs."
+	},
+	"S3 Querying in MySQL": {
+		"vi": "Máy không đọc từ chữ SELECT. WHERE lọc dòng trước khi cộng. HAVING lọc nhóm. Đếm dòng khác đếm ô có số.",
+		"en": "The engine does not start at the word SELECT. WHERE filters rows before the sum. HAVING filters groups. Counting rows is not counting cells that have a number."
+	},
+	"S4 Joins and Set Operations": {
+		"vi": "Khóa không duy nhất thì nối nhân dòng. Left giữ phía trái, trống không phải 0. UNION bỏ bản sao, UNION ALL giữ.",
+		"en": "A key that is not unique multiplies rows. A left join keeps the left side. A blank is not 0. UNION drops copies. UNION ALL keeps them."
+	},
+	"S5 SQL Practice Case Study": {
+		"vi": "Một case để dùng JOIN và nhóm. Không có cú pháp mới.",
+		"en": "A case to use joins and groups. No new syntax."
+	},
+	"c-cca6e1fa1c5f||S6 Graded Assessments": {
+		"vi": "Bài chấm SQL nền. Ý nằm ở thiết kế và câu hỏi phía trước.",
+		"en": "A graded paper on core SQL. The ideas sit in the design and query sessions above."
+	},
+	"S7 Practice Coding Questions": {
+		"vi": "Luyện câu trên một bộ phim mẫu. Không thêm mệnh đề mới.",
+		"en": "Drill queries on a sample film database. No new clause."
+	},
+	"S1 Window Functions": {
+		"vi": "Thêm hạng hoặc tổng chạy mà vẫn còn từng dòng. Hòa hạng có nhảy số. Mỗi nhóm đếm lại từ 1. Ba dòng không chắc là ba tuần.",
+		"en": "Add a rank or a running total and still keep every row. A tie can skip a number. Each group starts again at 1. Three rows are not automatically three weeks."
+	},
+	"S2 Case Statements, Stored Routines and Cursors": {
+		"vi": "CASE viết bậc trong câu. Hàm và thủ tục lưu trên máy chủ. Con trỏ đi từng dòng, thường chậm hơn một câu trên cả tập.",
+		"en": "CASE writes the bands in the query. Functions and procedures live on the server. A cursor walks row by row, and is usually slower than one sentence on the whole set."
+	},
+	"S3 Query Optimisation and Best Practices": {
+		"vi": "Chỉ mục là mục lục cho cột hay lọc. Nó làm mau một kiểu câu, không sửa câu sai. Hàm bọc lên cột có thể làm mục lục không được dùng.",
+		"en": "An index is a lookup list for a column you filter. It speeds one kind of sentence. It does not fix a wrong sentence. Wrapping the column in a function can make the index unused."
+	},
+	"S4 Problem-Solving Using SQL": {
+		"vi": "Một buổi ghép các ý: biết hỏi bảng nào, nối thế nào, cửa sổ lúc nào. Không có mệnh đề lạ.",
+		"en": "One session that stacks the ideas: which table to ask, how to join, when a window is the tool. No strange clause."
+	},
+	"S5 Practice Questions": {
+		"vi": "Luyện SQL nâng. Không thêm ý.",
+		"en": "An advanced SQL drill. No new idea."
+	},
+	"c-cca6e1fa1c5f||(graded assignment)": {
+		"vi": "Bài nộp. Đồ nghề đã có ở EDA hoặc SQL. App không làm hộ.",
+		"en": "A submission. The tools already live in EDA or SQL. The app does not do it for you."
+	},
+	"S1 Introduction to Simple Linear Regression": {
+		"vi": "Một đường cho một cột. Câu đoán là đường, không phải từng chấm.",
+		"en": "One line for one column. The guess is the line, not each dot."
+	},
+	"S2 Simple Linear Regression in Python": {
+		"vi": "Cùng đường đó trên máy. Đọc phần dư, không chỉ đọc hệ số in ra.",
+		"en": "The same line on a machine. Read the residuals, not only the printed coefficient."
+	},
+	"S3 Gradient Descent - Linear Regression": {
+		"vi": "Đi xuống thung lũng chi phí. Bước quá dài thì vọt qua đáy. Không đi xuống form.",
+		"en": "Walk down the cost valley. Too long a step jumps over the bottom. Do not walk down forms."
+	},
+	"S4 Multiple Linear Regression": {
+		"vi": "Nhiều cột. Mỗi hệ số giữ các cột kia đứng yên. Cột đi cùng nhau thì hệ số không ổn. Thêm cột không miễn phí.",
+		"en": "Many columns. Each coefficient holds the others still. Columns that move together make the coefficient unstable. An extra column is not free."
+	},
+	"S5 Multiple Linear Regression in Python": {
+		"vi": "Cùng nhiều cột trên máy. Hệ số in ra không phải thứ tự nguyên nhân.",
+		"en": "The same many columns on a machine. A printed coefficient is not a causal ranking."
+	},
+	"S6 Industry Relevance of Linear Regression": {
+		"vi": "Mang đường ra ngoài vùng đã thấy là giả định, không phải dự báo. Một hệ số không phải nút ngân sách nếu các cột không giữ được.",
+		"en": "Carrying the line outside what you have seen is a what-if, not a forecast. A coefficient is not a budget lever if the other columns cannot be held."
+	},
+	"S1 Introduction to the Specialization Tracks": {
+		"vi": "Có nhiều hướng nghề. Sổ này đi BA. Buổi này không dạy mô hình.",
+		"en": "There are several job tracks. This notebook takes BA. This session does not teach a model."
+	},
+	"S2 The Business Intelligence/Data Analytics Track [Opt]": {
+		"vi": "Optional. Hướng BI. Không phải bài của track BA.",
+		"en": "Optional. The BI direction. Not a lesson of the BA track."
+	},
+	"S3 The Business Analytics Track [Opt]": {
+		"vi": "Optional. Đúng hướng của sổ này, ở mức giới thiệu. Ý nằm ở các phần học, không nằm ở lời chào.",
+		"en": "Optional. This notebook’s direction, as an introduction. The ideas live in the teaching parts, not in the welcome."
+	},
+	"S4 The Data Engineering Track [Opt]": {
+		"vi": "Optional. Hướng kỹ thuật dữ liệu. Không học thay cho hồi quy.",
+		"en": "Optional. The data-engineering direction. Not a substitute for regression."
+	},
+	"S5 The Natural Language Processing Track [Opt]": {
+		"vi": "Optional. Hướng chữ. Phần NLP ngắn của C3 mới là ý trong sổ này.",
+		"en": "Optional. The text direction. The short NLP part of C3 is the idea in this notebook."
+	},
+	"S6 The Deep Learning Track [Opt]": {
+		"vi": "Optional. Hướng mạng sâu. Ngoài phạm vi các ý đang học.",
+		"en": "Optional. The deep-learning direction. Outside the ideas being studied here."
+	},
+	"S7 FAQ's": {
+		"vi": "Câu hay hỏi về cách học. Không có công thức.",
+		"en": "Common questions about how to study. No formula."
+	},
+	"S1 Introduction to Linear Regression Assignment": {
+		"vi": "Cửa vào bài nộp thời gian giao. Không có đường thẳng mới.",
+		"en": "The door into the delivery-time submission. No new straight line."
+	},
+	"S2 Linear Regression - Delivery Time Prediction": {
+		"vi": "Một đề đoán thời gian giao. Dùng đường, phần dư, và thước của brief.",
+		"en": "One brief to guess delivery time. Use the line, the residuals, and the brief’s ruler."
+	},
+	"S1 Univariate Logistic Regression": {
+		"vi": "Một cột, một việc có hoặc không. Đường chữ S nằm giữa 0 và 1. Hệ số nhân odds.",
+		"en": "One column, a yes or no. The S-curve stays between 0 and 1. The coefficient multiplies odds."
+	},
+	"S2 Multivariate Logistic Regression - Model Building": {
+		"vi": "Nhiều cột vẫn một đường cong. Chọn cột không miễn phí, giống hồi quy nhiều biến.",
+		"en": "Many columns are still one curve. Choosing a column is not free, same as multiple regression."
+	},
+	"S3 Multivariate Logistic Regression - Model Evaluation": {
+		"vi": "Bốn ô của ma trận nhầm. Quét ngưỡng. Mỗi nhãn một đường ROC. Accuracy không phải brief khi lớp hiếm.",
+		"en": "The four cells of a confusion matrix. Sweep the threshold. One ROC curve per label. Accuracy is not the brief when the class is rare."
+	},
+	"S4 Logistic Regression - Industry Applications - Part I": {
+		"vi": "Độ nhạy là bắt được người rời. Độ đặc hiệu là để yên người ở. Không phải accuracy.",
+		"en": "Sensitivity is the leavers you caught. Specificity is the stayers you left alone. Not accuracy."
+	},
+	"S5 Logistic Regression: Industry Applications - Part II": {
+		"vi": "Học trên ai thì số chỉ nói về nhóm đó. Tháng 3 không cấp phép cho tháng 12.",
+		"en": "Whoever you fit on, the number talks about that group only. March does not license December."
+	},
+	"S6 Multiclassification using Logistic Regression": {
+		"vi": "Nhiều nhãn thì mỗi nhãn một đường. Đừng nhét ba kênh vào một đường có-không.",
+		"en": "Several labels means one curve per label. Do not stuff three channels into one yes-no curve."
+	},
+	"S1 Subjective Questions [Opt]": {
+		"vi": "Optional. Câu hỏi ôn logistic. Không có định nghĩa mới.",
+		"en": "Optional. Logistic review questions. No new definition."
+	},
+	"S2 Practice Questions [Opt]": {
+		"vi": "Optional. Luyện logistic. Ý nằm ở các buổi phía trước.",
+		"en": "Optional. A logistic drill. The ideas sit in the sessions above."
+	},
+	"S1 Introduction to Decision Trees": {
+		"vi": "Một câu đúng sai mỗi lần. Không phải một độ dốc.",
+		"en": "One yes-or-no question at a time. Not a slope."
+	},
+	"S2 Algorithms for Decision Tree Construction": {
+		"vi": "Chọn câu hỏi nào làm hai phía sạch hơn. Gini và entropy là hai thước độ lẫn, không phải hai sự thật.",
+		"en": "Pick the question that makes the two sides cleaner. Gini and entropy are two rulers for the mix, not two truths."
+	},
+	"S3 Hyperparameter Tuning in Decision Trees": {
+		"vi": "Độ sâu và số dòng tối thiểu là nút bạn đặt. Cây sâu học thuộc. Không phải càng sâu càng đúng.",
+		"en": "Depth and a minimum row count are knobs you set. A deep tree memorises. Deeper is not truer."
+	},
+	"S1 Introduction to Clustering": {
+		"vi": "Chưa có cột câu trả lời thì đừng hỏi accuracy. Cụm là một cách nhóm, không tự thành phân khúc marketing.",
+		"en": "No answer column means do not ask for accuracy. A cluster is a grouping. It does not automatically become a marketing segment."
+	},
+	"S2 K Means Clustering": {
+		"vi": "Gán điểm vào tâm gần nhất, rồi dời tâm. Khởi động xấu thì hai tâm chui một đám. Elbow không chứng minh k.",
+		"en": "Assign each point to the nearest center, then move the center. A bad start puts two centers in one clump. An elbow does not prove k."
+	},
+	"S3 Executing K Means in Python": {
+		"vi": "Cùng vòng gán và dời tâm trên máy. Chạy vài lần. Đừng tin một lần.",
+		"en": "The same assign-and-move loop on a machine. Run it a few times. Do not trust one start."
+	},
+	"S4 Hierarchical Clustering": {
+		"vi": "Dính chỗ gần nhất thì dễ thành một sợi. Dính chỗ xa nhất thì cụm chặt hơn. Không cái nào là sự thật.",
+		"en": "Gluing the nearest pair can chain into a snake. Gluing the farthest pair makes tighter clumps. Neither is the truth."
+	},
+	"S5 Other Forms of Clustering": {
+		"vi": "DBSCAN không ép điểm thưa. GMM cho thuộc một phần. K-modes khi cột là tên, vì tên không có trung bình.",
+		"en": "DBSCAN does not force sparse points in. A GMM allows partial membership. K-modes is for a name column, because a name has no mean."
+	},
+	"S6 Clustering: Interview Questions": {
+		"vi": "Ôn cụm. Không có thuật toán mới.",
+		"en": "A clustering review. No new algorithm."
+	},
+	"S1 Introduction to NLP": {
+		"vi": "Trang gốc chỉ có tên buổi. Ý bắt đầu ở buổi cắt chữ. Chữ chưa thành số thì mô hình chưa ăn được.",
+		"en": "The source page only titles this session. The ideas start when text is cut into pieces. Until text is a number, a model cannot eat it."
+	},
+	"S2 Basic Lexical Processing": {
+		"vi": "Cắt thành mảnh, bỏ từ đi với mọi bài, đếm túi từ. Mất thứ tự câu.",
+		"en": "Cut into pieces, drop words that go with every text, count a bag of words. The order of the sentence is gone."
+	},
+	"S3 Advanced Lexical Processing": {
+		"vi": "TF-IDF hạ từ có khắp nơi. Sửa chính tả đếm số lần sửa. Stem và lemma vứt hình thái. PMI không phải ngữ pháp.",
+		"en": "TF-IDF lowers words that are everywhere. A typo is a count of edits. Stems and lemmas throw the form away. PMI is not grammar."
+	},
+	"S1 Introduction to Business Problem Solving": {
+		"vi": "Gọi tên quyết định trước mô hình. Thước nào, mốc nào, kỳ nào.",
+		"en": "Name the decision before the model. Which ruler, which current mark, which period."
+	},
+	"S2 Case Study Demonstration": {
+		"vi": "Đi một vòng quyết định đó trên một case. Điểm mô hình không thay thước.",
+		"en": "Walk that decision once on a case. A model score does not replace the ruler."
+	},
+	"S3 Practice Questions": {
+		"vi": "Luyện đặt việc. Không có khung mới.",
+		"en": "A drill in framing the job. No new frame."
+	},
+	"S1 Version Control System": {
+		"vi": "Mỗi commit là một ảnh kèm một câu. Nhánh thử đi riêng cho tới khi bạn nhập lại.",
+		"en": "Each commit is a snapshot plus a sentence. A try-line stays separate until you merge."
+	},
+	"S2 Contributing to open source libraries [Opt]": {
+		"vi": "Optional. Các bước góp code cho người khác. Là chỗ bấm, để dạng bài cũ.",
+		"en": "Optional. The steps for contributing code to someone else. Clicks, left as an old lesson."
+	},
+	"S3 Portfolio Website Creation [Opt]": {
+		"vi": "Optional. Làm một trang portfolio. Không phải một lệnh Git mới.",
+		"en": "Optional. Building a portfolio page. Not a new Git command."
+	},
+	"c-96d004f30def||S1 Introduction to Assignment": {
+		"vi": "Cửa vào bài đoán nghỉ việc. Không có đường chữ S mới.",
+		"en": "The door into the retention paper. No new S-curve."
+	},
+	"S2 Assignment - Predicting Employee Retention": {
+		"vi": "Một đề: ai rời. Dùng logistic, ngưỡng, và giá của một lần bỏ sót.",
+		"en": "One brief: who leaves. Use logistic, a threshold, and the cost of a miss."
+	},
+	"S1 Introduction": {
+		"vi": "Buổi mở của mindmap. Bản đồ, không phải bài mới.",
+		"en": "The opening of the mindmaps. A map, not a new lesson."
+	},
+	"S2 Introduction to Python Programming": {
+		"vi": "Sơ đồ Python nền. Học ở C1.",
+		"en": "A map of core Python. Study it in C1."
+	},
+	"S3 Python for Data Science": {
+		"vi": "Sơ đồ thư viện bảng. Học ở C1.",
+		"en": "A map of the table libraries. Study it in C1."
+	},
+	"S4 Data Visualisation in Python": {
+		"vi": "Sơ đồ vẽ bằng Python. Câu hỏi vẫn phải có trước hình.",
+		"en": "A map of drawing in Python. The question still has to exist before the picture."
+	},
+	"S5 Exploratory Data Analysis": {
+		"vi": "Sơ đồ EDA. Học ở C2.",
+		"en": "A map of EDA. Study it in C2."
+	},
+	"S6 Inferential Statistics": {
+		"vi": "Sơ đồ suy diễn. Học ở C2.",
+		"en": "A map of inference. Study it in C2."
+	},
+	"S7 Linear Regression": {
+		"vi": "Sơ đồ đường thẳng. Học ở phần hồi quy.",
+		"en": "A map of the straight line. Study it in the regression part."
+	},
+	"S8 Logistic Regression": {
+		"vi": "Sơ đồ đường chữ S. Học ở phần logistic.",
+		"en": "A map of the S-curve. Study it in the logistic part."
+	},
+	"S9 SQL": {
+		"vi": "Sơ đồ SQL nền. Học ở C2.",
+		"en": "A map of core SQL. Study it in C2."
+	},
+	"S10 Advanced SQL": {
+		"vi": "Sơ đồ cửa sổ và CASE. Học ở SQL nâng.",
+		"en": "A map of windows and CASE. Study it in advanced SQL."
+	},
+	"S11 Classification Using Decision Trees": {
+		"vi": "Sơ đồ cây. Học ở phần cây.",
+		"en": "A map of trees. Study it in the tree part."
+	},
+	"S12 Unsupervised Learning: Clustering": {
+		"vi": "Sơ đồ cụm. Học ở phần cụm.",
+		"en": "A map of clusters. Study it in the clustering part."
+	},
+	"S13 Basics of NLP": {
+		"vi": "Sơ đồ chữ. Học ở phần NLP.",
+		"en": "A map of text. Study it in the NLP part."
+	},
+	"S1 Ensembles and Random Forests": {
+		"vi": "Nhiều cây bỏ phiếu. Mỗi cây một túi và một nhóm cột ngẫu nhiên. Không cây nào là sự thật.",
+		"en": "Many trees vote. Each tree gets a bag and a random handful of columns. No tree is the truth."
+	},
+	"S2 Class Imbalance": {
+		"vi": "Gọi không ai rời thì đúng phần đông. Đừng nhân bản trước khi chia tập. Đổi ngưỡng thường là nút nên thử trước.",
+		"en": "Call nobody a leaver and you match the majority. Do not duplicate rows before the split. Moving the threshold is usually the lever to try first."
+	},
+	"S3 Tree Models: Additional Resources": {
+		"vi": "Ôn rừng và lớp hiếm. Không có họ mô hình mới.",
+		"en": "A review of forests and rare classes. No new family of models."
+	},
+	"S1 Principles of Model Selection": {
+		"vi": "Lệch vì họ mô hình quá thẳng. Nhảy vì khớp từng nhiễu. Ridge co, Lasso có thể về 0. RMSE phạt cú trượt lớn.",
+		"en": "Bias: the family is too straight. Variance: it fits each noise. Ridge shrinks. Lasso can hit 0. RMSE punishes a large miss."
+	},
+	"S2 Feature Engineering": {
+		"vi": "Log của 0 không có. Một mốc thời gian chỉ nói muộn hơn. Biến giả thừa cột nếu mô hình có hệ số chặn.",
+		"en": "Log of 0 does not exist. A raw timestamp mostly says later. A dummy column is one too many if the model has an intercept."
+	},
+	"S3 Model Selection - Additional Resources": {
+		"vi": "Ôn lệch, nhảy, và cách viết cột. Không có thước mới.",
+		"en": "A review of bias, variance, and how a column is written. No new ruler."
+	},
+	"S1 Model Building and Evaluation": {
+		"vi": "Giấu một miếng, học phần còn, lấy trung bình. Lưới chỉ thử ô bạn đã viết. Đừng dùng cách xáo này cho tuần.",
+		"en": "Hide one slice, learn on the rest, average. A grid only tries cells you wrote. Do not use this shuffle for weeks."
+	},
+	"S1 Introduction to Time Series": {
+		"vi": "Giữ thứ tự tuần. Tuần này giống tuần trước thì các dòng không độc lập. Xáo là mất cái bạn định dự báo.",
+		"en": "Keep the weeks in order. If this week looks like last week, the rows are not independent. Shuffle and you lose the thing you meant to forecast."
+	},
+	"S2 Smoothing Techniques": {
+		"vi": "Naive, trung bình trượt, san bằng mũ, Holt, Holt-Winters. MAPE gãy khi số thật là 0. Chấm bằng cách cuốn tới.",
+		"en": "Naive, moving average, exponential smoothing, Holt, Holt-Winters. MAPE breaks when the actual is 0. Score by rolling forward."
+	},
+	"c-a0c17afb8849||S3 Graded Questions": {
+		"vi": "Bài chấm chuỗi thời gian. Ý nằm ở buổi trước đó. App không hỏi lại.",
+		"en": "A graded time-series paper. The ideas sit in the session before it. The app does not quiz you."
+	},
+	"S1 Introduction to AR Models": {
+		"vi": "Dừng, ACF, rồi AR đoán từ các tuần trước. PACF là phần còn sau khi đã tính các bước gần.",
+		"en": "Stationarity, ACF, then AR guesses from earlier weeks. PACF is what is left after the nearer steps are accounted for."
+	},
+	"S2 Building AR Models": {
+		"vi": "Lấy hiệu cho tới khi chuỗi chịu đứng, rồi AR và MA. MA ở đây là cú sốc cũ, không phải trung bình trượt. SARIMAX cần biết cột tuần tới.",
+		"en": "Difference until the series can sit still, then AR and MA. The MA here is an old shock, not a moving average. SARIMAX needs next week’s column known."
+	},
+	"c-a0c17afb8849||S1 Introduction to Assignment": {
+		"vi": "Cửa vào case gian lận. Không có mô hình mới.",
+		"en": "The door into the fraud case. No new model."
+	},
+	"S2 Assignment Details - Fraudulent Claim Detection": {
+		"vi": "Đề lớp hiếm. Accuracy dễ đẹp vô nghĩa. Dùng ý của rừng cây và cách chấm.",
+		"en": "A rare-class brief. Accuracy is easy to make pretty and meaningless. Use the forest ideas and the way you score."
+	},
+	"S1 Introduction to Tableau": {
+		"vi": "Vẽ để khám phá khác vẽ để giải thích. Tableau là một chỗ vẽ, không phải một sự thật khác Excel.",
+		"en": "Drawing to explore is not drawing to explain. Tableau is one place to draw, not a different truth from Excel."
+	},
+	"S2 Visualising and Analysing Data with Tableau – I": {
+		"vi": "Cột so độ lớn và có số 0. Đường là thời gian. Hộp là nửa giữa. Bản đồ khi câu hỏi có chỗ. Tròn là một tổng ít miếng. Dashboard là một quyết định.",
+		"en": "Bars compare size and include 0. A line is time. A box is the middle half. A map only if the question has a place. A pie is one whole with few slices. A dashboard is one decision."
+	},
+	"S3 Visualising and Analysing Data With Tableau – II": {
+		"vi": "Join vẫn nhân dòng nếu khóa không duy nhất. Trường tính là cột của trang. Hai trục dễ nói dối nếu hai thước khác nhau. Story là thứ tự các trang, mỗi trang một câu.",
+		"en": "A join still multiplies rows if the key is not unique. A calculated field is a column of the page. Two axes can lie if the rulers differ. A story is an order of pages, one sentence each."
+	},
+	"S4 Practice Questions": {
+		"vi": "Luyện vẽ, gồm một bài batting. Không có loại biểu đồ mới.",
+		"en": "A drawing drill, including a batting paper. No new chart type."
+	},
+	"c-7ffadedb3906||Advanced Excel||S1 Module Overview": {
+		"vi": "Mục lục Excel nâng: hàm, tra cứu, what-if, macro. Mindmap không phải hàm.",
+		"en": "Contents of advanced Excel: functions, lookup, what-if, macros. The mindmap is not a function."
+	},
+	"S2 Excel functions": {
+		"vi": "Hàm chữ để làm sạch. Hàm đếm phải đúng loại ô. IF lồng sâu thì đổi thành bảng tra. Định dạng có điều kiện vẫn chỉ là cờ.",
+		"en": "Text functions clean. Count functions must count the right kind of cell. A deeply nested IF should become a lookup table. Conditional formatting is still only a flag."
+	},
+	"S3 Data Analysis": {
+		"vi": "VLOOKUP không nhìn sang trái. INDEX và MATCH thì nhìn được. What-if đổi đầu vào của kế hoạch, không đổi quá khứ. Pivot vẫn cộng theo cái bạn kéo.",
+		"en": "VLOOKUP cannot look left. INDEX and MATCH can. What-if changes a plan’s inputs. It does not change the past. A pivot still adds up whatever you drag."
+	},
+	"S4 Advanced Tools and Visualisations": {
+		"vi": "Macro lặp cú bấm, không kiểm tra cú bấm đúng. Biểu đồ nâng vẫn phải có một câu. Phần cuối có bài chấm.",
+		"en": "A macro repeats clicks. It does not check the click was right. A fancier chart still needs one sentence. The end includes a grade."
+	},
+	"c-7ffadedb3906||Data Analysis and Visualisation in PowerBI||S1 Module Overview": {
+		"vi": "Mục lục Power BI: mô hình, DAX, trang, rồi đăng và làm mới. Cài phần mềm không phải ý.",
+		"en": "Contents of Power BI: the model, DAX, pages, then publish and refresh. Installing the software is not the idea."
+	},
+	"S2 Getting Started With Power BI": {
+		"vi": "Power BI là mô hình cộng trang, không phải một file Excel được tô màu. So với Tableau và Excel ở việc đó, không ở logo.",
+		"en": "Power BI is a model plus pages, not a coloured Excel file. Compare it with Tableau and Excel on that job, not on the logo."
+	},
+	"S3 Data Acquisition and Transformation in Power BI": {
+		"vi": "Power Query chạy lại mỗi lần làm mới. Cột tính lưu theo dòng. Measure tính trong bộ lọc đang bật. Quan hệ sai hạt thì số bị nhân.",
+		"en": "Power Query runs again on every refresh. A calculated column is stored per row. A measure is computed in the filters that are on. A relationship at the wrong grain multiplies the numbers."
+	},
+	"S4 Visualising and Analysing Data Using Power BI": {
+		"vi": "Một trang một câu. Visual AI đoán một hình, bạn vẫn chịu câu. Bookmark là một trạng thái trang đã lưu, không phải một phân tích mới.",
+		"en": "One page, one sentence. An AI visual guesses a picture. You still own the sentence. A bookmark is a saved page state, not a new analysis."
+	},
+	"S5 Publishing Reports and Scheduling Data Refresh": {
+		"vi": "Trang đã đăng là số của lần làm mới cuối. Nguồn không tới được thì lịch không cứu. RLS giấu dòng theo người, khách không tắt được như một slicer.",
+		"en": "A published page is the numbers of the last refresh. If the source cannot be reached, the schedule does not save you. Row-level security hides rows by person. A guest cannot turn it off like a slicer."
+	},
+	"S1 Interviewing Frameworks - I": {
+		"vi": "5W và 5 Why. Dừng ở nguyên nhân làm được, không dừng ở một người để khiển trách.",
+		"en": "5W and 5 Whys. Stop at a cause you can act on, not at a person to blame."
+	},
+	"S2 Interviewing Frameworks - II": {
+		"vi": "SPIN: tình huống, vấn đề, hệ quả, rồi cái họ cần. Là câu hỏi, không phải bài chào hàng.",
+		"en": "SPIN: situation, problem, implication, then what they need. Questions, not a pitch."
+	},
+	"S3 Graded Questions - I": {
+		"vi": "Bài chấm khung phỏng vấn. Không có khung mới.",
+		"en": "A graded paper on interview frames. No new frame."
+	},
+	"S4 Business Model Canvas and Issue Tree Framework": {
+		"vi": "Canvas là chín ô của một việc kinh doanh. Cây vấn đề chia hết và không chồng. Một ý nằm ở hai nhánh là cây hỏng.",
+		"en": "The canvas is nine boxes of a business. An issue tree splits everything and overlaps nothing. One idea on two branches means the tree is broken."
+	},
+	"S5 Some Specialised Frameworks for Business Problems": {
+		"vi": "7P là checklist dịch vụ, không phải bảng xếp hạng. 5C là năm chỗ nhìn: mình, khách, đối thủ, đối tác, bối cảnh.",
+		"en": "7Ps is a service checklist, not a ranking. 5Cs are five places to look: you, customers, competitors, partners, context."
+	},
+	"S6 Graded Questions - II": {
+		"vi": "Bài chấm các khung. Ý nằm ở canvas, cây, 7P, 5C.",
+		"en": "A graded paper on the frames. The ideas sit in the canvas, the tree, 7Ps, and 5Cs."
+	},
+	"S1 Introduction to Data Storytelling": {
+		"vi": "Biểu đồ không phải câu chuyện. Câu chuyện có bối cảnh, xung đột, và một hướng. Khó vì người nghe không sống trong file của bạn.",
+		"en": "A chart is not a story. A story has a context, a conflict, and a direction. It is hard because the listener does not live in your file."
+	},
+	"S2 Components of a Good Story with Data - I": {
+		"vi": "Viết mục tiêu và người nghe trước. Insight thường là xu hướng, khác biệt, tỷ trọng, điểm lạ, hoặc đi cùng. Tóm dòng là để ra câu, không phải để có thêm một cột.",
+		"en": "Write the objective and the audience first. An insight is usually a trend, a difference, a share, a strange point, or moving together. Summarising rows is how you get a sentence, not how you get an extra column."
+	},
+	"S3 Components of a Good Story with Data - II": {
+		"vi": "Kim tự tháp: câu trả lời lên đầu, rồi lý do. Mỗi hình một thông điệp. Tiêu đề là một câu, không phải tên biểu đồ.",
+		"en": "The pyramid: the answer first, then the reasons. One message per picture. The title is a sentence, not the chart’s name."
+	},
+	"S4 Golden Rules for an Effective Data Storytelling": {
+		"vi": "Storyboard trước khi trang trí. Case vay nhà là đi hết các bước, các số là ví dụ minh họa, không phải hồ sơ một ngân hàng.",
+		"en": "Storyboard before you decorate. The home-loan case walks the steps. The numbers are an illustration, not a real bank’s file."
+	},
+	"S1 Introduction to the Assignment": {
+		"vi": "Cửa vào bài trực quan. Rubric là cách chấm, không phải một loại biểu đồ.",
+		"en": "The door into the visualisation paper. The rubric is how they grade, not a chart type."
+	},
+	"S2 Visualisation & Analysis on Namma Yatri Data": {
+		"vi": "Một đề trên một bộ dữ liệu. Dùng các ý Tableau và kể chuyện. App không làm hộ.",
+		"en": "One brief on one dataset. Use the Tableau and storytelling ideas. The app does not do it for you."
+	},
+	"S1 Introduction to OR": {
+		"vi": "Vận trù viết một quyết định thành mục tiêu, biến, và ràng buộc. Không phải lịch sử ngành là phần phải nhớ.",
+		"en": "Operations research writes a decision as an objective, variables, and constraints. The history of the field is not the part to remember."
+	},
+	"S2 Concepts of Optimisation": {
+		"vi": "Mục tiêu khác biến được xoay. Ràng buộc là giới không được phá. Độ nhạy chỉ đúng khi góc đang chọn chưa đổi.",
+		"en": "The objective is not the knob you turn. A constraint is a limit you may not break. Sensitivity holds only while the chosen corner has not changed."
+	},
+	"S3 Optimisation Using Excel - I": {
+		"vi": "Solver tìm một góc của vùng khả thi trên bài tuyến tính. Vùng rỗng thì không có kế hoạch. Ví dụ minh họa là chia ngân sách kênh.",
+		"en": "Solver finds a corner of the feasible region on a linear problem. An empty region means there is no plan. The illustration is splitting a channel budget."
+	},
+	"S4 Optimisation Using Excel - II": {
+		"vi": "Nới một ràng buộc rồi xem mục tiêu đổi bao nhiêu. Thêm một đường bay nối là thêm biến và thêm ràng buộc, không phải sửa tay cho đẹp.",
+		"en": "Loosen one constraint and see how the objective moves. Adding a connecting flight adds variables and constraints. It is not a manual touch-up."
+	},
+	"S1 Landscape of Generative AI": {
+		"vi": "Máy sinh đoán tiếp, không tra sổ của agency. Có tầng app, mô hình, dữ liệu, và cách chấm.",
+		"en": "A generative model guesses what comes next. It does not look up the agency’s books. There is an app layer, a model, data, and a way to score."
+	},
+	"S2 Journey into Generative AI": {
+		"vi": "Học máy đoán một nhãn. Học sâu là một họ mô hình. GenAI đoán chuỗi tiếp theo. Đừng gọi cả ba là một.",
+		"en": "Machine learning guesses a label. Deep learning is a family of models. GenAI guesses the next span. Do not call all three the same thing."
+	},
+	"S3 Impact and Use Cases of Generative AI": {
+		"vi": "Các ví dụ ngành là chuyện có thể làm, không phải số liệu để brief nếu không có nguồn. Trong sổ này mọi con số dạng đó là ví dụ minh họa.",
+		"en": "Industry examples are things that can be done, not figures for a brief unless there is a source. In this notebook any such number is an illustration."
+	},
+	"S4 Practice Questions (Optional)": {
+		"vi": "Optional. Luyện chữ về GenAI. Không có khái niệm mới.",
+		"en": "Optional. A drill on the GenAI words. No new concept."
+	},
+	"S5 Working With OpenAI APIs": {
+		"vi": "Một lượt gọi là một danh sách lời thoại. Temperature làm phân phối phẳng hơn, không làm đúng hơn. Tiền là token vào cộng token ra.",
+		"en": "One call is a list of messages. Temperature flattens the distribution. It does not make the answer truer. The bill is tokens in plus tokens out."
+	},
+	"S6 Prompt Engineering": {
+		"vi": "Prompt là việc, ngữ cảnh, định dạng. Few-shot là vài ví dụ, ví dụ xấu thì máy học luôn cái xấu. Xin các bước không phải một chứng minh.",
+		"en": "A prompt is the task, the context, and the format. Few-shot is a few examples. A bad example gets learned too. Asking for steps is not a proof."
+	},
+	"S7 Graded Assessments": {
+		"vi": "Bài chấm prompt và API. Ý nằm ở hai buổi trước.",
+		"en": "A graded paper on prompts and the API. The ideas sit in the two sessions above."
+	},
+	"S1 Designing LLM-Based Systems": {
+		"vi": "Vài đường suy luận rồi lấy số đông. Nghĩ, gọi công cụ, nhìn, rồi mới nói. Sửa trọng số khác đưa tài liệu vào. Phải chặn máy bịa giá và luật.",
+		"en": "Several lines of reasoning, then a majority. Think, call a tool, look, then speak. Changing weights is not the same as handing in a document. Stop the machine inventing a price and a rule."
+	},
+	"S2 Introduction to ShopAssist AI": {
+		"vi": "Chặng một: bot nói theo prompt và ý định. Chưa có catalog thật thì chưa được bịa SKU.",
+		"en": "Stage one: the bot talks from the prompt and the intent. Without the real catalog it must not invent a SKU."
+	},
+	"S3 Introduction to ShopAssist AI - Stage 2": {
+		"vi": "Chặng hai: gọi công cụ tìm hàng, rồi nói từ cái công cụ trả về. Không nói từ trí nhớ.",
+		"en": "Stage two: call a tool to search products, then speak from what the tool returned. Not from memory."
+	},
+	"S4 Introduction to ShopAssist AI - Stage 3": {
+		"vi": "Chặng ba: chấm các ca. Câu hay trong một demo không phải là hệ đã xong.",
+		"en": "Stage three: score the cases. A nice sentence in one demo does not mean the system is done."
+	},
+	"S5 Practice Assessments": {
+		"vi": "Luyện thiết kế bot. Không có chặng mới.",
+		"en": "A drill on the bot design. No new stage."
+	},
+	"c-7e0b1f4942db||S6 Graded Assessments": {
+		"vi": "Bài chấm chatbot. Ý nằm ở ba chặng.",
+		"en": "A graded paper on the chatbot. The ideas sit in the three stages."
+	},
+	"S1 Basics of Retrieval Augmented Generation": {
+		"vi": "Mô hình không nhớ PDF. Tìm đoạn gần câu hỏi rồi mới viết. Gần không có nghĩa là đúng điều khoản.",
+		"en": "The model does not remember the PDF. Find a passage near the question, then write. Near does not mean the right clause."
+	},
+	"S2 Building RAG applications using LlamaIndex": {
+		"vi": "Connector, chỉ mục, câu hỏi. Chỉ mục không tự biết file đã sửa nếu bạn không nạp lại.",
+		"en": "A connector, an index, a question. The index does not notice a changed file unless you load it again."
+	},
+	"c-7e0b1f4942db||S3 Graded Questions": {
+		"vi": "Bài chấm RAG. Đường ống đã có ở buổi đầu của phần.",
+		"en": "A graded RAG paper. The pipe already exists in the first session of the part."
+	},
+	"S1 Semantic Search Demonstration": {
+		"vi": "Demo tìm theo nghĩa, không theo đúng từ khóa. Vẫn có thể trả một đoạn gần mà sai việc.",
+		"en": "A demo of search by meaning, not by exact keyword. It can still return a near passage about the wrong job."
+	},
+	"S2 Vector Stores Demonstration": {
+		"vi": "Một collection là một xô vector. Không cập nhật thì bạn đang tìm tháng trước.",
+		"en": "A collection is a bucket of vectors. Skip the update and you are searching last month."
+	},
+	"S3 RAG Demonstration": {
+		"vi": "Cắt, nhúng, tìm, xếp lại, rồi viết. Xếp lại vì đoạn gần nhất chưa chắc là đoạn nên trích.",
+		"en": "Chunk, embed, search, re-rank, then write. Re-rank because the nearest passage is not always the one to quote."
+	},
+	"S1 Basics of image generation": {
+		"vi": "Ảnh là lưới số. VAE nén và nhòe. GAN có mạng giả và mạng chấm. Diffusion thêm nhiễu rồi gỡ. Chữ chỉ lái, không bảo chứng.",
+		"en": "An image is a grid of numbers. A VAE compresses and blurs. A GAN has a faker and a judge. Diffusion adds noise then removes it. Text only steers. It does not certify."
+	},
+	"S2 PixxelCraftAI": {
+		"vi": "Một ứng dụng đi các bước sinh ảnh, cộng cách viết prompt: chủ thể, ánh sáng, khung. Tính từ thừa không thêm sự thật.",
+		"en": "One app walking the image steps, plus how a prompt is written: subject, light, frame. Extra adjectives do not add a fact."
+	},
+	"c-7e0b1f4942db||S1 Introduction to Assignment": {
+		"vi": "Cửa vào bài RAG trên tài liệu. Không có đường ống mới.",
+		"en": "The door into the document RAG paper. No new pipe."
+	},
+	"S2 RAG on Legal Documents": {
+		"vi": "Đề: trả lời từ đoạn được tìm, không bịa điều khoản. Dùng ý RAG.",
+		"en": "The brief: answer from a retrieved passage, do not invent a clause. Use the RAG ideas."
+	},
+	"S1 LangChain [Opt]": {
+		"vi": "Optional. Template có lỗ. Chain là bước cố định. Agent tự chọn công cụ và có thể lặp, nên phải chặn số bước.",
+		"en": "Optional. A template has holes. A chain is fixed steps. An agent picks a tool and can loop, so cap the steps."
+	},
+	"(module header only — chưa có nội dung session; trang chỉ hiển thị tiêu đề module)": {
+		"vi": "Chưa có buổi. Không có mục lục con. Khi upGrad mở đề, chỗ này mới có nội dung.",
+		"en": "No session yet. No inner contents. When upGrad opens a brief, this is where the content will go."
+	}
+};
+function courseHead(courseId) {
+	return courses[courseId] ?? {
+		why: {
+			vi: "Phần này chưa có lời mở.",
+			en: "This course has no opener yet."
+		},
+		plain: {
+			vi: "Mục lục bên dưới vẫn là các phần của khóa.",
+			en: "The contents below are still the parts of the course."
+		},
+		prior: {
+			vi: "",
+			en: ""
+		}
+	};
+}
+function moduleHead(courseId, moduleTitle) {
+	return modules[courseId + "||" + moduleTitle] ?? {
+		why: {
+			vi: "Đọc phần này trước khi mở từng buổi.",
+			en: "Read this part before opening each session."
+		},
+		plain: {
+			vi: moduleTitle,
+			en: moduleTitle
+		},
+		prior: {
+			vi: "Nối với phần ngay phía trên trong cùng khóa.",
+			en: "It follows the part above it in the same course."
+		}
+	};
+}
+function sessionHead(courseId, moduleTitle, sessionTitle) {
+	return sessions[courseId + "||" + moduleTitle + "||" + sessionTitle] ?? sessions[courseId + "||" + sessionTitle] ?? sessions[sessionTitle] ?? {
+		vi: sessionTitle,
+		en: sessionTitle
+	};
+}
+var KEY$1 = "so-muc-cms-v1";
+var state$1 = { patches: {} };
+var version = 0;
+var listeners$1 = /* @__PURE__ */ new Set();
+var quiet = false;
+function cmsKey(kind, id, lang) {
+	return `${lang}:${kind}:${id}`;
+}
+function emit$1() {
+	if (quiet) return;
+	version += 1;
+	if (typeof window !== "undefined") localStorage.setItem(KEY$1, JSON.stringify({
+		version: 1,
+		patches: state$1.patches
+	}));
+	listeners$1.forEach((listener) => listener());
+}
+function isPatch(value) {
+	return Boolean(value) && typeof value === "object";
+}
+function hydrateCms() {
+	if (typeof window === "undefined") return;
+	try {
+		const raw = localStorage.getItem(KEY$1);
+		if (raw) {
+			const parsed = JSON.parse(raw);
+			const patches = {};
+			for (const [key, value] of Object.entries(parsed.patches ?? {})) if (isPatch(value)) patches[key] = value;
+			state$1 = { patches };
+		}
+	} catch {
+		state$1 = { patches: {} };
+	}
+	version += 1;
+	listeners$1.forEach((listener) => listener());
+}
+function subscribeCms(listener) {
+	listeners$1.add(listener);
+	return () => listeners$1.delete(listener);
+}
+function getCmsVersion() {
+	return version;
+}
+function getServerCmsVersion() {
+	return 0;
+}
+function cmsGet(kind, id, lang) {
+	return state$1.patches[cmsKey(kind, id, lang)] ?? null;
+}
+function cmsIsEdited(kind, id, lang) {
+	return Boolean(state$1.patches[cmsKey(kind, id, lang)]);
+}
+function cmsEditCount() {
+	return Object.keys(state$1.patches).length;
+}
+function setCmsPatch(kind, id, lang, patch) {
+	const key = cmsKey(kind, id, lang);
+	const patches = { ...state$1.patches };
+	if (patch && Object.keys(patch).length > 0) patches[key] = patch;
+	else delete patches[key];
+	state$1 = { patches };
+	emit$1();
+}
+function clearCms() {
+	state$1 = { patches: {} };
+	emit$1();
+}
+function batchCms(run) {
+	quiet = true;
+	try {
+		run();
+	} finally {
+		quiet = false;
+		emit$1();
+	}
+}
+var emptyHead = {
+	why: "",
+	plain: "",
+	prior: ""
+};
+function liveCourse(courseId, lang) {
+	return applyHead(courseHead(courseId), "course", courseId, lang);
+}
+function liveModule(courseId, moduleTitle, lang) {
+	return applyHead(moduleHead(courseId, moduleTitle), "module", `${courseId}||${moduleTitle}`, lang);
+}
+function liveSession(courseId, moduleTitle, sessionTitle, lang) {
+	const base = sessionHead(courseId, moduleTitle, sessionTitle);
+	return cmsGet("session", sessionId(courseId, moduleTitle, sessionTitle), lang)?.text ?? base[lang];
+}
+function liveLesson(lesson, lang) {
+	const patch = cmsGet("lesson", lesson.id, lang);
+	if (!patch) return lesson;
+	return {
+		...lesson,
+		title: patch.title ?? lesson.title,
+		blurb: patch.blurb ?? lesson.blurb,
+		blocks: Array.isArray(patch.blocks) ? patch.blocks : lesson.blocks,
+		glossary: Array.isArray(patch.glossary) ? patch.glossary : lesson.glossary
+	};
+}
+function listCms(kind, lang) {
+	if (kind === "course") return courses$1.map((course) => row("course", course.id, lang, course.title, course.title, liveCourse(course.id, lang)));
+	if (kind === "module") return courses$1.flatMap((course) => course.modules.map((mod) => row("module", `${course.id}||${mod.title}`, lang, mod.title, course.title, liveModule(course.id, mod.title, lang))));
+	if (kind === "session") return courses$1.flatMap((course) => course.modules.flatMap((mod) => mod.sessions.map((session) => {
+		const id = sessionId(course.id, mod.title, session.title);
+		const text = liveSession(course.id, mod.title, session.title, lang);
+		return row("session", id, lang, session.title, `${course.title} / ${mod.title}`, emptyHead, text);
+	})));
+	return lessons.map((lesson) => {
+		const live = liveLesson(lesson, lang);
+		return {
+			...row("lesson", lesson.id, lang, live.title, `${lesson.courseTitle} / ${lesson.sessionTitle}`, emptyHead),
+			title: live.title,
+			blurb: live.blurb,
+			blocks: JSON.stringify(live.blocks, null, 2),
+			glossary: JSON.stringify(live.glossary ?? [], null, 2)
+		};
+	});
+}
+function saveCms(item, draft) {
+	if (item.kind === "lesson") {
+		const lesson = getLesson(item.id);
+		if (!lesson) return {
+			ok: false,
+			error: "Không thấy bài."
+		};
+		let blocks = lesson.blocks;
+		let glossary = lesson.glossary;
+		try {
+			blocks = JSON.parse(draft.blocks);
+			if (!Array.isArray(blocks)) return {
+				ok: false,
+				error: "Khối bài phải là một mảng JSON."
+			};
+		} catch {
+			return {
+				ok: false,
+				error: "JSON khối bài không đọc được."
+			};
+		}
+		try {
+			glossary = JSON.parse(draft.glossary);
+			if (!Array.isArray(glossary)) return {
+				ok: false,
+				error: "Từ điển bài phải là một mảng JSON."
+			};
+		} catch {
+			return {
+				ok: false,
+				error: "JSON từ điển không đọc được."
+			};
+		}
+		const next = {
+			title: draft.title.trim(),
+			blurb: draft.blurb.trim(),
+			blocks,
+			glossary
+		};
+		const same = next.title === lesson.title && next.blurb === lesson.blurb && JSON.stringify(next.blocks) === JSON.stringify(lesson.blocks) && JSON.stringify(next.glossary) === JSON.stringify(lesson.glossary ?? []);
+		setCmsPatch("lesson", item.id, item.lang, same ? null : next);
+		return {
+			ok: true,
+			error: null
+		};
+	}
+	if (item.kind === "session") {
+		const base = printedSession(item.id, item.lang);
+		const text = draft.text.trim();
+		setCmsPatch("session", item.id, item.lang, text === base ? null : { text });
+		return {
+			ok: true,
+			error: null
+		};
+	}
+	const base = printedHead(item.kind, item.id, item.lang);
+	const next = {
+		why: draft.why.trim(),
+		plain: draft.plain.trim(),
+		prior: draft.prior.trim()
+	};
+	const same = next.why === base.why && next.plain === base.plain && next.prior === base.prior;
+	setCmsPatch(item.kind, item.id, item.lang, same ? null : next);
+	return {
+		ok: true,
+		error: null
+	};
+}
+function exportCms(lang) {
+	const langs = lang === "both" ? ["vi", "en"] : [lang];
+	return {
+		heads: langs.flatMap((item) => [
+			...listCms("course", item),
+			...listCms("module", item),
+			...listCms("session", item)
+		].map(slim$1)),
+		lessons: langs.flatMap((item) => listCms("lesson", item).map(slim$1))
+	};
+}
+function importCms(value, fallback) {
+	const bag = value;
+	const heads = Array.isArray(bag.heads) ? bag.heads : [];
+	const lessonRows = Array.isArray(bag.lessons) ? bag.lessons : [];
+	let applied = 0;
+	let skipped = 0;
+	batchCms(() => {
+		for (const item of [...heads, ...lessonRows]) {
+			const row = asRow(item, fallback);
+			if (!row) {
+				skipped += 1;
+				continue;
+			}
+			const current = listCms(row.kind, row.lang).find((entry) => entry.id === row.id);
+			if (!current) {
+				skipped += 1;
+				continue;
+			}
+			if (!saveCms(current, {
+				...current,
+				...row.fields
+			}).ok) skipped += 1;
+			else applied += 1;
+		}
+	});
+	return {
+		applied,
+		skipped
+	};
+}
+function applyHead(base, kind, id, lang) {
+	const patch = cmsGet(kind, id, lang);
+	return {
+		why: patch?.why ?? base.why[lang],
+		plain: patch?.plain ?? base.plain[lang],
+		prior: patch?.prior ?? base.prior[lang]
+	};
+}
+function row(kind, id, lang, label, place, head, text = "") {
+	return {
+		kind,
+		id,
+		lang,
+		label,
+		place,
+		edited: cmsIsEdited(kind, id, lang),
+		why: head.why,
+		plain: head.plain,
+		prior: head.prior,
+		text,
+		title: label,
+		blurb: "",
+		blocks: "[]",
+		glossary: "[]"
+	};
+}
+function sessionId(courseId, moduleTitle, sessionTitle) {
+	return `${courseId}||${moduleTitle}||${sessionTitle}`;
+}
+function printedHead(kind, id, lang) {
+	if (kind === "course") {
+		const head = courseHead(id);
+		return {
+			why: head.why[lang],
+			plain: head.plain[lang],
+			prior: head.prior[lang]
+		};
+	}
+	const [courseId, ...rest] = id.split("||");
+	const head = moduleHead(courseId ?? "", rest.join("||"));
+	return {
+		why: head.why[lang],
+		plain: head.plain[lang],
+		prior: head.prior[lang]
+	};
+}
+function printedSession(id, lang) {
+	const [courseId, moduleTitle, ...rest] = id.split("||");
+	return sessionHead(courseId ?? "", moduleTitle ?? "", rest.join("||"))[lang];
+}
+function slim$1(item) {
+	if (item.kind === "lesson") return {
+		kind: item.kind,
+		id: item.id,
+		lang: item.lang,
+		place: item.place,
+		title: item.title,
+		blurb: item.blurb,
+		blocks: safeParse(item.blocks),
+		glossary: safeParse(item.glossary)
+	};
+	if (item.kind === "session") return {
+		kind: item.kind,
+		id: item.id,
+		lang: item.lang,
+		place: item.place,
+		text: item.text
+	};
+	return {
+		kind: item.kind,
+		id: item.id,
+		lang: item.lang,
+		place: item.place,
+		why: item.why,
+		plain: item.plain,
+		prior: item.prior
+	};
+}
+function asRow(item, fallback) {
+	if (!item || typeof item !== "object") return null;
+	const row = item;
+	const kind = row.kind;
+	if (kind !== "course" && kind !== "module" && kind !== "session" && kind !== "lesson") return null;
+	if (typeof row.id !== "string" || !row.id) return null;
+	const lang = row.lang === "en" ? "en" : row.lang === "vi" ? "vi" : fallback;
+	const fields = {};
+	if (typeof row.why === "string") fields.why = row.why;
+	if (typeof row.plain === "string") fields.plain = row.plain;
+	if (typeof row.prior === "string") fields.prior = row.prior;
+	if (typeof row.text === "string") fields.text = row.text;
+	if (typeof row.title === "string") fields.title = row.title;
+	if (typeof row.blurb === "string") fields.blurb = row.blurb;
+	if ("blocks" in row) fields.blocks = JSON.stringify(row.blocks ?? [], null, 2);
+	if ("glossary" in row) fields.glossary = JSON.stringify(row.glossary ?? [], null, 2);
+	return {
+		kind,
+		id: row.id,
+		lang,
+		fields
+	};
+}
+function safeParse(text) {
+	try {
+		return JSON.parse(text);
+	} catch {
+		return text;
+	}
+}
+var KEY = "so-muc-v1";
+var empty = {
+	items: {},
+	lastLessonId: null,
+	theme: "light",
+	lang: "vi"
+};
+var state = empty;
+var listeners = /* @__PURE__ */ new Set();
+function emit() {
+	if (typeof window !== "undefined") {
+		localStorage.setItem(KEY, JSON.stringify(state));
+		document.documentElement.dataset.theme = state.theme;
+		document.documentElement.lang = state.lang === "en" ? "en" : "vi";
+	}
+	listeners.forEach((listener) => listener());
+}
+function hydrateProgress() {
+	if (typeof window === "undefined") return;
+	try {
+		const raw = localStorage.getItem(KEY);
+		if (raw) {
+			const parsed = JSON.parse(raw);
+			state = {
+				items: parsed.items ?? {},
+				lastLessonId: parsed.lastLessonId ?? null,
+				theme: parsed.theme === "dark" ? "dark" : "light",
+				lang: parsed.lang === "en" ? "en" : "vi"
+			};
+		}
+	} catch {
+		state = empty;
+	}
+	document.documentElement.dataset.theme = state.theme;
+	document.documentElement.lang = state.lang === "en" ? "en" : "vi";
+	listeners.forEach((listener) => listener());
+}
+function subscribeProgress(listener) {
+	listeners.add(listener);
+	return () => listeners.delete(listener);
+}
+function getProgress() {
+	return state;
+}
+function getServerProgress() {
+	return empty;
+}
+function itemStatus(id) {
+	return state.items[id] ?? "unseen";
+}
+function lessonStatus(lessonId) {
+	const lesson = lessons.find((item) => item.id === lessonId);
+	if (!lesson || lesson.items.length === 0) return state.lastLessonId === lessonId ? "viewing" : "unseen";
+	const statuses = lesson.items.map((item) => itemStatus(item.id));
+	if (statuses.every((status) => status === "seen")) return "seen";
+	if (statuses.some((status) => status !== "unseen")) return "viewing";
+	return "unseen";
+}
+function openLesson(lessonId) {
+	const lesson = lessons.find((item) => item.id === lessonId);
+	const items = { ...state.items };
+	if (lesson) {
+		for (const item of lesson.items) if (!items[item.id]) items[item.id] = "viewing";
+	}
+	state = {
+		...state,
+		items,
+		lastLessonId: lessonId
+	};
+	emit();
+}
+function cycleItem(id) {
+	const order = [
+		"unseen",
+		"viewing",
+		"seen"
+	];
+	const next = order[(order.indexOf(itemStatus(id)) + 1) % order.length];
+	state = {
+		...state,
+		items: {
+			...state.items,
+			[id]: next
+		}
+	};
+	emit();
+}
+function markLesson(lessonId, status) {
+	const lesson = lessons.find((item) => item.id === lessonId);
+	if (!lesson) return;
+	const items = { ...state.items };
+	for (const item of lesson.items) items[item.id] = status;
+	state = {
+		...state,
+		items,
+		lastLessonId: lessonId
+	};
+	emit();
+}
+function setTheme(theme) {
+	state = {
+		...state,
+		theme
+	};
+	emit();
+}
+function toggleTheme() {
+	setTheme(state.theme === "dark" ? "light" : "dark");
+}
+function setLang(lang) {
+	state = {
+		...state,
+		lang
+	};
+	emit();
+}
+function progressSnapshot() {
+	return JSON.stringify({
+		version: 1,
+		exportedAt: (/* @__PURE__ */ new Date()).toISOString(),
+		...state
+	}, null, 2);
+}
+function importProgress(text) {
+	const parsed = JSON.parse(text);
+	if (!parsed || typeof parsed !== "object" || !parsed.items) throw new Error("Tệp không đúng định dạng sổ học");
+	state = {
+		items: parsed.items ?? {},
+		lastLessonId: parsed.lastLessonId ?? null,
+		theme: parsed.theme === "dark" ? "dark" : state.theme,
+		lang: parsed.lang === "en" ? "en" : state.lang
+	};
+	emit();
+}
+function countSeen() {
+	const items = lessons.flatMap((lesson) => lesson.items);
+	return {
+		seen: items.filter((item) => itemStatus(item.id) === "seen").length,
+		viewing: items.filter((item) => itemStatus(item.id) === "viewing").length,
+		total: items.length
+	};
+}
+/** Các khóa chỉ học qua thẻ khái niệm, không liệt kê bài giảng gốc. */
+var trackOnly = /* @__PURE__ */ new Set([
+	"Inferential Statistics",
+	"Hypothesis Testing",
+	"Exploratory Data Analysis",
+	"Database Design and Introduction to MySQL",
+	"Advanced SQL and Best Practices",
+	"Linear Regression",
+	"Logistic Regression",
+	"Classification using Decision Trees",
+	"Unsupervised Learning: Clustering",
+	"Basics of NLP and Text Mining",
+	"Business Problem Solving",
+	"Bagging and Random Forests",
+	"Model Selection - I",
+	"Model Selection - II",
+	"Time Series Forecasting - I",
+	"Time Series Forecasting - II"
+]);
+var words = {
+	vi: {
+		why: "Biết để làm gì",
+		prior: "Nối với cái trước",
+		editCourse: "Sửa đầu khóa",
+		editPart: "Sửa đầu phần",
+		page: "Mở trang khóa",
+		last: "đọc dở ở đây",
+		seen: "Đã xem",
+		viewing: "Đang xem",
+		not: "Chưa xem",
+		edited: "đã sửa",
+		none: "Buổi này chưa có thẻ riêng."
+	},
+	en: {
+		why: "What you use it for",
+		prior: "How it links",
+		editCourse: "Edit this opener",
+		editPart: "Edit this part",
+		page: "Open the course page",
+		last: "you stopped here",
+		seen: "Seen",
+		viewing: "Reading",
+		not: "Not yet",
+		edited: "edited",
+		none: "No cards for this session yet."
+	}
+};
+/** Nút có mũi tên bung xuống. */
+function Disclosure({ id, open, onToggle, head, children, level = 0 }) {
+	return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+		id,
+		className: "scroll-mt-32",
+		children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("button", {
+			type: "button",
+			"aria-expanded": open,
+			onClick: onToggle,
+			className: `flex min-h-11 w-full items-start gap-2 text-left ${level === 0 ? "py-2" : "py-1"}`,
+			children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(ChevronRight, {
+				className: `mt-1 size-4 shrink-0 text-accent transition-transform ${open ? "rotate-90" : ""}`,
+				"aria-hidden": true
+			}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+				className: "min-w-0 flex-1",
+				children: head
+			})]
+		}), open ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+			className: "ml-6",
+			children
+		}) : null]
+	});
+}
+function CoverInfo({ plain, why, prior, lang, editHash, onNavigate }) {
+	const t = words[lang];
+	return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+		className: "mb-2 rounded-card border border-line bg-card p-3 text-sm leading-relaxed",
+		children: [
+			plain ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", { children: plain }) : null,
+			why ? /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("p", {
+				className: "mt-2",
+				children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", {
+					className: "text-xs uppercase tracking-widest text-accent",
+					children: [t.why, ". "]
+				}), why]
+			}) : null,
+			prior ? /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("p", {
+				className: "mt-2 text-muted",
+				children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", {
+					className: "text-xs uppercase tracking-widest",
+					children: [t.prior, ". "]
+				}), prior]
+			}) : null,
+			/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Link, {
+				to: "/goc",
+				hash: editHash,
+				onClick: onNavigate,
+				className: "mt-2 inline-block text-xs text-accent underline",
+				children: editHash.startsWith("course:") ? t.editCourse : t.editPart
+			})
+		]
+	});
+}
+function SessionLinks({ course, modTitle, sessionId, lessonIds, lang, onNavigate, lastItem }) {
+	const t = words[lang];
+	const ids = sessionConcepts[sessionId] ?? [];
+	const showLessons = ids.filter((id) => !id.startsWith("d-")).length === 0 && !trackOnly.has(modTitle);
+	const mine = new Set(lessons.filter((l) => l.courseId === course.id).map((l) => l.id));
+	const lessonRows = showLessons ? lessonIds.filter((id) => mine.has(id)) : [];
+	if (!ids.length && !lessonRows.length) return /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+		className: "py-1 text-sm text-muted",
+		children: t.none
+	});
+	return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("ul", {
+		className: "mb-2 space-y-0.5",
+		children: [ids.map((id) => /* @__PURE__ */ (0, import_jsx_runtime.jsx)("li", { children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Link, {
+			to: "/khai-niem/$conceptId",
+			params: { conceptId: id },
+			onClick: onNavigate,
+			className: `flex min-h-11 items-center justify-between gap-3 rounded-lg px-2 text-sm hover:bg-card ${lastItem === id ? "bg-card ring-1 ring-accent" : ""}`,
+			children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", {
+				className: "font-medium",
+				children: [
+					studyListTitle(id, lang),
+					lastItem === id ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+						className: "ml-2 text-xs font-normal text-accent",
+						children: t.last
+					}) : null,
+					rawIsEdited(id, lang) ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+						className: "ml-2 text-xs font-normal text-accent",
+						children: t.edited
+					}) : null
+				]
+			})
+		}) }, id)), lessonRows.map((id) => {
+			const lesson = getLesson(id);
+			if (!lesson) return null;
+			const st = lessonStatus(id);
+			return /* @__PURE__ */ (0, import_jsx_runtime.jsx)("li", { children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Link, {
+				to: "/bai/$lessonId",
+				params: { lessonId: id },
+				onClick: onNavigate,
+				className: `flex min-h-11 items-center justify-between gap-3 rounded-lg px-2 text-sm hover:bg-card ${lastItem === id ? "bg-card ring-1 ring-accent" : ""}`,
+				children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", {
+					className: "font-medium",
+					children: [lesson.title, lastItem === id ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+						className: "ml-2 text-xs font-normal text-accent",
+						children: t.last
+					}) : null]
+				}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+					className: "shrink-0 text-xs text-muted",
+					children: st === "seen" ? t.seen : st === "viewing" ? t.viewing : t.not
+				})]
+			}) }, id);
+		})]
+	});
+}
+/**
+* Mục lục của một khóa: phần → buổi → liên kết từng bài. Mỗi cấp có mũi tên bung xuống;
+* phần «bìa» (giới thiệu) cũng bung ra ngay tại chỗ.
+*/
+function ModuleTree({ course, lang, openIds, onNavigate }) {
+	const mem = useTocMemory();
+	const last = mem.read && mem.read.course === course.id ? mem.read : null;
+	const [open, setOpen] = (0, import_react.useState)(() => /* @__PURE__ */ new Set([
+		...openIds ?? [],
+		...last?.mod ? [`m:${last.mod}`] : [],
+		...last?.ses ? [`s:${last.ses}`] : []
+	]));
+	(0, import_react.useEffect)(() => {
+		const add = [...last?.mod ? [`m:${last.mod}`] : [], ...last?.ses ? [`s:${last.ses}`] : []];
+		if (add.length) setOpen((prev) => add.every((k) => prev.has(k)) ? prev : /* @__PURE__ */ new Set([...prev, ...add]));
+	}, [last?.mod, last?.ses]);
+	const toggle = (k) => setOpen((prev) => {
+		const n = new Set(prev);
+		if (n.has(k)) n.delete(k);
+		else n.add(k);
+		return n;
+	});
+	return /* @__PURE__ */ (0, import_jsx_runtime.jsx)("ol", {
+		className: "space-y-1",
+		children: course.modules.map((mod, mi) => {
+			const head = liveModule(course.id, mod.title, lang);
+			const mk = `m:${mod.id}`;
+			return /* @__PURE__ */ (0, import_jsx_runtime.jsx)("li", {
+				className: "border-b border-line last:border-b-0",
+				children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Disclosure, {
+					id: `mod-${mod.id}`,
+					open: open.has(mk),
+					onToggle: () => toggle(mk),
+					head: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(import_jsx_runtime.Fragment, { children: [
+						/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", {
+							className: "text-xs tracking-widest text-muted",
+							children: [mi + 1, mod.optional ? " · optional" : ""]
+						}),
+						/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+							className: "block font-medium",
+							children: mod.title
+						}),
+						!open.has(mk) && head.why ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+							className: "mt-0.5 block text-sm text-muted",
+							children: head.why
+						}) : null
+					] }),
+					children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(CoverInfo, {
+						plain: head.plain,
+						why: head.why,
+						prior: head.prior,
+						lang,
+						editHash: `module:${course.id}||${mod.title}`,
+						onNavigate
+					}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("ol", { children: mod.sessions.map((s) => {
+						const sk = `s:${s.id}`;
+						const ids = (sessionConcepts[s.id] ?? []).length;
+						const blurb = liveSession(course.id, mod.title, s.title, lang);
+						return /* @__PURE__ */ (0, import_jsx_runtime.jsx)("li", { children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Disclosure, {
+							id: `ses-${s.id}`,
+							level: 1,
+							open: open.has(sk),
+							onToggle: () => toggle(sk),
+							head: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", {
+								className: "flex items-baseline justify-between gap-3",
+								children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", {
+									className: "text-sm",
+									children: [s.title, s.optional ? " · optional" : ""]
+								}), ids > 0 ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+									className: "shrink-0 text-xs text-muted",
+									children: ids
+								}) : null]
+							}),
+							children: [blurb ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+								className: "mb-1 text-sm leading-relaxed text-muted",
+								children: blurb
+							}) : null, /* @__PURE__ */ (0, import_jsx_runtime.jsx)(SessionLinks, {
+								lastItem: last?.ses === s.id ? last.item : null,
+								course,
+								modTitle: mod.title,
+								sessionId: s.id,
+								lessonIds: s.lessonIds,
+								lang,
+								onNavigate
+							})]
+						}) }, s.id);
+					}) })]
+				})
+			}, mod.id);
+		})
+	});
+}
+function locate(pathname, hash) {
+	const clean = hash.replace(/^#/, "");
+	const khoa = pathname.match(/^\/khoa\/([^/]+)/);
+	const idea = pathname.match(/^\/khai-niem\/([^/]+)/);
+	const bai = pathname.match(/^\/bai\/([^/]+)/);
+	if (idea) {
+		const conceptId = decodeURIComponent(idea[1]);
+		const sessionId = sessionOfConcept(conceptId);
+		const found = findSession(sessionId);
+		return {
+			courseId: found?.courseId ?? null,
+			moduleId: found?.moduleId ?? null,
+			sessionId,
+			conceptId
+		};
+	}
+	if (bai) {
+		const lesson = getLesson(decodeURIComponent(bai[1]));
+		return {
+			courseId: lesson?.courseId ?? null,
+			moduleId: lesson?.moduleId ?? null,
+			sessionId: lesson?.sessionId ?? null,
+			conceptId: null
+		};
+	}
+	if (khoa) {
+		const courseId = decodeURIComponent(khoa[1]);
+		if (clean.startsWith("ses-")) {
+			const sessionId = clean.slice(4);
+			return {
+				courseId,
+				moduleId: findSession(sessionId)?.moduleId ?? null,
+				sessionId,
+				conceptId: null
+			};
+		}
+		if (clean.startsWith("mod-")) return {
+			courseId,
+			moduleId: clean.slice(4),
+			sessionId: null,
+			conceptId: null
+		};
+		return {
+			courseId,
+			moduleId: null,
+			sessionId: null,
+			conceptId: null
+		};
+	}
+	return {
+		courseId: null,
+		moduleId: null,
+		sessionId: null,
+		conceptId: null
+	};
+}
+function findSession(sessionId) {
+	if (!sessionId) return null;
+	for (const course of courses$1) for (const mod of course.modules) {
+		const session = mod.sessions.find((item) => item.id === sessionId);
+		if (session) return {
+			courseId: course.id,
+			moduleId: mod.id,
+			session
+		};
+	}
+	return null;
+}
+function MapBar() {
+	const pathname = useRouterState({ select: (state) => state.location.pathname });
+	const hash = useRouterState({ select: (state) => state.location.hash });
+	const lang = (0, import_react.useSyncExternalStore)(subscribeProgress, getProgress, getServerProgress).lang;
+	const here = (0, import_react.useMemo)(() => locate(pathname, hash), [pathname, hash]);
+	const [open, setOpen] = (0, import_react.useState)(false);
+	const mem = useTocMemory();
+	const course = courses$1.find((item) => item.id === here.courseId) ?? null;
+	const mod = course?.modules.find((item) => item.id === here.moduleId) ?? null;
+	const session = mod?.sessions.find((item) => item.id === here.sessionId) ?? null;
+	const near = here.conceptId ? studyNeighbors(here.conceptId) : null;
+	const crumb = course ? [
+		course.title,
+		mod?.title,
+		session?.title
+	].filter(Boolean).join("  ·  ") : lang === "en" ? "All courses" : "Mọi khóa";
+	const spot = near && near.index >= 0 ? `${near.index + 1}/${near.total}` : null;
+	const shownCourse = mem.course ?? here.courseId;
+	const lessonId = /^\/bai\/([^/]+)/.exec(pathname)?.[1];
+	(0, import_react.useEffect)(() => {
+		if (!here.courseId) return;
+		setLastRead({
+			course: here.courseId,
+			mod: here.moduleId,
+			ses: here.sessionId,
+			item: here.conceptId ?? (lessonId ? decodeURIComponent(lessonId) : null)
+		});
+	}, [
+		here.courseId,
+		here.moduleId,
+		here.sessionId,
+		here.conceptId,
+		lessonId
+	]);
+	return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(import_jsx_runtime.Fragment, { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+		className: "sticky top-14 z-20 border-b border-line bg-paper/95 backdrop-blur md:top-0",
+		children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("button", {
+			type: "button",
+			className: "flex min-h-12 w-full items-center gap-3 px-4 text-left md:px-8",
+			onClick: () => setOpen(true),
+			children: [
+				/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Map$1, { className: "size-4 shrink-0 text-accent" }),
+				/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+					className: "min-w-0 flex-1 truncate text-sm",
+					children: crumb
+				}),
+				spot ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+					className: "shrink-0 text-xs text-muted",
+					children: spot
+				}) : null,
+				/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+					className: "shrink-0 text-xs text-accent",
+					children: lang === "en" ? "Jump" : "Đi"
+				})
+			]
+		})
+	}), open ? /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+		className: "fixed inset-0 z-40 flex flex-col bg-paper",
+		children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+			className: "flex items-center justify-between border-b border-line px-4 py-3",
+			children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+				className: "font-display text-2xl",
+				children: lang === "en" ? "Where to" : "Đi tới"
+			}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("button", {
+				type: "button",
+				className: "inline-flex size-11 items-center justify-center",
+				onClick: () => setOpen(false),
+				"aria-label": lang === "en" ? "Close" : "Đóng",
+				children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(X, { className: "size-5" })
+			})]
+		}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+			className: "min-h-0 flex-1 overflow-y-auto px-4 pb-28",
+			children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)("ol", {
+				className: "divide-y divide-line",
+				children: courses$1.map((item, index) => {
+					const expanded = shownCourse === item.id;
+					const head = liveCourse(item.id, lang);
+					const openIds = [...here.courseId === item.id && here.moduleId ? [`m:${here.moduleId}`] : [], ...here.courseId === item.id && here.sessionId ? [`s:${here.sessionId}`] : []];
+					return /* @__PURE__ */ (0, import_jsx_runtime.jsx)("li", { children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Disclosure, {
+						open: expanded,
+						onToggle: () => setOpenCourse(expanded ? "" : item.id),
+						head: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", {
+							className: item.id === here.courseId ? "text-accent" : "",
+							children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", {
+								className: "text-xs text-muted",
+								children: [String(index + 1).padStart(2, "0"), item.optional ? " · optional" : ""]
+							}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+								className: "block font-medium",
+								children: item.title
+							})]
+						}),
+						children: [
+							/* @__PURE__ */ (0, import_jsx_runtime.jsx)(CoverInfo, {
+								plain: head.plain,
+								why: head.why,
+								prior: head.prior,
+								lang,
+								editHash: `course:${item.id}`,
+								onNavigate: () => setOpen(false)
+							}),
+							/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Link, {
+								to: "/khoa/$courseId",
+								params: { courseId: item.id },
+								className: "mb-2 inline-flex min-h-11 items-center text-sm text-accent underline",
+								onClick: () => setOpen(false),
+								children: words[lang].page
+							}),
+							/* @__PURE__ */ (0, import_jsx_runtime.jsx)(ModuleTree, {
+								course: item,
+								lang,
+								openIds,
+								onNavigate: () => setOpen(false)
+							})
+						]
+					}) }, item.id);
+				})
+			})
+		})]
+	}) : null] });
+}
+var links = [
+	{
+		to: "/",
+		vi: "Học",
+		en: "Study",
+		icon: BookOpen
+	},
+	{
+		to: "/ban-do",
+		vi: "Sơ đồ",
+		en: "Mind map",
+		icon: Network
+	},
+	{
+		to: "/tim-kiem",
+		vi: "Tìm",
+		en: "Search",
+		icon: Search
+	},
+	{
+		to: "/cong-thuc",
+		vi: "Công thức",
+		en: "Formulas",
+		icon: TableOfContents
+	},
+	{
+		to: "/do-phu",
+		vi: "Độ phủ",
+		en: "Coverage",
+		icon: TableOfContents
+	}
+];
+function LangSwitch({ lang }) {
+	return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+		className: "inline-flex rounded-full border border-line p-0.5 text-xs font-medium",
+		children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("button", {
+			type: "button",
+			className: `min-h-11 min-w-11 rounded-full px-2 ${lang === "vi" ? "bg-ink text-paper" : "text-muted"}`,
+			onClick: () => setLang("vi"),
+			children: "VI"
+		}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("button", {
+			type: "button",
+			className: `min-h-11 min-w-11 rounded-full px-2 ${lang === "en" ? "bg-ink text-paper" : "text-muted"}`,
+			onClick: () => setLang("en"),
+			children: "EN"
+		})]
+	});
+}
+function AppShell({ children }) {
+	const pathname = useRouterState({ select: (state) => state.location.pathname });
+	const progress = (0, import_react.useSyncExternalStore)(subscribeProgress, getProgress, getServerProgress);
+	const lang = progress.lang;
+	const label = (link) => lang === "en" ? link.en : link.vi;
+	(0, import_react.useEffect)(() => {
+		hydrateProgress();
+		hydrateRaw();
+		hydrateCms();
+	}, []);
+	return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+		className: "min-h-dvh bg-paper text-ink",
+		children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+			className: "mx-auto grid max-w-6xl md:grid-cols-[220px_minmax(0,1fr)]",
+			children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("aside", {
+				className: "sticky top-0 hidden h-dvh flex-col gap-6 border-r border-line px-4 py-6 md:flex",
+				children: [
+					/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Link, {
+						to: "/",
+						className: "font-display text-3xl leading-none",
+						children: "Sổ Mực"
+					}),
+					/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("nav", {
+						className: "flex flex-col gap-1",
+						children: [
+							links.map((link) => /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Link, {
+								to: link.to,
+								className: `min-h-11 rounded-full px-3 py-2 text-sm ${pathname === link.to ? "bg-ink text-paper" : "text-muted"}`,
+								children: label(link)
+							}, link.to)),
+							/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Link, {
+								to: "/tu-dien",
+								className: `min-h-11 rounded-full px-3 py-2 text-sm ${pathname === "/tu-dien" ? "bg-ink text-paper" : "text-muted"}`,
+								children: lang === "en" ? "Glossary" : "Từ điển"
+							}),
+							/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Link, {
+								to: "/goc",
+								className: `min-h-11 rounded-full px-3 py-2 text-sm ${pathname === "/goc" ? "bg-ink text-paper" : "text-muted"}`,
+								children: lang === "en" ? "Content" : "Quản lý"
+							})
+						]
+					}),
+					/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+						className: "mt-auto flex flex-col gap-3",
+						children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(LangSwitch, { lang }), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("button", {
+							type: "button",
+							className: "inline-flex min-h-11 items-center gap-2 text-sm",
+							onClick: () => toggleTheme(),
+							children: [progress.theme === "dark" ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Sun, { className: "size-4" }) : /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Moon, { className: "size-4" }), progress.theme === "dark" ? lang === "en" ? "Light" : "Nền sáng" : lang === "en" ? "Dark" : "Nền tối"]
+						})]
+					})
+				]
+			}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+				className: "min-w-0",
+				children: [
+					/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("header", {
+						className: "sticky top-0 z-20 flex items-center justify-between border-b border-line bg-paper/90 px-4 py-3 backdrop-blur md:hidden",
+						children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Link, {
+							to: "/",
+							className: "font-display text-2xl",
+							children: "Sổ Mực"
+						}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+							className: "flex items-center gap-2",
+							children: [
+								/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Link, {
+									to: "/goc",
+									className: "inline-flex size-11 items-center justify-center",
+									"aria-label": lang === "en" ? "Content" : "Quản lý",
+									children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Settings, { className: "size-5" })
+								}),
+								/* @__PURE__ */ (0, import_jsx_runtime.jsx)(LangSwitch, { lang }),
+								/* @__PURE__ */ (0, import_jsx_runtime.jsx)("button", {
+									type: "button",
+									className: "inline-flex size-11 items-center justify-center",
+									onClick: () => toggleTheme(),
+									"aria-label": lang === "en" ? "Toggle theme" : "Đổi nền",
+									children: progress.theme === "dark" ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Sun, { className: "size-5" }) : /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Moon, { className: "size-5" })
+								})
+							]
+						})]
+					}),
+					/* @__PURE__ */ (0, import_jsx_runtime.jsx)(MapBar, {}),
+					/* @__PURE__ */ (0, import_jsx_runtime.jsx)("main", {
+						className: "px-4 pb-24 pt-4 md:px-8 md:pb-16 md:pt-8",
+						children
+					})
+				]
+			})]
+		}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("nav", {
+			className: "fixed inset-x-0 bottom-0 z-20 grid grid-cols-5 border-t border-line bg-card md:hidden",
+			children: links.map((link) => {
+				const Icon = link.icon;
+				const on = pathname === link.to;
+				return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Link, {
+					to: link.to,
+					className: `flex min-h-14 flex-col items-center justify-center gap-1 text-xs ${on ? "text-accent" : "text-muted"}`,
+					children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Icon, { className: "size-5" }), label(link)]
+				}, link.to);
+			})
+		})]
+	});
+}
+var styles_default = "/assets/styles-DOp6RqTR.css";
+var Route$12 = createRootRoute({
+	head: () => ({
+		meta: [
+			{ charSet: "utf-8" },
+			{
+				name: "viewport",
+				content: "width=device-width, initial-scale=1"
+			},
+			{ title: "Sổ Mực" },
+			{
+				name: "theme-color",
+				content: "#f3eee6"
+			}
+		],
+		links: [
+			{
+				rel: "icon",
+				type: "image/svg+xml",
+				href: "/favicon.svg"
+			},
+			{
+				rel: "stylesheet",
+				href: styles_default
+			},
+			{
+				rel: "manifest",
+				href: "/__grok/manifest.webmanifest"
+			},
+			{
+				rel: "apple-touch-icon",
+				href: "/__grok/icon-180.png"
+			},
+			{
+				rel: "stylesheet",
+				href: "https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,560;9..144,640&family=Outfit:wght@400;500;600&display=swap"
+			}
+		]
+	}),
+	component: RootComponent
+});
+function RootComponent() {
+	return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("html", {
+		lang: "vi",
+		suppressHydrationWarning: true,
+		children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("head", { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(HeadContent, {}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("script", { dangerouslySetInnerHTML: { __html: "try{var r=localStorage.getItem('so-muc-v1');if(r){var t=JSON.parse(r).theme;if(t==='dark'||t==='light')document.documentElement.dataset.theme=t}}catch(e){}" } })] }), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("body", { children: [
+			/* @__PURE__ */ (0, import_jsx_runtime.jsx)(PreviewHostBridge, {}),
+			/* @__PURE__ */ (0, import_jsx_runtime.jsx)(AuthProvider, { children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(AppShell, { children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Outlet, {}) }) }),
+			/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Scripts, {})
+		] })]
+	});
+}
+var $$splitComponentImporter$9 = () => import("./routes-BjJQwP-u.mjs");
+var Route$11 = createFileRoute("/")({ component: lazyRouteComponent($$splitComponentImporter$9, "component") });
+var $$splitComponentImporter$8 = () => import("./ban-do-EzbApKRB.mjs");
+var Route$10 = createFileRoute("/ban-do")({ component: lazyRouteComponent($$splitComponentImporter$8, "component") });
+var $$splitComponentImporter$7 = () => import("./cong-thuc-O6Z0wmgT.mjs");
+var Route$9 = createFileRoute("/cong-thuc")({ component: lazyRouteComponent($$splitComponentImporter$7, "component") });
+var $$splitComponentImporter$6 = () => import("./do-phu-kafhI8o9.mjs");
+var Route$8 = createFileRoute("/do-phu")({ component: lazyRouteComponent($$splitComponentImporter$6, "component") });
+var $$splitComponentImporter$5 = () => import("./goc-BYzfDIZi.mjs");
+var Route$7 = createFileRoute("/goc")({ component: lazyRouteComponent($$splitComponentImporter$5, "component") });
+var $$splitComponentImporter$4 = () => import("./tim-kiem-7KFEY_R2.mjs");
+var Route$6 = createFileRoute("/tim-kiem")({ component: lazyRouteComponent($$splitComponentImporter$4, "component") });
+var $$splitComponentImporter$3 = () => import("./tu-dien-DXrjtMgW.mjs");
+var Route$5 = createFileRoute("/tu-dien")({ component: lazyRouteComponent($$splitComponentImporter$3, "component") });
+var CORS = {
+	"access-control-allow-origin": "*",
+	"access-control-allow-methods": "GET, POST, OPTIONS",
+	"access-control-allow-headers": "content-type, authorization, accept, mcp-protocol-version, mcp-session-id",
+	"access-control-expose-headers": "mcp-session-id",
+	"cache-control": "no-store"
+};
+function apiJson(body, status = 200) {
+	return new Response(JSON.stringify(body), {
+		status,
+		headers: {
+			"content-type": "application/json; charset=utf-8",
+			...CORS
+		}
+	});
+}
+function apiEmpty(status = 204) {
+	return new Response(null, {
+		status,
+		headers: CORS
+	});
+}
+function bearer(request) {
+	const header = request.headers.get("authorization") ?? "";
+	return /^Bearer\s+(\S+)/i.exec(header)?.[1] ?? null;
+}
+var cache = /* @__PURE__ */ new Map();
+function publicIdeas(lang) {
+	const hit = cache.get(lang);
+	if (hit) return hit;
+	const out = [];
+	for (const course of courses$1) for (const mod of course.modules) for (const session of mod.sessions) for (const id of sessionConcepts[session.id] ?? []) {
+		const concept = getStudy(id);
+		if (!concept) continue;
+		const text = studyCopy(concept, lang, true);
+		out.push({
+			id,
+			lang,
+			courseId: course.id,
+			courseTitle: course.title,
+			sessionId: session.id,
+			sessionTitle: session.title,
+			...text
+		});
+	}
+	cache.set(lang, out);
+	return out;
+}
+function bookMeta() {
+	return {
+		name: "Sổ Mực",
+		"so-muc-api": 1,
+		read: "/api/so-muc",
+		mcp: "/api/mcp",
+		courses: courses$1.length,
+		ideas: publicIdeas("vi").length,
+		queries: [
+			"meta",
+			"outline",
+			"ideas",
+			"idea",
+			"heads",
+			"lesson",
+			"gate",
+			"inbox"
+		],
+		note: "GET đọc chữ in sẵn, không cần khóa. Bản sửa trên từng máy không nằm ở đây. Mô hình gửi bản sửa bằng MCP submit_edit hoặc POST /api/so-muc. Người mở Quản lý bấm Áp dụng thì trang đọc đổi. Giữ nguyên id. Không thêm câu hỏi."
+	};
+}
+function publicOutline(courseId) {
+	return (courseId ? courses$1.filter((course) => course.id === courseId) : courses$1).map((course) => ({
+		id: course.id,
+		title: course.title,
+		modules: course.modules.map((mod) => ({
+			id: mod.id,
+			title: mod.title,
+			optional: mod.optional,
+			sessions: mod.sessions.map((session) => ({
+				id: session.id,
+				title: session.title,
+				optional: session.optional,
+				ideas: sessionConcepts[session.id] ?? []
+			}))
+		}))
+	}));
+}
+function publicIdea(id, lang) {
+	return publicIdeas(lang).find((card) => card.id === id) ?? null;
+}
+function searchIdeas(query, lang, offset, limit, courseId) {
+	const needle = query.trim().toLowerCase();
+	const rows = publicIdeas(lang).filter((card) => {
+		if (courseId && card.courseId !== courseId) return false;
+		if (!needle) return true;
+		return `${card.id} ${card.title} ${card.plain} ${card.why} ${card.sessionTitle} ${card.courseTitle}`.toLowerCase().includes(needle);
+	});
+	return {
+		total: rows.length,
+		offset,
+		ideas: rows.slice(offset, offset + limit).map(slim)
+	};
+}
+function publicHeads(kind, lang, courseId) {
+	const list = courseId ? courses$1.filter((course) => course.id === courseId) : courses$1;
+	if (kind === "course") return list.map((course) => {
+		const head = courseHead(course.id);
+		return {
+			kind,
+			id: course.id,
+			lang,
+			title: course.title,
+			why: head.why[lang],
+			plain: head.plain[lang],
+			prior: head.prior[lang]
+		};
+	});
+	if (kind === "module") return list.flatMap((course) => course.modules.map((mod) => {
+		const head = moduleHead(course.id, mod.title);
+		return {
+			kind,
+			id: `${course.id}||${mod.title}`,
+			lang,
+			title: mod.title,
+			place: course.title,
+			why: head.why[lang],
+			plain: head.plain[lang],
+			prior: head.prior[lang]
+		};
+	}));
+	return list.flatMap((course) => course.modules.flatMap((mod) => mod.sessions.map((session) => ({
+		kind,
+		id: `${course.id}||${mod.title}||${session.title}`,
+		lang,
+		title: session.title,
+		place: `${course.title} / ${mod.title}`,
+		text: sessionHead(course.id, mod.title, session.title)[lang]
+	}))));
+}
+function publicLesson(id) {
+	const lesson = getLesson(id);
+	if (!lesson) return null;
+	return {
+		id: lesson.id,
+		title: lesson.title,
+		blurb: lesson.blurb,
+		courseId: lesson.courseId,
+		courseTitle: lesson.courseTitle,
+		moduleTitle: lesson.moduleTitle,
+		sessionId: lesson.sessionId,
+		sessionTitle: lesson.sessionTitle,
+		blocks: lesson.blocks,
+		glossary: lesson.glossary
+	};
+}
+function slim(card) {
+	return {
+		id: card.id,
+		lang: card.lang,
+		title: card.title,
+		courseId: card.courseId,
+		courseTitle: card.courseTitle,
+		sessionTitle: card.sessionTitle,
+		plain: card.plain.slice(0, 220)
+	};
+}
+var _0002_bridge_default = "-- Inbox for edits sent in from an outside model. The printed book stays in the app.\n-- One shared gate (no accounts): a key hash, not the key itself. Rows are drafts, not the book.\ncreate table if not exists so_muc_gate (\n  id text primary key,\n  key_hash text not null,\n  created_at timestamptz not null default now()\n);\n\ncreate table if not exists so_muc_inbox (\n  id serial primary key,\n  created_at timestamptz not null default now(),\n  note text not null default '',\n  body jsonb not null\n);\n";
+/**
+* Migration bookkeeping shared by the two appliers — `scripts/migrate.mjs`
+* (deploy, `readdir`) and `src/lib/db.ts` (PGLite preview, `import.meta.glob`).
+*
+* Applied files are keyed by BASENAME, so the same file applies once no matter
+* which directory it is globbed from. That is what makes the auth schema safe to
+* copy from `migrations/auth/` into `migrations/` when an app turns sign-in on:
+* a database that already has `0001_auth.sql` will not re-run it.
+*
+* Neither applier descends into subdirectories, so `migrations/auth/*.sql` is
+* out of scope for both until it is copied up.
+*/
+/**
+* The `_migrations` key for a migration path (or bare filename).
+* @param {string} path
+* @returns {string}
+*/
+function migrationName(path) {
+	return path.split("/").pop() ?? path;
+}
+/**
+* @param {string} path
+* @returns {boolean}
+*/
+function isMigrationFile(path) {
+	return path.endsWith(".sql");
+}
+/**
+* Migrations in `paths` that are not yet in `applied`, in apply order.
+* Non-`.sql` entries (a `readdir` also yields `migrations/auth/`) are dropped.
+* @param {Iterable<string>} paths
+* @param {Iterable<string>} applied
+* @returns {Array<{ name: string, path: string }>}
+*/
+function pendingMigrations(paths, applied) {
+	const done = new Set(applied);
+	return [...paths].filter(isMigrationFile).map((path) => ({
+		name: migrationName(path),
+		path
+	})).sort((a, b) => a.name.localeCompare(b.name)).filter(({ name }) => !done.has(name));
+}
+var rawDatabaseUrl = typeof process !== "undefined" ? process.env.DATABASE_URL : void 0;
+var databaseUrl = rawDatabaseUrl && rawDatabaseUrl.trim() ? rawDatabaseUrl : void 0;
+/**
+* Active backend: real **Neon** when `DATABASE_URL` is set (deployed / configured
+* sandbox), otherwise a local embedded **PGLite** (Postgres compiled to WASM) so
+* the app has a working database even with nothing configured — the live preview
+* included. Swap in Neon later by just setting `DATABASE_URL`; no code changes.
+*/
+var dbSource = databaseUrl ? "neon" : "pglite";
+/**
+* Init state lives on globalThis as promises: dev HMR creates new instances of
+* this module, and two instances racing module-level state would open a second
+* pool or run two concurrent PGLite migration passes (whose duplicate
+* `_migrations` insert rejects — and would get memoized, poisoning every later
+* `getSql()`). A failed init clears its slot so the next call retries.
+*/
+var globalRef = globalThis;
+/**
+* Result-type parity: Postgres sends every value as text plus a type OID — the
+* JS value is the DRIVER's parsing choice, and pg and PGLite disagree (pg:
+* int8 -> string, date -> local-midnight Date; PGLite: int8 -> BigInt, which
+* JSON.stringify rejects, date -> UTC Date). Normalize both so preview and
+* production return identical, JSON-safe shapes:
+*   int8/bigint (incl. count(*)) -> number (past 2^53 loses precision — cast
+*                                   `::text` if you ever need huge integers)
+*   date                         -> 'YYYY-MM-DD' string
+*   interval                     -> Postgres interval text
+* numeric already comes back as a string on both (arbitrary precision).
+*/
+var OID_INT8 = 20;
+var OID_DATE = 1082;
+var OID_INTERVAL = 1186;
+var identity = (v) => v;
+/** Wrap a query runner in the tagged-template + `.query()` `Sql` surface. */
+function toSql(run) {
+	const sql = (async (strings, ...values) => {
+		let text = strings[0];
+		for (let i = 0; i < values.length; i += 1) text += `$${i + 1}${strings[i + 1]}`;
+		return run(text, values);
+	});
+	sql.query = (text, params = []) => run(text, params);
+	return sql;
+}
+function createNeonSql() {
+	globalRef.__pgSqlPromise__ ??= (async () => {
+		const { Pool, types } = await import("../_libs/pg.mjs").then((n) => n.t);
+		types.setTypeParser(OID_INT8, Number);
+		types.setTypeParser(OID_DATE, identity);
+		types.setTypeParser(OID_INTERVAL, identity);
+		const pool = new Pool({ connectionString: databaseUrl });
+		return toSql(async (text, params) => {
+			return (await pool.query(text, params)).rows;
+		});
+	})().catch((err) => {
+		globalRef.__pgSqlPromise__ = void 0;
+		throw err;
+	});
+	return globalRef.__pgSqlPromise__;
+}
+async function createPgliteSql() {
+	globalRef.__pgliteInstance__ ??= (async () => {
+		const { PGlite } = await import("../_libs/electric-sql__pglite.mjs").then((n) => n.t);
+		const pg = new PGlite({ parsers: {
+			[OID_INT8]: Number,
+			[OID_DATE]: identity,
+			[OID_INTERVAL]: identity
+		} });
+		await pg.waitReady;
+		await pg.exec("create table if not exists _migrations (name text primary key, applied_at timestamptz not null default now())");
+		return pg;
+	})().catch((err) => {
+		globalRef.__pgliteInstance__ = void 0;
+		throw err;
+	});
+	const pg = await globalRef.__pgliteInstance__;
+	const migrate = async () => {
+		const migrations = /* #__PURE__ */ Object.assign({ "/migrations/0002_bridge.sql": _0002_bridge_default });
+		const done = (await pg.query("select name from _migrations")).rows.map((r) => r.name);
+		for (const { name, path } of pendingMigrations(Object.keys(migrations), done)) await pg.transaction(async (tx) => {
+			await tx.exec(migrations[path]);
+			await tx.query("insert into _migrations (name) values ($1)", [name]);
+		});
+	};
+	const pass = (globalRef.__pgliteMigrateChain__ ?? Promise.resolve()).catch(() => void 0).then(migrate);
+	globalRef.__pgliteMigrateChain__ = pass;
+	await pass;
+	return toSql(async (text, params) => {
+		return (await pg.query(text, params)).rows;
+	});
+}
+var sqlPromise = null;
+async function createSql() {
+	if (typeof window !== "undefined") throw new Error("@/lib/db is server-only — call getSql() from a createServerFn handler or a server route loader, never from client code.");
+	return dbSource === "neon" ? createNeonSql() : createPgliteSql();
+}
+/**
+* Get the shared, **server-only** SQL client. Neon when `DATABASE_URL` is set,
+* otherwise the local PGLite fallback. Memoized — safe to call per request.
+*
+* Schema comes from `migrations/*.sql`, auto-applied before the first query on
+* both backends — define tables there, never inline in server functions.
+*/
+function getSql() {
+	sqlPromise ??= createSql().catch((err) => {
+		sqlPromise = null;
+		throw err;
+	});
+	return sqlPromise;
+}
+/**
+* Finish DB bootstrap before the server handles traffic.
+*
+* - **PGLite** (preview / no `DATABASE_URL`): open the in-memory DB and apply
+*   `migrations/*.sql`. Idempotent — concurrent callers share one promise.
+* - **Neon**: no-op (pool is created lazily on first query).
+*
+* Vite `configureServer` awaits this at dev startup; production imports of this
+* module kick it off immediately (see bottom of file).
+*/
+function ensureDbReady() {
+	if (dbSource !== "pglite") return Promise.resolve();
+	return getSql().then(() => void 0);
+}
+var globalBoot = globalThis;
+if (typeof window === "undefined" && dbSource === "pglite") globalBoot.__pgBootstrapPromise__ ??= ensureDbReady().catch((err) => {
+	globalBoot.__pgBootstrapPromise__ = void 0;
+	console.error("[db] PGLite bootstrap failed:", err);
+	throw err;
+});
+var MAX_BODY = 5e5;
+var MAX_INBOX = 30;
+function fail(status, error) {
+	return {
+		ok: false,
+		status,
+		error
+	};
+}
+function cleanKey(value) {
+	if (typeof value !== "string") return null;
+	const key = value.trim();
+	if (key.length < 16 || key.length > 128) return null;
+	if (!/^[A-Za-z0-9_-]+$/.test(key)) return null;
+	return key;
+}
+async function sha256(text) {
+	const buf = await crypto.subtle.digest("SHA-256", new TextEncoder().encode(text));
+	return [...new Uint8Array(buf)].map((byte) => byte.toString(16).padStart(2, "0")).join("");
+}
+function sameHex(a, b) {
+	if (a.length !== b.length) return false;
+	let out = 0;
+	for (let i = 0; i < a.length; i += 1) out |= a.charCodeAt(i) ^ b.charCodeAt(i);
+	return out === 0;
+}
+async function gateHash() {
+	return (await (await getSql()).query("select key_hash from so_muc_gate where id = $1", ["book"]))[0]?.key_hash ?? null;
+}
+async function gateStatus() {
+	const hash = await gateHash();
+	return { claimed: Boolean(hash) };
+}
+async function allow(key) {
+	const clean = cleanKey(key);
+	if (!clean) return fail(401, "Thiếu khóa, hoặc khóa không đúng dạng.");
+	const hash = await gateHash();
+	if (!hash) return fail(409, "Chưa có khóa. Tạo khóa trên trang Quản lý trước.");
+	if (!sameHex(hash, await sha256(clean))) return fail(401, "Khóa không khớp.");
+	return null;
+}
+async function claimKey(key) {
+	const clean = cleanKey(key);
+	if (!clean) return fail(400, "Khóa cần 16–128 ký tự, chỉ chữ, số, gạch.");
+	const hash = await sha256(clean);
+	if ((await (await getSql()).query("insert into so_muc_gate (id, key_hash) values ($1, $2) on conflict (id) do nothing returning id", ["book", hash])).length > 0) return {
+		ok: true,
+		value: { claimed: true }
+	};
+	const current = await gateHash();
+	if (current && sameHex(current, hash)) return {
+		ok: true,
+		value: { claimed: true }
+	};
+	return fail(409, "Sổ đã có khóa khác. Dán đúng khóa đã tạo, không tạo khóa mới.");
+}
+function normalizeEdit(value) {
+	let data = value;
+	if (typeof data === "string") {
+		const text = data.trim();
+		if (!text) return fail(400, "Bản sửa trống.");
+		if (text.length > MAX_BODY) return fail(413, "Bản sửa dài quá 500KB. Gửi từng phần.");
+		try {
+			data = JSON.parse(text);
+		} catch {
+			return fail(400, "JSON không đọc được.");
+		}
+	}
+	if (Array.isArray(data)) data = { ideas: data };
+	if (!data || typeof data !== "object") return fail(400, "Bản sửa phải là JSON.");
+	const row = data;
+	const body = {
+		...row,
+		"so-muc-cms": 1
+	};
+	if (!("ideas" in body) && Array.isArray(row.cards)) body.ideas = row.cards;
+	if (JSON.stringify(body).length > MAX_BODY) return fail(413, "Bản sửa dài quá 500KB. Gửi từng phần.");
+	return {
+		ok: true,
+		value: { body }
+	};
+}
+async function submitEdit(key, note, value) {
+	const denied = await allow(key);
+	if (denied) return denied;
+	const edit = normalizeEdit(value);
+	if (!edit.ok) return edit;
+	const line = typeof note === "string" ? note.trim().slice(0, 180) : "";
+	const sql = await getSql();
+	if (((await sql.query("select count(*)::int as n from so_muc_inbox"))[0]?.n ?? 0) >= MAX_INBOX) return fail(409, "Hộp thư đủ 30 bản. Áp hoặc bỏ bớt trên trang Quản lý.");
+	return {
+		ok: true,
+		value: { id: (await sql.query("insert into so_muc_inbox (note, body) values ($1, $2::jsonb) returning id", [line, JSON.stringify(edit.value.body)]))[0]?.id ?? 0 }
+	};
+}
+function iso(value) {
+	const date = new Date(String(value));
+	return Number.isNaN(date.getTime()) ? String(value) : date.toISOString();
+}
+async function listInbox(key) {
+	const denied = await allow(key);
+	if (denied) return denied;
+	return {
+		ok: true,
+		value: { items: (await (await getSql()).query("select id, note, created_at from so_muc_inbox order by id desc limit 30")).map((row) => ({
+			id: Number(row.id),
+			note: row.note,
+			createdAt: iso(row.created_at)
+		})) }
+	};
+}
+async function readInbox(key, id) {
+	const denied = await allow(key);
+	if (denied) return denied;
+	const row = (await (await getSql()).query("select id, note, body from so_muc_inbox where id = $1", [id]))[0];
+	if (!row) return fail(404, "Không thấy bản này.");
+	let body = row.body;
+	if (typeof body === "string") try {
+		body = JSON.parse(body);
+	} catch {
+		body = row.body;
+	}
+	return {
+		ok: true,
+		value: {
+			id: Number(row.id),
+			note: row.note,
+			body
+		}
+	};
+}
+async function dropInbox(key, id) {
+	const denied = await allow(key);
+	if (denied) return denied;
+	if (!Number.isInteger(id) || id < 1) return fail(400, "Thiếu id.");
+	return {
+		ok: true,
+		value: { removed: (await (await getSql()).query("delete from so_muc_inbox where id = $1 returning id", [id])).length }
+	};
+}
+var KNOWN = /* @__PURE__ */ new Set([
+	"2024-11-05",
+	"2025-03-26",
+	"2025-06-18"
+]);
+var tools = [
+	{
+		name: "list_courses",
+		description: "Các khóa trong Sổ Mực, đúng thứ tự mục lục. Không cần đối số.",
+		inputSchema: {
+			type: "object",
+			properties: {}
+		}
+	},
+	{
+		name: "outline",
+		description: "Mục lục một khóa hoặc cả sổ: phần, buổi, id từng ý.",
+		inputSchema: {
+			type: "object",
+			properties: { courseId: {
+				type: "string",
+				description: "Bỏ trống để lấy mọi khóa."
+			} }
+		}
+	},
+	{
+		name: "search_ideas",
+		description: "Tìm ý theo câu hoặc id. Kết quả là đoạn ngắn. Gọi get_idea để lấy đủ chữ.",
+		inputSchema: {
+			type: "object",
+			properties: {
+				query: { type: "string" },
+				lang: {
+					type: "string",
+					enum: ["vi", "en"]
+				},
+				courseId: { type: "string" },
+				limit: { type: "number" }
+			},
+			required: ["query"]
+		}
+	},
+	{
+		name: "get_idea",
+		description: "Đủ chữ của một ý: vì sao, nối với cái trước, định nghĩa, ví dụ, công thức. lang=both lấy cả hai thứ tiếng.",
+		inputSchema: {
+			type: "object",
+			properties: {
+				id: { type: "string" },
+				lang: {
+					type: "string",
+					enum: [
+						"vi",
+						"en",
+						"both"
+					]
+				}
+			},
+			required: ["id"]
+		}
+	},
+	{
+		name: "get_heads",
+		description: "Lời mở đầu khóa, đầu phần, hoặc một câu đầu buổi.",
+		inputSchema: {
+			type: "object",
+			properties: {
+				kind: {
+					type: "string",
+					enum: [
+						"course",
+						"module",
+						"session"
+					]
+				},
+				lang: {
+					type: "string",
+					enum: ["vi", "en"]
+				},
+				courseId: { type: "string" }
+			},
+			required: ["kind"]
+		}
+	},
+	{
+		name: "get_lesson",
+		description: "Một bài cũ (không phải thẻ ý): tiêu đề, blurb, khối nội dung.",
+		inputSchema: {
+			type: "object",
+			properties: { id: { type: "string" } },
+			required: ["id"]
+		}
+	},
+	{
+		name: "submit_edit",
+		description: "Gửi bản sửa vào hộp thư của sổ. Không đổi trang đọc cho đến khi người dùng bấm Áp dụng. Giữ nguyên id. Chỉ gửi phần đổi. body là object so-muc-cms (ideas, heads, lessons) hoặc một ý có id.",
+		inputSchema: {
+			type: "object",
+			properties: {
+				body: { description: "Object JSON của bản sửa, hoặc chuỗi JSON." },
+				note: { type: "string" },
+				key: {
+					type: "string",
+					description: "Khóa sửa, nếu header Authorization chưa có."
+				}
+			},
+			required: ["body"]
+		}
+	}
+];
+function langOf$1(value) {
+	return value === "en" ? "en" : "vi";
+}
+function textResult(value, isError = false) {
+	return {
+		content: [{
+			type: "text",
+			text: (typeof value === "string" ? value : JSON.stringify(value, null, 2)).slice(0, 8e4)
+		}],
+		...isError ? { isError: true } : {}
+	};
+}
+async function callTool(name, args, request) {
+	if (name === "list_courses") return textResult(publicOutline().map((course) => ({
+		id: course.id,
+		title: course.title,
+		modules: course.modules.length
+	})));
+	if (name === "outline") {
+		const courseId = typeof args.courseId === "string" ? args.courseId : "";
+		const outline = publicOutline(courseId || void 0);
+		if (courseId && outline.length === 0) return textResult("Không thấy khóa.", true);
+		return textResult({ courses: outline });
+	}
+	if (name === "search_ideas") {
+		const query = typeof args.query === "string" ? args.query : "";
+		const limit = Math.min(20, Math.max(1, Number(args.limit) || 8));
+		const courseId = typeof args.courseId === "string" ? args.courseId : void 0;
+		return textResult(searchIdeas(query, langOf$1(args.lang), 0, limit, courseId));
+	}
+	if (name === "get_idea") {
+		const id = typeof args.id === "string" ? args.id : "";
+		if (!id) return textResult("Thiếu id.", true);
+		if (args.lang === "both") {
+			const vi = publicIdea(id, "vi");
+			const en = publicIdea(id, "en");
+			if (!vi && !en) return textResult("Không thấy ý.", true);
+			return textResult({
+				vi,
+				en
+			});
+		}
+		const card = publicIdea(id, langOf$1(args.lang));
+		if (!card) return textResult("Không thấy ý.", true);
+		return textResult(card);
+	}
+	if (name === "get_heads") {
+		const kind = args.kind;
+		if (kind !== "course" && kind !== "module" && kind !== "session") return textResult("kind phải là course, module hoặc session.", true);
+		const courseId = typeof args.courseId === "string" ? args.courseId : void 0;
+		return textResult({ heads: publicHeads(kind, langOf$1(args.lang), courseId) });
+	}
+	if (name === "get_lesson") {
+		const lesson = publicLesson(typeof args.id === "string" ? args.id : "");
+		if (!lesson) return textResult("Không thấy bài.", true);
+		return textResult(lesson);
+	}
+	if (name === "submit_edit") {
+		const key = bearer(request) ?? (typeof args.key === "string" ? args.key : null);
+		if (!cleanKey(key)) return textResult("Thiếu khóa sửa. Lấy khóa trên trang Quản lý, gửi header Authorization: Bearer <khóa> hoặc đối số key.", true);
+		const result = await submitEdit(key, args.note, args.body);
+		if (!result.ok) return textResult(result.error, true);
+		return textResult({
+			id: result.value.id,
+			queued: true,
+			note: "Đã vào hộp thư. Trang đọc đổi khi người dùng bấm Áp dụng."
+		});
+	}
+	return textResult("Không có công cụ này.", true);
+}
+function rpcResult(id, result) {
+	return apiJson({
+		jsonrpc: "2.0",
+		id: id ?? null,
+		result
+	});
+}
+function rpcError(id, code, message) {
+	return apiJson({
+		jsonrpc: "2.0",
+		id: id ?? null,
+		error: {
+			code,
+			message
+		}
+	});
+}
+async function handleMcp(request) {
+	if (request.method === "OPTIONS") return apiEmpty(204);
+	if (request.method === "GET") return apiJson({
+		...bookMeta(),
+		transport: "POST JSON-RPC tools/list, tools/call"
+	}, 405);
+	if (request.method !== "POST") return apiJson({ error: "method not allowed" }, 405);
+	let message;
+	try {
+		message = await request.json();
+	} catch {
+		return rpcError(null, -32700, "JSON không đọc được.");
+	}
+	if (Array.isArray(message)) {
+		const kept = (await Promise.all(message.map((item) => oneRpc(item, request)))).filter((part) => part !== null);
+		if (kept.length === 0) return apiEmpty(202);
+		if (kept.length === 1) return kept[0];
+		return apiJson(await Promise.all(kept.map(async (part) => part.json())));
+	}
+	return await oneRpc(message, request) ?? apiEmpty(202);
+}
+async function oneRpc(message, request) {
+	const rpc = message && typeof message === "object" ? message : {};
+	const id = rpc.id ?? null;
+	const method = rpc.method ?? "";
+	const isNote = method.startsWith("notifications/") || rpc.id === void 0;
+	if (method === "initialize") {
+		const asked = typeof rpc.params?.protocolVersion === "string" ? rpc.params.protocolVersion : "";
+		return rpcResult(id, {
+			protocolVersion: KNOWN.has(asked) ? asked : "2025-03-26",
+			capabilities: { tools: { listChanged: false } },
+			serverInfo: {
+				name: "so-muc",
+				version: "1.0.0"
+			},
+			instructions: "Sổ Mực, sổ học tiếng Việt. Đọc bằng list_courses, outline, search_ideas, get_idea, get_heads, get_lesson. Đây là chữ in sẵn. Giữ nguyên id. Không thêm câu hỏi hay bịa số. Sửa chữ bằng submit_edit với body JSON; trang đọc chỉ đổi khi người dùng bấm Áp dụng. submit_edit cần khóa."
+		});
+	}
+	if (method === "notifications/initialized" || method === "initialized") return null;
+	if (isNote && method !== "ping") return null;
+	if (method === "ping") return rpcResult(id, {});
+	if (method === "tools/list") return rpcResult(id, { tools });
+	if (method === "tools/call") {
+		const params = rpc.params ?? {};
+		const name = typeof params.name === "string" ? params.name : "";
+		const args = params.arguments && typeof params.arguments === "object" ? params.arguments : {};
+		try {
+			return rpcResult(id, await callTool(name, args, request));
+		} catch (error) {
+			console.error("[mcp]", error);
+			return rpcResult(id, textResult("Công cụ lỗi.", true));
+		}
+	}
+	if (!method) return rpcError(id, -32600, "Thiếu method.");
+	return rpcError(id, -32601, "Method không có.");
+}
+var handle = ({ request }) => handleMcp(request);
+var Route$4 = createFileRoute("/api/mcp")({ server: { handlers: {
+	GET: handle,
+	POST: handle,
+	OPTIONS: handle
+} } });
+function langOf(value) {
+	return value === "en" ? "en" : "vi";
+}
+function clamp(value, fallback, max) {
+	const n = Number(value ?? fallback);
+	if (!Number.isFinite(n) || n < 0) return fallback;
+	return Math.min(max, Math.floor(n));
+}
+async function handleSoMucGet(request) {
+	const url = new URL(request.url);
+	const what = url.searchParams.get("what") ?? "meta";
+	try {
+		if (what === "meta") return apiJson(bookMeta());
+		if (what === "gate") return apiJson(await gateStatus());
+		if (what === "outline") {
+			const courseId = url.searchParams.get("course") || void 0;
+			const outline = publicOutline(courseId);
+			if (courseId && outline.length === 0) return apiJson({ error: "Không thấy khóa." }, 404);
+			return apiJson({ courses: outline });
+		}
+		if (what === "ideas" || what === "search") {
+			const lang = langOf(url.searchParams.get("lang"));
+			const course = url.searchParams.get("course") ?? "";
+			const offset = clamp(url.searchParams.get("offset"), 0, 1e4);
+			const limit = clamp(url.searchParams.get("limit"), 30, 50);
+			return apiJson(searchIdeas(url.searchParams.get("q") ?? "", lang, offset, limit, course || void 0));
+		}
+		if (what === "idea") {
+			const id = url.searchParams.get("id") ?? "";
+			if (!id) return apiJson({ error: "Thiếu id." }, 400);
+			const lang = url.searchParams.get("lang");
+			if (lang === "both") {
+				const vi = publicIdea(id, "vi");
+				const en = publicIdea(id, "en");
+				if (!vi && !en) return apiJson({ error: "Không thấy ý." }, 404);
+				return apiJson({
+					vi,
+					en
+				});
+			}
+			const card = publicIdea(id, langOf(lang));
+			if (!card) return apiJson({ error: "Không thấy ý." }, 404);
+			return apiJson(card);
+		}
+		if (what === "heads") {
+			const kind = url.searchParams.get("kind") ?? "course";
+			if (kind !== "course" && kind !== "module" && kind !== "session") return apiJson({ error: "kind phải là course, module hoặc session." }, 400);
+			return apiJson({ heads: publicHeads(kind, langOf(url.searchParams.get("lang")), url.searchParams.get("course") || void 0) });
+		}
+		if (what === "lesson") {
+			const lesson = publicLesson(url.searchParams.get("id") ?? "");
+			if (!lesson) return apiJson({ error: "Không thấy bài." }, 404);
+			return apiJson(lesson);
+		}
+		if (what === "inbox") {
+			const key = bearer(request);
+			const id = Number(url.searchParams.get("id") ?? "");
+			if (url.searchParams.get("id")) {
+				const one = await readInbox(key, id);
+				if (!one.ok) return apiJson({ error: one.error }, one.status);
+				return apiJson({ item: one.value });
+			}
+			const list = await listInbox(key);
+			if (!list.ok) return apiJson({ error: list.error }, list.status);
+			return apiJson(list.value);
+		}
+		return apiJson({ error: "what không hợp lệ." }, 400);
+	} catch (error) {
+		console.error("[so-muc]", error);
+		return apiJson({ error: "Không đọc được sổ." }, 500);
+	}
+}
+async function handleSoMucPost(request) {
+	let body;
+	try {
+		body = await request.json();
+	} catch {
+		return apiJson({ error: "JSON không đọc được." }, 400);
+	}
+	const row = body && typeof body === "object" ? body : {};
+	const key = bearer(request) ?? (typeof row.key === "string" ? row.key : null);
+	const op = row.op;
+	try {
+		if (op === "claim") {
+			const result = await claimKey(key);
+			if (!result.ok) return apiJson({ error: result.error }, result.status);
+			return apiJson(result.value);
+		}
+		if (op === "submit") {
+			if (!("body" in row) && !("edit" in row)) return apiJson({ error: "Thiếu body." }, 400);
+			const result = await submitEdit(key, row.note, "body" in row ? row.body : row.edit);
+			if (!result.ok) return apiJson({ error: result.error }, result.status);
+			return apiJson(result.value);
+		}
+		if (op === "drop") {
+			const result = await dropInbox(key, Number(row.id));
+			if (!result.ok) return apiJson({ error: result.error }, result.status);
+			return apiJson(result.value);
+		}
+		return apiJson({ error: "op phải là claim, submit hoặc drop." }, 400);
+	} catch (error) {
+		console.error("[so-muc]", error);
+		return apiJson({ error: "Không ghi được hộp thư." }, 500);
+	}
+}
+var Route$3 = createFileRoute("/api/so-muc")({ server: { handlers: {
+	GET: ({ request }) => handleSoMucGet(request),
+	POST: ({ request }) => handleSoMucPost(request),
+	OPTIONS: () => apiEmpty(204)
+} } });
+var $$splitComponentImporter$2 = () => import("./bai._lessonId-BgiEIbRY.mjs");
+var Route$2 = createFileRoute("/bai/$lessonId")({ component: lazyRouteComponent($$splitComponentImporter$2, "component") });
+var $$splitComponentImporter$1 = () => import("./khai-niem._conceptId-C9w4e884.mjs");
+var Route$1 = createFileRoute("/khai-niem/$conceptId")({ component: lazyRouteComponent($$splitComponentImporter$1, "component") });
+var $$splitComponentImporter = () => import("./khoa._courseId-KxTJxVt2.mjs");
+var Route = createFileRoute("/khoa/$courseId")({ component: lazyRouteComponent($$splitComponentImporter, "component") });
+var rootRouteChildren = {
+	IndexRoute: Route$11.update({
+		id: "/",
+		path: "/",
+		getParentRoute: () => Route$12
+	}),
+	BanDoRoute: Route$10.update({
+		id: "/ban-do",
+		path: "/ban-do",
+		getParentRoute: () => Route$12
+	}),
+	CongThucRoute: Route$9.update({
+		id: "/cong-thuc",
+		path: "/cong-thuc",
+		getParentRoute: () => Route$12
+	}),
+	DoPhuRoute: Route$8.update({
+		id: "/do-phu",
+		path: "/do-phu",
+		getParentRoute: () => Route$12
+	}),
+	GocRoute: Route$7.update({
+		id: "/goc",
+		path: "/goc",
+		getParentRoute: () => Route$12
+	}),
+	TimKiemRoute: Route$6.update({
+		id: "/tim-kiem",
+		path: "/tim-kiem",
+		getParentRoute: () => Route$12
+	}),
+	TuDienRoute: Route$5.update({
+		id: "/tu-dien",
+		path: "/tu-dien",
+		getParentRoute: () => Route$12
+	}),
+	ApiMcpRoute: Route$4.update({
+		id: "/api/mcp",
+		path: "/api/mcp",
+		getParentRoute: () => Route$12
+	}),
+	ApiSoMucRoute: Route$3.update({
+		id: "/api/so-muc",
+		path: "/api/so-muc",
+		getParentRoute: () => Route$12
+	}),
+	BaiLessonIdRoute: Route$2.update({
+		id: "/bai/$lessonId",
+		path: "/bai/$lessonId",
+		getParentRoute: () => Route$12
+	}),
+	KhaiNiemConceptIdRoute: Route$1.update({
+		id: "/khai-niem/$conceptId",
+		path: "/khai-niem/$conceptId",
+		getParentRoute: () => Route$12
+	}),
+	KhoaCourseIdRoute: Route.update({
+		id: "/khoa/$courseId",
+		path: "/khoa/$courseId",
+		getParentRoute: () => Route$12
+	})
+};
+var routeTree = Route$12._addFileChildren(rootRouteChildren)._addFileTypes();
+var router_exports = /* @__PURE__ */ __exportAll({ getRouter: () => getRouter });
+function getRouter() {
+	return createRouter({
+		routeTree,
+		rewrite: previewPathRewrite(),
+		defaultErrorComponent: AppErrorComponent
+	});
+}
 //#endregion
-export { subscribeProgress as A, importProgress as C, openLesson as D, markLesson as E, progressSnapshot as O, hydrateProgress as S, lessonStatus as T, subscribeRaw as _, getServerRawVersion as a, getProgress as b, overviews as c, sessionConcepts as d, sessionOfConcept as f, studyNeighbors as g, studyListTitle as h, getRawVersion as i, toggleTheme as j, setLang as k, rawEditCount as l, studyCopy as m, clearRaw as n, getStudy as o, setRawPatch as p, getAssignmentByConcept as r, hydrateRaw as s, batchRaw as t, rawIsEdited as u, countSeen as v, itemStatus as w, getServerProgress as x, cycleItem as y };
+export { getServerCmsVersion as A, getServerRawVersion as B, listCms as C, clearCms as D, saveCms as E, studyListTitle as F, overviews as G, rawIsEdited as H, studyNeighbors as I, setOpenCourse as J, getAssignmentByConcept as K, batchRaw as L, subscribeCms as M, getStudy as N, cmsEditCount as O, studyCopy as P, clearRaw as R, importCms as S, liveLesson as T, setRawPatch as U, rawEditCount as V, subscribeRaw as W, useTocMemory as Y, markLesson as _, CoverInfo as a, subscribeProgress as b, words as c, getProgress as d, getServerProgress as f, lessonStatus as g, itemStatus as h, Route$2 as i, setCmsPatch as j, getCmsVersion as k, countSeen as l, importProgress as m, Route as n, Disclosure as o, hydrateProgress as p, sessionConcepts as q, Route$1 as r, ModuleTree as s, router_exports as t, cycleItem as u, openLesson as v, liveCourse as w, exportCms as x, progressSnapshot as y, getRawVersion as z };

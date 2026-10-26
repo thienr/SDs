@@ -1,5 +1,6 @@
 import { Link, useRouterState } from "@tanstack/react-router";
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
+import { setLastRead, setOpenCourse, useTocMemory } from "@/lib/toc-memory";
 import { useSyncExternalStore } from "react";
 import { Map as MapIcon, X } from "lucide-react";
 import { sessionOfConcept } from "@/data/place";
@@ -69,7 +70,7 @@ export function MapBar() {
   const lang = progress.lang;
   const here = useMemo(() => locate(pathname, hash), [pathname, hash]);
   const [open, setOpen] = useState(false);
-  const [openedCourse, setOpenedCourse] = useState<string | null>(null);
+  const mem = useTocMemory();
   const course = courses.find((item) => item.id === here.courseId) ?? null;
   const mod = course?.modules.find((item) => item.id === here.moduleId) ?? null;
   const session = mod?.sessions.find((item) => item.id === here.sessionId) ?? null;
@@ -80,12 +81,17 @@ export function MapBar() {
       ? "All courses"
       : "Mọi khóa";
   const spot = near && near.index >= 0 ? `${near.index + 1}/${near.total}` : null;
-  const shownCourse = openedCourse === null ? here.courseId : openedCourse || null;
+  const shownCourse = mem.course ?? here.courseId;
+  const lessonId = /^\/bai\/([^/]+)/.exec(pathname)?.[1];
+  useEffect(() => {
+    if (!here.courseId) return;
+    setLastRead({ course: here.courseId, mod: here.moduleId, ses: here.sessionId, item: here.conceptId ?? (lessonId ? decodeURIComponent(lessonId) : null) });
+  }, [here.courseId, here.moduleId, here.sessionId, here.conceptId, lessonId]);
 
   return (
     <>
       <div className="sticky top-14 z-20 border-b border-line bg-paper/95 backdrop-blur md:top-0">
-        <button type="button" className="flex min-h-12 w-full items-center gap-3 px-4 text-left md:px-8" onClick={() => { setOpenedCourse(here.courseId); setOpen(true); }}>
+        <button type="button" className="flex min-h-12 w-full items-center gap-3 px-4 text-left md:px-8" onClick={() => setOpen(true)}>
           <MapIcon className="size-4 shrink-0 text-accent" />
           <span className="min-w-0 flex-1 truncate text-sm">{crumb}</span>
           {spot ? <span className="shrink-0 text-xs text-muted">{spot}</span> : null}
@@ -113,7 +119,7 @@ export function MapBar() {
                   <li key={item.id}>
                     <Disclosure
                       open={expanded}
-                      onToggle={() => setOpenedCourse(expanded ? "" : item.id)}
+                      onToggle={() => setOpenCourse(expanded ? "" : item.id)}
                       head={
                         <span className={item.id === here.courseId ? "text-accent" : ""}>
                           <span className="text-xs text-muted">{String(index + 1).padStart(2, "0")}{item.optional ? " · optional" : ""}</span>
