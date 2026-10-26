@@ -1,3 +1,4 @@
+import { CodeExplain } from "@/components/code-block";
 import { Link } from "@tanstack/react-router";
 import { useEffect, useState, useSyncExternalStore } from "react";
 import { Check, Circle } from "lucide-react";
@@ -151,7 +152,7 @@ export function LessonView({ lesson }: { lesson: Lesson }) {
                 {item.code ? (
                   <div className="rounded-card border border-line bg-ink p-4 text-paper">
                     <p className="text-xs uppercase tracking-widest text-paper/70">{item.code.lang}</p>
-                    <pre className="mt-2 overflow-x-auto text-sm leading-relaxed">{item.code.source}</pre>
+                    <CodeExplain code={item.code.source} lang={lang} hint={/sql/i.test(item.code.lang) ? "SQL" : /excel/i.test(item.code.lang) ? "Excel" : /python/i.test(item.code.lang) ? "Python" : undefined}><pre className="mt-2 overflow-x-auto text-sm leading-relaxed">{item.code.source}</pre></CodeExplain>
                     <button type="button" className="mt-3 min-h-11 rounded-full bg-accent px-4 text-sm text-accent-ink" onClick={() => setRan(true)}>
                       Chạy
                     </button>

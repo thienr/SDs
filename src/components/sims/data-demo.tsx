@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { CodeExplain } from "@/components/code-block";
 import type { Cell, Demo, Tbl } from "@/data/demos/types";
 
 const ui = {
@@ -105,7 +106,7 @@ export function DataDemo({ demo, lang }: { demo: Demo; lang: "vi" | "en" }) {
         </div>
       </div>
       <p className="mt-2 text-base leading-snug">{lang === "en" ? step.en : step.vi}</p>
-      {step.code ? <pre className="mt-3 overflow-x-auto rounded-card bg-[#14110e] px-3 py-2 font-mono text-sm leading-relaxed text-[#f4efe6]">{step.code}</pre> : null}
+      {step.code ? <CodeExplain code={step.code} lang={lang}><pre className="mt-3 overflow-x-auto rounded-card bg-[#14110e] px-3 py-2 font-mono text-sm leading-relaxed text-[#f4efe6]">{step.code}</pre></CodeExplain> : null}
       <div className={`mt-3 grid gap-3 ${step.t.length > 1 ? "md:grid-cols-2" : ""}`}>
         {step.t.map((tb, k) => (
           <Grid key={k} t={tb} />
