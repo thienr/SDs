@@ -33,6 +33,8 @@ const heads = {
     next: "Tiếp theo",
     links: "Khái niệm liên quan",
     onMap: "Xem trên sơ đồ tư duy",
+    onFormula: "Xem trong bảng công thức",
+    onGlossary: "Mở từ điển",
     v2d: "Đồ thị kéo được",
     v3d: "Cảnh 3D",
     walk: "Làm từng bước với số liệu thật",
@@ -57,6 +59,8 @@ const heads = {
     next: "Next",
     links: "Connections",
     onMap: "See on the map",
+    onFormula: "See in the formula sheet",
+    onGlossary: "Open the glossary",
     v2d: "Interactive chart",
     v3d: "3D scene",
     walk: "Worked step by step with real numbers",
@@ -69,6 +73,25 @@ const heads = {
     story: "The Lotus Spa story",
   },
 } as const;
+
+function Quick({ id, head, formula }: { id: string; head: Record<string, string>; formula: boolean }) {
+  const cls = "inline-flex min-h-11 items-center rounded-full border border-line px-3 text-sm";
+  return (
+    <div className="mt-3 flex flex-wrap gap-2">
+      <Link to="/ban-do" hash={id} className={cls}>
+        {head.onMap}
+      </Link>
+      {formula ? (
+        <Link to="/cong-thuc" hash={id} className={cls}>
+          {head.onFormula}
+        </Link>
+      ) : null}
+      <Link to="/tu-dien" className={cls}>
+        {head.onGlossary}
+      </Link>
+    </div>
+  );
+}
 
 function WalkBlock({ walk, head, visual, lang }: { walk: WalkText; head: Record<string, string>; visual?: Visual; lang: "vi" | "en" }) {
   const [open, setOpen] = useState(false);
@@ -85,7 +108,11 @@ function WalkBlock({ walk, head, visual, lang }: { walk: WalkText; head: Record<
       <dl className="mt-1 space-y-2">
         {walk.words.map(([term, meaning]) => (
           <div key={term}>
-            <dt className="font-medium">{term}</dt>
+            <dt className="font-medium">
+              <Link to="/tu-dien" hash={term.replace(/\s+/g, " ").trim().toLowerCase()} className="underline decoration-dotted underline-offset-4">
+                {term}
+              </Link>
+            </dt>
             <dd className="leading-relaxed text-muted">{meaning}</dd>
           </div>
         ))}
@@ -231,14 +258,12 @@ export function ConceptView({ concept }: { concept: StudyConcept }) {
               </li>
             ))}
           </ul>
-          <Link to="/ban-do" hash={concept.id} className="mt-3 inline-block text-sm text-accent underline">
-            {head.onMap}
-          </Link>
+          <Quick id={concept.id} head={head} formula={Boolean(text.formula)} />
         </section>
       ) : (
-        <Link to="/ban-do" hash={concept.id} className="mt-6 inline-block text-sm text-accent underline">
-          {head.onMap}
-        </Link>
+        <section className="mt-6">
+          <Quick id={concept.id} head={head} formula={Boolean(text.formula)} />
+        </section>
       )}
 
       {(concept.sim && hasDemo) || concept.widget ? (
