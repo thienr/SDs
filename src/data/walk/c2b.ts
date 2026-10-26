@@ -92,11 +92,11 @@ const base: Record<string, Walk> = {
   },
   "ht-err": {
     vi: {
-      story: "Không bác được H0 không có nghĩa B vô dụng. Bạn kiểm tra hai kiểu sai của cuộc thử trang B: hô «khác» khi không khác, và bỏ sót khi có khác.",
+      story: "Không bác được H0 không có nghĩa B vô dụng. Bạn kiểm tra hai kiểu sai của cuộc thử trang B: báo «khác» khi không khác, và bỏ sót khi có khác.",
       words: [["Sai lầm loại I", "Bác H0 khi H0 đúng (báo động giả). Xác suất là α."], ["Sai lầm loại II", "Không bác H0 khi H1 đúng (bỏ sót). Xác suất là β."], ["Sức mạnh kiểm định", "1 − β: xác suất bắt được khác biệt thật."]],
       problem: "Giả sử B thật sự tốt hơn: 2,6% so với 2,0% của A, mỗi trang 2.000 người. Sai số chuẩn khi H1 đúng là 0,00474, vạch bác bỏ là 1,96. Tính sức mạnh và xác suất bỏ sót.",
       steps: [
-        ["Sai loại I", "α = 5%: nếu hai trang bằng nhau, 100 lần thử thì khoảng 5 lần hô nhầm «khác»."],
+        ["Sai loại I", "α = 5%: nếu hai trang bằng nhau, 100 lần thử thì khoảng 5 lần báo nhầm «khác»."],
         ["Chênh thật tính theo sai số", "(0,026 − 0,020) ÷ 0,00474 = 0,006 ÷ 0,00474 ≈ 1,27."],
         ["Phải vượt vạch", "Cần z vượt 1,96, tức phải vượt thêm 1,96 − 1,27 = 0,69 so với chênh thật."],
         ["Sức mạnh", "P(Z > 0,69) ≈ 0,245, khoảng 24%."],
@@ -215,8 +215,8 @@ const base: Record<string, Walk> = {
   "ht-peek": {
     vi: {
       story: "Thảo nóng ruột và xem kết quả trang B mỗi ngày, định dừng khi p < 0,05. Bạn cảnh báo rằng cách này làm 5% không còn là 5%.",
-      words: [["Nhìn trộm", "Xem kết quả nhiều lần và dừng ngay khi thấy đẹp."], ["Sai lầm loại I tích lũy", "Càng nhiều lần được hô «khác», xác suất báo động giả càng cao."]],
-      problem: "Thảo xem kết quả 5 lần, mỗi lần dùng α = 5% và hô «khác» nếu bất kỳ lần nào có p < 0,05. Nếu hai trang thật sự bằng nhau, xác suất báo động giả tối đa là bao nhiêu (coi 5 lần là độc lập)?",
+      words: [["Nhìn trộm", "Xem kết quả nhiều lần và dừng ngay khi thấy đẹp."], ["Sai lầm loại I tích lũy", "Càng nhiều lần được báo «khác», xác suất báo động giả càng cao."]],
+      problem: "Thảo xem kết quả 5 lần, mỗi lần dùng α = 5% và báo «khác» nếu bất kỳ lần nào có p < 0,05. Nếu hai trang thật sự bằng nhau, xác suất báo động giả tối đa là bao nhiêu (coi 5 lần là độc lập)?",
       steps: [
         ["Một lần không báo động", "1 − 0,05 = 0,95."],
         ["Cả 5 lần không báo động", "0,95⁵ = 0,7738."],

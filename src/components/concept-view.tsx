@@ -1,7 +1,8 @@
 import { Link } from "@tanstack/react-router";
 import { useState, useSyncExternalStore } from "react";
 import { DataDemo } from "@/components/sims/data-demo";
-import { Stage3D } from "@/components/sims/stage3d";
+import { MotionPlayer } from "@/components/motion/player";
+import { motions } from "@/data/motion";
 import { demos } from "@/data/demos";
 import { Sim } from "@/components/sims/labs";
 import { InferWidget } from "@/components/sims/infer-widgets";
@@ -20,35 +21,35 @@ import { getRawVersion, getServerRawVersion, subscribeRaw } from "@/lib/raw-stor
 
 const heads = {
   vi: {
-    why: "Biết để làm gì",
-    prior: "Nối với cái trước",
-    see: "Nhìn cái này",
-    plain: "Nói cho dễ",
-    example: "Tình huống (mọi số là số minh họa)",
-    use: "Khi nào dùng",
-    precise: "Nói cho đúng",
-    more: "Kéo thêm",
+    why: "Vì sao cần biết",
+    prior: "Liên hệ với bài trước",
+    see: "Quan sát",
+    plain: "Hiểu nhanh",
+    example: "Tình huống minh họa (số liệu giả định)",
+    use: "Cách áp dụng",
+    precise: "Định nghĩa chính xác",
+    more: "Tự thử điều chỉnh",
     prev: "Từ trước",
     next: "Tiếp theo",
-    links: "Dây nối",
-    onMap: "Xem trên bản đồ",
+    links: "Khái niệm liên quan",
+    onMap: "Xem trên sơ đồ tư duy",
     v2d: "Đồ thị kéo được",
     v3d: "Cảnh 3D",
-    walk: "Làm từng bước với số thật",
+    walk: "Làm từng bước với số liệu thật",
     words: "Từ cần biết",
     problem: "Bài toán",
     steps: "Từng bước",
     say: "Kết luận bằng lời",
     check: "Tự kiểm tra",
-    reveal: "Xem đáp án",
+    reveal: "Hiện đáp án",
     story: "Câu chuyện Lotus Spa",
   },
   en: {
     why: "What you use it for",
     prior: "How it links",
-    see: "Look at this",
+    see: "Watch it",
     plain: "In plain words",
-    example: "Situation (all numbers are illustrations)",
+    example: "Illustrative situation (made-up numbers)",
     use: "When to use it",
     precise: "The precise version",
     more: "Try it",
@@ -128,9 +129,15 @@ export function ConceptView({ concept }: { concept: StudyConcept }) {
   const rel = relatedOf(concept.id);
   const hasDemo = Boolean(demos[concept.id]);
   const hasLab = Boolean(concept.sim) && !hasDemo;
-  const [view, setView] = useState<"2d" | "3d">("2d");
   const asg = getAssignmentByConcept(concept.id);
   const ov = overviews[concept.id];
+  const visual = hasDemo ? (
+    <DataDemo demo={demos[concept.id]} lang={lang} />
+  ) : motions[concept.id] ? (
+    <MotionPlayer motion={motions[concept.id]} lang={lang} />
+  ) : hasLab ? (
+    <Sim id={concept.sim as string} />
+  ) : null;
   return (
     <article className="reading mx-auto">
       <p className="text-xs uppercase tracking-widest text-muted">{concept.eyebrow} · {concept.session}</p>
@@ -158,29 +165,12 @@ export function ConceptView({ concept }: { concept: StudyConcept }) {
         </section>
       ) : null}
 
-      <section className="mt-6">
-        <h2 className="text-xs uppercase tracking-widest text-muted">{head.see}</h2>
-        {hasLab ? (
-          <div className="mt-3 inline-flex rounded-full border border-line bg-card p-1 text-sm" role="tablist">
-            {(["2d", "3d"] as const).map((id) => (
-              <button
-                key={id}
-                type="button"
-                role="tab"
-                aria-selected={view === id}
-                className={`min-h-10 rounded-full px-4 ${view === id ? "bg-ink text-paper" : ""}`}
-                onClick={() => setView(id)}
-              >
-                {id === "2d" ? head.v2d : head.v3d}
-              </button>
-            ))}
-          </div>
-        ) : null}
-        <div className="mt-3">
-          {hasDemo ? <DataDemo demo={demos[concept.id]} lang={lang} /> : hasLab && view === "2d" ? <Sim id={concept.sim as string} /> : <Stage3D scene={concept.scene} lang={lang} />}
-        </div>
-        <p className="mt-3 text-lg leading-relaxed">{text.see}</p>
-      </section>
+      {visual ? (
+        <section className="mt-6">
+          <h2 className="text-xs uppercase tracking-widest text-muted">{head.see}</h2>
+          <div className="mt-3">{visual}</div>
+        </section>
+      ) : null}
 
       <section className="mt-8">
         <h2 className="text-xs uppercase tracking-widest text-muted">{head.plain}</h2>
