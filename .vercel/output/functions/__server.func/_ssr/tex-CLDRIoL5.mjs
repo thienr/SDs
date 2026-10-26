@@ -1,8 +1,8 @@
 import { o as __toESM } from "../_runtime.mjs";
 import { J as require_react, S as require_jsx_runtime } from "../_libs/@tanstack/react-router+[...].mjs";
-import { b as subscribeProgress, d as getProgress, f as getServerProgress } from "./router-CFi-bkjy.mjs";
+import { b as subscribeProgress, d as getProgress, f as getServerProgress } from "./router-BmhFvZJd.mjs";
 import { t as katex } from "../_libs/katex.mjs";
-//#region node_modules/.nitro/vite/services/ssr/assets/tex-UuitgP3g.js
+//#region node_modules/.nitro/vite/services/ssr/assets/tex-CLDRIoL5.js
 var import_react = /* @__PURE__ */ __toESM(require_react());
 var import_jsx_runtime = require_jsx_runtime();
 var OPS3 = [
@@ -3298,6 +3298,41 @@ function explainCode(code, lg, hint) {
 	cache.set(key, out);
 	return out;
 }
+function codeHash(code) {
+	const s = code.replace(/\r/g, "").trim();
+	let x = 2166136261;
+	for (let i = 0; i < s.length; i++) {
+		x ^= s.charCodeAt(i);
+		x = Math.imul(x, 16777619) >>> 0;
+	}
+	return x.toString(16).padStart(8, "0");
+}
+var loaded = null;
+var loading = null;
+function loadNotes() {
+	if (loaded) return Promise.resolve(loaded);
+	loading ??= import("./code-notes-DqpVJFqs.mjs").then((m) => {
+		loaded = m.default ?? m;
+		return loaded;
+	});
+	return loading;
+}
+function handNote(code, lg) {
+	const note = loaded?.[codeHash(code)];
+	if (!note) return null;
+	const lines = code.replace(/\r/g, "").trim().split("\n");
+	const k = lg === "en" ? 3 : 2;
+	const detected = detectLang(code);
+	return {
+		lang: detected === "Calc" ? "Excel" : detected,
+		summary: note.s[lg === "en" ? 1 : 0],
+		rows: note.r.map((r) => ({
+			code: lines.slice(r[0] - 1, r[1]).join("\n"),
+			text: r[k],
+			kind: "block"
+		}))
+	};
+}
 var ui = {
 	vi: {
 		open: "Dịch code sang tiếng người",
@@ -3326,12 +3361,25 @@ var ui = {
 		}
 	}
 };
+function useNotes() {
+	const [ready, setReady] = (0, import_react.useState)(false);
+	(0, import_react.useEffect)(() => {
+		let live = true;
+		loadNotes().then(() => live && setReady(true)).catch(() => {});
+		return () => {
+			live = false;
+		};
+	}, []);
+	return ready;
+}
 function Explain({ code, lang, hint }) {
 	const t = ui[lang];
-	const ex = (0, import_react.useMemo)(() => explainCode(code, lang, hint), [
+	const ready = useNotes();
+	const ex = (0, import_react.useMemo)(() => handNote(code, lang) ?? explainCode(code, lang, hint), [
 		code,
 		lang,
-		hint
+		hint,
+		ready
 	]);
 	if (!ex) return null;
 	return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
@@ -3383,10 +3431,12 @@ function CodeExplain({ code, lang: langProp, hint, children }) {
 	const lang = langProp ?? progress.lang;
 	const [open, setOpen] = (0, import_react.useState)(false);
 	const t = ui[lang];
-	const can = (0, import_react.useMemo)(() => !!explainCode(code, lang, hint), [
+	const ready = useNotes();
+	const can = (0, import_react.useMemo)(() => !!handNote(code, lang) || !!explainCode(code, lang, hint), [
 		code,
 		lang,
-		hint
+		hint,
+		ready
 	]);
 	return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(import_jsx_runtime.Fragment, { children: [children, can ? /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
 		className: "mb-2",
