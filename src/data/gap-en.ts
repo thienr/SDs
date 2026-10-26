@@ -256,7 +256,7 @@ export const gapEn: Record<string, GapEn> = {
     title: "A cell in Excel holds a number, text or a formula",
     why: "So a cell that looks like a number isn't added as a number when it is actually text.",
     prior: "You have a goal sentence and a yardstick. Excel is where that yardstick is calculated.",
-    see: "This picture shows the three kinds of content in a cell. A number cell can be added, a text cell can only be joined, and a formula recalculates when the cells it refers to change. \"80\" plus \"20\" as text gives \"8020\", not 100.",
+    see: "This picture shows the three kinds of content in a cell. A number cell can be added, a text cell is skipped by SUM, and a formula recalculates when the cells it refers to change. Joining \"80\" and \"20\" as text with & gives \"8020\", not 100.",
     plain: "Each cell has a type, and the type decides which operations are valid. Check the type before adding.",
     situation: "The form column was stored as text because of extra spaces. The whole column totals 0, but that doesn't mean the week had no forms. The SUM function skips text cells without any error.",
     use: [
@@ -2205,7 +2205,7 @@ export const gapEn: Record<string, GapEn> = {
       "Test with \"view as\" for exactly that person, not with a slicer.",
       "Don't call a bookmark access control.",
     ],
-    precise: "RLS filters on the model by role. A measure using CALCULATE to remove filters may accidentally look beyond the role, depending on how it is written, so test with the real account. Hiding a page is not RLS: anyone who knows the way can still get in, and the data is still in their model. Plugging in: 4 channel heads need 4 roles, each keeping exactly the rows of its channel code.",
+    precise: "RLS filters on the model by role. DAX cannot lift RLS filters (CALCULATE, ALL or REMOVEFILTERS only narrow further, never widen). What goes wrong is how the role is written, especially dynamic roles using USERPRINCIPALNAME, and a filter on one table propagating to others through relationships, so test with \"view as\" for the real account. Hiding a page is not RLS: anyone who knows the way can still get in, and the data is still in their model. Plugging in: 4 channel heads need 4 roles, each keeping exactly the rows of its channel code.",
     insight: "A slicer is a choice; RLS is a limit.",
     symbols: [],
   },

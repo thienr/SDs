@@ -3,7 +3,7 @@ import { c as lessons, o as getLesson, r as courses$1 } from "./catalog-DhneT6we
 import { J as require_react, S as require_jsx_runtime, _ as lazyRouteComponent, b as Link, d as Scripts, f as HeadContent, g as Outlet, h as createRouter, p as useRouterState, v as createFileRoute, x as useRouter, y as createRootRoute } from "../_libs/@tanstack/react-router+[...].mjs";
 import { a as Settings, c as Moon, d as ChevronRight, i as Sun, l as Map$1, n as TriangleAlert, o as Search, p as BookOpen, r as TableOfContents, s as Network, t as X } from "../_libs/lucide-react.mjs";
 import { a as union, i as string, n as number, r as object, t as literal } from "../_libs/zod.mjs";
-//#region node_modules/.nitro/vite/services/ssr/assets/router-D2ogNbnO.js
+//#region node_modules/.nitro/vite/services/ssr/assets/router-9fV-CodP.js
 var import_react = /* @__PURE__ */ __toESM(require_react());
 var import_jsx_runtime = require_jsx_runtime();
 var __defProp = Object.defineProperty;
@@ -14129,7 +14129,7 @@ var addEn = {
 			"Read λ as the stretch factor, with a negative λ meaning a flip.",
 			"Remember that not every matrix has enough eigenvectors to serve as axes."
 		],
-		precise: "Av = λv, with v nonzero. λ is the eigenvalue and v the matching eigenvector. Plugging in: A = [[2, 0], [0, 1]] and v = (1, 0) give Av = (2, 0) = 2v, so λ = 2. With v = (1, 1) we get Av = (2, 1), not a multiple of v, so v is not an eigenvector. Eigendecomposition writes a matrix as change axes, stretch by the λ's, change axes back, when there are enough independent eigenvectors. A shear matrix may lack both such directions over the reals.",
+		precise: "Av = λv, with v nonzero. λ is the eigenvalue and v the matching eigenvector. Plugging in: A = [[2, 0], [0, 1]] and v = (1, 0) give Av = (2, 0) = 2v, so λ = 2. With v = (1, 1) we get Av = (2, 1), not a multiple of v, so v is not an eigenvector. Eigendecomposition writes a matrix as change axes, stretch by the λ's, change axes back, when there are enough independent eigenvectors. A shear has only one eigen-direction, so it cannot be diagonalised, while a rotation has none over the reals.",
 		insight: "Not every direction is an eigenvector; you must check the output direction is still the input direction.",
 		symbols: [
 			"v is the direction that is not rotated by the matrix; in the example (1, 0).",
@@ -14689,7 +14689,7 @@ var addSessions = [
 					"Nhớ rằng không phải ma trận nào cũng có đủ vectơ riêng để làm hệ trục."
 				],
 				plain: "Vectơ riêng là hướng mà ma trận chỉ kéo giãn hoặc lật ngược, không quay. Trị riêng (eigenvalue) λ là mức kéo giãn đó.",
-				precise: "Av = λv, với v khác 0. λ là trị riêng và v là vectơ riêng tương ứng. Thế số: A = [[2, 0], [0, 1]] và v = (1, 0) cho Av = (2, 0) = 2v, nên λ = 2. Với v = (1, 1) ta có Av = (2, 1), không phải bội của v, nên v không là vectơ riêng. Phân tích riêng viết ma trận thành đổi trục, kéo theo các λ, rồi đổi trục ngược lại, khi có đủ vectơ riêng độc lập. Ma trận kéo trượt (shear) có thể không có đủ hai hướng đó trên số thực.",
+				precise: "Av = λv, với v khác 0. λ là trị riêng và v là vectơ riêng tương ứng. Thế số: A = [[2, 0], [0, 1]] và v = (1, 0) cho Av = (2, 0) = 2v, nên λ = 2. Với v = (1, 1) ta có Av = (2, 1), không phải bội của v, nên v không là vectơ riêng. Phân tích riêng viết ma trận thành đổi trục, kéo theo các λ, rồi đổi trục ngược lại, khi có đủ vectơ riêng độc lập. Ma trận kéo trượt (shear) chỉ có một hướng riêng nên không chéo hóa được, còn phép quay thì không có hướng riêng nào trên số thực.",
 				formula: "A\\vec v = \\lambda \\vec v",
 				symbols: [
 					{
@@ -17798,13 +17798,13 @@ var restEn = {
 		prior: "The star column kept its order. With a numeric column, the center and the tail are two different questions.",
 		see: "This picture shows statistics on numerical features. Most points sit low, and one high point pulls the mean away from the median.",
 		plain: "The mean is pulled toward the tail, while the median sits in the middle of the sorted list. When the two differ, you must also tell the tail.",
-		situation: "Eight weeks have forms of 18, 19, 20, 20, 20, 21, 22 and 120. The median is 20, while the mean is pulled up to 30. Telling one number hides either the holiday week or the ordinary weeks.",
+		situation: "Eight weeks have forms of 18, 19, 20, 20, 20, 21, 22 and 120. The median is 20, while the mean is pulled up to about 32.5. Telling one number hides either the holiday week or the ordinary weeks.",
 		use: [
 			"Look at the median when the data has a tail.",
 			"Look at the mean when you need a total, because totals go with means.",
 			"Also state the spread, not only one middle number."
 		],
-		precise: "The arithmetic mean is the sum divided by n, and one extreme point changes it. The median is the level at or below which half the sample lies; it ignores the size of the tail so it cannot replace a total. Plugging in: the 8-week total is 240, 240 / 8 = 30; the two middle values are 20 and 20 so the median is 20. The standard deviation describes the spread around the mean. Common mix-up: a two-cluster distribution can have a mean that falls where almost no week lies.",
+		precise: "The arithmetic mean is the sum divided by n, and one extreme point changes it. The median is the level at or below which half the sample lies; it ignores the size of the tail so it cannot replace a total. Plugging in: the 8-week total is 260, 260 / 8 = 32.5; the two middle values are 20 and 20 so the median is 20. The standard deviation describes the spread around the mean. Common mix-up: a two-cluster distribution can have a mean that falls where almost no week lies.",
 		insight: "One middle number is not yet the shape of the column.",
 		symbols: []
 	},
@@ -18070,15 +18070,15 @@ var restEn = {
 	},
 	"sql-rank": {
 		title: "Rank functions: on ties, skip numbers or don't",
-		why: "So two weeks with the same 40 forms don't leave the top 3 with only two weeks.",
+		why: "So two weeks with the same 40 forms don't silently change how many rows a \"top 3\" filter returns.",
 		prior: "The window kept each row. A rank over those rows needs a rule for when two rows are equal.",
 		see: "This picture shows rank functions. RANK gives 1, 1, 3 while DENSE_RANK gives 1, 1, 2.",
 		plain: "The three rank functions differ in how they treat a tie. Choosing the function is choosing the tie rule.",
 		situation: "Four weeks have forms of 40, 40, 35 and 30. RANK gives 1, 1, 3, 4. DENSE_RANK gives 1, 1, 2, 3. ROW_NUMBER gives 1, 2, 3, 4 by breaking the tie.",
 		use: [
 			"Use RANK when you want race-style ranks, with a skip after a tie.",
-			"Use DENSE_RANK when you want a top 3 that a tie doesn't puncture.",
-			"Use ROW_NUMBER when each row needs its own number and you accept breaking ties."
+			"Use DENSE_RANK when you want ranks without gaps; filtering rank <= 3 can then return more than 3 rows (4 weeks here).",
+			"Use ROW_NUMBER when each row needs its own number or you need exactly N rows, and you accept breaking ties."
 		],
 		precise: "RANK leaves a gap after a tied cluster. DENSE_RANK leaves no gap. ROW_NUMBER has no ties. Plugging in: with 40, 40, 35, 30 the third week has rank 3 under RANK and rank 2 under DENSE_RANK. Common mix-up: if ORDER BY is not enough to break the tie, ROW_NUMBER may change order between two runs. For stability, add a unique key to ORDER BY.",
 		insight: "A tie is not a small detail; it decides who makes the top.",
@@ -18828,14 +18828,14 @@ var restSessions = [
 				title: "Thống kê mô tả của cột số: trung bình và trung vị cách nhau là dấu hiệu có đuôi",
 				see: "Hình này thể hiện thống kê mô tả của cột số (statistics on numerical features). Hầu hết điểm nằm thấp, và một điểm cao kéo trung bình ra xa khỏi trung vị.",
 				scene: "x-num",
-				situation: "Tám tuần có số form là 18, 19, 20, 20, 20, 21, 22 và 120. Trung vị là 20, còn trung bình bị kéo lên 30. Kể một số thì hoặc giấu tuần lễ, hoặc giấu các tuần thường.",
+				situation: "Tám tuần có số form là 18, 19, 20, 20, 20, 21, 22 và 120. Trung vị là 20, còn trung bình bị kéo lên khoảng 32,5. Kể một số thì hoặc giấu tuần lễ, hoặc giấu các tuần thường.",
 				use: [
 					"Nhìn trung vị khi dữ liệu có đuôi.",
 					"Nhìn trung bình khi cần tổng, vì tổng đi với trung bình.",
 					"Nói thêm độ rộng, không chỉ một số ở giữa."
 				],
 				plain: "Trung bình bị kéo về phía đuôi, còn trung vị đứng ở giữa dãy đã sắp xếp. Khi hai số khác nhau, bạn phải kể cả cái đuôi.",
-				precise: "Trung bình cộng là tổng chia n, và một điểm cực đoan làm nó đổi. Trung vị là mức mà một nửa mẫu nằm từ đó trở xuống, nó bỏ qua độ lớn của đuôi nên không thay được tổng. Thế số: tổng 8 tuần là 240, 240 / 8 = 30; hai giá trị giữa là 20 và 20 nên trung vị là 20. Độ lệch chuẩn mô tả độ rộng quanh trung bình. Dễ nhầm: một phân phối hai đám có thể có trung bình rơi vào chỗ gần như không có tuần nào.",
+				precise: "Trung bình cộng là tổng chia n, và một điểm cực đoan làm nó đổi. Trung vị là mức mà một nửa mẫu nằm từ đó trở xuống, nó bỏ qua độ lớn của đuôi nên không thay được tổng. Thế số: tổng 8 tuần là 260, 260 / 8 = 32,5; hai giá trị giữa là 20 và 20 nên trung vị là 20. Độ lệch chuẩn mô tả độ rộng quanh trung bình. Dễ nhầm: một phân phối hai đám có thể có trung bình rơi vào chỗ gần như không có tuần nào.",
 				formula: null,
 				symbols: [],
 				sim: null,
@@ -19282,8 +19282,8 @@ var restSessions = [
 				situation: "Bốn tuần có số form là 40, 40, 35 và 30. RANK cho hạng 1, 1, 3, 4. DENSE_RANK cho 1, 1, 2, 3. ROW_NUMBER cho 1, 2, 3, 4 bằng cách phá hòa.",
 				use: [
 					"Dùng RANK khi muốn hạng kiểu cuộc đua, có nhảy số sau hòa.",
-					"Dùng DENSE_RANK khi muốn top 3 không bị thủng vì hòa.",
-					"Dùng ROW_NUMBER khi mỗi dòng cần một số riêng và bạn chấp nhận phá hòa."
+					"Dùng DENSE_RANK khi muốn hạng liền nhau không bị thủng; lọc hạng ≤ 3 có thể ra hơn 3 dòng (ở đây là 4 tuần).",
+					"Dùng ROW_NUMBER khi mỗi dòng cần một số riêng hoặc cần đúng N dòng, và bạn chấp nhận phá hòa."
 				],
 				plain: "Ba hàm xếp hạng khác nhau ở cách xử lý khi hòa. Chọn hàm nào là chọn luật hòa.",
 				precise: "RANK để lại chỗ trống sau một cụm hòa. DENSE_RANK không để chỗ trống. ROW_NUMBER không có hòa. Thế số: với 40, 40, 35, 30 thì tuần thứ ba có hạng 3 theo RANK và hạng 2 theo DENSE_RANK. Dễ nhầm: nếu ORDER BY không đủ để phá hòa, ROW_NUMBER có thể đổi thứ tự giữa hai lần chạy. Muốn ổn định thì thêm một khóa duy nhất vào ORDER BY.",
@@ -19292,7 +19292,7 @@ var restSessions = [
 				sim: null,
 				widget: null,
 				insight: "Hòa không phải chi tiết nhỏ; nó quyết định ai lọt vào top.",
-				why: "Để hai tuần cùng 40 form không làm top 3 chỉ còn hai tuần.",
+				why: "Để hai tuần cùng 40 form không âm thầm làm đổi số dòng của bộ lọc «top 3».",
 				prior: "Cửa sổ đã giữ từng dòng. Hạng trên các dòng đó cần một luật khi hai dòng bằng nhau."
 			}),
 			card$2({
@@ -21420,7 +21420,7 @@ var gapEn = {
 		title: "A cell in Excel holds a number, text or a formula",
 		why: "So a cell that looks like a number isn't added as a number when it is actually text.",
 		prior: "You have a goal sentence and a yardstick. Excel is where that yardstick is calculated.",
-		see: "This picture shows the three kinds of content in a cell. A number cell can be added, a text cell can only be joined, and a formula recalculates when the cells it refers to change. \"80\" plus \"20\" as text gives \"8020\", not 100.",
+		see: "This picture shows the three kinds of content in a cell. A number cell can be added, a text cell is skipped by SUM, and a formula recalculates when the cells it refers to change. Joining \"80\" and \"20\" as text with & gives \"8020\", not 100.",
 		plain: "Each cell has a type, and the type decides which operations are valid. Check the type before adding.",
 		situation: "The form column was stored as text because of extra spaces. The whole column totals 0, but that doesn't mean the week had no forms. The SUM function skips text cells without any error.",
 		use: [
@@ -23353,7 +23353,7 @@ var gapEn = {
 			"Test with \"view as\" for exactly that person, not with a slicer.",
 			"Don't call a bookmark access control."
 		],
-		precise: "RLS filters on the model by role. A measure using CALCULATE to remove filters may accidentally look beyond the role, depending on how it is written, so test with the real account. Hiding a page is not RLS: anyone who knows the way can still get in, and the data is still in their model. Plugging in: 4 channel heads need 4 roles, each keeping exactly the rows of its channel code.",
+		precise: "RLS filters on the model by role. DAX cannot lift RLS filters (CALCULATE, ALL or REMOVEFILTERS only narrow further, never widen). What goes wrong is how the role is written, especially dynamic roles using USERPRINCIPALNAME, and a filter on one table propagating to others through relationships, so test with \"view as\" for the real account. Hiding a page is not RLS: anyone who knows the way can still get in, and the data is still in their model. Plugging in: 4 channel heads need 4 roles, each keeping exactly the rows of its channel code.",
 		insight: "A slicer is a choice; RLS is a limit.",
 		symbols: []
 	},
@@ -24766,7 +24766,7 @@ var gapConcepts = [
 		module: "M1",
 		video: "A cell",
 		title: "Một ô trong Excel chứa số, chữ hoặc công thức",
-		see: "Hình này thể hiện ba loại nội dung của một ô (cell). Ô số cộng được, ô chữ chỉ nối được, và công thức tự tính lại khi ô nó tham chiếu đổi. «80» cộng «20» dạng chữ ra «8020», không ra 100.",
+		see: "Hình này thể hiện ba loại nội dung của một ô (cell). Ô số cộng được, ô chữ thì SUM bỏ qua, và công thức tự tính lại khi ô nó tham chiếu đổi. Nối «80» và «20» dạng chữ bằng & ra «8020», không ra 100.",
 		scene: "g-xl-cell",
 		situation: "Cột form bị để dạng chữ vì có dấu cách thừa. Tổng cả cột ra 0, nhưng điều đó không có nghĩa là tuần đó hết form. Hàm SUM bỏ qua các ô chữ mà không báo lỗi.",
 		use: [
@@ -27942,7 +27942,7 @@ var gapConcepts = [
 			"Không gọi bookmark là phân quyền."
 		],
 		plain: "Muốn giấu dữ liệu thì viết role. Muốn giúp người xem tập trung thì dùng slicer.",
-		precise: "RLS lọc trên mô hình theo vai trò. Một measure dùng CALCULATE để bỏ bộ lọc có thể vô tình nhìn ra ngoài vai trò, tùy cách viết, nên phải kiểm bằng đúng tài khoản. Ẩn một trang không phải RLS: ai biết đường vẫn vào được và dữ liệu vẫn nằm trong mô hình của họ. Thế số: 4 trưởng kênh cần 4 role, mỗi role giữ đúng dòng của mã kênh tương ứng.",
+		precise: "RLS lọc trên mô hình theo vai trò. DAX không gỡ được bộ lọc của RLS (CALCULATE, ALL hay REMOVEFILTERS chỉ thu hẹp thêm, không nới ra). Cái hay sai là cách viết role, nhất là role động dùng USERPRINCIPALNAME, và bộ lọc trên một bảng lan sang bảng khác qua quan hệ, nên phải kiểm bằng «view as» đúng tài khoản. Ẩn một trang không phải RLS: ai biết đường vẫn vào được và dữ liệu vẫn nằm trong mô hình của họ. Thế số: 4 trưởng kênh cần 4 role, mỗi role giữ đúng dòng của mã kênh tương ứng.",
 		formula: null,
 		symbols: [],
 		sim: null,
@@ -29764,7 +29764,7 @@ var mlEn = {
 		use: [
 			"Use the residual plot against the fitted values, or against x, to check the model.",
 			"A random band with no shape is the result you want.",
-			"A curve, a funnel, or a cluster of weeks all on one side shows the line is missing a factor."
+			"A curve or a cluster of weeks all on one side shows the line is missing a factor; a funnel (uneven spread) shows non-constant error. The histogram of residuals should also look roughly bell-shaped and centred at 0."
 		],
 		precise: "The residual is e = y − ŷ. Plugging in: e = 90 − 80 = +10. When the line has an intercept, the residuals add up to about 0, so you cannot relax just because the \"mean residual is zero\". You need to look at their shape. Common mix-up: the prediction for a new week is the value on the line, while the size of the residuals says how far the line has missed in similar weeks.",
 		insight: "A slope without a residual plot is a conclusion that has not been checked.",
@@ -29796,7 +29796,7 @@ var mlEn = {
 	},
 	"gd-cost": {
 		title: "Cost function: how bad the current coefficients are",
-		why: "So you see what the machine is trying to make small when there is no compact formula to solve directly.",
+		why: "So you see what the machine is trying to make small when you can't or don't want to solve directly (many columns, or models with no closed form).",
 		prior: "With one input column there is a formula for the best line. With many coefficients you must search, and to search you need a cost function.",
 		see: "This picture shows the cost function as a valley. The height of the valley is the cost. The gold ball is the current set of coefficients. The lower the ball, the less bad the coefficients are.",
 		plain: "The cost function measures how bad the current coefficients are. For a straight line, that cost is the sum of squared residuals.",
@@ -30496,7 +30496,7 @@ var mlConcepts = [
 				use: [
 					"Dùng biểu đồ phần dư theo giá trị đường dự đoán, hoặc theo x, để kiểm tra mô hình.",
 					"Một dải ngẫu nhiên, không có hình dạng, là kết quả mong muốn.",
-					"Hình cong, hình kèn hoặc một cụm tuần cùng nằm một phía cho thấy đường đang thiếu một yếu tố."
+					"Hình cong hoặc một cụm tuần cùng nằm một phía cho thấy đường đang thiếu một yếu tố; hình kèn (độ tản ra không đều) cho thấy sai số không đều. Ngoài ra, histogram phần dư nên gần dạng chuông và tập trung quanh 0."
 				],
 				plain: "Phần dư là số thật trừ số trên đường. Biểu đồ phần dư là nơi các vấn đề của mô hình lộ ra.",
 				precise: "Phần dư là e = y − ŷ. Thế số: e = 90 − 80 = +10. Khi đường có hệ số chặn, tổng các phần dư gần bằng 0, nên không thể yên tâm chỉ vì «phần dư trung bình bằng 0». Cần nhìn hình của chúng. Dễ nhầm: dự đoán cho tuần mới là số trên đường, còn cỡ phần dư cho biết đường đã trượt bao xa ở các tuần tương tự.",
@@ -30598,7 +30598,7 @@ var mlConcepts = [
 				sim: "gd",
 				widget: null,
 				insight: "Mô hình được dẫn đến đáy của hàm chi phí mà bạn đã chọn, chứ không được «dạy» một cách trừu tượng.",
-				why: "Để bạn thấy máy đang làm nhỏ đại lượng nào khi không còn công thức gọn để giải trực tiếp.",
+				why: "Để bạn thấy máy đang làm nhỏ đại lượng nào khi bạn không giải trực tiếp được hoặc không muốn giải (nhiều cột, hoặc mô hình không có công thức đóng).",
 				prior: "Với một cột đầu vào, có công thức cho đường tốt nhất. Với nhiều hệ số, ta phải tìm dần, và muốn tìm thì cần một hàm chi phí."
 			}),
 			card({
@@ -35551,19 +35551,19 @@ function RootComponent() {
 		] })]
 	});
 }
-var $$splitComponentImporter$9 = () => import("./routes-BjJQwP-u.mjs");
+var $$splitComponentImporter$9 = () => import("./routes-B0m3UEV0.mjs");
 var Route$11 = createFileRoute("/")({ component: lazyRouteComponent($$splitComponentImporter$9, "component") });
-var $$splitComponentImporter$8 = () => import("./ban-do-EzbApKRB.mjs");
+var $$splitComponentImporter$8 = () => import("./ban-do-B_RivYOE.mjs");
 var Route$10 = createFileRoute("/ban-do")({ component: lazyRouteComponent($$splitComponentImporter$8, "component") });
-var $$splitComponentImporter$7 = () => import("./cong-thuc-O6Z0wmgT.mjs");
+var $$splitComponentImporter$7 = () => import("./cong-thuc-B6HpkB9X.mjs");
 var Route$9 = createFileRoute("/cong-thuc")({ component: lazyRouteComponent($$splitComponentImporter$7, "component") });
 var $$splitComponentImporter$6 = () => import("./do-phu-kafhI8o9.mjs");
 var Route$8 = createFileRoute("/do-phu")({ component: lazyRouteComponent($$splitComponentImporter$6, "component") });
-var $$splitComponentImporter$5 = () => import("./goc-BYzfDIZi.mjs");
+var $$splitComponentImporter$5 = () => import("./goc-nBYKCRO4.mjs");
 var Route$7 = createFileRoute("/goc")({ component: lazyRouteComponent($$splitComponentImporter$5, "component") });
 var $$splitComponentImporter$4 = () => import("./tim-kiem-7KFEY_R2.mjs");
 var Route$6 = createFileRoute("/tim-kiem")({ component: lazyRouteComponent($$splitComponentImporter$4, "component") });
-var $$splitComponentImporter$3 = () => import("./tu-dien-DXrjtMgW.mjs");
+var $$splitComponentImporter$3 = () => import("./tu-dien-cbfXSjqa.mjs");
 var Route$5 = createFileRoute("/tu-dien")({ component: lazyRouteComponent($$splitComponentImporter$3, "component") });
 var CORS = {
 	"access-control-allow-origin": "*",
@@ -36410,11 +36410,11 @@ var Route$3 = createFileRoute("/api/so-muc")({ server: { handlers: {
 	POST: ({ request }) => handleSoMucPost(request),
 	OPTIONS: () => apiEmpty(204)
 } } });
-var $$splitComponentImporter$2 = () => import("./bai._lessonId-BgiEIbRY.mjs");
+var $$splitComponentImporter$2 = () => import("./bai._lessonId-0rrFzNFI.mjs");
 var Route$2 = createFileRoute("/bai/$lessonId")({ component: lazyRouteComponent($$splitComponentImporter$2, "component") });
-var $$splitComponentImporter$1 = () => import("./khai-niem._conceptId-C9w4e884.mjs");
+var $$splitComponentImporter$1 = () => import("./khai-niem._conceptId-B8mrzLvd.mjs");
 var Route$1 = createFileRoute("/khai-niem/$conceptId")({ component: lazyRouteComponent($$splitComponentImporter$1, "component") });
-var $$splitComponentImporter = () => import("./khoa._courseId-KxTJxVt2.mjs");
+var $$splitComponentImporter = () => import("./khoa._courseId-CJYhhMXf.mjs");
 var Route = createFileRoute("/khoa/$courseId")({ component: lazyRouteComponent($$splitComponentImporter, "component") });
 var rootRouteChildren = {
 	IndexRoute: Route$11.update({
