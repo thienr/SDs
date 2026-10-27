@@ -114,9 +114,10 @@ async function w$2(t) {
 	return s$2 ? (await (await import("fs/promises")).readFile(t)).buffer : (c$1(t), (await a.get(t.toString())).clone().arrayBuffer());
 }
 var S$2 = () => {
-	if (globalThis.crypto?.randomUUID) return globalThis.crypto.randomUUID();
+	var _globalThis$crypto, _globalThis$crypto2;
+	if ((_globalThis$crypto = globalThis.crypto) === null || _globalThis$crypto === void 0 ? void 0 : _globalThis$crypto.randomUUID) return globalThis.crypto.randomUUID();
 	let t = /* @__PURE__ */ new Uint8Array(16);
-	if (globalThis.crypto?.getRandomValues) globalThis.crypto.getRandomValues(t);
+	if ((_globalThis$crypto2 = globalThis.crypto) === null || _globalThis$crypto2 === void 0 ? void 0 : _globalThis$crypto2.getRandomValues) globalThis.crypto.getRandomValues(t);
 	else for (let r = 0; r < t.length; r++) t[r] = Math.floor(Math.random() * 256);
 	t[6] = t[6] & 15 | 64, t[8] = t[8] & 63 | 128;
 	let e = [];
@@ -657,7 +658,7 @@ var Ar = [
 ];
 async function at$2(e, r, t) {
 	let n = new Uint8Array(await r.arrayBuffer()), o = typeof File < "u" && r instanceof File ? r.name : void 0;
-	(Ar.includes(r.type) || o?.endsWith(".tgz") || o?.endsWith(".tar.gz")) && (n = await De$1(n));
+	(Ar.includes(r.type) || o !== null && o !== void 0 && o.endsWith(".tgz") || o !== null && o !== void 0 && o.endsWith(".tar.gz")) && (n = await De$1(n));
 	let s;
 	try {
 		s = (0, D$3.untar)(n);
@@ -847,16 +848,19 @@ var Dr = (() => {
 			return e;
 		}
 		function addRunDependency(e) {
-			runDependencies++, Module.monitorRunDependencies?.(runDependencies);
+			var _Module$monitorRunDep;
+			runDependencies++, (_Module$monitorRunDep = Module.monitorRunDependencies) === null || _Module$monitorRunDep === void 0 || _Module$monitorRunDep.call(Module, runDependencies);
 		}
 		function removeRunDependency(e) {
-			if (runDependencies--, Module.monitorRunDependencies?.(runDependencies), runDependencies == 0 && dependenciesFulfilled) {
+			var _Module$monitorRunDep2;
+			if (runDependencies--, (_Module$monitorRunDep2 = Module.monitorRunDependencies) === null || _Module$monitorRunDep2 === void 0 || _Module$monitorRunDep2.call(Module, runDependencies), runDependencies == 0 && dependenciesFulfilled) {
 				var r = dependenciesFulfilled;
 				dependenciesFulfilled = null, r();
 			}
 		}
 		function abort(e) {
-			Module.onAbort?.(e), e = "Aborted(" + e + ")", err(e), ABORT = !0, e += ". Build with -sASSERTIONS for more info.";
+			var _Module$onAbort;
+			(_Module$onAbort = Module.onAbort) === null || _Module$onAbort === void 0 || _Module$onAbort.call(Module, e), e = "Aborted(" + e + ")", err(e), ABORT = !0, e += ". Build with -sASSERTIONS for more info.";
 			var r = new WebAssembly.RuntimeError(e);
 			throw readyPromiseReject(r), r;
 		}
@@ -907,6 +911,7 @@ var Dr = (() => {
 			};
 		}
 		async function createWasm() {
+			var _wasmBinaryFile;
 			function e(o, a) {
 				wasmExports = o.exports, wasmExports = relocateExports(wasmExports, 1024);
 				var s = getDylinkMetadata(a);
@@ -922,7 +927,7 @@ var Dr = (() => {
 			} catch (o) {
 				err(`Module.instantiateWasm callback failed with error: ${o}`), readyPromiseReject(o);
 			}
-			wasmBinaryFile ?? (wasmBinaryFile = findWasmBinary());
+			(_wasmBinaryFile = wasmBinaryFile) !== null && _wasmBinaryFile !== void 0 || (wasmBinaryFile = findWasmBinary());
 			try {
 				var n = await instantiateAsync(wasmBinary, wasmBinaryFile, t);
 				return r(n), n;
@@ -1753,10 +1758,10 @@ var Dr = (() => {
 			var c = r ? PATH_FS.resolve(PATH.join2(e, r)) : e, p = `cp ${c}`;
 			function f(m) {
 				function _(g) {
-					d?.(), l || FS_createDataFile(e, r, g, n, o, u), a?.(), removeRunDependency(p);
+					d === null || d === void 0 || d(), l || FS_createDataFile(e, r, g, n, o, u), a === null || a === void 0 || a(), removeRunDependency(p);
 				}
 				FS_handledByPreloadPlugin(m, c, _, () => {
-					s?.(), removeRunDependency(p);
+					s === null || s === void 0 || s(), removeRunDependency(p);
 				}) || _(m);
 			}
 			addRunDependency(p), typeof t == "string" ? asyncLoad(t).then(f, s) : f(t);
@@ -2134,11 +2139,12 @@ var Dr = (() => {
 				}
 			},
 			lookupPath(e, r = {}) {
+				var _r$follow_mount;
 				if (!e) return {
 					path: "",
 					node: null
 				};
-				r.follow_mount ?? (r.follow_mount = !0), PATH.isAbs(e) || (e = FS.cwd() + "/" + e);
+				(_r$follow_mount = r.follow_mount) !== null && _r$follow_mount !== void 0 || (r.follow_mount = !0), PATH.isAbs(e) || (e = FS.cwd() + "/" + e);
 				e: for (var t = 0; t < 40; t++) {
 					for (var n = e.split("/").filter((d) => !!d && d !== "."), o = FS.root, a = "/", s = 0; s < n.length; s++) {
 						var l = s === n.length - 1;
@@ -2151,7 +2157,7 @@ var Dr = (() => {
 						try {
 							o = FS.lookupNode(o, n[s]);
 						} catch (d) {
-							if (d?.errno === 44 && l && r.noent_okay) return { path: a };
+							if ((d === null || d === void 0 ? void 0 : d.errno) === 44 && l && r.noent_okay) return { path: a };
 							throw d;
 						}
 						if (FS.isMountpoint(o) && (!l || r.follow_mount) && (o = o.mounted.root), FS.isLink(o.mode) && (!l || r.follow)) {
@@ -2298,12 +2304,14 @@ var Dr = (() => {
 				FS.streams[e] = null;
 			},
 			dupStream(e, r = -1) {
+				var _t$stream_ops, _t$stream_ops$dup;
 				var t = FS.createStream(e, r);
-				return t.stream_ops?.dup?.(t), t;
+				return (_t$stream_ops = t.stream_ops) === null || _t$stream_ops === void 0 || (_t$stream_ops$dup = _t$stream_ops.dup) === null || _t$stream_ops$dup === void 0 || _t$stream_ops$dup.call(_t$stream_ops, t), t;
 			},
 			chrdev_stream_ops: {
 				open(e) {
-					e.stream_ops = FS.getDevice(e.node.rdev).stream_ops, e.stream_ops.open?.(e);
+					var _e$stream_ops$open, _e$stream_ops;
+					e.stream_ops = FS.getDevice(e.node.rdev).stream_ops, (_e$stream_ops$open = (_e$stream_ops = e.stream_ops).open) === null || _e$stream_ops$open === void 0 || _e$stream_ops$open.call(_e$stream_ops, e);
 				},
 				llseek() {
 					throw new FS.ErrnoError(70);
@@ -2391,7 +2399,7 @@ var Dr = (() => {
 					flags: 2,
 					namelen: 255
 				}, t = FS.lookupPath(e, { follow: !0 }).node;
-				return t?.node_ops.statfs && Object.assign(r, t.node_ops.statfs(t.mount.opts.root)), r;
+				return t !== null && t !== void 0 && t.node_ops.statfs && Object.assign(r, t.node_ops.statfs(t.mount.opts.root)), r;
 			},
 			create(e, r = 438) {
 				return r &= 4095, r |= 32768, FS.mknod(e, r, 0);
@@ -2714,7 +2722,8 @@ var Dr = (() => {
 				};
 			},
 			init(e, r, t) {
-				FS.initialized = !0, e ?? (e = Module.stdin), r ?? (r = Module.stdout), t ?? (t = Module.stderr), FS.createStandardStreams(e, r, t);
+				var _e2, _r2, _t;
+				FS.initialized = !0, (_e2 = e) !== null && _e2 !== void 0 || (e = Module.stdin), (_r2 = r) !== null && _r2 !== void 0 || (r = Module.stdout), (_t = t) !== null && _t !== void 0 || (t = Module.stderr), FS.createStandardStreams(e, r, t);
 			},
 			quit() {
 				FS.initialized = !1, _fflush(0);
@@ -2784,16 +2793,18 @@ var Dr = (() => {
 				}
 			},
 			createDevice(e, r, t, n) {
+				var _l$major;
 				var l;
 				var o = PATH.join2(typeof e == "string" ? e : FS.getPath(e), r), a = FS_getMode(!!t, !!n);
-				(l = FS.createDevice).major ?? (l.major = 64);
+				(_l$major = (l = FS.createDevice).major) !== null && _l$major !== void 0 || (l.major = 64);
 				var s = FS.makedev(FS.createDevice.major++, 0);
 				return FS.registerDevice(s, {
 					open(u) {
 						u.seekable = !1;
 					},
 					close(u) {
-						n?.buffer?.length && n(10);
+						var _n$buffer;
+						n !== null && n !== void 0 && (_n$buffer = n.buffer) !== null && _n$buffer !== void 0 && _n$buffer.length && n(10);
 					},
 					read(u, d, c, p, f) {
 						for (var m = 0, _ = 0; _ < p; _++) {
@@ -3043,7 +3054,7 @@ var Dr = (() => {
 						try {
 							_ = FS.lookupNode(n.node, f);
 						} catch (g) {
-							if (g?.errno === 28) continue;
+							if ((g === null || g === void 0 ? void 0 : g.errno) === 28) continue;
 							throw g;
 						}
 						c = _.id, p = FS.isChrdev(_.mode) ? 2 : FS.isDir(_.mode) ? 4 : FS.isLink(_.mode) ? 10 : 8;
@@ -3299,7 +3310,8 @@ var Dr = (() => {
 			if (e instanceof ExitStatus || e == "unwind") return EXITSTATUS;
 			quit_(1, e);
 		}, keepRuntimeAlive = () => noExitRuntime || runtimeKeepaliveCounter > 0, _proc_exit = (e) => {
-			EXITSTATUS = e, keepRuntimeAlive() || (Module.onExit?.(e), ABORT = !0), quit_(e, new ExitStatus(e));
+			var _Module$onExit;
+			EXITSTATUS = e, keepRuntimeAlive() || ((_Module$onExit = Module.onExit) === null || _Module$onExit === void 0 || _Module$onExit.call(Module, e), ABORT = !0), quit_(e, new ExitStatus(e));
 		};
 		_proc_exit.sig = "vi";
 		var exitJS = (e, r) => {
@@ -3458,8 +3470,9 @@ var Dr = (() => {
 		_fd_seek.sig = "iijip";
 		function _fd_sync(e) {
 			try {
+				var _r$stream_ops;
 				var r = SYSCALLS.getStreamFromFD(e);
-				return r.stream_ops?.fsync ? r.stream_ops.fsync(r) : 0;
+				return ((_r$stream_ops = r.stream_ops) === null || _r$stream_ops === void 0 ? void 0 : _r$stream_ops.fsync) ? r.stream_ops.fsync(r) : 0;
 			} catch (t) {
 				if (typeof FS > "u" || t.name !== "ErrnoError") throw t;
 				return t.errno;
@@ -3730,7 +3743,8 @@ var Dr = (() => {
 		function run(e = arguments_) {
 			if (runDependencies > 0 || (preRun(), runDependencies > 0)) return;
 			function r() {
-				calledRun || (calledRun = !0, Module.calledRun = !0, !ABORT && (initRuntime(), preMain(), readyPromiseResolve(Module), Module.onRuntimeInitialized?.(), shouldRunNow && callMain(e), postRun()));
+				var _Module$onRuntimeInit;
+				calledRun || (calledRun = !0, Module.calledRun = !0, !ABORT && (initRuntime(), preMain(), readyPromiseResolve(Module), (_Module$onRuntimeInit = Module.onRuntimeInitialized) === null || _Module$onRuntimeInit === void 0 || _Module$onRuntimeInit.call(Module), shouldRunNow && callMain(e), postRun()));
 			}
 			Module.setStatus ? (Module.setStatus("Running..."), setTimeout(() => {
 				setTimeout(() => Module.setStatus(""), 1), r();
@@ -3837,7 +3851,7 @@ function ce$2(e, r, t) {
 	}, []);
 }
 function zr(e, r) {
-	if (!e) throw new Error(r ?? "Assertion failed");
+	if (!e) throw new Error(r !== null && r !== void 0 ? r : "Assertion failed");
 }
 var I$2 = "/pglite";
 var B$1 = I$2 + "/data";
@@ -3933,7 +3947,7 @@ async function At$1({ pg: e, debug: r, args: t, wasmModule: n }) {
 			"--locale=C.UTF-8",
 			"--locale-provider=libc",
 			"--auth=trust",
-			...t ?? []
+			...t !== null && t !== void 0 ? t : []
 		],
 		wasmModule: n
 	});
@@ -4002,7 +4016,7 @@ var Wr = (e, r) => {
 			return d.node_ops = o.node_ops, d.stream_ops = o.stream_ops, d;
 		},
 		getMode: function(a) {
-			return n?.("getMode", a), o.tryFSOperation(() => r.lstat(a).mode);
+			return n === null || n === void 0 || n("getMode", a), o.tryFSOperation(() => r.lstat(a).mode);
 		},
 		realPath: function(a) {
 			let s = [];
@@ -4011,7 +4025,7 @@ var Wr = (e, r) => {
 		},
 		node_ops: {
 			getattr(a) {
-				n?.("getattr", o.realPath(a));
+				n === null || n === void 0 || n("getattr", o.realPath(a));
 				let s = o.realPath(a);
 				return o.tryFSOperation(() => {
 					let l = r.lstat(s);
@@ -4028,79 +4042,79 @@ var Wr = (e, r) => {
 				});
 			},
 			setattr(a, s) {
-				n?.("setattr", o.realPath(a), s);
+				n === null || n === void 0 || n("setattr", o.realPath(a), s);
 				let l = o.realPath(a);
 				o.tryFSOperation(() => {
 					s.mode !== void 0 && r.chmod(l, s.mode), s.size !== void 0 && r.truncate(l, s.size), s.timestamp !== void 0 && r.utimes(l, s.timestamp, s.timestamp), s.size !== void 0 && r.truncate(l, s.size);
 				});
 			},
 			lookup(a, s) {
-				n?.("lookup", o.realPath(a), s);
+				n === null || n === void 0 || n("lookup", o.realPath(a), s);
 				let l = [o.realPath(a), s].join("/"), u = o.getMode(l);
 				return o.createNode(a, s, u);
 			},
 			mknod(a, s, l, u) {
-				n?.("mknod", o.realPath(a), s, l, u);
+				n === null || n === void 0 || n("mknod", o.realPath(a), s, l, u);
 				let d = o.createNode(a, s, l, u), c = o.realPath(d);
 				return o.tryFSOperation(() => (t.isDir(d.mode) ? r.mkdir(c, { mode: l }) : r.writeFile(c, "", { mode: l }), d));
 			},
 			rename(a, s, l) {
-				n?.("rename", o.realPath(a), o.realPath(s), l);
+				n === null || n === void 0 || n("rename", o.realPath(a), o.realPath(s), l);
 				let u = o.realPath(a), d = [o.realPath(s), l].join("/");
 				o.tryFSOperation(() => {
 					r.rename(u, d);
 				}), a.name = l;
 			},
 			unlink(a, s) {
-				n?.("unlink", o.realPath(a), s);
+				n === null || n === void 0 || n("unlink", o.realPath(a), s);
 				let l = [o.realPath(a), s].join("/");
 				try {
 					r.unlink(l);
 				} catch {}
 			},
 			rmdir(a, s) {
-				n?.("rmdir", o.realPath(a), s);
+				n === null || n === void 0 || n("rmdir", o.realPath(a), s);
 				let l = [o.realPath(a), s].join("/");
 				return o.tryFSOperation(() => {
 					r.rmdir(l);
 				});
 			},
 			readdir(a) {
-				n?.("readdir", o.realPath(a));
+				n === null || n === void 0 || n("readdir", o.realPath(a));
 				let s = o.realPath(a);
 				return o.tryFSOperation(() => r.readdir(s));
 			},
 			symlink(a, s, l) {
-				throw n?.("symlink", o.realPath(a), s, l), new t.ErrnoError(63);
+				throw n === null || n === void 0 || n("symlink", o.realPath(a), s, l), new t.ErrnoError(63);
 			},
 			readlink(a) {
-				throw n?.("readlink", o.realPath(a)), new t.ErrnoError(63);
+				throw n === null || n === void 0 || n("readlink", o.realPath(a)), new t.ErrnoError(63);
 			}
 		},
 		stream_ops: {
 			open(a) {
-				n?.("open stream", o.realPath(a.node));
+				n === null || n === void 0 || n("open stream", o.realPath(a.node));
 				let s = o.realPath(a.node);
 				return o.tryFSOperation(() => {
 					t.isFile(a.node.mode) && (a.shared.refcount = 1, a.nfd = r.open(s));
 				});
 			},
 			close(a) {
-				return n?.("close stream", o.realPath(a.node)), o.tryFSOperation(() => {
+				return n === null || n === void 0 || n("close stream", o.realPath(a.node)), o.tryFSOperation(() => {
 					t.isFile(a.node.mode) && a.nfd && --a.shared.refcount === 0 && r.close(a.nfd);
 				});
 			},
 			dup(a) {
-				n?.("dup stream", o.realPath(a.node)), a.shared.refcount++;
+				n === null || n === void 0 || n("dup stream", o.realPath(a.node)), a.shared.refcount++;
 			},
 			read(a, s, l, u, d) {
-				return n?.("read stream", o.realPath(a.node), l, u, d), u === 0 ? 0 : o.tryFSOperation(() => r.read(a.nfd, s, l, u, d));
+				return n === null || n === void 0 || n("read stream", o.realPath(a.node), l, u, d), u === 0 ? 0 : o.tryFSOperation(() => r.read(a.nfd, s, l, u, d));
 			},
 			write(a, s, l, u, d) {
-				return n?.("write stream", o.realPath(a.node), l, u, d), o.tryFSOperation(() => r.write(a.nfd, s.buffer, l, u, d));
+				return n === null || n === void 0 || n("write stream", o.realPath(a.node), l, u, d), o.tryFSOperation(() => r.write(a.nfd, s.buffer, l, u, d));
 			},
 			llseek(a, s, l) {
-				n?.("llseek stream", o.realPath(a.node), s, l);
+				n === null || n === void 0 || n("llseek stream", o.realPath(a.node), s, l);
 				let u = s;
 				if (l === 1 ? u += a.position : l === 2 && t.isFile(a.node.mode) && o.tryFSOperation(() => {
 					let d = r.fstat(a.nfd);
@@ -4109,7 +4123,7 @@ var Wr = (e, r) => {
 				return u;
 			},
 			mmap(a, s, l, u, d) {
-				if (n?.("mmap stream", o.realPath(a.node), s, l, u, d), !t.isFile(a.node.mode)) throw new t.ErrnoError(Ve$2.ENODEV);
+				if (n === null || n === void 0 || n("mmap stream", o.realPath(a.node), s, l, u, d), !t.isFile(a.node.mode)) throw new t.ErrnoError(Ve$2.ENODEV);
 				let c = e.mmapAlloc(s);
 				return o.stream_ops.read(a, e.HEAP8, c, s, l), {
 					ptr: c,
@@ -4117,7 +4131,7 @@ var Wr = (e, r) => {
 				};
 			},
 			msync(a, s, l, u, d) {
-				return n?.("msync stream", o.realPath(a.node), l, u, d), o.stream_ops.write(a, s, 0, u, l), 0;
+				return n === null || n === void 0 || n("msync stream", o.realPath(a.node), l, u, d), o.stream_ops.write(a, s, 0, u, l), 0;
 			}
 		}
 	};
@@ -4216,13 +4230,14 @@ var L$1 = class extends We$2 {
 			}), this.state.pool.push(a), c();
 		}));
 		for (let i = 0; i > t; i--) o.push(new Promise(async (c) => {
+			var _s$get;
 			let a = this.state.pool.pop();
 			T$2(this, n, k$1).call(this, {
 				opp: "deletePoolFile",
 				args: [a]
 			});
 			let h = h$1(this, b$1).get(a);
-			h$1(this, m$1).get(a)?.close(), await h$1(this, F$1).removeEntry(h.name), h$1(this, b$1).delete(a), h$1(this, m$1).delete(a), c();
+			(_s$get = h$1(this, m$1).get(a)) === null || _s$get === void 0 || _s$get.close(), await h$1(this, F$1).removeEntry(h.name), h$1(this, b$1).delete(a), h$1(this, m$1).delete(a), c();
 		}));
 		await Promise.all(o);
 	}
@@ -4295,7 +4310,7 @@ var L$1 = class extends We$2 {
 	_mkdirState(e, t) {
 		let o = T$2(this, n, w$1).call(this, e), i = o.pop(), c = [], a = this.state.root;
 		for (let d of o) {
-			if (c.push(e), !Object.prototype.hasOwnProperty.call(a.children, d)) if (t?.recursive) this.mkdir(c.join("/"));
+			if (c.push(e), !Object.prototype.hasOwnProperty.call(a.children, d)) if (t === null || t === void 0 ? void 0 : t.recursive) this.mkdir(c.join("/"));
 			else throw new p$1("ENOENT", "No such file or directory");
 			if (a.children[d].type !== "directory") throw new p$1("ENOTDIR", "Not a directory");
 			a = a.children[d];
@@ -4304,7 +4319,7 @@ var L$1 = class extends We$2 {
 		let h = {
 			type: "directory",
 			lastModified: Date.now(),
-			mode: t?.mode || T$1.DIR,
+			mode: (t === null || t === void 0 ? void 0 : t.mode) || T$1.DIR,
 			children: {}
 		};
 		a.children[i] = h;
@@ -4380,7 +4395,7 @@ var L$1 = class extends We$2 {
 		if (a.type !== "file") throw new p$1("EISDIR", "Is a directory");
 		if (delete c.children[i], t) {
 			let h = h$1(this, m$1).get(a.backingFilename);
-			h?.truncate(0), h$1(this, S$1).add(h), h$1(this, D$2).has(e) && (h$1(this, P$2).delete(h$1(this, D$2).get(e)), h$1(this, D$2).delete(e));
+			h === null || h === void 0 || h.truncate(0), h$1(this, S$1).add(h), h$1(this, D$2).has(e) && (h$1(this, P$2).delete(h$1(this, D$2).get(e)), h$1(this, D$2).delete(e));
 		}
 		this.state.pool.push(a.backingFilename);
 	}
@@ -4413,7 +4428,7 @@ var L$1 = class extends We$2 {
 			let l = {
 				type: "file",
 				lastModified: Date.now(),
-				mode: o?.mode || T$1.FILE,
+				mode: (o === null || o === void 0 ? void 0 : o.mode) || T$1.FILE,
 				backingFilename: this.state.pool.pop()
 			};
 			a.children[c] = l, T$2(this, n, k$1).call(this, {
@@ -4522,8 +4537,8 @@ ${t}`), i = h$1(this, y$2).getSize();
 	for (; h$1(this, P$2).has(e);) U$1(this, x$2)._++;
 	return e;
 }, j$1 = async function(e, t) {
-	let o = T$2(this, n, w$1).call(this, e), i = t?.from || h$1(this, H$2);
-	for (let c of o) i = await i.getDirectoryHandle(c, { create: t?.create });
+	let o = T$2(this, n, w$1).call(this, e), i = (t === null || t === void 0 ? void 0 : t.from) || h$1(this, H$2);
+	for (let c of o) i = await i.getDirectoryHandle(c, { create: t === null || t === void 0 ? void 0 : t.create });
 	return i;
 };
 var p$1 = class extends Error {
@@ -4766,8 +4781,9 @@ var Se = ln(je$1);
 var un = Se.parsers;
 var cn = Se.serializers;
 function se$1(e, t, n) {
+	var _n$t;
 	if (e === null) return null;
-	let s = n?.[t] ?? Se.parsers[t];
+	let s = (_n$t = n === null || n === void 0 ? void 0 : n[t]) !== null && _n$t !== void 0 ? _n$t : Se.parsers[t];
 	return s ? s(e, t) : e;
 }
 function ln(e) {
@@ -4839,7 +4855,7 @@ function hn(e, t, n, s) {
 		fields: []
 	}, u = 0, m = {
 		...t,
-		...n?.parsers
+		...n === null || n === void 0 ? void 0 : n.parsers
 	};
 	return e.forEach((l) => {
 		switch (l.name) {
@@ -4852,7 +4868,7 @@ function hn(e, t, n, s) {
 			case "dataRow": {
 				if (!a) break;
 				let E = l;
-				n?.rowMode === "array" ? a.rows.push(E.fields.map((I, C) => se$1(I, a.fields[C].dataTypeID, m))) : a.rows.push(Object.fromEntries(E.fields.map((I, C) => [a.fields[C].name, se$1(I, a.fields[C].dataTypeID, m)])));
+				(n === null || n === void 0 ? void 0 : n.rowMode) === "array" ? a.rows.push(E.fields.map((I, C) => se$1(I, a.fields[C].dataTypeID, m))) : a.rows.push(Object.fromEntries(E.fields.map((I, C) => [a.fields[C].name, se$1(I, a.fields[C].dataTypeID, m)])));
 				break;
 			}
 			case "commandComplete": {
@@ -5184,10 +5200,11 @@ var Dn = (e) => f.addString(e).flush(112);
 var In = (e) => f.addCString(e).flush(81);
 var xn = [];
 var Mn = (e) => {
-	let t = e.name ?? "";
+	var _e$name, _e$types$length, _e$types, _e$types2;
+	let t = (_e$name = e.name) !== null && _e$name !== void 0 ? _e$name : "";
 	t.length > 63 && (console.error("Warning! Postgres only supports 63 characters for query names."), console.error("You supplied %s (%s)", t, t.length), console.error("This can cause conflicts and silent errors executing queries"));
-	let n = f.addCString(t).addCString(e.text).addInt16(e.types?.length ?? 0);
-	return e.types?.forEach((s) => n.addInt32(s)), f.flush(80);
+	let n = f.addCString(t).addCString(e.text).addInt16((_e$types$length = (_e$types = e.types) === null || _e$types === void 0 ? void 0 : _e$types.length) !== null && _e$types$length !== void 0 ? _e$types$length : 0);
+	return (_e$types2 = e.types) === null || _e$types2 === void 0 || _e$types2.forEach((s) => n.addInt32(s)), f.flush(80);
 };
 var U = new T();
 var Rn = (e, t) => {
@@ -5201,7 +5218,8 @@ var Rn = (e, t) => {
 	}
 };
 var En = (e = {}) => {
-	let t = e.portal ?? "", n = e.statement ?? "", s = e.binary ?? !1, i = e.values ?? xn, a = i.length;
+	var _e$portal, _e$statement, _e$binary, _e$values;
+	let t = (_e$portal = e.portal) !== null && _e$portal !== void 0 ? _e$portal : "", n = (_e$statement = e.statement) !== null && _e$statement !== void 0 ? _e$statement : "", s = (_e$binary = e.binary) !== null && _e$binary !== void 0 ? _e$binary : !1, i = (_e$values = e.values) !== null && _e$values !== void 0 ? _e$values : xn, a = i.length;
 	return f.addCString(t).addCString(n), f.addInt16(a), Rn(i, e.valueMapper), f.addInt16(a), f.add(U.flush()), f.addInt16(s ? 1 : 0), f.flush(66);
 };
 var Cn = new Uint8Array([
@@ -5217,8 +5235,9 @@ var Cn = new Uint8Array([
 	0
 ]);
 var Tn = (e) => {
+	var _e$portal2, _e$rows;
 	if (!e || !e.portal && !e.rows) return Cn;
-	let t = e.portal ?? "", n = e.rows ?? 0, s = P$1(t), i = 4 + s + 1 + 4, a = new DataView(new ArrayBuffer(1 + i));
+	let t = (_e$portal2 = e.portal) !== null && _e$portal2 !== void 0 ? _e$portal2 : "", n = (_e$rows = e.rows) !== null && _e$rows !== void 0 ? _e$rows : 0, s = P$1(t), i = 4 + s + 1 + 4, a = new DataView(new ArrayBuffer(1 + i));
 	return a.setUint8(0, 69), a.setInt32(1, i, !1), new TextEncoder().encodeInto(t, new Uint8Array(a.buffer, 5)), a.setUint8(s + 5, 0), a.setUint32(a.byteLength - 4, n, !1), new Uint8Array(a.buffer);
 };
 var Nn = (e, t) => {
@@ -5231,9 +5250,13 @@ var Ne = (e, t) => {
 };
 var Pn = f.addCString("P").flush(68);
 var Ln = f.addCString("S").flush(68);
-var kn = (e) => e.name ? Ne(68, `${e.type}${e.name ?? ""}`) : e.type === "P" ? Pn : Ln;
+var kn = (e) => {
+	var _e$name2;
+	return e.name ? Ne(68, `${e.type}${(_e$name2 = e.name) !== null && _e$name2 !== void 0 ? _e$name2 : ""}`) : e.type === "P" ? Pn : Ln;
+};
 var On = (e) => {
-	return Ne(67, `${e.type}${e.name ?? ""}`);
+	var _e$name3;
+	return Ne(67, `${e.type}${(_e$name3 = e.name) !== null && _e$name3 !== void 0 ? _e$name3 : ""}`);
 };
 var Un = (e) => f.add(e).flush(100);
 var Vn = (e) => Ne(102, e);
@@ -5511,11 +5534,11 @@ function y$1(t, ...r) {
 	let a = [];
 	for (let p = 0; p < r.length; p++) {
 		let n = r[p], i = p + 1;
-		if (n?._templateType === o.part) {
+		if ((n === null || n === void 0 ? void 0 : n._templateType) === o.part) {
 			s(e, t[i], n.str), s(e.raw, t.raw[i], n.str);
 			continue;
 		}
-		if (n?._templateType === o.container) {
+		if ((n === null || n === void 0 ? void 0 : n._templateType) === o.container) {
 			s(e, t[i], ...n.strings), s(e.raw, t.raw[i], ...n.strings.raw), a.push(...n.values);
 			continue;
 		}
@@ -5584,11 +5607,12 @@ var z$1 = class {
 		return await this._checkReady(), await this._runExclusiveTransaction(async () => await T$2(this, t, m).call(this, s, e));
 	}
 	async describeQuery(s, e) {
+		var _o$dataTypeIDs$map, _i$fields$map;
 		let r = [];
 		try {
 			await T$2(this, t, y).call(this, $e$1.parse({
 				text: s,
-				types: e?.paramTypes
+				types: e === null || e === void 0 ? void 0 : e.paramTypes
 			}), e), r = await T$2(this, t, y).call(this, $e$1.describe({ type: "S" }), e);
 		} catch (n) {
 			throw n instanceof N$1 ? E({
@@ -5602,15 +5626,15 @@ var z$1 = class {
 		}
 		let o = r.find((n) => n.name === "parameterDescription"), i = r.find((n) => n.name === "rowDescription");
 		return {
-			queryParams: o?.dataTypeIDs.map((n) => ({
+			queryParams: (_o$dataTypeIDs$map = o === null || o === void 0 ? void 0 : o.dataTypeIDs.map((n) => ({
 				dataTypeID: n,
 				serializer: this.serializers[n]
-			})) ?? [],
-			resultFields: i?.fields.map((n) => ({
+			}))) !== null && _o$dataTypeIDs$map !== void 0 ? _o$dataTypeIDs$map : [],
+			resultFields: (_i$fields$map = i === null || i === void 0 ? void 0 : i.fields.map((n) => ({
 				name: n.name,
 				dataTypeID: n.dataTypeID,
 				parser: this.parsers[n.dataTypeID]
-			})) ?? []
+			}))) !== null && _i$fields$map !== void 0 ? _i$fields$map : []
 		};
 	}
 	async transaction(s) {
@@ -5653,16 +5677,17 @@ P = /* @__PURE__ */ new WeakMap(), p = /* @__PURE__ */ new WeakMap(), t = /* @__
 	});
 }, x$1 = async function(s, e = [], r) {
 	return await this._runExclusiveQuery(async () => {
-		T$2(this, t, _).call(this, "runQuery", s, e, r), await this._handleBlob(r?.blob);
+		T$2(this, t, _).call(this, "runQuery", s, e, r), await this._handleBlob(r === null || r === void 0 ? void 0 : r.blob);
 		let o = [];
 		try {
 			let c = await T$2(this, t, y).call(this, $e$1.parse({
 				text: s,
-				types: r?.paramTypes
+				types: r === null || r === void 0 ? void 0 : r.paramTypes
 			}), r), u = bn(await T$2(this, t, y).call(this, $e$1.describe({ type: "S" }), r)), n = e.map((b, k) => {
+				var _r$serializers$D, _r$serializers;
 				let D = u[k];
 				if (b == null) return null;
-				let v = r?.serializers?.[D] ?? this.serializers[D];
+				let v = (_r$serializers$D = r === null || r === void 0 || (_r$serializers = r.serializers) === null || _r$serializers === void 0 ? void 0 : _r$serializers[D]) !== null && _r$serializers$D !== void 0 ? _r$serializers$D : this.serializers[D];
 				return v ? v(b) : b.toString();
 			});
 			o = [
@@ -5687,7 +5712,7 @@ P = /* @__PURE__ */ new WeakMap(), p = /* @__PURE__ */ new WeakMap(), t = /* @__
 	});
 }, m = async function(s, e) {
 	return await this._runExclusiveQuery(async () => {
-		T$2(this, t, _).call(this, "runExec", s, e), await this._handleBlob(e?.blob);
+		T$2(this, t, _).call(this, "runExec", s, e), await this._handleBlob(e === null || e === void 0 ? void 0 : e.blob);
 		let r = [];
 		try {
 			r = await T$2(this, t, y).call(this, $e$1.query(s), e);
@@ -5712,8 +5737,9 @@ P = /* @__PURE__ */ new WeakMap(), p = /* @__PURE__ */ new WeakMap(), t = /* @__
 //#region node_modules/@electric-sql/pglite/dist/chunk-RYDTTX3G.js
 u$1();
 async function v(s, e, r, n) {
+	var _n;
 	if (!r || r.length === 0) return e;
-	n = n ?? s;
+	n = (_n = n) !== null && _n !== void 0 ? _n : s;
 	let t = [];
 	try {
 		await s.execProtocol($e$1.parse({ text: e }), { syncToFs: !1 }), t.push(...(await s.execProtocol($e$1.describe({ type: "S" }), { syncToFs: !1 })).messages);
@@ -5998,10 +6024,10 @@ var Ee = class extends Ye$2 {
 };
 function Ze(e) {
 	let t;
-	if (e?.startsWith("file://")) {
+	if (e === null || e === void 0 ? void 0 : e.startsWith("file://")) {
 		if (e = e.slice(7), !e) throw new Error("Invalid dataDir, must be a valid path");
 		t = "nodefs";
-	} else e?.startsWith("idb://") ? (e = e.slice(6), t = "idbfs") : e?.startsWith("opfs-ahp://") ? (e = e.slice(11), t = "opfs-ahp") : !e || e?.startsWith("memory://") ? t = "memoryfs" : t = "nodefs";
+	} else (e === null || e === void 0 ? void 0 : e.startsWith("idb://")) ? (e = e.slice(6), t = "idbfs") : (e === null || e === void 0 ? void 0 : e.startsWith("opfs-ahp://")) ? (e = e.slice(11), t = "opfs-ahp") : !e || (e === null || e === void 0 ? void 0 : e.startsWith("memory://")) ? t = "memoryfs" : t = "nodefs";
 	return {
 		dataDir: e,
 		fsType: t
@@ -6024,6 +6050,7 @@ u$1();
 var ht = (() => {
 	var _scriptName = import.meta.url;
 	return async function(moduleArg = {}) {
+		var _Module$expectedDataF;
 		var moduleRtn, Module = moduleArg, readyPromiseResolve, readyPromiseReject, readyPromise = new Promise((e, t) => {
 			readyPromiseResolve = e, readyPromiseReject = t;
 		}), ENVIRONMENT_IS_WEB = typeof window == "object", ENVIRONMENT_IS_WORKER = typeof WorkerGlobalScope < "u", ENVIRONMENT_IS_NODE = typeof process == "object" && typeof process.versions == "object" && typeof process.versions.node == "string" && process.type != "renderer";
@@ -6032,39 +6059,43 @@ var ht = (() => {
 			t.startsWith("data:") && (t = "/");
 			var require = e(t);
 		}
-		Module.expectedDataFileDownloads ?? (Module.expectedDataFileDownloads = 0), Module.expectedDataFileDownloads++, (() => {
+		(_Module$expectedDataF = Module.expectedDataFileDownloads) !== null && _Module$expectedDataF !== void 0 || (Module.expectedDataFileDownloads = 0), Module.expectedDataFileDownloads++, (() => {
 			if (typeof ENVIRONMENT_IS_PTHREAD < "u" && ENVIRONMENT_IS_PTHREAD || typeof ENVIRONMENT_IS_WASM_WORKER < "u" && ENVIRONMENT_IS_WASM_WORKER) return;
 			var r = typeof process == "object" && typeof process.versions == "object" && typeof process.versions.node == "string";
 			function a(o) {
+				var _Module$preRun;
 				var _ = "";
 				typeof window == "object" ? window.encodeURIComponent(window.location.pathname.substring(0, window.location.pathname.lastIndexOf("/")) + "/") : typeof process > "u" && typeof location < "u" && encodeURIComponent(location.pathname.substring(0, location.pathname.lastIndexOf("/")) + "/");
 				var s = "pglite.data", n = "pglite.data", l = Module.locateFile ? Module.locateFile(n, "") : n, d = o.remote_package_size;
 				function p(c, w, S, k) {
+					var _Module$dataFileDownl;
 					if (r) {
 						require("fs").readFile(c, (E, y) => {
 							E ? k(E) : S(y.buffer);
 						});
 						return;
 					}
-					Module.dataFileDownloads ?? (Module.dataFileDownloads = {}), fetch(c).catch((E) => Promise.reject(new Error(`Network Error: ${c}`, { cause: E }))).then((E) => {
+					(_Module$dataFileDownl = Module.dataFileDownloads) !== null && _Module$dataFileDownl !== void 0 || (Module.dataFileDownloads = {}), fetch(c).catch((E) => Promise.reject(new Error(`Network Error: ${c}`, { cause: E }))).then((E) => {
+						var _F$get, _Module$setStatus2;
 						if (!E.ok) return Promise.reject(/* @__PURE__ */ new Error(`${E.status}: ${E.url}`));
 						if (!E.body && E.arrayBuffer) return E.arrayBuffer().then(S);
-						let y = E.body.getReader(), M = () => y.read().then(te).catch((j) => Promise.reject(new Error(`Unexpected error while handling : ${E.url} ${j}`, { cause: j }))), b = [], F = E.headers, A = Number(F.get("Content-Length") ?? w), V = 0, te = ({ done: j, value: X }) => {
+						let y = E.body.getReader(), M = () => y.read().then(te).catch((j) => Promise.reject(new Error(`Unexpected error while handling : ${E.url} ${j}`, { cause: j }))), b = [], F = E.headers, A = Number((_F$get = F.get("Content-Length")) !== null && _F$get !== void 0 ? _F$get : w), V = 0, te = ({ done: j, value: X }) => {
 							if (j) {
 								let R = new Uint8Array(b.map((q) => q.length).reduce((q, nt) => q + nt, 0)), L = 0;
 								for (let q of b) R.set(q, L), L += q.length;
 								S(R.buffer);
 							} else {
+								var _Module$setStatus;
 								b.push(X), V += X.length, Module.dataFileDownloads[c] = {
 									loaded: V,
 									total: A
 								};
 								let R = 0, L = 0;
 								for (let q of Object.values(Module.dataFileDownloads)) R += q.loaded, L += q.total;
-								return Module.setStatus?.(`Downloading data... (${R}/${L})`), M();
+								return (_Module$setStatus = Module.setStatus) === null || _Module$setStatus === void 0 || _Module$setStatus.call(Module, `Downloading data... (${R}/${L})`), M();
 							}
 						};
-						return Module.setStatus?.("Downloading data..."), M();
+						return (_Module$setStatus2 = Module.setStatus) === null || _Module$setStatus2 === void 0 || _Module$setStatus2.call(Module, "Downloading data..."), M();
 					});
 				}
 				function m(c) {
@@ -6075,6 +6106,7 @@ var ht = (() => {
 					g ? (g(c), g = null) : u = c;
 				}, m);
 				function f(c) {
+					var _c$preloadResults;
 					function w(M, b) {
 						if (!M) throw b + (/* @__PURE__ */ new Error()).stack;
 					}
@@ -6105,9 +6137,9 @@ var ht = (() => {
 						for (var F = o.files, A = 0; A < F.length; ++A) S.prototype.requests[F[A].filename].onload();
 						c.removeRunDependency("datafile_pglite.data");
 					}
-					c.addRunDependency("datafile_pglite.data"), c.preloadResults ?? (c.preloadResults = {}), c.preloadResults[s] = { fromCache: !1 }, u ? (y(u), u = null) : g = y;
+					c.addRunDependency("datafile_pglite.data"), (_c$preloadResults = c.preloadResults) !== null && _c$preloadResults !== void 0 || (c.preloadResults = {}), c.preloadResults[s] = { fromCache: !1 }, u ? (y(u), u = null) : g = y;
 				}
-				Module.calledRun ? f(Module) : (Module.preRun ?? (Module.preRun = [])).push(f);
+				Module.calledRun ? f(Module) : ((_Module$preRun = Module.preRun) !== null && _Module$preRun !== void 0 ? _Module$preRun : Module.preRun = []).push(f);
 			}
 			a({
 				files: [
@@ -9697,16 +9729,19 @@ var ht = (() => {
 			return e;
 		}
 		function addRunDependency(e) {
-			runDependencies++, Module.monitorRunDependencies?.(runDependencies);
+			var _Module$monitorRunDep;
+			runDependencies++, (_Module$monitorRunDep = Module.monitorRunDependencies) === null || _Module$monitorRunDep === void 0 || _Module$monitorRunDep.call(Module, runDependencies);
 		}
 		function removeRunDependency(e) {
-			if (runDependencies--, Module.monitorRunDependencies?.(runDependencies), runDependencies == 0 && dependenciesFulfilled) {
+			var _Module$monitorRunDep2;
+			if (runDependencies--, (_Module$monitorRunDep2 = Module.monitorRunDependencies) === null || _Module$monitorRunDep2 === void 0 || _Module$monitorRunDep2.call(Module, runDependencies), runDependencies == 0 && dependenciesFulfilled) {
 				var t = dependenciesFulfilled;
 				dependenciesFulfilled = null, t();
 			}
 		}
 		function abort(e) {
-			Module.onAbort?.(e), e = "Aborted(" + e + ")", err(e), ABORT = !0, e += ". Build with -sASSERTIONS for more info.";
+			var _Module$onAbort;
+			(_Module$onAbort = Module.onAbort) === null || _Module$onAbort === void 0 || _Module$onAbort.call(Module, e), e = "Aborted(" + e + ")", err(e), ABORT = !0, e += ". Build with -sASSERTIONS for more info.";
 			var t = new WebAssembly.RuntimeError(e);
 			throw readyPromiseReject(t), t;
 		}
@@ -9757,6 +9792,7 @@ var ht = (() => {
 			};
 		}
 		async function createWasm() {
+			var _wasmBinaryFile;
 			function e(o, _) {
 				wasmExports = o.exports, wasmExports = relocateExports(wasmExports, 1024);
 				var s = getDylinkMetadata(_);
@@ -9772,7 +9808,7 @@ var ht = (() => {
 			} catch (o) {
 				err(`Module.instantiateWasm callback failed with error: ${o}`), readyPromiseReject(o);
 			}
-			wasmBinaryFile ?? (wasmBinaryFile = findWasmBinary());
+			(_wasmBinaryFile = wasmBinaryFile) !== null && _wasmBinaryFile !== void 0 || (wasmBinaryFile = findWasmBinary());
 			try {
 				var a = await instantiateAsync(wasmBinary, wasmBinaryFile, r);
 				return t(a), a;
@@ -10657,10 +10693,10 @@ var ht = (() => {
 			var p = t ? PATH_FS.resolve(PATH.join2(e, t)) : e, m = `cp ${p}`;
 			function g(u) {
 				function f(c) {
-					d?.(), n || FS_createDataFile(e, t, c, a, o, l), _?.(), removeRunDependency(m);
+					d === null || d === void 0 || d(), n || FS_createDataFile(e, t, c, a, o, l), _ === null || _ === void 0 || _(), removeRunDependency(m);
 				}
 				FS_handledByPreloadPlugin(u, p, f, () => {
-					s?.(), removeRunDependency(m);
+					s === null || s === void 0 || s(), removeRunDependency(m);
 				}) || f(u);
 			}
 			addRunDependency(m), typeof r == "string" ? asyncLoad(r).then(g, s) : g(r);
@@ -10697,8 +10733,9 @@ var ht = (() => {
 				e.idbPersistState ? e.idbPersistState === "idb" && (e.idbPersistState = "again") : e.idbPersistState = setTimeout(r, 0);
 			},
 			mount: (e) => {
+				var _e$opts;
 				var t = MEMFS.mount(e);
-				if (e?.opts?.autoPersist) {
+				if (e === null || e === void 0 || (_e$opts = e.opts) === null || _e$opts === void 0 ? void 0 : _e$opts.autoPersist) {
 					t.idbPersistState = 0;
 					var r = t.node_ops;
 					t.node_ops = Object.assign({}, t.node_ops), t.node_ops.mknod = (a, o, _, s) => {
@@ -11407,11 +11444,12 @@ var ht = (() => {
 				}
 			},
 			lookupPath(e, t = {}) {
+				var _t$follow_mount;
 				if (!e) return {
 					path: "",
 					node: null
 				};
-				t.follow_mount ?? (t.follow_mount = !0), PATH.isAbs(e) || (e = FS.cwd() + "/" + e);
+				(_t$follow_mount = t.follow_mount) !== null && _t$follow_mount !== void 0 || (t.follow_mount = !0), PATH.isAbs(e) || (e = FS.cwd() + "/" + e);
 				e: for (var r = 0; r < 40; r++) {
 					for (var a = e.split("/").filter((d) => !!d && d !== "."), o = FS.root, _ = "/", s = 0; s < a.length; s++) {
 						var n = s === a.length - 1;
@@ -11424,7 +11462,7 @@ var ht = (() => {
 						try {
 							o = FS.lookupNode(o, a[s]);
 						} catch (d) {
-							if (d?.errno === 44 && n && t.noent_okay) return { path: _ };
+							if ((d === null || d === void 0 ? void 0 : d.errno) === 44 && n && t.noent_okay) return { path: _ };
 							throw d;
 						}
 						if (FS.isMountpoint(o) && (!n || t.follow_mount) && (o = o.mounted.root), FS.isLink(o.mode) && (!n || t.follow)) {
@@ -11571,12 +11609,14 @@ var ht = (() => {
 				FS.streams[e] = null;
 			},
 			dupStream(e, t = -1) {
+				var _r$stream_ops, _r$stream_ops$dup;
 				var r = FS.createStream(e, t);
-				return r.stream_ops?.dup?.(r), r;
+				return (_r$stream_ops = r.stream_ops) === null || _r$stream_ops === void 0 || (_r$stream_ops$dup = _r$stream_ops.dup) === null || _r$stream_ops$dup === void 0 || _r$stream_ops$dup.call(_r$stream_ops, r), r;
 			},
 			chrdev_stream_ops: {
 				open(e) {
-					e.stream_ops = FS.getDevice(e.node.rdev).stream_ops, e.stream_ops.open?.(e);
+					var _e$stream_ops$open, _e$stream_ops;
+					e.stream_ops = FS.getDevice(e.node.rdev).stream_ops, (_e$stream_ops$open = (_e$stream_ops = e.stream_ops).open) === null || _e$stream_ops$open === void 0 || _e$stream_ops$open.call(_e$stream_ops, e);
 				},
 				llseek() {
 					throw new FS.ErrnoError(70);
@@ -11664,7 +11704,7 @@ var ht = (() => {
 					flags: 2,
 					namelen: 255
 				}, r = FS.lookupPath(e, { follow: !0 }).node;
-				return r?.node_ops.statfs && Object.assign(t, r.node_ops.statfs(r.mount.opts.root)), t;
+				return r !== null && r !== void 0 && r.node_ops.statfs && Object.assign(t, r.node_ops.statfs(r.mount.opts.root)), t;
 			},
 			create(e, t = 438) {
 				return t &= 4095, t |= 32768, FS.mknod(e, t, 0);
@@ -11989,7 +12029,8 @@ var ht = (() => {
 				};
 			},
 			init(e, t, r) {
-				FS.initialized = !0, e ?? (e = Module.stdin), t ?? (t = Module.stdout), r ?? (r = Module.stderr), FS.createStandardStreams(e, t, r);
+				var _e2, _t2, _r;
+				FS.initialized = !0, (_e2 = e) !== null && _e2 !== void 0 || (e = Module.stdin), (_t2 = t) !== null && _t2 !== void 0 || (t = Module.stdout), (_r = r) !== null && _r !== void 0 || (r = Module.stderr), FS.createStandardStreams(e, t, r);
 			},
 			quit() {
 				FS.initialized = !1, _fflush(0);
@@ -12059,16 +12100,18 @@ var ht = (() => {
 				}
 			},
 			createDevice(e, t, r, a) {
+				var _n$major;
 				var n;
 				var o = PATH.join2(typeof e == "string" ? e : FS.getPath(e), t), _ = FS_getMode(!!r, !!a);
-				(n = FS.createDevice).major ?? (n.major = 64);
+				(_n$major = (n = FS.createDevice).major) !== null && _n$major !== void 0 || (n.major = 64);
 				var s = FS.makedev(FS.createDevice.major++, 0);
 				return FS.registerDevice(s, {
 					open(l) {
 						l.seekable = !1;
 					},
 					close(l) {
-						a?.buffer?.length && a(10);
+						var _a$buffer;
+						a !== null && a !== void 0 && (_a$buffer = a.buffer) !== null && _a$buffer !== void 0 && _a$buffer.length && a(10);
 					},
 					read(l, d, p, m, g) {
 						for (var u = 0, f = 0; f < m; f++) {
@@ -12240,10 +12283,12 @@ var ht = (() => {
 				SOCKFS.callbacks[e] = t;
 			},
 			emit(e, t) {
-				SOCKFS.callbacks[e]?.(t);
+				var _SOCKFS$callbacks$e, _SOCKFS$callbacks;
+				(_SOCKFS$callbacks$e = (_SOCKFS$callbacks = SOCKFS.callbacks)[e]) === null || _SOCKFS$callbacks$e === void 0 || _SOCKFS$callbacks$e.call(_SOCKFS$callbacks, t);
 			},
 			mount(e) {
-				return SOCKFS.websocketArgs = Module.websocket || {}, (Module.websocket ?? (Module.websocket = {})).on = SOCKFS.on, FS.createNode(null, "/", 16895, 0);
+				var _Module$websocket;
+				return SOCKFS.websocketArgs = Module.websocket || {}, ((_Module$websocket = Module.websocket) !== null && _Module$websocket !== void 0 ? _Module$websocket : Module.websocket = {}).on = SOCKFS.on, FS.createNode(null, "/", 16895, 0);
 			},
 			createSocket(e, t, r) {
 				t &= -526337;
@@ -12871,7 +12916,7 @@ var ht = (() => {
 						try {
 							f = FS.lookupNode(a.node, g);
 						} catch (c) {
-							if (c?.errno === 28) continue;
+							if ((c === null || c === void 0 ? void 0 : c.errno) === 28) continue;
 							throw c;
 						}
 						p = f.id, m = FS.isChrdev(f.mode) ? 2 : FS.isDir(f.mode) ? 4 : FS.isLink(f.mode) ? 10 : 8;
@@ -13230,6 +13275,7 @@ var ht = (() => {
 		var readI53FromI64 = (e) => HEAPU32[e >> 2] + HEAP32[e + 4 >> 2] * 4294967296;
 		function ___syscall_utimensat(e, t, r, a) {
 			try {
+				var _s;
 				t = SYSCALLS.getStr(t), t = SYSCALLS.calculateAt(e, t, !0);
 				var o = Date.now(), _, s;
 				if (!r) _ = o, s = o;
@@ -13237,7 +13283,7 @@ var ht = (() => {
 					var n = readI53FromI64(r), l = HEAP32[r + 8 >> 2];
 					l == 1073741823 ? _ = o : l == 1073741822 ? _ = null : _ = n * 1e3 + l / 1e6, r += 16, n = readI53FromI64(r), l = HEAP32[r + 8 >> 2], l == 1073741823 ? s = o : l == 1073741822 ? s = null : s = n * 1e3 + l / 1e6;
 				}
-				return (s ?? _) !== null && FS.utime(t, _, s), 0;
+				return ((_s = s) !== null && _s !== void 0 ? _s : _) !== null && FS.utime(t, _, s), 0;
 			} catch (d) {
 				if (typeof FS > "u" || d.name !== "ErrnoError") throw d;
 				return -d.errno;
@@ -13367,7 +13413,8 @@ ${n}`), 0;
 			if (e instanceof ExitStatus || e == "unwind") return EXITSTATUS;
 			quit_(1, e);
 		}, keepRuntimeAlive = () => noExitRuntime || runtimeKeepaliveCounter > 0, _proc_exit = (e) => {
-			EXITSTATUS = e, keepRuntimeAlive() || (Module.onExit?.(e), ABORT = !0), quit_(e, new ExitStatus(e));
+			var _Module$onExit;
+			EXITSTATUS = e, keepRuntimeAlive() || ((_Module$onExit = Module.onExit) === null || _Module$onExit === void 0 || _Module$onExit.call(Module, e), ABORT = !0), quit_(e, new ExitStatus(e));
 		};
 		_proc_exit.sig = "vi";
 		var exitJS = (e, t) => {
@@ -13574,8 +13621,9 @@ ${n}`), 0;
 		_fd_seek.sig = "iijip";
 		function _fd_sync(e) {
 			try {
+				var _t$stream_ops;
 				var t = SYSCALLS.getStreamFromFD(e);
-				return t.stream_ops?.fsync ? t.stream_ops.fsync(t) : 0;
+				return ((_t$stream_ops = t.stream_ops) === null || _t$stream_ops === void 0 ? void 0 : _t$stream_ops.fsync) ? t.stream_ops.fsync(t) : 0;
 			} catch (r) {
 				if (typeof FS > "u" || r.name !== "ErrnoError") throw r;
 				return r.errno;
@@ -14451,7 +14499,8 @@ ${n}`), 0;
 		function run(e = arguments_) {
 			if (runDependencies > 0 || (preRun(), runDependencies > 0)) return;
 			function t() {
-				calledRun || (calledRun = !0, Module.calledRun = !0, !ABORT && (initRuntime(), preMain(), readyPromiseResolve(Module), Module.onRuntimeInitialized?.(), shouldRunNow && callMain(e), postRun()));
+				var _Module$onRuntimeInit;
+				calledRun || (calledRun = !0, Module.calledRun = !0, !ABORT && (initRuntime(), preMain(), readyPromiseResolve(Module), (_Module$onRuntimeInit = Module.onRuntimeInitialized) === null || _Module$onRuntimeInit === void 0 || _Module$onRuntimeInit.call(Module), shouldRunNow && callMain(e), postRun()));
 			}
 			Module.setStatus ? (Module.setStatus("Running..."), setTimeout(() => {
 				setTimeout(() => Module.setStatus(""), 1), t();
@@ -14525,6 +14574,7 @@ var _t;
 var st;
 var N = class N extends z$1 {
 	constructor(r = {}, a = {}) {
+		var _a$extensions, _a;
 		super();
 		R$1(this, x);
 		this.POSTGRES_MAIN_LONGJMP = 100;
@@ -14568,16 +14618,18 @@ var N = class N extends z$1 {
 		}), a.serializers !== void 0 && (this.serializers = {
 			...this.serializers,
 			...a.serializers
-		}), a?.debug !== void 0 && (this.debug = a.debug), a?.relaxedDurability !== void 0 && x$3(this, ie, a.relaxedDurability), x$3(this, ue, a.extensions ?? {}), this.waitReady = T$2(this, x, Ye).call(this, a ?? {});
+		}), (a === null || a === void 0 ? void 0 : a.debug) !== void 0 && (this.debug = a.debug), (a === null || a === void 0 ? void 0 : a.relaxedDurability) !== void 0 && x$3(this, ie, a.relaxedDurability), x$3(this, ue, (_a$extensions = a.extensions) !== null && _a$extensions !== void 0 ? _a$extensions : {}), this.waitReady = T$2(this, x, Ye).call(this, (_a = a) !== null && _a !== void 0 ? _a : {});
 	}
 	get ENV() {
-		return this.mod?.ENV;
+		var _this$mod;
+		return (_this$mod = this.mod) === null || _this$mod === void 0 ? void 0 : _this$mod.ENV;
 	}
 	static async create(r, a) {
+		var _ref;
 		let o = typeof r == "string" ? {
 			dataDir: r,
-			...a ?? {}
-		} : r ?? a ?? {}, _ = new N(o);
+			...a !== null && a !== void 0 ? a : {}
+		} : (_ref = r !== null && r !== void 0 ? r : a) !== null && _ref !== void 0 ? _ref : {}, _ = new N(o);
 		return await _.waitReady, _;
 	}
 	handleExternalCmd(r, a) {
@@ -14706,8 +14758,9 @@ var N = class N extends z$1 {
 		h$1(this, le).delete(r);
 	}
 	async dumpDataDir(r) {
+		var _this$dataDir$split$p, _this$dataDir;
 		await this._checkReady();
-		let a = this.dataDir?.split("/").pop() ?? "pgdata";
+		let a = (_this$dataDir$split$p = (_this$dataDir = this.dataDir) === null || _this$dataDir === void 0 ? void 0 : _this$dataDir.split("/").pop()) !== null && _this$dataDir$split$p !== void 0 ? _this$dataDir$split$p : "pgdata";
 		return this.fs.dumpTar(a, r);
 	}
 	_runExclusiveQuery(r) {
@@ -14799,7 +14852,10 @@ H = /* @__PURE__ */ new WeakMap(), oe = /* @__PURE__ */ new WeakMap(), _e = /* @
 						for (let A = 0; A < F; A++) S[k + A] = b[y + A];
 						return F;
 					},
-					write: (w, S, k, E, y) => (h$1(this, ee) ?? x$3(this, ee, []), h$1(this, ee).push(S.slice(k, k + E)), E),
+					write: (w, S, k, E, y) => {
+						var _v;
+						return (_v = h$1(this, ee)) !== null && _v !== void 0 || x$3(this, ee, []), h$1(this, ee).push(S.slice(k, k + E)), E;
+					},
 					llseek: (w, S, k) => {
 						let E = h$1(this, ne);
 						if (!E) throw new Error("No /dev/blob File or Blob provided to llseek");
@@ -14810,7 +14866,8 @@ H = /* @__PURE__ */ new WeakMap(), oe = /* @__PURE__ */ new WeakMap(), _e = /* @
 				}), u.FS.mkdev("/dev/blob", f);
 			},
 			(u) => {
-				u.ENV.HOME = "/home/postgres", u.ENV.USER = "postgres", u.ENV.LOGNAME = "postgres", u.ENV.PGDATA = B$1, u.ENV.PGUSER = r.username ?? "postgres", u.ENV.PGDATABASE = r.database ?? "postgres", u.ENV.LANG = u.ENV.LC_COLLATE = u.ENV.LC_CTYPE = "en_US.UTF-8", u.ENV.TZ = "UTC", u.ENV.PGTZ = "UTC", u.ENV.PGCLIENTENCODING = "UTF8", u.ENV.ICU_DATA = jr, u.PGLITE_ENV && Object.assign(u.ENV, u.PGLITE_ENV);
+				var _r$username, _r$database;
+				u.ENV.HOME = "/home/postgres", u.ENV.USER = "postgres", u.ENV.LOGNAME = "postgres", u.ENV.PGDATA = B$1, u.ENV.PGUSER = (_r$username = r.username) !== null && _r$username !== void 0 ? _r$username : "postgres", u.ENV.PGDATABASE = (_r$database = r.database) !== null && _r$database !== void 0 ? _r$database : "postgres", u.ENV.LANG = u.ENV.LC_COLLATE = u.ENV.LC_CTYPE = "en_US.UTF-8", u.ENV.TZ = "UTC", u.ENV.PGTZ = "UTC", u.ENV.PGCLIENTENCODING = "UTF8", u.ENV.ICU_DATA = jr, u.PGLITE_ENV && Object.assign(u.ENV, u.PGLITE_ENV);
 			},
 			(u) => {
 				u.FS.chmod("/home/postgres/.pgpass", 384), u.FS.chmod(Gr, 365), u.FS.chmod(wt$2, 365);
@@ -14821,12 +14878,13 @@ H = /* @__PURE__ */ new WeakMap(), oe = /* @__PURE__ */ new WeakMap(), _e = /* @
 	let g = [];
 	for (let [u, f] of Object.entries(h$1(this, ue))) if (f instanceof URL) a[u] = Re(f);
 	else {
+		var _c$sharedPreloadLibra;
 		let c = await f.setup(this, p);
 		if (c.emscriptenOpts && (p = c.emscriptenOpts), c.namespaceObj) {
 			let w = this;
 			w[u] = c.namespaceObj;
 		}
-		c.bundlePath && (a[u] = Re(c.bundlePath)), c.init && o.push(c.init), c.close && h$1(this, Me).push(c.close), g.push(...c.sharedPreloadLibraries ?? []);
+		c.bundlePath && (a[u] = Re(c.bundlePath)), c.init && o.push(c.init), c.close && h$1(this, Me).push(c.close), g.push(...(_c$sharedPreloadLibra = c.sharedPreloadLibraries) !== null && _c$sharedPreloadLibra !== void 0 ? _c$sharedPreloadLibra : []);
 	}
 	if (p.pg_extensions = a, await n, this.mod = await We(p), await this.fs.initialSyncFs(), r.icuDataDir && await T$2(this, x, $e).call(this, r.icuDataDir), !r.noInitDb) {
 		if (r.loadDataDir) {
@@ -14921,21 +14979,24 @@ shared_preload_libraries=${r.join(",")}`;
 }, G = function(...r) {
 	this.debug > 0 && console.log(...r);
 }, rt = async function(r, a, o) {
-	let _ = p$2.toPostgresName(r), s = o ?? this;
+	let _ = p$2.toPostgresName(r), s = o !== null && o !== void 0 ? o : this;
 	h$1(this, D).has(_) || h$1(this, D).set(_, /* @__PURE__ */ new Set()), h$1(this, D).get(_).add(a);
 	try {
 		await s.exec(`LISTEN ${r}`);
 	} catch (n) {
-		throw h$1(this, D).get(_).delete(a), h$1(this, D).get(_)?.size === 0 && h$1(this, D).delete(_), n;
+		var _v$get;
+		throw h$1(this, D).get(_).delete(a), ((_v$get = h$1(this, D).get(_)) === null || _v$get === void 0 ? void 0 : _v$get.size) === 0 && h$1(this, D).delete(_), n;
 	}
 	return async (n) => {
 		await this.unlisten(_, a, n);
 	};
 }, at = async function(r, a, o) {
-	let _ = p$2.toPostgresName(r), s = o ?? this, n = async () => {
-		await s.exec(`UNLISTEN ${r}`), h$1(this, D).get(_)?.size === 0 && h$1(this, D).delete(_);
+	var _v$get3, _v$get4;
+	let _ = p$2.toPostgresName(r), s = o !== null && o !== void 0 ? o : this, n = async () => {
+		var _v$get2;
+		await s.exec(`UNLISTEN ${r}`), ((_v$get2 = h$1(this, D).get(_)) === null || _v$get2 === void 0 ? void 0 : _v$get2.size) === 0 && h$1(this, D).delete(_);
 	};
-	a ? (h$1(this, D).get(_)?.delete(a), h$1(this, D).get(_)?.size === 0 && await n()) : await n();
+	a ? ((_v$get3 = h$1(this, D).get(_)) === null || _v$get3 === void 0 || _v$get3.delete(a), ((_v$get4 = h$1(this, D).get(_)) === null || _v$get4 === void 0 ? void 0 : _v$get4.size) === 0 && await n()) : await n();
 }, ot = function() {
 	if (h$1(this, ge)) throw new Error("PGlite single mode already running");
 	this.mod._pgl_startPGlite(), x$3(this, ge, !0);

@@ -3261,6 +3261,7 @@ var require_client$1 = /* @__PURE__ */ __commonJSMin(((exports, module) => {
 			this.secretKey = msg.secretKey;
 		}
 		_handleReadyForQuery(msg) {
+			var _msg$status;
 			if (this._connecting) {
 				this._connecting = false;
 				this._connected = true;
@@ -3273,7 +3274,7 @@ var require_client$1 = /* @__PURE__ */ __commonJSMin(((exports, module) => {
 			}
 			const activeQuery = this._getActiveQuery();
 			this._activeQuery = null;
-			this._txStatus = msg?.status ?? null;
+			this._txStatus = (_msg$status = msg === null || msg === void 0 ? void 0 : msg.status) !== null && _msg$status !== void 0 ? _msg$status : null;
 			this.readyForQuery = true;
 			if (activeQuery) activeQuery.handleReadyForQuery(this.connection);
 			this._pulseQueryQueue();
