@@ -17,6 +17,7 @@ import { Route as DoPhuRouteImport } from './routes/do-phu'
 import { Route as DongBoRouteImport } from './routes/dong-bo'
 import { Route as GocRouteImport } from './routes/goc'
 import { Route as LuyenTapRouteImport } from './routes/luyen-tap'
+import { Route as NgheRouteImport } from './routes/nghe'
 import { Route as TimKiemRouteImport } from './routes/tim-kiem'
 import { Route as TuDienRouteImport } from './routes/tu-dien'
 import { Route as ApiMcpRouteImport } from './routes/api/mcp'
@@ -64,6 +65,11 @@ const GocRoute = GocRouteImport.update({
 const LuyenTapRoute = LuyenTapRouteImport.update({
   id: '/luyen-tap',
   path: '/luyen-tap',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const NgheRoute = NgheRouteImport.update({
+  id: '/nghe',
+  path: '/nghe',
   getParentRoute: () => rootRouteImport,
 } as any)
 const TimKiemRoute = TimKiemRouteImport.update({
@@ -116,6 +122,7 @@ export interface FileRoutesByFullPath {
   '/dong-bo': typeof DongBoRoute
   '/goc': typeof GocRoute
   '/luyen-tap': typeof LuyenTapRoute
+  '/nghe': typeof NgheRoute
   '/tim-kiem': typeof TimKiemRoute
   '/tu-dien': typeof TuDienRoute
   '/api/mcp': typeof ApiMcpRoute
@@ -134,6 +141,7 @@ export interface FileRoutesByTo {
   '/dong-bo': typeof DongBoRoute
   '/goc': typeof GocRoute
   '/luyen-tap': typeof LuyenTapRoute
+  '/nghe': typeof NgheRoute
   '/tim-kiem': typeof TimKiemRoute
   '/tu-dien': typeof TuDienRoute
   '/api/mcp': typeof ApiMcpRoute
@@ -153,6 +161,7 @@ export interface FileRoutesById {
   '/dong-bo': typeof DongBoRoute
   '/goc': typeof GocRoute
   '/luyen-tap': typeof LuyenTapRoute
+  '/nghe': typeof NgheRoute
   '/tim-kiem': typeof TimKiemRoute
   '/tu-dien': typeof TuDienRoute
   '/api/mcp': typeof ApiMcpRoute
@@ -173,6 +182,7 @@ export interface FileRouteTypes {
     | '/dong-bo'
     | '/goc'
     | '/luyen-tap'
+    | '/nghe'
     | '/tim-kiem'
     | '/tu-dien'
     | '/api/mcp'
@@ -191,6 +201,7 @@ export interface FileRouteTypes {
     | '/dong-bo'
     | '/goc'
     | '/luyen-tap'
+    | '/nghe'
     | '/tim-kiem'
     | '/tu-dien'
     | '/api/mcp'
@@ -209,6 +220,7 @@ export interface FileRouteTypes {
     | '/dong-bo'
     | '/goc'
     | '/luyen-tap'
+    | '/nghe'
     | '/tim-kiem'
     | '/tu-dien'
     | '/api/mcp'
@@ -228,6 +240,7 @@ export interface RootRouteChildren {
   DongBoRoute: typeof DongBoRoute
   GocRoute: typeof GocRoute
   LuyenTapRoute: typeof LuyenTapRoute
+  NgheRoute: typeof NgheRoute
   TimKiemRoute: typeof TimKiemRoute
   TuDienRoute: typeof TuDienRoute
   ApiMcpRoute: typeof ApiMcpRoute
@@ -294,6 +307,13 @@ declare module '@tanstack/react-router' {
       path: '/luyen-tap'
       fullPath: '/luyen-tap'
       preLoaderRoute: typeof LuyenTapRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/nghe': {
+      id: '/nghe'
+      path: '/nghe'
+      fullPath: '/nghe'
+      preLoaderRoute: typeof NgheRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/tim-kiem': {
@@ -364,6 +384,7 @@ const rootRouteChildren: RootRouteChildren = {
   DongBoRoute: DongBoRoute,
   GocRoute: GocRoute,
   LuyenTapRoute: LuyenTapRoute,
+  NgheRoute: NgheRoute,
   TimKiemRoute: TimKiemRoute,
   TuDienRoute: TuDienRoute,
   ApiMcpRoute: ApiMcpRoute,

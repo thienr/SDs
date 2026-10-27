@@ -97,6 +97,7 @@ function Home() {
 
       <div className="mt-6 flex flex-wrap gap-2">
         <Link to="/tu-dien" className="min-h-11 rounded-full border border-line px-4 py-3 text-sm">Từ điển</Link>
+        <Link to="/nghe" search={{ c: undefined }} className="min-h-11 rounded-full border border-line px-4 py-3 text-sm">{lang === "en" ? "Listen" : "Nghe học"}</Link>
         <Link to="/luyen-tap" className="min-h-11 rounded-full border border-line px-4 py-3 text-sm">{lang === "en" ? "Practice" : "Luyện tập"}</Link>
         <Link to="/dong-bo" className="min-h-11 rounded-full border border-line px-4 py-3 text-sm">{lang === "en" ? "Sync devices" : "Đồng bộ máy"}</Link>
         <Link to="/goc" className="min-h-11 rounded-full border border-line px-4 py-3 text-sm">Quản lý nội dung</Link>
