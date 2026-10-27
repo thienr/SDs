@@ -1,4 +1,5 @@
-//#region node_modules/.nitro/vite/services/ssr/assets/remember-BIeTeLr0.js
+import { f as studyCopy, o as getStudy } from "./study-BtAMXX88.mjs";
+//#region node_modules/.nitro/vite/services/ssr/assets/ask-context-BJsDBP5Y.js
 /** «Nhớ một câu»: đúng một câu để học thuộc cho mỗi thẻ. [VI, EN]. Số và quy tắc phải khớp transcript hoặc kiến thức chuẩn. */
 var remember = {
 	"infer-intro": ["Suy luận thống kê là dùng một mẫu nhỏ để kết luận về cả tập lớn, và luôn kèm mức bất định.", "Inferential statistics uses a small sample to conclude about the whole population, always with a stated uncertainty."],
@@ -305,5 +306,44 @@ var remember = {
 	"lc-agent": ["Chain là đường đi vẽ sẵn, agent tự chọn bước kế tiếp; chain khi đường rõ, agent khi bước kế phụ thuộc câu hỏi; cả hai cần giới hạn số bước.", "A chain is a pre-drawn path, an agent picks its next step; use a chain when the path is clear, an agent when the next step depends on the question; both need a step cap."],
 	"cap-none": ["Khóa này là bài tập, giáo trình không có buổi dạy thêm; làm bài bằng các ý đã học.", "This course is an assignment, the syllabus has no extra teaching session; do it with the ideas already learned."]
 };
+function cardContext(id, lang) {
+	var _remember$id;
+	const c = getStudy(id);
+	if (!c) return null;
+	const t = studyCopy(c, lang);
+	const r = (_remember$id = remember[id]) === null || _remember$id === void 0 ? void 0 : _remember$id[lang === "en" ? 1 : 0];
+	const text = [
+		`Thẻ: ${t.title}`,
+		t.plain && `Nói đơn giản: ${t.plain}`,
+		t.situation && `Tình huống: ${t.situation}`,
+		t.precise && `Chính xác: ${t.precise}`,
+		t.formula && `Công thức: ${t.formula}`,
+		r && `Nhớ một câu: ${r}`
+	].filter(Boolean).join("\n");
+	return {
+		id,
+		title: t.title,
+		text: text.slice(0, 6e3)
+	};
+}
+var asks = {
+	vi: {
+		again: "Giải thích lại thẻ này bằng một ví dụ khác, đơn giản, từng bước. Cuối cùng tóm một câu để nhớ.",
+		quiz: "Ra cho mình 3 câu hỏi kiểm tra về thẻ này (khó dần). Hỏi từng câu một, chờ mình trả lời rồi mới chấm và giải thích.",
+		mistake: "Người mới học thẻ này hay nhầm chỗ nào nhất? Cho ví dụ sai và ví dụ đúng.",
+		free: ""
+	},
+	en: {
+		again: "Explain this card again with a different simple example, step by step. End with a one-line takeaway.",
+		quiz: "Give me 3 quiz questions on this card, getting harder. Ask one at a time, wait for my answer, then grade and explain.",
+		mistake: "Where do beginners most often go wrong on this card? Show a wrong and a right example.",
+		free: ""
+	}
+};
+function promptFor(kind, ctx, lang, own = "") {
+	const intro = "Mình đang học Data Science (thống kê, Excel, SQL, Python, học máy). Đây là thẻ học mình đang đọc. Hãy bám đúng nội dung thẻ, không bịa số liệu, trả lời bằng tiếng Việt ngắn gọn.";
+	const ask = kind === "free" ? own.trim() : asks[lang][kind];
+	return [ctx ? `${intro}\n\n${ctx.text}` : intro, ask && `Yêu cầu: ${ask}`].filter(Boolean).join("\n\n");
+}
 //#endregion
-export { remember as t };
+export { promptFor as n, remember as r, cardContext as t };

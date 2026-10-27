@@ -1,6 +1,5 @@
 import { useEffect, useMemo, useRef, useState } from "react";
-import { getStudy, studyCopy } from "@/data/study";
-import { remember } from "@/data/remember";
+import { cardContext as cardCtx } from "@/lib/ask-context";
 import { askAi, loadStore, PROVIDERS, saveStore, SYSTEM_BASE, type Msg, type ProviderId } from "@/lib/ai-chat";
 import type { Lang } from "@/lib/progress";
 
@@ -21,18 +20,6 @@ const w = {
   },
 };
 
-function cardContext(path: string, lang: Lang) {
-  const m = /^\/khai-niem\/([^/]+)/.exec(path);
-  if (!m) return null;
-  const id = decodeURIComponent(m[1]);
-  const c = getStudy(id);
-  if (!c) return null;
-  const t = studyCopy(c, lang);
-  const r = remember[id]?.[lang === "en" ? 1 : 0];
-  const text = [`Thẻ: ${t.title}`, t.plain && `Nói đơn giản: ${t.plain}`, t.situation && `Tình huống: ${t.situation}`, t.precise && `Chính xác: ${t.precise}`, t.formula && `Công thức: ${t.formula}`, r && `Nhớ một câu: ${r}`].filter(Boolean).join("\n");
-  return { id, title: t.title, text: text.slice(0, 6000) };
-}
-
 export default function AskAiPanel({ lang, path, onClose }: { lang: Lang; path: string; onClose: () => void }) {
   const t = w[lang];
   const [store, setStore] = useState(loadStore);
@@ -47,7 +34,10 @@ export default function AskAiPanel({ lang, path, onClose }: { lang: Lang; path: 
   const [err, setErr] = useState("");
   const [copied, setCopied] = useState(false);
   const end = useRef<HTMLDivElement>(null);
-  const ctx = useMemo(() => cardContext(path, lang), [path, lang]);
+  const ctx = useMemo(() => {
+    const m = /^\/khai-niem\/([^/]+)/.exec(path);
+    return m ? cardCtx(decodeURIComponent(m[1]), lang) : null;
+  }, [path, lang]);
   const prov = PROVIDERS[id];
   const key = store.keys[id];
   const model = store.models[id] || prov.model;

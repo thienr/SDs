@@ -1,8 +1,7 @@
 import { o as __toESM } from "../_runtime.mjs";
-import { f as studyCopy, o as getStudy } from "./study-BtAMXX88.mjs";
-import { t as remember } from "./remember-BIeTeLr0.mjs";
+import { t as cardContext } from "./ask-context-BJsDBP5Y.mjs";
 import { J as require_react, q as require_jsx_runtime } from "../_libs/@tanstack/react-router+[...].mjs";
-//#region node_modules/.nitro/vite/services/ssr/assets/ask-ai-panel-DOlxh6gk.js
+//#region node_modules/.nitro/vite/services/ssr/assets/ask-ai-panel-CXJe1OY7.js
 var import_react = /* @__PURE__ */ __toESM(require_react());
 var import_jsx_runtime = require_jsx_runtime();
 var PROVIDERS = {
@@ -202,29 +201,6 @@ var w = {
 		]
 	}
 };
-function cardContext(path, lang) {
-	var _remember$id;
-	const m = /^\/khai-niem\/([^/]+)/.exec(path);
-	if (!m) return null;
-	const id = decodeURIComponent(m[1]);
-	const c = getStudy(id);
-	if (!c) return null;
-	const t = studyCopy(c, lang);
-	const r = (_remember$id = remember[id]) === null || _remember$id === void 0 ? void 0 : _remember$id[lang === "en" ? 1 : 0];
-	const text = [
-		`Thẻ: ${t.title}`,
-		t.plain && `Nói đơn giản: ${t.plain}`,
-		t.situation && `Tình huống: ${t.situation}`,
-		t.precise && `Chính xác: ${t.precise}`,
-		t.formula && `Công thức: ${t.formula}`,
-		r && `Nhớ một câu: ${r}`
-	].filter(Boolean).join("\n");
-	return {
-		id,
-		title: t.title,
-		text: text.slice(0, 6e3)
-	};
-}
 function AskAiPanel({ lang, path, onClose }) {
 	var _chats$id;
 	const t = w[lang];
@@ -240,7 +216,10 @@ function AskAiPanel({ lang, path, onClose }) {
 	const [err, setErr] = (0, import_react.useState)("");
 	const [copied, setCopied] = (0, import_react.useState)(false);
 	const end = (0, import_react.useRef)(null);
-	const ctx = (0, import_react.useMemo)(() => cardContext(path, lang), [path, lang]);
+	const ctx = (0, import_react.useMemo)(() => {
+		const m = /^\/khai-niem\/([^/]+)/.exec(path);
+		return m ? cardContext(decodeURIComponent(m[1]), lang) : null;
+	}, [path, lang]);
 	const prov = PROVIDERS[id];
 	const key = store.keys[id];
 	const model = store.models[id] || prov.model;

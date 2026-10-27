@@ -1,17 +1,17 @@
 import { o as __toESM } from "../_runtime.mjs";
 import { a as getServerRawVersion, c as overviews, f as studyCopy, h as subscribeRaw, i as getRawVersion, m as studyNeighbors, o as getStudy, p as studyListTitle, r as getAssignmentByConcept } from "./study-BtAMXX88.mjs";
-import { t as remember } from "./remember-BIeTeLr0.mjs";
+import { n as promptFor, r as remember, t as cardContext } from "./ask-context-BJsDBP5Y.mjs";
 import { J as require_react, b as Link, q as require_jsx_runtime } from "../_libs/@tanstack/react-router+[...].mjs";
 import { n as course_default } from "./catalog-DRaoKsF4.mjs";
 import { a as getServerProgress, i as getProgress, m as subscribeProgress } from "./progress-BbLCT1Se.mjs";
-import { h as recordAnswer, r as Route$1 } from "./router-CSqP0z_b.mjs";
+import { h as recordAnswer, r as Route$1 } from "./router-BCtTZ8-r.mjs";
 import { n as Tex, t as CodeExplain } from "./tex-CMTmT1PA.mjs";
 import { n as Range, r as Sim, t as Lab } from "./labs-_WNsAmbg.mjs";
 import { r as relatedOf } from "./map-B8zVtsI6.mjs";
 import { a as useReports, t as addReport } from "./report-store-DANHpKt5.mjs";
 import { t as walks } from "./walk-BWyJOgjD.mjs";
 import { t as loadSelfTest } from "./self-test-data-D_-Lu4LK.mjs";
-//#region node_modules/.nitro/vite/services/ssr/assets/khai-niem._conceptId-DT2bxA8q.js
+//#region node_modules/.nitro/vite/services/ssr/assets/khai-niem._conceptId-Ru6ptzXC.js
 var import_react = /* @__PURE__ */ __toESM(require_react());
 var import_jsx_runtime = require_jsx_runtime();
 var words$1 = {
@@ -246,6 +246,85 @@ function SelfTest({ conceptId, lang }) {
 					},
 					className: "min-h-11 rounded-full border border-line px-4 hover:bg-card",
 					children: t.retry
+				})]
+			}) : null
+		]
+	});
+}
+var w = {
+	vi: {
+		head: "Hỏi AI về thẻ này",
+		note: "Bấm một nút: câu hỏi kèm nội dung thẻ được chép sẵn, bạn dán vào ChatGPT, Gemini, Grok, Claude hay chatbot nào cũng được.",
+		again: "Giải thích lại",
+		quiz: "Ra câu hỏi cho mình",
+		mistake: "Chỗ hay nhầm",
+		copied: "Đã chép. Dán vào chatbot rồi gửi.",
+		fail: "Không chép được. Giữ chữ này để tự chọn và chép:"
+	},
+	en: {
+		head: "Ask an AI about this card",
+		note: "Tap one: the question plus the card text is copied. Paste it into ChatGPT, Gemini, Grok, Claude or any chatbot.",
+		again: "Explain again",
+		quiz: "Quiz me",
+		mistake: "Common mistakes",
+		copied: "Copied. Paste into a chatbot and send.",
+		fail: "Could not copy. Select and copy this text:"
+	}
+};
+function CopyForAi({ conceptId, lang }) {
+	const t = w[lang];
+	const [done, setDone] = (0, import_react.useState)(null);
+	const [fallback, setFallback] = (0, import_react.useState)("");
+	const go = async (kind) => {
+		const text = promptFor(kind, cardContext(conceptId, lang), lang);
+		try {
+			await navigator.clipboard.writeText(text);
+			setFallback("");
+			setDone(kind);
+		} catch {
+			setDone(null);
+			setFallback(text);
+		}
+	};
+	const btn = (k) => `inline-flex min-h-11 items-center rounded-full border px-4 text-sm ${done === k ? "border-accent bg-card text-accent" : "border-line hover:bg-card"}`;
+	return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("section", {
+		className: "mt-8 rounded-card border border-line p-4",
+		"aria-label": t.head,
+		children: [
+			/* @__PURE__ */ (0, import_jsx_runtime.jsx)("h2", {
+				className: "text-xs uppercase tracking-widest text-accent",
+				children: t.head
+			}),
+			/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+				className: "mt-2 text-sm text-muted",
+				children: t.note
+			}),
+			/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+				className: "mt-3 flex flex-wrap gap-2",
+				children: [
+					"again",
+					"quiz",
+					"mistake"
+				].map((k) => /* @__PURE__ */ (0, import_jsx_runtime.jsx)("button", {
+					type: "button",
+					className: btn(k),
+					onClick: () => void go(k),
+					children: t[k]
+				}, k))
+			}),
+			/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+				className: "mt-2 min-h-5 text-sm",
+				"aria-live": "polite",
+				children: done ? t.copied : ""
+			}),
+			fallback ? /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("label", {
+				className: "mt-2 block text-xs text-muted",
+				children: [t.fail, /* @__PURE__ */ (0, import_jsx_runtime.jsx)("textarea", {
+					readOnly: true,
+					value: fallback,
+					rows: 6,
+					onFocus: (e) => e.currentTarget.select(),
+					className: "mt-1 w-full rounded-card border border-line bg-paper p-2 text-sm text-ink"
 				})]
 			}) : null
 		]
@@ -9913,6 +9992,10 @@ function ConceptView({ concept }) {
 				lang
 			}),
 			/* @__PURE__ */ (0, import_jsx_runtime.jsx)(SelfTest, {
+				conceptId: concept.id,
+				lang
+			}),
+			/* @__PURE__ */ (0, import_jsx_runtime.jsx)(CopyForAi, {
 				conceptId: concept.id,
 				lang
 			}),

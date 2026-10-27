@@ -1,5 +1,6 @@
 import { ReportCard } from "@/components/report-card";
 import { SelfTest } from "@/components/self-test";
+import { CopyForAi } from "@/components/copy-for-ai";
 import { remember } from "@/data/remember";
 import { Link } from "@tanstack/react-router";
 import { useState, useSyncExternalStore } from "react";
@@ -292,6 +293,8 @@ export function ConceptView({ concept }: { concept: StudyConcept }) {
       <UpgradLink concept={concept} lang={lang} />
 
       <SelfTest conceptId={concept.id} lang={lang} />
+
+      <CopyForAi conceptId={concept.id} lang={lang} />
 
       <ReportCard conceptId={concept.id} title={text.title} lang={lang} />
 

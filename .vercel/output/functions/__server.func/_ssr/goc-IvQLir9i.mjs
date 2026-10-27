@@ -5,7 +5,7 @@ import { r as courses } from "./catalog-DRaoKsF4.mjs";
 import { l as setCmsPatch, n as clearCms, o as getCmsVersion, r as cmsEditCount, s as getServerCmsVersion, u as subscribeCms } from "./cms-store-QsPjr5VR.mjs";
 import { i as listCms, n as exportCms, r as importCms, u as saveCms } from "./cms-live-BOSWGilr.mjs";
 import { a as getServerProgress, i as getProgress, m as subscribeProgress } from "./progress-BbLCT1Se.mjs";
-import { _ as sessionConcepts } from "./router-CSqP0z_b.mjs";
+import { _ as sessionConcepts } from "./router-BCtTZ8-r.mjs";
 //#region node_modules/.nitro/vite/services/ssr/assets/goc-IvQLir9i.js
 var import_react = /* @__PURE__ */ __toESM(require_react());
 var import_jsx_runtime = require_jsx_runtime();
