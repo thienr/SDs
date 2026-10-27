@@ -4,8 +4,8 @@ import { o as getCmsVersion, s as getServerCmsVersion, u as subscribeCms } from 
 import { a as liveCourse } from "./cms-live-BOIfHz8S.mjs";
 import { a as getServerProgress, i as getProgress, m as subscribeProgress } from "./progress-BKM3W6t5.mjs";
 import { J as require_react, S as require_jsx_runtime, b as Link, p as useRouterState } from "../_libs/@tanstack/react-router+[...].mjs";
-import { b as getRawVersion, f as ModuleTree, j as subscribeRaw, n as Route, x as getServerRawVersion } from "./router-Cla7O6m9.mjs";
-//#region node_modules/.nitro/vite/services/ssr/assets/khoa._courseId-B4Z-KELt.js
+import { b as getRawVersion, f as ModuleTree, j as subscribeRaw, n as Route, x as getServerRawVersion } from "./router-XRtuLdft.mjs";
+//#region node_modules/.nitro/vite/services/ssr/assets/khoa._courseId-DpE1IYek.js
 var import_react = /* @__PURE__ */ __toESM(require_react());
 var import_jsx_runtime = require_jsx_runtime();
 function CoursePage() {
