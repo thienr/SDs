@@ -74,7 +74,7 @@ export function AppShell({ children }: { children: ReactNode }) {
         </aside>
         <div className="min-w-0">
           <header className="sticky top-0 z-20 flex items-center justify-between border-b border-line bg-paper/90 px-4 py-3 backdrop-blur md:hidden">
-            <Link to="/" className="font-display text-2xl">
+            <Link to="/" className="inline-flex min-h-11 items-center font-display text-2xl">
               Sổ Mực
             </Link>
             <div className="flex items-center gap-2">

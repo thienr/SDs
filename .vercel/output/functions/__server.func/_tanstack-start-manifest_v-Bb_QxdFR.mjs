@@ -1,4 +1,4 @@
-//#region node_modules/.nitro/vite/services/ssr/assets/_tanstack-start-manifest_v-Bu5cSfYk.js
+//#region node_modules/.nitro/vite/services/ssr/assets/_tanstack-start-manifest_v-Bb_QxdFR.js
 var tsrStartManifest = () => ({ routes: {
 	__root__: {
 		filePath: "/tmp/claude-0/-home-claude/b7900409-a548-5903-9b69-7da6c0ed2a15/scratchpad/repo/src/routes/__root.tsx",
@@ -20,7 +20,7 @@ var tsrStartManifest = () => ({ routes: {
 			"/khoa/$courseId"
 		],
 		preloads: [
-			"/assets/index-BlvL3rd_.js",
+			"/assets/index-Cq0bPUNG.js",
 			"/assets/catalog-CzRCyCPn.js",
 			"/assets/lazyRouteComponent-DmOsAu0X.js",
 			"/assets/useMatch-CJ0MMYF1.js",
@@ -33,18 +33,18 @@ var tsrStartManifest = () => ({ routes: {
 		scripts: [{ attrs: {
 			type: "module",
 			async: !0,
-			src: "/assets/index-BlvL3rd_.js"
+			src: "/assets/index-Cq0bPUNG.js"
 		} }]
 	},
 	"/": {
 		filePath: "/tmp/claude-0/-home-claude/b7900409-a548-5903-9b69-7da6c0ed2a15/scratchpad/repo/src/routes/index.tsx",
 		children: void 0,
-		preloads: ["/assets/routes-C1tH7IcA.js", "/assets/self-test-data-BT4DGvCT.js"]
+		preloads: ["/assets/routes-FDKWPYzK.js", "/assets/self-test-data-BT4DGvCT.js"]
 	},
 	"/ban-do": {
 		filePath: "/tmp/claude-0/-home-claude/b7900409-a548-5903-9b69-7da6c0ed2a15/scratchpad/repo/src/routes/ban-do.tsx",
 		children: void 0,
-		preloads: ["/assets/ban-do-CQwJvB3M.js", "/assets/map-BYnMYigt.js"]
+		preloads: ["/assets/ban-do-CJfsSRFF.js", "/assets/map-CKn-GFCW.js"]
 	},
 	"/bao-loi": {
 		filePath: "/tmp/claude-0/-home-claude/b7900409-a548-5903-9b69-7da6c0ed2a15/scratchpad/repo/src/routes/bao-loi.tsx",
@@ -56,9 +56,9 @@ var tsrStartManifest = () => ({ routes: {
 		children: void 0,
 		css: ["/assets/tex-Bv5fr4tV.css"],
 		preloads: [
-			"/assets/cong-thuc-CC0IiVtr.js",
+			"/assets/cong-thuc-o3_j8rIu.js",
 			"/assets/tex-BtLQ7EKa.js",
-			"/assets/reference-D6IQMXhS.js"
+			"/assets/reference-Gg0dwXD0.js"
 		]
 	},
 	"/do-phu": {
@@ -69,12 +69,12 @@ var tsrStartManifest = () => ({ routes: {
 	"/dong-bo": {
 		filePath: "/tmp/claude-0/-home-claude/b7900409-a548-5903-9b69-7da6c0ed2a15/scratchpad/repo/src/routes/dong-bo.tsx",
 		children: void 0,
-		preloads: ["/assets/dong-bo-EQDWbe9J.js"]
+		preloads: ["/assets/dong-bo-DEz-Tf5a.js"]
 	},
 	"/goc": {
 		filePath: "/tmp/claude-0/-home-claude/b7900409-a548-5903-9b69-7da6c0ed2a15/scratchpad/repo/src/routes/goc.tsx",
 		children: void 0,
-		preloads: ["/assets/goc-C-DwBTx4.js"]
+		preloads: ["/assets/goc-C-lwMidZ.js"]
 	},
 	"/tim-kiem": {
 		filePath: "/tmp/claude-0/-home-claude/b7900409-a548-5903-9b69-7da6c0ed2a15/scratchpad/repo/src/routes/tim-kiem.tsx",
@@ -84,14 +84,14 @@ var tsrStartManifest = () => ({ routes: {
 	"/tu-dien": {
 		filePath: "/tmp/claude-0/-home-claude/b7900409-a548-5903-9b69-7da6c0ed2a15/scratchpad/repo/src/routes/tu-dien.tsx",
 		children: void 0,
-		preloads: ["/assets/tu-dien-DLTVUAX1.js", "/assets/reference-D6IQMXhS.js"]
+		preloads: ["/assets/tu-dien-C9blK0k7.js", "/assets/reference-Gg0dwXD0.js"]
 	},
 	"/bai/$lessonId": {
 		filePath: "/tmp/claude-0/-home-claude/b7900409-a548-5903-9b69-7da6c0ed2a15/scratchpad/repo/src/routes/bai.$lessonId.tsx",
 		children: void 0,
 		css: ["/assets/tex-Bv5fr4tV.css"],
 		preloads: [
-			"/assets/bai._lessonId-BeZBs6iv.js",
+			"/assets/bai._lessonId-DMDRcdWI.js",
 			"/assets/tex-BtLQ7EKa.js",
 			"/assets/labs-DOiEcyaC.js"
 		]
@@ -101,10 +101,10 @@ var tsrStartManifest = () => ({ routes: {
 		children: void 0,
 		css: ["/assets/tex-Bv5fr4tV.css"],
 		preloads: [
-			"/assets/khai-niem._conceptId-egQ2Y_NQ.js",
+			"/assets/khai-niem._conceptId-Dj3adOKm.js",
 			"/assets/tex-BtLQ7EKa.js",
 			"/assets/labs-DOiEcyaC.js",
-			"/assets/map-BYnMYigt.js",
+			"/assets/map-CKn-GFCW.js",
 			"/assets/report-store-DDRCLLr1.js",
 			"/assets/walk-CO-oO7pe.js",
 			"/assets/self-test-data-BT4DGvCT.js"
@@ -113,7 +113,7 @@ var tsrStartManifest = () => ({ routes: {
 	"/khoa/$courseId": {
 		filePath: "/tmp/claude-0/-home-claude/b7900409-a548-5903-9b69-7da6c0ed2a15/scratchpad/repo/src/routes/khoa.$courseId.tsx",
 		children: void 0,
-		preloads: ["/assets/khoa._courseId-Dr0xlfOX.js"]
+		preloads: ["/assets/khoa._courseId-Eo6OUd9K.js"]
 	}
 } });
 //#endregion

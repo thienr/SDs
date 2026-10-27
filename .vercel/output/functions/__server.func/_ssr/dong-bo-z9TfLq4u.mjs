@@ -1,8 +1,8 @@
 import { o as __toESM } from "../_runtime.mjs";
 import { a as getServerProgress, i as getProgress, m as subscribeProgress } from "./progress-BKM3W6t5.mjs";
 import { J as require_react, S as require_jsx_runtime, b as Link } from "../_libs/@tanstack/react-router+[...].mjs";
-import { a as disableSync, c as syncNow, l as useSync, o as enableSync, s as newCode } from "./router-Cla7O6m9.mjs";
-//#region node_modules/.nitro/vite/services/ssr/assets/dong-bo-DTa1IZO9.js
+import { a as disableSync, c as syncNow, l as useSync, o as enableSync, s as newCode } from "./router-XRtuLdft.mjs";
+//#region node_modules/.nitro/vite/services/ssr/assets/dong-bo-z9TfLq4u.js
 var import_react = /* @__PURE__ */ __toESM(require_react());
 var import_jsx_runtime = require_jsx_runtime();
 var text = {

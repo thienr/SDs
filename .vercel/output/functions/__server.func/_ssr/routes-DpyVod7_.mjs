@@ -4,9 +4,9 @@ import { o as getCmsVersion, s as getServerCmsVersion, u as subscribeCms } from 
 import { a as liveCourse } from "./cms-live-BOIfHz8S.mjs";
 import { a as getServerProgress, f as progressSnapshot, i as getProgress, m as subscribeProgress, n as countSeen, o as hydrateProgress, s as importProgress } from "./progress-BKM3W6t5.mjs";
 import { J as require_react, S as require_jsx_runtime, b as Link } from "../_libs/@tanstack/react-router+[...].mjs";
-import { E as sessionConcepts, M as setOpenCourse, N as useTocMemory, d as Disclosure, f as ModuleTree, g as useReview, h as recordAnswer, k as studyListTitle, m as dueKeys, p as words$1, u as CoverInfo } from "./router-Cla7O6m9.mjs";
+import { E as sessionConcepts, M as setOpenCourse, N as useTocMemory, d as Disclosure, f as ModuleTree, g as useReview, h as recordAnswer, k as studyListTitle, m as dueKeys, p as words$1, u as CoverInfo } from "./router-XRtuLdft.mjs";
 import { t as loadSelfTest } from "./self-test-data-C13n7sxl.mjs";
-//#region node_modules/.nitro/vite/services/ssr/assets/routes-Hp9KEJRs.js
+//#region node_modules/.nitro/vite/services/ssr/assets/routes-DpyVod7_.js
 var import_react = /* @__PURE__ */ __toESM(require_react());
 var import_jsx_runtime = require_jsx_runtime();
 var words = {
