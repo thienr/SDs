@@ -1,5 +1,5 @@
 globalThis.__nitro_main__ = import.meta.url;
-import { i as toEventHandler, n as HTTPError, o as NodeResponse, r as defineLazyEventHandler, t as H3Core } from "./_libs/h3+rou3+srvx.mjs";
+import { i as toEventHandler, n as HTTPError, o as NodeResponse, r as defineLazyEventHandler, t as H3Core } from "./_libs/h3.mjs";
 import { existsSync, readFileSync } from "node:fs";
 import { join } from "node:path";
 //#region node_modules/nitro/dist/runtime/internal/route-rules.mjs
@@ -51,7 +51,8 @@ function unescapeHtml(value) {
 }
 /** 6-digit hex for the og.grok.me placeholder, or "" if site.color is missing/invalid. */
 function placeholderCardColor(site = {}) {
-	const raw = String(site.color ?? "").trim();
+	var _site$color;
+	const raw = String((_site$color = site.color) !== null && _site$color !== void 0 ? _site$color : "").trim();
 	const hex = raw.startsWith("#") ? raw.slice(1) : raw;
 	return /^[0-9a-fA-F]{6}$/.test(hex) ? hex : "";
 }
@@ -61,9 +62,10 @@ function placeholderCardColor(site = {}) {
 * only — slugifying them produced internal names like "Hds Abc 3000 Xy".
 */
 function appNameFromHost(hostHeader) {
-	const host = String(hostHeader ?? "").split(",")[0].trim().split(":")[0].toLowerCase();
+	var _host$split$;
+	const host = String(hostHeader !== null && hostHeader !== void 0 ? hostHeader : "").split(",")[0].trim().split(":")[0].toLowerCase();
 	if (!host.endsWith(".grok.me")) return DEFAULT_APP_NAME;
-	const slug = host.split(".")[0] ?? "";
+	const slug = (_host$split$ = host.split(".")[0]) !== null && _host$split$ !== void 0 ? _host$split$ : "";
 	if (!slug || slug === "www" || !/^[a-z0-9-]{1,63}$/.test(slug)) return DEFAULT_APP_NAME;
 	return slug.split("-").filter(Boolean).map((part) => part.charAt(0).toUpperCase() + part.slice(1)).join(" ") || "Grok App";
 }
@@ -73,7 +75,7 @@ function isVercelSystemHost(host) {
 }
 /** Hostname suitable for absolute og:image URLs. Preview guests (X-Forwarded-Host) are allowed. */
 function publicAppHost(hostHeader) {
-	const host = String(hostHeader ?? "").split(",")[0].trim().split(":")[0].toLowerCase();
+	const host = String(hostHeader !== null && hostHeader !== void 0 ? hostHeader : "").split(",")[0].trim().split(":")[0].toLowerCase();
 	if (!host || !/^[a-z0-9.-]+$/.test(host) || !host.includes(".")) return "";
 	if (/^\d{1,3}(?:\.\d{1,3}){3}$/.test(host)) return "";
 	if (isVercelSystemHost(host)) return "";
@@ -86,27 +88,29 @@ function publicAppHost(hostHeader) {
 * app — Envoy rewrites it to `*.vercel.app`.
 */
 function resolvePublicHost(hostHeader) {
-	return publicAppHost(process.env?.VITE_PUBLIC_HOSTNAME) || publicAppHost(hostHeader);
+	var _process$env;
+	return publicAppHost((_process$env = process.env) === null || _process$env === void 0 ? void 0 : _process$env.VITE_PUBLIC_HOSTNAME) || publicAppHost(hostHeader);
 }
 function isInstallQuery(url) {
-	const query = String(url ?? "").split("?", 2)[1] ?? "";
+	var _String$split$, _params$get;
+	const query = (_String$split$ = String(url !== null && url !== void 0 ? url : "").split("?", 2)[1]) !== null && _String$split$ !== void 0 ? _String$split$ : "";
 	const params = new URLSearchParams(query);
 	const install = params.get("install");
-	const platform = (params.get("platform") ?? "").toLowerCase();
+	const platform = ((_params$get = params.get("platform")) !== null && _params$get !== void 0 ? _params$get : "").toLowerCase();
 	return (install === "1" || install === "true") && platform === "ios";
 }
 /** Paths that can carry an app document (vs assets / API / internals). */
 function isDocumentPath(pathname) {
-	const path = String(pathname ?? "");
+	const path = String(pathname !== null && pathname !== void 0 ? pathname : "");
 	return !path.startsWith("/__grok/") && !path.startsWith("/api/") && !path.startsWith("/@") && !path.startsWith("/node_modules") && !/\.[a-z0-9]+$/i.test(path);
 }
 function acceptsHtml(accept) {
-	const value = String(accept ?? "");
+	const value = String(accept !== null && accept !== void 0 ? accept : "");
 	return value === "" || value.includes("text/html") || value.includes("*/*");
 }
 /** The same URL without the install-tutorial params (used as the app link). */
 function stripInstallParams(url) {
-	const [path = "/", query = ""] = String(url ?? "/").split("?", 2);
+	const [path = "/", query = ""] = String(url !== null && url !== void 0 ? url : "/").split("?", 2);
 	const params = new URLSearchParams(query);
 	params.delete("install");
 	params.delete("platform");
@@ -145,24 +149,28 @@ function grokPwaHeadTags(appName = DEFAULT_APP_NAME) {
 }
 var GROK_EXTENSIONS_SCRIPT_SRC = "https://grok.com/grok-app-builder/extensions.js";
 function readGrokProjectId() {
-	const fromProcess = typeof process !== "undefined" ? process.env?.VITE_PROJECT_ID : "";
-	return String(fromProcess ?? "").trim();
+	var _process$env2;
+	const fromProcess = typeof process !== "undefined" ? (_process$env2 = process.env) === null || _process$env2 === void 0 ? void 0 : _process$env2.VITE_PROJECT_ID : "";
+	return String(fromProcess !== null && fromProcess !== void 0 ? fromProcess : "").trim();
 }
 function readGrokExtensionsEnabled() {
-	const fromProcess = typeof process !== "undefined" ? process.env?.VITE_GROK_EXTENSIONS : "";
-	return String(fromProcess ?? "").trim() !== "0";
+	var _process$env3;
+	const fromProcess = typeof process !== "undefined" ? (_process$env3 = process.env) === null || _process$env3 === void 0 ? void 0 : _process$env3.VITE_GROK_EXTENSIONS : "";
+	return String(fromProcess !== null && fromProcess !== void 0 ? fromProcess : "").trim() !== "0";
 }
 function readXCreator() {
-	const fromProcess = typeof process !== "undefined" ? process.env?.X_CREATOR : "";
-	return String(fromProcess ?? "").trim();
+	var _process$env4;
+	const fromProcess = typeof process !== "undefined" ? (_process$env4 = process.env) === null || _process$env4 === void 0 ? void 0 : _process$env4.X_CREATOR : "";
+	return String(fromProcess !== null && fromProcess !== void 0 ? fromProcess : "").trim();
 }
 function readXCreatorId() {
-	const fromProcess = typeof process !== "undefined" ? process.env?.X_CREATOR_ID : "";
-	return String(fromProcess ?? "").trim();
+	var _process$env5;
+	const fromProcess = typeof process !== "undefined" ? (_process$env5 = process.env) === null || _process$env5 === void 0 ? void 0 : _process$env5.X_CREATOR_ID : "";
+	return String(fromProcess !== null && fromProcess !== void 0 ? fromProcess : "").trim();
 }
 function grokXCreatorHeadTags(creator = readXCreator(), creatorId = readXCreatorId()) {
-	const name = String(creator ?? "").trim();
-	const id = String(creatorId ?? "").trim();
+	const name = String(creator !== null && creator !== void 0 ? creator : "").trim();
+	const id = String(creatorId !== null && creatorId !== void 0 ? creatorId : "").trim();
 	if (!name || !id) return [];
 	return [`<meta property="x:creator" content="${escapeHtml(name)}">`, `<meta property="x:creator:id" content="${escapeHtml(id)}">`];
 }
@@ -191,8 +199,9 @@ function ogCardPublicPath(cwd = process.cwd()) {
 	return "";
 }
 function detectCustomOgCard(cwd = process.cwd(), site = {}) {
+	var _site$image;
 	if (ogCardPublicPath(cwd)) return true;
-	return siteHasCustomCard(site) || Boolean(String(site.image ?? "").trim());
+	return siteHasCustomCard(site) || Boolean(String((_site$image = site.image) !== null && _site$image !== void 0 ? _site$image : "").trim());
 }
 /** Snapshot for Vite/Nitro to bake into the server bundle (Vercel has no workspace FS). */
 function snapshotOgIdentity(cwd = process.cwd()) {
@@ -209,23 +218,26 @@ function snapshotOgIdentity(cwd = process.cwd()) {
 	return { site };
 }
 function ogServiceUrl() {
-	return (String(process.env?.VITE_OG_SERVICE_URL ?? "").trim() || "https://og.grok.me").replace(/\/+$/, "");
+	var _process$env$VITE_OG_, _process$env6;
+	return (String((_process$env$VITE_OG_ = (_process$env6 = process.env) === null || _process$env6 === void 0 ? void 0 : _process$env6.VITE_OG_SERVICE_URL) !== null && _process$env$VITE_OG_ !== void 0 ? _process$env$VITE_OG_ : "").trim() || "https://og.grok.me").replace(/\/+$/, "");
 }
 function titleFromDocument(html) {
-	const match = String(html ?? "").match(/<title\b[^>]*>([^<]*)<\/title>/i);
+	const match = String(html !== null && html !== void 0 ? html : "").match(/<title\b[^>]*>([^<]*)<\/title>/i);
 	return match ? unescapeHtml(match[1]).trim() : "";
 }
 function resolveOgTitle(site = {}, appName = DEFAULT_APP_NAME, host = "", documentTitle = "") {
-	const fromSite = String(site.title ?? "").trim();
+	var _site$title;
+	const fromSite = String((_site$title = site.title) !== null && _site$title !== void 0 ? _site$title : "").trim();
 	if (fromSite) return fromSite;
-	const fromDoc = String(documentTitle ?? "").trim();
+	const fromDoc = String(documentTitle !== null && documentTitle !== void 0 ? documentTitle : "").trim();
 	if (fromDoc) return fromDoc;
 	const fromHost = appNameFromHost(host);
 	if (fromHost && fromHost !== "Grok App") return fromHost;
-	return String(appName ?? "").trim() || "Grok App";
+	return String(appName !== null && appName !== void 0 ? appName : "").trim() || "Grok App";
 }
 function siteHasCustomCard(site = {}) {
-	return String(site.card ?? "").toLowerCase() === "custom";
+	var _site$card;
+	return String((_site$card = site.card) !== null && _site$card !== void 0 ? _site$card : "").toLowerCase() === "custom";
 }
 /**
 * Preview: public/og.jpg|png on disk.
@@ -233,7 +245,8 @@ function siteHasCustomCard(site = {}) {
 * Otherwise empty — caller emits the og.grok.me placeholder.
 */
 function resolveOgCardAsset(site = {}, cwd = process.cwd()) {
-	return ogCardPublicPath(cwd) || (detectCustomOgCard(cwd, site) ? String(site.image ?? "").trim() || "/og.jpg" : "");
+	var _site$image2;
+	return ogCardPublicPath(cwd) || (detectCustomOgCard(cwd, site) ? String((_site$image2 = site.image) !== null && _site$image2 !== void 0 ? _site$image2 : "").trim() || "/og.jpg" : "");
 }
 /** Stamp `card=custom` when public/og.jpg or public/og.png is on disk. */
 function applyCustomCardFromFs(site, cwd) {
@@ -246,13 +259,15 @@ function applyCustomCardFromFs(site, cwd) {
 	};
 }
 function grokOgHeadTags({ host = "", appName = DEFAULT_APP_NAME, site = {}, documentTitle = "", cwd = process.cwd() } = {}) {
+	var _site$description, _site$type;
 	const title = resolveOgTitle(site, appName, host, documentTitle);
 	const publicHost = resolvePublicHost(host);
 	const tags = [`<meta name="twitter:card" content="summary_large_image">`, `<meta property="og:title" content="${escapeHtml(title)}">`];
-	const description = String(site.description ?? "").trim();
+	const description = String((_site$description = site.description) !== null && _site$description !== void 0 ? _site$description : "").trim();
 	if (description) tags.push(`<meta property="og:description" content="${escapeHtml(description)}">`);
-	if (String(site.type ?? "").toLowerCase() === "x:game") tags.push(`<meta property="og:type" content="x:game">`);
+	if (String((_site$type = site.type) !== null && _site$type !== void 0 ? _site$type : "").toLowerCase() === "x:game") tags.push(`<meta property="og:type" content="x:game">`);
 	if (publicHost) {
+		var _site$banner;
 		const asset = resolveOgCardAsset(site, cwd);
 		const custom = Boolean(asset);
 		let image = custom ? `https://${publicHost}${asset.startsWith("/") ? asset : `/${asset}`}` : `${ogServiceUrl()}/v1/card.png?host=${encodeURIComponent(publicHost)}&title=${encodeURIComponent(title)}`;
@@ -261,7 +276,7 @@ function grokOgHeadTags({ host = "", appName = DEFAULT_APP_NAME, site = {}, docu
 		tags.push(`<meta property="og:image" content="${escapeHtml(image)}">`);
 		tags.push(`<meta property="og:image:width" content="1200">`);
 		tags.push(`<meta property="og:image:height" content="630">`);
-		const banner = String(site.banner ?? "").trim();
+		const banner = String((_site$banner = site.banner) !== null && _site$banner !== void 0 ? _site$banner : "").trim();
 		if (banner) {
 			const bannerUrl = `https://${publicHost}${banner.startsWith("/") ? banner : `/${banner}`}`;
 			tags.push(`<meta property="x:game:image" content="${escapeHtml(bannerUrl)}">`);
@@ -291,23 +306,25 @@ function insertBeforeHeadClose(html, snippet) {
 	return insertAfterHeadOpen(html, snippet);
 }
 function normalizeHeadContext(ctx = {}) {
-	const cwd = ctx.cwd ?? process.cwd();
+	var _ctx$cwd, _ctx$appName, _ctx$host, _ctx$projectId, _ctx$creator, _ctx$creatorId, _ctx$host2;
+	const cwd = (_ctx$cwd = ctx.cwd) !== null && _ctx$cwd !== void 0 ? _ctx$cwd : process.cwd();
 	const site = applyCustomCardFromFs(ctx.site !== void 0 ? ctx.site : snapshotOgIdentity(cwd).site, cwd);
 	return {
-		appName: resolveOgTitle(site, ctx.appName ?? "Grok App", ctx.host ?? ""),
-		projectId: ctx.projectId ?? readGrokProjectId(),
-		creator: ctx.creator ?? readXCreator(),
-		creatorId: ctx.creatorId ?? readXCreatorId(),
-		host: ctx.host ?? "",
+		appName: resolveOgTitle(site, (_ctx$appName = ctx.appName) !== null && _ctx$appName !== void 0 ? _ctx$appName : DEFAULT_APP_NAME, (_ctx$host = ctx.host) !== null && _ctx$host !== void 0 ? _ctx$host : ""),
+		projectId: (_ctx$projectId = ctx.projectId) !== null && _ctx$projectId !== void 0 ? _ctx$projectId : readGrokProjectId(),
+		creator: (_ctx$creator = ctx.creator) !== null && _ctx$creator !== void 0 ? _ctx$creator : readXCreator(),
+		creatorId: (_ctx$creatorId = ctx.creatorId) !== null && _ctx$creatorId !== void 0 ? _ctx$creatorId : readXCreatorId(),
+		host: (_ctx$host2 = ctx.host) !== null && _ctx$host2 !== void 0 ? _ctx$host2 : "",
 		cwd,
 		site
 	};
 }
 function injectGrokPwaHead(html, ctx = {}) {
+	var _ctx$appName2;
 	if (typeof html !== "string") return html;
 	const { site, projectId, creator, creatorId, host, cwd } = normalizeHeadContext(ctx);
 	const documentTitle = titleFromDocument(html);
-	const appName = resolveOgTitle(site, ctx.appName ?? "Grok App", host, documentTitle);
+	const appName = resolveOgTitle(site, (_ctx$appName2 = ctx.appName) !== null && _ctx$appName2 !== void 0 ? _ctx$appName2 : DEFAULT_APP_NAME, host, documentTitle);
 	let next = stripShareMetaTags(html);
 	if (!readGrokExtensionsEnabled()) next = stripGrokExtensionsScript(next);
 	const missing = grokPwaHeadTags(appName).filter(([key]) => {
@@ -399,7 +416,8 @@ function createHeadInjector(ctx = {}) {
 *   runtime hook's return value, and `render:html` does not exist in Nitro v3.
 */
 function requestHost(event) {
-	return event.req.headers.get("x-forwarded-host") ?? event.req.headers.get("host") ?? event.url.host;
+	var _ref, _event$req$headers$ge;
+	return (_ref = (_event$req$headers$ge = event.req.headers.get("x-forwarded-host")) !== null && _event$req$headers$ge !== void 0 ? _event$req$headers$ge : event.req.headers.get("host")) !== null && _ref !== void 0 ? _ref : event.url.host;
 }
 function injectHeadStreaming(response, host) {
 	const injector = createHeadInjector({
@@ -423,7 +441,8 @@ function injectHeadStreaming(response, host) {
 	});
 }
 async function grokPwaMiddleware(event, next) {
-	if ((event.req.method ?? "GET").toUpperCase() !== "GET") return next();
+	var _event$req$method, _result$headers$get;
+	if (((_event$req$method = event.req.method) !== null && _event$req$method !== void 0 ? _event$req$method : "GET").toUpperCase() !== "GET") return next();
 	const path = event.url.pathname;
 	const urlWithQuery = path + event.url.search;
 	if (path === "/__grok/manifest.webmanifest" || path === "/__grok/manifest.json") return new Response(renderWebManifest(requestHost(event)), { headers: {
@@ -442,7 +461,7 @@ async function grokPwaMiddleware(event, next) {
 	}
 	if (!isDocumentPath(path)) return next();
 	const result = await next();
-	if (result instanceof Response && result.body && String(result.headers.get("content-type") ?? "").includes("text/html") && !result.headers.get("content-encoding")) return injectHeadStreaming(result, requestHost(event));
+	if (result instanceof Response && result.body && String((_result$headers$get = result.headers.get("content-type")) !== null && _result$headers$get !== void 0 ? _result$headers$get : "").includes("text/html") && !result.headers.get("content-encoding")) return injectHeadStreaming(result, requestHost(event));
 	return result;
 }
 //#endregion
@@ -488,7 +507,8 @@ var errorHandler = (error, event) => {
 	return new NodeResponse(typeof res.body === "string" ? res.body : JSON.stringify(res.body, null, 2), res);
 };
 function defaultHandler(error, event) {
-	const unhandled = error.unhandled ?? !HTTPError.isError(error);
+	var _error$unhandled;
+	const unhandled = (_error$unhandled = error.unhandled) !== null && _error$unhandled !== void 0 ? _error$unhandled : !HTTPError.isError(error);
 	const { status = 500, statusText = "" } = unhandled ? {} : error;
 	if (status === 404) {
 		const url = event.url || new URL(event.req.url);
@@ -532,8 +552,9 @@ async function error_handler_default(error, event) {
 //#region #nitro/virtual/app
 function createNitroApp() {
 	const captureError = (error, errorCtx) => {
-		if (errorCtx?.event) {
-			const errors = errorCtx.event.req.context?.nitro?.errors;
+		if (errorCtx === null || errorCtx === void 0 ? void 0 : errorCtx.event) {
+			var _errorCtx$event$req$c;
+			const errors = (_errorCtx$event$req$c = errorCtx.event.req.context) === null || _errorCtx$event$req$c === void 0 || (_errorCtx$event$req$c = _errorCtx$event$req$c.nitro) === null || _errorCtx$event$req$c === void 0 ? void 0 : _errorCtx$event$req$c.errors;
 			if (errors) errors.push({
 				error,
 				context: errorCtx
@@ -544,7 +565,7 @@ function createNitroApp() {
 		return error_handler_default(error, event);
 	} });
 	let appHandler = (req) => {
-		req.context ||= {};
+		req.context || (req.context = {});
 		req.context.nitro = req.context.nitro || { errors: [] };
 		return h3App.fetch(req);
 	};
@@ -560,14 +581,15 @@ function createH3App(config) {
 	h3App["~findRoute"] = (event) => findRoute(event.req.method, event.url.pathname);
 	h3App["~middleware"].push(...globalMiddleware);
 	h3App["~getMiddleware"] = (event, route) => {
+		var _route$data;
 		const pathname = event.url.pathname;
 		const method = event.req.method;
 		const middleware = [];
 		const routeRules = getRouteRules(method, pathname);
-		event.context.routeRules = routeRules?.routeRules;
-		if (routeRules?.routeRuleMiddleware.length) middleware.push(...routeRules.routeRuleMiddleware);
+		event.context.routeRules = routeRules === null || routeRules === void 0 ? void 0 : routeRules.routeRules;
+		if (routeRules === null || routeRules === void 0 ? void 0 : routeRules.routeRuleMiddleware.length) middleware.push(...routeRules.routeRuleMiddleware);
 		middleware.push(...h3App["~middleware"]);
-		if (route?.data?.middleware?.length) middleware.push(...route.data.middleware);
+		if (route === null || route === void 0 || (_route$data = route.data) === null || _route$data === void 0 || (_route$data = _route$data.middleware) === null || _route$data === void 0 ? void 0 : _route$data.length) middleware.push(...route.data.middleware);
 		return middleware;
 	};
 	return h3App;
@@ -585,7 +607,7 @@ function useNitroApp() {
 }
 function getRouteRules(method, pathname) {
 	const m = findRouteRules(method, pathname);
-	if (!m?.length) return { routeRuleMiddleware: [] };
+	if (!(m === null || m === void 0 ? void 0 : m.length)) return { routeRuleMiddleware: [] };
 	const routeRules = {};
 	for (const layer of m) for (const rule of layer.data) {
 		const currentRule = routeRules[rule.name];
@@ -610,7 +632,10 @@ function getRouteRules(method, pathname) {
 		};
 	}
 	const middleware = [];
-	const orderedRules = Object.values(routeRules).sort((a, b) => (a.handler?.order || 0) - (b.handler?.order || 0));
+	const orderedRules = Object.values(routeRules).sort((a, b) => {
+		var _a$handler, _b$handler;
+		return (((_a$handler = a.handler) === null || _a$handler === void 0 ? void 0 : _a$handler.order) || 0) - (((_b$handler = b.handler) === null || _b$handler === void 0 ? void 0 : _b$handler.order) || 0);
+	});
 	for (const rule of orderedRules) {
 		if (rule.options === false || !rule.handler) continue;
 		middleware.push(rule.handler(rule));
@@ -643,19 +668,21 @@ function isrRouteRewrite(reqUrl, xNowRouteMatches) {
 //#region node_modules/nitro/dist/presets/vercel/runtime/vercel.web.mjs
 var nitroApp = useNitroApp();
 var vercel_web_default = { async fetch(req, context) {
+	var _req, _req$runtime;
 	const isrURL = isrRouteRewrite(req.url, req.headers.get("x-now-route-matches"));
 	if (isrURL) {
 		const { routeRules } = getRouteRules("", isrURL[0]);
-		if (routeRules?.isr) req = new Request(new URL(isrURL[0] + (isrURL[1] ? `?${isrURL[1]}` : ""), req.url).href, req);
+		if (routeRules === null || routeRules === void 0 ? void 0 : routeRules.isr) req = new Request(new URL(isrURL[0] + (isrURL[1] ? `?${isrURL[1]}` : ""), req.url).href, req);
 	}
-	req.runtime ??= { name: "vercel" };
+	(_req$runtime = (_req = req).runtime) !== null && _req$runtime !== void 0 || (_req.runtime = { name: "vercel" });
 	req.runtime.vercel = { context };
 	let ip;
 	Object.defineProperty(req, "ip", { get() {
+		var _ip, _h$split$shift;
 		const h = req.headers.get("x-forwarded-for");
-		return ip ??= h?.split(",").shift()?.trim();
+		return (_ip = ip) !== null && _ip !== void 0 ? _ip : ip = h === null || h === void 0 || (_h$split$shift = h.split(",").shift()) === null || _h$split$shift === void 0 ? void 0 : _h$split$shift.trim();
 	} });
-	req.waitUntil = context?.waitUntil;
+	req.waitUntil = context === null || context === void 0 ? void 0 : context.waitUntil;
 	return nitroApp.fetch(req);
 } };
 //#endregion

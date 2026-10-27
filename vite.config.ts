@@ -146,6 +146,8 @@ function authPopupPlugin(): Plugin {
 // The dev server starts once `src/router.tsx` and `src/routes/` exist — see
 // AGENTS.md § "First scaffold".
 export default defineConfig(({ command, isPreview }) => ({
+  // iPhone đời cũ (Safari 14–16.3) không đọc được cú pháp ES2021/2022 mới (??=, trường lớp, khối static): hạ xuống để mục lục vẫn bung được.
+  build: { target: ["es2019", "safari14", "chrome87"] },
   server: {
     host: "0.0.0.0",
     port: 8080,
