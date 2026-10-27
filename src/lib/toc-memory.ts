@@ -1,7 +1,7 @@
 import { useSyncExternalStore } from "react";
 
 /** Nhớ mục lục: khóa đang mở (chỉ một khóa) và chỗ đọc gần nhất. Lưu trong trình duyệt. */
-export type TocMemory = { course: string | null; read: { course: string; mod: string | null; ses: string | null; item: string | null } | null };
+export type TocMemory = { at?: number; course: string | null; read: { course: string; mod: string | null; ses: string | null; item: string | null } | null };
 const KEY = "so-muc:toc";
 const empty: TocMemory = { course: null, read: null };
 let cache: TocMemory | null = null;
@@ -18,7 +18,8 @@ function load(): TocMemory {
   return cache as TocMemory;
 }
 
-function save(next: TocMemory) {
+function save(next: TocMemory, stamp = true) {
+  next = stamp ? { ...next, at: Date.now() } : next;
   cache = next;
   try {
     localStorage.setItem(KEY, JSON.stringify(next));
@@ -48,4 +49,19 @@ export function useTocMemory(): TocMemory {
     load,
     () => empty,
   );
+}
+
+export function getToc() {
+  return load();
+}
+
+export function subscribeToc(f: () => void) {
+  subs.add(f);
+  return () => subs.delete(f);
+}
+
+export function applyRemoteToc(next: { course: string | null; read: TocMemory["read"]; at: number }) {
+  const cur = load();
+  if (cur.course === next.course && JSON.stringify(cur.read) === JSON.stringify(next.read)) return;
+  save({ course: next.course, read: next.read, at: next.at }, false);
 }

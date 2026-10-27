@@ -1,14 +1,8 @@
 import { useEffect, useState } from "react";
 import type { Lang } from "@/lib/progress";
 
-type Q = { q: [string, string]; o: [string, string][]; a: number; w: [string, string] };
-let cache: Record<string, Q[]> | null = null;
-let pending: Promise<Record<string, Q[]>> | null = null;
-function load() {
-  if (cache) return Promise.resolve(cache);
-  pending ??= import("@/data/self-test.json").then((m) => (cache = (m.default ?? m) as unknown as Record<string, Q[]>));
-  return pending;
-}
+import { loadSelfTest as load, type Q } from "@/lib/self-test-data";
+import { recordAnswer } from "@/lib/review";
 
 const words = {
   vi: { head: "Tự kiểm tra", check: "Kiểm tra", right: "Đúng.", wrong: "Chưa đúng.", ans: "Đáp án", retry: "Làm lại", score: (s: number, n: number) => `${s}/${n} câu đúng` },
@@ -73,7 +67,10 @@ export function SelfTest({ conceptId, lang }: { conceptId: string; lang: Lang })
               <button
                 type="button"
                 disabled={pick[k] === undefined}
-                onClick={() => setDone((d) => ({ ...d, [k]: true }))}
+                onClick={() => {
+                  setDone((d) => ({ ...d, [k]: true }));
+                  recordAnswer(conceptId, k, pick[k] === q.a);
+                }}
                 className="mt-3 inline-flex min-h-11 items-center rounded-full bg-accent px-5 text-sm text-white disabled:opacity-40"
               >
                 {t.check}
