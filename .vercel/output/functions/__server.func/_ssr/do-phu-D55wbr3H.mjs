@@ -1,5 +1,5 @@
-import { b as Link, q as require_jsx_runtime } from "../_libs/@tanstack/react-router+[...].mjs";
 import { c as lessons, d as stats } from "./catalog-DRaoKsF4.mjs";
+import { b as Link, q as require_jsx_runtime } from "../_libs/@tanstack/react-router+[...].mjs";
 //#region node_modules/.nitro/vite/services/ssr/assets/do-phu-D55wbr3H.js
 var import_jsx_runtime = require_jsx_runtime();
 function CoveragePage() {
