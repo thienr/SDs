@@ -2,7 +2,7 @@ import { o as __toESM } from "../_runtime.mjs";
 import { f as studyCopy, o as getStudy } from "./study-BtAMXX88.mjs";
 import { t as remember } from "./remember-BIeTeLr0.mjs";
 import { J as require_react, q as require_jsx_runtime } from "../_libs/@tanstack/react-router+[...].mjs";
-//#region node_modules/.nitro/vite/services/ssr/assets/ask-ai-panel-5g0Wtfgx.js
+//#region node_modules/.nitro/vite/services/ssr/assets/ask-ai-panel-DOlxh6gk.js
 var import_react = /* @__PURE__ */ __toESM(require_react());
 var import_jsx_runtime = require_jsx_runtime();
 var PROVIDERS = {
@@ -162,6 +162,10 @@ var w = {
 		copied: "Đã chép",
 		clear: "Xóa cuộc trò chuyện",
 		err: "Lỗi",
+		launchHead: "Hỏi bằng tài khoản của bạn",
+		launchNote: "Mở app của từng bên (đã đăng nhập sẵn trên máy bạn) với câu hỏi và nội dung thẻ điền sẵn. Không cần khóa API.",
+		launchAsk: "Câu hỏi",
+		advanced: "Nâng cao: chat ngay trong app bằng khóa API",
 		starters: [
 			"Giải thích lại bằng ví dụ khác",
 			"Cho mình 3 câu hỏi kiểm tra",
@@ -187,6 +191,10 @@ var w = {
 		copied: "Copied",
 		clear: "Clear chat",
 		err: "Error",
+		launchHead: "Ask with your own account",
+		launchNote: "Opens each provider's app (already signed in on your device) with the question and card pre-filled. No API key needed.",
+		launchAsk: "Question",
+		advanced: "Advanced: chat inside the app with an API key",
 		starters: [
 			"Explain it again with another example",
 			"Give me 3 quiz questions",
@@ -227,6 +235,7 @@ function AskAiPanel({ lang, path, onClose }) {
 	const [keyDraft, setKeyDraft] = (0, import_react.useState)("");
 	const [modelDraft, setModelDraft] = (0, import_react.useState)("");
 	const [editing, setEditing] = (0, import_react.useState)(false);
+	const [adv, setAdv] = (0, import_react.useState)(false);
 	const [busy, setBusy] = (0, import_react.useState)(false);
 	const [err, setErr] = (0, import_react.useState)("");
 	const [copied, setCopied] = (0, import_react.useState)(false);
@@ -313,7 +322,7 @@ function AskAiPanel({ lang, path, onClose }) {
 						children: "×"
 					})]
 				}),
-				/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+				key || adv || editing ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
 					className: "flex gap-2 overflow-x-auto px-4 py-2",
 					role: "tablist",
 					children: Object.keys(PROVIDERS).map((p) => /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("button", {
@@ -324,12 +333,62 @@ function AskAiPanel({ lang, path, onClose }) {
 						className: `min-h-11 shrink-0 rounded-full border px-4 text-sm ${p === id ? "border-accent bg-card text-accent" : "border-line"}`,
 						children: [PROVIDERS[p].name, store.keys[p] ? "" : " ·"]
 					}, p))
-				}),
+				}) : null,
 				/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
 					className: "px-4 text-xs text-muted",
 					children: ctx ? `${t.ctx}: ${ctx.title}` : t.noctx
 				}),
-				!key || editing ? /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+				!key && !adv && !editing ? /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+					className: "space-y-3 overflow-y-auto px-4 py-3",
+					children: [
+						/* @__PURE__ */ (0, import_jsx_runtime.jsx)("h3", {
+							className: "text-sm font-medium",
+							children: t.launchHead
+						}),
+						/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+							className: "text-xs text-muted",
+							children: t.launchNote
+						}),
+						/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("label", {
+							className: "block text-sm",
+							children: [t.launchAsk, /* @__PURE__ */ (0, import_jsx_runtime.jsx)("input", {
+								value: draft,
+								onChange: (e) => setDraft(e.target.value),
+								placeholder: t.starters[0],
+								className: "mt-1 min-h-11 w-full rounded-card border border-line bg-paper px-3 text-base"
+							})]
+						}),
+						/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+							className: "grid grid-cols-2 gap-2",
+							children: Object.keys(PROVIDERS).map((p) => {
+								var _PROVIDERS$p$web;
+								const q = prompt(draft || t.starters[0]).slice(0, 6e3);
+								const href = (_PROVIDERS$p$web = PROVIDERS[p].web(q)) !== null && _PROVIDERS$p$web !== void 0 ? _PROVIDERS$p$web : PROVIDERS[p].webHome;
+								return /* @__PURE__ */ (0, import_jsx_runtime.jsx)("a", {
+									href,
+									target: "_blank",
+									rel: "noreferrer",
+									className: "inline-flex min-h-12 items-center justify-center rounded-card border border-accent bg-card text-sm font-medium text-accent",
+									onClick: () => {
+										var _navigator$clipboard;
+										if (!PROVIDERS[p].web(q)) (_navigator$clipboard = navigator.clipboard) === null || _navigator$clipboard === void 0 || _navigator$clipboard.writeText(q).then(() => setCopied(true)).catch(() => {});
+									},
+									children: PROVIDERS[p].name
+								}, p);
+							})
+						}),
+						/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+							className: "text-xs text-muted",
+							children: copied ? t.copied : "Gemini: nội dung được chép sẵn, bạn dán vào ô chat."
+						}),
+						/* @__PURE__ */ (0, import_jsx_runtime.jsx)("button", {
+							type: "button",
+							className: "text-xs underline",
+							onClick: () => setAdv(true),
+							children: t.advanced
+						})
+					]
+				}) : !key || editing ? /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
 					className: "space-y-3 overflow-y-auto px-4 py-3",
 					children: [
 						/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("label", {
@@ -442,7 +501,7 @@ function AskAiPanel({ lang, path, onClose }) {
 						children: t.send
 					})]
 				})] }),
-				/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+				!key && !adv && !editing ? null : /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
 					className: "flex flex-wrap items-center gap-2 border-t border-line px-4 py-2 text-xs text-muted",
 					children: [
 						key && !editing ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)("button", {
@@ -465,17 +524,17 @@ function AskAiPanel({ lang, path, onClose }) {
 							children: [t.web, ":"]
 						}),
 						Object.keys(PROVIDERS).map((p) => {
-							var _PROVIDERS$p$web;
+							var _PROVIDERS$p$web2;
 							const q = prompt(draft || t.starters[0]);
-							const href = (_PROVIDERS$p$web = PROVIDERS[p].web(q.slice(0, 6e3))) !== null && _PROVIDERS$p$web !== void 0 ? _PROVIDERS$p$web : PROVIDERS[p].webHome;
+							const href = (_PROVIDERS$p$web2 = PROVIDERS[p].web(q.slice(0, 6e3))) !== null && _PROVIDERS$p$web2 !== void 0 ? _PROVIDERS$p$web2 : PROVIDERS[p].webHome;
 							return /* @__PURE__ */ (0, import_jsx_runtime.jsx)("a", {
 								href,
 								target: "_blank",
 								rel: "noreferrer",
 								className: "inline-flex min-h-8 items-center rounded-full border border-line px-3",
 								onClick: () => {
-									var _navigator$clipboard;
-									if (!PROVIDERS[p].web(q)) (_navigator$clipboard = navigator.clipboard) === null || _navigator$clipboard === void 0 || _navigator$clipboard.writeText(q).then(() => setCopied(true)).catch(() => {});
+									var _navigator$clipboard2;
+									if (!PROVIDERS[p].web(q)) (_navigator$clipboard2 = navigator.clipboard) === null || _navigator$clipboard2 === void 0 || _navigator$clipboard2.writeText(q).then(() => setCopied(true)).catch(() => {});
 								},
 								children: PROVIDERS[p].name
 							}, p);

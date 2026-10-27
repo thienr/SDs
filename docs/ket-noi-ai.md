@@ -18,3 +18,9 @@ Chỉ hỗ trợ Streamable HTTP và SSE.
 ## App Gemini/Grok trên web hoặc điện thoại
 Chưa kiểm chứng có cho nối MCP tùy ý hay không. Dự phòng: dán nội dung thẻ lấy từ
 `https://s-ds-navy.vercel.app/api/so-muc?what=idea&id=<id thẻ>&lang=vi` vào khung chat.
+
+## Claude.ai và ChatGPT (đăng nhập bằng tài khoản có sẵn)
+Claude.ai: Settings → Connectors → Add custom connector → dán `https://s-ds-navy.vercel.app/api/mcp`.
+ChatGPT: Settings → Connectors (bật Developer mode nếu gói của bạn có) → thêm server MCP với địa chỉ trên.
+Sau đó chat ngay trong app của họ, họ đọc thẻ Sổ Mực qua các công cụ list_courses, search_ideas, get_idea.
+(Tên menu và gói được hỗ trợ có thể đã đổi, kiểm tra trong phần Trợ giúp của từng app.)

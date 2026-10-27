@@ -10,14 +10,14 @@ const w = {
     ph: "Hỏi bất cứ điều gì về thẻ này…", send: "Gửi", thinking: "Đang trả lời…", key: "Khóa API của", save: "Lưu khóa", change: "Đổi khóa/mô hình",
     keyNote: "Khóa chỉ lưu trên máy này, không đồng bộ và không gửi lên máy chủ của Sổ Mực; trình duyệt gọi thẳng nhà cung cấp và bạn trả phí theo mức dùng của họ.",
     get: "Lấy khóa", model: "Mô hình", web: "Hoặc mở app của họ", copy: "Chép câu hỏi + thẻ", copied: "Đã chép", clear: "Xóa cuộc trò chuyện", err: "Lỗi",
-    starters: ["Giải thích lại bằng ví dụ khác", "Cho mình 3 câu hỏi kiểm tra", "Mình hay nhầm chỗ nào ở thẻ này?"],
+    launchHead: "Hỏi bằng tài khoản của bạn", launchNote: "Mở app của từng bên (đã đăng nhập sẵn trên máy bạn) với câu hỏi và nội dung thẻ điền sẵn. Không cần khóa API.", launchAsk: "Câu hỏi", advanced: "Nâng cao: chat ngay trong app bằng khóa API", starters: ["Giải thích lại bằng ví dụ khác", "Cho mình 3 câu hỏi kiểm tra", "Mình hay nhầm chỗ nào ở thẻ này?"],
   },
   en: {
     title: "Ask AI", close: "Close", ctx: "Card attached", noctx: "No card attached (open a concept card so the AI can follow it).",
     ph: "Ask anything about this card…", send: "Send", thinking: "Answering…", key: "API key for", save: "Save key", change: "Change key/model",
     keyNote: "The key stays on this device only. It is not synced or sent to the Sổ Mực server; your browser calls the provider directly and you pay their usage fees.",
     get: "Get a key", model: "Model", web: "Or open their app", copy: "Copy question + card", copied: "Copied", clear: "Clear chat", err: "Error",
-    starters: ["Explain it again with another example", "Give me 3 quiz questions", "Where do people usually go wrong here?"],
+    launchHead: "Ask with your own account", launchNote: "Opens each provider's app (already signed in on your device) with the question and card pre-filled. No API key needed.", launchAsk: "Question", advanced: "Advanced: chat inside the app with an API key", starters: ["Explain it again with another example", "Give me 3 quiz questions", "Where do people usually go wrong here?"],
   },
 };
 
@@ -42,6 +42,7 @@ export default function AskAiPanel({ lang, path, onClose }: { lang: Lang; path: 
   const [keyDraft, setKeyDraft] = useState("");
   const [modelDraft, setModelDraft] = useState("");
   const [editing, setEditing] = useState(false);
+  const [adv, setAdv] = useState(false);
   const [busy, setBusy] = useState(false);
   const [err, setErr] = useState("");
   const [copied, setCopied] = useState(false);
@@ -97,16 +98,37 @@ export default function AskAiPanel({ lang, path, onClose }: { lang: Lang; path: 
           <h2 className="font-display text-xl">{t.title}</h2>
           <button type="button" className="inline-flex size-11 items-center justify-center text-xl" onClick={onClose} aria-label={t.close}>×</button>
         </div>
-        <div className="flex gap-2 overflow-x-auto px-4 py-2" role="tablist">
+        {(key || adv || editing) ? <div className="flex gap-2 overflow-x-auto px-4 py-2" role="tablist">
           {(Object.keys(PROVIDERS) as ProviderId[]).map((p) => (
             <button key={p} type="button" role="tab" aria-selected={p === id} onClick={() => pick(p)} className={`min-h-11 shrink-0 rounded-full border px-4 text-sm ${p === id ? "border-accent bg-card text-accent" : "border-line"}`}>
               {PROVIDERS[p].name}{store.keys[p] ? "" : " ·"}
             </button>
           ))}
-        </div>
+        </div> : null}
         <p className="px-4 text-xs text-muted">{ctx ? `${t.ctx}: ${ctx.title}` : t.noctx}</p>
 
-        {!key || editing ? (
+        {!key && !adv && !editing ? (
+          <div className="space-y-3 overflow-y-auto px-4 py-3">
+            <h3 className="text-sm font-medium">{t.launchHead}</h3>
+            <p className="text-xs text-muted">{t.launchNote}</p>
+            <label className="block text-sm">{t.launchAsk}
+              <input value={draft} onChange={(e) => setDraft(e.target.value)} placeholder={t.starters[0]} className="mt-1 min-h-11 w-full rounded-card border border-line bg-paper px-3 text-base" />
+            </label>
+            <div className="grid grid-cols-2 gap-2">
+              {(Object.keys(PROVIDERS) as ProviderId[]).map((p) => {
+                const q = prompt(draft || t.starters[0]).slice(0, 6000);
+                const href = PROVIDERS[p].web(q) ?? PROVIDERS[p].webHome;
+                return (
+                  <a key={p} href={href} target="_blank" rel="noreferrer" className="inline-flex min-h-12 items-center justify-center rounded-card border border-accent bg-card text-sm font-medium text-accent" onClick={() => { if (!PROVIDERS[p].web(q)) void navigator.clipboard?.writeText(q).then(() => setCopied(true)).catch(() => {}); }}>
+                    {PROVIDERS[p].name}
+                  </a>
+                );
+              })}
+            </div>
+            <p className="text-xs text-muted">{copied ? t.copied : "Gemini: nội dung được chép sẵn, bạn dán vào ô chat."}</p>
+            <button type="button" className="text-xs underline" onClick={() => setAdv(true)}>{t.advanced}</button>
+          </div>
+        ) : !key || editing ? (
           <div className="space-y-3 overflow-y-auto px-4 py-3">
             <label className="block text-sm">{t.key} {prov.name}
               <input type="password" autoComplete="off" autoCapitalize="none" spellCheck={false} value={keyDraft} onChange={(e) => setKeyDraft(e.target.value)} className="mt-1 min-h-11 w-full rounded-card border border-line bg-paper px-3 font-mono text-sm" />
@@ -142,7 +164,7 @@ export default function AskAiPanel({ lang, path, onClose }: { lang: Lang; path: 
           </>
         )}
 
-        <div className="flex flex-wrap items-center gap-2 border-t border-line px-4 py-2 text-xs text-muted">
+        {!key && !adv && !editing ? null : <div className="flex flex-wrap items-center gap-2 border-t border-line px-4 py-2 text-xs text-muted">
           {key && !editing ? <button type="button" className="underline" onClick={() => setEditing(true)}>{t.change}</button> : null}
           {msgs.length ? <button type="button" className="underline" onClick={() => setChats((c) => ({ ...c, [id]: [] }))}>{t.clear}</button> : null}
           <span className="ml-auto">{t.web}:</span>
@@ -156,7 +178,7 @@ export default function AskAiPanel({ lang, path, onClose }: { lang: Lang; path: 
             );
           })}
           <button type="button" className="underline" onClick={async () => { try { await navigator.clipboard.writeText(prompt(draft)); setCopied(true); } catch { /* bỏ qua */ } }}>{copied ? t.copied : t.copy}</button>
-        </div>
+        </div>}
       </div>
     </div>
   );

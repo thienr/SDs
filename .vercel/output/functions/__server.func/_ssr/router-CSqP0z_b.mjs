@@ -595,7 +595,7 @@ function dueKeys(map, limit = 5) {
 	return Object.entries(map).filter(([, v]) => v.d <= t).sort((a, b) => a[1].d.localeCompare(b[1].d) || a[1].b - b[1].b).slice(0, limit).map(([k]) => k);
 }
 //#endregion
-//#region node_modules/.nitro/vite/services/ssr/assets/router-CwNcTBK-.js
+//#region node_modules/.nitro/vite/services/ssr/assets/router-CSqP0z_b.js
 var import_jsx_runtime = require_jsx_runtime();
 var __defProp = Object.defineProperty;
 var __exportAll = (all, no_symbols) => {
@@ -1614,7 +1614,7 @@ function disableSync() {
 		msg: ""
 	});
 }
-var AskAiPanel = (0, import_react.lazy)(() => import("./ask-ai-panel-5g0Wtfgx.mjs"));
+var AskAiPanel = (0, import_react.lazy)(() => import("./ask-ai-panel-DOlxh6gk.mjs"));
 var links = [
 	{
 		to: "/",
@@ -1844,7 +1844,7 @@ function RootComponent() {
 		] })]
 	});
 }
-var $$splitComponentImporter$11 = () => import("./routes-BDQsj56V.mjs");
+var $$splitComponentImporter$11 = () => import("./routes-CRIMc7Rj.mjs");
 var Route$14 = createFileRoute("/")({ component: lazyRouteComponent($$splitComponentImporter$11, "component") });
 var $$splitComponentImporter$10 = () => import("./ban-do-ZB8I3A76.mjs");
 var Route$13 = createFileRoute("/ban-do")({ component: lazyRouteComponent($$splitComponentImporter$10, "component") });
@@ -1854,7 +1854,7 @@ var $$splitComponentImporter$8 = () => import("./cong-thuc-BQYY-0JY.mjs");
 var Route$11 = createFileRoute("/cong-thuc")({ component: lazyRouteComponent($$splitComponentImporter$8, "component") });
 var $$splitComponentImporter$7 = () => import("./do-phu-D55wbr3H.mjs");
 var Route$10 = createFileRoute("/do-phu")({ component: lazyRouteComponent($$splitComponentImporter$7, "component") });
-var $$splitComponentImporter$6 = () => import("./dong-bo-BFMVFxIA.mjs");
+var $$splitComponentImporter$6 = () => import("./dong-bo-DoT9lpSb.mjs");
 var Route$9 = createFileRoute("/dong-bo")({ component: lazyRouteComponent($$splitComponentImporter$6, "component") });
 var $$splitComponentImporter$5 = () => import("./goc-IvQLir9i.mjs");
 var Route$8 = createFileRoute("/goc")({ component: lazyRouteComponent($$splitComponentImporter$5, "component") });
@@ -2846,11 +2846,11 @@ var Route$3 = createFileRoute("/api/sync")({ server: { handlers: {
 	},
 	OPTIONS: () => apiEmpty(204)
 } } });
-var $$splitComponentImporter$2 = () => import("./bai._lessonId-DVvBBqJH.mjs");
+var $$splitComponentImporter$2 = () => import("./bai._lessonId-lj6xuRsT.mjs");
 var Route$2 = createFileRoute("/bai/$lessonId")({ component: lazyRouteComponent($$splitComponentImporter$2, "component") });
-var $$splitComponentImporter$1 = () => import("./khai-niem._conceptId-Eji43nKl.mjs");
+var $$splitComponentImporter$1 = () => import("./khai-niem._conceptId-DT2bxA8q.mjs");
 var Route$1 = createFileRoute("/khai-niem/$conceptId")({ component: lazyRouteComponent($$splitComponentImporter$1, "component") });
-var $$splitComponentImporter = () => import("./khoa._courseId-Ci_UXELB.mjs");
+var $$splitComponentImporter = () => import("./khoa._courseId-Cvu_d5CG.mjs");
 var Route = createFileRoute("/khoa/$courseId")({ component: lazyRouteComponent($$splitComponentImporter, "component") });
 var rootRouteChildren = {
 	IndexRoute: Route$14.update({

@@ -4,14 +4,14 @@ import { t as remember } from "./remember-BIeTeLr0.mjs";
 import { J as require_react, b as Link, q as require_jsx_runtime } from "../_libs/@tanstack/react-router+[...].mjs";
 import { n as course_default } from "./catalog-DRaoKsF4.mjs";
 import { a as getServerProgress, i as getProgress, m as subscribeProgress } from "./progress-BbLCT1Se.mjs";
-import { h as recordAnswer, r as Route$1 } from "./router-CwNcTBK-.mjs";
+import { h as recordAnswer, r as Route$1 } from "./router-CSqP0z_b.mjs";
 import { n as Tex, t as CodeExplain } from "./tex-CMTmT1PA.mjs";
 import { n as Range, r as Sim, t as Lab } from "./labs-_WNsAmbg.mjs";
 import { r as relatedOf } from "./map-B8zVtsI6.mjs";
 import { a as useReports, t as addReport } from "./report-store-DANHpKt5.mjs";
 import { t as walks } from "./walk-BWyJOgjD.mjs";
 import { t as loadSelfTest } from "./self-test-data-D_-Lu4LK.mjs";
-//#region node_modules/.nitro/vite/services/ssr/assets/khai-niem._conceptId-Eji43nKl.js
+//#region node_modules/.nitro/vite/services/ssr/assets/khai-niem._conceptId-DT2bxA8q.js
 var import_react = /* @__PURE__ */ __toESM(require_react());
 var import_jsx_runtime = require_jsx_runtime();
 var words$1 = {
