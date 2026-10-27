@@ -1,6 +1,8 @@
 import { sessionConcepts, sessionOfConcept } from "@/data/place";
 import { getStudy, studyCopy, studyListTitle, studyNeighbors } from "@/data/study";
 import { courses } from "@/lib/catalog";
+import { allCardIds } from "@/lib/course-cards";
+import { getDone, isDone } from "@/lib/done";
 import { getReports } from "@/lib/report-store";
 import { getReview } from "@/lib/review";
 import { getToc } from "@/lib/toc-memory";
@@ -37,6 +39,10 @@ function history(id: string, lang: Lang) {
   } else {
     lines.push("Mình chưa làm câu tự kiểm tra nào khác.");
   }
+  const doneMap = getDone();
+  const total = allCardIds().length;
+  const learned = allCardIds().filter((c) => isDone(doneMap, c)).length;
+  lines.push(`Mình đã đánh dấu học xong ${learned}/${total} thẻ; thẻ này ${isDone(doneMap, id) ? "đã được đánh dấu học xong" : "chưa đánh dấu học xong"}.`);
   const mine = getReports().filter((r) => r.conceptId === id);
   if (mine.length) lines.push(`Mình từng đánh dấu thẻ này là ${mine.map((r) => (r.kind === "unclear" ? "khó hiểu" : "có thể sai")).join(", ")}${mine[0].note ? `: "${mine[0].note.slice(0, 200)}"` : ""}.`);
   const read = getToc().read;

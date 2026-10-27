@@ -5,12 +5,13 @@ export type SyncData = {
   p: { items: Record<string, Status>; last: string | null; at: number };
   t: { course: string | null; read: { course: string; mod: string | null; ses: string | null; item: string | null } | null; at: number };
   r: Record<string, ReviewEntry>;
+  d: Record<string, { x: 0 | 1; a: number }>;
 };
 
 const RANK: Record<Status, number> = { unseen: 0, viewing: 1, seen: 2 };
 export const MAX_ITEMS = 6000;
 
-export const emptySync = (): SyncData => ({ p: { items: {}, last: null, at: 0 }, t: { course: null, read: null, at: 0 }, r: {} });
+export const emptySync = (): SyncData => ({ p: { items: {}, last: null, at: 0 }, t: { course: null, read: null, at: 0 }, r: {}, d: {} });
 
 const str = (v: unknown, max = 120): string | null => (typeof v === "string" && v.length <= max ? v : null);
 const num = (v: unknown) => (typeof v === "number" && Number.isFinite(v) ? v : 0);
@@ -50,6 +51,16 @@ export function cleanSync(raw: unknown): SyncData {
       }
     }
   }
+  if (o.d && typeof o.d === "object") {
+    let n = 0;
+    for (const [k, v] of Object.entries(o.d as Record<string, any>)) {
+      if (n >= MAX_ITEMS) break;
+      if (k.length <= 120 && (v?.x === 0 || v?.x === 1)) {
+        out.d[k] = { x: v.x, a: num(v.a) };
+        n += 1;
+      }
+    }
+  }
   return out;
 }
 
@@ -70,6 +81,11 @@ export function mergeSync(x: SyncData, y: SyncData): SyncData {
     const a = x.r[k];
     const b = y.r[k];
     out.r[k] = !a ? b : !b ? a : b.a > a.a ? b : a;
+  }
+  for (const k of new Set([...Object.keys(x.d), ...Object.keys(y.d)])) {
+    const a = x.d[k];
+    const b = y.d[k];
+    out.d[k] = !a ? b : !b ? a : b.a > a.a ? b : a;
   }
   return out;
 }

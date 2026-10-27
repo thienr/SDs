@@ -1,6 +1,7 @@
 import { Link } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
-import { ChevronRight } from "lucide-react";
+import { Check, ChevronRight } from "lucide-react";
+import { isDone, useDone } from "@/lib/done";
 import { sessionConcepts } from "@/data/place";
 import { studyListTitle } from "@/data/study";
 import { liveModule, liveSession } from "@/lib/cms-live";
@@ -56,6 +57,7 @@ export function CoverInfo({ plain, why, prior, lang, editHash, onNavigate }: { p
 
 function SessionLinks({ course, modTitle, sessionId, lessonIds, lang, onNavigate, lastItem }: { lastItem?: string | null; course: Course; modTitle: string; sessionId: string; lessonIds: string[]; lang: Lang; onNavigate?: () => void }) {
   const t = words[lang];
+  const doneMap = useDone();
   const ids = sessionConcepts[sessionId] ?? [];
   const real = ids.filter((id) => !id.startsWith("d-"));
   const showLessons = real.length === 0 && !trackOnly.has(modTitle);
@@ -68,6 +70,7 @@ function SessionLinks({ course, modTitle, sessionId, lessonIds, lang, onNavigate
         <li key={id}>
           <Link to="/khai-niem/$conceptId" params={{ conceptId: id }} onClick={onNavigate} className={`flex min-h-11 items-center justify-between gap-3 rounded-lg px-2 text-sm hover:bg-card ${lastItem === id ? "bg-card ring-1 ring-accent" : ""}`}>
             <span className="font-medium">
+              {isDone(doneMap, id) ? <Check className="mr-1 inline size-4 text-accent" aria-label={lang === "en" ? "learned" : "đã học"} /> : null}
               {studyListTitle(id, lang)}
               {lastItem === id ? <span className="ml-2 text-xs font-normal text-accent">{t.last}</span> : null}
               {rawIsEdited(id, lang) ? <span className="ml-2 text-xs font-normal text-accent">{t.edited}</span> : null}

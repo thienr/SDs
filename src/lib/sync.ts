@@ -1,5 +1,6 @@
 import { useSyncExternalStore } from "react";
 import { applyRemoteProgress, getProgress, subscribeProgress } from "@/lib/progress";
+import { applyRemoteDone, getDone, subscribeDone } from "@/lib/done";
 import { applyRemoteReview, getReview, subscribeReview } from "@/lib/review";
 import { applyRemoteToc, getToc, subscribeToc } from "@/lib/toc-memory";
 import { cleanSync, mergeSync, type SyncData } from "@/lib/sync-merge";
@@ -41,6 +42,7 @@ function local(): SyncData {
     p: { items: p.items, last: p.lastLessonId, at: p.lastAt ?? 0 },
     t: { course: t.course, read: t.read, at: t.at ?? 0 },
     r: getReview(),
+    d: getDone(),
   });
 }
 
@@ -50,6 +52,7 @@ function apply(d: SyncData) {
     applyRemoteProgress(d.p.items, d.p.last, d.p.at);
     applyRemoteToc(d.t);
     applyRemoteReview(d.r);
+    applyRemoteDone(d.d);
   } finally {
     applying = false;
   }
@@ -91,6 +94,7 @@ export function startAutoSync() {
   subscribeProgress(schedule);
   subscribeToc(schedule);
   subscribeReview(schedule);
+  subscribeDone(schedule);
   document.addEventListener("visibilitychange", () => {
     if (document.visibilityState === "visible") void syncNow();
   });

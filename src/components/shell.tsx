@@ -3,6 +3,7 @@ import { lazy, Suspense, useEffect, useState, useSyncExternalStore, type ReactNo
 import { BookOpen, MessageCircle, Moon, Network, Search, Settings, Sun, TableOfContents } from "lucide-react";
 import { MapBar } from "@/components/map-bar";
 import { startAutoSync } from "@/lib/sync";
+import { registerSw } from "@/lib/offline";
 import { getProgress, getServerProgress, hydrateProgress, setLang, subscribeProgress, toggleTheme, type Lang } from "@/lib/progress";
 import { hydrateRaw } from "@/lib/raw-store";
 import { hydrateCms } from "@/lib/cms-store";
@@ -41,6 +42,7 @@ export function AppShell({ children }: { children: ReactNode }) {
     hydrateRaw();
     hydrateCms();
     startAutoSync();
+    registerSw();
   }, []);
 
   return (

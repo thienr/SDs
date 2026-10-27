@@ -1,6 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useEffect, useRef, useState, useSyncExternalStore } from "react";
 import { getProgress, getServerProgress, subscribeProgress } from "@/lib/progress";
+import { OfflineBox } from "@/components/offline-box";
 import { disableSync, enableSync, newCode, syncNow, useSync } from "@/lib/sync";
 
 export const Route = createFileRoute("/dong-bo")({ component: SyncPage });
@@ -141,6 +142,7 @@ function SyncPage() {
           <p className="text-xs text-muted">{t.stopNote}</p>
         </div>
       )}
+      <OfflineBox lang={lang} />
     </div>
   );
 }
