@@ -2,6 +2,7 @@ import { Link, useRouterState } from "@tanstack/react-router";
 import { useEffect, useSyncExternalStore, type ReactNode } from "react";
 import { BookOpen, Moon, Network, Search, Settings, Sun, TableOfContents } from "lucide-react";
 import { MapBar } from "@/components/map-bar";
+import { startAutoSync } from "@/lib/sync";
 import { getProgress, getServerProgress, hydrateProgress, setLang, subscribeProgress, toggleTheme, type Lang } from "@/lib/progress";
 import { hydrateRaw } from "@/lib/raw-store";
 import { hydrateCms } from "@/lib/cms-store";
@@ -36,6 +37,7 @@ export function AppShell({ children }: { children: ReactNode }) {
     hydrateProgress();
     hydrateRaw();
     hydrateCms();
+    startAutoSync();
   }, []);
 
   return (

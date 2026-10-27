@@ -6,6 +6,7 @@ export type Lang = "vi" | "en";
 type State = {
   items: Record<string, Status>;
   lastLessonId: string | null;
+  lastAt?: number;
   theme: "light" | "dark";
   lang: Lang;
 };
@@ -35,6 +36,7 @@ export function hydrateProgress() {
       state = {
         items: parsed.items ?? {},
         lastLessonId: parsed.lastLessonId ?? null,
+        lastAt: parsed.lastAt ?? 0,
         theme: parsed.theme === "dark" ? "dark" : "light",
         lang: parsed.lang === "en" ? "en" : "vi",
       };
@@ -83,7 +85,7 @@ export function openLesson(lessonId: string) {
       if (!items[item.id]) items[item.id] = "viewing";
     }
   }
-  state = { ...state, items, lastLessonId: lessonId };
+  state = { ...state, items, lastLessonId: lessonId, lastAt: Date.now() };
   emit();
 }
 
@@ -99,7 +101,7 @@ export function markLesson(lessonId: string, status: Status) {
   if (!lesson) return;
   const items = { ...state.items };
   for (const item of lesson.items) items[item.id] = status;
-  state = { ...state, items, lastLessonId: lessonId };
+  state = { ...state, items, lastLessonId: lessonId, lastAt: Date.now() };
   emit();
 }
 
@@ -147,4 +149,15 @@ export function countSeen() {
   const seen = items.filter((item) => itemStatus(item.id) === "seen").length;
   const viewing = items.filter((item) => itemStatus(item.id) === "viewing").length;
   return { seen, viewing, total: items.length };
+}
+
+/** Áp tiến độ đã gộp từ máy chủ. Chỉ phát tín hiệu khi thật sự có thay đổi. */
+export function applyRemoteProgress(items: Record<string, Status>, last: string | null, at: number) {
+  const same =
+    state.lastLessonId === last &&
+    Object.keys(items).length === Object.keys(state.items).length &&
+    Object.entries(items).every(([k, v]) => state.items[k] === v);
+  if (same) return;
+  state = { ...state, items, lastLessonId: last, lastAt: at };
+  emit();
 }

@@ -1,3 +1,4 @@
+import { ReviewPanel } from "@/components/review-panel";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useEffect, useState, useSyncExternalStore } from "react";
 import { setOpenCourse, useTocMemory } from "@/lib/toc-memory";
@@ -54,6 +55,8 @@ function Home() {
         </Link>
       ) : null}
 
+      <ReviewPanel lang={lang} />
+
       <h2 className="mt-8 text-xs tracking-widest text-muted">{lang === "en" ? "Contents" : "Mục lục"}</h2>
       <ol className="mt-2 divide-y divide-line border-y border-line">
         {courses.map((course, index) => {
@@ -88,6 +91,7 @@ function Home() {
 
       <div className="mt-6 flex flex-wrap gap-2">
         <Link to="/tu-dien" className="min-h-11 rounded-full border border-line px-4 py-3 text-sm">Từ điển</Link>
+        <Link to="/dong-bo" className="min-h-11 rounded-full border border-line px-4 py-3 text-sm">{lang === "en" ? "Sync devices" : "Đồng bộ máy"}</Link>
         <Link to="/goc" className="min-h-11 rounded-full border border-line px-4 py-3 text-sm">Quản lý nội dung</Link>
         <button
           type="button"

@@ -1,0 +1,1 @@
+import{t as e}from"./preload-helper-BLdHbfdN.js";var t=null,n=null;function r(){return t?Promise.resolve(t):(n??=e(()=>import(`./self-test-BCj79u0w.js`).then(e=>t=e.default??e),[]),n)}export{r as t};
