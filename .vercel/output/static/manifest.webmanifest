@@ -1,0 +1,15 @@
+{
+  "name": "Sổ Mực",
+  "short_name": "Sổ Mực",
+  "description": "Học Data Science bằng thẻ, tự kiểm tra, nghe và ôn lại",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#f3eee6",
+  "theme_color": "#f3eee6",
+  "lang": "vi",
+  "icons": [
+    { "src": "/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any maskable" },
+    { "src": "/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any maskable" }
+  ]
+}

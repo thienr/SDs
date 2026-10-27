@@ -1,5 +1,6 @@
 import { ReportCard } from "@/components/report-card";
 import { SelfTest } from "@/components/self-test";
+import { ListenLink } from "@/components/listen-link";
 import { VideoLink } from "@/components/video-link";
 import { DoneToggle } from "@/components/done-toggle";
 import { CopyForAi } from "@/components/copy-for-ai";
@@ -295,6 +296,8 @@ export function ConceptView({ concept }: { concept: StudyConcept }) {
       <UpgradLink concept={concept} lang={lang} />
 
       <SelfTest conceptId={concept.id} lang={lang} />
+
+      <ListenLink conceptId={concept.id} lang={lang} />
 
       <VideoLink conceptId={concept.id} lang={lang} />
 
