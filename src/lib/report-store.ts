@@ -59,3 +59,7 @@ export function reportsAsText(list: Report[]): string {
     .map((r, i) => `${i + 1}. [${r.kind === "wrong" ? "SAI" : "KHÓ HIỂU"}] ${r.conceptId} — ${r.title}${r.note ? `\n   Ghi chú: ${r.note}` : ""}`)
     .join("\n");
 }
+
+export function getReports(): Report[] {
+  return load();
+}
