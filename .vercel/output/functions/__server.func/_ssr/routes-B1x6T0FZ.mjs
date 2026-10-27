@@ -6,9 +6,9 @@ import { c as dueKeys, f as useReview, i as setOpenCourse, o as useTocMemory, u 
 import { o as getCmsVersion, s as getServerCmsVersion, u as subscribeCms } from "./cms-store-QsPjr5VR.mjs";
 import { a as liveCourse } from "./cms-live-BOSWGilr.mjs";
 import { a as getServerProgress, f as progressSnapshot, i as getProgress, m as subscribeProgress, n as countSeen, o as hydrateProgress, s as importProgress } from "./progress-BbLCT1Se.mjs";
-import { d as Disclosure, f as ModuleTree, p as words$1, u as CoverInfo } from "./router-D-z6uHs2.mjs";
+import { d as Disclosure, f as ModuleTree, p as words$1, u as CoverInfo } from "./router-BIWOHz2r.mjs";
 import { t as loadSelfTest } from "./self-test-data-D_-Lu4LK.mjs";
-//#region node_modules/.nitro/vite/services/ssr/assets/routes-9xEepqnV.js
+//#region node_modules/.nitro/vite/services/ssr/assets/routes-B1x6T0FZ.js
 var import_react = /* @__PURE__ */ __toESM(require_react());
 var import_jsx_runtime = require_jsx_runtime();
 var words = {
