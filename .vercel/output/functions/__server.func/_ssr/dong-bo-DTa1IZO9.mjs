@@ -1,8 +1,8 @@
 import { o as __toESM } from "../_runtime.mjs";
 import { a as getServerProgress, i as getProgress, m as subscribeProgress } from "./progress-BKM3W6t5.mjs";
 import { J as require_react, S as require_jsx_runtime, b as Link } from "../_libs/@tanstack/react-router+[...].mjs";
-import { a as disableSync, c as syncNow, l as useSync, o as enableSync, s as newCode } from "./router-tRkdl4Cl.mjs";
-//#region node_modules/.nitro/vite/services/ssr/assets/dong-bo-htcb71mL.js
+import { a as disableSync, c as syncNow, l as useSync, o as enableSync, s as newCode } from "./router-Cla7O6m9.mjs";
+//#region node_modules/.nitro/vite/services/ssr/assets/dong-bo-DTa1IZO9.js
 var import_react = /* @__PURE__ */ __toESM(require_react());
 var import_jsx_runtime = require_jsx_runtime();
 var text = {
@@ -49,6 +49,52 @@ var text = {
 		back: "Back to start"
 	}
 };
+function GoogleButton({ onError }) {
+	const ref = (0, import_react.useRef)(null);
+	const [id, setId] = (0, import_react.useState)(null);
+	(0, import_react.useEffect)(() => {
+		fetch("/api/sync").then((r) => r.json()).then((d) => setId(d.google ?? null)).catch(() => setId(null));
+	}, []);
+	(0, import_react.useEffect)(() => {
+		if (!id || !ref.current) return;
+		const el = ref.current;
+		const go = () => {
+			window.google?.accounts.id.initialize({
+				client_id: id,
+				callback: async (resp) => {
+					try {
+						const r = await fetch("/api/sync", {
+							method: "POST",
+							headers: { "content-type": "application/json" },
+							body: JSON.stringify({ credential: resp.credential })
+						});
+						const b = await r.json();
+						if (!r.ok || !b.code) throw new Error(b.error ?? "Lỗi đăng nhập");
+						await enableSync(b.code);
+					} catch (e) {
+						onError(e instanceof Error ? e.message : "Lỗi đăng nhập");
+					}
+				}
+			});
+			window.google?.accounts.id.renderButton(el, {
+				theme: "outline",
+				size: "large",
+				text: "signin_with",
+				locale: "vi"
+			});
+		};
+		if (window.google) return go();
+		const sc = document.createElement("script");
+		sc.src = "https://accounts.google.com/gsi/client";
+		sc.async = true;
+		sc.onload = go;
+		document.head.appendChild(sc);
+	}, [id, onError]);
+	return id ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+		ref,
+		className: "min-h-11"
+	}) : null;
+}
 function SyncPage() {
 	const lang = (0, import_react.useSyncExternalStore)(subscribeProgress, getProgress, getServerProgress).lang;
 	const t = text[lang];
@@ -77,6 +123,7 @@ function SyncPage() {
 				className: "mt-6 space-y-6",
 				children: [
 					/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", { children: t.off }),
+					/* @__PURE__ */ (0, import_jsx_runtime.jsx)(GoogleButton, { onError: setErr }),
 					/* @__PURE__ */ (0, import_jsx_runtime.jsx)("button", {
 						type: "button",
 						className: "inline-flex min-h-11 items-center rounded-full bg-accent px-5 text-sm text-white",

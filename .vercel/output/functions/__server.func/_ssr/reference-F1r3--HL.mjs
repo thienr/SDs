@@ -1,7 +1,7 @@
 import { c as lessons } from "./catalog-DhneT6we.mjs";
 import { S as require_jsx_runtime } from "../_libs/@tanstack/react-router+[...].mjs";
 import { o as Search } from "../_libs/lucide-react.mjs";
-import { O as studyCopy, S as getStudy, k as studyListTitle } from "./router-tRkdl4Cl.mjs";
+import { O as studyCopy, S as getStudy, k as studyListTitle } from "./router-Cla7O6m9.mjs";
 import { a as topicIndexOf, o as topics, r as relatedOf, t as mapNodeIds } from "./map-DuPbxx09.mjs";
 import { t as walks } from "./walk-BWyJOgjD.mjs";
 //#region node_modules/.nitro/vite/services/ssr/assets/reference-F1r3--HL.js

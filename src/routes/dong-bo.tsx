@@ -1,5 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { useState, useSyncExternalStore } from "react";
+import { useEffect, useRef, useState, useSyncExternalStore } from "react";
 import { getProgress, getServerProgress, subscribeProgress } from "@/lib/progress";
 import { disableSync, enableSync, newCode, syncNow, useSync } from "@/lib/sync";
 
@@ -50,6 +50,50 @@ const text = {
   },
 };
 
+declare global {
+  interface Window {
+    google?: { accounts: { id: { initialize: (o: unknown) => void; renderButton: (el: HTMLElement, o: unknown) => void } } };
+  }
+}
+
+function GoogleButton({ onError }: { onError: (m: string) => void }) {
+  const ref = useRef<HTMLDivElement>(null);
+  const [id, setId] = useState<string | null>(null);
+  useEffect(() => {
+    fetch("/api/sync")
+      .then((r) => r.json())
+      .then((d: { google?: string | null }) => setId(d.google ?? null))
+      .catch(() => setId(null));
+  }, []);
+  useEffect(() => {
+    if (!id || !ref.current) return;
+    const el = ref.current;
+    const go = () => {
+      window.google?.accounts.id.initialize({
+        client_id: id,
+        callback: async (resp: { credential: string }) => {
+          try {
+            const r = await fetch("/api/sync", { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify({ credential: resp.credential }) });
+            const b = (await r.json()) as { code?: string; error?: string };
+            if (!r.ok || !b.code) throw new Error(b.error ?? "Lỗi đăng nhập");
+            await enableSync(b.code);
+          } catch (e) {
+            onError(e instanceof Error ? e.message : "Lỗi đăng nhập");
+          }
+        },
+      });
+      window.google?.accounts.id.renderButton(el, { theme: "outline", size: "large", text: "signin_with", locale: "vi" });
+    };
+    if (window.google) return go();
+    const sc = document.createElement("script");
+    sc.src = "https://accounts.google.com/gsi/client";
+    sc.async = true;
+    sc.onload = go;
+    document.head.appendChild(sc);
+  }, [id, onError]);
+  return id ? <div ref={ref} className="min-h-11" /> : null;
+}
+
 function SyncPage() {
   const progress = useSyncExternalStore(subscribeProgress, getProgress, getServerProgress);
   const lang = progress.lang;
@@ -68,6 +112,7 @@ function SyncPage() {
       {!s.code ? (
         <div className="mt-6 space-y-6">
           <p>{t.off}</p>
+          <GoogleButton onError={setErr} />
           <button type="button" className="inline-flex min-h-11 items-center rounded-full bg-accent px-5 text-sm text-white" onClick={() => void enableSync(newCode())}>{t.make}</button>
           <div>
             <h2 className="text-xs uppercase tracking-widest text-muted">{t.join}</h2>

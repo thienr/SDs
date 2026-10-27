@@ -32378,7 +32378,7 @@ function dueKeys(map, limit = 5) {
 	return Object.entries(map).filter(([, v]) => v.d <= t).sort((a, b) => a[1].d.localeCompare(b[1].d) || a[1].b - b[1].b).slice(0, limit).map(([k]) => k);
 }
 //#endregion
-//#region node_modules/.nitro/vite/services/ssr/assets/router-tRkdl4Cl.js
+//#region node_modules/.nitro/vite/services/ssr/assets/router-Cla7O6m9.js
 var import_jsx_runtime = require_jsx_runtime();
 var __defProp = Object.defineProperty;
 var __exportAll = (all, no_symbols) => {
@@ -33585,7 +33585,7 @@ function RootComponent() {
 		] })]
 	});
 }
-var $$splitComponentImporter$11 = () => import("./routes-D_Oslt1Z.mjs");
+var $$splitComponentImporter$11 = () => import("./routes-Hp9KEJRs.mjs");
 var Route$14 = createFileRoute("/")({ component: lazyRouteComponent($$splitComponentImporter$11, "component") });
 var $$splitComponentImporter$10 = () => import("./ban-do-I9ndhjEW.mjs");
 var Route$13 = createFileRoute("/ban-do")({ component: lazyRouteComponent($$splitComponentImporter$10, "component") });
@@ -33595,7 +33595,7 @@ var $$splitComponentImporter$8 = () => import("./cong-thuc-C7S8-nxW.mjs");
 var Route$11 = createFileRoute("/cong-thuc")({ component: lazyRouteComponent($$splitComponentImporter$8, "component") });
 var $$splitComponentImporter$7 = () => import("./do-phu-kafhI8o9.mjs");
 var Route$10 = createFileRoute("/do-phu")({ component: lazyRouteComponent($$splitComponentImporter$7, "component") });
-var $$splitComponentImporter$6 = () => import("./dong-bo-htcb71mL.mjs");
+var $$splitComponentImporter$6 = () => import("./dong-bo-DTa1IZO9.mjs");
 var Route$9 = createFileRoute("/dong-bo")({ component: lazyRouteComponent($$splitComponentImporter$6, "component") });
 var $$splitComponentImporter$5 = () => import("./goc-CObr7Qdt.mjs");
 var Route$8 = createFileRoute("/goc")({ component: lazyRouteComponent($$splitComponentImporter$5, "component") });
@@ -33770,6 +33770,7 @@ function slim(card) {
 }
 var _0002_bridge_default = "-- Inbox for edits sent in from an outside model. The printed book stays in the app.\n-- One shared gate (no accounts): a key hash, not the key itself. Rows are drafts, not the book.\ncreate table if not exists so_muc_gate (\n  id text primary key,\n  key_hash text not null,\n  created_at timestamptz not null default now()\n);\n\ncreate table if not exists so_muc_inbox (\n  id serial primary key,\n  created_at timestamptz not null default now(),\n  note text not null default '',\n  body jsonb not null\n);\n";
 var _0003_sync_default = "-- Đồng bộ tiến độ học giữa các máy. Không có tài khoản: id là băm của mã đồng bộ, không lưu mã.\ncreate table if not exists so_muc_sync (\n  id text primary key,\n  data jsonb not null,\n  updated_at timestamptz not null default now()\n);\n";
+var _0004_sync_google_default = "-- Gắn tài khoản Google với mã đồng bộ, để đăng nhập Google ở máy nào cũng ra cùng một sổ.\ncreate table if not exists so_muc_google (\n  sub text primary key,\n  code text not null,\n  created_at timestamptz not null default now()\n);\n";
 /**
 * Migration bookkeeping shared by the two appliers — `scripts/migrate.mjs`
 * (deploy, `readdir`) and `src/lib/db.ts` (PGLite preview, `import.meta.glob`).
@@ -33889,7 +33890,8 @@ async function createPgliteSql() {
 	const migrate = async () => {
 		const migrations = /* #__PURE__ */ Object.assign({
 			"/migrations/0002_bridge.sql": _0002_bridge_default,
-			"/migrations/0003_sync.sql": _0003_sync_default
+			"/migrations/0003_sync.sql": _0003_sync_default,
+			"/migrations/0004_sync_google.sql": _0004_sync_google_default
 		});
 		const done = (await pg.query("select name from _migrations")).rows.map((r) => r.name);
 		for (const { name, path } of pendingMigrations(Object.keys(migrations), done)) await pg.transaction(async (tx) => {
@@ -34452,6 +34454,54 @@ var Route$4 = createFileRoute("/api/so-muc")({ server: { handlers: {
 	POST: ({ request }) => handleSoMucPost(request),
 	OPTIONS: () => apiEmpty(204)
 } } });
+/** Mã khách hàng Google (công khai, không phải bí mật). Đặt trong biến môi trường GOOGLE_CLIENT_ID. */
+function googleClientId() {
+	const v = typeof process !== "undefined" ? process.env.GOOGLE_CLIENT_ID : void 0;
+	return v && v.trim() ? v.trim() : null;
+}
+function randomCode() {
+	const bytes = crypto.getRandomValues(/* @__PURE__ */ new Uint8Array(18));
+	return btoa(String.fromCharCode(...bytes)).replace(/\+/g, "-").replace(/\//g, "_").replace(/=+$/, "");
+}
+var ready$1 = false;
+/** Kiểm tra ID token của Google rồi trả mã đồng bộ gắn với tài khoản đó (tạo mới nếu lần đầu). */
+async function codeForGoogle(credential) {
+	const clientId = googleClientId();
+	if (!clientId) return {
+		ok: false,
+		status: 501,
+		error: "Máy chủ chưa cấu hình đăng nhập Google."
+	};
+	if (typeof credential !== "string" || credential.length < 20 || credential.length > 4e3) return {
+		ok: false,
+		status: 400,
+		error: "Thiếu thông tin đăng nhập."
+	};
+	const res = await fetch(`https://oauth2.googleapis.com/tokeninfo?id_token=${encodeURIComponent(credential)}`);
+	if (!res.ok) return {
+		ok: false,
+		status: 401,
+		error: "Google không xác nhận được đăng nhập."
+	};
+	const info = await res.json();
+	const issOk = info.iss === "accounts.google.com" || info.iss === "https://accounts.google.com";
+	if (info.aud !== clientId || !issOk || !info.sub || Number(info.exp) * 1e3 < Date.now()) return {
+		ok: false,
+		status: 401,
+		error: "Đăng nhập Google không hợp lệ."
+	};
+	const sql = await getSql();
+	if (!ready$1) {
+		await sql.query("create table if not exists so_muc_google (sub text primary key, code text not null, created_at timestamptz not null default now())");
+		ready$1 = true;
+	}
+	const fresh = randomCode();
+	await sql.query("insert into so_muc_google (sub, code) values ($1, $2) on conflict (sub) do nothing", [info.sub, fresh]);
+	return {
+		ok: true,
+		code: (await sql.query("select code from so_muc_google where sub = $1", [info.sub]))[0]?.code ?? fresh
+	};
+}
 async function sha256(text) {
 	const buf = await crypto.subtle.digest("SHA-256", new TextEncoder().encode(`so-muc-sync:${text}`));
 	return [...new Uint8Array(buf)].map((b) => b.toString(16).padStart(2, "0")).join("");
@@ -34485,11 +34535,16 @@ async function syncExchange(code, incoming) {
 	};
 }
 var Route$3 = createFileRoute("/api/sync")({ server: { handlers: {
+	GET: () => apiJson({ google: googleClientId() }),
 	POST: async ({ request }) => {
 		try {
 			const text = await request.text();
 			if (text.length > 4e5) return apiJson({ error: "Dữ liệu quá lớn." }, 413);
 			const body = JSON.parse(text);
+			if (body.credential !== void 0) {
+				const g = await codeForGoogle(body.credential);
+				return g.ok ? apiJson({ code: g.code }) : apiJson({ error: g.error }, g.status);
+			}
 			const res = await syncExchange(body.code, body.data ?? null);
 			if (!res.ok) return apiJson({ error: res.error }, res.status);
 			return apiJson({ data: res.data });
@@ -34499,11 +34554,11 @@ var Route$3 = createFileRoute("/api/sync")({ server: { handlers: {
 	},
 	OPTIONS: () => apiEmpty(204)
 } } });
-var $$splitComponentImporter$2 = () => import("./bai._lessonId-BTCVDyA6.mjs");
+var $$splitComponentImporter$2 = () => import("./bai._lessonId-C1-Jwn1f.mjs");
 var Route$2 = createFileRoute("/bai/$lessonId")({ component: lazyRouteComponent($$splitComponentImporter$2, "component") });
-var $$splitComponentImporter$1 = () => import("./khai-niem._conceptId-QLjizIY9.mjs");
+var $$splitComponentImporter$1 = () => import("./khai-niem._conceptId-BkHispvZ.mjs");
 var Route$1 = createFileRoute("/khai-niem/$conceptId")({ component: lazyRouteComponent($$splitComponentImporter$1, "component") });
-var $$splitComponentImporter = () => import("./khoa._courseId-DWr7Gcpj.mjs");
+var $$splitComponentImporter = () => import("./khoa._courseId-B4Z-KELt.mjs");
 var Route = createFileRoute("/khoa/$courseId")({ component: lazyRouteComponent($$splitComponentImporter, "component") });
 var rootRouteChildren = {
 	IndexRoute: Route$14.update({

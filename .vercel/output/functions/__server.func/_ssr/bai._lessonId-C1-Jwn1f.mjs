@@ -5,10 +5,10 @@ import { o as liveLesson } from "./cms-live-BOIfHz8S.mjs";
 import { a as getServerProgress, c as itemStatus, d as openLesson, i as getProgress, l as lessonStatus, m as subscribeProgress, r as cycleItem, u as markLesson } from "./progress-BKM3W6t5.mjs";
 import { J as require_react, S as require_jsx_runtime, b as Link } from "../_libs/@tanstack/react-router+[...].mjs";
 import { f as Check, u as Circle } from "../_libs/lucide-react.mjs";
-import { i as Route$2 } from "./router-tRkdl4Cl.mjs";
+import { i as Route$2 } from "./router-Cla7O6m9.mjs";
 import { n as Tex, r as maybeTex, t as CodeExplain } from "./tex-CrQIv2RA.mjs";
 import { r as Sim } from "./labs-BzCczH9N.mjs";
-//#region node_modules/.nitro/vite/services/ssr/assets/bai._lessonId-BTCVDyA6.js
+//#region node_modules/.nitro/vite/services/ssr/assets/bai._lessonId-C1-Jwn1f.js
 var import_react = /* @__PURE__ */ __toESM(require_react());
 var import_jsx_runtime = require_jsx_runtime();
 var labels = {
