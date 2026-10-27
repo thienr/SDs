@@ -1,6 +1,6 @@
 import { o as __toESM } from "../_runtime.mjs";
+import { J as require_react, b as Link, q as require_jsx_runtime } from "../_libs/@tanstack/react-router+[...].mjs";
 import { c as lessons, s as glossary, u as shortCourse } from "./catalog-DRaoKsF4.mjs";
-import { J as require_react, S as require_jsx_runtime, b as Link } from "../_libs/@tanstack/react-router+[...].mjs";
 //#region node_modules/.nitro/vite/services/ssr/assets/tim-kiem-DD7NpIXU.js
 var import_react = /* @__PURE__ */ __toESM(require_react());
 var import_jsx_runtime = require_jsx_runtime();

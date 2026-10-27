@@ -160,6 +160,16 @@ var Map = createLucideIcon("map", [
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
+var MessageCircle = createLucideIcon("message-circle", [["path", {
+	d: "M7.9 20A9 9 0 1 0 4 16.1L2 22Z",
+	key: "vv11sd"
+}]]);
+/**
+* @license lucide-react v0.510.0 - ISC
+*
+* This source code is licensed under the ISC license.
+* See the LICENSE file in the root directory of this source tree.
+*/
 var Moon = createLucideIcon("moon", [["path", {
 	d: "M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z",
 	key: "a7tn18"
@@ -346,4 +356,4 @@ var X = createLucideIcon("x", [["path", {
 	key: "d8bk6v"
 }]]);
 //#endregion
-export { Settings as a, Moon as c, ChevronRight as d, Check as f, Sun as i, Map as l, ArrowLeft as m, TriangleAlert as n, Search as o, BookOpen as p, TableOfContents as r, Network as s, X as t, Circle as u };
+export { Settings as a, Moon as c, Circle as d, ChevronRight as f, ArrowLeft as h, Sun as i, MessageCircle as l, BookOpen as m, TriangleAlert as n, Search as o, Check as p, TableOfContents as r, Network as s, X as t, Map as u };
