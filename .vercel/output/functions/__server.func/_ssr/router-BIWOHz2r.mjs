@@ -8,7 +8,7 @@ import { a as liveCourse, c as liveSession, d as sessionHead, l as moduleHead, s
 import { a as getServerProgress, h as toggleTheme, i as getProgress, l as lessonStatus, m as subscribeProgress, o as hydrateProgress, p as setLang, t as applyRemoteProgress } from "./progress-BbLCT1Se.mjs";
 import { a as Settings, c as Moon, f as ChevronRight, i as Sun, l as MessageCircle, m as BookOpen, n as TriangleAlert, o as Search, r as TableOfContents, s as Network, t as X, u as Map$1 } from "../_libs/lucide-react.mjs";
 import { a as union, i as string, n as number, r as object, t as literal } from "../_libs/zod.mjs";
-//#region node_modules/.nitro/vite/services/ssr/assets/router-D-z6uHs2.js
+//#region node_modules/.nitro/vite/services/ssr/assets/router-BIWOHz2r.js
 var import_react = /* @__PURE__ */ __toESM(require_react());
 var import_jsx_runtime = require_jsx_runtime();
 var __defProp = Object.defineProperty;
@@ -1258,7 +1258,7 @@ function RootComponent() {
 		] })]
 	});
 }
-var $$splitComponentImporter$11 = () => import("./routes-9xEepqnV.mjs");
+var $$splitComponentImporter$11 = () => import("./routes-B1x6T0FZ.mjs");
 var Route$14 = createFileRoute("/")({ component: lazyRouteComponent($$splitComponentImporter$11, "component") });
 var $$splitComponentImporter$10 = () => import("./ban-do-G2kXdKjK.mjs");
 var Route$13 = createFileRoute("/ban-do")({ component: lazyRouteComponent($$splitComponentImporter$10, "component") });
@@ -1268,7 +1268,7 @@ var $$splitComponentImporter$8 = () => import("./cong-thuc-HWBWJGZD.mjs");
 var Route$11 = createFileRoute("/cong-thuc")({ component: lazyRouteComponent($$splitComponentImporter$8, "component") });
 var $$splitComponentImporter$7 = () => import("./do-phu-D55wbr3H.mjs");
 var Route$10 = createFileRoute("/do-phu")({ component: lazyRouteComponent($$splitComponentImporter$7, "component") });
-var $$splitComponentImporter$6 = () => import("./dong-bo-BQcjZaL6.mjs");
+var $$splitComponentImporter$6 = () => import("./dong-bo-Btqcdxpf.mjs");
 var Route$9 = createFileRoute("/dong-bo")({ component: lazyRouteComponent($$splitComponentImporter$6, "component") });
 var $$splitComponentImporter$5 = () => import("./goc-D6EUsUOx.mjs");
 var Route$8 = createFileRoute("/goc")({ component: lazyRouteComponent($$splitComponentImporter$5, "component") });
@@ -1634,6 +1634,17 @@ if (typeof window === "undefined" && dbSource === "pglite") {
 		throw err;
 	}));
 }
+var tablesReady = false;
+/** Vercel dùng bản dựng sẵn nên migrations/ không chạy khi deploy: tự tạo bảng khi cần. */
+async function db() {
+	const sql = await getSql();
+	if (!tablesReady) {
+		await sql.query("create table if not exists so_muc_gate (id text primary key, key_hash text not null, created_at timestamptz not null default now())");
+		await sql.query("create table if not exists so_muc_inbox (id serial primary key, created_at timestamptz not null default now(), note text not null default '', body jsonb not null)");
+		tablesReady = true;
+	}
+	return sql;
+}
 var MAX_BODY = 5e5;
 var MAX_INBOX = 30;
 function fail(status, error) {
@@ -1662,7 +1673,7 @@ function sameHex(a, b) {
 }
 async function gateHash() {
 	var _rows$0$key_hash, _rows$;
-	return (_rows$0$key_hash = (_rows$ = (await (await getSql()).query("select key_hash from so_muc_gate where id = $1", ["book"]))[0]) === null || _rows$ === void 0 ? void 0 : _rows$.key_hash) !== null && _rows$0$key_hash !== void 0 ? _rows$0$key_hash : null;
+	return (_rows$0$key_hash = (_rows$ = (await (await db()).query("select key_hash from so_muc_gate where id = $1", ["book"]))[0]) === null || _rows$ === void 0 ? void 0 : _rows$.key_hash) !== null && _rows$0$key_hash !== void 0 ? _rows$0$key_hash : null;
 }
 async function gateStatus() {
 	const hash = await gateHash();
@@ -1680,7 +1691,7 @@ async function claimKey(key) {
 	const clean = cleanKey(key);
 	if (!clean) return fail(400, "Khóa cần 16–128 ký tự, chỉ chữ, số, gạch.");
 	const hash = await sha256$1(clean);
-	if ((await (await getSql()).query("insert into so_muc_gate (id, key_hash) values ($1, $2) on conflict (id) do nothing returning id", ["book", hash])).length > 0) return {
+	if ((await (await db()).query("insert into so_muc_gate (id, key_hash) values ($1, $2) on conflict (id) do nothing returning id", ["book", hash])).length > 0) return {
 		ok: true,
 		value: { claimed: true }
 	};
@@ -1724,7 +1735,7 @@ async function submitEdit(key, note, value) {
 	const edit = normalizeEdit(value);
 	if (!edit.ok) return edit;
 	const line = typeof note === "string" ? note.trim().slice(0, 180) : "";
-	const sql = await getSql();
+	const sql = await db();
 	if (((_count$0$n = (_count$ = (await sql.query("select count(*)::int as n from so_muc_inbox"))[0]) === null || _count$ === void 0 ? void 0 : _count$.n) !== null && _count$0$n !== void 0 ? _count$0$n : 0) >= MAX_INBOX) return fail(409, "Hộp thư đủ 30 bản. Áp hoặc bỏ bớt trên trang Quản lý.");
 	return {
 		ok: true,
@@ -1740,7 +1751,7 @@ async function listInbox(key) {
 	if (denied) return denied;
 	return {
 		ok: true,
-		value: { items: (await (await getSql()).query("select id, note, created_at from so_muc_inbox order by id desc limit 30")).map((row) => ({
+		value: { items: (await (await db()).query("select id, note, created_at from so_muc_inbox order by id desc limit 30")).map((row) => ({
 			id: Number(row.id),
 			note: row.note,
 			createdAt: iso(row.created_at)
@@ -1750,7 +1761,7 @@ async function listInbox(key) {
 async function readInbox(key, id) {
 	const denied = await allow(key);
 	if (denied) return denied;
-	const row = (await (await getSql()).query("select id, note, body from so_muc_inbox where id = $1", [id]))[0];
+	const row = (await (await db()).query("select id, note, body from so_muc_inbox where id = $1", [id]))[0];
 	if (!row) return fail(404, "Không thấy bản này.");
 	let body = row.body;
 	if (typeof body === "string") try {
@@ -1773,7 +1784,7 @@ async function dropInbox(key, id) {
 	if (!Number.isInteger(id) || id < 1) return fail(400, "Thiếu id.");
 	return {
 		ok: true,
-		value: { removed: (await (await getSql()).query("delete from so_muc_inbox where id = $1 returning id", [id])).length }
+		value: { removed: (await (await db()).query("delete from so_muc_inbox where id = $1 returning id", [id])).length }
 	};
 }
 var KNOWN = /* @__PURE__ */ new Set([
@@ -2260,11 +2271,11 @@ var Route$3 = createFileRoute("/api/sync")({ server: { handlers: {
 	},
 	OPTIONS: () => apiEmpty(204)
 } } });
-var $$splitComponentImporter$2 = () => import("./bai._lessonId-Zs5-HVmk.mjs");
+var $$splitComponentImporter$2 = () => import("./bai._lessonId-C7BgT3fZ.mjs");
 var Route$2 = createFileRoute("/bai/$lessonId")({ component: lazyRouteComponent($$splitComponentImporter$2, "component") });
-var $$splitComponentImporter$1 = () => import("./khai-niem._conceptId-BWwIJbiI.mjs");
+var $$splitComponentImporter$1 = () => import("./khai-niem._conceptId-CUQPbn_D.mjs");
 var Route$1 = createFileRoute("/khai-niem/$conceptId")({ component: lazyRouteComponent($$splitComponentImporter$1, "component") });
-var $$splitComponentImporter = () => import("./khoa._courseId-CcBhFzrO.mjs");
+var $$splitComponentImporter = () => import("./khoa._courseId-CYYWqBKL.mjs");
 var Route = createFileRoute("/khoa/$courseId")({ component: lazyRouteComponent($$splitComponentImporter, "component") });
 var rootRouteChildren = {
 	IndexRoute: Route$14.update({

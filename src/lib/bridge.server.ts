@@ -1,5 +1,17 @@
 import { getSql } from "@/lib/db";
 
+let tablesReady = false;
+/** Vercel dùng bản dựng sẵn nên migrations/ không chạy khi deploy: tự tạo bảng khi cần. */
+async function db() {
+  const sql = await getSql();
+  if (!tablesReady) {
+    await sql.query("create table if not exists so_muc_gate (id text primary key, key_hash text not null, created_at timestamptz not null default now())");
+    await sql.query("create table if not exists so_muc_inbox (id serial primary key, created_at timestamptz not null default now(), note text not null default '', body jsonb not null)");
+    tablesReady = true;
+  }
+  return sql;
+}
+
 const MAX_BODY = 500_000;
 const MAX_INBOX = 30;
 
@@ -31,7 +43,7 @@ function sameHex(a: string, b: string) {
 }
 
 async function gateHash() {
-  const sql = await getSql();
+  const sql = await db();
   const rows = await sql.query<{ key_hash: string }>("select key_hash from so_muc_gate where id = $1", ["book"]);
   return rows[0]?.key_hash ?? null;
 }
@@ -54,7 +66,7 @@ export async function claimKey(key: string | null): Promise<BridgeOk<{ claimed: 
   const clean = cleanKey(key);
   if (!clean) return fail(400, "Khóa cần 16–128 ký tự, chỉ chữ, số, gạch.");
   const hash = await sha256(clean);
-  const sql = await getSql();
+  const sql = await db();
   const inserted = await sql.query<{ id: string }>(
     "insert into so_muc_gate (id, key_hash) values ($1, $2) on conflict (id) do nothing returning id",
     ["book", hash],
@@ -93,7 +105,7 @@ export async function submitEdit(key: string | null, note: unknown, value: unkno
   const edit = normalizeEdit(value);
   if (!edit.ok) return edit;
   const line = typeof note === "string" ? note.trim().slice(0, 180) : "";
-  const sql = await getSql();
+  const sql = await db();
   const count = await sql.query<{ n: number }>("select count(*)::int as n from so_muc_inbox");
   if ((count[0]?.n ?? 0) >= MAX_INBOX) return fail(409, "Hộp thư đủ 30 bản. Áp hoặc bỏ bớt trên trang Quản lý.");
   const rows = await sql.query<{ id: number }>("insert into so_muc_inbox (note, body) values ($1, $2::jsonb) returning id", [
@@ -111,7 +123,7 @@ function iso(value: unknown) {
 export async function listInbox(key: string | null): Promise<BridgeOk<{ items: { id: number; note: string; createdAt: string }[] }> | BridgeFail> {
   const denied = await allow(key);
   if (denied) return denied;
-  const sql = await getSql();
+  const sql = await db();
   const rows = await sql.query<{ id: number; note: string; created_at: unknown }>(
     "select id, note, created_at from so_muc_inbox order by id desc limit 30",
   );
@@ -126,7 +138,7 @@ export async function listInbox(key: string | null): Promise<BridgeOk<{ items: {
 export async function readInbox(key: string | null, id: number): Promise<BridgeOk<{ id: number; note: string; body: unknown }> | BridgeFail> {
   const denied = await allow(key);
   if (denied) return denied;
-  const sql = await getSql();
+  const sql = await db();
   const rows = await sql.query<{ id: number; note: string; body: unknown }>("select id, note, body from so_muc_inbox where id = $1", [id]);
   const row = rows[0];
   if (!row) return fail(404, "Không thấy bản này.");
@@ -145,7 +157,7 @@ export async function dropInbox(key: string | null, id: number): Promise<BridgeO
   const denied = await allow(key);
   if (denied) return denied;
   if (!Number.isInteger(id) || id < 1) return fail(400, "Thiếu id.");
-  const sql = await getSql();
+  const sql = await db();
   const rows = await sql.query<{ id: number }>("delete from so_muc_inbox where id = $1 returning id", [id]);
   return { ok: true, value: { removed: rows.length } };
 }
