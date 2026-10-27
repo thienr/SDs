@@ -1,3 +1,5 @@
+import { courseCardIds } from "@/lib/course-cards";
+import { isDone, useDone } from "@/lib/done";
 import { ReviewPanel } from "@/components/review-panel";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useEffect, useState, useSyncExternalStore } from "react";
@@ -25,6 +27,7 @@ function Home() {
   const lang = progress.lang;
   const [notice, setNotice] = useState("");
   const mem = useTocMemory();
+  const doneMap = useDone();
   const openCourse = mem.course;
   useEffect(() => {
     hydrateProgress();
@@ -65,6 +68,8 @@ function Home() {
             (sum, mod) => sum + mod.sessions.reduce((inner, session) => inner + (sessionConcepts[session.id]?.length ?? 0), 0),
             0,
           );
+          const cardIds = courseCardIds(course.id);
+          const learned = cardIds.filter((id) => isDone(doneMap, id)).length;
           return (
             <li key={course.id}>
               <Disclosure
@@ -72,7 +77,8 @@ function Home() {
                 onToggle={() => setOpenCourse(openCourse === course.id ? "" : course.id)}
                 head={
                   <span className="block py-1">
-                    <span className="text-xs text-muted">{String(index + 1).padStart(2, "0")}{course.optional ? " · optional" : ""} · {ideas} {lang === "en" ? "ideas" : "ý"}</span>
+                    <span className="text-xs text-muted">{String(index + 1).padStart(2, "0")}{course.optional ? " · optional" : ""} · {ideas} {lang === "en" ? "ideas" : "ý"}{cardIds.length ? ` · ${lang === "en" ? "learned" : "đã học"} ${learned}/${cardIds.length}` : ""}</span>
+                    {cardIds.length ? <span className="mt-1 block h-1 overflow-hidden rounded-full bg-line" role="progressbar" aria-valuenow={learned} aria-valuemin={0} aria-valuemax={cardIds.length}><span className="block h-full bg-accent" style={{ width: `${Math.round((learned / cardIds.length) * 100)}%` }} /></span> : null}
                     <span className="mt-1 block font-medium">{course.title}</span>
                     {openCourse !== course.id ? <span className="mt-1 block text-sm text-muted">{head.why}</span> : null}
                   </span>
@@ -91,6 +97,7 @@ function Home() {
 
       <div className="mt-6 flex flex-wrap gap-2">
         <Link to="/tu-dien" className="min-h-11 rounded-full border border-line px-4 py-3 text-sm">Từ điển</Link>
+        <Link to="/luyen-tap" className="min-h-11 rounded-full border border-line px-4 py-3 text-sm">{lang === "en" ? "Practice" : "Luyện tập"}</Link>
         <Link to="/dong-bo" className="min-h-11 rounded-full border border-line px-4 py-3 text-sm">{lang === "en" ? "Sync devices" : "Đồng bộ máy"}</Link>
         <Link to="/goc" className="min-h-11 rounded-full border border-line px-4 py-3 text-sm">Quản lý nội dung</Link>
         <button
