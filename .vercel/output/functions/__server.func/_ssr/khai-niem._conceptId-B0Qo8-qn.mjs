@@ -1,18 +1,18 @@
 import { o as __toESM } from "../_runtime.mjs";
-import { a as getServerRawVersion, c as overviews, f as studyCopy, h as subscribeRaw, i as getRawVersion, m as studyNeighbors, o as getStudy, p as studyListTitle, r as getAssignmentByConcept } from "./study-BtAMXX88.mjs";
-import { n as course_default } from "./catalog-DRaoKsF4.mjs";
+import { a as getServerRawVersion, c as overviews, f as studyCopy, g as sessionConcepts, h as subscribeRaw, i as getRawVersion, m as studyNeighbors, o as getStudy, p as studyListTitle, r as getAssignmentByConcept } from "./study-BtAMXX88.mjs";
+import { n as course_default, r as courses } from "./catalog-DRaoKsF4.mjs";
 import { J as require_react, b as Link, q as require_jsx_runtime } from "../_libs/@tanstack/react-router+[...].mjs";
 import { g as setDone, h as isDone, u as recordAnswer, v as useDone } from "./toc-memory-Cwcczwc2.mjs";
 import { o as useReports, t as addReport } from "./report-store-BZhsezXf.mjs";
 import { n as promptFor, r as remember, t as cardContext } from "./ask-context-DUwsR8kW.mjs";
 import { a as getServerProgress, i as getProgress, m as subscribeProgress } from "./progress-BbLCT1Se.mjs";
 import { d as ExternalLink, m as Check } from "../_libs/lucide-react.mjs";
-import { c as loadSelfTest, r as Route$1 } from "./router-CTnUCwzU.mjs";
+import { c as loadSelfTest, r as Route$1 } from "./router-l7luMa91.mjs";
 import { n as Tex, t as CodeExplain } from "./tex-CMTmT1PA.mjs";
 import { n as Range, r as Sim, t as Lab } from "./labs-_WNsAmbg.mjs";
 import { r as relatedOf } from "./map-B8zVtsI6.mjs";
 import { t as walks } from "./walk-BWyJOgjD.mjs";
-//#region node_modules/.nitro/vite/services/ssr/assets/khai-niem._conceptId-9U66OguW.js
+//#region node_modules/.nitro/vite/services/ssr/assets/khai-niem._conceptId-B0Qo8-qn.js
 var import_react = /* @__PURE__ */ __toESM(require_react());
 var import_jsx_runtime = require_jsx_runtime();
 var words$1 = {
@@ -251,6 +251,25 @@ function SelfTest({ conceptId, lang }) {
 			}) : null
 		]
 	});
+}
+var flat = null;
+function order() {
+	if (flat) return flat;
+	const seen = /* @__PURE__ */ new Set();
+	flat = courses.flatMap((c) => c.modules.flatMap((m) => m.sessions.flatMap((s) => {
+		var _sessionConcepts$s$id;
+		return (_sessionConcepts$s$id = sessionConcepts[s.id]) !== null && _sessionConcepts$s$id !== void 0 ? _sessionConcepts$s$id : [];
+	}))).filter((id) => seen.has(id) ? false : (seen.add(id), true));
+	return flat;
+}
+/** Thẻ liền trước/sau theo thứ tự mục lục, dùng khi chuỗi riêng của thẻ đã hết. */
+function catalogNeighbor(id, dir) {
+	const list = order();
+	for (let i = list.indexOf(id) + dir; i >= 0 && i < list.length; i += dir) {
+		const c = getStudy(list[i]);
+		if (c) return c;
+	}
+	return null;
 }
 function ListenLink({ conceptId, lang }) {
 	return /* @__PURE__ */ (0, import_jsx_runtime.jsx)("section", {
@@ -10029,14 +10048,17 @@ function WalkBlock({ walk, head, visual, lang }) {
 	});
 }
 function ConceptView({ concept }) {
+	var _near$prev, _near$next;
 	const progress = (0, import_react.useSyncExternalStore)(subscribeProgress, getProgress, getServerProgress);
 	(0, import_react.useSyncExternalStore)(subscribeRaw, getRawVersion, getServerRawVersion);
 	const lang = progress.lang;
 	const head = heads[lang];
 	const text = studyCopy(concept, lang);
 	const near = studyNeighbors(concept.id);
-	const prevText = near.prev ? studyCopy(near.prev, lang) : null;
-	const nextText = near.next ? studyCopy(near.next, lang) : null;
+	const prevC = (_near$prev = near.prev) !== null && _near$prev !== void 0 ? _near$prev : catalogNeighbor(concept.id, -1);
+	const nextC = (_near$next = near.next) !== null && _near$next !== void 0 ? _near$next : catalogNeighbor(concept.id, 1);
+	const prevText = prevC ? studyCopy(prevC, lang) : null;
+	const nextText = nextC ? studyCopy(nextC, lang) : null;
 	const rel = relatedOf(concept.id);
 	const hasDemo = Boolean(demos[concept.id]);
 	const hasLab = Boolean(concept.sim) && !hasDemo;
@@ -10284,9 +10306,9 @@ function ConceptView({ concept }) {
 			}),
 			/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
 				className: "mt-8 grid gap-3 sm:grid-cols-2",
-				children: [near.prev && prevText ? /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Link, {
+				children: [prevC && prevText ? /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Link, {
 					to: "/khai-niem/$conceptId",
-					params: { conceptId: near.prev.id },
+					params: { conceptId: prevC.id },
 					className: "rounded-card border border-line p-4",
 					children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
 						className: "text-xs tracking-widest text-muted",
@@ -10295,9 +10317,9 @@ function ConceptView({ concept }) {
 						className: "mt-1 block font-medium",
 						children: prevText.title
 					})]
-				}) : /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {}), near.next && nextText ? /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Link, {
+				}) : /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {}), nextC && nextText ? /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Link, {
 					to: "/khai-niem/$conceptId",
-					params: { conceptId: near.next.id },
+					params: { conceptId: nextC.id },
 					className: "rounded-card border border-line p-4 sm:text-right",
 					children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
 						className: "text-xs tracking-widest text-muted",
@@ -10306,7 +10328,17 @@ function ConceptView({ concept }) {
 						className: "mt-1 block font-medium",
 						children: nextText.title
 					})]
-				}) : null]
+				}) : /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Link, {
+					to: "/",
+					className: "rounded-card border border-line p-4 sm:text-right",
+					children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+						className: "text-xs tracking-widest text-muted",
+						children: lang === "en" ? "The end" : "Hết rồi"
+					}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+						className: "mt-1 block font-medium",
+						children: lang === "en" ? "Back to contents" : "Về mục lục"
+					})]
+				})]
 			})
 		]
 	});

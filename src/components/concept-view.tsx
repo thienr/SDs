@@ -1,5 +1,6 @@
 import { ReportCard } from "@/components/report-card";
 import { SelfTest } from "@/components/self-test";
+import { catalogNeighbor } from "@/lib/card-order";
 import { ListenLink } from "@/components/listen-link";
 import { VideoLink } from "@/components/video-link";
 import { DoneToggle } from "@/components/done-toggle";
@@ -158,8 +159,10 @@ export function ConceptView({ concept }: { concept: StudyConcept }) {
   const head = heads[lang];
   const text = studyCopy(concept, lang);
   const near = studyNeighbors(concept.id);
-  const prevText = near.prev ? studyCopy(near.prev, lang) : null;
-  const nextText = near.next ? studyCopy(near.next, lang) : null;
+  const prevC = near.prev ?? catalogNeighbor(concept.id, -1);
+  const nextC = near.next ?? catalogNeighbor(concept.id, 1);
+  const prevText = prevC ? studyCopy(prevC, lang) : null;
+  const nextText = nextC ? studyCopy(nextC, lang) : null;
   const rel = relatedOf(concept.id);
   const hasDemo = Boolean(demos[concept.id]);
   const hasLab = Boolean(concept.sim) && !hasDemo;
@@ -308,18 +311,23 @@ export function ConceptView({ concept }: { concept: StudyConcept }) {
       <ReportCard conceptId={concept.id} title={text.title} lang={lang} />
 
       <div className="mt-8 grid gap-3 sm:grid-cols-2">
-        {near.prev && prevText ? (
-          <Link to="/khai-niem/$conceptId" params={{ conceptId: near.prev.id }} className="rounded-card border border-line p-4">
+        {prevC && prevText ? (
+          <Link to="/khai-niem/$conceptId" params={{ conceptId: prevC.id }} className="rounded-card border border-line p-4">
             <span className="text-xs tracking-widest text-muted">{head.prev}</span>
             <span className="mt-1 block font-medium">{prevText.title}</span>
           </Link>
         ) : <span />}
-        {near.next && nextText ? (
-          <Link to="/khai-niem/$conceptId" params={{ conceptId: near.next.id }} className="rounded-card border border-line p-4 sm:text-right">
+        {nextC && nextText ? (
+          <Link to="/khai-niem/$conceptId" params={{ conceptId: nextC.id }} className="rounded-card border border-line p-4 sm:text-right">
             <span className="text-xs tracking-widest text-muted">{head.next}</span>
             <span className="mt-1 block font-medium">{nextText.title}</span>
           </Link>
-        ) : null}
+        ) : (
+          <Link to="/" className="rounded-card border border-line p-4 sm:text-right">
+            <span className="text-xs tracking-widest text-muted">{lang === "en" ? "The end" : "Hết rồi"}</span>
+            <span className="mt-1 block font-medium">{lang === "en" ? "Back to contents" : "Về mục lục"}</span>
+          </Link>
+        )}
       </div>
     </article>
   );
