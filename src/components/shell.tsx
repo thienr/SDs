@@ -1,11 +1,13 @@
 import { Link, useRouterState } from "@tanstack/react-router";
-import { useEffect, useSyncExternalStore, type ReactNode } from "react";
-import { BookOpen, Moon, Network, Search, Settings, Sun, TableOfContents } from "lucide-react";
+import { lazy, Suspense, useEffect, useState, useSyncExternalStore, type ReactNode } from "react";
+import { BookOpen, MessageCircle, Moon, Network, Search, Settings, Sun, TableOfContents } from "lucide-react";
 import { MapBar } from "@/components/map-bar";
 import { startAutoSync } from "@/lib/sync";
 import { getProgress, getServerProgress, hydrateProgress, setLang, subscribeProgress, toggleTheme, type Lang } from "@/lib/progress";
 import { hydrateRaw } from "@/lib/raw-store";
 import { hydrateCms } from "@/lib/cms-store";
+
+const AskAiPanel = lazy(() => import("@/components/ask-ai-panel"));
 
 const links = [
   { to: "/", vi: "Học", en: "Study", icon: BookOpen },
@@ -32,6 +34,7 @@ export function AppShell({ children }: { children: ReactNode }) {
   const pathname = useRouterState({ select: (state) => state.location.pathname });
   const progress = useSyncExternalStore(subscribeProgress, getProgress, getServerProgress);
   const lang = progress.lang;
+  const [ask, setAsk] = useState(false);
   const label = (link: (typeof links)[number]) => (lang === "en" ? link.en : link.vi);
   useEffect(() => {
     hydrateProgress();
@@ -91,6 +94,19 @@ export function AppShell({ children }: { children: ReactNode }) {
           <main className="px-4 pb-24 pt-4 md:px-8 md:pb-16 md:pt-8">{children}</main>
         </div>
       </div>
+      <button
+        type="button"
+        onClick={() => setAsk(true)}
+        aria-label={lang === "en" ? "Ask AI" : "Hỏi AI"}
+        className="fixed bottom-[4.75rem] right-4 z-30 inline-flex size-14 items-center justify-center rounded-full bg-accent text-white shadow-lg md:bottom-6 md:right-6"
+      >
+        <MessageCircle className="size-6" aria-hidden />
+      </button>
+      {ask ? (
+        <Suspense fallback={null}>
+          <AskAiPanel lang={lang} path={pathname} onClose={() => setAsk(false)} />
+        </Suspense>
+      ) : null}
       <nav className="fixed inset-x-0 bottom-0 z-20 grid grid-cols-5 border-t border-line bg-card md:hidden">
         {links.map((link) => {
           const Icon = link.icon;
