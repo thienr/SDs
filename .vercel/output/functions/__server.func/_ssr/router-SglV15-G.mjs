@@ -3,7 +3,7 @@ import { a as getLesson, n as courses$1, s as lessons } from "./catalog-BobPw5DT
 import { J as require_react, S as require_jsx_runtime, _ as lazyRouteComponent, b as Link, d as Scripts, f as HeadContent, g as Outlet, h as createRouter, p as useRouterState, v as createFileRoute, x as useRouter, y as createRootRoute } from "../_libs/@tanstack/react-router+[...].mjs";
 import { a as Settings, c as Network, d as Map$1, i as Sun, l as Moon, m as BookOpen, n as TriangleAlert, o as Search, r as TableOfContents, t as X } from "../_libs/lucide-react.mjs";
 import { a as union, i as string, n as number, r as object, t as literal } from "../_libs/zod.mjs";
-//#region node_modules/.nitro/vite/services/ssr/assets/router-Ct10Cy9D.js
+//#region node_modules/.nitro/vite/services/ssr/assets/router-SglV15-G.js
 var import_react = /* @__PURE__ */ __toESM(require_react());
 var import_jsx_runtime = require_jsx_runtime();
 var __defProp = Object.defineProperty;
@@ -19077,19 +19077,19 @@ function RootComponent() {
 		] })]
 	});
 }
-var $$splitComponentImporter$9 = () => import("./routes-CyH7EVJR.mjs");
+var $$splitComponentImporter$9 = () => import("./routes-DLpsfr0B.mjs");
 var Route$11 = createFileRoute("/")({ component: lazyRouteComponent($$splitComponentImporter$9, "component") });
-var $$splitComponentImporter$8 = () => import("./ban-do-CeQHmocq.mjs");
+var $$splitComponentImporter$8 = () => import("./ban-do-DqZIofYX.mjs");
 var Route$10 = createFileRoute("/ban-do")({ component: lazyRouteComponent($$splitComponentImporter$8, "component") });
-var $$splitComponentImporter$7 = () => import("./cong-thuc--wpYD3E7.mjs");
+var $$splitComponentImporter$7 = () => import("./cong-thuc-BYA48Wx3.mjs");
 var Route$9 = createFileRoute("/cong-thuc")({ component: lazyRouteComponent($$splitComponentImporter$7, "component") });
 var $$splitComponentImporter$6 = () => import("./do-phu-CHVyFWTI.mjs");
 var Route$8 = createFileRoute("/do-phu")({ component: lazyRouteComponent($$splitComponentImporter$6, "component") });
-var $$splitComponentImporter$5 = () => import("./goc-BAwQYjLS.mjs");
+var $$splitComponentImporter$5 = () => import("./goc-C-S1Od6-.mjs");
 var Route$7 = createFileRoute("/goc")({ component: lazyRouteComponent($$splitComponentImporter$5, "component") });
 var $$splitComponentImporter$4 = () => import("./tim-kiem-BH2vjluL.mjs");
 var Route$6 = createFileRoute("/tim-kiem")({ component: lazyRouteComponent($$splitComponentImporter$4, "component") });
-var $$splitComponentImporter$3 = () => import("./tu-dien-BQLj6xAa.mjs");
+var $$splitComponentImporter$3 = () => import("./tu-dien-CqVuwF7F.mjs");
 var Route$5 = createFileRoute("/tu-dien")({ component: lazyRouteComponent($$splitComponentImporter$3, "component") });
 var CORS = {
 	"access-control-allow-origin": "*",
@@ -21388,8 +21388,29 @@ async function dropInbox(key, id) {
 var KNOWN = /* @__PURE__ */ new Set([
 	"2024-11-05",
 	"2025-03-26",
-	"2025-06-18"
+	"2025-06-18",
+	"2025-11-25",
+	"2026-07-28"
 ]);
+var META_VERSION = "io.modelcontextprotocol/protocolVersion";
+function header(request, name) {
+	return request.headers.get(name) ?? "";
+}
+function decodeMcpValue(value) {
+	const match = /^=\?base64\?([A-Za-z0-9+/=]+)\?=$/.exec(value.trim());
+	if (!match) return value;
+	try {
+		return Buffer.from(match[1], "base64").toString("utf8");
+	} catch {
+		return value;
+	}
+}
+function metaVersion(params) {
+	const meta = params?._meta;
+	if (!meta || typeof meta !== "object") return "";
+	const version = meta[META_VERSION];
+	return typeof version === "string" ? version : "";
+}
 var tools = [
 	{
 		name: "list_courses",
@@ -21572,7 +21593,7 @@ function rpcResult(id, result) {
 		result
 	});
 }
-function rpcError(id, code, message) {
+function rpcError(id, code, message, status = 200) {
 	return apiJson({
 		jsonrpc: "2.0",
 		id: id ?? null,
@@ -21580,14 +21601,11 @@ function rpcError(id, code, message) {
 			code,
 			message
 		}
-	});
+	}, status);
 }
 async function handleMcp(request) {
 	if (request.method === "OPTIONS") return apiEmpty(204);
-	if (request.method === "GET") return apiJson({
-		...bookMeta(),
-		transport: "POST JSON-RPC tools/list, tools/call"
-	}, 405);
+	if (request.method === "GET" || request.method === "DELETE") return apiEmpty(405);
 	if (request.method !== "POST") return apiJson({ error: "method not allowed" }, 405);
 	let message;
 	try {
@@ -21606,12 +21624,24 @@ async function handleMcp(request) {
 async function oneRpc(message, request) {
 	const rpc = message && typeof message === "object" ? message : {};
 	const id = rpc.id ?? null;
-	const method = rpc.method ?? "";
+	const params = rpc.params ?? {};
+	const headerVersion = header(request, "mcp-protocol-version");
+	const fromMeta = metaVersion(params);
+	if (headerVersion && fromMeta && headerVersion !== fromMeta) return rpcError(id, -32600, "HeaderMismatch: MCP-Protocol-Version không khớp phiên bản trong _meta.", 400);
+	const announced = headerVersion || fromMeta;
+	if (announced && !KNOWN.has(announced)) return rpcError(id, -32600, `MCP-Protocol-Version không hỗ trợ: ${announced}.`, 400);
+	const bodyMethod = rpc.method ?? "";
+	const headerMethod = header(request, "mcp-method");
+	if (headerMethod && bodyMethod && headerMethod !== bodyMethod) return rpcError(id, -32600, "HeaderMismatch: Mcp-Method không khớp method.", 400);
+	const method = bodyMethod || headerMethod;
 	const isNote = method.startsWith("notifications/") || rpc.id === void 0;
 	if (method === "initialize") {
-		const asked = typeof rpc.params?.protocolVersion === "string" ? rpc.params.protocolVersion : "";
+		const bodyVersion = typeof params.protocolVersion === "string" ? params.protocolVersion : "";
+		if (announced && bodyVersion && announced !== bodyVersion) return rpcError(id, -32600, "HeaderMismatch: phiên bản header không khớp protocolVersion.", 400);
+		const asked = bodyVersion || announced || "2025-03-26";
+		if (!KNOWN.has(asked)) return rpcError(id, -32602, `protocolVersion không hỗ trợ: ${asked}.`, 400);
 		return rpcResult(id, {
-			protocolVersion: KNOWN.has(asked) ? asked : "2025-03-26",
+			protocolVersion: asked,
 			capabilities: { tools: { listChanged: false } },
 			serverInfo: {
 				name: "so-muc",
@@ -21625,8 +21655,9 @@ async function oneRpc(message, request) {
 	if (method === "ping") return rpcResult(id, {});
 	if (method === "tools/list") return rpcResult(id, { tools });
 	if (method === "tools/call") {
-		const params = rpc.params ?? {};
 		const name = typeof params.name === "string" ? params.name : "";
+		const headerName = header(request, "mcp-name");
+		if (headerName && decodeMcpValue(headerName) !== name) return rpcError(id, -32600, "HeaderMismatch: Mcp-Name không khớp tên công cụ.", 400);
 		const args = params.arguments && typeof params.arguments === "object" ? params.arguments : {};
 		try {
 			return rpcResult(id, await callTool(name, args, request));
@@ -21754,11 +21785,11 @@ var Route$3 = createFileRoute("/api/so-muc")({ server: { handlers: {
 	POST: ({ request }) => handleSoMucPost(request),
 	OPTIONS: () => apiEmpty(204)
 } } });
-var $$splitComponentImporter$2 = () => import("./bai._lessonId-MzamAHqL.mjs");
+var $$splitComponentImporter$2 = () => import("./bai._lessonId-CQ5g4jZb.mjs");
 var Route$2 = createFileRoute("/bai/$lessonId")({ component: lazyRouteComponent($$splitComponentImporter$2, "component") });
-var $$splitComponentImporter$1 = () => import("./khai-niem._conceptId-D7PYt1OB.mjs");
+var $$splitComponentImporter$1 = () => import("./khai-niem._conceptId-CLniEmcG.mjs");
 var Route$1 = createFileRoute("/khai-niem/$conceptId")({ component: lazyRouteComponent($$splitComponentImporter$1, "component") });
-var $$splitComponentImporter = () => import("./khoa._courseId-CLQLYPci.mjs");
+var $$splitComponentImporter = () => import("./khoa._courseId-Ll2Umib0.mjs");
 var Route = createFileRoute("/khoa/$courseId")({ component: lazyRouteComponent($$splitComponentImporter, "component") });
 var rootRouteChildren = {
 	IndexRoute: Route$11.update({

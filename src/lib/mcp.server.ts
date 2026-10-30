@@ -1,9 +1,31 @@
 import { apiEmpty, apiJson, bearer } from "@/lib/api-cors";
-import { bookMeta, publicHeads, publicIdea, publicLesson, publicOutline, searchIdeas } from "@/lib/book-public";
+import { publicHeads, publicIdea, publicLesson, publicOutline, searchIdeas } from "@/lib/book-public";
 import { cleanKey, submitEdit } from "@/lib/bridge.server";
 import type { Lang } from "@/lib/progress";
 
-const KNOWN = new Set(["2024-11-05", "2025-03-26", "2025-06-18"]);
+const KNOWN = new Set(["2024-11-05", "2025-03-26", "2025-06-18", "2025-11-25", "2026-07-28"]);
+const META_VERSION = "io.modelcontextprotocol/protocolVersion";
+
+function header(request: Request, name: string) {
+  return request.headers.get(name) ?? "";
+}
+
+function decodeMcpValue(value: string) {
+  const match = /^=\?base64\?([A-Za-z0-9+/=]+)\?=$/.exec(value.trim());
+  if (!match) return value;
+  try {
+    return Buffer.from(match[1], "base64").toString("utf8");
+  } catch {
+    return value;
+  }
+}
+
+function metaVersion(params: Record<string, unknown> | undefined) {
+  const meta = params?._meta;
+  if (!meta || typeof meta !== "object") return "";
+  const version = (meta as Record<string, unknown>)[META_VERSION];
+  return typeof version === "string" ? version : "";
+}
 
 const tools = [
   {
@@ -148,13 +170,13 @@ function rpcResult(id: unknown, result: unknown): Response {
   return apiJson({ jsonrpc: "2.0", id: id ?? null, result });
 }
 
-function rpcError(id: unknown, code: number, message: string): Response {
-  return apiJson({ jsonrpc: "2.0", id: id ?? null, error: { code, message } });
+function rpcError(id: unknown, code: number, message: string, status = 200): Response {
+  return apiJson({ jsonrpc: "2.0", id: id ?? null, error: { code, message } }, status);
 }
 
 export async function handleMcp(request: Request): Promise<Response> {
   if (request.method === "OPTIONS") return apiEmpty(204);
-  if (request.method === "GET") return apiJson({ ...bookMeta(), transport: "POST JSON-RPC tools/list, tools/call" }, 405);
+  if (request.method === "GET" || request.method === "DELETE") return apiEmpty(405);
   if (request.method !== "POST") return apiJson({ error: "method not allowed" }, 405);
 
   let message: unknown;
@@ -178,12 +200,32 @@ export async function handleMcp(request: Request): Promise<Response> {
 async function oneRpc(message: unknown, request: Request): Promise<Response | null> {
   const rpc = (message && typeof message === "object" ? message : {}) as Rpc;
   const id = rpc.id ?? null;
-  const method = rpc.method ?? "";
+  const params = rpc.params ?? {};
+  const headerVersion = header(request, "mcp-protocol-version");
+  const fromMeta = metaVersion(params);
+  if (headerVersion && fromMeta && headerVersion !== fromMeta) {
+    return rpcError(id, -32600, "HeaderMismatch: MCP-Protocol-Version không khớp phiên bản trong _meta.", 400);
+  }
+  const announced = headerVersion || fromMeta;
+  if (announced && !KNOWN.has(announced)) {
+    return rpcError(id, -32600, `MCP-Protocol-Version không hỗ trợ: ${announced}.`, 400);
+  }
+  const bodyMethod = rpc.method ?? "";
+  const headerMethod = header(request, "mcp-method");
+  if (headerMethod && bodyMethod && headerMethod !== bodyMethod) {
+    return rpcError(id, -32600, "HeaderMismatch: Mcp-Method không khớp method.", 400);
+  }
+  const method = bodyMethod || headerMethod;
   const isNote = method.startsWith("notifications/") || rpc.id === undefined;
   if (method === "initialize") {
-    const asked = typeof rpc.params?.protocolVersion === "string" ? rpc.params.protocolVersion : "";
+    const bodyVersion = typeof params.protocolVersion === "string" ? params.protocolVersion : "";
+    if (announced && bodyVersion && announced !== bodyVersion) {
+      return rpcError(id, -32600, "HeaderMismatch: phiên bản header không khớp protocolVersion.", 400);
+    }
+    const asked = bodyVersion || announced || "2025-03-26";
+    if (!KNOWN.has(asked)) return rpcError(id, -32602, `protocolVersion không hỗ trợ: ${asked}.`, 400);
     return rpcResult(id, {
-      protocolVersion: KNOWN.has(asked) ? asked : "2025-03-26",
+      protocolVersion: asked,
       capabilities: { tools: { listChanged: false } },
       serverInfo: { name: "so-muc", version: "1.0.0" },
       instructions:
@@ -195,8 +237,11 @@ async function oneRpc(message: unknown, request: Request): Promise<Response | nu
   if (method === "ping") return rpcResult(id, {});
   if (method === "tools/list") return rpcResult(id, { tools });
   if (method === "tools/call") {
-    const params = rpc.params ?? {};
     const name = typeof params.name === "string" ? params.name : "";
+    const headerName = header(request, "mcp-name");
+    if (headerName && decodeMcpValue(headerName) !== name) {
+      return rpcError(id, -32600, "HeaderMismatch: Mcp-Name không khớp tên công cụ.", 400);
+    }
     const args = params.arguments && typeof params.arguments === "object" ? (params.arguments as Record<string, unknown>) : {};
     try {
       return rpcResult(id, await callTool(name, args, request));
