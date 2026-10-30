@@ -1,7 +1,8 @@
+import { getAssignmentByConcept } from "@/data/assign";
 import { courseHead, moduleHead, sessionHead } from "@/data/outline";
+import { overviews } from "@/data/overview";
 import { sessionConcepts } from "@/data/place";
 import { getStudy, studyCopy } from "@/data/study";
-import { overviews } from "@/data/overview";
 import { courses, getLesson } from "@/lib/catalog";
 import type { Lang } from "@/lib/progress";
 import type { RawText } from "@/lib/raw-format";
@@ -17,8 +18,10 @@ export type PublicCard = RawText & {
 
 const cache = new Map<Lang, PublicCard[]>();
 
-/** Trang đọc hiện bản đồ (overview). MCP trước đây chỉ gửi thẻ nháp cũ nên agent báo buổi trống. */
-function shown(id: string, text: RawText): RawText {
+/** Trang đọc hiện bản đồ hoặc bài nộp. MCP trước đây chỉ gửi thẻ nháp «không có định nghĩa». */
+function shown(id: string, lang: Lang, text: RawText): RawText {
+  const assignment = fromAssignment(id, lang, text);
+  if (assignment) return assignment;
   const ov = overviews[id];
   if (!ov) return text;
   const parts: string[] = [ov.lead];
@@ -59,6 +62,42 @@ function shown(id: string, text: RawText): RawText {
   };
 }
 
+function fromAssignment(id: string, lang: Lang, text: RawText): RawText | null {
+  const assignment = getAssignmentByConcept(id);
+  if (!assignment) return null;
+  const i = lang === "en" ? 1 : 0;
+  const tongue = lang === "en" ? "en" : "vi";
+  const heads: string[] = [];
+  for (const cell of assignment.cells) {
+    if (cell.t !== "md") continue;
+    const line = cell.s.replace(/<[^>]+>/g, " ").replace(/\s+/g, " ").trim();
+    if (line.startsWith("#")) heads.push(line.replace(/^#+\s*/, ""));
+  }
+  const notes: string[] = [];
+  const steps: string[] = [];
+  for (const [ref, pair] of Object.entries(assignment.guides)) {
+    const guide = pair[tongue];
+    notes.push(`${ref}. ${guide.think} ${guide.lotus} ${guide.trap}${guide.remark ? ` ${guide.remark}` : ""}`);
+    steps.push(...guide.steps);
+  }
+  const story = assignment.story[i];
+  const body = [story, heads.join("\n"), notes.join("\n")].filter(Boolean).join("\n");
+  return {
+    ...text,
+    title: assignment.title[i],
+    why: story,
+    prior: null,
+    see: story,
+    plain: body,
+    situation: "",
+    use: steps.slice(0, 16),
+    precise: steps.join("\n") || body,
+    insight: notes[0] || story,
+    formula: null,
+    symbols: [],
+  };
+}
+
 export function publicIdeas(lang: Lang): PublicCard[] {
   const hit = cache.get(lang);
   if (hit) return hit;
@@ -69,7 +108,7 @@ export function publicIdeas(lang: Lang): PublicCard[] {
         for (const id of sessionConcepts[session.id] ?? []) {
           const concept = getStudy(id);
           if (!concept) continue;
-          const text = shown(id, studyCopy(concept, lang, true));
+          const text = shown(id, lang, studyCopy(concept, lang, true));
           out.push({
             id,
             lang,

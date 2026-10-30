@@ -1,5 +1,5 @@
 import { o as __toESM } from "../_runtime.mjs";
-import { _ as sessionOfConcept, c as overviews, f as studyCopy, g as sessionConcepts, m as studyNeighbors, o as getStudy, p as studyListTitle, s as hydrateRaw, u as rawIsEdited } from "./study-BtAMXX88.mjs";
+import { _ as sessionOfConcept, c as overviews, f as studyCopy, g as sessionConcepts, m as studyNeighbors, o as getStudy, p as studyListTitle, r as getAssignmentByConcept, s as hydrateRaw, u as rawIsEdited } from "./study-BtAMXX88.mjs";
 import { c as lessons, o as getLesson, r as courses } from "./catalog-DRaoKsF4.mjs";
 import { J as require_react, _ as lazyRouteComponent, b as Link, d as Scripts, f as HeadContent, g as Outlet, h as createRouter, p as useRouterState, q as require_jsx_runtime, v as createFileRoute, x as useRouter, y as createRootRoute } from "../_libs/@tanstack/react-router+[...].mjs";
 import { _ as subscribeDone, a as subscribeToc, d as subscribeReview, h as isDone, i as setOpenCourse, l as getReview, m as getDone, n as getToc, o as useTocMemory, p as applyRemoteDone, r as setLastRead, s as applyRemoteReview, t as applyRemoteToc, v as useDone } from "./toc-memory-Cwcczwc2.mjs";
@@ -8,7 +8,7 @@ import { a as liveCourse, c as liveSession, d as sessionHead, l as moduleHead, s
 import { a as getServerProgress, h as toggleTheme, i as getProgress, l as lessonStatus, m as subscribeProgress, o as hydrateProgress, p as setLang, t as applyRemoteProgress } from "./progress-BbLCT1Se.mjs";
 import { a as Settings, c as Moon, h as BookOpen, i as Sun, l as MessageCircle, m as Check, n as TriangleAlert, o as Search, p as ChevronRight, r as TableOfContents, s as Network, t as X, u as Map$1 } from "../_libs/lucide-react.mjs";
 import { a as union, i as string, n as number, r as object, t as literal } from "../_libs/zod.mjs";
-//#region node_modules/.nitro/vite/services/ssr/assets/router-Dp2qPefp.js
+//#region node_modules/.nitro/vite/services/ssr/assets/router-DbnuCRbw.js
 var import_react = /* @__PURE__ */ __toESM(require_react());
 var import_jsx_runtime = require_jsx_runtime();
 var __defProp = Object.defineProperty;
@@ -1351,7 +1351,7 @@ function RootComponent() {
 		] })]
 	});
 }
-var $$splitComponentImporter$13 = () => import("./routes-DDQe_Yop.mjs");
+var $$splitComponentImporter$13 = () => import("./routes-D2WnUXz-.mjs");
 var Route$16 = createFileRoute("/")({ component: lazyRouteComponent($$splitComponentImporter$13, "component") });
 var $$splitComponentImporter$12 = () => import("./ban-do-ZB8I3A76.mjs");
 var Route$15 = createFileRoute("/ban-do")({ component: lazyRouteComponent($$splitComponentImporter$12, "component") });
@@ -1361,13 +1361,13 @@ var $$splitComponentImporter$10 = () => import("./cong-thuc-BQYY-0JY.mjs");
 var Route$13 = createFileRoute("/cong-thuc")({ component: lazyRouteComponent($$splitComponentImporter$10, "component") });
 var $$splitComponentImporter$9 = () => import("./do-phu-D55wbr3H.mjs");
 var Route$12 = createFileRoute("/do-phu")({ component: lazyRouteComponent($$splitComponentImporter$9, "component") });
-var $$splitComponentImporter$8 = () => import("./dong-bo-k-XEOm_A.mjs");
+var $$splitComponentImporter$8 = () => import("./dong-bo-0_H8Blbc.mjs");
 var Route$11 = createFileRoute("/dong-bo")({ component: lazyRouteComponent($$splitComponentImporter$8, "component") });
 var $$splitComponentImporter$7 = () => import("./goc-Dquqge_R.mjs");
 var Route$10 = createFileRoute("/goc")({ component: lazyRouteComponent($$splitComponentImporter$7, "component") });
-var $$splitComponentImporter$6 = () => import("./luyen-tap-JBe7anCo.mjs");
+var $$splitComponentImporter$6 = () => import("./luyen-tap-CNIZv9Xc.mjs");
 var Route$9 = createFileRoute("/luyen-tap")({ component: lazyRouteComponent($$splitComponentImporter$6, "component") });
-var $$splitComponentImporter$5 = () => import("./nghe--C4KtObi.mjs");
+var $$splitComponentImporter$5 = () => import("./nghe-Cre1K6L4.mjs");
 var Route$8 = createFileRoute("/nghe")({
 	component: lazyRouteComponent($$splitComponentImporter$5, "component"),
 	validateSearch: (s) => ({ c: typeof s.c === "string" ? s.c : void 0 })
@@ -1405,8 +1405,10 @@ function bearer(request) {
 	return (_match$ = match === null || match === void 0 ? void 0 : match[1]) !== null && _match$ !== void 0 ? _match$ : null;
 }
 var cache = /* @__PURE__ */ new Map();
-/** Trang đọc hiện bản đồ (overview). MCP trước đây chỉ gửi thẻ nháp cũ nên agent báo buổi trống. */
-function shown(id, text) {
+/** Trang đọc hiện bản đồ hoặc bài nộp. MCP trước đây chỉ gửi thẻ nháp «không có định nghĩa». */
+function shown(id, lang, text) {
+	const assignment = fromAssignment(id, lang, text);
+	if (assignment) return assignment;
 	const ov = overviews[id];
 	if (!ov) return text;
 	const parts = [ov.lead];
@@ -1442,6 +1444,45 @@ function shown(id, text) {
 		insight: notes[0] || ov.lead
 	};
 }
+function fromAssignment(id, lang, text) {
+	const assignment = getAssignmentByConcept(id);
+	if (!assignment) return null;
+	const i = lang === "en" ? 1 : 0;
+	const tongue = lang === "en" ? "en" : "vi";
+	const heads = [];
+	for (const cell of assignment.cells) {
+		if (cell.t !== "md") continue;
+		const line = cell.s.replace(/<[^>]+>/g, " ").replace(/\s+/g, " ").trim();
+		if (line.startsWith("#")) heads.push(line.replace(/^#+\s*/, ""));
+	}
+	const notes = [];
+	const steps = [];
+	for (const [ref, pair] of Object.entries(assignment.guides)) {
+		const guide = pair[tongue];
+		notes.push(`${ref}. ${guide.think} ${guide.lotus} ${guide.trap}${guide.remark ? ` ${guide.remark}` : ""}`);
+		steps.push(...guide.steps);
+	}
+	const story = assignment.story[i];
+	const body = [
+		story,
+		heads.join("\n"),
+		notes.join("\n")
+	].filter(Boolean).join("\n");
+	return {
+		...text,
+		title: assignment.title[i],
+		why: story,
+		prior: null,
+		see: story,
+		plain: body,
+		situation: "",
+		use: steps.slice(0, 16),
+		precise: steps.join("\n") || body,
+		insight: notes[0] || story,
+		formula: null,
+		symbols: []
+	};
+}
 function publicIdeas(lang) {
 	const hit = cache.get(lang);
 	if (hit) return hit;
@@ -1451,7 +1492,7 @@ function publicIdeas(lang) {
 		for (const id of (_sessionConcepts$sess = sessionConcepts[session.id]) !== null && _sessionConcepts$sess !== void 0 ? _sessionConcepts$sess : []) {
 			const concept = getStudy(id);
 			if (!concept) continue;
-			const text = shown(id, studyCopy(concept, lang, true));
+			const text = shown(id, lang, studyCopy(concept, lang, true));
 			out.push({
 				id,
 				lang,
@@ -2438,11 +2479,11 @@ var Route$3 = createFileRoute("/api/sync")({ server: { handlers: {
 	},
 	OPTIONS: () => apiEmpty(204)
 } } });
-var $$splitComponentImporter$2 = () => import("./bai._lessonId-Db_8gGjA.mjs");
+var $$splitComponentImporter$2 = () => import("./bai._lessonId-C-PtivNm.mjs");
 var Route$2 = createFileRoute("/bai/$lessonId")({ component: lazyRouteComponent($$splitComponentImporter$2, "component") });
-var $$splitComponentImporter$1 = () => import("./khai-niem._conceptId-AKEWHAED.mjs");
+var $$splitComponentImporter$1 = () => import("./khai-niem._conceptId-Dbq_7yGa.mjs");
 var Route$1 = createFileRoute("/khai-niem/$conceptId")({ component: lazyRouteComponent($$splitComponentImporter$1, "component") });
-var $$splitComponentImporter = () => import("./khoa._courseId-CEICZgxs.mjs");
+var $$splitComponentImporter = () => import("./khoa._courseId-I4F1VUMB.mjs");
 var Route = createFileRoute("/khoa/$courseId")({ component: lazyRouteComponent($$splitComponentImporter, "component") });
 var rootRouteChildren = {
 	IndexRoute: Route$16.update({

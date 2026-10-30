@@ -5,8 +5,8 @@ import { J as require_react, b as Link, p as useRouterState, q as require_jsx_ru
 import { o as getCmsVersion, s as getServerCmsVersion, u as subscribeCms } from "./cms-store-QsPjr5VR.mjs";
 import { a as liveCourse } from "./cms-live-BOSWGilr.mjs";
 import { a as getServerProgress, i as getProgress, m as subscribeProgress } from "./progress-BbLCT1Se.mjs";
-import { g as ModuleTree, n as Route } from "./router-Dp2qPefp.mjs";
-//#region node_modules/.nitro/vite/services/ssr/assets/khoa._courseId-CEICZgxs.js
+import { g as ModuleTree, n as Route } from "./router-DbnuCRbw.mjs";
+//#region node_modules/.nitro/vite/services/ssr/assets/khoa._courseId-I4F1VUMB.js
 var import_react = /* @__PURE__ */ __toESM(require_react());
 var import_jsx_runtime = require_jsx_runtime();
 function CoursePage() {
