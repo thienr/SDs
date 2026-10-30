@@ -29,17 +29,17 @@ type Draft = {
 };
 
 const fields: { key: keyof Draft; vi: string; en: string; tall?: boolean; mono?: boolean }[] = [
-  { key: "title", vi: "Tên ý", en: "Title" },
-  { key: "why", vi: "Biết để làm gì", en: "What you use it for", tall: true },
-  { key: "prior", vi: "Nối với cái trước", en: "How it links", tall: true },
-  { key: "see", vi: "Nhìn cái này", en: "Look at this", tall: true },
-  { key: "plain", vi: "Nói cho dễ", en: "In plain words", tall: true },
-  { key: "situation", vi: "Ví dụ", en: "Example", tall: true },
-  { key: "use", vi: "Cách dùng, mỗi dòng một bước", en: "Steps, one per line", tall: true },
-  { key: "precise", vi: "Nói cho đúng", en: "The precise version", tall: true },
+  { key: "title", vi: "Tên khái niệm", en: "Title" },
+  { key: "why", vi: "Vì sao cần biết", en: "What you use it for", tall: true },
+  { key: "prior", vi: "Liên hệ với bài trước", en: "How it links", tall: true },
+  { key: "see", vi: "Quan sát", en: "Look at this", tall: true },
+  { key: "plain", vi: "Hiểu nhanh", en: "In plain words", tall: true },
+  { key: "situation", vi: "Tình huống minh họa", en: "Example", tall: true },
+  { key: "use", vi: "Cách áp dụng, mỗi dòng một bước", en: "Steps, one per line", tall: true },
+  { key: "precise", vi: "Định nghĩa chính xác", en: "The precise version", tall: true },
   { key: "formula", vi: "Công thức KaTeX, để trống nếu không có", en: "KaTeX formula, empty if none", mono: true },
   { key: "symbols", vi: "Ký hiệu, mỗi dòng: ký hiệu | nghĩa", en: "Symbols, one line: symbol | meaning", tall: true, mono: true },
-  { key: "insight", vi: "Nhớ một điều", en: "One thing to keep", tall: true },
+  { key: "insight", vi: "Ghi nhớ", en: "One thing to keep", tall: true },
 ];
 
 function toDraft(card: RawCard): Draft {
@@ -446,7 +446,7 @@ function RawPage() {
                 {vi ? "Lưu ý này" : "Save this idea"}
               </button>
               {dirty ? <span className="text-sm text-accent">{vi ? "Chưa lưu" : "Not saved"}</span> : null}
-              {card.edited && !dirty ? <span className="text-sm text-muted">{vi ? "Đang đè bản in" : "Overriding the printed card"}</span> : null}
+              {card.edited && !dirty ? <span className="text-sm text-muted">{vi ? "Đang dùng bản đã sửa" : "Overriding the printed card"}</span> : null}
             </div>
           </form>
         ) : null}

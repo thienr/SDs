@@ -1,4 +1,4 @@
-import { A as createInlineCssPlaceholderAsset, B as createSieveCache, C as createPlugin, D as isStream, I as waitForReason, K as rootRouteId, L as _getRenderedMatches, N as getStylesheetHref, T as crossSerializeStream, V as decodePath, W as dehydrateSsrMatchId, j as createInlineCssStyleAsset, l as createHydrationScripts, u as GLOBAL_TSR, w as createStream, z as invariant } from "./react-router+[...].mjs";
+import { A as createInlineCssStyleAsset, B as decodePath, C as createStream, E as isStream, F as waitForReason, G as rootRouteId, I as _getRenderedMatches, M as getStylesheetHref, R as invariant, S as createPlugin, U as dehydrateSsrMatchId, k as createInlineCssPlaceholderAsset, l as createHydrationScripts, u as GLOBAL_TSR, w as crossSerializeStream, z as createSieveCache } from "./react-router+[...].mjs";
 //#region node_modules/@tanstack/router-core/dist/esm/ssr/serializer/transformer.js
 /**
 * Create a strongly-typed serialization adapter for SSR hydration.
@@ -57,8 +57,9 @@ function makeSerovalPlugin(serializationAdapter) {
 */
 var RawStream = class {
 	constructor(stream, options) {
+		var _options$hint;
 		this.stream = stream;
-		this.hint = options?.hint ?? "binary";
+		this.hint = (_options$hint = options === null || options === void 0 ? void 0 : options.hint) !== null && _options$hint !== void 0 ? _options$hint : "binary";
 	}
 };
 //#endregion
@@ -127,13 +128,13 @@ function decodeText(value) {
 * stop the pump and throw through the Seroval stream.
 */
 function pumpEncodedStream(readable, encode, signal) {
-	signal?.throwIfAborted();
+	signal === null || signal === void 0 || signal.throwIfAborted();
 	const stream = createStream();
 	const reader = readable.getReader();
 	let active = true;
 	const release = () => {
 		active = false;
-		signal?.removeEventListener("abort", abort);
+		signal === null || signal === void 0 || signal.removeEventListener("abort", abort);
 		reader.releaseLock();
 	};
 	const stop = (reason) => {
@@ -145,7 +146,7 @@ function pumpEncodedStream(readable, encode, signal) {
 	const abort = () => {
 		if (stop(signal.reason)) stream.throw(signal.reason);
 	};
-	signal?.addEventListener("abort", abort);
+	signal === null || signal === void 0 || signal.addEventListener("abort", abort);
 	(async () => {
 		try {
 			while (active) {
@@ -179,7 +180,7 @@ function fromEncodedStream(source, decode) {
 						done = true;
 						const stop = unsubscribe;
 						unsubscribe = void 0;
-						stop?.();
+						stop === null || stop === void 0 || stop();
 						controller.error(error);
 					}
 				},
@@ -204,7 +205,7 @@ function fromEncodedStream(source, decode) {
 		cancel() {
 			const dispose = unsubscribe;
 			unsubscribe = void 0;
-			dispose?.();
+			dispose === null || dispose === void 0 || dispose();
 		}
 	});
 }
@@ -489,7 +490,7 @@ function dehydrateMatch(match) {
 }
 function disposeSerializationSafely(dispose) {
 	try {
-		dispose?.();
+		dispose === null || dispose === void 0 || dispose();
 	} catch (err) {
 		console.error("Error disposing SSR serialization:", err);
 	}
@@ -513,9 +514,10 @@ function getManifestCache(manifest) {
 	return newCache;
 }
 function getInlineCssForPreparedRoutes(manifest, preparedRoutes) {
-	const styles = manifest.inlineCss?.styles;
+	var _manifest$inlineCss;
+	const styles = (_manifest$inlineCss = manifest.inlineCss) === null || _manifest$inlineCss === void 0 ? void 0 : _manifest$inlineCss.styles;
 	const hrefs = preparedRoutes.inlineCssHrefs;
-	if (!styles || !hrefs?.length) return;
+	if (!styles || !(hrefs === null || hrefs === void 0 ? void 0 : hrefs.length)) return;
 	let css = "";
 	for (const href of hrefs) css += styles[href];
 	return css;
@@ -539,7 +541,8 @@ function getPreparedMatchedManifestRoutes(manifest, matches, cacheKey) {
 	return preparedRoutes;
 }
 function prepareMatchedManifestRoutes(manifest, matches) {
-	const inlineStyles = manifest.inlineCss?.styles;
+	var _manifest$inlineCss2;
+	const inlineStyles = (_manifest$inlineCss2 = manifest.inlineCss) === null || _manifest$inlineCss2 === void 0 ? void 0 : _manifest$inlineCss2.styles;
 	const routes = {};
 	if (!inlineStyles) {
 		for (const match of matches) {
@@ -600,20 +603,23 @@ function stripInlinedStylesheetAssetsFromRoute(inlineStyles, route, inlineCssHre
 	return nextRoute;
 }
 function hasRouteAssets(route) {
-	return !!route.scripts?.length || !!route.css?.length;
+	var _route$scripts, _route$css;
+	return !!((_route$scripts = route.scripts) === null || _route$scripts === void 0 ? void 0 : _route$scripts.length) || !!((_route$css = route.css) === null || _route$css === void 0 ? void 0 : _route$css.length);
 }
 function hasRequestAssets(assets) {
-	return !!assets && (!!assets.preloads?.length || hasRouteAssets(assets));
+	var _assets$preloads;
+	return !!assets && (!!((_assets$preloads = assets.preloads) === null || _assets$preloads === void 0 ? void 0 : _assets$preloads.length) || hasRouteAssets(assets));
 }
 function mergeRequestAssetsIntoRootRoute(rootRoute, requestAssets) {
-	const preloads = requestAssets?.preloads?.length ? [...requestAssets.preloads, ...rootRoute?.preloads ?? []] : rootRoute?.preloads;
-	const scripts = requestAssets?.scripts?.length ? [...requestAssets.scripts, ...rootRoute?.scripts ?? []] : rootRoute?.scripts;
-	const cssLinks = requestAssets?.css?.length ? [...requestAssets.css, ...rootRoute?.css ?? []] : rootRoute?.css;
+	var _requestAssets$preloa, _rootRoute$preloads, _requestAssets$script, _rootRoute$scripts, _requestAssets$css, _rootRoute$css;
+	const preloads = (requestAssets === null || requestAssets === void 0 || (_requestAssets$preloa = requestAssets.preloads) === null || _requestAssets$preloa === void 0 ? void 0 : _requestAssets$preloa.length) ? [...requestAssets.preloads, ...(_rootRoute$preloads = rootRoute === null || rootRoute === void 0 ? void 0 : rootRoute.preloads) !== null && _rootRoute$preloads !== void 0 ? _rootRoute$preloads : []] : rootRoute === null || rootRoute === void 0 ? void 0 : rootRoute.preloads;
+	const scripts = (requestAssets === null || requestAssets === void 0 || (_requestAssets$script = requestAssets.scripts) === null || _requestAssets$script === void 0 ? void 0 : _requestAssets$script.length) ? [...requestAssets.scripts, ...(_rootRoute$scripts = rootRoute === null || rootRoute === void 0 ? void 0 : rootRoute.scripts) !== null && _rootRoute$scripts !== void 0 ? _rootRoute$scripts : []] : rootRoute === null || rootRoute === void 0 ? void 0 : rootRoute.scripts;
+	const cssLinks = (requestAssets === null || requestAssets === void 0 || (_requestAssets$css = requestAssets.css) === null || _requestAssets$css === void 0 ? void 0 : _requestAssets$css.length) ? [...requestAssets.css, ...(_rootRoute$css = rootRoute === null || rootRoute === void 0 ? void 0 : rootRoute.css) !== null && _rootRoute$css !== void 0 ? _rootRoute$css : []] : rootRoute === null || rootRoute === void 0 ? void 0 : rootRoute.css;
 	return {
-		...rootRoute ?? {},
-		...preloads?.length ? { preloads } : {},
-		...scripts?.length ? { scripts } : {},
-		...cssLinks?.length ? { css: cssLinks } : {}
+		...rootRoute !== null && rootRoute !== void 0 ? rootRoute : {},
+		...(preloads === null || preloads === void 0 ? void 0 : preloads.length) ? { preloads } : {},
+		...(scripts === null || scripts === void 0 ? void 0 : scripts.length) ? { scripts } : {},
+		...(cssLinks === null || cssLinks === void 0 ? void 0 : cssLinks.length) ? { css: cssLinks } : {}
 	};
 }
 /**
@@ -638,10 +644,11 @@ function composeManifest(scriptFormat, inlineStyle, routes, requestAssets) {
 	};
 }
 function attachRouterServerSsrUtils({ router, manifest, getRequestAssets }) {
+	var _router$options$ssr, _router$serverSsrLife, _router$serverSsrLife2;
 	let memoizedPreparedManifest;
 	router.ssr = { get manifest() {
 		if (!manifest) return manifest;
-		const requestAssets = getRequestAssets?.();
+		const requestAssets = getRequestAssets === null || getRequestAssets === void 0 ? void 0 : getRequestAssets();
 		const hasAssets = hasRequestAssets(requestAssets);
 		if (!hasAssets && !manifest.inlineCss) return manifest;
 		let inlineCssAsset;
@@ -649,7 +656,7 @@ function attachRouterServerSsrUtils({ router, manifest, getRequestAssets }) {
 		if (manifest.inlineCss) {
 			const matches = _getRenderedMatches(router.stores.matches.get());
 			const cacheKey = getMatchedRoutesCacheKey(matches);
-			if (memoizedPreparedManifest?.cacheKey === cacheKey) {
+			if ((memoizedPreparedManifest === null || memoizedPreparedManifest === void 0 ? void 0 : memoizedPreparedManifest.cacheKey) === cacheKey) {
 				inlineCssAsset = memoizedPreparedManifest.inlineCssAsset;
 				routes = memoizedPreparedManifest.routes;
 			} else {
@@ -675,12 +682,13 @@ function attachRouterServerSsrUtils({ router, manifest, getRequestAssets }) {
 	let cleanupStarted = false;
 	let settled = false;
 	let disposeSerialization;
-	const hydrationScripts = createHydrationScripts(router.options.ssr?.nonce);
+	const hydrationScripts = createHydrationScripts((_router$options$ssr = router.options.ssr) === null || _router$options$ssr === void 0 ? void 0 : _router$options$ssr.nonce);
 	const serverSsr = {
 		hydrationScripts,
 		dehydrate: async (opts) => {
+			var _opts$signal, _opts$signal2;
 			if (dehydrationPhase !== "idle") invariant();
-			opts?.signal?.throwIfAborted();
+			opts === null || opts === void 0 || (_opts$signal = opts.signal) === null || _opts$signal === void 0 || _opts$signal.throwIfAborted();
 			dehydrationPhase = "started";
 			let matchesToDehydrate = _getRenderedMatches(router.stores.matches.get());
 			if (router.isShell()) matchesToDehydrate = matchesToDehydrate.slice(0, 1);
@@ -689,15 +697,15 @@ function attachRouterServerSsrUtils({ router, manifest, getRequestAssets }) {
 			if (manifest) {
 				const cacheKey = getMatchedRoutesCacheKey(matchesToDehydrate);
 				const preparedManifest = getPreparedMatchedManifestRoutes(manifest, matchesToDehydrate, cacheKey);
-				manifestToDehydrate = composeManifest(manifest.scriptFormat, preparedManifest.inlineCssHrefs ? createInlineCssPlaceholderAsset() : void 0, preparedManifest.routes, opts?.requestAssets);
+				manifestToDehydrate = composeManifest(manifest.scriptFormat, preparedManifest.inlineCssHrefs ? createInlineCssPlaceholderAsset() : void 0, preparedManifest.routes, opts === null || opts === void 0 ? void 0 : opts.requestAssets);
 			}
 			const dehydratedRouter = {
 				manifest: manifestToDehydrate,
 				matches
 			};
 			const dehydrate = router.options.dehydrate;
-			const dehydratedData = dehydrate ? opts?.signal ? await waitForReason(dehydrate.call(router.options), opts.signal) : await dehydrate.call(router.options) : void 0;
-			opts?.signal?.throwIfAborted();
+			const dehydratedData = dehydrate ? (opts === null || opts === void 0 ? void 0 : opts.signal) ? await waitForReason(dehydrate.call(router.options), opts.signal) : await dehydrate.call(router.options) : void 0;
+			opts === null || opts === void 0 || (_opts$signal2 = opts.signal) === null || _opts$signal2 === void 0 || _opts$signal2.throwIfAborted();
 			if (cleanupStarted) return;
 			if (dehydratedData !== void 0) dehydratedRouter.dehydratedData = dehydratedData;
 			const trackPlugins = { didRun: false };
@@ -722,7 +730,7 @@ function attachRouterServerSsrUtils({ router, manifest, getRequestAssets }) {
 				plugins,
 				onSerialize: (data, initial) => {
 					if (serializationCompleteSignaled || cleanupStarted) return;
-					initialSerialized ||= initial;
+					initialSerialized || (initialSerialized = initial);
 					if (!hydrationScripts.pushSerializedSource(data, initial, trackPlugins.didRun)) completeScriptSerialization(false);
 				},
 				onError: (err) => {
@@ -790,7 +798,7 @@ function attachRouterServerSsrUtils({ router, manifest, getRequestAssets }) {
 		}
 	};
 	router.serverSsr = serverSsr;
-	for (const listener of router.serverSsrLifecycle?.onServerSsrAttach ?? []) try {
+	for (const listener of (_router$serverSsrLife = (_router$serverSsrLife2 = router.serverSsrLifecycle) === null || _router$serverSsrLife2 === void 0 ? void 0 : _router$serverSsrLife2.onServerSsrAttach) !== null && _router$serverSsrLife !== void 0 ? _router$serverSsrLife : []) try {
 		listener(serverSsr);
 	} catch (err) {
 		console.error("SSR attach listener error:", err);

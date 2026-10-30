@@ -1,0 +1,1 @@
+import{n as e}from"./catalog-BBFE6SF8.js";import{t}from"./place-B-HFSXGQ.js";function n(n){let r=e.find(e=>e.id===n);return r?r.modules.flatMap(e=>e.sessions.flatMap(e=>{var n;return((n=t[e.id])==null?[]:n).filter(e=>!e.startsWith(`d-`))})):[]}var r=()=>e.flatMap(e=>n(e.id));export{n,r as t};

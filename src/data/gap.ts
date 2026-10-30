@@ -425,7 +425,7 @@ export const gapConcepts: Card[] = [
     module: "M1",
     video: "A cell",
     title: "Một ô trong Excel chứa số, chữ hoặc công thức",
-    see: "Hình này thể hiện ba loại nội dung của một ô (cell). Ô số cộng được, ô chữ chỉ nối được, và công thức tự tính lại khi ô nó tham chiếu đổi. «80» cộng «20» dạng chữ ra «8020», không ra 100.",
+    see: "Hình này thể hiện ba loại nội dung của một ô (cell). Ô số cộng được, ô chữ thì SUM bỏ qua, và công thức tự tính lại khi ô nó tham chiếu đổi. Nối «80» và «20» dạng chữ bằng & ra «8020», không ra 100.",
     scene: "g-xl-cell",
     situation: "Cột form bị để dạng chữ vì có dấu cách thừa. Tổng cả cột ra 0, nhưng điều đó không có nghĩa là tuần đó hết form. Hàm SUM bỏ qua các ô chữ mà không báo lỗi.",
     use: [
@@ -3275,7 +3275,7 @@ export const gapConcepts: Card[] = [
     module: "Advanced Excel",
     video: "Text functions",
     title: "Hàm xử lý chuỗi trả về chữ; nó không biến chữ thành số",
-    see: "Hình này thể hiện các hàm chuỗi như LEFT, RIGHT, MID và TRIM. Chúng đều trả về chữ. Muốn có số thì cần bọc thêm một lần đổi kiểu có chủ đích. LEFT của «80 form» lấy ra «80» vẫn là chữ, nên cộng cột đó cho ra 0 hoặc ra chuỗi nối, tùy ô.",
+    see: "Hình này thể hiện các hàm chuỗi như LEFT, RIGHT, MID và TRIM. Chúng đều trả về chữ. Muốn có số thì cần bọc thêm một lần đổi kiểu có chủ đích. LEFT của «80 form» lấy ra «80» vẫn là chữ, nên SUM bỏ qua cột đó và ra 0, còn & thì nối chuỗi; muốn thành số phải đổi có chủ ý (VALUE hoặc *1).",
     scene: "g-xa-text",
     situation: "Mã F-12: LEFT lấy chữ F, TRIM bỏ dấu cách thừa. Không hàm nào trong đó ra số 12 trừ khi bạn tách rồi đổi kiểu. Cột mã không nên được cộng.",
     use: [
@@ -3575,7 +3575,7 @@ export const gapConcepts: Card[] = [
           "Không gọi bookmark là phân quyền.",
         ],
     plain: "Muốn giấu dữ liệu thì viết role. Muốn giúp người xem tập trung thì dùng slicer.",
-    precise: "RLS lọc trên mô hình theo vai trò. Một measure dùng CALCULATE để bỏ bộ lọc có thể vô tình nhìn ra ngoài vai trò, tùy cách viết, nên phải kiểm bằng đúng tài khoản. Ẩn một trang không phải RLS: ai biết đường vẫn vào được và dữ liệu vẫn nằm trong mô hình của họ. Thế số: 4 trưởng kênh cần 4 role, mỗi role giữ đúng dòng của mã kênh tương ứng.",
+    precise: "RLS lọc trên mô hình theo vai trò. DAX không gỡ được bộ lọc của RLS (CALCULATE, ALL hay REMOVEFILTERS chỉ thu hẹp thêm, không nới ra). Cái hay sai là cách viết role, nhất là role động dùng USERPRINCIPALNAME, và bộ lọc trên một bảng lan sang bảng khác qua quan hệ, nên phải kiểm bằng «view as» đúng tài khoản. Ẩn một trang không phải RLS: ai biết đường vẫn vào được và dữ liệu vẫn nằm trong mô hình của họ. Thế số: 4 trưởng kênh cần 4 role, mỗi role giữ đúng dòng của mã kênh tương ứng.",
     formula: null,
     symbols: [],
     sim: null,
@@ -5126,7 +5126,7 @@ export const gapConcepts: Card[] = [
     module: "LangChain",
     video: "Templates",
     title: "Template là một khuôn có các chỗ trống; chỗ trống thì đừng để mô hình tự điền nguồn",
-    see: "Hình này thể hiện template trong LangChain. Template có các biến. Biến không được truyền thì chỗ đó trống hoặc báo lỗi, tùy cách bạn viết. Đừng bắt mô hình «tự hiểu chỗ trống». Nếu biến `policy` không được truyền mà mô hình vẫn viết một chính sách, thì đó là một chính sách không có nguồn.",
+    see: "Hình này thể hiện template trong LangChain. Template có các biến. Biến không được truyền thì LangChain báo lỗi thay vì để trống âm thầm. Đừng bắt mô hình «tự hiểu chỗ trống». Nếu biến `policy` không được truyền mà mô hình vẫn viết một chính sách, thì đó là một chính sách không có nguồn.",
     scene: "g-lc-tpl",
     situation: "Khuôn «chỉ dùng đoạn sau: {passage}». Nếu passage rỗng mà vẫn gọi thì mọi câu trả lời sau đó nằm ngoài RAG, dù code nằm trong một thư viện tên LangChain.",
     use: [

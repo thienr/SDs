@@ -119,7 +119,7 @@ export const mlEn: Record<string, MlEn> = {
     use: [
       "Use the residual plot against the fitted values, or against x, to check the model.",
       "A random band with no shape is the result you want.",
-      "A curve, a funnel, or a cluster of weeks all on one side shows the line is missing a factor.",
+      "A curve or a cluster of weeks all on one side shows the line is missing a factor; a funnel (uneven spread) shows non-constant error. The histogram of residuals should also look roughly bell-shaped and centred at 0.",
     ],
     precise: "The residual is e = y − ŷ. Plugging in: e = 90 − 80 = +10. When the line has an intercept, the residuals add up to about 0, so you cannot relax just because the \"mean residual is zero\". You need to look at their shape. Common mix-up: the prediction for a new week is the value on the line, while the size of the residuals says how far the line has missed in similar weeks.",
     insight: "A slope without a residual plot is a conclusion that has not been checked.",
@@ -151,7 +151,7 @@ export const mlEn: Record<string, MlEn> = {
   },
   "gd-cost": {
     title: "Cost function: how bad the current coefficients are",
-    why: "So you see what the machine is trying to make small when there is no compact formula to solve directly.",
+    why: "So you see what the machine is trying to make small when you can't or don't want to solve directly (many columns, or models with no closed form).",
     prior: "With one input column there is a formula for the best line. With many coefficients you must search, and to search you need a cost function.",
     see: "This picture shows the cost function as a valley. The height of the valley is the cost. The gold ball is the current set of coefficients. The lower the ball, the less bad the coefficients are.",
     plain: "The cost function measures how bad the current coefficients are. For a straight line, that cost is the sum of squared residuals.",
@@ -560,7 +560,7 @@ export const mlEn: Record<string, MlEn> = {
       "Merge by a stated rule: nearest point, farthest point, or average.",
       "Cut the tree horizontally at a height you can explain.",
     ],
-    precise: "A dendrogram is the tree diagram that records the merges. The height of a joint shows how far apart the two groups were at that moment. Linkage is the rule for measuring distance between groups. Plugging in: if the last two joints are at heights 5 and 8, a cut at height 6 gives 3 groups, while a cut at height 9 gives only 1 group. Common mix-up: the cut is still your choice, and you need to standardize the columns first, otherwise the money column will overpower the others.",
+    precise: "A dendrogram is the tree diagram that records the merges. The height of a joint shows how far apart the two groups were at that moment. Linkage is the rule for measuring distance between groups. Plugging in: if the last two joints are at heights 5 and 8, a cut at height 6 (above the joint at 5, below the joint at 8) gives 2 groups, while a cut at height 9 gives only 1 group. For 3 groups, cut below 5. Common mix-up: the cut is still your choice, and you need to standardize the columns first, otherwise the money column will overpower the others.",
     insight: "The tree shows how groups nest, but you still have to cut it and name the pieces.",
     symbols: [],
   },

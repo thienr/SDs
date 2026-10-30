@@ -84,3 +84,27 @@
   accent-color: var(--accent);
   height: 2.75rem;
 }
+
+/* Cảm ứng: bỏ độ trễ chạm đúp, cho thấy ngay là đã chạm, và nới vùng chạm của link chữ nhỏ. */
+a, button, summary, [role="button"], [role="radio"], input, select, label {
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: color-mix(in srgb, var(--accent) 22%, transparent);
+}
+
+@media (pointer: coarse) {
+  a:active, button:active, summary:active, [role="radio"]:active {
+    opacity: 0.6;
+    transition: opacity 0s;
+  }
+
+  /* Link chữ cao chỉ khoảng 20px: thêm vùng chạm trên dưới, không đổi bố cục. */
+  main a.underline,
+  main a.text-accent:not([class*="min-h"]):not([class*="rounded"]),
+  main summary.cursor-pointer {
+    padding-block: 0.55rem;
+    margin-block: -0.55rem;
+  }
+  main a.underline.inline-block {
+    margin-block: -0.55rem;
+  }
+}

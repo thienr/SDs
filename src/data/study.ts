@@ -1,3 +1,4 @@
+import { getAssignmentByConcept } from "@/data/assign";
 import { addConcepts, addCopy, getAddConcept, type AddConcept } from "@/data/add";
 import { c4Concepts, c4Copy, getC4Concept, type C4Concept } from "@/data/c4";
 import { getMoreConcept, moreConcepts, moreCopy, type MoreConcept } from "@/data/c3more";
@@ -6,6 +7,7 @@ import { conceptCopy, conceptNeighbors, getConcept, type Concept } from "@/data/
 import { gapCopy, gapNeighbors, getGapConcept, stitchAfter, type GapConcept } from "@/data/gap";
 import { getMlConcept, mlConcepts, mlCopy, type MlConcept } from "@/data/ml";
 import type { Lang } from "@/lib/progress";
+import { overviews } from "@/data/overview";
 import { applyRaw } from "@/lib/raw-store";
 import type { RawText } from "@/lib/raw-format";
 
@@ -92,7 +94,10 @@ export function studyNeighbors(id: string): { prev: StudyConcept | null; next: S
 export function studyCopy(concept: StudyConcept, lang: Lang, bare = false): RawText {
   const base = bareCopy(concept, lang);
   if (bare) return base;
-  return applyRaw(concept.id, lang, base);
+  const ov = overviews[concept.id];
+  const asg = getAssignmentByConcept(concept.id);
+  const titled = ov ? { ...base, title: ov.title } : asg ? { ...base, title: asg.title[lang === "en" ? 1 : 0] } : base;
+  return applyRaw(concept.id, lang, titled);
 }
 
 function bareCopy(concept: StudyConcept, lang: Lang): RawText {

@@ -11,13 +11,18 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as BanDoRouteImport } from './routes/ban-do'
+import { Route as BaoLoiRouteImport } from './routes/bao-loi'
 import { Route as CongThucRouteImport } from './routes/cong-thuc'
 import { Route as DoPhuRouteImport } from './routes/do-phu'
+import { Route as DongBoRouteImport } from './routes/dong-bo'
 import { Route as GocRouteImport } from './routes/goc'
+import { Route as LuyenTapRouteImport } from './routes/luyen-tap'
+import { Route as NgheRouteImport } from './routes/nghe'
 import { Route as TimKiemRouteImport } from './routes/tim-kiem'
 import { Route as TuDienRouteImport } from './routes/tu-dien'
 import { Route as ApiMcpRouteImport } from './routes/api/mcp'
 import { Route as ApiSoMucRouteImport } from './routes/api/so-muc'
+import { Route as ApiSyncRouteImport } from './routes/api/sync'
 import { Route as BaiLessonIdRouteImport } from './routes/bai.$lessonId'
 import { Route as KhaiNiemConceptIdRouteImport } from './routes/khai-niem.$conceptId'
 import { Route as KhoaCourseIdRouteImport } from './routes/khoa.$courseId'
@@ -32,6 +37,11 @@ const BanDoRoute = BanDoRouteImport.update({
   path: '/ban-do',
   getParentRoute: () => rootRouteImport,
 } as any)
+const BaoLoiRoute = BaoLoiRouteImport.update({
+  id: '/bao-loi',
+  path: '/bao-loi',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const CongThucRoute = CongThucRouteImport.update({
   id: '/cong-thuc',
   path: '/cong-thuc',
@@ -42,9 +52,24 @@ const DoPhuRoute = DoPhuRouteImport.update({
   path: '/do-phu',
   getParentRoute: () => rootRouteImport,
 } as any)
+const DongBoRoute = DongBoRouteImport.update({
+  id: '/dong-bo',
+  path: '/dong-bo',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const GocRoute = GocRouteImport.update({
   id: '/goc',
   path: '/goc',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LuyenTapRoute = LuyenTapRouteImport.update({
+  id: '/luyen-tap',
+  path: '/luyen-tap',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const NgheRoute = NgheRouteImport.update({
+  id: '/nghe',
+  path: '/nghe',
   getParentRoute: () => rootRouteImport,
 } as any)
 const TimKiemRoute = TimKiemRouteImport.update({
@@ -67,6 +92,11 @@ const ApiSoMucRoute = ApiSoMucRouteImport.update({
   path: '/api/so-muc',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ApiSyncRoute = ApiSyncRouteImport.update({
+  id: '/api/sync',
+  path: '/api/sync',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const BaiLessonIdRoute = BaiLessonIdRouteImport.update({
   id: '/bai/$lessonId',
   path: '/bai/$lessonId',
@@ -86,13 +116,18 @@ const KhoaCourseIdRoute = KhoaCourseIdRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/ban-do': typeof BanDoRoute
+  '/bao-loi': typeof BaoLoiRoute
   '/cong-thuc': typeof CongThucRoute
   '/do-phu': typeof DoPhuRoute
+  '/dong-bo': typeof DongBoRoute
   '/goc': typeof GocRoute
+  '/luyen-tap': typeof LuyenTapRoute
+  '/nghe': typeof NgheRoute
   '/tim-kiem': typeof TimKiemRoute
   '/tu-dien': typeof TuDienRoute
   '/api/mcp': typeof ApiMcpRoute
   '/api/so-muc': typeof ApiSoMucRoute
+  '/api/sync': typeof ApiSyncRoute
   '/bai/$lessonId': typeof BaiLessonIdRoute
   '/khai-niem/$conceptId': typeof KhaiNiemConceptIdRoute
   '/khoa/$courseId': typeof KhoaCourseIdRoute
@@ -100,13 +135,18 @@ export interface FileRoutesByFullPath {
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/ban-do': typeof BanDoRoute
+  '/bao-loi': typeof BaoLoiRoute
   '/cong-thuc': typeof CongThucRoute
   '/do-phu': typeof DoPhuRoute
+  '/dong-bo': typeof DongBoRoute
   '/goc': typeof GocRoute
+  '/luyen-tap': typeof LuyenTapRoute
+  '/nghe': typeof NgheRoute
   '/tim-kiem': typeof TimKiemRoute
   '/tu-dien': typeof TuDienRoute
   '/api/mcp': typeof ApiMcpRoute
   '/api/so-muc': typeof ApiSoMucRoute
+  '/api/sync': typeof ApiSyncRoute
   '/bai/$lessonId': typeof BaiLessonIdRoute
   '/khai-niem/$conceptId': typeof KhaiNiemConceptIdRoute
   '/khoa/$courseId': typeof KhoaCourseIdRoute
@@ -115,13 +155,18 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/ban-do': typeof BanDoRoute
+  '/bao-loi': typeof BaoLoiRoute
   '/cong-thuc': typeof CongThucRoute
   '/do-phu': typeof DoPhuRoute
+  '/dong-bo': typeof DongBoRoute
   '/goc': typeof GocRoute
+  '/luyen-tap': typeof LuyenTapRoute
+  '/nghe': typeof NgheRoute
   '/tim-kiem': typeof TimKiemRoute
   '/tu-dien': typeof TuDienRoute
   '/api/mcp': typeof ApiMcpRoute
   '/api/so-muc': typeof ApiSoMucRoute
+  '/api/sync': typeof ApiSyncRoute
   '/bai/$lessonId': typeof BaiLessonIdRoute
   '/khai-niem/$conceptId': typeof KhaiNiemConceptIdRoute
   '/khoa/$courseId': typeof KhoaCourseIdRoute
@@ -131,13 +176,18 @@ export interface FileRouteTypes {
   fullPaths:
     | '/'
     | '/ban-do'
+    | '/bao-loi'
     | '/cong-thuc'
     | '/do-phu'
+    | '/dong-bo'
     | '/goc'
+    | '/luyen-tap'
+    | '/nghe'
     | '/tim-kiem'
     | '/tu-dien'
     | '/api/mcp'
     | '/api/so-muc'
+    | '/api/sync'
     | '/bai/$lessonId'
     | '/khai-niem/$conceptId'
     | '/khoa/$courseId'
@@ -145,13 +195,18 @@ export interface FileRouteTypes {
   to:
     | '/'
     | '/ban-do'
+    | '/bao-loi'
     | '/cong-thuc'
     | '/do-phu'
+    | '/dong-bo'
     | '/goc'
+    | '/luyen-tap'
+    | '/nghe'
     | '/tim-kiem'
     | '/tu-dien'
     | '/api/mcp'
     | '/api/so-muc'
+    | '/api/sync'
     | '/bai/$lessonId'
     | '/khai-niem/$conceptId'
     | '/khoa/$courseId'
@@ -159,13 +214,18 @@ export interface FileRouteTypes {
     | '__root__'
     | '/'
     | '/ban-do'
+    | '/bao-loi'
     | '/cong-thuc'
     | '/do-phu'
+    | '/dong-bo'
     | '/goc'
+    | '/luyen-tap'
+    | '/nghe'
     | '/tim-kiem'
     | '/tu-dien'
     | '/api/mcp'
     | '/api/so-muc'
+    | '/api/sync'
     | '/bai/$lessonId'
     | '/khai-niem/$conceptId'
     | '/khoa/$courseId'
@@ -174,13 +234,18 @@ export interface FileRouteTypes {
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   BanDoRoute: typeof BanDoRoute
+  BaoLoiRoute: typeof BaoLoiRoute
   CongThucRoute: typeof CongThucRoute
   DoPhuRoute: typeof DoPhuRoute
+  DongBoRoute: typeof DongBoRoute
   GocRoute: typeof GocRoute
+  LuyenTapRoute: typeof LuyenTapRoute
+  NgheRoute: typeof NgheRoute
   TimKiemRoute: typeof TimKiemRoute
   TuDienRoute: typeof TuDienRoute
   ApiMcpRoute: typeof ApiMcpRoute
   ApiSoMucRoute: typeof ApiSoMucRoute
+  ApiSyncRoute: typeof ApiSyncRoute
   BaiLessonIdRoute: typeof BaiLessonIdRoute
   KhaiNiemConceptIdRoute: typeof KhaiNiemConceptIdRoute
   KhoaCourseIdRoute: typeof KhoaCourseIdRoute
@@ -202,6 +267,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof BanDoRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/bao-loi': {
+      id: '/bao-loi'
+      path: '/bao-loi'
+      fullPath: '/bao-loi'
+      preLoaderRoute: typeof BaoLoiRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/cong-thuc': {
       id: '/cong-thuc'
       path: '/cong-thuc'
@@ -216,11 +288,32 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof DoPhuRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/dong-bo': {
+      id: '/dong-bo'
+      path: '/dong-bo'
+      fullPath: '/dong-bo'
+      preLoaderRoute: typeof DongBoRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/goc': {
       id: '/goc'
       path: '/goc'
       fullPath: '/goc'
       preLoaderRoute: typeof GocRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/luyen-tap': {
+      id: '/luyen-tap'
+      path: '/luyen-tap'
+      fullPath: '/luyen-tap'
+      preLoaderRoute: typeof LuyenTapRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/nghe': {
+      id: '/nghe'
+      path: '/nghe'
+      fullPath: '/nghe'
+      preLoaderRoute: typeof NgheRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/tim-kiem': {
@@ -251,6 +344,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ApiSoMucRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/api/sync': {
+      id: '/api/sync'
+      path: '/api/sync'
+      fullPath: '/api/sync'
+      preLoaderRoute: typeof ApiSyncRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/bai/$lessonId': {
       id: '/bai/$lessonId'
       path: '/bai/$lessonId'
@@ -278,13 +378,18 @@ declare module '@tanstack/react-router' {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   BanDoRoute: BanDoRoute,
+  BaoLoiRoute: BaoLoiRoute,
   CongThucRoute: CongThucRoute,
   DoPhuRoute: DoPhuRoute,
+  DongBoRoute: DongBoRoute,
   GocRoute: GocRoute,
+  LuyenTapRoute: LuyenTapRoute,
+  NgheRoute: NgheRoute,
   TimKiemRoute: TimKiemRoute,
   TuDienRoute: TuDienRoute,
   ApiMcpRoute: ApiMcpRoute,
   ApiSoMucRoute: ApiSoMucRoute,
+  ApiSyncRoute: ApiSyncRoute,
   BaiLessonIdRoute: BaiLessonIdRoute,
   KhaiNiemConceptIdRoute: KhaiNiemConceptIdRoute,
   KhoaCourseIdRoute: KhoaCourseIdRoute,

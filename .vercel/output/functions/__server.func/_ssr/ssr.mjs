@@ -1,5 +1,5 @@
 import { r as __exportAll } from "../_runtime.mjs";
-import { E as fromJSON, F as resolveManifestCssLink, G as isRedirect, H as isDangerousProtocol, I as waitForReason, J as require_react, K as rootRouteId, L as _getRenderedMatches, M as getScriptPreloadAttrs, N as getStylesheetHref, O as toCrossJSONAsync, P as resolveManifestAssetLink, R as executeRewriteInput, S as require_jsx_runtime, U as isPromise, a as isSsrResponse, c as stripSsrResponseBody, i as disposeSsrResponse, k as toCrossJSONStream, m as RouterProvider, n as bindSsrResponseToRequest, o as normalizeSsrResponse, q as isNotFound, r as defineHandlerCallback, s as replaceSsrResponse, t as renderRouterToStream, z as invariant } from "../_libs/@tanstack/react-router+[...].mjs";
+import { D as toCrossJSONAsync, F as waitForReason, G as rootRouteId, H as isPromise, I as _getRenderedMatches, J as require_react, K as isNotFound, L as executeRewriteInput, M as getStylesheetHref, N as resolveManifestAssetLink, O as toCrossJSONStream, P as resolveManifestCssLink, R as invariant, T as fromJSON, V as isDangerousProtocol, W as isRedirect, a as isSsrResponse, c as stripSsrResponseBody, i as disposeSsrResponse, j as getScriptPreloadAttrs, m as RouterProvider, n as bindSsrResponseToRequest, o as normalizeSsrResponse, q as require_jsx_runtime, r as defineHandlerCallback, s as replaceSsrResponse, t as renderRouterToStream } from "../_libs/@tanstack/react-router+[...].mjs";
 import { n as createServerHistory } from "../_libs/tanstack__history.mjs";
 import { a as defaultSerovalDeserializerPlugins, i as createRawStreamRPCPlugin, n as attachRouterServerSsrUtils, o as makeSerovalPlugin, r as getNormalizedURL, s as createSerializationAdapter, t as mergeHeaders } from "../_libs/@tanstack/router-core+[...].mjs";
 import { n as toResponse, t as H3Event } from "../_libs/h3-v2+rou3.mjs";
@@ -100,17 +100,18 @@ var HEADERS = { TSS_SHELL: "X-TSS_SHELL" };
 * the dev styles URL for route-scoped CSS collection.
 */
 async function getStartManifest(matchedRoutes) {
-	const { tsrStartManifest } = await import("../_tanstack-start-manifest_v-BqRDg_SU.mjs");
+	const { tsrStartManifest } = await import("../_tanstack-start-manifest_v-B1OBla_k.mjs");
 	const startManifest = tsrStartManifest();
 	let routes = startManifest.routes;
 	routes[rootRouteId];
 	const manifestRoutes = {};
 	for (const k in routes) {
+		var _v$css;
 		const v = routes[k];
 		const result = {};
 		if (v.preloads && v.preloads.length > 0) result.preloads = v.preloads;
 		if (v.scripts && v.scripts.length > 0) result.scripts = v.scripts;
-		if (v.css?.length) result.css = v.css;
+		if ((_v$css = v.css) === null || _v$css === void 0 ? void 0 : _v$css.length) result.css = v.css;
 		if (result.preloads || result.scripts || result.css) manifestRoutes[k] = result;
 	}
 	return {
@@ -121,9 +122,10 @@ async function getStartManifest(matchedRoutes) {
 }
 var manifest = {};
 async function getServerFnById(id, access) {
+	var _serverFnInfo$module;
 	const serverFnInfo = manifest[id];
 	if (!serverFnInfo) throw new Error("Server function info not found for " + id);
-	const fnModule = serverFnInfo.module ??= await serverFnInfo.importer();
+	const fnModule = (_serverFnInfo$module = serverFnInfo.module) !== null && _serverFnInfo$module !== void 0 ? _serverFnInfo$module : serverFnInfo.module = await serverFnInfo.importer();
 	if (!fnModule) throw new Error("Server function module not resolved for " + id);
 	const action = fnModule[serverFnInfo.functionName];
 	if (!action) throw new Error("Server function module export not resolved for serverFn ID: " + id);
@@ -150,13 +152,14 @@ async function runWithStartContext(context, fn) {
 }
 function getStartContext(opts) {
 	const context = startStorage.getStore();
-	if (!context && opts?.throwIfNotFound !== false) throw new Error(`No Start context found in AsyncLocalStorage. Make sure you are using the function within the server runtime.`);
+	if (!context && (opts === null || opts === void 0 ? void 0 : opts.throwIfNotFound) !== false) throw new Error(`No Start context found in AsyncLocalStorage. Make sure you are using the function within the server runtime.`);
 	return context;
 }
 var getStartOptions = () => getStartContext().startOptions;
 /** Start's serialization adapters followed by `routerPlugins`. */
 function getSerovalPlugins(routerPlugins) {
-	return [...(getStartOptions()?.serializationAdapters)?.map(makeSerovalPlugin) ?? [], ...routerPlugins];
+	var _getStartOptions$seri, _getStartOptions;
+	return [...(_getStartOptions$seri = (_getStartOptions = getStartOptions()) === null || _getStartOptions === void 0 || (_getStartOptions = _getStartOptions.serializationAdapters) === null || _getStartOptions === void 0 ? void 0 : _getStartOptions.map(makeSerovalPlugin)) !== null && _getStartOptions$seri !== void 0 ? _getStartOptions$seri : [], ...routerPlugins];
 }
 /**
 * Binary frame protocol for multiplexing JSON and raw streams over HTTP.
@@ -192,7 +195,7 @@ function encodeFrame(type, streamId, payload) {
 }
 /** Encodes an error message payload, truncated to a bounded length. */
 function encodeErrorPayload(error) {
-	const originalMessage = error instanceof Error ? error.message : String(error ?? "Unknown error");
+	const originalMessage = error instanceof Error ? error.message : String(error !== null && error !== void 0 ? error : "Unknown error");
 	const message = originalMessage.length > MAX_ERROR_MESSAGE_CODE_UNITS ? `${originalMessage.slice(0, MAX_ERROR_MESSAGE_CODE_UNITS)}…` : originalMessage;
 	return textEncoder$1.encode(message);
 }
@@ -211,11 +214,14 @@ function createMultiplexedStream(recordStream, options = {}) {
 	let admission;
 	const readers = /* @__PURE__ */ new Set();
 	const pendingRawStreams = /* @__PURE__ */ new Set();
-	const abortOutput = () => errorOutput(options.signal?.reason);
+	const abortOutput = () => {
+		var _options$signal;
+		return errorOutput((_options$signal = options.signal) === null || _options$signal === void 0 ? void 0 : _options$signal.reason);
+	};
 	const wakeAdmission = () => {
 		const wake = wakeDemand;
 		wakeDemand = void 0;
-		wake?.();
+		wake === null || wake === void 0 || wake();
 	};
 	const cancelReader = (reader, reason) => {
 		reader.cancel(reason).catch(() => {});
@@ -224,9 +230,10 @@ function createMultiplexedStream(recordStream, options = {}) {
 		stream.cancel(reason).catch(() => {});
 	};
 	const stop = (reason) => {
+		var _options$signal2;
 		if (stopped) return false;
 		stopped = [reason];
-		options.signal?.removeEventListener("abort", abortOutput);
+		(_options$signal2 = options.signal) === null || _options$signal2 === void 0 || _options$signal2.removeEventListener("abort", abortOutput);
 		wakeAdmission();
 		for (const reader of readers) cancelReader(reader, reason);
 		for (const stream of pendingRawStreams) cancelStream(stream, reason);
@@ -240,14 +247,16 @@ function createMultiplexedStream(recordStream, options = {}) {
 		} catch {}
 	};
 	const waitForDemand = async () => {
-		while (!stopped && (controller.desiredSize ?? 0) <= 0) await new Promise((resolve) => {
+		var _controller$desiredSi;
+		while (!stopped && ((_controller$desiredSi = controller.desiredSize) !== null && _controller$desiredSi !== void 0 ? _controller$desiredSi : 0) <= 0) await new Promise((resolve) => {
 			wakeDemand = resolve;
 		});
 		return !stopped;
 	};
 	const admitFrame = (type, streamId, payload) => {
+		var _controller$desiredSi2;
 		if (stopped) return false;
-		if (!admission && (controller.desiredSize ?? 0) > 0) {
+		if (!admission && ((_controller$desiredSi2 = controller.desiredSize) !== null && _controller$desiredSi2 !== void 0 ? _controller$desiredSi2 : 0) > 0) {
 			controller.enqueue(encodeFrame(type, streamId, payload));
 			return true;
 		}
@@ -338,20 +347,22 @@ function createMultiplexedStream(recordStream, options = {}) {
 	}
 	return new ReadableStream({
 		start(ctrl) {
+			var _options$signal3, _options$signal4;
 			controller = ctrl;
-			if (options.signal?.aborted) {
+			if ((_options$signal3 = options.signal) === null || _options$signal3 === void 0 ? void 0 : _options$signal3.aborted) {
 				cancelStream(recordStream, options.signal.reason);
 				errorOutput(options.signal.reason);
 				return;
 			}
-			options.signal?.addEventListener("abort", abortOutput, { once: true });
+			(_options$signal4 = options.signal) === null || _options$signal4 === void 0 || _options$signal4.addEventListener("abort", abortOutput, { once: true });
 			startPump(pumpRecords);
 		},
 		pull() {
 			wakeAdmission();
 		},
 		cancel(reason) {
-			if (stop(reason)) options.onCancel?.(reason);
+			var _options$onCancel;
+			if (stop(reason)) (_options$onCancel = options.onCancel) === null || _options$onCancel === void 0 || _options$onCancel.call(options, reason);
 		}
 	});
 }
@@ -436,8 +447,9 @@ async function isCsrfRequestAllowed(opts, ctx) {
 	return result === true || result === void 0 && opts.allowRequestsWithoutOriginCheck === true;
 }
 async function getCsrfRequestValidationResult(opts, ctx) {
+	var _opts$secFetchSite;
 	const fetchSite = ctx.request.headers.get("Sec-Fetch-Site");
-	if (fetchSite !== null) return matchValue(opts.secFetchSite ?? "same-origin", fetchSite, ctx);
+	if (fetchSite !== null) return matchValue((_opts$secFetchSite = opts.secFetchSite) !== null && _opts$secFetchSite !== void 0 ? _opts$secFetchSite : "same-origin", fetchSite, ctx);
 	const origin = ctx.request.headers.get("Origin");
 	if (origin !== null) {
 		if (opts.origin) return matchValue(opts.origin, origin, ctx);
@@ -472,8 +484,9 @@ function isRefererSameOrigin(referer, requestOrigin) {
 	return code === 47 || code === 63 || code === 35;
 }
 async function getFailureResponse(opts, ctx) {
+	var _opts$failureResponse, _opts$failureResponse2;
 	if (typeof opts.failureResponse === "function") return opts.failureResponse(ctx);
-	return opts.failureResponse?.clone() ?? new Response("Forbidden", { status: 403 });
+	return (_opts$failureResponse = (_opts$failureResponse2 = opts.failureResponse) === null || _opts$failureResponse2 === void 0 ? void 0 : _opts$failureResponse2.clone()) !== null && _opts$failureResponse !== void 0 ? _opts$failureResponse : new Response("Forbidden", { status: 403 });
 }
 var serovalPlugins = void 0;
 var FORM_DATA_CONTENT_TYPES = ["multipart/form-data", "application/x-www-form-urlencoded"];
@@ -496,6 +509,7 @@ function cancelRawStream(stream, reason) {
 	stream.cancel(reason).catch(() => {});
 }
 var handleServerAction = async ({ request, context, serverFnId }) => {
+	var _serovalPlugins;
 	const methodUpper = request.method.toUpperCase();
 	const url = new URL(request.url);
 	const action = await getServerFnById(serverFnId, { origin: "client" });
@@ -504,7 +518,7 @@ var handleServerAction = async ({ request, context, serverFnId }) => {
 		headers: { Allow: action.method }
 	});
 	const isServerFn = request.headers.get("x-tsr-serverFn") === "true";
-	serovalPlugins ??= getSerovalPlugins(defaultSerovalDeserializerPlugins);
+	(_serovalPlugins = serovalPlugins) !== null && _serovalPlugins !== void 0 || (serovalPlugins = getSerovalPlugins(defaultSerovalDeserializerPlugins));
 	const contentType = request.headers.get("Content-Type");
 	try {
 		let res;
@@ -528,15 +542,15 @@ var handleServerAction = async ({ request, context, serverFnId }) => {
 			if (payloadParam && payloadParam.length > MAX_PAYLOAD_SIZE) throw new Error("Payload too large");
 			const payload = payloadParam ? fromJSON(JSON.parse(payloadParam), { plugins: serovalPlugins }) : void 0;
 			res = await action({
-				data: payload?.data,
-				context: safeObjectMerge(payload?.context, context),
+				data: payload === null || payload === void 0 ? void 0 : payload.data,
+				context: safeObjectMerge(payload === null || payload === void 0 ? void 0 : payload.context, context),
 				method: methodUpper
 			});
 		} else {
-			const payload = contentType?.includes("application/json") ? fromJSON(await request.json(), { plugins: serovalPlugins }) : void 0;
+			const payload = (contentType === null || contentType === void 0 ? void 0 : contentType.includes("application/json")) ? fromJSON(await request.json(), { plugins: serovalPlugins }) : void 0;
 			res = await action({
-				data: payload?.data,
-				context: safeObjectMerge(payload?.context, context),
+				data: payload === null || payload === void 0 ? void 0 : payload.data,
+				context: safeObjectMerge(payload === null || payload === void 0 ? void 0 : payload.context, context),
 				method: methodUpper
 			});
 		}
@@ -563,8 +577,9 @@ var handleServerAction = async ({ request, context, serverFnId }) => {
 			[X_TSS_SERIALIZED]: "true"
 		};
 		try {
+			var _response$status;
 			return new Response(serializedError, {
-				status: response.status ?? 500,
+				status: (_response$status = response.status) !== null && _response$status !== void 0 ? _response$status : 500,
 				statusText: response.statusText,
 				headers
 			});
@@ -593,7 +608,7 @@ function serializeResult(res, signal, plugins) {
 	let disposeSerialization;
 	let onParse = (value, initial) => {
 		if (serializationFailure) return;
-		initialParsed ||= initial;
+		initialParsed || (initialParsed = initial);
 		const record = encodeSerializationRecord(value);
 		if (exceedsPendingSerializationLimit(record, initialRecords.length, initialBytes)) {
 			serializationFailure = [/* @__PURE__ */ new Error("Server function serialization exceeded its pending output limit")];
@@ -606,7 +621,8 @@ function serializeResult(res, signal, plugins) {
 		if (initialParsed) done = true;
 	};
 	let onError = (error) => {
-		serializationFailure ??= [error];
+		var _serializationFailure;
+		(_serializationFailure = serializationFailure) !== null && _serializationFailure !== void 0 || (serializationFailure = [error]);
 	};
 	const rawStreamPlugin = createRawStreamRPCPlugin((id, stream) => {
 		if (serializationFailure) {
@@ -798,7 +814,8 @@ function serializeEarlyHint(hint) {
 	return parts.join("; ");
 }
 function getStringAttr(attrs, name, fallbackName) {
-	const value = attrs?.[name] ?? (fallbackName ? attrs?.[fallbackName] : void 0);
+	var _attrs$name;
+	const value = (_attrs$name = attrs === null || attrs === void 0 ? void 0 : attrs[name]) !== null && _attrs$name !== void 0 ? _attrs$name : fallbackName ? attrs === null || attrs === void 0 ? void 0 : attrs[fallbackName] : void 0;
 	return typeof value === "string" ? value : void 0;
 }
 function getPreloadAs(attrs) {
@@ -853,9 +870,10 @@ function linkAttrsToEarlyHint(attrs) {
 function collectStaticHintsFromManifest(manifest, matchedRoutes) {
 	const hints = [];
 	for (const route of matchedRoutes) {
+		var _routeManifest$preloa, _routeManifest$css;
 		const routeManifest = manifest.routes[route.id];
 		if (!routeManifest) continue;
-		for (const link of routeManifest.preloads ?? []) {
+		for (const link of (_routeManifest$preloa = routeManifest.preloads) !== null && _routeManifest$preloa !== void 0 ? _routeManifest$preloa : []) {
 			const attrs = getScriptPreloadAttrs(manifest, link);
 			const hint = {
 				href: attrs.href,
@@ -865,9 +883,10 @@ function collectStaticHintsFromManifest(manifest, matchedRoutes) {
 			if (attrs.crossOrigin !== void 0) hint.crossOrigin = attrs.crossOrigin;
 			hints.push(hint);
 		}
-		for (const link of routeManifest.css ?? []) {
+		for (const link of (_routeManifest$css = routeManifest.css) !== null && _routeManifest$css !== void 0 ? _routeManifest$css : []) {
+			var _manifest$inlineCss;
 			const stylesheetHref = getStylesheetHref(link);
-			if (manifest.inlineCss?.styles[stylesheetHref] !== void 0) continue;
+			if (((_manifest$inlineCss = manifest.inlineCss) === null || _manifest$inlineCss === void 0 ? void 0 : _manifest$inlineCss.styles[stylesheetHref]) !== void 0) continue;
 			const resolvedLink = resolveManifestCssLink(link);
 			const hint = {
 				href: stylesheetHref,
@@ -984,14 +1003,14 @@ function collectEarlyHintsPhase(opts) {
 	});
 }
 function createEarlyHintsCollector(opts) {
-	if (!opts?.onEarlyHints && !opts?.responseLinkHeader) return;
+	if (!(opts === null || opts === void 0 ? void 0 : opts.onEarlyHints) && !(opts === null || opts === void 0 ? void 0 : opts.responseLinkHeader)) return;
 	const sentLinks = /* @__PURE__ */ new Set();
 	const sentHints = opts.onEarlyHints ? new Array() : void 0;
 	const responseLinkHeaderEntries = opts.responseLinkHeader ? new Array() : void 0;
 	const responseLinkHeaderFilter = getResponseLinkHeaderFilter(opts.responseLinkHeader);
 	return {
 		collectStatic: ({ manifest, matchedRoutes }) => {
-			if (!matchedRoutes?.length) return;
+			if (!(matchedRoutes === null || matchedRoutes === void 0 ? void 0 : matchedRoutes.length)) return;
 			collectEarlyHintsPhase({
 				phase: "static",
 				hints: collectStaticHintsFromManifest(manifest, matchedRoutes),
@@ -1012,7 +1031,7 @@ function createEarlyHintsCollector(opts) {
 			});
 		},
 		appendResponseHeaders: (headers) => {
-			if (!responseLinkHeaderEntries?.length) return;
+			if (!(responseLinkHeaderEntries === null || responseLinkHeaderEntries === void 0 ? void 0 : responseLinkHeaderEntries.length)) return;
 			appendResponseLinkHeaders({
 				responseHeaders: headers,
 				entries: responseLinkHeaderEntries,
@@ -1045,7 +1064,8 @@ async function transformInlineCssTemplate(options) {
 async function transformInlineCssStyles(inlineCss, transformFn) {
 	const transformedStyles = {};
 	const transformedEntries = await Promise.all(Object.entries(inlineCss.styles).map(async ([stylesheetHref, css]) => {
-		const template = inlineCss.templates?.[stylesheetHref];
+		var _inlineCss$templates;
+		const template = (_inlineCss$templates = inlineCss.templates) === null || _inlineCss$templates === void 0 ? void 0 : _inlineCss$templates[stylesheetHref];
 		return [stylesheetHref, template ? await transformInlineCssTemplate({
 			stylesheetHref,
 			template,
@@ -1119,7 +1139,7 @@ function assignManifestLink(link, next) {
 }
 async function transformManifestAssets(source, transformFn, _opts) {
 	const manifest = structuredClone(source);
-	const inlineCssEnabled = _opts?.inlineCss !== false;
+	const inlineCssEnabled = (_opts === null || _opts === void 0 ? void 0 : _opts.inlineCss) !== false;
 	const scriptTransforms = /* @__PURE__ */ new Map();
 	const transformScript = (url) => {
 		const cached = scriptTransforms.get(url);
@@ -1134,14 +1154,15 @@ async function transformManifestAssets(source, transformFn, _opts) {
 	if (!inlineCssEnabled) delete manifest.inlineCss;
 	else if (manifest.inlineCss) manifest.inlineCss = await transformInlineCssStyles(manifest.inlineCss, transformFn);
 	for (const route of Object.values(manifest.routes)) {
-		if (route.preloads?.length) route.preloads = await Promise.all(route.preloads.map(async (link) => {
+		var _route$preloads, _route$css, _route$scripts;
+		if ((_route$preloads = route.preloads) === null || _route$preloads === void 0 ? void 0 : _route$preloads.length) route.preloads = await Promise.all(route.preloads.map(async (link) => {
 			const result = await transformScript(resolveManifestAssetLink(link).href);
 			return assignManifestLink(link, {
 				href: result.href,
 				crossOrigin: result.crossOrigin
 			});
 		}));
-		if (route.css?.length && !manifest.inlineCss) route.css = await Promise.all(route.css.map(async (link) => {
+		if (((_route$css = route.css) === null || _route$css === void 0 ? void 0 : _route$css.length) && !manifest.inlineCss) route.css = await Promise.all(route.css.map(async (link) => {
 			const result = normalizeTransformAssetResult(await transformFn({
 				url: resolveManifestCssLink(link).href,
 				kind: "stylesheet"
@@ -1151,8 +1172,9 @@ async function transformManifestAssets(source, transformFn, _opts) {
 				crossOrigin: result.crossOrigin
 			});
 		}));
-		if (route.scripts?.length) for (const script of route.scripts) {
-			const src = script.attrs?.src;
+		if ((_route$scripts = route.scripts) === null || _route$scripts === void 0 ? void 0 : _route$scripts.length) for (const script of route.scripts) {
+			var _script$attrs;
+			const src = (_script$attrs = script.attrs) === null || _script$attrs === void 0 ? void 0 : _script$attrs.src;
 			if (typeof src !== "string") continue;
 			const result = await transformScript(src);
 			script.attrs = {
@@ -1174,18 +1196,19 @@ async function transformManifestAssets(source, transformFn, _opts) {
 function buildManifest(source, opts) {
 	return {
 		...source.scriptFormat ? { scriptFormat: source.scriptFormat } : {},
-		...opts?.inlineCss !== false && source.inlineCss ? { inlineCss: structuredClone(source.inlineCss) } : {},
+		...(opts === null || opts === void 0 ? void 0 : opts.inlineCss) !== false && source.inlineCss ? { inlineCss: structuredClone(source.inlineCss) } : {},
 		routes: { ...source.routes }
 	};
 }
 function getStaticHandlerInlineCssDefault(handlerInlineCss) {
 	if (typeof handlerInlineCss === "function") return;
-	return handlerInlineCss ?? true;
+	return handlerInlineCss !== null && handlerInlineCss !== void 0 ? handlerInlineCss : true;
 }
 async function resolveInlineCssForRequest(opts) {
+	var _opts$handlerInlineCs;
 	if (opts.requestInlineCss !== void 0) return opts.requestInlineCss;
 	if (typeof opts.handlerInlineCss === "function") return await opts.handlerInlineCss({ request: opts.request });
-	return opts.handlerInlineCss ?? true;
+	return (_opts$handlerInlineCs = opts.handlerInlineCss) !== null && _opts$handlerInlineCs !== void 0 ? _opts$handlerInlineCs : true;
 }
 function createCachedBaseManifestLoader(loadBaseManifest) {
 	let baseManifestPromise;
@@ -1316,11 +1339,12 @@ var ServerFunctionSerializationAdapter = createSerializationAdapter({
 	toSerializable: ({ serverFnMeta }) => ({ functionId: serverFnMeta.id }),
 	fromSerializable: ({ functionId }) => {
 		const fn = async (opts, signal) => {
+			var _serverFn$method;
 			const serverFn = await getServerFnById(functionId, { origin: "client" });
 			const result = await serverFn({
-				data: opts?.data,
-				context: opts?.context,
-				method: serverFn.method ?? "GET"
+				data: opts === null || opts === void 0 ? void 0 : opts.data,
+				context: opts === null || opts === void 0 ? void 0 : opts.context,
+				method: (_serverFn$method = serverFn.method) !== null && _serverFn$method !== void 0 ? _serverFn$method : "GET"
 			}, signal);
 			if (result.error !== void 0) throw result.error;
 			return result.result;
@@ -1341,7 +1365,7 @@ var getBaseManifest = getProdBaseManifest;
 var createEarlyHintsForRequest = createEarlyHintsCollector;
 async function loadEntries() {
 	const [routerEntry, startEntry, pluginAdapters] = await Promise.all([
-		import("./router-SglV15-G.mjs").then((n) => n.t),
+		import("./router-B7hNBnq3.mjs").then((n) => n.t),
 		import("./start-5Z2QO8AU.mjs"),
 		import("./empty-plugin-adapters-D9UWiqvJ.mjs")
 	]);
@@ -1369,7 +1393,7 @@ function throwIfMayNotDefer() {
 	throw new Error(ERR_NO_DEFER);
 }
 function getResponseFromResult(result) {
-	return isSsrResponse(result) || result instanceof Response ? result : result?.response;
+	return isSsrResponse(result) || result instanceof Response ? result : result === null || result === void 0 ? void 0 : result.response;
 }
 var responseBodySources = /* @__PURE__ */ new WeakMap();
 function disposeResponseResult(result, reason) {
@@ -1384,7 +1408,7 @@ function inheritsResponseOwnership(ownership, candidate) {
 }
 function disposeResponseOwnership(ownership, reason) {
 	const { response, sourceBody, streamResponse } = ownership;
-	streamResponse?.dispose(reason);
+	streamResponse === null || streamResponse === void 0 || streamResponse.dispose(reason);
 	if (!streamResponse || response.body !== sourceBody) response.body.cancel(reason).catch(() => {});
 }
 function getOwnedResponse(ownership) {
@@ -1416,18 +1440,20 @@ async function executeMiddleware(middlewares, terminal, ctx, signal, terminalNex
 	let settled = false;
 	const disposeAbandonedResult = createLateResponseDisposer(signal);
 	const setResponse = (response) => {
+		var _current$streamRespon;
 		const ssrResponse = isSsrResponse(response) ? response : void 0;
-		const streamResponse = ssrResponse?.serverSsrCleanup === "stream" ? ssrResponse : void 0;
+		const streamResponse = (ssrResponse === null || ssrResponse === void 0 ? void 0 : ssrResponse.serverSsrCleanup) === "stream" ? ssrResponse : void 0;
 		const exposed = ssrResponse ? ssrResponse.response : response;
 		const current = responseOwnership;
 		if (settled) {
 			if (exposed !== ctx.response) disposeResponseResult(response, "late middleware response");
 			return;
 		}
-		if (current && current.response === exposed) current.streamResponse ??= streamResponse;
+		if (current && current.response === exposed) (_current$streamRespon = current.streamResponse) !== null && _current$streamRespon !== void 0 || (current.streamResponse = streamResponse);
 		else if (current && inheritsResponseOwnership(current, exposed)) {
+			var _current$streamRespon2;
 			current.response = exposed;
-			current.streamResponse ??= streamResponse;
+			(_current$streamRespon2 = current.streamResponse) !== null && _current$streamRespon2 !== void 0 || (current.streamResponse = streamResponse);
 		} else {
 			if (current) disposeResponseOwnership(current, "middleware response replaced");
 			if (hasResponseBody(exposed)) responseOwnership = {
@@ -1440,7 +1466,7 @@ async function executeMiddleware(middlewares, terminal, ctx, signal, terminalNex
 		ctx.response = exposed;
 	};
 	const reconcileCtxResponse = () => {
-		if (ctx.response !== responseOwnership?.response) setResponse(ctx.response);
+		if (ctx.response !== (responseOwnership === null || responseOwnership === void 0 ? void 0 : responseOwnership.response)) setResponse(ctx.response);
 	};
 	let nextPromise;
 	function next(nextCtx) {
@@ -1584,7 +1610,9 @@ function createStartHandler(cbOrOptions) {
 			const flattenedRequestMiddlewares = requestStartOptions.requestMiddleware ? flattenMiddlewares(requestStartOptions.requestMiddleware) : [];
 			const executedRequestMiddlewares = new Set(flattenedRequestMiddlewares);
 			const getRouter = () => {
-				routerPromise ??= (async () => {
+				var _routerPromise;
+				(_routerPromise = routerPromise) !== null && _routerPromise !== void 0 || (routerPromise = (async () => {
+					var _requestRouter$option;
 					signal.throwIfAborted();
 					const requestRouter = await waitForReason(entries.routerEntry.getRouter(), signal);
 					let isShell = IS_SHELL_ENV;
@@ -1594,14 +1622,14 @@ function createStartHandler(cbOrOptions) {
 						history,
 						isShell,
 						isPrerendering: IS_PRERENDERING,
-						origin: requestRouter.options.origin ?? origin,
+						origin: (_requestRouter$option = requestRouter.options.origin) !== null && _requestRouter$option !== void 0 ? _requestRouter$option : origin,
 						defaultSsr: requestStartOptions.defaultSsr,
 						serializationAdapters: [...requestStartOptions.serializationAdapters, ...requestRouter.options.serializationAdapters || []],
 						basepath: ROUTER_BASEPATH
 					});
 					router = requestRouter;
 					return requestRouter;
-				})();
+				})());
 				return routerPromise;
 			};
 			const handlerType = isServerFnRequest ? "serverFn" : "router";
@@ -1621,22 +1649,23 @@ function createStartHandler(cbOrOptions) {
 					contextAfterGlobalMiddlewares: context
 				}, () => handleServerAction({
 					request,
-					context: requestOpts?.context,
+					context: requestOpts === null || requestOpts === void 0 ? void 0 : requestOpts.context,
 					serverFnId
 				}));
 			} else {
 				const executeRouter = async (serverContext, matchedRoutes) => {
+					var _routerInstance$_serv;
 					if (!/(^|,)\s*(\*\/\*|text\/html)/.test(request.headers.get("Accept") || "*/*")) return normalizeSsrResponse(Response.json({ error: "Only HTML requests are supported here" }, { status: 406 }));
 					const manifest = await waitForReason(resolveManifestForRequest({
 						request,
-						requestInlineCss: requestOpts?.inlineCss,
+						requestInlineCss: requestOpts === null || requestOpts === void 0 ? void 0 : requestOpts.inlineCss,
 						getBaseManifest: () => getBaseManifest(matchedRoutes)
 					}), signal);
 					const earlyHints = createEarlyHintsForRequest({
-						onEarlyHints: requestOpts?.onEarlyHints,
-						responseLinkHeader: requestOpts?.responseLinkHeader
+						onEarlyHints: requestOpts === null || requestOpts === void 0 ? void 0 : requestOpts.onEarlyHints,
+						responseLinkHeader: requestOpts === null || requestOpts === void 0 ? void 0 : requestOpts.responseLinkHeader
 					});
-					earlyHints?.collectStatic({
+					earlyHints === null || earlyHints === void 0 || earlyHints.collectStatic({
 						manifest,
 						matchedRoutes
 					});
@@ -1644,21 +1673,24 @@ function createStartHandler(cbOrOptions) {
 					attachRouterServerSsrUtils({
 						router: routerInstance,
 						manifest,
-						getRequestAssets: () => getStartContext({ throwIfNotFound: false })?.requestAssets
+						getRequestAssets: () => {
+							var _getStartContext;
+							return (_getStartContext = getStartContext({ throwIfNotFound: false })) === null || _getStartContext === void 0 ? void 0 : _getStartContext.requestAssets;
+						}
 					});
 					routerInstance.options.additionalContext = { serverContext };
 					await routerInstance.load({ _signal: signal });
 					signal.throwIfAborted();
-					if (routerInstance._serverResult?.type === "redirect") return normalizeSsrResponse(routerInstance._serverResult.redirect);
-					earlyHints?.collectDynamic(_getRenderedMatches(routerInstance.stores.matches.get()));
+					if (((_routerInstance$_serv = routerInstance._serverResult) === null || _routerInstance$_serv === void 0 ? void 0 : _routerInstance$_serv.type) === "redirect") return normalizeSsrResponse(routerInstance._serverResult.redirect);
+					earlyHints === null || earlyHints === void 0 || earlyHints.collectDynamic(_getRenderedMatches(routerInstance.stores.matches.get()));
 					const ctx = getStartContext({ throwIfNotFound: false });
 					await routerInstance.serverSsr.dehydrate({
-						requestAssets: ctx?.requestAssets,
+						requestAssets: ctx === null || ctx === void 0 ? void 0 : ctx.requestAssets,
 						signal
 					});
 					signal.throwIfAborted();
 					const responseHeaders = getStartResponseHeaders({ router: routerInstance });
-					earlyHints?.appendResponseHeaders(responseHeaders);
+					earlyHints === null || earlyHints === void 0 || earlyHints.appendResponseHeaders(responseHeaders);
 					signal.throwIfAborted();
 					const disposeLate = createLateResponseDisposer(signal);
 					return normalizeSsrResponse(await waitForReason(cb({
@@ -1683,7 +1715,7 @@ function createStartHandler(cbOrOptions) {
 				request,
 				pathname: url.pathname,
 				handlerType,
-				context: createNullProtoObject(requestOpts?.context)
+				context: createNullProtoObject(requestOpts === null || requestOpts === void 0 ? void 0 : requestOpts.context)
 			}, signal);
 			let result;
 			try {
@@ -1698,7 +1730,7 @@ function createStartHandler(cbOrOptions) {
 			responseOwnsCleanup = result.serverSsrCleanup === "stream";
 			return result.response;
 		} finally {
-			if (router?.serverSsr && !responseOwnsCleanup) router.serverSsr.cleanup();
+			if ((router === null || router === void 0 ? void 0 : router.serverSsr) && !responseOwnsCleanup) router.serverSsr.cleanup();
 		}
 	};
 	return requestHandler(startRequestResolver);
@@ -1739,11 +1771,15 @@ async function handleRedirectResponse(response, getRouter, signal, serializeRedi
 	return ssrResponse;
 }
 function withParsedParams(handler, matchedRoutes) {
-	if (!matchedRoutes.some((route) => route.options.params?.parse ?? route.options.parseParams)) return handler;
+	if (!matchedRoutes.some((route) => {
+		var _route$options$params, _route$options$params2;
+		return (_route$options$params = (_route$options$params2 = route.options.params) === null || _route$options$params2 === void 0 ? void 0 : _route$options$params2.parse) !== null && _route$options$params !== void 0 ? _route$options$params : route.options.parseParams;
+	})) return handler;
 	return (ctx) => {
 		const params = Object.assign(Object.create(null), ctx.params);
 		for (const route of matchedRoutes) {
-			const parse = route.options.params?.parse ?? route.options.parseParams;
+			var _route$options$params3, _route$options$params4;
+			const parse = (_route$options$params3 = (_route$options$params4 = route.options.params) === null || _route$options$params4 === void 0 ? void 0 : _route$options$params4.parse) !== null && _route$options$params3 !== void 0 ? _route$options$params3 : route.options.parseParams;
 			if (parse) Object.assign(params, parse(params));
 		}
 		return handler({
@@ -1761,21 +1797,24 @@ async function handleServerRoutes({ getRouter, request, url, executeRouter, cont
 	let terminalHandler = (ctx) => executeRouter(ctx.context, matchedRoutes);
 	let terminalNext;
 	for (const route of matchedRoutes) {
-		const serverMiddleware = route.options.server?.middleware;
+		var _route$options$server;
+		const serverMiddleware = (_route$options$server = route.options.server) === null || _route$options$server === void 0 ? void 0 : _route$options$server.middleware;
 		if (serverMiddleware) {
 			const flattened = flattenMiddlewares(serverMiddleware);
 			for (const m of flattened) if (!executedRequestMiddlewares.has(m)) routeMiddlewares.push(m.options.server);
 		}
 	}
-	const server = foundRoute?.options.server;
-	if (server?.handlers && isExactMatch) {
+	const server = foundRoute === null || foundRoute === void 0 ? void 0 : foundRoute.options.server;
+	if ((server === null || server === void 0 ? void 0 : server.handlers) && isExactMatch) {
+		var _ref, _handlers$HEAD, _handlers$requestMeth;
 		const handlers = typeof server.handlers === "function" ? server.handlers({ createHandlers: (d) => d }) : server.handlers;
 		const requestMethod = request.method.toUpperCase();
-		const handler = requestMethod === "HEAD" ? handlers["HEAD"] ?? handlers["GET"] ?? handlers["ANY"] : handlers[requestMethod] ?? handlers["ANY"];
+		const handler = requestMethod === "HEAD" ? (_ref = (_handlers$HEAD = handlers["HEAD"]) !== null && _handlers$HEAD !== void 0 ? _handlers$HEAD : handlers["GET"]) !== null && _ref !== void 0 ? _ref : handlers["ANY"] : (_handlers$requestMeth = handlers[requestMethod]) !== null && _handlers$requestMeth !== void 0 ? _handlers$requestMeth : handlers["ANY"];
 		if (handler) {
 			const mayDefer = !!foundRoute.options.component;
 			if (typeof handler !== "function") {
-				if (handler.middleware?.length) {
+				var _handler$middleware;
+				if ((_handler$middleware = handler.middleware) === null || _handler$middleware === void 0 ? void 0 : _handler$middleware.length) {
 					const handlerMiddlewares = flattenMiddlewares(handler.middleware);
 					for (const m of handlerMiddlewares) routeMiddlewares.push(m.options.server);
 				}

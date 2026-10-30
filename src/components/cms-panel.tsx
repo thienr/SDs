@@ -89,9 +89,9 @@ export function CmsPanel({ kind, lang, needle, onlyEdited, focusId }: { kind: Cm
           {kind === "session" ? <Field label={vi ? "Lời buổi" : "Session line"} value={draft.text} onChange={(value) => set("text", value)} tall /> : null}
           {kind === "course" || kind === "module" ? (
             <>
-              <Field label={vi ? "Nói cho dễ" : "In plain words"} value={draft.plain} onChange={(value) => set("plain", value)} tall />
-              <Field label={vi ? "Biết để làm gì" : "What you use it for"} value={draft.why} onChange={(value) => set("why", value)} tall />
-              <Field label={vi ? "Nối với cái trước" : "How it links"} value={draft.prior} onChange={(value) => set("prior", value)} tall />
+              <Field label={vi ? "Hiểu nhanh" : "In plain words"} value={draft.plain} onChange={(value) => set("plain", value)} tall />
+              <Field label={vi ? "Vì sao cần biết" : "What you use it for"} value={draft.why} onChange={(value) => set("why", value)} tall />
+              <Field label={vi ? "Liên hệ với bài trước" : "How it links"} value={draft.prior} onChange={(value) => set("prior", value)} tall />
             </>
           ) : null}
           {kind === "lesson" ? (

@@ -575,7 +575,7 @@ export const c4Sessions: { title: string; module: string; concepts: Card[] }[] =
         title: "Holt-Winters: có mùa khi bạn đưa chu kỳ vào, máy không tự tìm",
         see: "Hình này thể hiện Holt-Winters. Một sóng lặp lại trên một mức, và chu kỳ của sóng là do bạn đưa vào.",
         scene: "x-hw",
-        situation: "Form theo tuần với chu kỳ 7. Holt-Winters cần bạn nói 7, nó không tự quyết định là 7 hay 52. Cần hơn một vòng để thấy hình dạng. Với một năm dữ liệu theo tuần, mùa năm chưa lặp lại lần nào.",
+        situation: "Form theo ngày với chu kỳ 7. Holt-Winters cần bạn nói 7, nó không tự quyết định là 7 hay 52. Cần hơn một vòng để thấy hình dạng. Với một năm dữ liệu theo tuần, mùa năm chưa lặp lại lần nào.",
         use: [
           "Đưa chu kỳ vào: 7, 52 hoặc 12.",
           "Có ít nhất hai vòng dữ liệu trước khi tin một mùa.",

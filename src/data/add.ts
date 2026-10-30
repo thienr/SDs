@@ -258,7 +258,7 @@ export const addSessions: { title: string; module: string; courseId: string; con
           "Nhớ rằng không phải ma trận nào cũng có đủ vectơ riêng để làm hệ trục.",
         ],
         plain: "Vectơ riêng là hướng mà ma trận chỉ kéo giãn hoặc lật ngược, không quay. Trị riêng (eigenvalue) λ là mức kéo giãn đó.",
-        precise: "Av = λv, với v khác 0. λ là trị riêng và v là vectơ riêng tương ứng. Thế số: A = [[2, 0], [0, 1]] và v = (1, 0) cho Av = (2, 0) = 2v, nên λ = 2. Với v = (1, 1) ta có Av = (2, 1), không phải bội của v, nên v không là vectơ riêng. Phân tích riêng viết ma trận thành đổi trục, kéo theo các λ, rồi đổi trục ngược lại, khi có đủ vectơ riêng độc lập. Ma trận kéo trượt (shear) có thể không có đủ hai hướng đó trên số thực.",
+        precise: "Av = λv, với v khác 0. λ là trị riêng và v là vectơ riêng tương ứng. Thế số: A = [[2, 0], [0, 1]] và v = (1, 0) cho Av = (2, 0) = 2v, nên λ = 2. Với v = (1, 1) ta có Av = (2, 1), không phải bội của v, nên v không là vectơ riêng. Phân tích riêng viết ma trận thành đổi trục, kéo theo các λ, rồi đổi trục ngược lại, khi có đủ vectơ riêng độc lập. Ma trận kéo trượt (shear) chỉ có một hướng riêng nên không chéo hóa được, còn phép quay thì không có hướng riêng nào trên số thực.",
         formula: "A\\vec v = \\lambda \\vec v",
         symbols: [
           { sym: "\\vec v", meaning: "v là hướng không bị quay khi qua ma trận; trong ví dụ là (1, 0)." },

@@ -1,0 +1,202 @@
+{
+"binomial": {
+"v": "J8jNoF-K8E8",
+"t": "The Binomial Distribution and Test, Clearly Explained!!!",
+"c": "StatQuest with Josh Starmer"
+},
+"normal": {
+"v": "rzFX5NWojp0",
+"t": "The Normal Distribution, Clearly Explained!!!",
+"c": "StatQuest with Josh Starmer"
+},
+"clt": {
+"v": "YAlJCEDH2uY",
+"t": "The Central Limit Theorem, Clearly Explained!!!",
+"c": "StatQuest with Josh Starmer"
+},
+"sa-tune": {
+"v": "zYGDpG-pTho",
+"t": "RAG vs Fine-Tuning vs Prompt Engineering: Optimizing AI Models",
+"c": "IBM Technology"
+},
+"im-vae": {
+"v": "HBYQvKlaE0A",
+"t": "Understanding Variational Autoencoders (VAEs)",
+"c": "DeepBean"
+},
+"slr-line": {
+"v": "7ArmBVF2dCs",
+"t": "Linear Regression, Clearly Explained!!!",
+"c": "StatQuest with Josh Starmer"
+},
+"slr-r2": {
+"v": "7ArmBVF2dCs",
+"t": "Linear Regression, Clearly Explained!!!",
+"c": "StatQuest with Josh Starmer"
+},
+"slr-fit": {
+"v": "7ArmBVF2dCs",
+"t": "Linear Regression, Clearly Explained!!!",
+"c": "StatQuest with Josh Starmer"
+},
+"mlr-why": {
+"v": "zITIFTsivN8",
+"t": "Multiple Regression, Clearly Explained!!!",
+"c": "StatQuest with Josh Starmer"
+},
+"logit-sig": {
+"v": "yIYKR4sgzI8",
+"t": "StatQuest: Logistic Regression",
+"c": "StatQuest with Josh Starmer"
+},
+"logit-odds": {
+"v": "yIYKR4sgzI8",
+"t": "StatQuest: Logistic Regression",
+"c": "StatQuest with Josh Starmer"
+},
+"hier": {
+"v": "7xHsRkOdVwo",
+"t": "StatQuest: Hierarchical Clustering",
+"c": "StatQuest with Josh Starmer"
+},
+"bv-bias": {
+"v": "EuBBz3bI-aA",
+"t": "Machine Learning Fundamentals: Bias and Variance",
+"c": "StatQuest with Josh Starmer"
+},
+"ts-stat": {
+"v": "oY-j2Wof51c",
+"t": "Time Series Talk : Stationarity",
+"c": "ritvikmath"
+},
+"ts-acf": {
+"v": "CAT0Y66nPhs",
+"t": "How to Use ACF and PACF to Identify Time Series Analysis Models",
+"c": "Dr Bo Han Class"
+},
+"ts-ar": {
+"v": "Mc6sBAUdDP4",
+"t": "What are Autoregressive (AR) Models",
+"c": "Aric LaBarr"
+},
+"ts-arima": {
+"v": "O6RjAYNTuHo",
+"t": "ARIMA Model Explained | Introduction, Components & Formula | Datamites",
+"c": "DataMites"
+},
+"math-vec": {
+"v": "fNk_zzaMoSs",
+"t": "Vectors | Chapter 1, Essence of linear algebra",
+"c": "3Blue1Brown"
+},
+"math-add": {
+"v": "fNk_zzaMoSs",
+"t": "Vectors | Chapter 1, Essence of linear algebra",
+"c": "3Blue1Brown"
+},
+"math-dot": {
+"v": "LyGKycYT2v0",
+"t": "Dot products and duality | Chapter 9, Essence of linear algebra",
+"c": "3Blue1Brown"
+},
+"math-mat": {
+"v": "kYB8IZa5AuE",
+"t": "Linear transformations and matrices | Chapter 3, Essence of linear algebra",
+"c": "3Blue1Brown"
+},
+"math-mul": {
+"v": "XkY2DOUCWMU",
+"t": "Matrix multiplication as composition | Chapter 4, Essence of linear algebra",
+"c": "3Blue1Brown"
+},
+"math-det": {
+"v": "Ip3X9LOh2dk",
+"t": "The determinant | Chapter 6, Essence of linear algebra",
+"c": "3Blue1Brown"
+},
+"math-sys": {
+"v": "uQhTuRlWMxw",
+"t": "Inverse matrices, column space and null space | Chapter 7, Essence of linear algebra",
+"c": "3Blue1Brown"
+},
+"math-eig": {
+"v": "PFDu9oVAE-g",
+"t": "Eigenvectors and eigenvalues | Chapter 14, Essence of linear algebra",
+"c": "3Blue1Brown"
+},
+"math-part": {
+"v": "1CMDS4-PKKQ",
+"t": "Partial derivatives | Multivariable Calculus | Khan Academy",
+"c": "Khan Academy"
+},
+"math-grad": {
+"v": "U7HQ_G_N6vo",
+"t": "Gradient 1 | Partial derivatives, gradient, divergence, curl | Multivariable Calculus | Khan Academy",
+"c": "Khan Academy"
+},
+"math-taylor": {
+"v": "3d6DsjIBzJ4",
+"t": "Taylor series | Chapter 11, Essence of calculus",
+"c": "3Blue1Brown"
+},
+"ds-q": {
+"v": "IFKQLDmRK0Y",
+"t": "Quantiles and Percentiles, Clearly Explained!!!",
+"c": "StatQuest with Josh Starmer"
+},
+"ds-pct": {
+"v": "IFKQLDmRK0Y",
+"t": "Quantiles and Percentiles, Clearly Explained!!!",
+"c": "StatQuest with Josh Starmer"
+},
+"ds-var": {
+"v": "Qf3RMGXR-h8",
+"t": "Statistics: Sample variance | Descriptive statistics | Probability and Statistics | Khan Academy",
+"c": "Khan Academy"
+},
+"ds-sd": {
+"v": "HvDqbzu0i0E",
+"t": "Statistics: Standard deviation | Descriptive statistics | Probability and Statistics | Khan Academy",
+"c": "Khan Academy"
+},
+"py-if": {
+"v": "DZwmZ8Usvnk",
+"t": "Python Tutorial for Beginners 6: Conditionals and Booleans - If, Else, and Elif Statements",
+"c": "Corey Schafer"
+},
+"py-loop": {
+"v": "iaRj5xGHCuE",
+"t": "Python Loops (Visually Explained) | For, While, Break, Continue, Else",
+"c": "Data with Baraa"
+},
+"py-frame": {
+"v": "X3QTN0YLUH8",
+"t": "Master .loc and .iloc in Pandas in Under 10 Minutes! (Python Tutorial)",
+"c": "Onur Baltaci"
+},
+"xa-match": {
+"v": "yH_ArqoB0no",
+"t": "How To Use Index Match As An Alternative To Vlookup",
+"c": "Excel Campus - Jon"
+},
+"pb-dax": {
+"v": "9QTpmYWu5yY",
+"t": "MEASURES vs CALCULATED COLUMNS in DAX",
+"c": "Nestor Adrianzen"
+},
+"pb-rls": {
+"v": "XMLXbbSgiM0",
+"t": "Power BI RLS Tutorial: Control Who Sees Your Reports! 👀",
+"c": "Pragmatic Works"
+},
+"fw-bmc": {
+"v": "QoAOzMTLP5s",
+"t": "Business Model Canvas Explained",
+"c": "Strategyzer"
+},
+"ga-next": {
+"v": "-mOKLAP5ct4",
+"t": "How ChatGPT Actually Writes: Next Token Prediction Explained",
+"c": "AI Mechanics"
+}
+}

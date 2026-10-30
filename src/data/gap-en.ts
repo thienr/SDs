@@ -256,7 +256,7 @@ export const gapEn: Record<string, GapEn> = {
     title: "A cell in Excel holds a number, text or a formula",
     why: "So a cell that looks like a number isn't added as a number when it is actually text.",
     prior: "You have a goal sentence and a yardstick. Excel is where that yardstick is calculated.",
-    see: "This picture shows the three kinds of content in a cell. A number cell can be added, a text cell can only be joined, and a formula recalculates when the cells it refers to change. \"80\" plus \"20\" as text gives \"8020\", not 100.",
+    see: "This picture shows the three kinds of content in a cell. A number cell can be added, a text cell is skipped by SUM, and a formula recalculates when the cells it refers to change. Joining \"80\" and \"20\" as text with & gives \"8020\", not 100.",
     plain: "Each cell has a type, and the type decides which operations are valid. Check the type before adding.",
     situation: "The form column was stored as text because of extra spaces. The whole column totals 0, but that doesn't mean the week had no forms. The SUM function skips text cells without any error.",
     use: [
@@ -2016,7 +2016,7 @@ export const gapEn: Record<string, GapEn> = {
     title: "Text functions return text; they don't turn text into numbers",
     why: "So the LEFT of a code isn't added up like money.",
     prior: "Cells in C0 already have types. The text functions of advanced Excel still return text.",
-    see: "This picture shows text functions such as LEFT, RIGHT, MID and TRIM. All of them return text. To get a number you need a deliberate type conversion on top. LEFT of \"80 form\" takes out \"80\", which is still text, so adding that column gives 0 or a joined string, depending on the cell.",
+    see: "This picture shows text functions such as LEFT, RIGHT, MID and TRIM. All of them return text. To get a number you need a deliberate type conversion on top. LEFT of \"80 form\" takes out \"80\", which is still text, so SUM skips that column and gives 0, while & joins strings; to make it a number, convert on purpose (VALUE or *1).",
     plain: "Cleaning text is one step. Converting to a number is a later step, and only when it really is a number.",
     situation: "For code F-12, LEFT takes the letter F and TRIM removes extra spaces. None of them gives the number 12 unless you split and convert the type. A column of codes shouldn't be added.",
     use: [
@@ -2205,7 +2205,7 @@ export const gapEn: Record<string, GapEn> = {
       "Test with \"view as\" for exactly that person, not with a slicer.",
       "Don't call a bookmark access control.",
     ],
-    precise: "RLS filters on the model by role. A measure using CALCULATE to remove filters may accidentally look beyond the role, depending on how it is written, so test with the real account. Hiding a page is not RLS: anyone who knows the way can still get in, and the data is still in their model. Plugging in: 4 channel heads need 4 roles, each keeping exactly the rows of its channel code.",
+    precise: "RLS filters on the model by role. DAX cannot lift RLS filters (CALCULATE, ALL or REMOVEFILTERS only narrow further, never widen). What goes wrong is how the role is written, especially dynamic roles using USERPRINCIPALNAME, and a filter on one table propagating to others through relationships, so test with \"view as\" for the real account. Hiding a page is not RLS: anyone who knows the way can still get in, and the data is still in their model. Plugging in: 4 channel heads need 4 roles, each keeping exactly the rows of its channel code.",
     insight: "A slicer is a choice; RLS is a limit.",
     symbols: [],
   },
@@ -3157,7 +3157,7 @@ export const gapEn: Record<string, GapEn> = {
     title: "A template is a mold with blanks; for a blank, don't let the model fill in the source",
     why: "So a missing prompt variable isn't replaced by the model's memory.",
     prior: "A prompt is the task, the context and the output format. A template is how the product fills those places from data instead of by hand each time.",
-    see: "This picture shows a template in LangChain. A template has variables. A variable not passed leaves that place blank or raises an error, depending on how you write it. Don't make the model \"figure out the blank\". If the `policy` variable isn't passed and the model still writes a policy, that is a policy with no source.",
+    see: "This picture shows a template in LangChain. A template has variables. A variable not passed makes LangChain raise an error rather than quietly leave a blank. Don't make the model \"figure out the blank\". If the `policy` variable isn't passed and the model still writes a policy, that is a policy with no source.",
     plain: "If a variable is missing, stop, or say it is missing. Don't call the model.",
     situation: "The mold \"use only the following passage: {passage}\". If passage is empty but the call is still made, every later answer is outside RAG, even though the code sits in a library called LangChain.",
     use: [

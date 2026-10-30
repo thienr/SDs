@@ -55,19 +55,6 @@ const nodeSet = new Set(mapNodeIds);
 
 export type Edge = { a: string; b: string; kind: "next" | "related"; vi?: string; en?: string };
 
-/** Dây tiếp nối: hai khái niệm liền nhau trong cùng chủ đề. */
-export const chainEdges: Edge[] = (() => {
-  const last = new Map<number, string>();
-  const out: Edge[] = [];
-  for (const id of mapNodeIds) {
-    const t = topicIndexOf(id);
-    const prev = last.get(t);
-    if (prev) out.push({ a: prev, b: id, kind: "next" });
-    last.set(t, id);
-  }
-  return out;
-})();
-
 /** Dây liên quan, viết tay. */
 export const relatedEdges: Edge[] = relatedLinks
   .filter(([a, b]) => nodeSet.has(a) && nodeSet.has(b))
@@ -86,82 +73,7 @@ export function relatedOf(id: string) {
   return adjacency.get(id) ?? [];
 }
 
-export type Pos = { x: number; y: number };
-
-export const WORLD = { w: 1800, h: 1300 };
-
-export function topicCenter(i: number): Pos {
-  const n = topics.length;
-  const angle = (i / n) * Math.PI * 2 - Math.PI / 2;
-  return { x: WORLD.w / 2 + Math.cos(angle) * 640, y: WORLD.h / 2 + Math.sin(angle) * 470 };
-}
-
-/** Bố cục lực đơn giản, cố định hạt giống để mọi lần mở đều giống nhau. */
-export function computeLayout(): Record<string, Pos> {
-  const ids = mapNodeIds;
-  const n = ids.length;
-  const index = new Map(ids.map((id, i) => [id, i]));
-  const topic = ids.map((id) => topicIndexOf(id));
-  const centers = topics.map((_, i) => topicCenter(i));
-  let seed = 12345;
-  const rand = () => {
-    seed = (seed * 1664525 + 1013904223) % 4294967296;
-    return seed / 4294967296;
-  };
-  const x = new Float64Array(n);
-  const y = new Float64Array(n);
-  const vx = new Float64Array(n);
-  const vy = new Float64Array(n);
-  for (let i = 0; i < n; i++) {
-    const c = centers[topic[i]];
-    x[i] = c.x + (rand() - 0.5) * 120;
-    y[i] = c.y + (rand() - 0.5) * 120;
-  }
-  const springs: [number, number, number, number][] = [];
-  for (const e of chainEdges) springs.push([index.get(e.a)!, index.get(e.b)!, 42, 0.035]);
-  for (const e of relatedEdges) springs.push([index.get(e.a)!, index.get(e.b)!, 110, 0.012]);
-  const steps = 280;
-  for (let s = 0; s < steps; s++) {
-    const cool = 1 - s / steps;
-    for (let i = 0; i < n; i++) {
-      const c = centers[topic[i]];
-      vx[i] += (c.x - x[i]) * 0.012 * cool;
-      vy[i] += (c.y - y[i]) * 0.012 * cool;
-    }
-    for (let i = 0; i < n; i++) {
-      for (let j = i + 1; j < n; j++) {
-        const dx = x[i] - x[j];
-        const dy = y[i] - y[j];
-        const d2 = dx * dx + dy * dy + 0.01;
-        if (d2 > 6400) continue;
-        const d = Math.sqrt(d2);
-        const f = (520 / d2) * cool;
-        vx[i] += (dx / d) * f;
-        vy[i] += (dy / d) * f;
-        vx[j] -= (dx / d) * f;
-        vy[j] -= (dy / d) * f;
-      }
-    }
-    for (const [a, b, len, k] of springs) {
-      const dx = x[b] - x[a];
-      const dy = y[b] - y[a];
-      const d = Math.sqrt(dx * dx + dy * dy) + 0.01;
-      const f = (d - len) * k;
-      vx[a] += (dx / d) * f;
-      vy[a] += (dy / d) * f;
-      vx[b] -= (dx / d) * f;
-      vy[b] -= (dy / d) * f;
-    }
-    for (let i = 0; i < n; i++) {
-      vx[i] *= 0.82;
-      vy[i] *= 0.82;
-      x[i] += vx[i];
-      y[i] += vy[i];
-    }
-  }
-  const out: Record<string, Pos> = {};
-  ids.forEach((id, i) => {
-    out[id] = { x: x[i], y: y[i] };
-  });
-  return out;
+/** Các khái niệm của một chủ đề, theo đúng thứ tự học. */
+export function topicConcepts(topicIndex: number): string[] {
+  return mapNodeIds.filter((id) => topicIndexOf(id) === topicIndex);
 }
