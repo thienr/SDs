@@ -5,10 +5,10 @@ import { o as getCmsVersion, s as getServerCmsVersion, u as subscribeCms } from 
 import { o as liveLesson } from "./cms-live-BOSWGilr.mjs";
 import { a as getServerProgress, c as itemStatus, d as openLesson, i as getProgress, l as lessonStatus, m as subscribeProgress, r as cycleItem, u as markLesson } from "./progress-BbLCT1Se.mjs";
 import { f as Circle, m as Check } from "../_libs/lucide-react.mjs";
-import { i as Route$2 } from "./router-B7hNBnq3.mjs";
+import { i as Route$2 } from "./router-Dp2qPefp.mjs";
 import { n as Tex, r as maybeTex, t as CodeExplain } from "./tex-CMTmT1PA.mjs";
 import { r as Sim } from "./labs-_WNsAmbg.mjs";
-//#region node_modules/.nitro/vite/services/ssr/assets/bai._lessonId-g7KuVA7Q.js
+//#region node_modules/.nitro/vite/services/ssr/assets/bai._lessonId-Db_8gGjA.js
 var import_react = /* @__PURE__ */ __toESM(require_react());
 var import_jsx_runtime = require_jsx_runtime();
 var labels = {

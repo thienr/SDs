@@ -1,6 +1,7 @@
 import { courseHead, moduleHead, sessionHead } from "@/data/outline";
 import { sessionConcepts } from "@/data/place";
 import { getStudy, studyCopy } from "@/data/study";
+import { overviews } from "@/data/overview";
 import { courses, getLesson } from "@/lib/catalog";
 import type { Lang } from "@/lib/progress";
 import type { RawText } from "@/lib/raw-format";
@@ -16,6 +17,48 @@ export type PublicCard = RawText & {
 
 const cache = new Map<Lang, PublicCard[]>();
 
+/** Trang đọc hiện bản đồ (overview). MCP trước đây chỉ gửi thẻ nháp cũ nên agent báo buổi trống. */
+function shown(id: string, text: RawText): RawText {
+  const ov = overviews[id];
+  if (!ov) return text;
+  const parts: string[] = [ov.lead];
+  const use: string[] = [];
+  const defs: string[] = [];
+  const notes: string[] = [];
+  for (const block of ov.blocks) {
+    if (block.k === "h") parts.push(block.x);
+    else if (block.k === "p") parts.push(block.x);
+    else if (block.k === "note") {
+      parts.push(block.x);
+      notes.push(block.x);
+    } else if (block.k === "ul") {
+      parts.push(block.x.join(" "));
+      use.push(...block.x);
+    } else if (block.k === "def") {
+      for (const [term, meaning] of block.x) {
+        defs.push(`${term}: ${meaning}`);
+        parts.push(`${term}: ${meaning}`);
+      }
+    } else if (block.k === "qa") {
+      for (const [q, a] of block.x) parts.push(`Hỏi: ${q} Đáp án mẫu: ${a}`);
+    } else if (block.k === "code") parts.push(block.x);
+    else parts.push(`Đọc tiếp: ${block.x.join(", ")}`);
+  }
+  const body = parts.filter(Boolean).join("\n");
+  return {
+    ...text,
+    title: ov.title,
+    why: ov.lead,
+    prior: null,
+    see: ov.lead,
+    plain: body,
+    situation: "",
+    use: use.slice(0, 16),
+    precise: defs.join("\n") || body,
+    insight: notes[0] || ov.lead,
+  };
+}
+
 export function publicIdeas(lang: Lang): PublicCard[] {
   const hit = cache.get(lang);
   if (hit) return hit;
@@ -26,7 +69,7 @@ export function publicIdeas(lang: Lang): PublicCard[] {
         for (const id of sessionConcepts[session.id] ?? []) {
           const concept = getStudy(id);
           if (!concept) continue;
-          const text = studyCopy(concept, lang, true);
+          const text = shown(id, studyCopy(concept, lang, true));
           out.push({
             id,
             lang,
@@ -158,6 +201,6 @@ function slim(card: PublicCard) {
     courseId: card.courseId,
     courseTitle: card.courseTitle,
     sessionTitle: card.sessionTitle,
-    plain: card.plain.slice(0, 220),
+    plain: card.plain.slice(0, 280),
   };
 }

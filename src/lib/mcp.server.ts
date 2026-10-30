@@ -229,7 +229,7 @@ async function oneRpc(message: unknown, request: Request): Promise<Response | nu
       capabilities: { tools: { listChanged: false } },
       serverInfo: { name: "so-muc", version: "1.0.0" },
       instructions:
-        "Sổ Mực, sổ học tiếng Việt. Đọc bằng list_courses, outline, search_ideas, get_idea, get_heads, get_lesson. Đây là chữ in sẵn. Giữ nguyên id. Không thêm câu hỏi hay bịa số. Sửa chữ bằng submit_edit với body JSON; trang đọc chỉ đổi khi người dùng bấm Áp dụng. submit_edit cần khóa.",
+        "Sổ Mực, sổ học tiếng Việt. Đọc bằng list_courses, outline, search_ideas, get_idea, get_heads, get_lesson. Đây là chữ đang hiện trên trang, gồm bản đồ buổi. Giữ nguyên id. Không thêm câu hỏi hay bịa số. Đọc plain, precise và why. Đừng kết luận buổi trống. Sửa chữ bằng submit_edit với body JSON; trang đọc chỉ đổi khi người dùng bấm Áp dụng. submit_edit cần khóa.",
     });
   }
   if (method === "notifications/initialized" || method === "initialized") return null;
